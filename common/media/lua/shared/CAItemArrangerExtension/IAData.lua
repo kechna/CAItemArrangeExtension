@@ -1,12 +1,16 @@
 IA = IA or {}
 
+--- mesh name -> IA.arrangableProfile key
 ---@type table<string, string>
-IA.modelProfiles = {}
+IA.meshProfiles = {}
 
 ---@type boolean
-IA.modelProfilesApplied = false
+IA.meshProfilesApplied = false
 
 local p = "CAItemArrangeExtension"
+
+---@type table<string, string | false>
+local meshCache = {}
 
 ---@param item Item
 ---@return string | nil
@@ -21,11 +25,35 @@ local function getWorldModel(item)
     return nil
   end
 
-  if model:sub(1, 5) == "Base." then
-    model = model:sub(6)
+  return model
+end
+
+--- The mesh of the item's world model. different model scripts often point at the same mesh, so this matches more
+--- items than the model name would.
+---@param sm   ScriptManager
+---@param item Item
+---@return string | nil
+local function getWorldMesh(sm, item)
+  local model = getWorldModel(item)
+
+  if not model then
+    return nil
   end
 
-  return model
+  local mesh = meshCache[model]
+
+  if mesh == nil then
+    local modelScript = sm:getModelScript(model)
+    mesh = modelScript and modelScript:getMeshName() or false
+
+    if mesh == "" then
+      mesh = false
+    end
+
+    meshCache[model] = mesh
+  end
+
+  return mesh or nil
 end
 
 ---@return table<table, string>
@@ -39,38 +67,35 @@ local function getProfileNames()
   return names
 end
 
---- get model -> profile mappings from items already registered with IA
+--- get mesh -> profile mappings from items already registered with IA
 ---@param sm ScriptManager
-local function learnModelProfiles(sm)
+local function learnMeshProfiles(sm)
   local profileNames = getProfileNames()
-  local modelProfiles = IA.modelProfiles
+  local meshProfiles = IA.meshProfiles
 
-  local debug = isDebugEnabled()
-  local fileWriter = debug and getFileWriter(p .. "_models.txt", true, false) or nil
+  local fileWriter = isDebugEnabled() and getFileWriter(p .. "_meshes.txt", true, false) or nil
 
   for fullType, profile in pairs(IA.arrangables) do
     local name = profileNames[profile]
     local item = name and sm:getItem(fullType)
-    local model = item and getWorldModel(item)
+    local mesh = item and getWorldMesh(sm, item)
 
-    if model then
-      if not modelProfiles[model] then
-        modelProfiles[model] = name
+    if mesh and not meshProfiles[mesh] then
+      meshProfiles[mesh] = name
 
-        if debug and fileWriter then
-          fileWriter:writeln(string.format("%-30s -> %s", model, name))
-        end
+      if fileWriter then
+        fileWriter:writeln(string.format('IA.meshProfiles["%-50s = "%s"', mesh .. '"]', name))
       end
     end
   end
 
-  if debug and fileWriter then
+  if fileWriter then
     fileWriter:close()
   end
 end
 
-function IA.applyModelProfiles()
-  if IA.modelProfilesApplied then
+function IA.applyMeshProfiles()
+  if IA.meshProfilesApplied then
     return
   end
 
@@ -79,46 +104,56 @@ function IA.applyModelProfiles()
     return
   end
 
-  IA.modelProfilesApplied = true
+  IA.meshProfilesApplied = true
 
   local sm = getScriptManager()
-  local debug = isDebugEnabled()
-  local fileWriter = debug and getFileWriter(p .. "_added.txt", true, false) or nil
+  local fileWriter = isDebugEnabled() and getFileWriter(p .. "_added.txt", true, false) or nil
 
-  learnModelProfiles(sm)
+  learnMeshProfiles(sm)
 
   local arrangables = IA.arrangables
   local profiles = IA.arrangableProfile
-  local modelProfiles = IA.modelProfiles
+  local meshProfiles = IA.meshProfiles
   local items = sm:getAllItems()
+
   local added = 0
+  local addedByMod = {}
 
   for i = 0, items:size() - 1 do
     local item = items:get(i)
     local fullType = item:getFullName()
 
     if not arrangables[fullType] then
-      local model = getWorldModel(item)
-      local profile = model and modelProfiles[model] and profiles[modelProfiles[model]]
+      local mesh = getWorldMesh(sm, item)
+      local profileName = mesh and meshProfiles[mesh]
+      local profile = profileName and profiles[profileName]
 
       if profile then
         arrangables[fullType] = profile
         added = added + 1
+        local modID = item:getModID()
 
-        if debug and fileWriter then
-          local modId = item:getModID()
-          fileWriter:writeln(string.format("%-30s | %-40s -> %s", modId, fullType, tostring(modelProfiles[model])))
+        addedByMod[modID] = addedByMod[modID] and addedByMod[modID] + 1 or 1
+
+        if fileWriter then
+          fileWriter:writeln(
+            string.format(
+              'IA.arrangables["%-40s = IA.arrangableProfile.%-12s -- %s (%s)', fullType .. '"]', profileName, modID, mesh
+            )
+          )
         end
       end
     end
   end
 
-  if debug and fileWriter then
+  if fileWriter then
     fileWriter:close()
   end
 
-  print(string.format("%s: Made %d extra items arrangeable.", p, added))
+  for modID, count in pairs(addedByMod) do
+    print(string.format("%s: [%s] Made %d extra items arrangeable.", p, modID, count))
+  end
 end
 
-Events.OnGameStart.Add(IA.applyModelProfiles)
-Events.OnServerStarted.Add(IA.applyModelProfiles)
+Events.OnGameStart.Add(IA.applyMeshProfiles)
+Events.OnServerStarted.Add(IA.applyMeshProfiles)
