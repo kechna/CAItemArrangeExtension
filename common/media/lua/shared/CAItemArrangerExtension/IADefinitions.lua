@@ -34,6 +34,7 @@ IA.arrangableProfile.pouch = { dx = 0.2, dy = 0.07, dz = 0.1, qz = 1 }
 IA.arrangableProfile.jar = { dx = 0.12, dy = 0.12, dz = 0.06, fz = 45 }
 IA.arrangableProfile.jarTall = { dx = 0.15, dy = 0.15, dz = 0.078, qz = 2 }
 IA.arrangableProfile.sauce = { dx = 0.17, dy = 0.08, dz = 0.09, qz = 1 }
+IA.arrangableProfile.cartonWide = {dx = 0.12, dy = 0.09, dz = 0.015, qz = 1, fz = 180}
 
 
 --
@@ -41,62 +42,81 @@ IA.arrangableProfile.sauce = { dx = 0.17, dy = 0.08, dz = 0.09, qz = 1 }
 --
 
 -- Thanks to @CouncilOfPoorlyLitBaldPeople. Yes, I'm crediting you anyway :P
-IA.meshProfiles["ammo/boxes/Ammobox"] = "ammoBox"
-IA.meshProfiles["ammo/boxes/Ammobox_Rifle_Small"] = "ammoBox"
-IA.meshProfiles["ammo/boxes/Ammobox_Shotgun"] = "shotgunShellsBox"
-IA.meshProfiles["weapons/ammo/762-556-308-223AmmoBox"] = "ammoBox"
+IA.meshProfiles["ammo/boxes/Ammobox"]                           = "ammoBox"
+IA.meshProfiles["ammo/boxes/Ammobox_Rifle_Small"]               = "ammoBox"
+IA.meshProfiles["ammo/boxes/Ammobox_Shotgun"]                   = "shotgunShellsBox"
+IA.meshProfiles["weapons/ammo/762-556-308-223AmmoBox"]          = "ammoBox"
 
 -- By me
-IA.meshProfiles["WorldItems/Flask"] = "smallBottle"
-IA.meshProfiles["WorldItems/Sportsbottle"] = "bottle"
-IA.meshProfiles["WorldItems/Leather_Rolled"] = { profile = "leatherRoll", scale = 0.1 }
-IA.meshProfiles["WorldItems/FabricRolled"] = { profile = "fabricRoll", scale = 0.14 }
-IA.meshProfiles["WorldItems/Hide_Rolled_Deer"] = { profile = "hideRolledDeer", scale = 0.1 }
-IA.meshProfiles["WorldItems/BagofConcretePowder"] = { profile = "bagConcretePowder", scale = 0.2 }
+IA.meshProfiles["WorldItems/Flask"]                             = "smallBottle"
+IA.meshProfiles["WorldItems/Sportsbottle"]                      = "bottle"
+IA.meshProfiles["WorldItems/Leather_Rolled"]                    = { profile = "leatherRoll", scale = 0.1 }
+IA.meshProfiles["WorldItems/FabricRolled"]                      = { profile = "fabricRoll", scale = 0.14 }
+IA.meshProfiles["WorldItems/Hide_Rolled_Deer"]                  = { profile = "hideRolledDeer", scale = 0.1 }
+IA.meshProfiles["WorldItems/BagofConcretePowder"]               = { profile = "bagConcretePowder", scale = 0.2 }
 
 IA.meshProfiles["WorldItems/WoodenMold_CeramicCast_AnvilBlock"] = { profile = "anvilMold", scale = 0.13 }
-IA.meshProfiles["WorldItems/CeramicCast_AnvilBlock"] = { profile = "anvilMold", scale = 0.13 }
-IA.meshProfiles["WorldItems/WoodenMold_AnvilJeweller_Cast"] = { profile = "anvilMoldCast", scale = 0.1 }
-IA.meshProfiles["WorldItems/CeramicMold_AnvilJeweller"] = { profile = "anvilMoldCast", scale = 0.1 }
-IA.meshProfiles["WorldItems/WoodenMold_IngotCast"] = { profile = "woodenIngotMold", scale = 0.09 }
-IA.meshProfiles["WorldItems/Ceramic_IngotCast"] = { profile = "ceramicIngotCast", scale = 0.09 }
+IA.meshProfiles["WorldItems/CeramicCast_AnvilBlock"]            = { profile = "anvilMold", scale = 0.13 }
+IA.meshProfiles["WorldItems/WoodenMold_AnvilJeweller_Cast"]     = { profile = "anvilMoldCast", scale = 0.1 }
+IA.meshProfiles["WorldItems/CeramicMold_AnvilJeweller"]         = { profile = "anvilMoldCast", scale = 0.1 }
+IA.meshProfiles["WorldItems/WoodenMold_IngotCast"]              = { profile = "woodenIngotMold", scale = 0.09 }
+IA.meshProfiles["WorldItems/Ceramic_IngotCast"]                 = { profile = "ceramicIngotCast", scale = 0.09 }
 
-IA.meshProfiles["WorldItems/Clothing/DuffelBag_Ground"] = { profile = "duffelBag", scale = 0.4 }
-IA.meshProfiles["WorldItems/MapleSyrup"] = { profile = "sauce", scale = 0.4 }
-IA.meshProfiles["WorldItems/Soysauce"] = { profile = "honey", scale = 0.4 }
-IA.meshProfiles["WorldItems/BBQ_Sauce"] = { profile = "sauce", scale = 0.22 }
-IA.meshProfiles["WorldItems/Ketchup"] = { profile = "sauce", scale = 0.4 }
-IA.meshProfiles["WorldItems/Hotsauce"] = { profile = "smallBottle", scale = 0.4 }
-IA.meshProfiles["WorldItems/RiceVinegar"] = { profile = "wineBottle", scale = 0.4 }
-IA.meshProfiles["WorldItems/Marinara"] = { profile = "marinara", scale = 0.4 }
-IA.meshProfiles["WorldItems/Bowl"] = { profile = "bowlEmpty", scale = 0.4 }
-IA.meshProfiles["WorldItems/BowlFood"] = { profile = "bowlFull", scale = 0.4 }
-IA.meshProfiles["WorldItems/BowlSoup"] = { profile = "bowlFull", scale = 0.4 }
-IA.meshProfiles["WorldItems/BowlRamen"] = { profile = "bowlFull", scale = 0.4 }
-IA.meshProfiles["WorldItems/BowlOfGlaze"] = { profile = "bowlFull2", scale = 0.5 }
-IA.meshProfiles["WorldItems/SaucePan"] = { profile = "saucePan", scale = 0.4 }
-IA.meshProfiles["WorldItems/SaucePan_FoodFluid"] = { profile = "saucePanFull", scale = 0.4 }
-IA.meshProfiles["WorldItems/SaucePan_Copper"] = { profile = "saucePanCopper", scale = 0.075 }
-IA.meshProfiles["WorldItems/SaucePan_Copper_Water"] = { profile = "saucePanCopperFull", scale = 0.075 }
-IA.meshProfiles["WorldItems/SaucePan_Copper_Pasta"] = { profile = "saucePanCopperFull", scale = 0.075 }
-IA.meshProfiles["WorldItems/SaucePan_Copper_Rice"] = { profile = "saucePanCopperFull", scale = 0.075 }
-IA.meshProfiles["WorldItems/CookingPotFull"] = "potFull"
-IA.meshProfiles["WorldItems/JarLid"] = "jar"
-IA.meshProfiles["WorldItems/PeanutButter"] = "jarTall"
-IA.meshProfiles["WorldItems/BalsamicVinegar"] = "bottle"
+IA.meshProfiles["WorldItems/Clothing/DuffelBag_Ground"] = "duffelBag"
+IA.meshProfiles["WorldItems/MapleSyrup"]                = "sauce"
+IA.meshProfiles["WorldItems/Soysauce"]                  = "honey"
+IA.meshProfiles["WorldItems/BBQ_Sauce"]                 = { profile = "sauce", scale = 0.22 }
+IA.meshProfiles["WorldItems/Ketchup"]                   = "sauce"
+IA.meshProfiles["WorldItems/Hotsauce"]                  = "smallBottle"
+IA.meshProfiles["WorldItems/RiceVinegar"]               = "wineBottle"
+IA.meshProfiles["WorldItems/Marinara"]                  = "marinara"
+IA.meshProfiles["WorldItems/Bowl"]                      = "bowl"
+IA.meshProfiles["WorldItems/Bowl_Kiln"]                 = "bowl"
+IA.meshProfiles["WorldItems/BowlFood"]                  = "bowlFull"
+IA.meshProfiles["WorldItems/BowlSoup"]                  = "bowlFull"
+IA.meshProfiles["WorldItems/BowlRamen"]                 = "bowlFull"
+IA.meshProfiles["WorldItems/BowlOfGlaze"]               = { profile = "bowlFull2", scale = 0.5 }
+IA.meshProfiles["WorldItems/Bowl_Kiln_Full"]            = "bowlFull"
+IA.meshProfiles["WorldItems/SaucePan"]                  = "saucePan"
+IA.meshProfiles["WorldItems/SaucePan_FoodFluid"]        = "saucePanFull"
+IA.meshProfiles["WorldItems/SaucePan_Copper"]           = { profile = "saucePanCopper", scale = 0.075 }
+IA.meshProfiles["WorldItems/SaucePan_Copper_Water"]     = { profile = "saucePanCopperFull", scale = 0.075 }
+IA.meshProfiles["WorldItems/SaucePan_Copper_Pasta"]     = { profile = "saucePanCopperFull", scale = 0.075 }
+IA.meshProfiles["WorldItems/SaucePan_Copper_Rice"]      = { profile = "saucePanCopperFull", scale = 0.075 }
+IA.meshProfiles["WorldItems/CookingPotFull"]            = "potFull"
+IA.meshProfiles["WorldItems/JarLid"]                    = "jar"
+IA.meshProfiles["WorldItems/PeanutButter"]              = "jarTall"
+IA.meshProfiles["WorldItems/BalsamicVinegar"]           = "wineBottle"
+IA.meshProfiles["WorldItems/Bottle"]                    = "wineBottle"
+IA.meshProfiles["WorldItems/EmptyPopBottle"]            = "wineBottle"
+IA.meshProfiles["WorldItems/Disinfectant"]              = "wineBottle"
+IA.meshProfiles["WorldItems/Milk"]                      = "carton"
 
 -- VFX
-IA.meshProfiles["WorldItems/VFX_PotFull"] = "potFull"
-IA.meshProfiles["WorldItems/VFX_PotForgedFull"] = "potFull"
+IA.meshProfiles["WorldItems/VFX_BeerBottle"]              = "wineBottle"
+IA.meshProfiles["WorldItems/VFX_Carton"]                  = "cartonWide"
+IA.meshProfiles["WorldItems/VFX_CoffeeCreamerBottle"]     = "bottle"
+IA.meshProfiles["WorldItems/VFX_GlassBottle"]             = "wineBottle"
+IA.meshProfiles["WorldItems/VFX_IcedTeaBottle"]           = "wineBottle"
+IA.meshProfiles["WorldItems/VFX_LemonBottle"]             = "wineBottle"
+IA.meshProfiles["WorldItems/VFX_Mustard"]                 = "honey"
+IA.meshProfiles["WorldItems/VFX_PotForgedFull"]           = "potFull"
+IA.meshProfiles["WorldItems/VFX_PotFull"]                 = "potFull"
+IA.meshProfiles["WorldItems/VFX_Pouch"]                   = "pouch"
 
-IA.meshProfiles["WorldItems/VFX_Mustard"] = "honey"
+IA.arrangableProfile.roundFoodContainer = {dx = 0.32, dy = 0.32, dz = 0.06, qz = 4 }
+IA.arrangableProfile.rectFoodContainer = {dx = 0.25, dy = 0.35, dz = 0.046, qz = 5 }
 
-IA.meshProfiles["WorldItems/VFX_GlassBottle"] = "bottle"
-IA.meshProfiles["WorldItems/VFX_LemonBottle"] = "bottle"
-IA.meshProfiles["WorldItems/VFX_IcedTeaBottle"] = "bottle"
-IA.meshProfiles["WorldItems/VFX_CoffeeCreamerBottle"] = "bottle"
-IA.meshProfiles["WorldItems/VFX_BeerBottle"] = "bottle"
-IA.meshProfiles["WorldItems/VFX_Pouch"] = "pouch"
+IA.meshProfiles["WorldItems/VFX_Container_FoodStorageContainer"] = "roundFoodContainer"
+IA.meshProfiles["WorldItems/VFX_FoodStorageContainer"]           = "roundFoodContainer"
+IA.meshProfiles["WorldItems/VFX_SM_FoodStorageContainer"]        = "roundFoodContainer"
+IA.meshProfiles["WorldItems/VFX_MetalFoodStorageContainer"]      = {profile="rectFoodContainer", scale=1.2}
+IA.meshProfiles["WorldItems/VFX_SM_MetalFoodStorageContainer"]   = {profile= "rectFoodContainer" , scale=1.2}
 
 -- Sapph
-IA.meshProfiles["Worlditems/CookingPot_Liquid"] = "potFull"
+IA.meshProfiles["WorldItems/CookingPot_Liquid"]       = "potFull"
+IA.meshProfiles["WorldItems/EmptyBottle"]             = "wineBottle"
+
+-- Authentic Z
+IA.meshProfiles["WorldItems/WorldItem_AZ_AquaBottle"] = "bottle"
+IA.meshProfiles["WorldItems/WorldItem_AZ_GymBottle"]  = "wineBottle"
