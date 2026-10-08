@@ -5,7 +5,8 @@ local IA = IA
 --
 -- Arrangable profiles
 --
-IA.arrangableProfile.leather = { dx = 0.12, dy = 0.65, dz = 0.046, qz = 4 }
+IA.arrangableProfile.leatherRoll = { dx = 0.12, dy = 0.65, dz = 0.046, qz = 4 }
+IA.arrangableProfile.fabricRoll = { dx = 0.15, dy = 0.65, dz = 0.055, qz = 4, fz = 90 }
 
 --
 -- Mesh profiles
@@ -20,4 +21,5 @@ IA.meshProfiles["weapons/ammo/762-556-308-223AmmoBox"] = "ammoBox"
 -- By me
 IA.meshProfiles["WorldItems/Flask"]                    = "smallBottle"
 IA.meshProfiles["WorldItems/Sportsbottle"]             = "bottle"
-IA.meshProfiles["WorldItems/Leather_Rolled"]           = { profile = "leather", scale = 0.1 }
+IA.meshProfiles["WorldItems/Leather_Rolled"]           = { profile = "leatherRoll", scale = 0.1 }
+IA.meshProfiles["WorldItems/FabricRolled"]             = { profile = "fabricRoll", scale = 0.14 }
