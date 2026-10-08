@@ -28,6 +28,14 @@ local scaleField
 ---@type table<string, IAArrangableProfile>
 local scaledProfiles = {}
 
+--- rounds a resized dimension to 3 decimals. multiplying by the scale ratio leaves float noise like 0.0549999.
+---@param value number
+---@param ratio number
+---@return number
+local function scaleDimension(value, ratio)
+  return math.floor(value * ratio * 1000 + 0.5) / 1000
+end
+
 ---@param item Item
 ---@return string | nil
 local function getWorldModel(item)
@@ -190,7 +198,11 @@ local function getScaledProfile(name, ratio)
   local scaled = scaledProfiles[key]
 
   if not scaled then
-    scaled = { dx = profile.dx * ratio, dy = profile.dy * ratio, dz = profile.dz * ratio }
+    scaled = {
+      dx = scaleDimension(profile.dx, ratio),
+      dy = scaleDimension(profile.dy, ratio),
+      dz = scaleDimension(profile.dz, ratio),
+    }
 
     for k, v in pairs(profile) do
       if scaled[k] == nil then
@@ -199,7 +211,7 @@ local function getScaledProfile(name, ratio)
     end
 
     if profile.mz then
-      scaled.mz = profile.mz * ratio
+      scaled.mz = scaleDimension(profile.mz, ratio)
     end
 
     scaledProfiles[key] = scaled
