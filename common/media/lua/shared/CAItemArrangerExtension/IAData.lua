@@ -1,16 +1,32 @@
 IA = IA or {}
 
---- mesh name -> IA.arrangableProfile key
----@type table<string, string>
+--- mesh name -> IA.arrangableProfile key. a plain string applies the profile as-is at every scale, a table marks the
+--- model scale the profile was measured at, so it is resized for other scales of the same mesh.
+---@type table<string, string | { profile: string, scale: number }>
 IA.meshProfiles = {}
 
----@type boolean
 IA.meshProfilesApplied = false
 
 local p = "CAItemArrangeExtension"
 
----@type table<string, string | false>
+---@class CAIAE_WorldMesh
+---@field mesh string
+---@field scale number
+
+---@class CAIAE_ScaledProfileName
+---@field name string
+---@field scale number
+
+---@type table<string, CAIAE_WorldMesh | false>
 local meshCache = {}
+
+local SCALE_EPSILON = 0.0001
+
+---@type Field | false | nil
+local scaleField
+
+---@type table<string, IAArrangableProfile>
+local scaledProfiles = {}
 
 ---@param item Item
 ---@return string | nil
@@ -28,11 +44,43 @@ local function getWorldModel(item)
   return model
 end
 
---- The mesh of the item's world model. different model scripts often point at the same mesh, so this matches more
---- items than the model name would.
+--- scale is a public field without a getter, so it can only be read through reflection :/
+---@param modelScript ModelScript
+---@return number
+local function getModelScale(modelScript)
+  if scaleField == nil then
+    scaleField = false
+
+    for i = 0, getNumClassFields(modelScript) - 1 do
+      local field = getClassField(modelScript, i)
+
+      if tostring(field):match("%.scale$") then
+        scaleField = field
+        break
+      end
+    end
+  end
+
+  local ok, value = false, nil
+
+  if scaleField then
+    ok, value = pcall(getClassFieldVal, modelScript, scaleField)
+  end
+
+  local scale = ok and tonumber(value)
+
+  if not scale or scale <= 0 then
+    return 1
+  end
+
+  return scale
+end
+
+--- The mesh of the item's world model and the scale the model script renders it at. different model scripts often
+--- point at the same mesh, so this matches more items than the model name would.
 ---@param sm   ScriptManager
 ---@param item Item
----@return string | nil
+---@return CAIAE_WorldMesh | nil
 local function getWorldMesh(sm, item)
   local model = getWorldModel(item)
 
@@ -40,20 +88,22 @@ local function getWorldMesh(sm, item)
     return nil
   end
 
-  local mesh = meshCache[model]
+  local worldMesh = meshCache[model]
 
-  if mesh == nil then
+  if worldMesh == nil then
     local modelScript = sm:getModelScript(model)
-    mesh = modelScript and modelScript:getMeshName() or false
+    local mesh = modelScript and modelScript:getMeshName()
 
-    if mesh == "" then
-      mesh = false
+    if mesh and mesh ~= "" then
+      worldMesh = { mesh = mesh, scale = getModelScale(modelScript) }
+    else
+      worldMesh = false
     end
 
-    meshCache[model] = mesh
+    meshCache[model] = worldMesh
   end
 
-  return mesh or nil
+  return worldMesh or nil
 end
 
 ---@return table<table, string>
@@ -67,24 +117,54 @@ local function getProfileNames()
   return names
 end
 
---- get mesh -> profile mappings from items already registered with IA
+---@param entries CAIAE_ScaledProfileName[]
+---@param scale   number
+---@return boolean
+local function hasScale(entries, scale)
+  for i = 1, #entries do
+    if math.abs(entries[i].scale - scale) < SCALE_EPSILON then
+      return true
+    end
+  end
+
+  return false
+end
+
+--- get mesh -> profile mappings, per model scale, from items already registered with IA
 ---@param sm ScriptManager
+---@return table<string, CAIAE_ScaledProfileName[]>
 local function learnMeshProfiles(sm)
   local profileNames = getProfileNames()
-  local meshProfiles = IA.meshProfiles
+  local learned = {}
 
   local fileWriter = isDebugEnabled() and getFileWriter(p .. "_meshes.txt", true, false) or nil
 
   for fullType, profile in pairs(IA.arrangables) do
     local name = profileNames[profile]
     local item = name and sm:getItem(fullType)
-    local mesh = item and getWorldMesh(sm, item)
+    local worldMesh = item and getWorldMesh(sm, item)
 
-    if mesh and not meshProfiles[mesh] then
-      meshProfiles[mesh] = name
+    if worldMesh then
+      local entries = learned[worldMesh.mesh]
 
-      if fileWriter then
-        fileWriter:writeln(string.format('IA.meshProfiles["%-50s = "%s"', mesh .. '"]', name))
+      if not entries then
+        entries = {}
+        learned[worldMesh.mesh] = entries
+      end
+
+      if not hasScale(entries, worldMesh.scale) then
+        entries[#entries + 1] = { name = name, scale = worldMesh.scale }
+
+        if fileWriter then
+          fileWriter:writeln(
+            string.format(
+              'IA.meshProfiles["%-50s = { profile = "%s", scale = %s }',
+              worldMesh.mesh .. '"]',
+              name,
+              tostring(worldMesh.scale)
+            )
+          )
+        end
       end
     end
   end
@@ -92,6 +172,92 @@ local function learnMeshProfiles(sm)
   if fileWriter then
     fileWriter:close()
   end
+
+  return learned
+end
+
+---@param name  string
+---@param ratio number
+---@return IAArrangableProfile | nil
+local function getScaledProfile(name, ratio)
+  local profile = IA.arrangableProfile[name]
+
+  if not profile then
+    return nil
+  end
+
+  local key = name .. "@" .. string.format("%.3f", ratio)
+  local scaled = scaledProfiles[key]
+
+  if not scaled then
+    scaled = { dx = profile.dx * ratio, dy = profile.dy * ratio, dz = profile.dz * ratio }
+
+    for k, v in pairs(profile) do
+      if scaled[k] == nil then
+        scaled[k] = v
+      end
+    end
+
+    if profile.mz then
+      scaled.mz = profile.mz * ratio
+    end
+
+    scaledProfiles[key] = scaled
+  end
+
+  return scaled
+end
+
+---@param learned   table<string, CAIAE_ScaledProfileName[]>
+---@param worldMesh CAIAE_WorldMesh
+---@return IAArrangableProfile?, string?, number?
+local function resolveProfile(learned, worldMesh)
+  local manual = IA.meshProfiles[worldMesh.mesh]
+
+  if type(manual) == "string" then
+    return IA.arrangableProfile[manual], manual, 1
+  end
+
+  local candidates = {}
+
+  if type(manual) == "table" and manual.profile and manual.scale then
+    candidates[1] = { name = manual.profile, scale = manual.scale }
+  end
+
+  local entries = learned[worldMesh.mesh]
+
+  if entries then
+    for i = 1, #entries do
+      candidates[#candidates + 1] = entries[i]
+    end
+  end
+
+  local best, bestDistance
+
+  for i = 1, #candidates do
+    local candidate = candidates[i]
+
+    if IA.arrangableProfile[candidate.name] then
+      local distance = math.abs(math.log(worldMesh.scale / candidate.scale))
+
+      if not best or distance < bestDistance - SCALE_EPSILON then
+        best = candidate
+        bestDistance = distance
+      end
+    end
+  end
+
+  if not best then
+    return nil, nil, nil
+  end
+
+  local ratio = worldMesh.scale / best.scale
+
+  if math.abs(ratio - 1) < SCALE_EPSILON then
+    return IA.arrangableProfile[best.name], best.name, 1
+  end
+
+  return getScaledProfile(best.name, ratio), best.name, ratio
 end
 
 function IA.applyMeshProfiles()
@@ -109,11 +275,9 @@ function IA.applyMeshProfiles()
   local sm = getScriptManager()
   local fileWriter = isDebugEnabled() and getFileWriter(p .. "_added.txt", true, false) or nil
 
-  learnMeshProfiles(sm)
+  local learned = learnMeshProfiles(sm)
 
   local arrangables = IA.arrangables
-  local profiles = IA.arrangableProfile
-  local meshProfiles = IA.meshProfiles
   local items = sm:getAllItems()
 
   local added = 0
@@ -124,9 +288,12 @@ function IA.applyMeshProfiles()
     local fullType = item:getFullName()
 
     if not arrangables[fullType] then
-      local mesh = getWorldMesh(sm, item)
-      local profileName = mesh and meshProfiles[mesh]
-      local profile = profileName and profiles[profileName]
+      local worldMesh = getWorldMesh(sm, item)
+      local profile, profileName, ratio
+
+      if worldMesh then
+        profile, profileName, ratio = resolveProfile(learned, worldMesh)
+      end
 
       if profile then
         arrangables[fullType] = profile
@@ -136,9 +303,17 @@ function IA.applyMeshProfiles()
         addedByMod[modID] = addedByMod[modID] and addedByMod[modID] + 1 or 1
 
         if fileWriter then
+          local scaleNote = ratio ~= 1 and string.format(", x%.2f", ratio) or ""
+
           fileWriter:writeln(
             string.format(
-              'IA.arrangables["%-40s = IA.arrangableProfile.%-12s -- %s (%s)', fullType .. '"]', profileName, modID, mesh
+              'IA.arrangables["%-40s = IA.arrangableProfile.%-12s -- %s (%s @%s%s)',
+              fullType .. '"]',
+              profileName,
+              modID,
+              worldMesh and worldMesh.mesh or "N/A",
+              tostring(worldMesh and worldMesh.scale or "N/A"),
+              scaleNote
             )
           )
         end
