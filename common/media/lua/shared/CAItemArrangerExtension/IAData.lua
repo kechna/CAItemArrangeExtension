@@ -1,389 +1,162 @@
 IA = IA or {}
 
---- mesh name -> IA.arrangableProfile key. a plain string applies the profile as-is at every scale, a table marks the
---- model scale the profile was measured at, so it is resized for other scales of the same mesh.
----@type table<string, string | { profile: string, scale: number }>
-IA.meshProfiles = {}
-
-IA.meshProfilesApplied = false
-
-local p = "CAItemArrangeExtension"
-
----@class CAIAE_WorldMesh
----@field mesh string
----@field scale number
-
----@class CAIAE_ScaledProfileName
----@field name string
----@field scale number
-
----@type table<string, CAIAE_WorldMesh | false>
-local meshCache = {}
-
-local SCALE_EPSILON = 0.0001
-
----@type table<string, IAArrangableProfile>
-local scaledProfiles = {}
-
----@param value number
----@param ratio number
----@return number
-local function scaleDimension(value, ratio)
-  return math.floor(value * ratio * 1000 + 0.5) / 1000
-end
-
----@param item Item
----@return string | nil
-local function getWorldModel(item)
-  local model = item:getWorldStaticModel()
-
-  if not model or model == "" then
-    model = item:getStaticModel()
-  end
-
-  if not model or model == "" then
-    return nil
-  end
-
-  return model
-end
-
----@param line string
----@param char string
----@return number
-local function countChar(line, char)
-  local _, count = line:gsub(char, "")
-
-  return count
-end
-
----@param body  string
----@param scale number
----@return number
-local function parseScale(body, scale)
-  local undoCoreScale = false
-  local attachmentDepth
-  local attachmentOpened = false
-
-  body = body:gsub("/%*.-%*/", "")
-
-  for rawLine in (body .. "\n"):gmatch("([^\r\n]*)\r?\n") do
-    local line = rawLine:lower()
-
-    if not attachmentDepth and line:match("^%s*attachment[%s{]") then
-      attachmentDepth = 0
-      attachmentOpened = false
-    end
-
-    if attachmentDepth then
-      local opens = countChar(line, "{")
-
-      attachmentDepth = attachmentDepth + opens - countChar(line, "}")
-      attachmentOpened = attachmentOpened or opens > 0
-
-      if attachmentOpened and attachmentDepth <= 0 then
-        attachmentDepth = nil
-      end
-    else
-      for entry in line:gmatch("[^,{}]+") do
-        local key, value = entry:match("^%s*(%w+)%s*=%s*(%S+)")
-
-        if key == "scale" then
-          scale = tonumber(value) or scale
-        elseif key == "undocorescale" then
-          undoCoreScale = value == "true"
-        end
-      end
-    end
-  end
-
-  if undoCoreScale then
-    scale = scale * 0.6666667
-  end
-
-  return scale
-end
-
---- scale has no getter and reflection only works in debug mode, so it's parsed from the model's script text.
----@param modelScript ModelScript
----@return number
-local function getModelScale(modelScript)
-  local ok, scale = pcall(function ()
-    local bodies = modelScript:getLoadedScriptBodies()
-    local result = 1
-
-    -- flat list of mod id, body, mod id, body, ...
-    for i = 1, bodies:size() - 1, 2 do
-      result = parseScale(bodies:get(i), result)
-    end
-
-    return result
-  end)
-
-  if not ok or not scale or scale <= 0 then
-    return 1
-  end
-
-  return scale
-end
-
---- The mesh of the item's world model and the scale the model script renders it at. different model scripts often
---- point at the same mesh, so this matches more items than the model name would.
----@param sm   ScriptManager
----@param item Item
----@return CAIAE_WorldMesh | nil
-local function getWorldMesh(sm, item)
-  local model = getWorldModel(item)
-
-  if not model then
-    return nil
-  end
-
-  local worldMesh = meshCache[model]
-
-  if worldMesh == nil then
-    local modelScript = sm:getModelScript(model)
-    local mesh = modelScript and modelScript:getMeshName()
-
-    if mesh and mesh ~= "" then
-      worldMesh = { mesh = mesh, scale = getModelScale(modelScript) }
-    else
-      worldMesh = false
-    end
-
-    meshCache[model] = worldMesh
-  end
-
-  return worldMesh or nil
-end
-
----@return table<table, string>
-local function getProfileNames()
-  local names = {}
-
-  for name, profile in pairs(IA.arrangableProfile) do
-    names[profile] = name
-  end
-
-  return names
-end
-
----@param entries CAIAE_ScaledProfileName[]
----@param scale   number
----@return boolean
-local function hasScale(entries, scale)
-  for i = 1, #entries do
-    if math.abs(entries[i].scale - scale) < SCALE_EPSILON then
-      return true
-    end
-  end
-
-  return false
-end
-
---- get mesh -> profile mappings, per model scale, from items already registered with IA
----@param sm ScriptManager
----@return table<string, CAIAE_ScaledProfileName[]>
-local function learnMeshProfiles(sm)
-  local profileNames = getProfileNames()
-  local learned = {}
-
-  local fileWriter = isDebugEnabled() and getFileWriter(p .. "_meshes.txt", true, false) or nil
-
-  for fullType, profile in pairs(IA.arrangables) do
-    local name = profileNames[profile]
-    local item = name and sm:getItem(fullType)
-    local worldMesh = item and getWorldMesh(sm, item)
-
-    if worldMesh then
-      local entries = learned[worldMesh.mesh]
-
-      if not entries then
-        entries = {}
-        learned[worldMesh.mesh] = entries
-      end
-
-      if not hasScale(entries, worldMesh.scale) then
-        entries[#entries + 1] = { name = name, scale = worldMesh.scale }
-
-        if fileWriter then
-          fileWriter:writeln(
-            string.format(
-              'IA.meshProfiles["%-50s = { profile = "%s", scale = %s }',
-              worldMesh.mesh .. '"]',
-              name,
-              tostring(worldMesh.scale)
-            )
-          )
-        end
-      end
-    end
-  end
-
-  if fileWriter then
-    fileWriter:close()
-  end
-
-  return learned
-end
-
----@param name  string
----@param ratio number
----@return IAArrangableProfile | nil
-local function getScaledProfile(name, ratio)
-  local profile = IA.arrangableProfile[name]
-
-  if not profile then
-    return nil
-  end
-
-  local key = name .. "@" .. string.format("%.3f", ratio)
-  local scaled = scaledProfiles[key]
-
-  if not scaled then
-    scaled = {
-      dx = scaleDimension(profile.dx, ratio),
-      dy = scaleDimension(profile.dy, ratio),
-      dz = scaleDimension(profile.dz, ratio),
-    }
-
-    for k, v in pairs(profile) do
-      if scaled[k] == nil then
-        scaled[k] = v
-      end
-    end
-
-    if profile.mz then
-      scaled.mz = scaleDimension(profile.mz, ratio)
-    end
-
-    scaledProfiles[key] = scaled
-  end
-
-  return scaled
-end
-
----@param learned   table<string, CAIAE_ScaledProfileName[]>
----@param worldMesh CAIAE_WorldMesh
----@return IAArrangableProfile?, string?, number?
-local function resolveProfile(learned, worldMesh)
-  local manual = IA.meshProfiles[worldMesh.mesh]
-
-  if type(manual) == "string" then
-    return IA.arrangableProfile[manual], manual, 1
-  end
-
-  local candidates = {}
-
-  if type(manual) == "table" and manual.profile and manual.scale then
-    candidates[1] = { name = manual.profile, scale = manual.scale }
-  end
-
-  local entries = learned[worldMesh.mesh]
-
-  if entries then
-    for i = 1, #entries do
-      candidates[#candidates + 1] = entries[i]
-    end
-  end
-
-  local best, bestDistance
-
-  for i = 1, #candidates do
-    local candidate = candidates[i]
-
-    if IA.arrangableProfile[candidate.name] then
-      local distance = math.abs(math.log(worldMesh.scale / candidate.scale))
-
-      if not best or distance < bestDistance - SCALE_EPSILON then
-        best = candidate
-        bestDistance = distance
-      end
-    end
-  end
-
-  if not best then
-    return nil, nil, nil
-  end
-
-  local ratio = worldMesh.scale / best.scale
-
-  if math.abs(ratio - 1) < SCALE_EPSILON then
-    return IA.arrangableProfile[best.name], best.name, 1
-  end
-
-  return getScaledProfile(best.name, ratio), best.name, ratio
-end
-
-function IA.applyMeshProfiles()
-  if IA.meshProfilesApplied then
-    return
-  end
-
-  if type(IA.arrangables) ~= "table" or type(IA.arrangableProfile) ~= "table" then
-    print(string.format("%s: Item Arrange is not loaded, skipping.", p))
-    return
-  end
-
-  IA.meshProfilesApplied = true
-
-  local sm = getScriptManager()
-  local fileWriter = isDebugEnabled() and getFileWriter(p .. "_added.txt", true, false) or nil
-
-  local learned = learnMeshProfiles(sm)
-
-  local arrangables = IA.arrangables
-  local items = sm:getAllItems()
-
-  local added = 0
-  local addedByMod = {}
-
-  for i = 0, items:size() - 1 do
-    local item = items:get(i)
-    local fullType = item:getFullName()
-
-    if not arrangables[fullType] then
-      local worldMesh = getWorldMesh(sm, item)
-      local profile, profileName, ratio
-
-      if worldMesh then
-        profile, profileName, ratio = resolveProfile(learned, worldMesh)
-      end
-
-      if profile then
-        arrangables[fullType] = profile
-        added = added + 1
-        local modID = item:getModID()
-
-        addedByMod[modID] = addedByMod[modID] and addedByMod[modID] + 1 or 1
-
-        if fileWriter then
-          local scaleNote = ratio ~= 1 and string.format(", x%.2f", ratio) or ""
-
-          fileWriter:writeln(
-            string.format(
-              'IA.arrangables["%-40s = IA.arrangableProfile.%-12s -- %s (%s @%s%s)',
-              fullType .. '"]',
-              profileName,
-              modID,
-              worldMesh and worldMesh.mesh or "N/A",
-              tostring(worldMesh and worldMesh.scale or "N/A"),
-              scaleNote
-            )
-          )
-        end
-      end
-    end
-  end
-
-  if fileWriter then
-    fileWriter:close()
-  end
-
-  for modID, count in pairs(addedByMod) do
-    print(string.format("%s: [%s] Made %d extra items arrangeable.", p, modID, count))
-  end
-end
-
-Events.OnGameStart.Add(IA.applyMeshProfiles)
-Events.OnServerStarted.Add(IA.applyMeshProfiles)
+local IA = IA
+
+IA.arrangables["Base.IronBar"].mx = -0.24
+
+--
+-- Arrangable profiles
+--
+IA.arrangableProfile.leatherRoll        = { dx = 0.12, dy = 0.65, dz = 0.046, qz = 4 }
+IA.arrangableProfile.hideRolledDeer     = { dx = 0.11, dy = 0.65, dz = 0.032, qz = 4 }
+IA.arrangableProfile.fabricRoll         = { dx = 0.15, dy = 0.65, dz = 0.055, qz = 4, fz = 90 }
+IA.arrangableProfile.bagConcretePowder  = { dx = 0.3, dy = 0.18, dz = 0.16, qz = 1 }
+IA.arrangableProfile.anvilMold          = { dx = 0.26, dy = 0.36, dz = 0.075 }
+IA.arrangableProfile.anvilMoldCast      = { dx = 0.26, dy = 0.4, dz = 0.06 }
+IA.arrangableProfile.woodenIngotMold    = { dx = 0.2, dy = 0.36, dz = 0.038, qz = 4 }
+IA.arrangableProfile.ceramicIngotCast   = { dx = 0.15, dy = 0.31, dz = 0.032, qz = 4 }
+IA.arrangableProfile.duffelBag          = { dx = 0.29, dy = 0.76, dz = 0.1, qz = 1 }
+IA.arrangableProfile.sandBag            = { dx = 0.29, dy = 0.76, dz = 0.1, qz = 1 }
+IA.arrangableProfile.flour              = { dx = 0.33, dy = 0.35, dz = 0.1, qz = 1 }
+IA.arrangableProfile.bowl               = { dx = 0.19, dy = 0.19, dz = 0.025, qz = 6 }
+IA.arrangableProfile.bowlFull           = { dx = 0.19, dy = 0.19, dz = 0.04, qz = 1 }
+IA.arrangableProfile.bowlFull2          = { dx = 0.22, dy = 0.22, dz = 0.04, qz = 1 } -- brain tan bowl is slightly bigger
+IA.arrangableProfile.saucePan           = { dx = 0.22, dy = 0.4, dz = 0.045, qz = 3, fz = -90 }
+IA.arrangableProfile.saucePanFull       = { dx = 0.22, dy = 0.4, dz = 0.045, qz = 1, fz = -90 }
+IA.arrangableProfile.saucePanCopper     = { dx = 0.22, dy = 0.4, dz = 0.045, qz = 3, fz = 0 }
+IA.arrangableProfile.saucePanCopperFull = { dx = 0.22, dy = 0.4, dz = 0.045, qz = 1, fz = 0 }
+IA.arrangableProfile.potFull            = {dx = 0.40, dy = 0.40, dz = 0.10, qz = 1 }
+IA.arrangableProfile.marinara           = {dx = 0.12, dy = 0.12, dz = 0.05}
+IA.arrangableProfile.pouch              = { dx = 0.2, dy = 0.07, dz = 0.1, qz = 1 }
+IA.arrangableProfile.jar                = { dx = 0.12, dy = 0.12, dz = 0.06, fz = 45 }
+IA.arrangableProfile.jarTall            = { dx = 0.15, dy = 0.15, dz = 0.078, qz = 2 }
+IA.arrangableProfile.sauce              = { dx = 0.17, dy = 0.08, dz = 0.09, qz = 1 }
+IA.arrangableProfile.cartonWide         = {dx = 0.12, dy = 0.09, dz = 0.015, qz = 1, fz = 180}
+IA.arrangableProfile.toiletPaper        = {dx = 0.16, dy = 0.16, dz = 0.06, qz = 3}
+IA.arrangableProfile.sponge             = {dx = 0.115, dy = 0.165, dz = 0.026, qz = 6, fz = 90}
+IA.arrangableProfile.bleachBottle       = {dx = 0.1, dy = 0.16, dz = 0.11, qz = 1, fz = 180}
+IA.arrangableProfile.cooler             = {dx = 0.25, dy = 0.44, dz = 0.17, qz = 1}
+IA.arrangableProfile.smallBackpack = { dx = 0.31, dy = 0.18, dz = 0.1, fy = 90, fz = 270, mz = 0.08, my = -0.07, qz = 1 }
+--IA.arrangableProfile.bigHikingBag  = { dx = 0.29, dy = 0.76, dz = 0.1, qz = 1, fz = 90 }
+--IA.arrangableProfile.briefcase     = { dx = 0.29, dy = 0.76, dz = 0.1, qz = 1 }
+
+--
+-- Mesh profiles
+--
+
+-- Thanks to @CouncilOfPoorlyLitBaldPeople. Yes, I'm crediting you anyway :P
+IA.meshProfiles["ammo/boxes/Ammobox"]                           = "ammoBox"
+IA.meshProfiles["ammo/boxes/Ammobox_Rifle_Small"]               = "ammoBox"
+IA.meshProfiles["ammo/boxes/Ammobox_Shotgun"]                   = "shotgunShellsBox"
+IA.meshProfiles["weapons/ammo/762-556-308-223AmmoBox"]          = "ammoBox"
+
+-- By me
+IA.meshProfiles["WorldItems/Flask"]                             = "smallBottle"
+IA.meshProfiles["WorldItems/Sportsbottle"]                      = "bottle"
+IA.meshProfiles["WorldItems/Leather_Rolled"]                    = { profile = "leatherRoll", scale = 0.1 }
+IA.meshProfiles["WorldItems/FabricRolled"]                      = { profile = "fabricRoll", scale = 0.14 }
+IA.meshProfiles["WorldItems/Hide_Rolled_Deer"]                  = { profile = "hideRolledDeer", scale = 0.1 }
+IA.meshProfiles["WorldItems/BagofConcretePowder"]               = { profile = "bagConcretePowder", scale = 0.2 }
+IA.meshProfiles["WorldItems/WoodenMold_CeramicCast_AnvilBlock"] = { profile = "anvilMold", scale = 0.13 }
+IA.meshProfiles["WorldItems/CeramicCast_AnvilBlock"]            = { profile = "anvilMold", scale = 0.13 }
+IA.meshProfiles["WorldItems/WoodenMold_AnvilJeweller_Cast"]     = { profile = "anvilMoldCast", scale = 0.1 }
+IA.meshProfiles["WorldItems/CeramicMold_AnvilJeweller"]         = { profile = "anvilMoldCast", scale = 0.1 }
+IA.meshProfiles["WorldItems/WoodenMold_IngotCast"]              = { profile = "woodenIngotMold", scale = 0.09 }
+IA.meshProfiles["WorldItems/Ceramic_IngotCast"]                 = { profile = "ceramicIngotCast", scale = 0.09 }
+IA.meshProfiles["WorldItems/Clothing/DuffelBag_Ground"]         = "duffelBag"
+IA.meshProfiles["WorldItems/Clothing/Cooler_Ground"]            = "cooler"
+IA.meshProfiles["WorldItems/Clothing/SandBag_Ground"]           = "sandBag"
+IA.meshProfiles["WorldItems/Clothing/SchoolBag_Ground"]         = "smallBackpack"
+--IA.meshProfiles["WorldItems/Clothing/BigHikingBag_Ground"]    = "bigHikingBag"
+--IA.meshProfiles["WorldItems/Clothing/Briefcase"]              = "briefcase"
+IA.meshProfiles["WorldItems/MapleSyrup"]                        = "sauce"
+IA.meshProfiles["WorldItems/Soysauce"]                          = "honey"
+IA.meshProfiles["WorldItems/BBQ_Sauce"]                         = { profile = "sauce", scale = 0.22 }
+IA.meshProfiles["WorldItems/Ketchup"]                           = "sauce"
+IA.meshProfiles["WorldItems/Hotsauce"]                          = "smallBottle"
+IA.meshProfiles["WorldItems/RiceVinegar"]                       = "wineBottle"
+IA.meshProfiles["WorldItems/Marinara"]                          = "marinara"
+IA.meshProfiles["WorldItems/Bowl"]                              = "bowl"
+IA.meshProfiles["WorldItems/Bowl_Kiln"]                         = "bowl"
+IA.meshProfiles["WorldItems/BowlFood"]                          = "bowlFull"
+IA.meshProfiles["WorldItems/BowlSoup"]                          = "bowlFull"
+IA.meshProfiles["WorldItems/BowlRamen"]                         = "bowlFull"
+IA.meshProfiles["WorldItems/BowlOfGlaze"]                       = { profile = "bowlFull2", scale = 0.5 }
+IA.meshProfiles["WorldItems/Bowl_Kiln_Full"]                    = "bowlFull"
+IA.meshProfiles["WorldItems/SaucePan"]                          = "saucePan"
+IA.meshProfiles["WorldItems/SaucePan_FoodFluid"]                = "saucePanFull"
+IA.meshProfiles["WorldItems/SaucePan_Copper"]                   = { profile = "saucePanCopper", scale = 0.075 }
+IA.meshProfiles["WorldItems/SaucePan_Copper_Water"]             = { profile = "saucePanCopperFull", scale = 0.075 }
+IA.meshProfiles["WorldItems/SaucePan_Copper_Pasta"]             = { profile = "saucePanCopperFull", scale = 0.075 }
+IA.meshProfiles["WorldItems/SaucePan_Copper_Rice"]              = { profile = "saucePanCopperFull", scale = 0.075 }
+IA.meshProfiles["WorldItems/CookingPotFull"]                    = "potFull"
+IA.meshProfiles["WorldItems/Cornmeal"]                          = { profile = "pouch", scale = 0.126 }
+IA.meshProfiles["WorldItems/Flour"]                             = "flour"
+IA.meshProfiles["Jar"]                                          = "jar"
+IA.meshProfiles["WorldItems/JarLid"]                            = "jar"
+IA.meshProfiles["WorldItems/JarFood"]                           = "jar"
+IA.meshProfiles["WorldItems/JarFoodOpen"]                       = { profile = "jar", qz = 1 }
+IA.meshProfiles["WorldItems/JarOpen"]                           = "jar"
+IA.meshProfiles["WorldItems/PeanutButter"]                      = "jarTall"
+IA.meshProfiles["WorldItems/BalsamicVinegar"]                   = "wineBottle"
+IA.meshProfiles["WorldItems/Bottle"]                            = "wineBottle"
+IA.meshProfiles["WorldItems/EmptyPopBottle"]                    = "wineBottle"
+IA.meshProfiles["WorldItems/Disinfectant"]                      = "wineBottle"
+IA.meshProfiles["WorldItems/HairDye"]                           = "wineBottle"
+IA.meshProfiles["WorldItems/Milk"]                              = "carton"
+IA.meshProfiles["WorldItems/ToiletPaper"]                       = "toiletPaper"
+IA.meshProfiles["WorldItems/Sponge"]                            = "sponge"
+IA.meshProfiles["BleachBottle"]                                 = "bleachBottle"
+IA.meshProfiles["WorldItems/CleaningLiquid"]                    = { profile = "sauce", scale = 0.5 }
+IA.meshProfiles["WorldItems/Margerine"]                         = { profile = "sardinesTin", scale = 0.28 }
+
+-- VFX
+IA.arrangableProfile.cheeseKitBox = { dx = 0.16, dy = 0.38, dz = 0.1, qz = 2, fz = -90 }
+IA.arrangableProfile.roundFoodContainer = { dx = 0.32, dy = 0.32, dz = 0.06, qz = 4 }
+IA.arrangableProfile.rectFoodContainer = { dx = 0.25, dy = 0.35, dz = 0.046, qz = 5 }
+IA.arrangableProfile.granolaBar = { dx = 0.32, dy = 0.32, dz = 0.06, qz = 4 }
+IA.arrangableProfile.granolaBarBox = { dx = 0.25, dy = 0.35, dz = 0.046, qz = 3 }
+IA.arrangableProfile.starterBox = { dx = 0.185, dy = 0.095, dz = 0.115, qz = 1 }
+
+IA.meshProfiles["WorldItems/VFX_BeerBottle"]                    = "wineBottle"
+IA.meshProfiles["WorldItems/VFX_Carton"]                        = "cartonWide"
+IA.meshProfiles["WorldItems/VFX_CoffeeCreamerBottle"]           = "bottle"
+IA.meshProfiles["WorldItems/VFX_GlassBottle"]                   = { profile="bottle", fz = 90 }
+IA.meshProfiles["WorldItems/VFX_IcedTeaBottle"]                 = "bottle"
+IA.meshProfiles["WorldItems/VFX_LemonBottle"]                   = "bottle"
+IA.meshProfiles["WorldItems/VFX_Mustard"]                       = "honey"
+IA.meshProfiles["WorldItems/VFX_PotForgedFull"]                 = "potFull"
+IA.meshProfiles["WorldItems/VFX_PotFull"]                       = "potFull"
+IA.meshProfiles["WorldItems/VFX_Pouch"]                         = "pouch"
+IA.meshProfiles["WorldItems/VFX_JarFoodOpen"]                   = { profile = "jar", qz = 1 }
+IA.meshProfiles["WorldItems/VFX_BowlFull"]                      = "bowlFull"
+IA.meshProfiles["WorldItems/VFX_CheeseKitBox"]                   = "cheeseKitBox"
+IA.meshProfiles["WorldItems/VFX_Container_FoodStorageContainer"] = "roundFoodContainer"
+IA.meshProfiles["WorldItems/VFX_FoodStorageContainer"]           = "roundFoodContainer"
+IA.meshProfiles["WorldItems/VFX_SM_FoodStorageContainer"]        = "roundFoodContainer"
+IA.meshProfiles["WorldItems/VFX_MetalFoodStorageContainer"]      = { profile = "rectFoodContainer", scale = 1.2 }
+IA.meshProfiles["WorldItems/VFX_SM_MetalFoodStorageContainer"]   = { profile = "rectFoodContainer", scale = 1.2 }
+IA.meshProfiles["WorldItems/VFX_StarterBox"]                     = "starterBox"
+
+IA.meshProfiles["WorldItems/GranolaBar"] = "granolaBar"
+IA.meshProfiles["WorldItems/VFX_GranolaBarBox"] = "granolaBarBox"
+
+-- Sapph
+IA.meshProfiles["WorldItems/CookingPot_Liquid"]       = "potFull"
+IA.meshProfiles["Worlditems/EmptyBottle"]             = "wineBottle"
+
+-- Authentic Z
+IA.meshProfiles["WorldItems/WorldItem_AZ_AquaBottle"] = "bottle"
+IA.meshProfiles["WorldItems/WorldItem_AZ_GymBottle"]  = "wineBottle"
+
+-- Fool's new containers
+IA.arrangableProfile.ncWaterJug    = { dx = 0.285, dy = 0.24, dz = 0.36, qz = 1, fz = 90 }
+IA.arrangableProfile.ncCardboardLg = { dx = 0.415, dy = 0.415, dz = 0.20, qz = 1 }
+IA.arrangableProfile.ncCardboardMd = { dx = 0.31, dy = 0.38, dz = 0.085, qz = 3, fz = 90 }
+IA.arrangableProfile.ncCardboardSm = { dx = 0.28, dy = 0.22, dz = 0.025, qz = 4 }
+
+IA.meshProfiles["WorldItems/NCwaterjug_ground"]  = "ncWaterJug"
+IA.meshProfiles["WorldItems/NCcanteen"]          = "smallBottle"
+IA.meshProfiles["WorldItems/NCcardboard_large"]  = { profile = "ncCardboardLg", scale = 0.9 }
+IA.meshProfiles["WorldItems/NCcardboard_medium"] = { profile = "ncCardboardMd", scale = 0.9 }
+IA.meshProfiles["WorldItems/NCcardboard_small"]  = { profile = "ncCardboardSm", scale = 0.8 }
