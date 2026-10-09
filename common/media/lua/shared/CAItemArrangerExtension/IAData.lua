@@ -22,13 +22,9 @@ local meshCache = {}
 
 local SCALE_EPSILON = 0.0001
 
----@type Field | false | nil
-local scaleField
-
 ---@type table<string, IAArrangableProfile>
 local scaledProfiles = {}
 
---- rounds a resized dimension to 3 decimals. multiplying by the scale ratio leaves float noise like 0.0549999.
 ---@param value number
 ---@param ratio number
 ---@return number
@@ -52,32 +48,79 @@ local function getWorldModel(item)
   return model
 end
 
---- scale is a public field without a getter, so it can only be read through reflection :/
----@param modelScript ModelScript
+---@param line string
+---@param char string
 ---@return number
-local function getModelScale(modelScript)
-  if scaleField == nil then
-    scaleField = false
+local function countChar(line, char)
+  local _, count = line:gsub(char, "")
 
-    for i = 0, getNumClassFields(modelScript) - 1 do
-      local field = getClassField(modelScript, i)
+  return count
+end
 
-      if tostring(field):match("%.scale$") then
-        scaleField = field
-        break
+---@param body  string
+---@param scale number
+---@return number
+local function parseScale(body, scale)
+  local undoCoreScale = false
+  local attachmentDepth
+  local attachmentOpened = false
+
+  body = body:gsub("/%*.-%*/", "")
+
+  for rawLine in (body .. "\n"):gmatch("([^\r\n]*)\r?\n") do
+    local line = rawLine:lower()
+
+    if not attachmentDepth and line:match("^%s*attachment[%s{]") then
+      attachmentDepth = 0
+      attachmentOpened = false
+    end
+
+    if attachmentDepth then
+      local opens = countChar(line, "{")
+
+      attachmentDepth = attachmentDepth + opens - countChar(line, "}")
+      attachmentOpened = attachmentOpened or opens > 0
+
+      if attachmentOpened and attachmentDepth <= 0 then
+        attachmentDepth = nil
+      end
+    else
+      for entry in line:gmatch("[^,{}]+") do
+        local key, value = entry:match("^%s*(%w+)%s*=%s*(%S+)")
+
+        if key == "scale" then
+          scale = tonumber(value) or scale
+        elseif key == "undocorescale" then
+          undoCoreScale = value == "true"
+        end
       end
     end
   end
 
-  local ok, value = false, nil
-
-  if scaleField then
-    ok, value = pcall(getClassFieldVal, modelScript, scaleField)
+  if undoCoreScale then
+    scale = scale * 0.6666667
   end
 
-  local scale = ok and tonumber(value)
+  return scale
+end
 
-  if not scale or scale <= 0 then
+--- scale has no getter and reflection only works in debug mode, so it's parsed from the model's script text.
+---@param modelScript ModelScript
+---@return number
+local function getModelScale(modelScript)
+  local ok, scale = pcall(function ()
+    local bodies = modelScript:getLoadedScriptBodies()
+    local result = 1
+
+    -- flat list of mod id, body, mod id, body, ...
+    for i = 1, bodies:size() - 1, 2 do
+      result = parseScale(bodies:get(i), result)
+    end
+
+    return result
+  end)
+
+  if not ok or not scale or scale <= 0 then
     return 1
   end
 
