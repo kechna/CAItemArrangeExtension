@@ -12,6 +12,56 @@ local CURSOR_YAW = {
     [CURSOR_ORDER_E] = 90,
 }
 
+local function mat3Mul(a, b)
+    local m = {}
+    for row = 0, 2 do
+        for col = 1, 3 do
+            m[row * 3 + col] = a[row * 3 + 1] * b[col] + a[row * 3 + 2] * b[col + 3] + a[row * 3 + 3] * b[col + 6]
+        end
+    end
+
+    return m
+end
+
+local function mat3RotX(deg)
+    local r = math.rad(deg)
+    local c, s = math.cos(r), math.sin(r)
+    return { 1, 0, 0, 0, c, -s, 0, s, c }
+end
+
+local function mat3RotY(deg)
+    local r = math.rad(deg)
+    local c, s = math.cos(r), math.sin(r)
+    return { c, 0, s, 0, 1, 0, -s, 0, c }
+end
+
+local function mat3RotZ(deg)
+    local r = math.rad(deg)
+    local c, s = math.cos(r), math.sin(r)
+    return { c, -s, 0, s, c, 0, 0, 0, 1 }
+end
+
+-- the game tilts items last, around a fixed direction that doesn't turn with the item. So for example, when a standing bag gets turned to face another wall, its tilt pushes it over instead of standing it up. So we work out the final position first and convert it to the game's numbers.
+local function applyYaw(fx, fy, fz, yaw)
+    if yaw == 0 or fx == 0 then
+        return fx, fy, (fz + yaw) % 360
+    end
+
+    local m = mat3Mul(mat3RotY(yaw), mat3Mul(mat3RotX(fx), mat3Mul(mat3RotY(fz), mat3RotZ(fy))))
+    local sinB = math.max(-1, math.min(1, m[3]))
+    local a, b, c = 0.0, math.asin(sinB), 0.0
+
+    if math.abs(sinB) < 0.99999 then
+        a = math.atan2(-m[6], m[9])
+        c = math.atan2(-m[2], m[1])
+    else
+        a = math.atan2(m[8], m[5])
+        c = 0
+    end
+
+    return math.deg(a) % 360, math.deg(c) % 360, math.deg(b) % 360
+end
+
 function IA.getSurfaceInfo(square)
     local cursorOrder = CURSOR_ORDER_N
 
@@ -496,7 +546,7 @@ local function arrangeGroundList(square, groundList, applyOffsets, ignoreQz)
             local zpos = zmin + mz + (z * dz)
             local xpos = cx
             local ypos = cy
-            print(cx," ",  cy)
+
             while (zpos + dz) > zmax or z >= qz do
                 z = 0
 
@@ -655,14 +705,10 @@ local function arrangeGroundList(square, groundList, applyOffsets, ignoreQz)
                 entry.witem:setOffset(xpos, ypos, zpos)
 
                 local item = entry.item
-                local fx = arr.fx or 0
+                local fx, fy, fz = applyYaw(arr.fx or 0, arr.fy or 0, arr.fz or 0, CURSOR_YAW[cursorOrder])
                 item:setWorldXRotation(fx)
-
-                local fy = arr.fy or 0
                 item:setWorldYRotation(fy)
-
-                local fz = arr.fz or 0
-                item:setWorldZRotation((fz + CURSOR_YAW[cursorOrder]) % 360)
+                item:setWorldZRotation(fz)
 
                 item:setDoingExtendedPlacement(false)
                 entry.witem:syncExtendedPlacement()

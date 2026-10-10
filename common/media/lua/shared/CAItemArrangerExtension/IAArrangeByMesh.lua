@@ -1,20 +1,48 @@
-IA = IA or {}
+
+--- @class IASurfaceProfile
+--- @field zmin number
+--- @field zmax number
+--- @field xmin number
+--- @field xmax number
+--- @field ymin number
+--- @field ymax number
+
+--- @class IAArrangableProfile
+--- @field dx number
+--- @field dy number
+--- @field dz number
+--- @field mx number?
+--- @field my number?
+--- @field mz number?
+--- @field qz number?
+--- @field fx number?
+--- @field fy number?
+--- @field fz number?
 
 ---@class CAIAE_MeshProfile
----@field profile string     IA.arrangableProfile key
----@field scale?  number     model scale the profile was measured at
----@field dx?     number
----@field dy?     number
----@field dz?     number
----@field mz?     number
----@field qz?     number
----@field fx?     number
----@field fy?     number
----@field fz?     number
+---@field p   string arrangableProfile key
+---@field s?  number model scale the profile was measured at
+---@field dx? number x distance
+---@field dy? number y distance (top left to right)
+---@field dz? number z distance (vertical)
+---@field mz? number
+---@field qz? number
+---@field fx? number
+---@field fy? number
+---@field fz? number
 
---- mesh name -> IA.arrangableProfile key. a plain string applies the profile as-is at every scale. a table can mark the
---- model scale the profile was measured at, so it is resized for other scales of the same mesh, and can override any
---- profile field (e.g. `fz` for a rotation) for that mesh.
+
+---@class ItemArrangeMod
+---@field surfaceProfile table<string, table<integer, IASurfaceProfile>>
+---@field surfaces table<string, table<integer, IASurfaceProfile>>
+---@field arrangables table<string, IAArrangableProfile>
+---@field arrangableProfile table<string, IAArrangableProfile>
+---@field meshProfiles table<string, string | CAIAE_MeshProfile>
+---@field meshProfilesApplied boolean
+---@field meshProfilesAdded table<string, IAArrangableProfile>
+---@field applyMeshProfiles fun(): void
+IA = IA or {}
+
 ---@type table<string, string | CAIAE_MeshProfile>
 IA.meshProfiles = {}
 
@@ -308,8 +336,8 @@ local function getCandidates(learned, mesh)
 
   local manual = IA.meshProfiles[mesh]
 
-  if type(manual) == "table" and manual.profile and manual.scale then
-    candidates[1] = { name = manual.profile, scale = manual.scale }
+  if type(manual) == "table" and manual.p and manual.s then
+    candidates[1] = { name = manual.p, scale = manual.s }
   end
 
   local entries = learned[mesh]
@@ -337,8 +365,8 @@ local function resolveBaseProfile(learned, worldMesh)
     return IA.arrangableProfile[manual], manual, 1
   end
 
-  if type(manual) == "table" and manual.profile and not manual.scale then
-    return IA.arrangableProfile[manual.profile], manual.profile, 1
+  if type(manual) == "table" and manual.p and not manual.s then
+    return IA.arrangableProfile[manual.p], manual.p, 1
   end
 
   local candidates = getCandidates(learned, worldMesh.mesh)
@@ -348,11 +376,15 @@ local function resolveBaseProfile(learned, worldMesh)
   end
 
   local scale = getMeshScale(worldMesh)
-  local best, bestDistance
+  ---@type CAIAE_ScaledProfileName
+  local best
+  ---@type number
+  local bestDistance
 
   for i = 1, #candidates do
     local candidate = candidates[i]
 
+    ---@diagnostic disable-next-line: unnecessary-if
     if IA.arrangableProfile[candidate.name] then
       local distance = math.abs(math.log(scale / candidate.scale))
 
@@ -392,6 +424,7 @@ local function applyOverrides(mesh, profile, name, ratio)
   local key = string.format("%s@%s@%.3f", mesh, name, ratio)
   local result = overriddenProfiles[key]
 
+  ---@diagnostic disable-next-line: unnecessary-if
   if result then
     return result
   end
@@ -399,6 +432,7 @@ local function applyOverrides(mesh, profile, name, ratio)
   local hasOverrides = false
 
   for k in pairs(manual) do
+    ---@diagnostic disable-next-line: unnecessary-if
     if not MESH_PROFILE_KEYS[k] then
       hasOverrides = true
       break
@@ -416,6 +450,7 @@ local function applyOverrides(mesh, profile, name, ratio)
   end
 
   for k, v in pairs(manual) do
+    ---@diagnostic disable-next-line: unnecessary-if
     if not MESH_PROFILE_KEYS[k] then
       result[k] = v
     end
