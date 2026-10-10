@@ -89,13 +89,13 @@ local function scaleDimension(value, ratio)
   return math.floor(value * ratio * 1000 + 0.5) / 1000
 end
 
----@param item Item
+---@param source Item | InventoryItem
 ---@return string | nil
-local function getWorldModel(item)
-  local model = item:getWorldStaticModel()
+local function getStaticModel(source)
+  local model = source:getWorldStaticModel()
 
   if not model or model == "" then
-    model = item:getStaticModel()
+    model = source:getStaticModel()
   end
 
   if not model or model == "" then
@@ -103,6 +103,26 @@ local function getWorldModel(item)
   end
 
   return model
+end
+
+--- some items (e.g. weapons) only resolve their model on the instance, so fall back to a temporary one.
+---@param item Item
+---@return string | nil
+local function getWorldModel(item)
+  local model = getStaticModel(item)
+
+  if model then
+    return model
+  end
+
+  local ok, result = pcall(function ()
+    local instance = instanceItem(item)
+
+    return instance and getStaticModel(instance)
+  end)
+
+  -- the instance was never added to a container, so dropping the reference is enough for it to be collected
+  return ok and result or nil
 end
 
 ---@param line string
