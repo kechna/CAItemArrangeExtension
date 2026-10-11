@@ -5,6 +5,17 @@ local IA = IA
 local ap = IA.arrangableProfile
 local mp = IA.meshProfiles
 
+---@param profile IAArrangableProfile
+---@param fields Partial<IAArrangableProfile>
+---@return IAArrangableProfile
+local function extend(profile, fields)
+  local newProfile = {}
+  for k, v in pairs(profile) do newProfile[k] = v end
+  for k, v in pairs(fields) do newProfile[k] = v end
+  ---@cast newProfile IAArrangableProfile
+  return newProfile
+end
+
 --
 -- Arrangable profiles
 --
@@ -17,6 +28,8 @@ ap.bleachBottle       = { dx = 0.1, dy = 0.16, dz = 0.11, qz = 1, fz = 180 }
 ap.bowl               = { dx = 0.19, dy = 0.19, dz = 0.025, qz = 6 }
 ap.bowlFull           = { dx = 0.19, dy = 0.19, dz = 0.04, qz = 1 }
 ap.bowlFull2          = { dx = 0.22, dy = 0.22, dz = 0.04, qz = 1 } -- brain tan bowl is slightly bigger
+ap.breadSlice         = { dx = 0.038, dy = 0.055, dz = 0.0022, qz = 10, fz= -10 }
+ap.breadSlices        = { dx = 0.23, dy = 0.21, dz = 0.0078, qz = 6, fz = -10 }
 ap.cartonWide         = { dx = 0.12, dy = 0.09, dz = 0.015, qz = 1, fz = 180 }
 ap.ceramicIngotCast   = { dx = 0.15, dy = 0.31, dz = 0.032, qz = 4 }
 ap.cooler             = { dx = 0.25, dy = 0.44, dz = 0.17, qz = 1 }
@@ -38,6 +51,8 @@ ap.macAndCheese       = { dx = 0.18, dy = 0.1, dz = 0.095, qz = 2 }
 ap.marinara           = { dx = 0.12, dy = 0.12, dz = 0.05 }
 ap.militaryBackpack   = { dx = 0.4, dy = 0.32, dz = 0.2, fy = 342, fz = -90, my = 0.08, mz=-0.008, qz = 1 }
 ap.muffler            = { dx = 0.24, dy = 0.5, dz = 0.042, qz = 4, fz = 90 }
+ap.pizza              = { dx = 0.45, dy = 0.45, dz = 0.013, qz = 5 }
+ap.pizzaSlice         = { dx = 0.25, dy = 0.24, dz = 0.0115, qz = 5 }
 ap.potFull            = { dx = 0.40, dy = 0.40, dz = 0.10, qz = 1 }
 ap.pouch              = { dx = 0.2, dy = 0.07, dz = 0.1, qz = 1 }
 ap.sandBag            = { dx = 0.33, dy = 0.6, dz = 0.04, qz = 3, fz=90 }
@@ -56,8 +71,6 @@ ap.trunkLid           = { dx = 0.8, dy = 0.8, dz = 0.014, qz = 8 }
 ap.windshield         = { dx = 0.75, dy = 0.35, dz = 0.014, qz = 8 }
 ap.wineBox            = { dx = 0.15, dy = 0.1, dz = 0.096, qz = 2 }
 ap.woodenIngotMold    = { dx = 0.2, dy = 0.36, dz = 0.038, qz = 4 }
-ap.breadSlices        = { dx = 0.23, dy = 0.21, dz = 0.0078, qz = 6, fz = -10 }
-ap.breadSlice         = { dx = 0.038, dy = 0.055, dz = 0.0022, qz = 10, fz= -10 }
 
 --
 -- Mesh profiles
@@ -117,9 +130,9 @@ mp["WorldItems/BowlFood"]                            = "bowlFull"
 mp["WorldItems/BowlOfGlaze"]                         = { p = "bowlFull2", s = 0.5 }
 mp["WorldItems/BowlRamen"]                           = "bowlFull"
 mp["WorldItems/BowlSoup"]                            = "bowlFull"
+mp["WorldItems/BreadSlices"]                         = { p = "breadSlices", s = 0.3 }
 mp["WorldItems/CannedSardinesOpen"]                  = { p = "sardinesTin", qz = 1 }
 mp["WorldItems/CarBumper"]                           = { p = "trunkLid", s = 0.25 }
-mp["WorldItems/BreadSlices"]                         = { p = "breadSlices", s = 0.3 }
 mp["WorldItems/CarDoor"]                             = { p = "trunkLid", s = 0.25, dz = 0.018 }
 mp["WorldItems/CarHood"]                             = "trunkLid"
 mp["WorldItems/CarJack"]                             = { p = "trunkLid", s = 0.25 }
@@ -170,6 +183,8 @@ mp["WorldItems/Milk"]                                = "carton"
 mp["WorldItems/Muffler"]                             = { p = "muffler", s = 0.4 }
 mp["WorldItems/NormalGasTank1"]                      = { p = "gasTank", s = 0.4 }
 mp["WorldItems/PeanutButter"]                        = "jarTall"
+mp["WorldItems/Pizza"]                               = { p = "pizza", s = 0.4 }
+mp["WorldItems/PizzaSlice"]                          = { p = "pizzaSlice", s = 0.4 }
 mp["WorldItems/RiceVinegar"]                         = "wineBottle"
 mp["WorldItems/SandBag"]                             = "sandBag"
 mp["WorldItems/SaucePan"]                            = "saucePan"
@@ -196,12 +211,45 @@ IA.arrangables["Base.IronBar"].mx = -0.24
 ap.champagneBottle.fz = -270
 ap.cocoaPowder.fz = 0
 
---ap.champagneBottle
+IA.arrangables["Base.JamFruit"]        = extend(ap.jar, { fz = 90 })
+IA.arrangables["Base.JamMarmalade"]    = extend(ap.jar, { fz = 90 })
+IA.arrangables["Base.MayonnaiseEmpty"] = extend(ap.jar, { fz = -30 })
+IA.arrangables["Base.MayonnaiseFull"]  = extend(ap.jar, { fz = -30 })
+IA.arrangables["Base.RemouladeEmpty"]  = extend(ap.jar, { fz = 0 })
+IA.arrangables["Base.RemouladeFull"]   = extend(ap.jar, { fz = 0 })
+
+-- make metal shelves stack just a little bit tighter
+IA.surfaceProfile.metalShelfWEN = {
+  [1] = { zmin = 0.04, zmax = 0.35, xmin = 0.25, xmax = 0.90, ymin = 0.35, ymax = 1.00 },
+  [2] = { zmin = 0.36, zmax = 0.65, xmin = 0.25, xmax = 0.90, ymin = 0.35, ymax = 1.00 },
+  [3] = { zmin = 0.67, zmax = 1.00, xmin = 0.25, xmax = 0.90, ymin = 0.35, ymax = 1.00 },
+}
+IA.surfaceProfile.metalShelfWES = {
+  [1] = { zmin = 0.04, zmax = 0.35, xmin = 0.25, xmax = 0.90, ymin = 0.00, ymax = 0.95 },
+  [2] = { zmin = 0.36, zmax = 0.65, xmin = 0.25, xmax = 0.90, ymin = 0.00, ymax = 0.95 },
+  [3] = { zmin = 0.67, zmax = 1.00, xmin = 0.25, xmax = 0.90, ymin = 0.00, ymax = 0.95 },
+}
+IA.surfaceProfile.metalShelfNSW = {
+  [1] = { zmin = 0.04, zmax = 0.35, xmin = 0.10, xmax = 1.00, ymin = 0.25, ymax = 0.85 },
+  [2] = { zmin = 0.36, zmax = 0.65, xmin = 0.10, xmax = 1.00, ymin = 0.25, ymax = 0.85 },
+  [3] = { zmin = 0.67, zmax = 1.00, xmin = 0.10, xmax = 1.00, ymin = 0.25, ymax = 0.85 },
+}
+IA.surfaceProfile.metalShelfNSE = {
+  [1] = { zmin = 0.04, zmax = 0.35, xmin = 0.00, xmax = 0.90, ymin = 0.25, ymax = 0.85 },
+  [2] = { zmin = 0.36, zmax = 0.65, xmin = 0.00, xmax = 0.90, ymin = 0.25, ymax = 0.85 },
+  [3] = { zmin = 0.67, zmax = 1.00, xmin = 0.00, xmax = 0.90, ymin = 0.25, ymax = 0.85 },
+}
+
+IA.surfaces["furniture_shelving_01_24"] = IA.surfaceProfile.metalShelfWES
+IA.surfaces["furniture_shelving_01_25"] = IA.surfaceProfile.metalShelfWEN
+IA.surfaces["furniture_shelving_01_26"] = IA.surfaceProfile.metalShelfNSW
+IA.surfaces["furniture_shelving_01_27"] = IA.surfaceProfile.metalShelfNSE
 
 -- VFX
 ap.vfxCandyBox           = { dx = 0.2, dy = 0.09, dz = 0.046, qz = 3 }
 ap.vfxCheeseKitBox       = { dx = 0.16, dy = 0.38, dz = 0.1, qz = 2, fz = -90 }
 ap.vfxCheeseWheel        = { dx = 0.333, dy = 0.333, dz = 0.08, qz = 2 }
+ap.vfxFocacciaSlice      = { dx = 0.12, dy = 0.21, dz = 0.012, qz=4, fz=90}
 ap.vfxGranolaBarBox      = { dx = 0.25, dy = 0.083, dz = 0.074, qz = 2, my=0.03 }
 ap.vfxJelloBox           = { dx = 0.21, dy = 0.11, dz = 0.05, qz = 3 }
 ap.vfxPacketRamen        = { dx = 0.16, dy = 0.09, dz = 0.046, qz = 3 }
@@ -209,17 +257,18 @@ ap.vfxRamenBox           = { dx = 0.24, dy = 0.16, dz = 0.08, qz = 1 }
 ap.vfxRectangleBox       = { dx = 0.21, dy = 0.25, dz = 0.026, qz = 3 }
 ap.vfxRectFoodContainer  = { dx = 0.25, dy = 0.35, dz = 0.046, qz = 5 }
 ap.vfxRoundFoodContainer = { dx = 0.32, dy = 0.32, dz = 0.06, qz = 4 }
+ap.vfxSandwich           = { dx = 0.13, dy = 0.19, dz = 0.015, qz=4, fz=348}
 ap.vfxSnackBox           = { dx = 0.2, dy = 0.09, dz = 0.046, qz = 3, my=0.01, mx=0.01 }
 ap.vfxStarterBox         = { dx = 0.185, dy = 0.095, dz = 0.115, qz = 1 }
 ap.vfxTeaBox             = { dx = 0.08, dy = 0.08, dz = 0.033, qz = 4 }
-ap.vfxFocacciaSlice      = { dx = 0.12, dy = 0.21, dz = 0.012, qz=4, fz=90}
-ap.vfxSandwich           = { dx = 0.13, dy = 0.19, dz = 0.015, qz=4, fz=348}
 
+mp["CanClosed"]                                     = { p = "can", s = 0.8 }
 mp["WorldItems/VFX_BeerBottle"]                     = "wineBottle"
 mp["WorldItems/VFX_BeerBottle_SM"]                  = { p = "bottle", fz = 0 }
 mp["WorldItems/VFX_BowlFull"]                       = "bowlFull"
 mp["WorldItems/VFX_BoxRamen"]                       = "vfxRamenBox"
 mp["WorldItems/VFX_CandyBox"]                       = "vfxCandyBox"
+mp["WorldItems/VFX_CanOpen"]                        = { p = "can", s = 0.8, qz=1 }
 mp["WorldItems/VFX_Carton"]                         = "cartonWide"
 mp["WorldItems/VFX_CheeseKitBox"]                   = "vfxCheeseKitBox"
 mp["WorldItems/VFX_CheeseWheel"]                    = "vfxCheeseWheel"
@@ -237,22 +286,23 @@ mp["WorldItems/VFX_JelloBox"]                       = "vfxJelloBox"
 mp["WorldItems/VFX_LemonBottle"]                    = { p = "bottle", fz = 0 }
 mp["WorldItems/VFX_MetalFoodStorageContainer"]      = { p = "vfxRectFoodContainer", s = 1.2 }
 mp["WorldItems/VFX_Mustard"]                        = "honey"
+mp["WorldItems/VFX_Packaging_Bag"]                  = {p="driedBeans", s=0.8}
 mp["WorldItems/VFX_PacketRamen"]                    = "vfxPacketRamen"
 mp["WorldItems/VFX_PotForgedFull"]                  = "potFull"
 mp["WorldItems/VFX_PotFull"]                        = "potFull"
 mp["WorldItems/VFX_Pouch"]                          = "pouch"
 mp["WorldItems/VFX_ProteinPowder"]                  = { p = "jar", s = 0.5, qz=2 }
 mp["WorldItems/VFX_RectangleBox"]                   = "vfxRectangleBox"
+mp["WorldItems/VFX_Sandwich"]                       = "vfxSandwich"
+mp["WorldItems/VFX_SliceBread"]                     = { p="breadSlice", s=0.3 }
+mp["WorldItems/VFX_SliceFocaccia"]                  = "vfxFocacciaSlice"
+mp["WorldItems/VFX_SM_BreadSlices"]                 = { p="breadSlice", s=0.3 }
 mp["WorldItems/VFX_SM_FoodStorageContainer"]        = "vfxRoundFoodContainer"
 mp["WorldItems/VFX_SM_MetalFoodStorageContainer"]   = { p = "vfxRectFoodContainer", s = 1.2 }
 mp["WorldItems/VFX_SmallJar"]                       = { p = "jar", dz = 0.039, s=0.76 }
 mp["WorldItems/VFX_SnackBox"]                       = "vfxSnackBox"
 mp["WorldItems/VFX_StarterBox"]                     = "vfxStarterBox"
 mp["WorldItems/VFX_TeaBox"]                         = "vfxTeaBox"
-mp["WorldItems/VFX_SliceBread"]                     = { p="breadSlice", s=0.3 }
-mp["WorldItems/VFX_SM_BreadSlices"]                 = { p="breadSlice", s=0.3 }
-mp["WorldItems/VFX_SliceFocaccia"]                 = "vfxFocacciaSlice"
-mp["WorldItems/VFX_Sandwich"]                      = "vfxSandwich"
 
 -- Sapph
 ap.sapphBox = { dx = 0.5, dy = 0.72, dz = 0.07, qz = 1 }
@@ -269,7 +319,6 @@ mp["Worlditems/GenericCan"]            = "jar"
 mp["Worlditems/WhippedCan_Ground"]     = "wineBottle"
 mp["Worlditems/BreadSliceToast"]       = { p="breadSlices", s=0.0035 }
 
-
 -- Authentic Z
 mp["WorldItems/WorldItem_AuthenticPillBottle"] = { p = "seasoningJar", s = 1.25, qz = 1 }
 mp["WorldItems/WorldItem_AZ_AquaBottle"]       = "bottle"
@@ -281,61 +330,90 @@ ap.ncWaterJug    = { dx = 0.285, dy = 0.24, dz = 0.36, qz = 1, fz = 90 }
 ap.ncCardboardLg = { dx = 0.415, dy = 0.415, dz = 0.20, qz = 1 }
 ap.ncCardboardMd = { dx = 0.31, dy = 0.38, dz = 0.085, qz = 3, fz = 90 }
 ap.ncCardboardSm = { dx = 0.28, dy = 0.22, dz = 0.025, qz = 4 }
+ap.ncBeverageJug = { dx = 0.45, dy = 0.45, dz = 0.18, qz = 1 }
+ap.ncDishTub = { dx = 0.35, dy = 0.43, dz = 0.1, qz = 1 }
+ap.ncAmmocan50 = { dx = 0.185, dy = 0.35, dz = 0.1, qz = 1, fz=90 }
+ap.ncAmmocan30 = { dx = 0.122, dy = 0.28, dz = 0.1, qz = 1, fz=90, mz=0.003 }
+ap.ncTote = { dx = 0.5, dy = 0.6, dz = 0.18, qz = 2, fz=90 }
 
-mp["WorldItems/NCcanteen"]          = "flask"
-mp["WorldItems/NCcardboard_large"]  = { p = "ncCardboardLg", s = 0.9 }
+mp["WorldItems/NCcanteen"] = "flask"
+mp["WorldItems/NCcardboard_large"] = { p = "ncCardboardLg", s = 0.9 }
 mp["WorldItems/NCcardboard_medium"] = { p = "ncCardboardMd", s = 0.9 }
-mp["WorldItems/NCcardboard_small"]  = { p = "ncCardboardSm", s = 0.8 }
-mp["WorldItems/NCwaterjug_ground"]  = "ncWaterJug"
+mp["WorldItems/NCcardboard_small"] = { p = "ncCardboardSm", s = 0.8 }
+mp["WorldItems/NCwaterjug_ground"] = "ncWaterJug"
+mp["WorldItems/NCpizzabox_ground"] = { p = "pizza", dz=0.0262, mz=0.019 }
+mp["WorldItems/NCbeveragejugopen_ground"] = { p = "ncBeverageJug", mz = 0.140 }
+mp["WorldItems/NCbeveragejugopenfull_ground"] = { p = "ncBeverageJug", mz = 0.140 }
+mp["WorldItems/NCbeveragejugclosed_ground"] = "ncBeverageJug"
+mp["WorldItems/NCdishtub_ground"] = {p="ncDishtub", s=0.7}
+mp["WorldItems/NCdishtub_01"] = {p="ncDishtub", s=0.7}
+mp["WorldItems/NCdishtub_02"] = {p="ncDishtub", s=0.7}
+mp["WorldItems/NCdishtub_03"] = {p= "ncDishtub" , s=0.7}
+mp["WorldItems/NCdishtubfull_ground"] = "ncDishTub"
+mp["WorldItems/NCammocan30_ground"] = "ncAmmocan30"
+mp["WorldItems/NCammocan50_ground"] = "ncAmmocan50"
+mp["WorldItems/NCshoppingbasket_ground"] = "ncDishtub"
+mp["WorldItems/NCtackleboxlarge_ground"] = "ncDishtub"
+mp["WorldItems/NCplastictote_large"] = {p="ncTote", s=0.7}
+mp["WorldItems/NCplastictote_medium"] = {p="ncTote", s=0.7, dz=0.16}
+mp["WorldItems/NCplastictote_small"] = {p= "ncTote" , s=0.7, dz=0.07}
 
 -- Pomp's items (food)
+ap.pompCheesyPoofs = { dx = 0.3, dy = 0.1, dz = 0.063, qz = 2, fx = 90, mz = 0.035 }
+ap.pompSourGummies = { dx = 0.23, dy = 0.1, dz = 0.0068, qz = 8, }
+ap.pompChocMilk = { dx = 0.16, dy = 0.18, dz = 0.07, qz = 1 }
+ap.pompSnackable = { dx = 0.22, dy = 0.22, dz = 0.02, qz = 3 }
+ap.pompFigBox = { dx = 0.345, dy = 0.076, dz = 0.085, qz = 2, fz=90 , fy=270, mz=0.045 }
+ap.pompFreezePop = { dy=0.25, dx=0.05, dz=0.006, mz=0.0034, qz=4, fz=90}
+ap.pompJiang = { dx = 0.19, dy = 0.135, dz = 0.05, qz = 3 }
+
 mp["WorldItems/Food/PINormalCan"] = { p = "jar" } -- 16
 mp["WorldItems/Food/PINormalCanOpen"] = { p = "jar", qz = 1 } -- 16
 mp["WorldItems/Food/PINormalCanHand"] = { p = "jar", qz = 1 }
-mp["WorldItems/Food/PIWingSauceBottle"] = "smallBottle" -- 14
-mp["WorldItems/Food/PIWingSauceBottleHand"] = "smallBottle" -- 14
--- mp["WorldItems/Food/PITea"] = "" -- 14
--- mp["WorldItems/Food/PITeaHand"] = "" -- 14
--- mp["WorldItems/Food/SportsDrank"] = "" -- 12
--- mp["WorldItems/Food/SportsDrankHand"] = "" -- 12
--- mp["WorldItems/BittersBar"] = "" -- 11
--- mp["WorldItems/BittersBarHand"] = "" -- 11
--- mp["WorldItems/BittersBarEmpty"] = "" -- 11
- mp["WorldItems/Food/PICan128"] = { p = "jar", qz = 1 } -- 11
- mp["WorldItems/Food/PICan128Hand"] = { p = "jar", qz = 1 } -- 11
- mp["WorldItems/Food/PICan128Empty"] = { p = "jar", qz = 1 } -- 11
--- mp["WorldItems/Food/PISnackableSmol"] = "" -- 10
--- mp["WorldItems/Food/PIFreezePop"] = "" -- 10
--- mp["WorldItems/Food/PIFreezePopHand"] = "" -- 10
--- mp["WorldItems/Jiang"] = "" -- 9
--- mp["WorldItems/JiangHand"] = "" -- 9
--- mp["WorldItems/JiangEmpty"] = "" -- 9
--- mp["WorldItems/SourGummies"] = "" -- 9
--- mp["WorldItems/SourGummiesHand"] = "" -- 9
--- mp["WorldItems/SourGummiesEmpty"] = "" -- 9
--- mp["WorldItems/PIGummyWorms"] = "" -- 7
--- mp["WorldItems/GummyWormsEmpty"] = "" -- 7
--- mp["WorldItems/Food/PIFishSnackems"] = "" -- 7
--- mp["WorldItems/Food/PIFishSnackemsEmpty"] = "" -- 7
--- mp["WorldItems/Food/PIWingSauceBottleEmpty"] = "" -- 7
+mp["WorldItems/Food/PIWingSauceBottle"] = {p="sauce" ,s=0.023}-- 14
+mp["WorldItems/Food/PIWingSauceBottleHand"] = {p="sauce" ,s=0.023}-- 14
+mp["WorldItems/Food/PITea"] = "bottle" -- 14
+mp["WorldItems/Food/PITeaHand"] = "bottle" -- 14
+mp["WorldItems/Food/SportsDrank"] = "bottle" -- 12
+mp["WorldItems/Food/SportsDrankHand"] = "bottle" -- 12
+mp["WorldItems/BittersBar"] = "can" -- 11
+mp["WorldItems/BittersBarHand"] = "can" -- 11
+mp["WorldItems/BittersBarEmpty"] = "can" -- 11
+mp["WorldItems/Food/PICan128"] = { p = "can", qz = 1 } -- 11
+mp["WorldItems/Food/PICan128Hand"] = { p = "can", qz = 1 } -- 11
+mp["WorldItems/Food/PICan128Empty"] = { p = "can", qz = 1 } -- 11
+mp["WorldItems/Food/PISnackableSmol"] = "pompSnackable" -- 10
+mp["WorldItems/Food/PIFreezePop"] = "pompFreezePop" -- 10
+mp["WorldItems/Food/PIFreezePopHand"] = "pompFreezePop" -- 10
+mp["WorldItems/Jiang"] = "pompJiang" -- 9
+mp["WorldItems/JiangHand"] = "pompJiang" -- 9
+mp["WorldItems/JiangEmpty"] = "pompJiang" -- 9
+mp["WorldItems/SourGummies"] = "pompSourGummies" -- 9
+mp["WorldItems/SourGummiesHand"] = "pompSourGummies" -- 9
+mp["WorldItems/SourGummiesEmpty"] = "pompSourGummies" -- 9
+mp["WorldItems/PIGummyWorms"] = "can" -- 7
+mp["WorldItems/GummyWormsEmpty"] = "can" -- 7
+mp["WorldItems/Food/PIFishSnackems"] = "pouch"
+mp["WorldItems/Food/PIFishSnackemsEmpty"] = "pouch"
+mp["WorldItems/Food/PIWingSauceBottleEmpty"] = { p = "sauce", s = 0.023 } -- 7
 -- mp["WorldItems/Food/PIPopTartBox"] = "" -- 7
 -- mp["WorldItems/Food/PITeaEmpty"] = "" -- 7
 -- mp["WorldItems/GummyWormsHand"] = "" -- 6
 -- mp["WorldItems/Food/SportsDrankEmpty"] = "" -- 6
--- mp["WorldItems/Food/PIHotSauce"] = "" -- 6
--- mp["WorldItems/Food/PIHotSauceHand"] = "" -- 6
+mp["WorldItems/Food/PIHotSauce"] = "smallBottle" -- 6
+mp["WorldItems/Food/PIHotSauceHand"] = "smallBottle" -- 6
 -- mp["WorldItems/Food/PIFruitBarrelHand"] = "" -- 5
--- mp["WorldItems/Food/PIRingPop"] = "" -- 5
--- mp["WorldItems/Food/PIRingPopHand"] = "" -- 5
--- mp["WorldItems/Food/PIPopTart"] = "" -- 5
--- mp["WorldItems/Food/PIPopTartHand"] = "" -- 5
+mp["WorldItems/Food/PIRingPop"] = "pouch"
+mp["WorldItems/Food/PIRingPopHand"] = "pouch" -- 5
+ mp["WorldItems/Food/PIPopTart"] = {p="pouch", dx=0.165, dy=0.12, dz=0.006, qz=5} -- 5
+ mp["WorldItems/Food/PIPopTartHand"] = {p= "pouch", dx=0.165, dy=0.12, dz=0.006, qz=5 } -- 5
 -- mp["WorldItems/Food/PIKidCuisine"] = "" -- 5
 -- mp["WorldItems/Food/PIKidCuisineHand"] = "" -- 5
--- mp["WorldItems/WildPegasus_Ground"] = "" -- 4
+mp["WorldItems/WildPegasus_Ground"] = {p= "bottle", s=1.2} -- 4
 -- mp["WorldItems/WildPegasusHand"] = "" -- 4
--- mp["WorldItems/Dabs"] = "" -- 4
--- mp["WorldItems/DabsHand"] = "" -- 4
--- mp["WorldItems/DabsEmpty"] = "" -- 4
+mp["WorldItems/Dabs"] = "pouch" -- 4
+mp["WorldItems/DabsHand"] = "pouch" -- 4
+mp["WorldItems/DabsEmpty"] = "pouch" -- 4
 -- mp["WorldItems/Food/PIRitz"] = "" -- 4
 -- mp["WorldItems/Food/PIRitzHand"] = "" -- 4
 -- mp["WorldItems/Food/PISnackableHamCracker"] = "" -- 4
@@ -344,8 +422,8 @@ mp["WorldItems/Food/PIWingSauceBottleHand"] = "smallBottle" -- 14
 -- mp["WorldItems/Food/SnackableMarinaraHand"] = "" -- 4
 -- mp["WorldItems/Food/PIFruitBarrel"] = "" -- 4
 -- mp["WorldItems/Food/PICheesyPoofsEmpty"] = "" -- 4
--- mp["WorldItems/Food/PIDonutBag"] = "" -- 4
--- mp["WorldItems/Food/PIDonutBagEmpty"] = "" -- 4
+mp["WorldItems/Food/PIDonutBag"] = "crisps" -- 4
+mp["WorldItems/Food/PIDonutBagEmpty"] = "crisps" -- 4
 -- mp["WorldItems/Food/PIMiniDonutHand"] = "" -- 4
 -- mp["WorldItems/Food/PIMiniDonut"] = "" -- 4
 -- mp["WorldItems/Food/PIPizzaBox"] = "" -- 4
@@ -358,21 +436,21 @@ mp["WorldItems/Food/PIWingSauceBottleHand"] = "smallBottle" -- 14
 -- mp["WorldItems/MaplesSyrup"] = "" -- 3
 -- mp["WorldItems/SaucePanPasta"] = "" -- 3
 -- mp["WorldItems/SaucePanPastaRice"] = "" -- 3
--- mp["WorldItems/Sbeve"] = "" -- 3
+mp["WorldItems/Sbeve"] = "bottle" -- 3
 -- mp["WorldItems/ChickenNuggets"] = "" -- 3
--- mp["WorldItems/ChocMilk"] = "" -- 3
--- mp["WorldItems/ChocMilkHand"] = "" -- 3
+mp["WorldItems/ChocMilk"] = "pompChocMilk" -- 3
+mp["WorldItems/ChocMilkHand"] = "pompChocMilk" -- 3
 -- mp["WorldItems/Chocc"] = "" -- 3
 -- mp["WorldItems/ChoccHand"] = "" -- 3
 -- mp["WorldItems/ChoccEmpty"] = "" -- 3
 -- mp["WorldItems/Food/PICheesyPoofs"] = "" -- 3
--- mp["WorldItems/Food/PIFishSnackemsHand"] = "" -- 3
--- mp["WorldItems/Food/PISchoolMilk"] = "" -- 3
--- mp["WorldItems/Food/PISchoolMilkHand"] = "" -- 3
--- mp["WorldItems/Food/PISchoolMilkEmpty"] = "" -- 3
+ mp["WorldItems/Food/PIFishSnackemsHand"] = "pouch"
+mp["WorldItems/Food/PISchoolMilk"] = "bottle" -- 3
+mp["WorldItems/Food/PISchoolMilkHand"] = "bottle" -- 3
+mp["WorldItems/Food/PISchoolMilkEmpty"] = "bottle" -- 3
 -- mp["WorldItems/PegasusEmpty_Ground"] = "" -- 2
 -- mp["WorldItems/MaplesSyrupHand"] = "" -- 2
--- mp["WorldItems/SbeveHand"] = "" -- 2
+mp["WorldItems/SbeveHand"] = "bottle" -- 2
 -- mp["WorldItems/POreo"] = "" -- 2
 -- mp["WorldItems/POreoPackage"] = "" -- 2
 -- mp["WorldItems/POreoPackageEmpty"] = "" -- 2
@@ -383,8 +461,8 @@ mp["WorldItems/Food/PIWingSauceBottleHand"] = "smallBottle" -- 14
 -- mp["WorldItems/UtahWaferPackEmpty"] = "" -- 2
 -- mp["WorldItems/UtahWafer"] = "" -- 2
 -- mp["WorldItems/UtahWaferHand"] = "" -- 2
--- mp["WorldItems/VodkaAus"] = "" -- 2
--- mp["WorldItems/VodkaAusHand"] = "" -- 2
+ mp["WorldItems/VodkaAus"] =  "champagneBottle"
+ mp["WorldItems/VodkaAusHand"] =   "champagneBottle"
 -- mp["WorldItems/Food/PICheddar"] = "" -- 2
 -- mp["WorldItems/Food/PICheddarHand"] = "" -- 2
 -- mp["WorldItems/Food/SnackablePizza"] = "" -- 2
@@ -400,13 +478,13 @@ mp["WorldItems/Food/PIWingSauceBottleHand"] = "smallBottle" -- 14
 -- mp["WorldItems/Food/PIPopcornBag"] = "" -- 2
 -- mp["WorldItems/Food/PIPopcornBagFull"] = "" -- 2
 -- mp["WorldItems/Food/PIPopcornBagFullHand"] = "" -- 2
--- mp["WorldItems/Food/PIBunnBourbon"] = "" -- 2
--- mp["WorldItems/Food/PIBunnBourbonHand"] = "" -- 2
--- mp["WorldItems/Food/PIAlcopop"] = "" -- 2
--- mp["WorldItems/Food/PIAlcopopHand"] = "" -- 2
+mp["WorldItems/Food/PIBunnBourbon"] = "whiskey" -- 2
+mp["WorldItems/Food/PIBunnBourbonHand"] = "whiskey" -- 2
+mp["WorldItems/Food/PIAlcopop"] = "bottle" -- 2
+mp["WorldItems/Food/PIAlcopopHand"] = "bottle" -- 2
 -- mp["WorldItems/Food/PICheeseStickDip"] = "" -- 2
--- mp["WorldItems/StallionMilk_Ground"] = "" -- 1
--- mp["WorldItems/StallionMilkOpen_Ground"] = "" -- 1
+mp["WorldItems/StallionMilk_Ground"] = {p ="can", qz=1, s = 1.3, fz=190} -- uhhh... ok
+mp["WorldItems/StallionMilkOpen_Ground"] = {p ="can", qz=1, s = 1.3, fz=190}
 -- mp["WorldItems/Pomps"] = "" -- 1
 -- mp["WorldItems/PompsWrapper"] = "" -- 1
 -- mp["WorldItems/PBCup"] = "" -- 1
@@ -464,8 +542,8 @@ mp["WorldItems/Food/PIWingSauceBottleHand"] = "smallBottle" -- 14
 -- mp["WorldItems/Food/FigBar"] = "" -- 1
 -- mp["WorldItems/Food/FigBarHand"] = "" -- 1
 -- mp["WorldItems/Food/FigBarEmpty"] = "" -- 1
--- mp["WorldItems/Food/FigBox"] = "" -- 1
--- mp["WorldItems/Food/FigBoxEmpty"] = "" -- 1
+ mp["WorldItems/Food/FigBox"] = "pompFigBox" -- 1
+ mp["WorldItems/Food/FigBoxEmpty"] = "pompFigBox" -- 1
 -- mp["WorldItems/Food/PICheeseBallsSmall"] = "" -- 1
 -- mp["WorldItems/Food/PICheeseBallsSmallHand"] = "" -- 1
 -- mp["WorldItems/Food/PICheeseBallsSmallEmpty"] = "" -- 1
@@ -495,16 +573,16 @@ mp["WorldItems/Food/PIWingSauceBottleHand"] = "smallBottle" -- 14
 -- mp["WorldItems/Food/PIMilkMolarsHand"] = "" -- 1
 -- mp["WorldItems/Food/PIJawbreaker"] = "" -- 1
 -- mp["WorldItems/Food/PIJawbreakerHand"] = "" -- 1
--- mp["WorldItems/Food/PIWormholes"] = "" -- 1
--- mp["WorldItems/Food/PIWormholesHand"] = "" -- 1
--- mp["WorldItems/Food/PIWormholesEmpty"] = "" -- 1
+mp["WorldItems/Food/PIWormholes"] = {p="can", qz=1}
+mp["WorldItems/Food/PIWormholesHand"] = {p="can", qz=1}
+mp["WorldItems/Food/PIWormholesEmpty"] = {p="can", qz=1}
 -- mp["WorldItems/Food/PIIceCaps"] = "" -- 1
 -- mp["WorldItems/Food/PIIceCapsHand"] = "" -- 1
 -- mp["WorldItems/Food/PIIceCapsEmpty"] = "" -- 1
 -- mp["WorldItems/Food/PIPompsBig"] = "" -- 1
 -- mp["WorldItems/Food/PICandyBagSmall"] = "" -- 1
 -- mp["WorldItems/Food/PICandyBagSmallHand"] = "" -- 1
--- mp["WorldItems/Food/PICheesyPoofsSide"] = "" -- 1
+mp["WorldItems/Food/PICheesyPoofsSide"] = "pompCheesyPoofs" -- 1
 -- mp["WorldItems/Food/PIIceCreamSandwich"] = "" -- 1
 -- mp["WorldItems/Food/PIIceCreamSandwichHand"] = "" -- 1
 -- mp["WorldItems/Food/PIBunnBourbonEmpty"] = "" -- 1

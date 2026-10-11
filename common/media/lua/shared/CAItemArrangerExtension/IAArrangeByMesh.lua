@@ -40,6 +40,7 @@
 ---@field meshProfiles table<string, string | CAIAE_MeshProfile>
 ---@field meshProfilesApplied boolean
 ---@field meshProfilesAdded table<string, IAArrangableProfile>
+---@field devRestackContextMenu? fun(playerNum: integer, context: ISContextMenu, worldObjects: IsoObject[], test: boolean)
 ---@field applyMeshProfiles fun(): void
 IA = IA or {}
 
