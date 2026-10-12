@@ -40,7 +40,7 @@ ap.flask              = { dx = 0.12, dy = 0.05, dz = 0.05, qz = 1, fz=-90 }
 ap.flour              = { dx = 0.35, dy = 0.33, dz = 0.1, qz = 1, fz = -90 }
 ap.frozenFoodBag      = { dx = 0.23, dy = 0.42, dz = 0.024, qz = 4, fz=90 }
 ap.gasTank            = { dx = 0.63, dy = 0.56, dz = 0.085, qz = 2, my = -0.07 }
-ap.granolaBar         = { dx = 0.32, dy = 0.32, dz = 0.06, qz = 4 }
+ap.granolaBar         = { dx = 0.09, dy = 0.23, dz = 0.018, qz = 4, fz = 90 }
 ap.hideRolledDeer     = { dx = 0.11, dy = 0.65, dz = 0.032, qz = 4 }
 ap.hikingBag          = { dx = 0.32, dy = 0.32, dz = 0.18, qz = 1, fx = -262, fz = 270, mz = 0.11, my = 0.18 }
 ap.jar                = { dx = 0.12, dy = 0.12, dz = 0.06, fz = 45 }
@@ -64,6 +64,7 @@ ap.saucePanFull       = { dx = 0.22, dy = 0.4, dz = 0.045, qz = 1, fz = -90 }
 ap.smallBackpack      = { dx = 0.31, dy = 0.18, dz = 0.14, fy = 90, fz = 270, mz = 0.08, my = -0.07, qz = 1 }
 ap.sponge             = { dx = 0.115, dy = 0.165, dz = 0.026, qz = 6, fz = 90 }
 ap.suspension         = { dx = 0.28, dy = 0.44, dz = 0.04, qz = 1, fz = 90, my = -0.05 }
+ap.tarp               = { dx = 0.44, dy = 0.52, dz = 0.03, qz = 5 }
 ap.tinyBottle         = { dx = 0.075, dy = 0.075, dz = 0.03, qz = 1 }
 ap.toiletPaper        = { dx = 0.16, dy = 0.16, dz = 0.06, qz = 3 }
 ap.toothpaste         = { dx = 0.1, dy = 0.24, dz = 0.02, qz = 3 }
@@ -85,12 +86,12 @@ mp["weapons/ammo/762-556-308-223AmmoBox"]          = "ammoBox"
 -- By me
 mp["BleachBottle"]                                   = "bleachBottle"
 mp["CaffinePills"]                                   = { p = "seasoningJar", s = 0.13 }
-mp["Jar"]                                            = {p= "jar", s=0.4 }
+mp["Jar"]                                            = { p = "jar", s = 0.4 }
 mp["weapons/1handed/ButterKnife"]                    = { p = "cutlery", my = -0.02 }
 mp["weapons/1handed/Fork"]                           = { p = "cutlery", my = 0.1 }
 mp["weapons/1handed/Fork_Bone_Hand"]                 = { p = "cutlery", my = 0.1, }
 mp["weapons/1handed/Fork_Forged_Hand"]               = { p = "cutlery", my = 0.1, }
-mp["weapons/1handed/Fork_Wood_Hand"]                 = { p = "cutlery", my = 0.1, fz=90 }
+mp["weapons/1handed/Fork_Wood_Hand"]                 = { p = "cutlery", my = 0.1, fz = 90 }
 mp["weapons/1handed/KitchenKnife_Forged_Hand"]       = "cutlery"
 mp["weapons/1handed/Knife"]                          = { p = "cutlery", my = -0.02 }
 mp["weapons/1handed/Knife_Bone_Hand"]                = { p = "cutlery", my = -0.02 }
@@ -130,6 +131,7 @@ mp["WorldItems/BowlFood"]                            = "bowlFull"
 mp["WorldItems/BowlOfGlaze"]                         = { p = "bowlFull2", s = 0.5 }
 mp["WorldItems/BowlRamen"]                           = "bowlFull"
 mp["WorldItems/BowlSoup"]                            = "bowlFull"
+mp["WorldItems/BrakeDisk"]                            = {p= "pizza", s=0.6, dz=0.0175, qz=4 }
 mp["WorldItems/BreadSlices"]                         = { p = "breadSlices", s = 0.3 }
 mp["WorldItems/CannedSardinesOpen"]                  = { p = "sardinesTin", qz = 1 }
 mp["WorldItems/CarBumper"]                           = { p = "trunkLid", s = 0.25 }
@@ -205,6 +207,7 @@ mp["WorldItems/WineBox"]                             = "wineBox"
 mp["WorldItems/WoodenMold_AnvilJeweller_Cast"]       = { p = "anvilMoldCast", s = 0.1 }
 mp["WorldItems/WoodenMold_CeramicCast_AnvilBlock"]   = { p = "anvilMold", s = 0.13 }
 mp["WorldItems/WoodenMold_IngotCast"]                = { p = "woodenIngotMold", s = 0.09 }
+mp["WorldItems/Tarp"]                = { p = "tarp", s = 0.3 }
 
 -- overrides
 IA.arrangables["Base.IronBar"].mx = -0.24
