@@ -45,7 +45,7 @@
 IA = IA or {}
 
 ---@type table<string, string | CAIAE_MeshProfile>
-IA.meshProfiles = {}
+IA.meshProfiles = IA.meshProfiles or {}
 
 IA.meshProfilesApplied = false
 

@@ -5,14 +5,16 @@ local IA = IA
 local ap = IA.arrangableProfile
 local mp = IA.meshProfiles
 
----@param profile IAArrangableProfile
----@param fields Partial<IAArrangableProfile>
----@return IAArrangableProfile
+---@generic T extends table
+---@generic T2 extends T
+---@param profile T
+---@param fields Partial<T2>
+---@return T
 local function extend(profile, fields)
   local newProfile = {}
   for k, v in pairs(profile) do newProfile[k] = v end
   for k, v in pairs(fields) do newProfile[k] = v end
-  ---@cast newProfile IAArrangableProfile
+  ---@cast newProfile T
   return newProfile
 end
 
@@ -247,12 +249,12 @@ mp["weapons/1handed/Spear_Crude_Longer_Head_Hand"]       = "weaponShort"
 mp["weapons/1handed/Spear_Forged_Head_Hand"]             = "weaponShort"
 mp["weapons/1handed/SpearForged_Basic_Head_Hand"]        = "weaponShort"
 mp["weapons/1handed/Spoon"]                              = { p = "cutlery", my = 0.1 }
-mp["weapons/1handed/Spoon_Bone_Hand"]                    = { p = "cutlery", my = 0.1, }
-mp["weapons/1handed/Spoon_Forged_Hand"]                  = { p = "cutlery", my = 0.1, }
-mp["weapons/1handed/Spoon_Wood_Hand"]                    = { p = "cutlery", my = 0.1, }
+mp["weapons/1handed/Spoon_Bone_Hand"]                    = { p = "cutlery", my = 0.1 }
+mp["weapons/1handed/Spoon_Forged_Hand"]                  = { p = "cutlery", my = 0.1 }
+mp["weapons/1handed/Spoon_Wood_Hand"]                    = { p = "cutlery", my = 0.1 }
 mp["weapons/1handed/Stake"]                              = "weaponShort"
-mp["weapons/1handed/Steel_Rod_Half_Hand"]                = "weaponShort"
-mp["weapons/1handed/Steel_Rod_Hand"]                     = "weaponShort"
+mp["weapons/1handed/Steel_Rod_Half_Hand"]                = "pipe"
+mp["weapons/1handed/Steel_Rod_Hand"]                     = "pipe"
 mp["weapons/1handed/StoneHammer_Hand"]                   = "weaponShort"
 mp["weapons/1handed/Sword_Basic_Broken_Bot_Hand"]        = "weaponShort"
 mp["weapons/1handed/Sword_Broken_Bot_Hand"]              = "weaponShort"
@@ -411,7 +413,8 @@ mp["weapons/2handed/TableLeg_Nails_Hand"]                = "weaponLong"
 mp["weapons/2handed/TableLeg_SawHead_Hand"]              = "weaponLong"
 mp["weapons/2handed/TreeBranch_Spiked_Hand"]             = "weaponLong"
 mp["weapons/2handed/TreeSapling_Hand"]                   = "weaponLong"
-mp["weapons/2handed/Umbrella_Closed"]                    = "weaponLong"
+mp["weapons/2handed/Umbrella_Closed"]                    = {p="weaponLong", mz=0.016}
+mp["WorldItems/Umbrella_Open"]                           = {p="weaponLong", mz=0.016}
 mp["weapons/2handed/WoodAxe_Forged_Hand"]                = "weaponLong"
 mp["weapons/2handed/WoodenLance"]                        = "weaponLong"
 mp["WorldItems/BagofConcretePowder"]                     = { p = "bagConcretePowder", s = 0.2 }
@@ -505,8 +508,13 @@ mp["WorldItems/WineBox"]                                 = "wineBox"
 mp["WorldItems/WoodenMold_AnvilJeweller_Cast"]           = { p = "anvilMoldCast", s = 0.1 }
 mp["WorldItems/WoodenMold_CeramicCast_AnvilBlock"]       = { p = "anvilMold", s = 0.13 }
 mp["WorldItems/WoodenMold_IngotCast"]                    = { p = "woodenIngotMold", s = 0.09 }
+mp["WorldItems/Rod_Metal_Quarter"] = {p="metalRod"}
+mp["WorldItems/Rod_Metal_Slug"] = { p = "metalRod" }
+mp["WorldItems/WeldingRods"] = {p= "bottle" ,s=0.18}
 
+----
 -- overrides
+----
 IA.arrangables["Base.IronBar"].mx = -0.24
 ap.champagneBottle.fz = -270
 ap.cocoaPowder.fz = 0
@@ -517,6 +525,10 @@ IA.arrangables["Base.MayonnaiseEmpty"] = extend(ap.jar, { fz = -30 })
 IA.arrangables["Base.MayonnaiseFull"]  = extend(ap.jar, { fz = -30 })
 IA.arrangables["Base.RemouladeEmpty"]  = extend(ap.jar, { fz = 0 })
 IA.arrangables["Base.RemouladeFull"]   = extend(ap.jar, { fz = 0 })
+
+----
+-- surfaces
+----
 
 -- make metal shelves stack just a little bit tighter
 IA.surfaceProfile.metalShelfWEN = {
@@ -544,6 +556,27 @@ IA.surfaces["furniture_shelving_01_24"] = IA.surfaceProfile.metalShelfWES
 IA.surfaces["furniture_shelving_01_25"] = IA.surfaceProfile.metalShelfWEN
 IA.surfaces["furniture_shelving_01_26"] = IA.surfaceProfile.metalShelfNSW
 IA.surfaces["furniture_shelving_01_27"] = IA.surfaceProfile.metalShelfNSE
+
+-- military crates have a slightly taller appearance
+local boxMilitary = { [1] = extend(IA.surfaceProfile.box[1], { zmin = 0.36 }) }
+IA.surfaces["location_military_generic_01_0"] =  boxMilitary
+IA.surfaces["location_military_generic_01_1"] =  boxMilitary
+IA.surfaces["location_military_generic_01_8"] =  boxMilitary
+IA.surfaces["location_military_generic_01_9"] =  boxMilitary
+-- crafted metal crates
+IA.surfaces["constructedobjects_01_44"] = IA.surfaceProfile.box
+IA.surfaces["constructedobjects_01_45"] = IA.surfaceProfile.box
+IA.surfaces["constructedobjects_01_46"] = IA.surfaceProfile.box
+IA.surfaces["constructedobjects_01_47"] = IA.surfaceProfile.box
+-- fancy crafted metal crates
+IA.surfaces["crafted_05_44"] = IA.surfaceProfile.box
+IA.surfaces["crafted_05_44"] = IA.surfaceProfile.box
+IA.surfaces["crafted_05_44"] = IA.surfaceProfile.box
+IA.surfaces["crafted_05_44"] = IA.surfaceProfile.box
+
+----
+-- mods
+----
 
 -- VFX
 ap.vfxCandyBox           = { dx = 0.2, dy = 0.09, dz = 0.046, qz = 3 }
@@ -605,19 +638,20 @@ mp["WorldItems/VFX_StarterBox"]                     = "vfxStarterBox"
 mp["WorldItems/VFX_TeaBox"]                         = "vfxTeaBox"
 
 -- Sapph
-ap.sapphBox = { dx = 0.5, dy = 0.72, dz = 0.07, qz = 1 }
-ap.sapphBoxOpen = { dx = 0.6, dy = 0.72, dz = 0.07, qz = 1 }
+ap.sapphBox     = { dx = 0.3, dy = 0.42, dz = 0.072, qz = 4, mz=0.003 }
+ap.sapphBoxOpen = { dx = 0.6, dy = 0.5, dz = 0.08, qz = 1, mz=0.002 }
+
 mp["Worlditems/AlcoholBottle"]         = { p = "flask", s = 0.7 }
 mp["Worlditems/Bigcanmodel"]           = { p = "jar", s = 1.2 }
-mp["Worlditems/Box_CannedFood"]        = "sapphBoxOpen"
-mp["Worlditems/Box_CannedFood_Closed"] = "sapphBox"
+mp["Worlditems/Box_CannedFood"]        = { p = "sapphBoxOpen", s = 0.0045 }
+mp["Worlditems/Box_CannedFood_Closed"] = { p = "sapphBox", s = 0.0045 }
+mp["Worlditems/BreadSliceToast"]       = { p = "breadSlices", s = 0.0035 }
 mp["Worlditems/CheeseWheel"]           = "sapphCheeseWheel"
 mp["WorldItems/CookingPot_Liquid"]     = "potFull"
 mp["Worlditems/DevJarFood"]            = { p = "jar", s = 0.8 }
 mp["Worlditems/EmptyBottle"]           = "wineBottle"
 mp["Worlditems/GenericCan"]            = "jar"
 mp["Worlditems/WhippedCan_Ground"]     = "wineBottle"
-mp["Worlditems/BreadSliceToast"]       = { p="breadSlices", s=0.0035 }
 
 -- Authentic Z
 mp["WorldItems/WorldItem_AuthenticPillBottle"] = { p = "seasoningJar", s = 1.25, qz = 1 }

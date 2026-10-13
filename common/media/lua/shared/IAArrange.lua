@@ -62,16 +62,17 @@ local function applyYaw(fx, fy, fz, yaw)
     return math.deg(a) % 360, math.deg(c) % 360, math.deg(b) % 360
 end
 
+---@param square IsoGridSquare
 function IA.getSurfaceInfo(square)
     local cursorOrder = CURSOR_ORDER_N
 
     local ground = {
-        zmin = 0,
-        zmax = 1,
-        xmin = 0,
-        xmax = 1,
-        ymin = 0,
-        ymax = 1,
+        zmin = 0.0,
+        zmax = 1.0,
+        xmin = 0.0,
+        xmax = 1.0,
+        ymin = 0.0,
+        ymax = 1.0,
     }
 
     local squareN = square:getCell():getGridSquare(square:getX(), square:getY() - 1, square:getZ())
