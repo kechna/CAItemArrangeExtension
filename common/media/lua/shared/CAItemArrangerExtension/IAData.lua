@@ -5,15 +5,19 @@ local IA = IA
 local ap = IA.arrangableProfile
 local mp = IA.meshProfiles
 
----@generic T extends table
+---@generic T  extends table
 ---@generic T2 extends T
 ---@param profile T
----@param fields Partial<T2>
+---@param fields  Partial<T2>
 ---@return T
 local function extend(profile, fields)
   local newProfile = {}
-  for k, v in pairs(profile) do newProfile[k] = v end
-  for k, v in pairs(fields) do newProfile[k] = v end
+  for k, v in pairs(profile) do
+    newProfile[k] = v
+  end
+  for k, v in pairs(fields) do
+    newProfile[k] = v
+  end
   ---@cast newProfile T
   return newProfile
 end
@@ -24,28 +28,26 @@ end
 ap.anvilMold          = { dx = 0.26, dy = 0.36, dz = 0.075 }
 ap.anvilMoldCast      = { dx = 0.26, dy = 0.4, dz = 0.06 }
 ap.bagConcretePowder  = { dx = 0.3, dy = 0.18, dz = 0.16, qz = 1 }
-ap.carSeat            = { dx = 0.5, dy = 0.45, dz = 0.25, qz = 1 }
-ap.weaponLong         = { dx = 0.13, dy = 0.7, dz = 0.16, qz = 1, fz=270 }
-ap.weaponLongWide     = extend(ap.weaponLong, { dx = 0.25 })
-ap.weaponShort        = extend(ap.weaponLong,{ dy = 0.4})
-ap.weaponShortWide    = extend(ap.weaponShort,{ dy = 0.2})
 ap.bbqSauce           = { dx = 0.15, dy = 0.08, dz = 0.09, qz = 1, fz = -90 }
-ap.bigHikingBag       = { dx = 0.32, dy = 0.32, dz = 0.2, qz = 1, fx = -262, fz = 270, mz = 0.11, my=0.18 }
+ap.bigHikingBag       = { dx = 0.32, dy = 0.32, dz = 0.2, qz = 1, fx = -262, fz = 270, mz = 0.11, my = 0.18 }
 ap.bleachBottle       = { dx = 0.1, dy = 0.16, dz = 0.11, qz = 1, fz = 180 }
 ap.bowl               = { dx = 0.19, dy = 0.19, dz = 0.025, qz = 6 }
 ap.bowlFull           = { dx = 0.19, dy = 0.19, dz = 0.04, qz = 1 }
 ap.bowlFull2          = { dx = 0.22, dy = 0.22, dz = 0.04, qz = 1 } -- brain tan bowl is slightly bigger
-ap.breadSlice         = { dx = 0.038, dy = 0.055, dz = 0.0022, qz = 10, fz= -10 }
+ap.breadSlice         = { dx = 0.038, dy = 0.055, dz = 0.0022, qz = 10, fz = -10 }
 ap.breadSlices        = { dx = 0.23, dy = 0.21, dz = 0.0078, qz = 6, fz = -10 }
+ap.brochure           = { dx = 0.1, dy = 0.17, dz = 0.03, qz = 1, fx = 90, mz = 0.054, fy = 270 }
+ap.carSeat            = { dx = 0.5, dy = 0.45, dz = 0.25, qz = 1 }
 ap.cartonWide         = { dx = 0.12, dy = 0.09, dz = 0.015, qz = 1, fz = 180 }
 ap.ceramicIngotCast   = { dx = 0.15, dy = 0.31, dz = 0.032, qz = 4 }
 ap.cooler             = { dx = 0.25, dy = 0.44, dz = 0.17, qz = 1 }
-ap.cutlery            = { dx = 0.06, dy = 0.33, dz = 0.006, qz = 1, fz=-90, my=-0.04 }
+ap.cutlery            = { dx = 0.06, dy = 0.33, dz = 0.006, qz = 1, fz = -90, my = -0.04 }
 ap.duffelBag          = { dx = 0.29, dy = 0.76, dz = 0.1, qz = 1 }
 ap.fabricRoll         = { dx = 0.15, dy = 0.65, dz = 0.055, qz = 4, fz = 90 }
-ap.flask              = { dx = 0.12, dy = 0.05, dz = 0.05, qz = 1, fz=-90 }
+ap.flask              = { dx = 0.12, dy = 0.05, dz = 0.05, qz = 1, fz = -90 }
+ap.flier              = { dx = 0.12, dy = 0.26, dz = 0.003, qz = 20 }
 ap.flour              = { dx = 0.35, dy = 0.33, dz = 0.1, qz = 1, fz = -90 }
-ap.frozenFoodBag      = { dx = 0.23, dy = 0.42, dz = 0.024, qz = 4, fz=90 }
+ap.frozenFoodBag      = { dx = 0.23, dy = 0.42, dz = 0.024, qz = 4, fz = 90 }
 ap.gasTank            = { dx = 0.63, dy = 0.56, dz = 0.085, qz = 2, my = -0.07 }
 ap.granolaBar         = { dx = 0.09, dy = 0.23, dz = 0.018, qz = 4, fz = 90 }
 ap.hideRolledDeer     = { dx = 0.11, dy = 0.65, dz = 0.032, qz = 4 }
@@ -56,13 +58,13 @@ ap.leatherRoll        = { dx = 0.12, dy = 0.65, dz = 0.046, qz = 4 }
 ap.lightBulb          = { dx = 0.11, dy = 0.12, dz = 0.02, qz = 1, fz = 90 }
 ap.macAndCheese       = { dx = 0.18, dy = 0.1, dz = 0.095, qz = 2 }
 ap.marinara           = { dx = 0.12, dy = 0.12, dz = 0.05 }
-ap.militaryBackpack   = { dx = 0.4, dy = 0.32, dz = 0.2, fy = 342, fz = -90, my = 0.08, mz=-0.008, qz = 1 }
+ap.militaryBackpack   = { dx = 0.4, dy = 0.32, dz = 0.2, fy = 342, fz = -90, my = 0.08, mz = -0.008, qz = 1 }
 ap.muffler            = { dx = 0.24, dy = 0.5, dz = 0.042, qz = 4, fz = 90 }
 ap.pizza              = { dx = 0.45, dy = 0.45, dz = 0.013, qz = 5 }
 ap.pizzaSlice         = { dx = 0.25, dy = 0.24, dz = 0.0115, qz = 5 }
 ap.potFull            = { dx = 0.40, dy = 0.40, dz = 0.10, qz = 1 }
 ap.pouch              = { dx = 0.2, dy = 0.07, dz = 0.1, qz = 1 }
-ap.sandBag            = { dx = 0.33, dy = 0.6, dz = 0.04, qz = 3, fz=90 }
+ap.sandBag            = { dx = 0.33, dy = 0.6, dz = 0.04, qz = 3, fz = 90 }
 ap.sauce              = { dx = 0.17, dy = 0.08, dz = 0.09, qz = 1 }
 ap.saucePan           = { dx = 0.22, dy = 0.4, dz = 0.045, qz = 3, fz = -90 }
 ap.saucePanCopper     = { dx = 0.22, dy = 0.4, dz = 0.045, qz = 3, fz = 0 }
@@ -80,437 +82,516 @@ ap.windshield         = { dx = 0.75, dy = 0.35, dz = 0.014, qz = 8 }
 ap.wineBox            = { dx = 0.15, dy = 0.1, dz = 0.096, qz = 2 }
 ap.woodenIngotMold    = { dx = 0.2, dy = 0.36, dz = 0.038, qz = 4 }
 
+ap.weaponLong         = { dx = 0.13, dy = 0.7, dz = 0.16, qz = 1, fz = 270 }
+ap.weaponLongWide     = extend(ap.weaponLong, { dx = 0.25 })
+ap.weaponShort        = extend(ap.weaponLong, { dy = 0.4 })
+ap.weaponShortWide    = extend(ap.weaponShort, { dy = 0.2 })
+
 --
 -- Mesh profiles
 --
 
 -- Thanks to @CouncilOfPoorlyLitBaldPeople. Yes, I'm crediting you anyway :P
-mp["ammo/boxes/Ammobox"]                           = "ammoBox"
-mp["ammo/boxes/Ammobox_Rifle_Small"]               = "ammoBox"
-mp["ammo/boxes/Ammobox_Shotgun"]                   = "shotgunShellsBox"
-mp["weapons/ammo/762-556-308-223AmmoBox"]          = "ammoBox"
+mp["ammo/boxes/Ammobox"] = "ammoBox"
+mp["ammo/boxes/Ammobox_Rifle_Small"] = "ammoBox"
+mp["ammo/boxes/Ammobox_Shotgun"] = "shotgunShellsBox"
+mp["weapons/ammo/762-556-308-223AmmoBox"] = "ammoBox"
 
 -- By me
 
 
-mp["BleachBottle"]                                       = "bleachBottle"
-mp["CaffinePills"]                                       = { p = "seasoningJar", s = 0.13 }
-mp["Jar"]                                                = { p = "jar", s = 0.4 }
-mp["PillBottle"]                                         = { p = "jar", s = 1.56 }
-mp["weapons/1handed/Axe_Bone_Hand"]                      = "weaponShort"
-mp["weapons/1handed/Axe_Forged_1Handed_Hand"]            = "weaponShort"
-mp["weapons/1handed/BadmintonRacket"]                    = "weaponShort"
-mp["weapons/1handed/BallPeenHammer_Hand"]                = "weaponShort"
-mp["weapons/1handed/Banjo"]                              = "weaponShortWide"
-mp["weapons/1handed/Banjo_Broken"]                       = "weaponShortWide"
-mp["weapons/1handed/BaseballBat_Broken"]                 = "weaponShort"
-mp["weapons/1handed/BaseballBat_Broken_Nails_Hand"]      = "weaponShort"
-mp["weapons/1handed/Bone_Club_Hand"]                     = "weaponShort"
-mp["weapons/1handed/Bone_ClubShort_Hand"]                = "weaponShort"
-mp["weapons/1handed/Bone_Long_Hand"]                     = "weaponShort"
-mp["weapons/1handed/Bone_Sharp_Long_Hand"]               = "weaponShort"
-mp["weapons/1handed/Bone_Short_Hand"]                    = "weaponShort"
-mp["weapons/1handed/BoneClub_MetalSpiked_Hand"]          = "weaponShort"
-mp["weapons/1handed/BoneClub_MetalSpikes_Short"]         = "weaponShort"
-mp["weapons/1handed/BowlingPin_Hand"]                    = "weaponShort"
-mp["weapons/1handed/BowlingPin_Nails_Hand"]              = "weaponShort"
-mp["weapons/1handed/Brass_Nameplate_Hand"]               = "weaponShort"
-mp["weapons/1handed/BreadKnife"]                         = "cutlery"
-mp["weapons/1handed/ButterflyKnife"]                     = "cutlery"
-mp["weapons/1handed/ButterflyKnife2"]                    = "cutlery"
-mp["weapons/1handed/ButterKnife"]                        = { p = "cutlery", my = -0.02 }
-mp["weapons/1handed/Can_MediumHandle_Hand"]              = "weaponShort"
-mp["weapons/1handed/Can_ShortHandle_Hand"]               = "weaponShort"
-mp["weapons/1handed/Can_TreeBranch_Hand"]                = "weaponShort"
-mp["weapons/1handed/Can_WoodenStick_Hand"]               = "weaponShort"
-mp["weapons/1handed/CanOpener_Forged_Hand"]              = "weaponShort"
-mp["weapons/1handed/CarvingFork_Hand"]                   = "weaponShort"
-mp["weapons/1handed/ChairLeg"]                           = "weaponShort"
-mp["weapons/1handed/ChairLeg_Nails_Hand"]                = "weaponShort"
-mp["weapons/1handed/ChiselWoodHandle_Forged_Hand"]       = "weaponShort"
-mp["weapons/1handed/ClubHammer"]                         = "weaponShortWide"
-mp["weapons/1handed/Crowbar"]                            = "weaponShort"
-mp["weapons/1handed/Crowbar_Forged_Hand"]                = "weaponShort"
-mp["weapons/1handed/Cudgel_Broken_Hand"]                 = "weaponShortWide"
-mp["weapons/1handed/Cudgel_Broken_Nails_Hand"]           = "weaponShortWide"
-mp["weapons/1handed/Drumstick"]                          = "weaponShort"
-mp["weapons/1handed/DumbBell"]                           = "weaponShortWide"
-mp["weapons/1handed/DumbBell_Forged_Hand"]               = "weaponShortWide"
-mp["weapons/1handed/FirePoker"]                          = "weaponShort"
-mp["weapons/1handed/Firewood_Hand"]                      = "weaponShort"
-mp["weapons/1handed/Firewood_Nails_Hand"]                = "weaponShort"
-mp["weapons/1handed/FlintKnife"]                         = "weaponShort"
-mp["weapons/1handed/Flute"]                              = "weaponShort"
-mp["weapons/1handed/Fork"]                               = { p = "cutlery", my = 0.1 }
-mp["weapons/1handed/Fork_Bone_Hand"]                     = { p = "cutlery", my = 0.1, }
-mp["weapons/1handed/Fork_Forged_Hand"]                   = { p = "cutlery", my = 0.1, }
-mp["weapons/1handed/Fork_Wood_Hand"]                     = { p = "cutlery", my = 0.1, fz = 90 }
-mp["weapons/1handed/FryingPan"]                          = "weaponShortWide"
-mp["weapons/1handed/FryingPan_Forged_Hand"]              = "weaponShortWide"
-mp["weapons/1handed/GolfClub"]                           = "weaponShort"
-mp["weapons/1handed/GridlePan"]                          = "weaponShortWide"
-mp["weapons/1handed/Guitar_Acoustic_Broken"]             = "weaponShortWide"
-mp["weapons/1handed/Guitar_Electric_Broken"]             = "weaponShortWide"
-mp["weapons/1handed/Guitar_ElectricBass_Broken"]         = "weaponShortWide"
-mp["weapons/1handed/Hammer_Forged_Hand"]                 = "weaponShortWide"
-mp["weapons/1handed/Hammer_Smithing_Hand"]               = "weaponShortWide"
-mp["weapons/1handed/HammerClub_Forged_Hand"]             = "weaponShortWide"
-mp["weapons/1handed/HandAxe"]                            = "weaponShort"
-mp["weapons/1handed/HandAxe_Forged_Hand"]                = "weaponShort"
-mp["weapons/1handed/HandFork"]                           = "weaponShort"
-mp["weapons/1handed/HandScythe"]                         = "weaponShort"
-mp["weapons/1handed/HatchetSaw_ScrapMetal_Hand"]         = "weaponShort"
-mp["weapons/1handed/HatchetSpikes_ScrapMetal_Hand"]      = "weaponShort"
-mp["weapons/1handed/HockeyStick_Broken_Hand"]            = "weaponShort"
-mp["weapons/1handed/HockeyStick_Broken_Nails_Hand"]      = "weaponShort"
-mp["weapons/1handed/HuntingKnife"]                       = "weaponShort"
-mp["weapons/1handed/HuntingKnife_ScrapMetal_Hand"]       = "weaponShort"
-mp["weapons/1handed/IceAxe"]                             = "weaponShort"
-mp["weapons/1handed/IcePick"]                            = "weaponShort"
-mp["weapons/1handed/JawBone_Axe_Hand"]                   = "weaponShort"
-mp["weapons/1handed/JawBone_Hand"]                       = "weaponShort"
-mp["weapons/1handed/JawBone_Handle_Hand"]                = "weaponShort"
-mp["weapons/1handed/JudgesGavel_Hand"]                   = "weaponShort"
-mp["weapons/1handed/Katana_Broken"]                      = "weaponShort"
-mp["weapons/1handed/KitchenKnife_Forged_Hand"]           = "cutlery"
-mp["weapons/1handed/Knife"]                              = { p = "cutlery", my = -0.02 }
-mp["weapons/1handed/Knife_Bone_Hand"]                    = { p = "cutlery", my = -0.02 }
-mp["weapons/1handed/Knife_DaggerCrafted_Hand"]           = "weaponShort"
-mp["weapons/1handed/Knife_FairbairnSykes_Hand"]          = "weaponShort"
-mp["weapons/1handed/Knife_Fillet_Hand"]                  = "cutlery"
-mp["weapons/1handed/Knife_RailroadSpike_Hand"]           = "weaponShort"
-mp["weapons/1handed/Knife_Steak_Hand"]                   = "weaponShort"
-mp["weapons/1handed/KnifeHunting_Forged_Basic_Hand"]     = "cutlery"
-mp["weapons/1handed/KnifeHunting_Forged_Hand"]           = "cutlery"
-mp["weapons/1handed/KnifeKitchen_Forged_Hand"]           = "cutlery"
-mp["weapons/1handed/KnifeParing_Hand"]                   = "cutlery"
-mp["weapons/1handed/LeadPipe"]                           = "weaponShort"
-mp["weapons/1handed/LetterOpener"]                       = "weaponShort"
-mp["weapons/1handed/LongHandle_Broken_Nails_Hand"]       = "weaponShort"
-mp["weapons/1handed/Mace_Basic_Hand"]                    = "weaponShort"
-mp["weapons/1handed/Mace_Hand"]                          = "weaponShort"
-mp["weapons/1handed/Mace_Handle_Hand"]                   = "weaponShort"
-mp["weapons/1handed/Mace_RoundAngle_Short_Hand"]         = "weaponShort"
-mp["weapons/1handed/MaceHandle_CircularSaw_Hand"]        = "weaponShort"
-mp["weapons/1handed/MaceHandle_RailSpike_Hand"]          = "weaponShort"
-mp["weapons/1handed/MaceHandle_RakeHead_Hand"]           = "weaponShort"
-mp["weapons/1handed/MaceHandle_Spiked_Hand"]             = "weaponShort"
-mp["weapons/1handed/Machete"]                            = "weaponShort"
-mp["weapons/1handed/Machete_BladeHandle_Hand"]           = "weaponShort"
-mp["weapons/1handed/Machete_Forged_Hand"]                = "weaponShort"
-mp["weapons/1handed/Machete_ScrapMetal_Hand"]            = "weaponShort"
-mp["weapons/1handed/MeatCleaver"]                        = "weaponShort"
-mp["weapons/1handed/MeatCleaver_Forged_Hand"]            = "weaponShort"
-mp["weapons/1handed/MeatCleaver_ScrapMetal_Hand"]        = "weaponShort"
-mp["weapons/1handed/MetalPipe_Broken_Hand"]              = "weaponShort"
-mp["weapons/1handed/MetalPipe_RailSpike_Hand"]           = "weaponShort"
-mp["weapons/1handed/MultiTool_Knife_Hand"]               = "weaponShort"
-mp["weapons/1handed/Nightstick"]                         = "weaponShort"
-mp["weapons/1handed/Pen"]                                = "cutlery"
-mp["weapons/1handed/Pencil"]                             = "cutlery"
-mp["weapons/1handed/PenKnife"]                           = "cutlery"
-mp["weapons/1handed/PenKnife2"]                          = "cutlery"
-mp["weapons/1handed/PickAxeHandle"]                      = "weaponShort"
-mp["weapons/1handed/PickAxeHandleSpiked"]                = "weaponShort"
-mp["weapons/1handed/PipeWrench"]                         = "weaponShort"
-mp["weapons/1handed/Plank_Broken_Hand"]                  = "weaponShort"
-mp["weapons/1handed/Plank_Broken_Nails_Hand"]            = "weaponShort"
-mp["weapons/1handed/Plastic_Fork_Hand"]                  = { p = "cutlery", my = 0.1, fz=90 }
-mp["weapons/1handed/Plastic_Knife_Hand"]                 = { p = "cutlery", my = 0.1 }
-mp["weapons/1handed/Plastic_Spoon_Hand"]                 = { p = "cutlery", my = 0.1, fz=90 }
-mp["weapons/1handed/Plunger"]                            = "weaponShort"
-mp["weapons/1handed/Plunger_BarbedWire_Hand"]            = "weaponShort"
-mp["weapons/1handed/Ratchet_Hand"]                       = "weaponShort"
-mp["weapons/1handed/RollingPin"]                         = "weaponShort"
-mp["weapons/1handed/SaucePan"]                           = "weaponShort"
-mp["weapons/1handed/SaucePan_Copper_Hand"]               = "weaponShort"
-mp["weapons/1handed/Saw_Flint_Hand"]                     = "weaponShort"
-mp["weapons/1handed/Saxophone"]                          = "weaponShort"
-mp["weapons/1handed/Scalpel"]                            = "cutlery"
-mp["weapons/1handed/Scissors"]                           = "weaponShort"
-mp["weapons/1handed/Scissors_Forged_Hand"]               = "weaponShort"
-mp["weapons/1handed/ScrapMetal_MetalBlock_Hand"]         = "weaponShort"
-mp["weapons/1handed/Screwdriver"]                        = "cutlery"
-mp["weapons/1handed/ScrewDriver_Crafted_Hand"]           = "weaponShort"
-mp["weapons/1handed/ScrewDriver_ScrapMetal_Hand"]        = "weaponShort"
-mp["weapons/1handed/Scythe_Primitive_Hand"]              = "weaponShort"
-mp["weapons/1handed/ShankGlass_Hand"]                    = "cutlery"
-mp["weapons/1handed/SheetMetalSnips_Closed"]             = "weaponShort"
-mp["weapons/1handed/Shiv"]                               = "cutlery"
-mp["weapons/1handed/Shiv2"]                              = "cutlery"
-mp["weapons/1handed/Shiv_Spear_Crude_Hand"]              = "cutlery"
-mp["weapons/1handed/Shiv_SpearCrude_Longer_Hand"]        = "cutlery"
-mp["weapons/1handed/Shiv_SpearStone_High_Hand"]          = "cutlery"
-mp["weapons/1handed/Shiv_SpearStoneBasic_Head_Hand"]     = "cutlery"
-mp["weapons/1handed/Shiv_Toothbrush_Hand"]               = "weaponShort"
-mp["weapons/1handed/SmashedBottle"]                      = "weaponShort"
-mp["weapons/1handed/Spear_Crude_Head_Hand"]              = "weaponShort"
-mp["weapons/1handed/Spear_Crude_Longer_Head_Hand"]       = "weaponShort"
-mp["weapons/1handed/Spear_Forged_Head_Hand"]             = "weaponShort"
-mp["weapons/1handed/SpearForged_Basic_Head_Hand"]        = "weaponShort"
-mp["weapons/1handed/Spoon"]                              = { p = "cutlery", my = 0.1 }
-mp["weapons/1handed/Spoon_Bone_Hand"]                    = { p = "cutlery", my = 0.1 }
-mp["weapons/1handed/Spoon_Forged_Hand"]                  = { p = "cutlery", my = 0.1 }
-mp["weapons/1handed/Spoon_Wood_Hand"]                    = { p = "cutlery", my = 0.1 }
-mp["weapons/1handed/Stake"]                              = "weaponShort"
-mp["weapons/1handed/Steel_Rod_Half_Hand"]                = "pipe"
-mp["weapons/1handed/Steel_Rod_Hand"]                     = "pipe"
-mp["weapons/1handed/StoneHammer_Hand"]                   = "weaponShort"
-mp["weapons/1handed/Sword_Basic_Broken_Bot_Hand"]        = "weaponShort"
-mp["weapons/1handed/Sword_Broken_Bot_Hand"]              = "weaponShort"
-mp["weapons/1handed/Sword_ScrapMetal_Bot_NOTANG_Hand"]   = "weaponShort"
-mp["weapons/1handed/Sword_ScrapMetal_NoCross_Hand"]      = "weaponShort"
-mp["weapons/1handed/Sword_Short_ScrapMetal_Hand"]        = "weaponShort"
-mp["weapons/1handed/Sword_SingleEdge_Basic_Hand"]        = "weaponShort"
-mp["weapons/1handed/Sword_SingleEdge_Hand"]              = "weaponShort"
-mp["weapons/1handed/Sword_SingleEdge_Short_Hand"]        = "weaponShort"
-mp["weapons/1handed/Sword_SingleEdgeShort_Basic_Hand"]   = "weaponShort"
-mp["weapons/1handed/TableLeg_Broken_Hand"]               = "weaponShort"
-mp["weapons/1handed/TableLegBroken_Nails_Hand"]          = "weaponShort"
-mp["weapons/1handed/TennisRacket"]                       = "weaponShort"
-mp["weapons/1handed/TreeBranch_Bone_Hand"]               = "weaponShort"
-mp["weapons/1handed/TreeBranch_NailSpike_Hand"]          = "weaponShort"
-mp["weapons/1handed/TreeBranch_RailSpike_Hand"]          = "weaponShort"
-mp["weapons/1handed/Trumpet"]                            = "weaponShort"
-mp["weapons/1handed/Violin"]                             = "weaponShort"
-mp["weapons/1handed/WoodenMallet"]                       = "weaponShort"
-mp["weapons/1handed/WoodenStick_Broken_Hand"]            = "weaponShort"
-mp["weapons/1handed/WoodenStick_Broken_Nail_Hand"]       = "weaponShort"
-mp["weapons/1handed/WoodenStick_Nails_Hand"]             = "weaponShort"
-mp["weapons/1handed/Wrench"]                             = "weaponShort"
-mp["weapons/2handed/Axe_Forged_2Handed_Hand"]            = "weaponLong"
-mp["weapons/2handed/Axe_StoneTwoHanded_Hand"]            = "weaponLong"
-mp["weapons/2handed/AxeCircularSaw_ScrapMetal_Hand"]     = "weaponLong"
-mp["weapons/2handed/AxeSpikes_ScrapMetal_Hand"]          = "weaponLong"
-mp["weapons/2handed/BarBell"]                            = "weaponLong"
-mp["weapons/2handed/BarBell_Forged_Hand"]                = "weaponLong"
-mp["weapons/2handed/Baseballbat"]                        = "weaponLong"
-mp["weapons/2handed/BaseBallBat_CircularSaw_Hand"]       = "weaponLongWide"
-mp["weapons/2handed/BaseBallBat_Fork_Hand"]              = "weaponLong"
-mp["weapons/2handed/BaseBallBat_Mace_Hand"]              = "weaponLong"
-mp["weapons/2handed/BaseBallBat_Metal_Bolts_Hand"]       = "weaponLong"
-mp["weapons/2handed/BaseBallBat_Metal_CircularSaw"]      = "weaponLongWide"
-mp["weapons/2handed/BaseBallBat_Nailed_Hand"]            = "weaponLong"
-mp["weapons/2handed/BaseBallBat_RailSpike_Hand"]         = "weaponLong"
-mp["weapons/2handed/BaseBallBat_Rake_Hand"]              = "weaponLong"
-mp["weapons/2handed/BaseBallBat_TinCanned_Hand"]         = "weaponLong"
-mp["weapons/2handed/BaseBallBat_UnusableMetal_Hand"]     = "weaponLong"
-mp["weapons/2handed/BaseballBatSpiked"]                  = "weaponLong"
-mp["weapons/2handed/Broom"]                              = "weaponLongWide"
-mp["weapons/2handed/Broom_BarbedWire_Hand"]              = "weaponLongWide"
-mp["weapons/2handed/Broom_Crafted_Hand"]                 = "weaponLongWide"
-mp["weapons/2handed/Can_LongHandle_Hand"]                = "weaponLong"
-mp["weapons/2handed/CanoePadel"]                         = "weaponLong"
-mp["weapons/2handed/CanoePadelvX2_Broken_Hand"]          = "weaponLongWide"
-mp["weapons/2handed/CanoePadelX2"]                       = "weaponLongWide"
-mp["weapons/2handed/ConcreteClubMetal_Bucket_Hand"]      = "weaponLong"
-mp["weapons/2handed/ConcreteClubMetal_Kettle_Hand"]      = "weaponLong"
-mp["weapons/2handed/ConcreteClubWood_Bucket_Hand"]       = "weaponLong"
-mp["weapons/2handed/ConcreteClubWood_Kettle_Hand"]       = "weaponLong"
-mp["weapons/2handed/Cudgel_Bone_Hand"]                   = "weaponLongWide"
-mp["weapons/2handed/Cudgel_BreakDisk_Hand"]              = "weaponLongWide"
-mp["weapons/2handed/Cudgel_CircularSaw_Hand"]            = "weaponLongWide"
-mp["weapons/2handed/Cudgel_Fork_Hand"]                   = "weaponLongWide"
-mp["weapons/2handed/Cudgel_Spade_Hand"]                  = "weaponLongWide"
-mp["weapons/2handed/Cudgel_TreeBranch_Hand"]             = "weaponLongWide"
-mp["weapons/2handed/Cudgel_TwoHanded_Mace_Hand"]         = "weaponLongWide"
-mp["weapons/2handed/Cudgel_TwoHanded_Nail_Hand"]         = "weaponLongWide"
-mp["weapons/2handed/Cudgel_TwoHanded_RailSpike_Hand"]    = "weaponLongWide"
-mp["weapons/2handed/Cudgel_Unusable_Metal_Hand"]         = "weaponLongWide"
-mp["weapons/2handed/EngineParts_Bludgeon_Hand"]          = "weaponLongWide"
-mp["weapons/2handed/FireAxe"]                            = "weaponLongWide"
-mp["weapons/2handed/FishingRod_Crafted"]                 = "weaponLong"
-mp["weapons/2handed/FishingRod_Modern"]                  = "weaponLong"
-mp["weapons/2handed/GardenFork"]                         = "weaponLong"
-mp["weapons/2handed/GardenFork_Forged_Hand"]             = "weaponLong"
-mp["weapons/2handed/GardenHoe"]                          = "weaponLong"
-mp["weapons/2handed/Guitar_Acoustic"]                    = "weaponLongWide"
-mp["weapons/2handed/Guitar_ElectricBassBlack"]           = { p = "weaponLongWide", qz = 90 }
-mp["weapons/2handed/Guitar_ElectricBassBlue"]            = { p = "weaponLongWide", qz = 90 }
-mp["weapons/2handed/Guitar_ElectricBassRed"]             = { p = "weaponLongWide", qz = 90 }
-mp["weapons/2handed/Guitar_ElectricBlack"]               = { p = "weaponLongWide", qz = 90 }
-mp["weapons/2handed/Guitar_ElectricBlue"]                = { p = "weaponLongWide", qz = 90 }
-mp["weapons/2handed/Handle_PickAxe_Broken_Hand"]         = "weaponLongWide"
-mp["weapons/2handed/Handle_PickAxe_Hand"]                = "weaponLongWide"
-mp["weapons/2handed/Handle_PickAxe_Spiked_Hand"]         = "weaponLongWide"
-mp["weapons/2handed/HobbyHorse_Hand"]                    = "weaponLong"
-mp["weapons/2handed/HockeyStick"]                        = "weaponLong"
-mp["weapons/2handed/HockeyStick_Nails_Hand"]             = "weaponLong"
-mp["weapons/2handed/HockeyStick_Saw_Hand"]               = "weaponLong"
-mp["weapons/2handed/IceHockeyStick"]                     = "weaponLong"
-mp["weapons/2handed/IceHockeyStick_Barbed_Hand"]         = "weaponLong"
-mp["weapons/2handed/JawBone_Axe_2Handed_Hand"]           = "weaponLongWide"
-mp["weapons/2handed/Katana"]                             = "weaponLong"
-mp["weapons/2handed/Keytar"]                             = "weaponLongWide"
-mp["weapons/2handed/LaCrosseStick"]                      = "weaponLong"
-mp["weapons/2handed/LeafRake"]                           = "weaponLongWide"
-mp["weapons/2handed/LongHandle_BrakeDisk_Hand"]          = "weaponLongWide"
-mp["weapons/2handed/LongHandle_CircularSaw_Hand"]        = "weaponLongWide"
-mp["weapons/2handed/LongHandle_RailSpike_Hand"]          = "weaponLongWide"
-mp["weapons/2handed/LongHandle_RakeHead_Hand"]           = "weaponLongWide"
-mp["weapons/2handed/Mace_LongHandle_Basic_Hand"]         = "weaponLongWide"
-mp["weapons/2handed/Mace_LongHandle_Hand"]               = "weaponLongWide"
-mp["weapons/2handed/Mace_RoundAngle_Hand"]               = "weaponLongWide"
-mp["weapons/2handed/Maul_Stone_Hand"]                    = "weaponLongWide"
-mp["weapons/2handed/MeatCleaverApzxe_ScrapMetal_Hand"]   = "weaponLongWide"
-mp["weapons/2handed/NailedPlank"]                        = "weaponLong"
-mp["weapons/2handed/PickAxe_Hand"]                       = "weaponLongWide"
-mp["weapons/2handed/Plank"]                              = "weaponLong"
-mp["weapons/2handed/Plank_BrakeDisk_Hand"]               = "weaponLongWide"
-mp["weapons/2handed/Plank_CircularSaw_Hand"]             = "weaponLongWide"
-mp["weapons/2handed/Plank_Saw_Hand"]                     = "weaponLongWide"
-mp["weapons/2handed/Plunger_Spear_Hand"]                 = "weaponLongWide"
-mp["weapons/2handed/PoolCue"]                            = "weaponLong"
-mp["weapons/2handed/Rake"]                               = "weaponLongWide"
-mp["weapons/2handed/ScrapMetal_Bludgeon_Hand"]           = "weaponLongWide"
-mp["weapons/2handed/ScrapMetal_BrakeDisk_Hand"]          = "weaponLongWide"
-mp["weapons/2handed/ScrapMetal_ForkHead_Hand"]           = "weaponLongWide"
-mp["weapons/2handed/ScrapMetal_MetalBlock_2Handed_Hand"] = "weaponLongWide"
-mp["weapons/2handed/ScrapMetal_RakeHead_Hand"]           = "weaponLongWide"
-mp["weapons/2handed/ScrapMetal_SpadeHead_Hand"]          = "weaponLong"
-mp["weapons/2handed/Shaft_Broken_Hand"]                  = "weaponLong"
-mp["weapons/2handed/Shaft_Hand"]                         = "weaponLong"
-mp["weapons/2handed/Shaft_Spear_Hand"]                   = "weaponLong"
-mp["weapons/2handed/Shovel"]                             = "weaponLongWide"
-mp["weapons/2handed/Shovel02"]                           = "weaponLongWide"
-mp["weapons/2handed/SledgeHammer"]                       = "weaponLongWide"
-mp["weapons/2handed/SledgeHammer02"]                     = "weaponLongWide"
-mp["weapons/2handed/SnowShovel"]                         = "weaponLongWide"
-mp["weapons/2handed/Spade_Forged_Hand"]                  = "weaponLongWide"
-mp["weapons/2handed/Spade_Wood_Hand"]                    = "weaponLongWide"
-mp["weapons/2handed/Spear_BoneLong_Hand"]                = "weaponLong"
-mp["weapons/2handed/Spear_BoneSmall_Hand"]               = "weaponLong"
-mp["weapons/2handed/Spear_Crude_Hand"]                   = "weaponLong"
-mp["weapons/2handed/Spear_Crude_Longer_Hand"]            = "weaponLong"
-mp["weapons/2handed/Spear_FightingKnife_Hand"]           = "weaponLong"
-mp["weapons/2handed/Spear_Forged_Hand"]                  = "weaponLong"
-mp["weapons/2handed/Spear_Glass_Hand"]                   = "weaponLong"
-mp["weapons/2handed/Spear_Knife_ScrapMetal_Hand"]        = "weaponLong"
-mp["weapons/2handed/Spear_Knife_Steak_Hand"]             = "weaponLong"
-mp["weapons/2handed/Spear_KnifeForged_Large_Hand"]       = "weaponLong"
-mp["weapons/2handed/Spear_KnifeForged_Small_Hand"]       = "weaponLong"
-mp["weapons/2handed/Spear_Stone_Hand"]                   = "weaponLong"
-mp["weapons/2handed/Spear_Stone_High_Hand"]              = "weaponLong"
-mp["weapons/2handed/SpearBreadKnife"]                    = "weaponLong"
-mp["weapons/2handed/SpearButterKnife"]                   = "weaponLong"
-mp["weapons/2handed/SpearCrafted"]                       = "weaponLong"
-mp["weapons/2handed/SpearForged_Basic_Hand"]             = "weaponLong"
-mp["weapons/2handed/SpearFork"]                          = "weaponLong"
-mp["weapons/2handed/SpearHandFork"]                      = "weaponLong"
-mp["weapons/2handed/SpearHuntingKnife"]                  = "weaponLong"
-mp["weapons/2handed/SpearIcePick"]                       = "weaponLong"
-mp["weapons/2handed/SpearKnife"]                         = "weaponLong"
-mp["weapons/2handed/SpearLetterOpener"]                  = "weaponLong"
-mp["weapons/2handed/SpearMachete"]                       = "weaponLong"
-mp["weapons/2handed/SpearScalpel"]                       = "weaponLong"
-mp["weapons/2handed/SpearScissors"]                      = "weaponLong"
-mp["weapons/2handed/SpearScrewdriver"]                   = "weaponLong"
-mp["weapons/2handed/SpearSpoon"]                         = "weaponLong"
-mp["weapons/2handed/StoneAxe_Hand"]                      = "weaponLong"
-mp["weapons/2handed/TableLeg"]                           = "weaponLong"
-mp["weapons/2handed/TableLeg_Chain_Hand"]                = "weaponLong"
-mp["weapons/2handed/TableLeg_Nails_Hand"]                = "weaponLong"
-mp["weapons/2handed/TableLeg_SawHead_Hand"]              = "weaponLong"
-mp["weapons/2handed/TreeBranch_Spiked_Hand"]             = "weaponLong"
-mp["weapons/2handed/TreeSapling_Hand"]                   = "weaponLong"
-mp["weapons/2handed/Umbrella_Closed"]                    = {p="weaponLong", mz=0.016}
-mp["WorldItems/Umbrella_Open"]                           = {p="weaponLong", mz=0.016}
-mp["weapons/2handed/WoodAxe_Forged_Hand"]                = "weaponLong"
-mp["weapons/2handed/WoodenLance"]                        = "weaponLong"
-mp["WorldItems/BagofConcretePowder"]                     = { p = "bagConcretePowder", s = 0.2 }
-mp["WorldItems/BalsamicVinegar"]                         = "wineBottle"
-mp["WorldItems/BBQ_Sauce"]                               = "bbqSauce"
-mp["WorldItems/Bottle"]                                  = "wineBottle"
-mp["WorldItems/Bowl"]                                    = "bowl"
-mp["WorldItems/Bowl_Kiln"]                               = "bowl"
-mp["WorldItems/Bowl_Kiln_Full"]                          = "bowlFull"
-mp["WorldItems/BowlFood"]                                = "bowlFull"
-mp["WorldItems/BowlOfGlaze"]                             = { p = "bowlFull2", s = 0.5 }
-mp["WorldItems/BowlRamen"]                               = "bowlFull"
-mp["WorldItems/BowlSoup"]                                = "bowlFull"
-mp["WorldItems/BrakeDisk"]                               = { p = "pizza", s = 0.6, dz = 0.0175, qz = 4 }
-mp["WorldItems/BreadSlices"]                             = { p = "breadSlices", s = 0.3 }
-mp["WorldItems/CannedSardinesOpen"]                      = { p = "sardinesTin", qz = 1 }
-mp["WorldItems/CarBumper"]                               = { p = "trunkLid", s = 0.25 }
-mp["WorldItems/CarDoor"]                                 = { p = "trunkLid", s = 0.25, dz = 0.018 }
-mp["WorldItems/CarHood"]                                 = "trunkLid"
-mp["WorldItems/CarJack"]                                 = { p = "trunkLid", s = 0.25 }
-mp["WorldItems/CarParts"]                                = { p = "trunkLid", s = 0.25 }
-mp["WorldItems/CarSeat"]                                 = { p = "carSeat", s = 0.4 }
-mp["WorldItems/CarTrunkLid"]                             = { p = "trunkLid", s = 0.25 }
-mp["WorldItems/CarWindshield"]                           = { p = "windshield", s = 0.25 }
-mp["WorldItems/Ceramic_IngotCast"]                       = { p = "ceramicIngotCast", s = 0.09 }
-mp["WorldItems/CeramicCast_AnvilBlock"]                  = { p = "anvilMold", s = 0.13 }
-mp["WorldItems/CeramicMold_AnvilJeweller"]               = { p = "anvilMoldCast", s = 0.1 }
-mp["WorldItems/CleaningLiquid"]                          = { p = "sauce", s = 0.5 }
-mp["WorldItems/Clothing/ALICE_Pack_Ground"]              = "militaryBackpack"
-mp["WorldItems/Clothing/BigHikingBag_Ground"]            = "bigHikingBag"
-mp["WorldItems/Clothing/Briefcase"]                      = "briefcase"
-mp["WorldItems/Clothing/Cooler_Ground"]                  = "cooler"
-mp["WorldItems/Clothing/DuffelBag_Ground"]               = "duffelBag"
-mp["WorldItems/Clothing/HikingBag_Ground"]               = "hikingBag"
-mp["WorldItems/Clothing/SandBag_Ground"]                 = "sandBag"
-mp["WorldItems/Clothing/SchoolBag_Ground"]               = "smallBackpack"
-mp["WorldItems/CookingPotFull"]                          = "potFull"
-mp["WorldItems/Cornmeal"]                                = { p = "pouch", s = 0.126 }
-mp["WorldItems/DipJar"]                                  = {p = "jar", dz=0.039,s=0.12, fz=-180}
-mp["WorldItems/DirtBag"]                                 = "sandBag"
-mp["WorldItems/Disinfectant"]                            = "wineBottle"
-mp["WorldItems/EmptyPopBottle"]                          = "wineBottle"
-mp["WorldItems/FabricRolled"]                            = { p = "fabricRoll", s = 0.14 }
-mp["WorldItems/Flask"]                                   = "flask"
-mp["WorldItems/Flour"]                                   = "flour"
-mp["WorldItems/FrozenFoodBag"]                           = {p= "frozenFoodBag", s=0.4 }
-mp["WorldItems/GranolaBar"]                              = "granolaBar"
-mp["WorldItems/HairDye"]                                 = "wineBottle"
-mp["WorldItems/Hide_Rolled_Deer"]                        = { p = "hideRolledDeer", s = 0.1 }
-mp["WorldItems/HotSauce"]                                = "tinyBottle"
-mp["WorldItems/Jar_Roe"]                                 = { p = "jar", s = 0.5 }
-mp["WorldItems/Jar_Roe_Open"]                            = { p = "jar", s = 0.5, qz=1 }
-mp["WorldItems/JarFood"]                                 = "jar"
-mp["WorldItems/JarFood_Open"]                            = { p = "jar", qz = 1 }
-mp["WorldItems/JarLid"]                                  = "jar"
-mp["WorldItems/JarOpen"]                                 = { p = "jar", qz = 1 }
-mp["WorldItems/Ketchup"]                                 = "sauce"
-mp["WorldItems/Leather_Rolled"]                          = { p = "leatherRoll", s = 0.1 }
-mp["WorldItems/Lightbar"]                                = { p = "trunkLid", s = 0.25 }
-mp["WorldItems/LightBulb"]                               = "lightBulb"
-mp["WorldItems/MacAndCheese"]                            = "macAndCheese"
-mp["WorldItems/MapleSyrup"]                              = "sauce"
-mp["WorldItems/Margerine"]                               = { p = "sardinesTin", s = 0.28 }
-mp["WorldItems/Marinara"]                                = "marinara"
-mp["WorldItems/Milk"]                                    = "carton"
-mp["WorldItems/Muffler"]                                 = { p = "muffler", s = 0.4 }
-mp["WorldItems/NormalGasTank1"]                          = { p = "gasTank", s = 0.4 }
-mp["WorldItems/PainKillers"]                             = { p = "pizzaSlice", s = 1.12, dz=0.006, fz=90, qz=5 }
-mp["WorldItems/PeanutButter"]                            = "jarTall"
-mp["WorldItems/Pizza"]                                   = { p = "pizza", s = 0.4 }
-mp["WorldItems/PizzaSlice"]                              = { p = "pizzaSlice", s = 0.4 }
-mp["WorldItems/RiceVinegar"]                             = "wineBottle"
-mp["WorldItems/SandBag"]                                 = "sandBag"
-mp["WorldItems/SaucePan"]                                = "saucePan"
-mp["WorldItems/SaucePan_Copper"]                         = { p = "saucePanCopper", s = 0.075 }
-mp["WorldItems/SaucePan_Copper_Pasta"]                   = { p = "saucePanCopperFull", s = 0.075 }
-mp["WorldItems/SaucePan_Copper_Rice"]                    = { p = "saucePanCopperFull", s = 0.075 }
-mp["WorldItems/SaucePan_Copper_Water"]                   = { p = "saucePanCopperFull", s = 0.075 }
-mp["WorldItems/SaucePan_FoodFluid"]                      = "saucePanFull"
-mp["WorldItems/SleepingTablets"]                         = { p = "sponge", s=0.52, dz=0.0135, qz=5 }
-mp["WorldItems/Soysauce"]                                = "honey"
-mp["WorldItems/Sponge"]                                  = "sponge"
-mp["WorldItems/Spork"]                                   = "cutlery"
-mp["WorldItems/Sportsbottle"]                            = "bottle"
-mp["WorldItems/Suspension"]                              = { p = "suspension", s = 0.4 }
-mp["WorldItems/Tarp"]                                    = { p = "tarp", s = 0.3 }
-mp["WorldItems/ToiletPaper"]                             = "toiletPaper"
-mp["WorldItems/TomatoPaste"]                             = {p="toothpaste", s=0.4}
-mp["WorldItems/Toothpaste"]                              = {p="toothpaste", s=0.6}
-mp["WorldItems/WineBox"]                                 = "wineBox"
-mp["WorldItems/WoodenMold_AnvilJeweller_Cast"]           = { p = "anvilMoldCast", s = 0.1 }
-mp["WorldItems/WoodenMold_CeramicCast_AnvilBlock"]       = { p = "anvilMold", s = 0.13 }
-mp["WorldItems/WoodenMold_IngotCast"]                    = { p = "woodenIngotMold", s = 0.09 }
-mp["WorldItems/Rod_Metal_Quarter"] = {p="metalRod"}
-mp["WorldItems/Rod_Metal_Slug"] = { p = "metalRod" }
-mp["WorldItems/WeldingRods"] = {p= "bottle" ,s=0.18}
+
+
+-- firearms
+-- knives
+-- weapon parts
+mp["weapons/1handed/Axe_Bone_Hand"]                       = "weaponShort"
+mp["weapons/1handed/Axe_Forged_1Handed_Hand"]             = "weaponShort"
+mp["weapons/1handed/BadmintonRacket"]                     = "weaponShort"
+mp["weapons/1handed/BallPeenHammer_Hand"]                 = "weaponShort"
+mp["weapons/1handed/Banjo"]                               = "weaponShortWide"
+mp["weapons/1handed/Banjo_Broken"]                        = "weaponShortWide"
+mp["weapons/1handed/BaseballBat_Broken"]                  = "weaponShort"
+mp["weapons/1handed/BaseballBat_Broken_Nails_Hand"]       = "weaponShort"
+mp["weapons/1handed/Bone_Club_Hand"]                      = "weaponShort"
+mp["weapons/1handed/Bone_ClubShort_Hand"]                 = "weaponShort"
+mp["weapons/1handed/Bone_Long_Hand"]                      = "weaponShort"
+mp["weapons/1handed/Bone_Sharp_Long_Hand"]                = "weaponShort"
+mp["weapons/1handed/Bone_Short_Hand"]                     = "weaponShort"
+mp["weapons/1handed/BoneClub_MetalSpiked_Hand"]           = "weaponShort"
+mp["weapons/1handed/BoneClub_MetalSpikes_Short"]          = "weaponShort"
+mp["weapons/1handed/BowlingPin_Hand"]                     = "weaponShort"
+mp["weapons/1handed/BowlingPin_Nails_Hand"]               = "weaponShort"
+mp["weapons/1handed/Brass_Nameplate_Hand"]                = "weaponShort"
+mp["weapons/1handed/Can_MediumHandle_Hand"]               = "weaponShort"
+mp["weapons/1handed/Can_ShortHandle_Hand"]                = "weaponShort"
+mp["weapons/1handed/Can_TreeBranch_Hand"]                 = "weaponShort"
+mp["weapons/1handed/Can_WoodenStick_Hand"]                = "weaponShort"
+mp["weapons/1handed/CanOpener_Forged_Hand"]               = "weaponShort"
+mp["weapons/1handed/CarvingFork_Hand"]                    = "weaponShort"
+mp["weapons/1handed/ChairLeg"]                            = "weaponShort"
+mp["weapons/1handed/ChairLeg_Nails_Hand"]                 = "weaponShort"
+mp["weapons/1handed/ChiselWoodHandle_Forged_Hand"]        = "weaponShort"
+mp["weapons/1handed/ClubHammer"]                          = "weaponShortWide"
+mp["weapons/1handed/CompassGeometry_Hand"]                = "weaponLong"
+mp["weapons/1handed/Crowbar"]                             = "weaponShort"
+mp["weapons/1handed/Crowbar_Forged_Hand"]                 = "weaponShort"
+mp["weapons/1handed/Cudgel_Broken_Hand"]                  = "weaponShortWide"
+mp["weapons/1handed/Cudgel_Broken_Nails_Hand"]            = "weaponShortWide"
+mp["weapons/1handed/Drumstick"]                           = "weaponShort"
+mp["weapons/1handed/DumbBell"]                            = "weaponShortWide"
+mp["weapons/1handed/DumbBell_Forged_Hand"]                = "weaponShortWide"
+mp["weapons/1handed/EntrenchingTool_Hand"]                = "weaponShortWide"
+mp["weapons/1handed/File_Big_Jewellers_Hand"]             = "weaponLong"
+mp["weapons/1handed/FirePoker"]                           = "weaponShort"
+mp["weapons/1handed/Firewood_Hand"]                       = "weaponShort"
+mp["weapons/1handed/Firewood_Nails_Hand"]                 = "weaponShort"
+mp["weapons/1handed/FishGaffHook"]                        = "weaponLong"
+mp["weapons/1handed/Flint_Stone_Hand"]                    = "weaponLong"
+mp["weapons/1handed/FlintKnife"]                          = "weaponShort"
+mp["weapons/1handed/Flute"]                               = "weaponShort"
+mp["weapons/1handed/FryingPan"]                           = "weaponShortWide"
+mp["weapons/1handed/FryingPan_Forged_Hand"]               = "weaponShortWide"
+mp["weapons/1handed/GardenFork_ForkBroken"]               = "weaponLong"
+mp["weapons/1handed/GardenFork_ForkBroken_Ground"]        = "weaponLong"
+mp["weapons/1handed/GardenFork_HandleBroken"]             = "weaponLong"
+mp["weapons/1handed/GolfClub"]                            = "weaponShort"
+mp["weapons/1handed/GridlePan"]                           = "weaponShortWide"
+mp["weapons/1handed/Guitar_Acoustic_Broken"]              = "weaponShortWide"
+mp["weapons/1handed/Guitar_Electric_Broken"]              = "weaponShortWide"
+mp["weapons/1handed/Guitar_ElectricBass_Broken"]          = "weaponShortWide"
+mp["weapons/1handed/Hammer_Forged_Hand"]                  = "weaponShortWide"
+mp["weapons/1handed/Hammer_Smithing_Hand"]                = "weaponShortWide"
+mp["weapons/1handed/HammerClub_Forged_Hand"]              = "weaponShortWide"
+mp["weapons/1handed/HandAxe"]                             = "weaponShort"
+mp["weapons/1handed/HandAxe_Forged_Hand"]                 = "weaponShort"
+mp["weapons/1handed/HandFork"]                            = "weaponShort"
+mp["weapons/1handed/Handle_Hand"]                         = "weaponLong"
+mp["weapons/1handed/Handle_Medium_Spiked_Hand"]           = "weaponLong"
+mp["weapons/1handed/HandScythe"]                          = "weaponShort"
+mp["weapons/1handed/HatchetSaw_ScrapMetal_Hand"]          = "weaponShort"
+mp["weapons/1handed/HatchetSpikes_ScrapMetal_Hand"]       = "weaponShort"
+mp["weapons/1handed/HockeyStick_Broken_Hand"]             = "weaponShort"
+mp["weapons/1handed/HockeyStick_Broken_Nails_Hand"]       = "weaponShort"
+mp["weapons/1handed/Hook_Forged_Hand"]                    = "weaponLong"
+mp["weapons/1handed/HuntingKnife"]                        = "weaponShort"
+mp["weapons/1handed/HuntingKnife_ScrapMetal_Hand"]        = "weaponShort"
+mp["weapons/1handed/IceAxe"]                              = "weaponShort"
+mp["weapons/1handed/IcePick"]                             = "weaponShort"
+mp["weapons/1handed/JawBone_Axe_Hand"]                    = "weaponShort"
+mp["weapons/1handed/JawBone_Hand"]                        = "weaponShort"
+mp["weapons/1handed/JawBone_Handle_Hand"]                 = "weaponShort"
+mp["weapons/1handed/JudgesGavel_Hand"]                    = "weaponShort"
+mp["weapons/1handed/Katana_Broken"]                       = "weaponShort"
+mp["weapons/1handed/Knife"]                               = "weaponLong"
+mp["weapons/1handed/Knife_DaggerCrafted_Hand"]            = "weaponShort"
+mp["weapons/1handed/Knife_FairbairnSykes_Hand"]           = "weaponShort"
+mp["weapons/1handed/Knife_RailroadSpike_Hand"]            = "weaponShort"
+mp["weapons/1handed/Knife_Steak_Hand"]                    = "weaponShort"
+mp["weapons/1handed/Knife_Sushi_Fillet_Hand"]             = "weaponLong"
+mp["weapons/1handed/KnifeMultitool_Blade_Hand"]           = "weaponLong"
+mp["weapons/1handed/LeadPipe"]                            = "weaponLong"
+mp["weapons/1handed/LeadPipe"]                            = "weaponShort"
+mp["weapons/1handed/LetterOpener"]                        = "weaponShort"
+mp["weapons/1handed/LongHandle_Broken_Nails_Hand"]        = "weaponShort"
+mp["weapons/1handed/Mace_Basic_Hand"]                     = "weaponShort"
+mp["weapons/1handed/Mace_Hand"]                           = "weaponShort"
+mp["weapons/1handed/Mace_Handle_Hand"]                    = "weaponShort"
+mp["weapons/1handed/Mace_RoundAngle_Short_Hand"]          = "weaponShort"
+mp["weapons/1handed/MaceHandle_CircularSaw_Hand"]         = "weaponShort"
+mp["weapons/1handed/MaceHandle_RailSpike_Hand"]           = "weaponShort"
+mp["weapons/1handed/MaceHandle_RakeHead_Hand"]            = "weaponShort"
+mp["weapons/1handed/MaceHandle_Spiked_Hand"]              = "weaponShort"
+mp["weapons/1handed/Machete"]                             = "weaponShort"
+mp["weapons/1handed/Machete_BladeHandle_Hand"]            = "weaponShort"
+mp["weapons/1handed/Machete_Forged_Hand"]                 = "weaponShort"
+mp["weapons/1handed/Machete_ScrapMetal_Hand"]             = "weaponShort"
+mp["weapons/1handed/MeatCleaver"]                         = "weaponShort"
+mp["weapons/1handed/MeatCleaver_Forged_Hand"]             = "weaponShort"
+mp["weapons/1handed/MeatCleaver_ScrapMetal_Hand"]         = "weaponShort"
+mp["weapons/1handed/MetalBar_Half_Hand"]                  = "weaponLong"
+mp["weapons/1handed/MetalBar_Hand"]                       = "weaponLong"
+mp["weapons/1handed/MetalPipe_Broken_Hand"]               = "weaponShort"
+mp["weapons/1handed/MetalPipe_RailSpike_Hand"]            = "weaponShort"
+mp["weapons/1handed/MultiTool_Knife_Hand"]                = "weaponShort"
+mp["weapons/1handed/Nightstick"]                          = "weaponShort"
+mp["weapons/1handed/PencilSpiffo_Hand"]                   = "weaponLong"
+mp["weapons/1handed/PenFancy_Hand"]                       = "weaponLong"
+mp["weapons/1handed/PenMulticolor_Hand"]                  = "weaponLong"
+mp["weapons/1handed/PenSpiffo_Hand"]                      = "weaponLong"
+mp["weapons/1handed/PickAxeHandle"]                       = "weaponShort"
+mp["weapons/1handed/PickAxeHandleSpiked"]                 = "weaponShort"
+mp["weapons/1handed/PipeWrench"]                          = "weaponShort"
+mp["weapons/1handed/Plank_Broken_Hand"]                   = "weaponShort"
+mp["weapons/1handed/Plank_Broken_Nails_Hand"]             = "weaponShort"
+mp["weapons/1handed/Plunger"]                             = "weaponShort"
+mp["weapons/1handed/Plunger_BarbedWire_Hand"]             = "weaponShort"
+mp["weapons/1handed/Railroad_Spike_Hand"]                 = "weaponLong"
+mp["weapons/1handed/Ratchet_Hand"]                        = "weaponShort"
+mp["weapons/1handed/Recorder"]                            = "weaponLong"
+mp["weapons/1handed/RidingCrop"]                          = "weaponLong"
+mp["weapons/1handed/RollingPin"]                          = "weaponShort"
+mp["weapons/1handed/SaucePan"]                            = "weaponShort"
+mp["weapons/1handed/SaucePan_Copper_Hand"]                = "weaponShort"
+mp["weapons/1handed/Saw_Flint_Hand"]                      = "weaponShort"
+mp["weapons/1handed/Saxophone"]                           = "weaponShort"
+mp["weapons/1handed/Scissors"]                            = "weaponShort"
+mp["weapons/1handed/Scissors_Forged_Hand"]                = "weaponShort"
+mp["weapons/1handed/ScrapMetal_MetalBlock_Hand"]          = "weaponShort"
+mp["weapons/1handed/ScrewDriver_Crafted_Hand"]            = "weaponShort"
+mp["weapons/1handed/ScrewDriver_ScrapMetal_Hand"]         = "weaponShort"
+mp["weapons/1handed/Scythe_Primitive_Hand"]               = "weaponShort"
+mp["weapons/1handed/SheetMetalSnips_Closed"]              = "weaponShort"
+mp["weapons/1handed/Shiv_Toothbrush_Hand"]                = "weaponShort"
+mp["weapons/1handed/Shovel_HeadBroken"]                   = "weaponLong"
+mp["weapons/1handed/SmashedBottle"]                       = "weaponShort"
+mp["weapons/1handed/Spear_Crude_Head_Hand"]               = "weaponShort"
+mp["weapons/1handed/Spear_Crude_Longer_Head_Hand"]        = "weaponShort"
+mp["weapons/1handed/Spear_Forged_Head_Hand"]              = "weaponShort"
+mp["weapons/1handed/SpearForged_Basic_Head_Hand"]         = "weaponShort"
+mp["weapons/1handed/Stake"]                               = "weaponShort"
+mp["weapons/1handed/Steel_Rod_Half_Hand"]                 = "pipe"
+mp["weapons/1handed/Steel_Rod_Hand"]                      = "pipe"
+mp["weapons/1handed/Stone_Hand"]                          = "weaponLong"
+mp["weapons/1handed/StoneHammer_Hand"]                    = "weaponShort"
+mp["weapons/1handed/SwitchKnife"]                         = "weaponLong"
+mp["weapons/1handed/Sword_Basic_Broken_Bot_Hand"]         = "weaponShort"
+mp["weapons/1handed/Sword_Broken_Bot_Hand"]               = "weaponShort"
+mp["weapons/1handed/Sword_ScrapMetal_Bot_NOTANG_Hand"]    = "weaponShort"
+mp["weapons/1handed/Sword_ScrapMetal_NoCross_Hand"]       = "weaponShort"
+mp["weapons/1handed/Sword_Short_ScrapMetal_Hand"]         = "weaponShort"
+mp["weapons/1handed/Sword_SingleEdge_Basic_Hand"]         = "weaponShort"
+mp["weapons/1handed/Sword_SingleEdge_Hand"]               = "weaponShort"
+mp["weapons/1handed/Sword_SingleEdge_Short_Hand"]         = "weaponShort"
+mp["weapons/1handed/Sword_SingleEdgeShort_Basic_Hand"]    = "weaponShort"
+mp["weapons/1handed/TableLeg_Broken_Hand"]                = "weaponShort"
+mp["weapons/1handed/TableLegBroken_Nails_Hand"]           = "weaponShort"
+mp["weapons/1handed/Tapered_Punch_Hand"]                  = "weaponLong"
+mp["weapons/1handed/TennisRacket"]                        = "weaponShort"
+mp["weapons/1handed/TireIron"]                            = "weaponLong"
+mp["weapons/1handed/TreeBranch_Bone_Hand"]                = "weaponShort"
+mp["weapons/1handed/TreeBranch_Hand"]                     = "weaponShort"
+mp["weapons/1handed/TreeBranch_NailSpike_Hand"]           = "weaponShort"
+mp["weapons/1handed/TreeBranch_RailSpike_Hand"]           = "weaponShort"
+mp["weapons/1handed/TrowelMason_Hand"]                    = "weaponLong"
+mp["weapons/1handed/Trumpet"]                             = "weaponShort"
+mp["weapons/1handed/Violin"]                              = "weaponShort"
+mp["weapons/1handed/WalkieTalkie"]                        = "weaponLong"
+mp["weapons/1handed/WoodenMallet"]                        = "weaponShort"
+mp["weapons/1handed/WoodenStick_Broken_Hand"]             = "weaponShort"
+mp["weapons/1handed/WoodenStick_Broken_Nail_Hand"]        = "weaponShort"
+mp["weapons/1handed/WoodenStick_Hand"]                    = "weaponLong"
+mp["weapons/1handed/WoodenStick_Nails_Hand"]              = "weaponShort"
+mp["weapons/1handed/Wrench"]                              = "weaponShort"
+mp["weapons/1handed/Yardstick"]                           = "weaponLong"
+mp["weapons/2handed/Axe_Forged_2Handed_Hand"]             = "weaponLong"
+mp["weapons/2handed/Axe_StoneTwoHanded_Hand"]             = "weaponLong"
+mp["weapons/2handed/AxeCircularSaw_ScrapMetal_Hand"]      = "weaponLong"
+mp["weapons/2handed/AxeSpikes_ScrapMetal_Hand"]           = "weaponLong"
+mp["weapons/2handed/BarBell"]                             = "weaponLong"
+mp["weapons/2handed/BarBell_Forged_Hand"]                 = "weaponLong"
+mp["weapons/2handed/Baseballbat"]                         = "weaponLong"
+mp["weapons/2handed/BaseBallBat_CircularSaw_Hand"]        = "weaponLongWide"
+mp["weapons/2handed/BaseBallBat_Fork_Hand"]               = "weaponLong"
+mp["weapons/2handed/BaseBallBat_Mace_Hand"]               = "weaponLong"
+mp["weapons/2handed/BaseBallBat_Metal_Bolts_Hand"]        = "weaponLong"
+mp["weapons/2handed/BaseBallBat_Metal_CircularSaw"]       = "weaponLongWide"
+mp["weapons/2handed/BaseBallBat_Nailed_Hand"]             = "weaponLong"
+mp["weapons/2handed/BaseBallBat_RailSpike_Hand"]          = "weaponLong"
+mp["weapons/2handed/BaseBallBat_Rake_Hand"]               = "weaponLong"
+mp["weapons/2handed/BaseBallBat_TinCanned_Hand"]          = "weaponLong"
+mp["weapons/2handed/BaseBallBat_UnusableMetal_Hand"]      = "weaponLong"
+mp["weapons/2handed/BaseballBatSpiked"]                   = "weaponLong"
+mp["weapons/2handed/BoltCutters"]                         = "weaponLong"
+mp["weapons/2handed/Broom"]                               = "weaponLongWide"
+mp["weapons/2handed/Broom_BarbedWire_Hand"]               = "weaponLongWide"
+mp["weapons/2handed/Broom_Crafted_Hand"]                  = "weaponLongWide"
+mp["weapons/2handed/Can_LongHandle_Hand"]                 = "weaponLong"
+mp["weapons/2handed/CanoePadel"]                          = "weaponLong"
+mp["weapons/2handed/CanoePadelvX2_Broken_Hand"]           = "weaponLongWide"
+mp["weapons/2handed/CanoePadelX2"]                        = "weaponLongWide"
+mp["weapons/2handed/ConcreteClubMetal_Bucket_Hand"]       = "weaponLong"
+mp["weapons/2handed/ConcreteClubMetal_Kettle_Hand"]       = "weaponLong"
+mp["weapons/2handed/ConcreteClubWood_Bucket_Hand"]        = "weaponLong"
+mp["weapons/2handed/ConcreteClubWood_Kettle_Hand"]        = "weaponLong"
+mp["weapons/2handed/Cudgel_Bone_Hand"]                    = "weaponLongWide"
+mp["weapons/2handed/Cudgel_BreakDisk_Hand"]               = "weaponLongWide"
+mp["weapons/2handed/Cudgel_CircularSaw_Hand"]             = "weaponLongWide"
+mp["weapons/2handed/Cudgel_Fork_Hand"]                    = "weaponLongWide"
+mp["weapons/2handed/Cudgel_Spade_Hand"]                   = "weaponLongWide"
+mp["weapons/2handed/Cudgel_TreeBranch_Hand"]              = "weaponLongWide"
+mp["weapons/2handed/Cudgel_TwoHanded_Mace_Hand"]          = "weaponLongWide"
+mp["weapons/2handed/Cudgel_TwoHanded_Nail_Hand"]          = "weaponLongWide"
+mp["weapons/2handed/Cudgel_TwoHanded_RailSpike_Hand"]     = "weaponLongWide"
+mp["weapons/2handed/Cudgel_Unusable_Metal_Hand"]          = "weaponLongWide"
+mp["weapons/2handed/EngineParts_Bludgeon_Hand"]           = "weaponLongWide"
+mp["weapons/2handed/FireAxe"]                             = "weaponLongWide"
+mp["weapons/2handed/FishingRod_Crafted"]                  = "weaponLong"
+mp["weapons/2handed/FishingRod_CraftedBend"]              = "weaponLong"
+mp["weapons/2handed/FishingRod_Modern"]                   = "weaponLong"
+mp["weapons/2handed/FishingRod_ModernBend"]               = "weaponLong"
+mp["weapons/2handed/GardenFork"]                          = "weaponLong"
+mp["weapons/2handed/GardenFork_Forged_Hand"]              = "weaponLong"
+mp["weapons/2handed/GardenHoe"]                           = "weaponLong"
+mp["weapons/2handed/Guitar_Acoustic"]                     = "weaponLongWide"
+mp["weapons/2handed/Guitar_ElectricBassBlack"]            = { p = "weaponLongWide", qz = 90 }
+mp["weapons/2handed/Guitar_ElectricBassBlue"]             = { p = "weaponLongWide", qz = 90 }
+mp["weapons/2handed/Guitar_ElectricBassRed"]              = { p = "weaponLongWide", qz = 90 }
+mp["weapons/2handed/Guitar_ElectricBlack"]                = { p = "weaponLongWide", qz = 90 }
+mp["weapons/2handed/Guitar_ElectricBlue"]                 = { p = "weaponLongWide", qz = 90 }
+mp["weapons/2handed/Handle_PickAxe_Broken_Hand"]          = "weaponLongWide"
+mp["weapons/2handed/Handle_PickAxe_Hand"]                 = "weaponLongWide"
+mp["weapons/2handed/Handle_PickAxe_Spiked_Hand"]          = "weaponLongWide"
+mp["weapons/2handed/HobbyHorse_Hand"]                     = "weaponLong"
+mp["weapons/2handed/HockeyStick"]                         = "weaponLong"
+mp["weapons/2handed/HockeyStick_Nails_Hand"]              = "weaponLong"
+mp["weapons/2handed/HockeyStick_Saw_Hand"]                = "weaponLong"
+mp["weapons/2handed/IceHockeyStick"]                      = "weaponLong"
+mp["weapons/2handed/IceHockeyStick_Barbed_Hand"]          = "weaponLong"
+mp["weapons/2handed/JawBone_Axe_2Handed_Hand"]            = "weaponLongWide"
+mp["weapons/2handed/Katana"]                              = "weaponLong"
+mp["weapons/2handed/Keytar"]                              = "weaponLongWide"
+mp["weapons/2handed/LaCrosseStick"]                       = "weaponLong"
+mp["weapons/2handed/LeafRake"]                            = "weaponLongWide"
+mp["weapons/2handed/LongHandle_BrakeDisk_Hand"]           = "weaponLongWide"
+mp["weapons/2handed/LongHandle_CircularSaw_Hand"]         = "weaponLongWide"
+mp["weapons/2handed/LongHandle_RailSpike_Hand"]           = "weaponLongWide"
+mp["weapons/2handed/LongHandle_RakeHead_Hand"]            = "weaponLongWide"
+mp["weapons/2handed/Mace_LongHandle_Basic_Hand"]          = "weaponLongWide"
+mp["weapons/2handed/Mace_LongHandle_Hand"]                = "weaponLongWide"
+mp["weapons/2handed/Mace_RoundAngle_Hand"]                = "weaponLongWide"
+mp["weapons/2handed/Maul_Stone_Hand"]                     = "weaponLongWide"
+mp["weapons/2handed/MeatCleaverApzxe_ScrapMetal_Hand"]    = "weaponLongWide"
+mp["weapons/2handed/MetalBar_Full_Hand"]                  = "weaponLong"
+mp["weapons/2handed/Mop_Hand"]                            = "weaponLong"
+mp["weapons/2handed/NailedPlank"]                         = "weaponLong"
+mp["weapons/2handed/PickAxe_Hand"]                        = "weaponLongWide"
+mp["weapons/2handed/Plank"]                               = "weaponLong"
+mp["weapons/2handed/Plank_BrakeDisk_Hand"]                = "weaponLongWide"
+mp["weapons/2handed/Plank_CircularSaw_Hand"]              = "weaponLongWide"
+mp["weapons/2handed/Plank_Saw_Hand"]                      = "weaponLongWide"
+mp["weapons/2handed/Plunger_Spear_Hand"]                  = "weaponLongWide"
+mp["weapons/2handed/PoolCue"]                             = "weaponLong"
+mp["weapons/2handed/Railroad_SpikePuller_ModernLRG_Hand"] = "weaponLong"
+mp["weapons/2handed/Railroad_SpikePullerLRG_Hand"]        = "weaponLong"
+mp["weapons/2handed/Rake"]                                = "weaponLongWide"
+mp["weapons/2handed/ScrapMetal_Bludgeon_Hand"]            = "weaponLongWide"
+mp["weapons/2handed/ScrapMetal_BrakeDisk_Hand"]           = "weaponLongWide"
+mp["weapons/2handed/ScrapMetal_ForkHead_Hand"]            = "weaponLongWide"
+mp["weapons/2handed/ScrapMetal_MetalBlock_2Handed_Hand"]  = "weaponLongWide"
+mp["weapons/2handed/ScrapMetal_RakeHead_Hand"]            = "weaponLongWide"
+mp["weapons/2handed/ScrapMetal_SpadeHead_Hand"]           = "weaponLong"
+mp["weapons/2handed/Scythe"]                              = "weaponLong"
+mp["weapons/2handed/Scythe_Forged_Hand"]                  = "weaponLong"
+mp["weapons/2handed/Shaft_Broken_Hand"]                   = "weaponLong"
+mp["weapons/2handed/Shaft_Hand"]                          = "weaponLong"
+mp["weapons/2handed/Shaft_Spear_Hand"]                    = "weaponLong"
+mp["weapons/2handed/Shovel"]                              = "weaponLongWide"
+mp["weapons/2handed/Shovel02"]                            = "weaponLongWide"
+mp["weapons/2handed/SledgeHammer"]                        = "weaponLongWide"
+mp["weapons/2handed/SledgeHammer02"]                      = "weaponLongWide"
+mp["weapons/2handed/SnowShovel"]                          = "weaponLongWide"
+mp["weapons/2handed/Spade_Forged_Hand"]                   = "weaponLongWide"
+mp["weapons/2handed/Spade_Wood_Hand"]                     = "weaponLongWide"
+mp["weapons/2handed/Spear_BoneLong_Hand"]                 = "weaponLong"
+mp["weapons/2handed/Spear_BoneSmall_Hand"]                = "weaponLong"
+mp["weapons/2handed/Spear_Crude_Hand"]                    = "weaponLong"
+mp["weapons/2handed/Spear_Crude_Longer_Hand"]             = "weaponLong"
+mp["weapons/2handed/Spear_FightingKnife_Hand"]            = "weaponLong"
+mp["weapons/2handed/Spear_Forged_Hand"]                   = "weaponLong"
+mp["weapons/2handed/Spear_Glass_Hand"]                    = "weaponLong"
+mp["weapons/2handed/Spear_Knife_ScrapMetal_Hand"]         = "weaponLong"
+mp["weapons/2handed/Spear_Knife_Steak_Hand"]              = "weaponLong"
+mp["weapons/2handed/Spear_KnifeForged_Large_Hand"]        = "weaponLong"
+mp["weapons/2handed/Spear_KnifeForged_Small_Hand"]        = "weaponLong"
+mp["weapons/2handed/Spear_Stone_Hand"]                    = "weaponLong"
+mp["weapons/2handed/Spear_Stone_High_Hand"]               = "weaponLong"
+mp["weapons/2handed/SpearBreadKnife"]                     = "weaponLong"
+mp["weapons/2handed/SpearButterKnife"]                    = "weaponLong"
+mp["weapons/2handed/SpearCrafted"]                        = "weaponLong"
+mp["weapons/2handed/SpearForged_Basic_Hand"]              = "weaponLong"
+mp["weapons/2handed/SpearFork"]                           = "weaponLong"
+mp["weapons/2handed/SpearHandFork"]                       = "weaponLong"
+mp["weapons/2handed/SpearHuntingKnife"]                   = "weaponLong"
+mp["weapons/2handed/SpearIcePick"]                        = "weaponLong"
+mp["weapons/2handed/SpearKnife"]                          = "weaponLong"
+mp["weapons/2handed/SpearLetterOpener"]                   = "weaponLong"
+mp["weapons/2handed/SpearMachete"]                        = "weaponLong"
+mp["weapons/2handed/SpearScalpel"]                        = "weaponLong"
+mp["weapons/2handed/SpearScissors"]                       = "weaponLong"
+mp["weapons/2handed/SpearScrewdriver"]                    = "weaponLong"
+mp["weapons/2handed/SpearSpoon"]                          = "weaponLong"
+mp["weapons/2handed/StoneAxe_Hand"]                       = "weaponLong"
+mp["weapons/2handed/TableLeg"]                            = "weaponLong"
+mp["weapons/2handed/TableLeg_Chain_Hand"]                 = "weaponLong"
+mp["weapons/2handed/TableLeg_Nails_Hand"]                 = "weaponLong"
+mp["weapons/2handed/TableLeg_SawHead_Hand"]               = "weaponLong"
+mp["weapons/2handed/TreeBranch_Spiked_Hand"]              = "weaponLong"
+mp["weapons/2handed/TreeSapling_Hand"]                    = "weaponLong"
+mp["weapons/2handed/Umbrella_Closed"]                     = { p = "weaponLong", mz = 0.016 }
+mp["weapons/2handed/WoodAxe_Forged_Hand"]                 = "weaponLong"
+mp["weapons/2handed/WoodenLance"]                         = "weaponLong"
+mp["weapons/firearm/gun_magazine"]                        = "weaponLong"
+mp["weapons/firearm/Handgun_RedDot"]                      = "weaponLong"
+mp["weapons/Floor_FBX/PenKnife_Closed"]                   = "weaponLong"
+mp["weapons/Floor_FBX/PenKnife_Closed2"]                  = "weaponLong"
+mp["weapons/Floor_FBX/SwitchKnifeClosed"]                 = "weaponLong"
+mp["weapons/parts/Handgun_Laser"]                         = "weaponLong"
+mp["weapons/parts/Handgun_Light"]                         = "weaponLong"
+mp["weapons/parts/Handgun_RedDotScope"]                   = "weaponLong"
+mp["weapons/parts/Rifle_2XScope"]                         = "weaponLong"
+mp["weapons/parts/Rifle_4XScope"]                         = "weaponLong"
+mp["weapons/parts/Rifle_8XScope"]                         = "weaponLong"
+mp["weapons/parts/Rifle_12XScope"]                        = "weaponLong"
+mp["weapons/parts/Rifle_Bayonet"]                         = "weaponLong"
+mp["weapons/parts/Rifle_IronSights"]                      = "weaponLong"
+mp["weapons/parts/Rifle_RecoilPad"]                       = "weaponLong"
+mp["weapons/parts/Shotgun_Choke"]                         = "weaponLong"
+
+-- cutlery
+mp["weapons/1handed/BreadKnife"]                     = "cutlery"
+mp["weapons/1handed/ButterflyKnife"]                 = "cutlery"
+mp["weapons/1handed/ButterflyKnife2"]                = "cutlery"
+mp["weapons/1handed/ButterKnife"]                    = { p = "cutlery", my = -0.02 }
+mp["weapons/1handed/Chisel_Forged_Hand"]             = "cutlery"
+mp["weapons/1handed/Chisel_Hot_Hand"]                = "cutlery"
+mp["weapons/1handed/Fork"]                           = { p = "cutlery", my = 0.1 }
+mp["weapons/1handed/Fork_Bone_Hand"]                 = { p = "cutlery", my = 0.1 }
+mp["weapons/1handed/Fork_Forged_Hand"]               = { p = "cutlery", my = 0.1 }
+mp["weapons/1handed/Fork_Wood_Hand"]                 = { p = "cutlery", my = 0.1, fz = 90 }
+mp["weapons/1handed/KitchenKnife_Forged_Hand"]       = "cutlery"
+mp["weapons/1handed/Knife"]                          = { p = "cutlery", my = -0.02 }
+mp["weapons/1handed/Knife_Bone_Hand"]                = { p = "cutlery", my = -0.02 }
+mp["weapons/1handed/Knife_Fillet_Hand"]              = "cutlery"
+mp["weapons/1handed/KnifeHunting_Forged_Basic_Hand"] = "cutlery"
+mp["weapons/1handed/KnifeHunting_Forged_Hand"]       = "cutlery"
+mp["weapons/1handed/KnifeKitchen_Forged_Hand"]       = "cutlery"
+mp["weapons/1handed/KnifeParing_Hand"]               = "cutlery"
+mp["weapons/1handed/Pen"]                            = "cutlery"
+mp["weapons/1handed/Pencil"]                         = "cutlery"
+mp["weapons/1handed/PenKnife"]                       = "cutlery"
+mp["weapons/1handed/PenKnife2"]                      = "cutlery"
+mp["weapons/1handed/Plastic_Fork_Hand"]              = { p = "cutlery", my = 0.1, fz = 90 }
+mp["weapons/1handed/Plastic_Knife_Hand"]             = { p = "cutlery", my = 0.1 }
+mp["weapons/1handed/Plastic_Spoon_Hand"]             = { p = "cutlery", my = 0.1, fz = 90 }
+mp["weapons/1handed/Scalpel"]                        = "cutlery"
+mp["weapons/1handed/Screwdriver"]                    = "cutlery"
+mp["weapons/1handed/ShankGlass_Hand"]                = "cutlery"
+mp["weapons/1handed/Shiv"]                           = "cutlery"
+mp["weapons/1handed/Shiv2"]                          = "cutlery"
+mp["weapons/1handed/Shiv_Spear_Crude_Hand"]          = "cutlery"
+mp["weapons/1handed/Shiv_SpearCrude_Longer_Hand"]    = "cutlery"
+mp["weapons/1handed/Shiv_SpearStone_High_Hand"]      = "cutlery"
+mp["weapons/1handed/Shiv_SpearStoneBasic_Head_Hand"] = "cutlery"
+mp["weapons/1handed/Spoon"]                          = { p = "cutlery", my = 0.1 }
+mp["weapons/1handed/Spoon_Bone_Hand"]                = { p = "cutlery", my = 0.1 }
+mp["weapons/1handed/Spoon_Forged_Hand"]              = { p = "cutlery", my = 0.1 }
+mp["weapons/1handed/Spoon_Wood_Hand"]                = { p = "cutlery", my = 0.1 }
+mp["WorldItems/Spork"]                               = "cutlery"
+
+
+
+-- items
+mp["BleachBottle"]                                 = "bleachBottle"
+mp["CaffinePills"]                                 = { p = "seasoningJar", s = 0.13 }
+mp["Jar"]                                          = { p = "jar", s = 0.4 }
+mp["PillBottle"]                                   = { p = "jar", s = 1.56 }
+mp["WorldItems/BagofConcretePowder"]               = { p = "bagConcretePowder", s = 0.2 }
+mp["WorldItems/BalsamicVinegar"]                   = "wineBottle"
+mp["WorldItems/BBQ_Sauce"]                         = "bbqSauce"
+mp["WorldItems/Bottle"]                            = "wineBottle"
+mp["WorldItems/Bowl"]                              = "bowl"
+mp["WorldItems/Bowl_Kiln"]                         = "bowl"
+mp["WorldItems/Bowl_Kiln_Full"]                    = "bowlFull"
+mp["WorldItems/BowlFood"]                          = "bowlFull"
+mp["WorldItems/BowlOfGlaze"]                       = { p = "bowlFull2", s = 0.5 }
+mp["WorldItems/BowlRamen"]                         = "bowlFull"
+mp["WorldItems/BowlSoup"]                          = "bowlFull"
+mp["WorldItems/BrakeDisk"]                         = { p = "pizza", s = 0.6, dz = 0.0175, qz = 4 }
+mp["WorldItems/BreadSlices"]                       = { p = "breadSlices", s = 0.3 }
+mp["WorldItems/Brochure"]                          = { p = "brochure", s = 0.125 }
+mp["WorldItems/CannedSardinesOpen"]                = { p = "sardinesTin", qz = 1 }
+mp["WorldItems/CarBumper"]                         = { p = "trunkLid", s = 0.25 }
+mp["WorldItems/CarDoor"]                           = { p = "trunkLid", s = 0.25, dz = 0.018 }
+mp["WorldItems/CarHood"]                           = "trunkLid"
+mp["WorldItems/CarJack"]                           = { p = "trunkLid", s = 0.25 }
+mp["WorldItems/CarParts"]                          = { p = "trunkLid", s = 0.25 }
+mp["WorldItems/CarSeat"]                           = { p = "carSeat", s = 0.4 }
+mp["WorldItems/CarTrunkLid"]                       = { p = "trunkLid", s = 0.25 }
+mp["WorldItems/CarWindshield"]                     = { p = "windshield", s = 0.25 }
+mp["WorldItems/Ceramic_IngotCast"]                 = { p = "ceramicIngotCast", s = 0.09 }
+mp["WorldItems/CeramicCast_AnvilBlock"]            = { p = "anvilMold", s = 0.13 }
+mp["WorldItems/CeramicMold_AnvilJeweller"]         = { p = "anvilMoldCast", s = 0.1 }
+mp["WorldItems/CleaningLiquid"]                    = { p = "sauce", s = 0.5 }
+mp["WorldItems/Clothing/ALICE_Pack_Ground"]        = "militaryBackpack"
+mp["WorldItems/Clothing/BigHikingBag_Ground"]      = "bigHikingBag"
+mp["WorldItems/Clothing/Briefcase"]                = "briefcase"
+mp["WorldItems/Clothing/Cooler_Ground"]            = "cooler"
+mp["WorldItems/Clothing/DuffelBag_Ground"]         = "duffelBag"
+mp["WorldItems/Clothing/HikingBag_Ground"]         = "hikingBag"
+mp["WorldItems/Clothing/SandBag_Ground"]           = "sandBag"
+mp["WorldItems/Clothing/SchoolBag_Ground"]         = "smallBackpack"
+mp["WorldItems/CookingPotFull"]                    = "potFull"
+mp["WorldItems/Cornmeal"]                          = { p = "pouch", s = 0.126 }
+mp["WorldItems/DipJar"]                            = { p = "jar", dz = 0.039, s = 0.12, fz = -180 }
+mp["WorldItems/DirtBag"]                           = "sandBag"
+mp["WorldItems/Disinfectant"]                      = "wineBottle"
+mp["WorldItems/EmptyPopBottle"]                    = "wineBottle"
+mp["WorldItems/FabricRolled"]                      = { p = "fabricRoll", s = 0.14 }
+mp["WorldItems/Flask"]                             = "flask"
+mp["WorldItems/Flier"]                             = { p = "flier", s = 0.125 }
+mp["WorldItems/Flour"]                             = "flour"
+mp["WorldItems/FrozenFoodBag"]                     = { p = "frozenFoodBag", s = 0.4 }
+mp["WorldItems/GranolaBar"]                        = "granolaBar"
+mp["WorldItems/HairDye"]                           = "wineBottle"
+mp["WorldItems/Hide_Rolled_Deer"]                  = { p = "hideRolledDeer", s = 0.1 }
+mp["WorldItems/HotSauce"]                          = "tinyBottle"
+mp["WorldItems/Jar_Roe"]                           = { p = "jar", s = 0.5 }
+mp["WorldItems/Jar_Roe_Open"]                      = { p = "jar", s = 0.5, qz = 1 }
+mp["WorldItems/JarFood"]                           = "jar"
+mp["WorldItems/JarFood_Open"]                      = { p = "jar", qz = 1 }
+mp["WorldItems/JarLid"]                            = "jar"
+mp["WorldItems/JarOpen"]                           = { p = "jar", qz = 1 }
+mp["WorldItems/Ketchup"]                           = "sauce"
+mp["WorldItems/Leather_Rolled"]                    = { p = "leatherRoll", s = 0.1 }
+mp["WorldItems/Lightbar"]                          = { p = "trunkLid", s = 0.25 }
+mp["WorldItems/LightBulb"]                         = "lightBulb"
+mp["WorldItems/MacAndCheese"]                      = "macAndCheese"
+mp["WorldItems/MapleSyrup"]                        = "sauce"
+mp["WorldItems/Margerine"]                         = { p = "sardinesTin", s = 0.28 }
+mp["WorldItems/Marinara"]                          = "marinara"
+mp["WorldItems/Milk"]                              = "carton"
+mp["WorldItems/Muffler"]                           = { p = "muffler", s = 0.4 }
+mp["WorldItems/NormalGasTank1"]                    = { p = "gasTank", s = 0.4 }
+mp["WorldItems/PainKillers"]                       = { p = "pizzaSlice", s = 1.12, dz = 0.006, fz = 90, qz = 5 }
+mp["WorldItems/PeanutButter"]                      = "jarTall"
+mp["WorldItems/Pizza"]                             = { p = "pizza", s = 0.4 }
+mp["WorldItems/PizzaSlice"]                        = { p = "pizzaSlice", s = 0.4 }
+mp["WorldItems/RiceVinegar"]                       = "wineBottle"
+mp["WorldItems/Rod_Metal_Quarter"]                 = { p = "metalRod" }
+mp["WorldItems/Rod_Metal_Slug"]                    = { p = "metalRod" }
+mp["WorldItems/SandBag"]                           = "sandBag"
+mp["WorldItems/SaucePan"]                          = "saucePan"
+mp["WorldItems/SaucePan_Copper"]                   = { p = "saucePanCopper", s = 0.075 }
+mp["WorldItems/SaucePan_Copper_Pasta"]             = { p = "saucePanCopperFull", s = 0.075 }
+mp["WorldItems/SaucePan_Copper_Rice"]              = { p = "saucePanCopperFull", s = 0.075 }
+mp["WorldItems/SaucePan_Copper_Water"]             = { p = "saucePanCopperFull", s = 0.075 }
+mp["WorldItems/SaucePan_FoodFluid"]                = "saucePanFull"
+mp["WorldItems/SleepingTablets"]                   = { p = "sponge", s = 0.52, dz = 0.0135, qz = 5 }
+mp["WorldItems/Soysauce"]                          = "honey"
+mp["WorldItems/Sponge"]                            = "sponge"
+mp["WorldItems/Sportsbottle"]                      = "bottle"
+mp["WorldItems/Suspension"]                        = { p = "suspension", s = 0.4 }
+mp["WorldItems/Tarp"]                              = { p = "tarp", s = 0.3 }
+mp["WorldItems/ToiletPaper"]                       = "toiletPaper"
+mp["WorldItems/TomatoPaste"]                       = { p = "toothpaste", s = 0.4 }
+mp["WorldItems/Toothpaste"]                        = { p = "toothpaste", s = 0.6 }
+mp["WorldItems/Umbrella_Open"]                     = { p = "weaponLong", mz = 0.016 }
+mp["WorldItems/WeldingRods"]                       = { p = "bottle", s = 0.18 }
+mp["WorldItems/WineBox"]                           = "wineBox"
+mp["WorldItems/WoodenMold_AnvilJeweller_Cast"]     = { p = "anvilMoldCast", s = 0.1 }
+mp["WorldItems/WoodenMold_CeramicCast_AnvilBlock"] = { p = "anvilMold", s = 0.13 }
+mp["WorldItems/WoodenMold_IngotCast"]              = { p = "woodenIngotMold", s = 0.09 }
 
 ----
 -- overrides
@@ -559,10 +640,10 @@ IA.surfaces["furniture_shelving_01_27"] = IA.surfaceProfile.metalShelfNSE
 
 -- military crates have a slightly taller appearance
 local boxMilitary = { [1] = extend(IA.surfaceProfile.box[1], { zmin = 0.36 }) }
-IA.surfaces["location_military_generic_01_0"] =  boxMilitary
-IA.surfaces["location_military_generic_01_1"] =  boxMilitary
-IA.surfaces["location_military_generic_01_8"] =  boxMilitary
-IA.surfaces["location_military_generic_01_9"] =  boxMilitary
+IA.surfaces["location_military_generic_01_0"] = boxMilitary
+IA.surfaces["location_military_generic_01_1"] = boxMilitary
+IA.surfaces["location_military_generic_01_8"] = boxMilitary
+IA.surfaces["location_military_generic_01_9"] = boxMilitary
 -- crafted metal crates
 IA.surfaces["constructedobjects_01_44"] = IA.surfaceProfile.box
 IA.surfaces["constructedobjects_01_45"] = IA.surfaceProfile.box
@@ -574,6 +655,151 @@ IA.surfaces["crafted_05_44"] = IA.surfaceProfile.box
 IA.surfaces["crafted_05_44"] = IA.surfaceProfile.box
 IA.surfaces["crafted_05_44"] = IA.surfaceProfile.box
 
+-- wood shelves
+IA.surfaceProfile.woodShelvesE = {
+  [1] = { zmin = 0.64, zmax = 1.00, xmin = 0.07, xmax = 0.43, ymin = 0.10, ymax = 1.00 },
+  [2] = { zmin = 0.35, zmax = 0.58, xmin = 0.07, xmax = 0.43, ymin = 0.10, ymax = 1.00 },
+}
+IA.surfaceProfile.woodShelvesW = {
+  [1] = { zmin = 0.64, zmax = 1.00, xmin = 0.74, xmax = 0.99, ymin = 0.10, ymax = 1.00 },
+  [2] = { zmin = 0.35, zmax = 0.58, xmin = 0.74, xmax = 0.99, ymin = 0.10, ymax = 1.00 },
+}
+IA.surfaceProfile.woodShelvesS = {
+  [1] = { zmin = 0.64, zmax = 1.00, xmin = 0.10, xmax = 1.00, ymin = 0.13, ymax = 0.49 },
+  [2] = { zmin = 0.35, zmax = 0.58, xmin = 0.10, xmax = 1.00, ymin = 0.13, ymax = 0.49 },
+}
+IA.surfaceProfile.woodShelvesN = {
+  [1] = { zmin = 0.64, zmax = 1.00, xmin = 0.10, xmax = 1.00, ymin = 0.63, ymax = 0.99 },
+  [2] = { zmin = 0.35, zmax = 0.58, xmin = 0.10, xmax = 1.00, ymin = 0.63, ymax = 0.99 },
+}
+
+IA.surfaces["furniture_shelving_01_1"] = IA.surfaceProfile.woodShelvesS
+IA.surfaces["furniture_shelving_01_2"] = IA.surfaceProfile.woodShelvesE
+IA.surfaces["furniture_shelving_01_3"] = IA.surfaceProfile.woodShelvesW
+IA.surfaces["furniture_shelving_01_4"] = IA.surfaceProfile.woodShelvesN
+
+--
+IA.surfaceProfile.largeWallShelvesS = {
+  [1] = { zmin = 0.068, zmax = 0.34, xmin = 0, xmax = 1, ymin = 0.15, ymax = 0.45 },
+  [2] = { zmin = 0.379, zmax = 0.60, xmin = 0, xmax = 1, ymin = 0.155, ymax = 0.45 },
+  [3] = { zmin = 0.68, zmax = 0.95, xmin = 0, xmax = 1, ymin = 0.17, ymax = 0.45 },
+}
+IA.surfaceProfile.largeWallShelvesE = {
+  [1] = { zmin = 0.068, zmax = 0.34, xmin = 0.19, xmax = 0.45, ymin = 0.15, ymax = 1 },
+  [2] = { zmin = 0.382, zmax = 0.60, xmin = 0.19, xmax = 0.45, ymin = 0.15, ymax = 1 },
+  [3] = { zmin = 0.68, zmax = 0.95,  xmin = 0.19, xmax = 0.45, ymin = 0.15, ymax = 1 },
+}
+IA.surfaceProfile.largeWallShelvesW = {
+  [1] = { zmin = 0.068, zmax = 0.34, xmin = 0.55, xmax = 0.81, ymin = 0.00, ymax = 0.85 },
+  [2] = { zmin = 0.382, zmax = 0.60, xmin = 0.55, xmax = 0.81, ymin = 0.00, ymax = 0.85 },
+  [3] = { zmin = 0.68, zmax = 0.95, xmin = 0.55, xmax = 0.81, ymin = 0.00, ymax = 0.85 },
+}
+IA.surfaceProfile.largeWallShelvesN = {
+  [1] = { zmin = 0.068, zmax = 0.34, xmin = 0.00, xmax = 1.00, ymin = 0.55, ymax = 0.85 },
+  [2] = { zmin = 0.379, zmax = 0.60, xmin = 0.00, xmax = 1.00, ymin = 0.55, ymax = 0.845 },
+  [3] = { zmin = 0.68, zmax = 0.95, xmin = 0.00, xmax = 1.00, ymin = 0.55, ymax = 0.83 },
+}
+
+IA.surfaces["furniture_shelving_01_9"] = IA.surfaceProfile.largeWallShelvesS
+IA.surfaces["furniture_shelving_01_10"] = IA.surfaceProfile.largeWallShelvesE
+IA.surfaces["furniture_shelving_01_11"] = IA.surfaceProfile.largeWallShelvesN
+IA.surfaces["furniture_shelving_01_12"] = IA.surfaceProfile.largeWallShelvesW
+
+IA.surfaceProfile.bigWallCornerShelvesS = {
+  [1] = { zmin = 0.068, zmax = 0.34, xmin = 0.16, xmax = 0.45, ymin = 0.25, ymax = 1.15 },
+  [2] = { zmin = 0.379, zmax = 0.6, xmin = 0.16, xmax = 0.45, ymin = 0.25, ymax = 1.15 },
+  [3] = { zmin = 0.68, zmax = 0.95, xmin = 0.16, xmax = 0.45, ymin = 0.25, ymax = 1.15 },
+}
+IA.surfaceProfile.bigWallCornerShelvesN = {
+  [1] = { zmin = 0.068, zmax = 0.34, xmin = 0, xmax = 0.95, ymin = 0.62, ymax = 0.95 },
+  [2] = { zmin = 0.379, zmax = 0.6, xmin = 0, xmax = 0.95, ymin = 0.62, ymax = 0.95 },
+  [3] = { zmin = 0.68, zmax = 0.95, xmin = 0, xmax = 0.95, ymin = 0.62, ymax = 0.95 },
+}
+IA.surfaceProfile.bigWallCornerShelvesW = {
+  [1] = { zmin = 0.05, zmax = 0.34, xmin = 0.68, xmax = 0.95, ymin = 0.15, ymax = 1 },
+  [2] = { zmin = 0.35, zmax = 0.6, xmin = 0.65, xmax = 0.95, ymin = 0.15, ymax = 1 },
+  [3] = { zmin = 0.64, zmax = 1, xmin = 0.65, xmax = 0.95, ymin = 0.15, ymax = 1 },
+}
+IA.surfaceProfile.bigWallCornerShelvesE = {
+  [1] = { zmin = 0.059, zmax = 0.34, xmin = 0.15, xmax = 1, ymin = 0.68, ymax = 0.96 },
+  [2] = { zmin = 0.379, zmax = 0.6, xmin = 0.15, xmax = 1, ymin = 0.68, ymax = 0.96 },
+  [3] = { zmin = 0.68, zmax = 0.95, xmin = 0.15, xmax = 1, ymin = 0.68, ymax = 0.96 },
+}
+
+-- corners
+IA.surfaces["furniture_shelving_01_8"] = IA.surfaceProfile.bigWallCornerShelvesS -- ^
+IA.surfaces["furniture_shelving_01_13"] = IA.surfaceProfile.bigWallCornerShelvesN -- v
+IA.surfaces["furniture_shelving_01_14"] = IA.surfaceProfile.bigWallCornerShelvesW -- >
+IA.surfaces["furniture_shelving_01_15"] = IA.surfaceProfile.bigWallCornerShelvesE -- <
+
+-- brown fancy wooden bookshelf
+IA.surfaceProfile.bookshelfE = {
+  [1] = { zmin = 0.05, zmax = 0.22, xmin = 0.18, xmax = 0.50, ymin = 0.19, ymax = 0.95 },
+  [2] = { zmin = 0.344, zmax = 0.50, xmin = 0.25, xmax = 0.50, ymin = 0.19, ymax = 0.95 },
+  [3] = { zmin = 0.618, zmax = 0.77, xmin = 0.25, xmax = 0.50, ymin = 0.19, ymax = 0.95 },
+  [4] = { zmin = 0.845, zmax = 1.00, xmin = 0.15, xmax = 0.50, ymin = 0.15, ymax = 0.95 },
+}
+IA.surfaceProfile.bookshelfW = {
+  [1] = { zmin = 0.05, zmax = 0.22, xmin = 0.60, xmax = 0.95, ymin = 0.19, ymax = 0.95 },
+  [2] = { zmin = 0.32, zmax = 0.49, xmin = 0.60, xmax = 0.95, ymin = 0.19, ymax = 0.95 },
+  [3] = { zmin = 0.59, zmax = 0.76, xmin = 0.60, xmax = 0.95, ymin = 0.19, ymax = 0.95 },
+  [4] = { zmin = 0.845, zmax = 1.00, xmin = 0.60, xmax = 0.95, ymin = 0.19, ymax = 0.95 },
+}
+IA.surfaceProfile.bookshelfS = {
+  [1] = { zmin = 0.055, zmax = 0.22, xmin = 0.096, xmax = 0.95, ymin = 0.18, ymax = 0.55 },
+  [2] = { zmin = 0.333, zmax = 0.50, xmin = 0.12, xmax = 0.95, ymin = 0.25, ymax = 0.55 },
+  [3] = { zmin = 0.61, zmax = 0.77, xmin = 0.13, xmax = 0.95, ymin = 0.25, ymax = 0.55 },
+  [4] = { zmin = 0.845, zmax = 1.00, xmin = 0.13, xmax = 0.95, ymin = 0.18, ymax = 0.55 },
+}
+IA.surfaceProfile.bookshelfN = {
+  [1] = { zmin = 0.05, zmax = 0.22, xmin = 0.11, xmax = 0.95, ymin = 0.62, ymax = 0.95 },
+  [2] = { zmin = 0.32, zmax = 0.49, xmin = 0.11, xmax = 0.95, ymin = 0.62, ymax = 0.95 },
+  [3] = { zmin = 0.59, zmax = 0.76, xmin = 0.11, xmax = 0.95, ymin = 0.62, ymax = 0.95 },
+  [4] = { zmin = 0.845, zmax = 1.00, xmin = 0.11, xmax = 0.95, ymin = 0.62, ymax = 0.95 },
+}
+
+IA.surfaces["furniture_shelving_01_40"] = IA.surfaceProfile.bookshelfS
+IA.surfaces["furniture_shelving_01_41"] = IA.surfaceProfile.bookshelfE
+IA.surfaces["furniture_shelving_01_42"] = IA.surfaceProfile.bookshelfW
+IA.surfaces["furniture_shelving_01_43"] = IA.surfaceProfile.bookshelfN
+
+-- this was assigned fridge but this is the white fancy wooden bookshelf
+IA.surfaces["furniture_shelving_01_44"] = IA.surfaceProfile.bookshelfS
+IA.surfaces["furniture_shelving_01_45"] = IA.surfaceProfile.bookshelfE
+IA.surfaces["furniture_shelving_01_46"] = IA.surfaceProfile.bookshelfW
+IA.surfaces["furniture_shelving_01_47"] = IA.surfaceProfile.bookshelfN
+
+-- crafted branch shelves
+IA.surfaceProfile.craftedBookshelfS = {
+  [1] = { zmin = 0.09, zmax = 0.26, xmin = 0.15, xmax = 0.85, ymin = 0.2, ymax = 0.45 },
+  [2] = { zmin = 0.36, zmax = 0.55, xmin = 0.15, xmax = 0.85, ymin = 0.2, ymax = 0.45 },
+  [3] = { zmin = 0.62, zmax = 0.79, xmin = 0.15, xmax = 0.85, ymin = 0.2, ymax = 0.45 },
+  [4] = { zmin = 0.83, zmax = 1.00, xmin = 0.18, xmax = 0.85, ymin = 0.13, ymax = 0.45 },
+}
+IA.surfaceProfile.craftedBookshelfW = {
+  [1] = { zmin = 0.09, zmax = 0.26, xmin = 0.55, xmax = 0.80, ymin = 0.15, ymax = 0.85 },
+  [2] = { zmin = 0.36, zmax = 0.55, xmin = 0.55, xmax = 0.80, ymin = 0.15, ymax = 0.85 },
+  [3] = { zmin = 0.62, zmax = 0.79, xmin = 0.55, xmax = 0.80, ymin = 0.15, ymax = 0.85 },
+  [4] = { zmin = 0.83, zmax = 1.00, xmin = 0.55, xmax = 0.87, ymin = 0.18, ymax = 0.85 },
+}
+IA.surfaceProfile.craftedBookshelfN = {
+  [1] = { zmin = 0.09, zmax = 0.26, xmin = 0.15, xmax = 0.85, ymin = 0.55, ymax = 0.80 },
+  [2] = { zmin = 0.36, zmax = 0.55, xmin = 0.15, xmax = 0.85, ymin = 0.55, ymax = 0.80 },
+  [3] = { zmin = 0.62, zmax = 0.79, xmin = 0.15, xmax = 0.85, ymin = 0.55, ymax = 0.80 },
+  [4] = { zmin = 0.83, zmax = 1.00, xmin = 0.15, xmax = 0.82, ymin = 0.55, ymax = 0.87 },
+}
+IA.surfaceProfile.craftedBookshelfE = {
+  [1] = { zmin = 0.09, zmax = 0.26, xmin = 0.20, xmax = 0.45, ymin = 0.15, ymax = 0.85 },
+  [2] = { zmin = 0.36, zmax = 0.55, xmin = 0.20, xmax = 0.45, ymin = 0.15, ymax = 0.85 },
+  [3] = { zmin = 0.62, zmax = 0.79, xmin = 0.20, xmax = 0.45, ymin = 0.15, ymax = 0.85 },
+  [4] = { zmin = 0.83, zmax = 1.00, xmin = 0.13, xmax = 0.45, ymin = 0.15, ymax = 0.82 },
+}
+
+IA.surfaces["crafted_04_92"] = IA.surfaceProfile.craftedBookshelfS
+IA.surfaces["crafted_04_94"] = IA.surfaceProfile.craftedBookshelfW
+IA.surfaces["crafted_04_93"] = IA.surfaceProfile.craftedBookshelfN
+IA.surfaces["crafted_04_95"] = IA.surfaceProfile.craftedBookshelfE
+
 ----
 -- mods
 ----
@@ -582,16 +808,16 @@ IA.surfaces["crafted_05_44"] = IA.surfaceProfile.box
 ap.vfxCandyBox           = { dx = 0.2, dy = 0.09, dz = 0.046, qz = 3 }
 ap.vfxCheeseKitBox       = { dx = 0.16, dy = 0.38, dz = 0.1, qz = 2, fz = -90 }
 ap.vfxCheeseWheel        = { dx = 0.333, dy = 0.333, dz = 0.08, qz = 2 }
-ap.vfxFocacciaSlice      = { dx = 0.12, dy = 0.21, dz = 0.012, qz=4, fz=90}
-ap.vfxGranolaBarBox      = { dx = 0.25, dy = 0.083, dz = 0.074, qz = 2, my=0.03 }
+ap.vfxFocacciaSlice      = { dx = 0.12, dy = 0.21, dz = 0.012, qz = 4, fz = 90 }
+ap.vfxGranolaBarBox      = { dx = 0.25, dy = 0.083, dz = 0.074, qz = 2, my = 0.03 }
 ap.vfxJelloBox           = { dx = 0.21, dy = 0.11, dz = 0.05, qz = 3 }
 ap.vfxPacketRamen        = { dx = 0.16, dy = 0.09, dz = 0.046, qz = 3 }
 ap.vfxRamenBox           = { dx = 0.24, dy = 0.16, dz = 0.08, qz = 1 }
 ap.vfxRectangleBox       = { dx = 0.21, dy = 0.25, dz = 0.026, qz = 3 }
 ap.vfxRectFoodContainer  = { dx = 0.25, dy = 0.35, dz = 0.046, qz = 5 }
 ap.vfxRoundFoodContainer = { dx = 0.32, dy = 0.32, dz = 0.06, qz = 4 }
-ap.vfxSandwich           = { dx = 0.13, dy = 0.19, dz = 0.015, qz=4, fz=348}
-ap.vfxSnackBox           = { dx = 0.2, dy = 0.09, dz = 0.046, qz = 3, my=0.01, mx=0.01 }
+ap.vfxSandwich           = { dx = 0.13, dy = 0.19, dz = 0.015, qz = 4, fz = 348 }
+ap.vfxSnackBox           = { dx = 0.2, dy = 0.09, dz = 0.046, qz = 3, my = 0.01, mx = 0.01 }
 ap.vfxStarterBox         = { dx = 0.185, dy = 0.095, dz = 0.115, qz = 1 }
 ap.vfxTeaBox             = { dx = 0.08, dy = 0.08, dz = 0.033, qz = 4 }
 
@@ -601,7 +827,7 @@ mp["WorldItems/VFX_BeerBottle_SM"]                  = { p = "bottle", fz = 0 }
 mp["WorldItems/VFX_BowlFull"]                       = "bowlFull"
 mp["WorldItems/VFX_BoxRamen"]                       = "vfxRamenBox"
 mp["WorldItems/VFX_CandyBox"]                       = "vfxCandyBox"
-mp["WorldItems/VFX_CanOpen"]                        = { p = "can", s = 0.8, qz=1 }
+mp["WorldItems/VFX_CanOpen"]                        = { p = "can", s = 0.8, qz = 1 }
 mp["WorldItems/VFX_Carton"]                         = "cartonWide"
 mp["WorldItems/VFX_CheeseKitBox"]                   = "vfxCheeseKitBox"
 mp["WorldItems/VFX_CheeseWheel"]                    = "vfxCheeseWheel"
@@ -613,33 +839,33 @@ mp["WorldItems/VFX_GlassBottle"]                    = { p = "bottle", fz = 0 }
 mp["WorldItems/VFX_GranolaBarBox"]                  = "vfxGranolaBarBox"
 mp["WorldItems/VFX_IcedTeaBottle"]                  = { p = "bottle", fz = 0 }
 mp["WorldItems/VFX_Jar"]                            = { p = "jar", s = 0.8 }
-mp["WorldItems/VFX_JarFoodOpen"]                    = { p = "jar", s = 0.4, qz=1 }
-mp["WorldItems/VFX_JarOpen"]                        = { p = "jar", s = 0.8, qz=1 }
+mp["WorldItems/VFX_JarFoodOpen"]                    = { p = "jar", s = 0.4, qz = 1 }
+mp["WorldItems/VFX_JarOpen"]                        = { p = "jar", s = 0.8, qz = 1 }
 mp["WorldItems/VFX_JelloBox"]                       = "vfxJelloBox"
 mp["WorldItems/VFX_LemonBottle"]                    = { p = "bottle", fz = 0 }
 mp["WorldItems/VFX_MetalFoodStorageContainer"]      = { p = "vfxRectFoodContainer", s = 1.2 }
 mp["WorldItems/VFX_Mustard"]                        = "honey"
-mp["WorldItems/VFX_Packaging_Bag"]                  = {p="driedBeans", s=0.8}
+mp["WorldItems/VFX_Packaging_Bag"]                  = { p = "driedBeans", s = 0.8 }
 mp["WorldItems/VFX_PacketRamen"]                    = "vfxPacketRamen"
 mp["WorldItems/VFX_PotForgedFull"]                  = "potFull"
 mp["WorldItems/VFX_PotFull"]                        = "potFull"
 mp["WorldItems/VFX_Pouch"]                          = "pouch"
-mp["WorldItems/VFX_ProteinPowder"]                  = { p = "jar", s = 0.5, qz=2 }
+mp["WorldItems/VFX_ProteinPowder"]                  = { p = "jar", s = 0.5, qz = 2 }
 mp["WorldItems/VFX_RectangleBox"]                   = "vfxRectangleBox"
 mp["WorldItems/VFX_Sandwich"]                       = "vfxSandwich"
-mp["WorldItems/VFX_SliceBread"]                     = { p="breadSlice", s=0.3 }
+mp["WorldItems/VFX_SliceBread"]                     = { p = "breadSlice", s = 0.3 }
 mp["WorldItems/VFX_SliceFocaccia"]                  = "vfxFocacciaSlice"
-mp["WorldItems/VFX_SM_BreadSlices"]                 = { p="breadSlice", s=0.3 }
+mp["WorldItems/VFX_SM_BreadSlices"]                 = { p = "breadSlice", s = 0.3 }
 mp["WorldItems/VFX_SM_FoodStorageContainer"]        = "vfxRoundFoodContainer"
 mp["WorldItems/VFX_SM_MetalFoodStorageContainer"]   = { p = "vfxRectFoodContainer", s = 1.2 }
-mp["WorldItems/VFX_SmallJar"]                       = { p = "jar", dz = 0.039, s=0.76 }
+mp["WorldItems/VFX_SmallJar"]                       = { p = "jar", dz = 0.039, s = 0.76 }
 mp["WorldItems/VFX_SnackBox"]                       = "vfxSnackBox"
 mp["WorldItems/VFX_StarterBox"]                     = "vfxStarterBox"
 mp["WorldItems/VFX_TeaBox"]                         = "vfxTeaBox"
 
 -- Sapph
-ap.sapphBox     = { dx = 0.3, dy = 0.42, dz = 0.072, qz = 4, mz=0.003 }
-ap.sapphBoxOpen = { dx = 0.6, dy = 0.5, dz = 0.08, qz = 1, mz=0.002 }
+ap.sapphBox     = { dx = 0.3, dy = 0.42, dz = 0.072, qz = 4, mz = 0.003 }
+ap.sapphBoxOpen = { dx = 0.6, dy = 0.5, dz = 0.08, qz = 1, mz = 0.002 }
 
 mp["Worlditems/AlcoholBottle"]         = { p = "flask", s = 0.7 }
 mp["Worlditems/Bigcanmodel"]           = { p = "jar", s = 1.2 }
@@ -657,58 +883,58 @@ mp["Worlditems/WhippedCan_Ground"]     = "wineBottle"
 mp["WorldItems/WorldItem_AuthenticPillBottle"] = { p = "seasoningJar", s = 1.25, qz = 1 }
 mp["WorldItems/WorldItem_AZ_AquaBottle"]       = "bottle"
 mp["WorldItems/WorldItem_AZ_GymBottle"]        = "wineBottle"
-mp["WorldItems/WorldItem_SpiffoBackpack"]      = {p="hikingBag", fx=0, fz=180, dx=0.33, mz=0}
+mp["WorldItems/WorldItem_SpiffoBackpack"]      = { p = "hikingBag", fx = 0, fz = 180, dx = 0.33, mz = 0 }
 
 -- Fool's new containers
-ap.ncWaterJug    = { dx = 0.285, dy = 0.24, dz = 0.36, qz = 1, fz = 90 }
+ap.ncAmmocan30   = { dx = 0.122, dy = 0.28, dz = 0.1, qz = 1, fz = 90, mz = 0.003 }
+ap.ncAmmocan50   = { dx = 0.185, dy = 0.35, dz = 0.1, qz = 1, fz = 90 }
+ap.ncBeverageJug = { dx = 0.45, dy = 0.45, dz = 0.18, qz = 1 }
 ap.ncCardboardLg = { dx = 0.415, dy = 0.415, dz = 0.20, qz = 1 }
 ap.ncCardboardMd = { dx = 0.31, dy = 0.38, dz = 0.085, qz = 3, fz = 90 }
 ap.ncCardboardSm = { dx = 0.28, dy = 0.22, dz = 0.025, qz = 4 }
-ap.ncBeverageJug = { dx = 0.45, dy = 0.45, dz = 0.18, qz = 1 }
-ap.ncDishTub = { dx = 0.35, dy = 0.43, dz = 0.1, qz = 1 }
-ap.ncAmmocan50 = { dx = 0.185, dy = 0.35, dz = 0.1, qz = 1, fz=90 }
-ap.ncAmmocan30 = { dx = 0.122, dy = 0.28, dz = 0.1, qz = 1, fz=90, mz=0.003 }
-ap.ncTote = { dx = 0.5, dy = 0.6, dz = 0.18, qz = 2, fz=90 }
-ap.ncMilkCrate = { dx = 0.358, dy = 0.358, dz = 0.12, qz = 2, mz=0.065, fz=90 }
+ap.ncDishTub     = { dx = 0.35, dy = 0.43, dz = 0.1, qz = 1 }
+ap.ncMilkCrate   = { dx = 0.358, dy = 0.358, dz = 0.12, qz = 2, mz = 0.065, fz = 90 }
+ap.ncTote        = { dx = 0.5, dy = 0.6, dz = 0.18, qz = 2, fz = 90 }
+ap.ncWaterJug    = { dx = 0.285, dy = 0.24, dz = 0.36, qz = 1, fz = 90 }
 
-mp["WorldItems/NCcanteen"] = "flask"
-mp["WorldItems/NCcardboard_large"] = { p = "ncCardboardLg", s = 0.9 }
-mp["WorldItems/NCcardboard_medium"] = { p = "ncCardboardMd", s = 0.9 }
-mp["WorldItems/NCcardboard_small"] = { p = "ncCardboardSm", s = 0.8 }
-mp["WorldItems/NCwaterjug_ground"] = "ncWaterJug"
-mp["WorldItems/NCpizzabox_ground"] = { p = "pizza", dz=0.0262, mz=0.019 }
-mp["WorldItems/NCbeveragejugopen_ground"] = { p = "ncBeverageJug", mz = 0.140 }
+mp["WorldItems/NCammocan30_ground"]           = "ncAmmocan30"
+mp["WorldItems/NCammocan50_ground"]           = "ncAmmocan50"
+mp["WorldItems/NCbeveragejugclosed_ground"]   = "ncBeverageJug"
+mp["WorldItems/NCbeveragejugopen_ground"]     = { p = "ncBeverageJug", mz = 0.140 }
 mp["WorldItems/NCbeveragejugopenfull_ground"] = { p = "ncBeverageJug", mz = 0.140 }
-mp["WorldItems/NCbeveragejugclosed_ground"] = "ncBeverageJug"
-mp["WorldItems/NCdishtub_ground"] = {p="ncDishtub", s=0.7}
-mp["WorldItems/NCdishtub_01"] = {p="ncDishtub", s=0.7}
-mp["WorldItems/NCdishtub_02"] = {p="ncDishtub", s=0.7}
-mp["WorldItems/NCdishtub_03"] = {p= "ncDishtub" , s=0.7}
-mp["WorldItems/NCdishtubfull_ground"] = "ncDishTub"
-mp["WorldItems/NCammocan30_ground"] = "ncAmmocan30"
-mp["WorldItems/NCammocan50_ground"] = "ncAmmocan50"
-mp["WorldItems/NCshoppingbasket_ground"] = "ncDishtub"
-mp["WorldItems/NCtackleboxlarge_ground"] = "ncDishtub"
-mp["WorldItems/NCplastictote_large"] = {p="ncTote", s=0.7}
-mp["WorldItems/NCplastictote_medium"] = {p="ncTote", s=0.7, dz=0.16}
-mp["WorldItems/NCplastictote_small"] = {p= "ncTote" , s=0.7, dz=0.07}
-mp["WorldItems/NCmilkcrate_ground"] = "ncMilkCrate"
-mp["WorldItems/NCmilkcratelong_ground"] = {p= "ncMilkCrate", dy = 0.6}
+mp["WorldItems/NCcanteen"]                    = "flask"
+mp["WorldItems/NCcardboard_large"]            = { p = "ncCardboardLg", s = 0.9 }
+mp["WorldItems/NCcardboard_medium"]           = { p = "ncCardboardMd", s = 0.9 }
+mp["WorldItems/NCcardboard_small"]            = { p = "ncCardboardSm", s = 0.8 }
+mp["WorldItems/NCdishtub_01"]                 = { p = "ncDishtub", s = 0.7 }
+mp["WorldItems/NCdishtub_02"]                 = { p = "ncDishtub", s = 0.7 }
+mp["WorldItems/NCdishtub_03"]                 = { p = "ncDishtub", s = 0.7 }
+mp["WorldItems/NCdishtub_ground"]             = { p = "ncDishtub", s = 0.7 }
+mp["WorldItems/NCdishtubfull_ground"]         = "ncDishTub"
+mp["WorldItems/NCmilkcrate_ground"]           = "ncMilkCrate"
+mp["WorldItems/NCmilkcratelong_ground"]       = { p = "ncMilkCrate", dy = 0.6 }
+mp["WorldItems/NCpizzabox_ground"]            = { p = "pizza", dz = 0.0262, mz = 0.019 }
+mp["WorldItems/NCplastictote_large"]          = { p = "ncTote", s = 0.7 }
+mp["WorldItems/NCplastictote_medium"]         = { p = "ncTote", s = 0.7, dz = 0.16 }
+mp["WorldItems/NCplastictote_small"]          = { p = "ncTote", s = 0.7, dz = 0.07 }
+mp["WorldItems/NCshoppingbasket_ground"]      = "ncDishtub"
+mp["WorldItems/NCtackleboxlarge_ground"]      = "ncDishtub"
+mp["WorldItems/NCwaterjug_ground"]            = "ncWaterJug"
 
 -- Pomp's items (food)
 ap.pompCheesyPoofs = { dx = 0.3, dy = 0.1, dz = 0.063, qz = 2, fx = 90, mz = 0.035 }
-ap.pompSourGummies = { dx = 0.23, dy = 0.1, dz = 0.0068, qz = 8, }
+ap.pompSourGummies = { dx = 0.23, dy = 0.1, dz = 0.0068, qz = 8 }
 ap.pompChocMilk = { dx = 0.16, dy = 0.18, dz = 0.07, qz = 1 }
 ap.pompSnackable = { dx = 0.22, dy = 0.22, dz = 0.02, qz = 3 }
-ap.pompFigBox = { dx = 0.345, dy = 0.076, dz = 0.085, qz = 2, fz=90 , fy=270, mz=0.045 }
-ap.pompFreezePop = { dy=0.25, dx=0.05, dz=0.006, mz=0.0034, qz=4, fz=90}
+ap.pompFigBox = { dx = 0.345, dy = 0.076, dz = 0.085, qz = 2, fz = 90, fy = 270, mz = 0.045 }
+ap.pompFreezePop = { dy = 0.25, dx = 0.05, dz = 0.006, mz = 0.0034, qz = 4, fz = 90 }
 ap.pompJiang = { dx = 0.19, dy = 0.135, dz = 0.05, qz = 3 }
 
 mp["WorldItems/Food/PINormalCan"] = { p = "jar" } -- 16
 mp["WorldItems/Food/PINormalCanOpen"] = { p = "jar", qz = 1 } -- 16
 mp["WorldItems/Food/PINormalCanHand"] = { p = "jar", qz = 1 }
-mp["WorldItems/Food/PIWingSauceBottle"] = {p="sauce" ,s=0.023}-- 14
-mp["WorldItems/Food/PIWingSauceBottleHand"] = {p="sauce" ,s=0.023}-- 14
+mp["WorldItems/Food/PIWingSauceBottle"] = { p = "sauce", s = 0.023 } -- 14
+mp["WorldItems/Food/PIWingSauceBottleHand"] = { p = "sauce", s = 0.023 } -- 14
 mp["WorldItems/Food/PITea"] = "bottle" -- 14
 mp["WorldItems/Food/PITeaHand"] = "bottle" -- 14
 mp["WorldItems/Food/SportsDrank"] = "bottle" -- 12
@@ -742,11 +968,11 @@ mp["WorldItems/Food/PIHotSauceHand"] = "smallBottle" -- 6
 -- mp["WorldItems/Food/PIFruitBarrelHand"] = "" -- 5
 mp["WorldItems/Food/PIRingPop"] = "pouch"
 mp["WorldItems/Food/PIRingPopHand"] = "pouch" -- 5
- mp["WorldItems/Food/PIPopTart"] = {p="pouch", dx=0.165, dy=0.12, dz=0.006, qz=5} -- 5
- mp["WorldItems/Food/PIPopTartHand"] = {p= "pouch", dx=0.165, dy=0.12, dz=0.006, qz=5 } -- 5
+mp["WorldItems/Food/PIPopTart"] = { p = "pouch", dx = 0.165, dy = 0.12, dz = 0.006, qz = 5 } -- 5
+mp["WorldItems/Food/PIPopTartHand"] = { p = "pouch", dx = 0.165, dy = 0.12, dz = 0.006, qz = 5 } -- 5
 -- mp["WorldItems/Food/PIKidCuisine"] = "" -- 5
 -- mp["WorldItems/Food/PIKidCuisineHand"] = "" -- 5
-mp["WorldItems/WildPegasus_Ground"] = {p= "bottle", s=1.2} -- 4
+mp["WorldItems/WildPegasus_Ground"] = { p = "bottle", s = 1.2 } -- 4
 -- mp["WorldItems/WildPegasusHand"] = "" -- 4
 mp["WorldItems/Dabs"] = "pouch" -- 4
 mp["WorldItems/DabsHand"] = "pouch" -- 4
@@ -781,7 +1007,7 @@ mp["WorldItems/ChocMilkHand"] = "pompChocMilk" -- 3
 -- mp["WorldItems/ChoccHand"] = "" -- 3
 -- mp["WorldItems/ChoccEmpty"] = "" -- 3
 -- mp["WorldItems/Food/PICheesyPoofs"] = "" -- 3
- mp["WorldItems/Food/PIFishSnackemsHand"] = "pouch"
+mp["WorldItems/Food/PIFishSnackemsHand"] = "pouch"
 mp["WorldItems/Food/PISchoolMilk"] = "bottle" -- 3
 mp["WorldItems/Food/PISchoolMilkHand"] = "bottle" -- 3
 mp["WorldItems/Food/PISchoolMilkEmpty"] = "bottle" -- 3
@@ -798,8 +1024,8 @@ mp["WorldItems/SbeveHand"] = "bottle" -- 2
 -- mp["WorldItems/UtahWaferPackEmpty"] = "" -- 2
 -- mp["WorldItems/UtahWafer"] = "" -- 2
 -- mp["WorldItems/UtahWaferHand"] = "" -- 2
- mp["WorldItems/VodkaAus"] =  "champagneBottle"
- mp["WorldItems/VodkaAusHand"] =   "champagneBottle"
+mp["WorldItems/VodkaAus"] = "champagneBottle"
+mp["WorldItems/VodkaAusHand"] = "champagneBottle"
 -- mp["WorldItems/Food/PICheddar"] = "" -- 2
 -- mp["WorldItems/Food/PICheddarHand"] = "" -- 2
 -- mp["WorldItems/Food/SnackablePizza"] = "" -- 2
@@ -820,8 +1046,8 @@ mp["WorldItems/Food/PIBunnBourbonHand"] = "whiskey" -- 2
 mp["WorldItems/Food/PIAlcopop"] = "bottle" -- 2
 mp["WorldItems/Food/PIAlcopopHand"] = "bottle" -- 2
 -- mp["WorldItems/Food/PICheeseStickDip"] = "" -- 2
-mp["WorldItems/StallionMilk_Ground"] = {p ="can", qz=1, s = 1.3, fz=190} -- uhhh... ok
-mp["WorldItems/StallionMilkOpen_Ground"] = {p ="can", qz=1, s = 1.3, fz=190}
+mp["WorldItems/StallionMilk_Ground"] = { p = "can", qz = 1, s = 1.3, fz = 190 } -- uhhh... ok
+mp["WorldItems/StallionMilkOpen_Ground"] = { p = "can", qz = 1, s = 1.3, fz = 190 }
 -- mp["WorldItems/Pomps"] = "" -- 1
 -- mp["WorldItems/PompsWrapper"] = "" -- 1
 -- mp["WorldItems/PBCup"] = "" -- 1
@@ -879,8 +1105,8 @@ mp["WorldItems/StallionMilkOpen_Ground"] = {p ="can", qz=1, s = 1.3, fz=190}
 -- mp["WorldItems/Food/FigBar"] = "" -- 1
 -- mp["WorldItems/Food/FigBarHand"] = "" -- 1
 -- mp["WorldItems/Food/FigBarEmpty"] = "" -- 1
- mp["WorldItems/Food/FigBox"] = "pompFigBox" -- 1
- mp["WorldItems/Food/FigBoxEmpty"] = "pompFigBox" -- 1
+mp["WorldItems/Food/FigBox"] = "pompFigBox" -- 1
+mp["WorldItems/Food/FigBoxEmpty"] = "pompFigBox" -- 1
 -- mp["WorldItems/Food/PICheeseBallsSmall"] = "" -- 1
 -- mp["WorldItems/Food/PICheeseBallsSmallHand"] = "" -- 1
 -- mp["WorldItems/Food/PICheeseBallsSmallEmpty"] = "" -- 1
@@ -910,9 +1136,9 @@ mp["WorldItems/StallionMilkOpen_Ground"] = {p ="can", qz=1, s = 1.3, fz=190}
 -- mp["WorldItems/Food/PIMilkMolarsHand"] = "" -- 1
 -- mp["WorldItems/Food/PIJawbreaker"] = "" -- 1
 -- mp["WorldItems/Food/PIJawbreakerHand"] = "" -- 1
-mp["WorldItems/Food/PIWormholes"] = {p="can", qz=1}
-mp["WorldItems/Food/PIWormholesHand"] = {p="can", qz=1}
-mp["WorldItems/Food/PIWormholesEmpty"] = {p="can", qz=1}
+mp["WorldItems/Food/PIWormholes"] = { p = "can", qz = 1 }
+mp["WorldItems/Food/PIWormholesHand"] = { p = "can", qz = 1 }
+mp["WorldItems/Food/PIWormholesEmpty"] = { p = "can", qz = 1 }
 -- mp["WorldItems/Food/PIIceCaps"] = "" -- 1
 -- mp["WorldItems/Food/PIIceCapsHand"] = "" -- 1
 -- mp["WorldItems/Food/PIIceCapsEmpty"] = "" -- 1
