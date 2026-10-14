@@ -1,0 +1,10 @@
+[ ALERT_CONFIG ]
+link1 = Workshop = https://steamcommunity.com/id/chekka-anchroviec/myworkshopfiles/?appid=108600,
+[ ------ ]
+
+[ v1.13.0 - 10/14/26 ]
+- add brochure and flier
+- improve wooden bookshelf surfaces
+- add white wooden bookshelf surfaces
+- add crafted shelves surfaces
+[ ------ ]
