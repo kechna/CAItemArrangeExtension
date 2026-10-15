@@ -18,10 +18,9 @@
 --- @field fx number?
 --- @field fy number?
 --- @field fz number?
+--- @field center number[]? measured profiles: centre of the model's box relative to its origin (tiles, tiles, floors)
 
----@class CAIAE_MeshProfile
----@field p   string arrangableProfile key
----@field s?  number model scale the profile was measured at
+---@class CAIAE_MeshBase
 ---@field dx? number x distance
 ---@field dy? number y distance (top left to right)
 ---@field dz? number z distance (vertical)
@@ -31,14 +30,24 @@
 ---@field fy? number
 ---@field fz? number
 
+---@class CAIAE_MeshProfile: CAIAE_MeshBase
+---@field p   string arrangableProfile key
+---@field s?  number model scale the profile was measured at
+
+---@class CAIAE_MeshOverride: CAIAE_MeshBase
+---@field flipX? boolean turn the item 90° around x (adds 90 to fx) and swap its dimensions to match
+---@field flipY? boolean turn the item 90° around y (adds 90 to fy) and swap its dimensions to match
+---@field flipZ? boolean turn the item 90° around z (adds 90 to fz) and swap its dimensions to match
+---@field flip? boolean same as `flipZ`
 
 ---@class ItemArrangeMod
 ---@field surfaceProfile table<string, table<integer, IASurfaceProfile>>
 ---@field surfaces table<string, table<integer, IASurfaceProfile>>
 ---@field arrangables table<string, IAArrangableProfile>
 ---@field arrangableProfile table<string, IAArrangableProfile>
----@field meshProfiles table<string, string | CAIAE_MeshProfile>
+---@field meshProfiles table<string, string | CAIAE_MeshProfile | CAIAE_MeshOverride>
 ---@field meshProfilesApplied boolean
+---@field meshCache table<string, CAIAE_WorldMesh | false>
 ---@field meshProfilesAdded table<string, IAArrangableProfile>
 ---@field devRestackContextMenu? fun(playerNum: integer, context: ISContextMenu, worldObjects: IsoObject[], test: boolean)
 ---@field applyMeshProfiles fun(): void
@@ -51,9 +60,30 @@ IA.meshProfilesApplied = false
 
 local p = "CAItemArrangeExtension"
 
+--- sizes and offsets measured from the models by src/generateMeshSizes.ts, for meshes no profile covers yet.
+---@type table<string, { dx: number, dy: number, dz: number, oz?: number, cx?: number, cy?: number }>
+local meshSizes = require("CAItemArrangerExtension/IAMeshSizes_Generated")
+
+--- profile name used for items arranged by their measured mesh size.
+local MEASURED = "measured"
+
+--- measured sizes outside this range are broken meshes or things that don't fit on a tile.
+local MIN_MEASURED_SIZE = 0.001
+local MAX_MEASURED_SIZE = 1
+
+--- how much a measured bottom offset may exceed the item's height before it's distrusted, in floors.
+local MAX_BOTTOM_OFFSET_SLACK = 0.05
+
+--- measured items at least this many times longer along x than along y get rotated to lie along y.
+local SKINNY_RATIO = 2
+
+--- tiles per floor, IA measures dz in floors and dx/dy in tiles.
+local FLOOR_HEIGHT = 2.449
+
 ---@class CAIAE_WorldMesh
 ---@field mesh        string
 ---@field modelScript ModelScript
+---@field sizeKeys    string[] keys into the generated sizes, most specific first
 ---@field scale?      number parsed on first use, see getMeshScale
 
 ---@class CAIAE_ScaledProfileName
@@ -65,19 +95,23 @@ local p = "CAItemArrangeExtension"
 ---@field worldMesh CAIAE_WorldMesh
 
 ---@type table<string, CAIAE_WorldMesh | false>
-local meshCache = {}
+IA.meshCache = {}
 
 local SCALE_EPSILON = 0.0001
 
 ---@type table<string, IAArrangableProfile>
 local scaledProfiles = {}
 
+--- size key -> profile built from the measured model size.
+---@type table<string, IAArrangableProfile | false>
+local measuredProfiles = {}
+
 --- mesh@profile@ratio -> profile with the mesh's overrides applied.
 ---@type table<string, IAArrangableProfile>
 local overriddenProfiles = {}
 
 --- keys of a `CAIAE_MeshProfile` that aren't profile fields.
-local MESH_PROFILE_KEYS = { profile = true, scale = true }
+local MESH_PROFILE_KEYS = { p = true, s = true }
 
 --- mesh -> candidates with their scales, built once per mesh.
 ---@type table<string, CAIAE_ScaledProfileName[]>
@@ -91,39 +125,64 @@ local function scaleDimension(value, ratio)
 end
 
 ---@param source Item | InventoryItem
----@return string | nil
+---@return string | nil, boolean | nil model, and whether it's the world static model
 local function getStaticModel(source)
   local model = source:getWorldStaticModel()
 
-  if not model or model == "" then
-    model = source:getStaticModel()
+  if model and model ~= "" then
+    return model, true
   end
 
+  model = source:getStaticModel()
+
   if not model or model == "" then
-    return nil
+    return nil, nil
   end
 
-  return model
+  return model, false
 end
 
 --- some items (e.g. weapons) only resolve their model on the instance, so fall back to a temporary one.
 ---@param item Item
----@return string | nil
+---@return string | nil, boolean | nil model, and whether it's the world static model
 local function getWorldModel(item)
-  local model = getStaticModel(item)
+  local model, isWorldStatic = getStaticModel(item)
 
   if model then
-    return model
+    return model, isWorldStatic
   end
 
-  local ok, result = pcall(function ()
+  local ok, result, resultIsWorldStatic = pcall(function ()
     local instance = instanceItem(item)
 
-    return instance and getStaticModel(instance)
+    if not instance then
+      return nil, nil
+    end
+
+    return getStaticModel(instance)
   end)
 
   -- the instance was never added to a container, so dropping the reference is enough for it to be collected
-  return ok and result or nil
+  if not ok then
+    return nil, nil
+  end
+
+  return result, resultIsWorldStatic
+end
+
+--- keys of the model in the generated sizes: the game lays models down when it draws them through the weapon path
+--- (no world static model), the generator keeps those apart.
+---@param model         string
+---@param isWorldStatic boolean
+---@return string[]
+local function getSizeKeys(model, isWorldStatic)
+  local key = (model:match("[^.]+$") or model):lower()
+
+  if isWorldStatic then
+    return { key }
+  end
+
+  return { key .. "@weapon", key }
 end
 
 ---@param line string
@@ -194,7 +253,7 @@ end
 local function getModelScale(modelScript)
   local ok, scale = pcall(function ()
     local bodies = modelScript:getLoadedScriptBodies()
-    local result = 1
+    local result = 1.0
 
     -- flat list of mod id, body, mod id, body, ...
     for i = 1, bodies:size() - 1, 2 do
@@ -217,25 +276,26 @@ end
 ---@param item Item
 ---@return CAIAE_WorldMesh | nil
 local function getWorldMesh(sm, item)
-  local model = getWorldModel(item)
+  local model, isWorldStatic = getWorldModel(item)
 
   if not model then
     return nil
   end
 
-  local worldMesh = meshCache[model]
+  local cacheKey = isWorldStatic and model or model .. "@weapon"
+  local worldMesh = IA.meshCache[cacheKey]
 
   if worldMesh == nil then
     local modelScript = sm:getModelScript(model)
     local mesh = modelScript and modelScript:getMeshName()
 
     if mesh and mesh ~= "" then
-      worldMesh = { mesh = mesh, modelScript = modelScript }
+      worldMesh = { mesh = mesh, modelScript = modelScript, sizeKeys = getSizeKeys(model, isWorldStatic == true) }
     else
       worldMesh = false
     end
 
-    meshCache[model] = worldMesh
+    IA.meshCache[cacheKey] = worldMesh
   end
 
   return worldMesh or nil
@@ -343,6 +403,134 @@ local function getScaledProfile(name, ratio)
   return scaled
 end
 
+---@param value number
+---@return boolean
+local function isMeasurable(value)
+  return value >= MIN_MEASURED_SIZE and value <= MAX_MEASURED_SIZE
+end
+
+--- cos and sin of an angle in degrees, exact for quarter turns.
+---@param degrees number
+---@return number, number
+local function cosSin(degrees)
+  -- wrapped by hand: kahlua's `%` keeps the sign of negative angles, which would miss the lookup
+  local turns = degrees / 90
+
+  if turns == math.floor(turns) then
+    turns = turns - math.floor(turns / 4) * 4
+
+    return ({ 1, 0, -1, 0 })[turns + 1], ({ 0, 1, 0, -1 })[turns + 1]
+  end
+
+  local radians = math.rad(degrees)
+
+  return math.cos(radians), math.sin(radians)
+end
+
+--- turns a point around one axis of the game's model space (y up), counter-clockwise like the renderer does.
+---@param v       number[] x, y, z
+---@param axis    integer 1 = x, 2 = y, 3 = z
+---@param degrees number
+---@return number[]
+local function rotatePoint(v, axis, degrees)
+  local cos, sin = cosSin(degrees)
+  local a, b = axis % 3 + 1, (axis + 1) % 3 + 1
+  local result = { v[1], v[2], v[3] }
+
+  result[a] = v[a] * cos - v[b] * sin
+  result[b] = v[a] * sin + v[b] * cos
+
+  return result
+end
+
+--- where a point of the item ends up once IA turns it by fx/fy/fz (`RotX(fx) * RotY(fz) * RotZ(fy)`), or back again.
+--- points are in IA's axes (x and y in tiles, z in floors), which are the model's x, -z and y.
+---@param point   number[] x, y, z
+---@param angles  number[] fx, fy, fz
+---@param inverse boolean
+---@return number[]
+local function turnPoint(point, angles, inverse)
+  local v = { point[1], point[3] * FLOOR_HEIGHT, -point[2] }
+
+  if inverse then
+    v = rotatePoint(rotatePoint(rotatePoint(v, 1, -angles[1]), 2, -angles[3]), 3, -angles[2])
+  else
+    v = rotatePoint(rotatePoint(rotatePoint(v, 3, angles[2]), 2, angles[3]), 1, angles[1])
+  end
+
+  return { v[1], -v[3], v[2] / FLOOR_HEIGHT }
+end
+
+--- sets the offsets that put the measured box's centre in the middle of the item's slot, resting on the surface.
+--- the bottom offset is only kept while it's believable (a few meshes have broken bounds).
+---@param profile IAArrangableProfile
+---@param center  number[] x, y in tiles, z in floors, relative to the item's origin
+---@param height? number the box's height in floors, defaults to the profile's dz
+local function setCenterOffsets(profile, center, height)
+  height = height or profile.dz
+
+  local mz = scaleDimension(height / 2 - center[3], 1)
+
+  profile.center = center
+  profile.mx = scaleDimension(-center[1], 1)
+  profile.my = scaleDimension(-center[2], 1)
+  profile.mz = nil
+
+  if mz ~= 0 and math.abs(mz) <= height + MAX_BOTTOM_OFFSET_SLACK then
+    profile.mz = mz
+  end
+end
+
+---@param worldMesh CAIAE_WorldMesh
+---@return table | nil, string | nil
+local function getMeshSize(worldMesh)
+  for i = 1, #worldMesh.sizeKeys do
+    local key = worldMesh.sizeKeys[i]
+
+    if meshSizes[key] then
+      return meshSizes[key], key
+    end
+  end
+
+  return nil, nil
+end
+
+--- profile from the model's measured size, lying the way the game draws it and centred in its slot.
+---@param worldMesh CAIAE_WorldMesh
+---@return IAArrangableProfile | nil
+local function getMeasuredProfile(worldMesh)
+  local size, key = getMeshSize(worldMesh)
+
+  if not size then
+    return nil
+  end
+
+  ---@cast key string
+  local profile = measuredProfiles[key]
+
+  if profile == nil then
+    if isMeasurable(size.dx) and isMeasurable(size.dy) and isMeasurable(size.dz) then
+      profile = { dx = size.dx, dy = size.dy, dz = size.dz, qz = 1 }
+
+      local center = { size.cx or 0, size.cy or 0, size.dz / 2 - (size.oz or 0) }
+
+      -- long, skinny items (rods, bats) lying along x are turned to lie along y
+      if size.dx >= size.dy * SKINNY_RATIO then
+        profile.dx, profile.dy, profile.fz = size.dy, size.dx, 90
+        center = turnPoint(center, { 0, 0, 90 }, false)
+      end
+
+      setCenterOffsets(profile, center)
+    else
+      profile = false
+    end
+
+    measuredProfiles[key] = profile
+  end
+
+  return profile or nil
+end
+
 ---@param learned table<string, CAIAE_LearnedProfile[]>
 ---@param mesh    string
 ---@return CAIAE_ScaledProfileName[]
@@ -382,6 +570,7 @@ end
 local function resolveBaseProfile(learned, worldMesh)
   local manual = IA.meshProfiles[worldMesh.mesh]
 
+  -- hand-made profiles always win, measured sizes only fill the gaps
   if type(manual) == "string" then
     return IA.arrangableProfile[manual], manual, 1
   end
@@ -393,6 +582,13 @@ local function resolveBaseProfile(learned, worldMesh)
   local candidates = getCandidates(learned, worldMesh.mesh)
 
   if #candidates == 0 then
+    -- a mesh entry without `p` (e.g. `{ qz = 4 }`) tweaks the measured profile, see applyOverrides
+    local measured = getMeasuredProfile(worldMesh)
+
+    if measured then
+      return measured, MEASURED, 1
+    end
+
     return nil, nil, nil
   end
 
@@ -427,6 +623,139 @@ local function resolveBaseProfile(learned, worldMesh)
   end
 
   return getScaledProfile(best.name, ratio), best.name, ratio
+end
+
+--- the rotation each flip key adds to, `flip` is short for `flipZ`.
+local FLIP_KEYS = { flip = "fz", flipX = "fx", flipY = "fy", flipZ = "fz" }
+
+--- sign-less rotation of `turns` quarter turns that turns axis `a` into `b`: odd turns swap the two axes, even ones
+--- leave every axis on its own.
+---@param turns number
+---@param a     integer
+---@param b     integer
+---@return number[]
+local function getQuarterTurn(turns, a, b)
+  local m = { 1, 0, 0, 0, 1, 0, 0, 0, 1 }
+
+  if math.abs(turns) % 2 == 1 then
+    m[(a - 1) * 3 + a], m[(b - 1) * 3 + b] = 0, 0
+    m[(a - 1) * 3 + b], m[(b - 1) * 3 + a] = 1, 1
+  end
+
+  return m
+end
+
+---@param a number[]
+---@param b number[]
+---@return number[]
+local function multiplyMatrices(a, b)
+  local m = {}
+
+  for row = 0, 2 do
+    for col = 1, 3 do
+      m[row * 3 + col] = a[row * 3 + 1] * b[col] + a[row * 3 + 2] * b[col + 3] + a[row * 3 + 3] * b[col + 6]
+    end
+  end
+
+  return m
+end
+
+---@param m          number[]
+---@param v          number[]
+---@param transposed boolean multiply by the inverse, which is the transpose for rotations
+---@return number[]
+local function transformVector(m, v, transposed)
+  local result = {}
+
+  for i = 1, 3 do
+    local sum = 0
+
+    for j = 1, 3 do
+      sum = sum + (transposed and m[(j - 1) * 3 + i] or m[(i - 1) * 3 + j]) * v[j]
+    end
+
+    result[i] = sum
+  end
+
+  return result
+end
+
+--- sign-less rotation matrix of a quarter-turn rotation, nil when an angle isn't a multiple of 90. Composed like
+--- Item Arrange does (`RotX(fx) * RotY(fz) * RotZ(fy)`, y up), where model x is IA's x and model z is IA's y.
+---@param fx number
+---@param fy number
+---@param fz number
+---@return number[] | nil
+local function getQuarterTurnMatrix(fx, fy, fz)
+  if fx % 90 ~= 0 or fy % 90 ~= 0 or fz % 90 ~= 0 then
+    return nil
+  end
+
+  return multiplyMatrices(getQuarterTurn(fx / 90, 2, 3),
+    multiplyMatrices(getQuarterTurn(fz / 90, 1, 3), getQuarterTurn(fy / 90, 1, 2)))
+end
+
+--- dx/dy/dz of the profile after turning it from one rotation to another, nil when either isn't quarter turns.
+---@param profile IAArrangableProfile
+---@param from    number[] fx, fy, fz
+---@param to      number[] fx, fy, fz
+---@return number?, number?, number?
+local function getTurnedDimensions(profile, from, to)
+  local before = getQuarterTurnMatrix(from[1], from[2], from[3])
+  local after = getQuarterTurnMatrix(to[1], to[2], to[3])
+
+  if not before or not after or not profile.dx or not profile.dy or not profile.dz then
+    return nil, nil, nil
+  end
+
+  -- world extents in model axis order (x, up, y), back to the unrotated model, then turned the new way
+  local world = { profile.dx, profile.dz * FLOOR_HEIGHT, profile.dy }
+  local turned = transformVector(after, transformVector(before, world, true), false)
+
+  return scaleDimension(turned[1], 1), scaleDimension(turned[3], 1), scaleDimension(turned[2] / FLOOR_HEIGHT, 1)
+end
+
+--- turns the result by the entry's flip keys, swapping the profile's dimensions to match. dimensions the entry sets
+--- itself are final, they're applied after turning. measured profiles also move their offsets along, so the item stays
+--- centred in its slot and rests on whichever side ends up at the bottom.
+---@param result  IAArrangableProfile
+---@param profile IAArrangableProfile the profile before the entry's fields, whose dimensions get turned
+---@param manual  CAIAE_MeshOverride
+local function applyFlips(result, profile, manual)
+  local from = { result.fx or 0, result.fy or 0, result.fz or 0 }
+  local to = { from[1], from[2], from[3] }
+  local index = { fx = 1, fy = 2, fz = 3 }
+  local flipped = false
+
+  for key, field in pairs(FLIP_KEYS) do
+    result[key] = nil
+
+    if manual[key] then
+      to[index[field]] = (to[index[field]] + 90) % 360
+      flipped = true
+    end
+  end
+
+  local dx, dy, dz
+
+  if flipped then
+    dx, dy, dz = getTurnedDimensions(profile, from, to)
+    result.fx, result.fy, result.fz = to[1], to[2], to[3]
+  end
+
+  if profile.center then
+    local own = { profile.fx or 0, profile.fy or 0, profile.fz or 0 }
+
+    setCenterOffsets(result, turnPoint(turnPoint(profile.center, own, true), to, false), dz or profile.dz)
+    result.mx, result.my, result.mz = manual.mx or result.mx, manual.my or result.my, manual.mz or result.mz
+  elseif dz and dz ~= profile.dz and manual.mz == nil then
+    -- the bottom offset belongs to the side the item lay on, so a turn onto another side drops it
+    result.mz = nil
+  end
+
+  if dx then
+    result.dx, result.dy, result.dz = manual.dx or dx, manual.dy or dy, manual.dz or dz
+  end
 end
 
 --- copy of the profile with the mesh entry's own fields on top, or the profile itself when the entry has none.
@@ -476,6 +805,8 @@ local function applyOverrides(mesh, profile, name, ratio)
       result[k] = v
     end
   end
+
+  applyFlips(result, profile, manual)
 
   overriddenProfiles[key] = result
 
