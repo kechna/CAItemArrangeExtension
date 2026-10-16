@@ -8,3 +8,8 @@ link1 = Workshop = https://steamcommunity.com/id/chekka-anchroviec/myworkshopfil
 - add white wooden bookshelf surfaces
 - add crafted shelves surfaces
 [ ------ ]
+
+[ v1.14.0 - 10/16/26 ]
+- HUGE UPDATE: make just about everything arrangable...
+- add way more surfaces, many might still have issues, let me know
+[ ------ ]
