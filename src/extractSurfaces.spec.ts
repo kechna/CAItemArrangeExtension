@@ -2,7 +2,7 @@ import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { extractContainerSurfaces, extractSurfaces } from "./extractSurfaces.ts";
-import { parseTileDefinitions, parseTileGeometry } from "./tileGeometry.ts";
+import { type GeometryTile, parseTileDefinitions, parseTileGeometry } from "./tileGeometry.ts";
 
 const box = (min: string, max: string): string => `
             box
@@ -104,6 +104,22 @@ describe("extractSurfaces", () => {
     expect(surfaces).toEqual([
       { zmin: 0.069, zmax: 0.347, xmin: 0.05, xmax: 1, ymin: 0.12, ymax: 0.55 },
       { zmin: 0.384, zmax: 1, xmin: 0.05, xmax: 1, ymin: 0.12, ymax: 0.55 },
+    ]);
+  });
+
+  it("only keeps a top at floor height on tall furniture", () => {
+    const tile = {
+      tileset: "test_01",
+      col: 0,
+      row: 0,
+      otherShapes: 0,
+      properties: {},
+      boxes: [{ translate: [0, 0, 0], rotate: [0, 0, 0], min: [-5000, 0, -5000], max: [5000, 24495, 5000] }],
+    } satisfies GeometryTile;
+
+    expect(extractSurfaces(tile).surfaces).toEqual([]);
+    expect(extractSurfaces(tile, true).surfaces).toEqual([
+      { zmin: 1.008, zmax: 2, xmin: 0, xmax: 1, ymin: 0, ymax: 1 },
     ]);
   });
 

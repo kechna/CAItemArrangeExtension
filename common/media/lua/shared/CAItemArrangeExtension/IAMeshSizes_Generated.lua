@@ -18,6 +18,7 @@ local MeshSizes = {
   ["82porsche911magazinewi"] = { dx = 0.2683, dy = 0.3726, dz = 0.006075 }, -- WorldItems/Magazine
   ["92amgeneralm998magazinewi"] = { dx = 0.2683, dy = 0.3726, dz = 0.006075 }, -- WorldItems/Magazine
   ["93fordcf8000magazinewi"] = { dx = 0.2683, dy = 0.3726, dz = 0.006075 }, -- WorldItems/Magazine
+  ["acorn_ground"] = { dx = 0.08452, dy = 0.05862, dz = 0.02238 }, -- WorldItems/Acorn
   ["aerosolbomb"] = { dx = 0.1343, dy = 0.1131, dz = 0.129 }, -- WorldItems/AerosolBomb
   ["aerosolbombsensor"] = { dx = 0.1343, dy = 0.1322, dz = 0.129 }, -- WorldItems/AerosolBombSensor
   ["alarmclock"] = { dx = 0.2331, dy = 0.1562, dz = 0.113, cy = 0.01414 }, -- WorldItems/AlarmClock
@@ -25,6 +26,7 @@ local MeshSizes = {
   ["alice_beltsus_ground"] = { dx = 0.4191, dy = 0.5535, dz = 0.08348 }, -- WorldItems/Clothing/ALICE_BeltSus_Ground
   ["alice_pack_ground"] = { dx = 0.3891, dy = 0.4384, dz = 0.1833, cx = -0.01543, cy = 0.02103 }, -- WorldItems/Clothing/ALICE_Pack_Ground
   ["aligatorgar_ground"] = { dx = 0.2918, dy = 1.009, dz = 0.03922, oz = 0.00357 }, -- WorldItems/Fish_AlligatorGar
+  ["allsorts"] = { dx = 0.1977, dy = 0.211, dz = 0.008322 }, -- WorldItems/AllSorts
   ["aluminum"] = { dx = 0.427, dy = 0.07804, dz = 0.03187 }, -- WorldItems/Aluminum
   ["aluminumscrap"] = { dx = 0.2593, dy = 0.2353, dz = 0.008646, cx = -0.007623, cy = 0.002784 }, -- WorldItems/Fragments_Aluminum
   ["americanladycaterpillar_ground"] = { dx = 0.03519, dy = 0.1442, dz = 0.01063 }, -- WorldItems/Insect_Caterpillar
@@ -42,6 +44,7 @@ local MeshSizes = {
   ["animalbrain"] = { dx = 0.1077, dy = 0.1334, dz = 0.02341 }, -- WorldItems/Brain
   ["ankleholster_ground"] = { dx = 0.1601, dy = 0.1245, dz = 0.02484 }, -- WorldItems/Clothing/AnkleHolster_Ground
   ["antibiotics"] = { dx = 0.1667, dy = 0.145, dz = 0.01053, cx = -0.002314, cy = -0.006596 }, -- WorldItems/Antibiotics
+  ["apple_ground"] = { dx = 0.0938, dy = 0.1057, dz = 0.04299 }, -- WorldItems/Apple
   ["apron_ground"] = { dx = 0.4308, dy = 0.9026, dz = 0.01218 }, -- WorldItems/Clothing/Bob_Apron_Ground
   ["armormag1"] = { dx = 0.2683, dy = 0.3726, dz = 0.006075 }, -- WorldItems/Magazine
   ["armormag2"] = { dx = 0.2683, dy = 0.3726, dz = 0.006075 }, -- WorldItems/Magazine
@@ -52,6 +55,7 @@ local MeshSizes = {
   ["armormag7"] = { dx = 0.2568, dy = 0.3704, dz = 0.003106 }, -- WorldItems/PaperWork
   ["athleticcup"] = { dx = 0.3348, dy = 0.3146, dz = 0.01912 }, -- WorldItems/Clothing/AthleticCup
   ["autoconmag"] = { dx = 0.2683, dy = 0.3726, dz = 0.006075 }, -- WorldItems/Magazine
+  ["avocado_ground"] = { dx = 0.09879, dy = 0.1588, dz = 0.04643 }, -- WorldItems/Avocado
   ["avocadospread_ground"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
   ["avocadospread_open"] = { dx = 0.1083, dy = 0.1083, dz = 0.06035 }, -- WorldItems/JarFood_Open
   ["awl_bone"] = { dx = 0.173, dy = 0.03722, dz = 0.00906 }, -- WorldItems/Awl_Bone
@@ -63,6 +67,8 @@ local MeshSizes = {
   ["axe_scrapcleaver@weapon"] = { dx = 0.9261, dy = 0.1805, dz = 0.03093, oz = 0.00914, cx = 0.1014, cy = 0.06577 }, -- weapons/2handed/MeatCleaverApzxe_ScrapMetal_Hand
   ["axehead_old"] = { dx = 0.2021, dy = 0.1394, dz = 0.01575 }, -- WorldItems/Axe_Forged_Head
   ["backgammonboard_ground"] = { dx = 0.5573, dy = 0.5573, dz = 0.003988 }, -- WorldItems/BackgammonBoard
+  ["bacon_ground"] = { dx = 0.1884, dy = 0.08329, dz = 0.001378 }, -- WorldItems/Bacon
+  ["baconbits_ground"] = { dx = 0.12, dy = 0.08826, dz = 0.009313, cx = 0.005578, cy = -0.002905 }, -- WorldItems/BaconBits
   ["badmintonracket@weapon"] = { dx = 0.7405, dy = 0.2263, dz = 0.01402, oz = 0.004721, cx = 0.0125 }, -- weapons/1handed/BadmintonRacket
   ["bag_gunny_ground"] = { dx = 0.4293, dy = 0.2148, dz = 0.2061 }, -- WorldItems/Clothing/SackNew
   ["bag_laundry_ground"] = { dx = 0.4293, dy = 0.2148, dz = 0.2061 }, -- WorldItems/Clothing/SackNew
@@ -72,6 +78,7 @@ local MeshSizes = {
   ["bagelsesame_ground"] = { dx = 0.1324, dy = 0.1324, dz = 0.01776 }, -- WorldItems/Bagel
   ["bagofconcretepowder"] = { dx = 0.3248, dy = 0.2127, dz = 0.1665 }, -- WorldItems/BagofConcretePowder
   ["bagofplasterpowder"] = { dx = 0.5571, dy = 0.3888, dz = 0.05787, oz = 0.01455 }, -- WorldItems/BagOfPlasterPowder
+  ["baguette_ground"] = { dx = 0.4659, dy = 0.1062, dz = 0.0265 }, -- WorldItems/Baguette
   ["baguettedough"] = { dx = 0.4659, dy = 0.1062, dz = 0.0265 }, -- WorldItems/Baguette
   ["baguettesandwich"] = { dx = 0.1152, dy = 0.4793, dz = 0.02637, oz = -0.002242 }, -- WorldItems/BaguetteSandwich
   ["bakingpan"] = { dx = 0.3356, dy = 0.3191, dz = 0.03084 }, -- WorldItems/BakingPan
@@ -80,9 +87,13 @@ local MeshSizes = {
   ["bakingtray"] = { dx = 0.706, dy = 0.456, dz = 0.02055 }, -- WorldItems/BakingTray
   ["balaclavaface_ground"] = { dx = 0.2362, dy = 0.3487, dz = 0.008109 }, -- WorldItems/BalaclavaFace_Ground
   ["balaclavafull_ground"] = { dx = 0.2362, dy = 0.3487, dz = 0.009085 }, -- WorldItems/BalaclavaFull_Ground
+  ["ballpeenhammer@weapon"] = { dx = 0.4267, dy = 0.1578, dz = 0.02095, cx = 0.003516, cy = 0.009782 }, -- weapons/1handed/BallPeenHammer_Hand
   ["ballpeenhammerforged@weapon"] = { dx = 0.4267, dy = 0.1578, dz = 0.02095, cx = 0.003516, cy = 0.009782 }, -- weapons/1handed/BallPeenHammer_Hand
   ["ballpeenhammerheadforged"] = { dx = 0.06195, dy = 0.1523, dz = 0.02021 }, -- WorldItems/BallPeenHammer_Head
   ["baloney_ground"] = { dx = 0.09362, dy = 0.2179, dz = 0.03727 }, -- WorldItems/Baloney
+  ["baloneyslice"] = { dx = 0.1581, dy = 0.1772, dz = 0.009357 }, -- WorldItems/BaloneySlice
+  ["balsamicvinegar"] = { dx = 0.0926, dy = 0.07695, dz = 0.1536 }, -- WorldItems/BalsamicVinegar
+  ["banana_ground"] = { dx = 0.1203, dy = 0.2608, dz = 0.0219 }, -- WorldItems/Banana
   ["bandage"] = { dx = 0.1333, dy = 0.0973, dz = 0.03973 }, -- WorldItems/Bandage
   ["bandagedirty"] = { dx = 0.1333, dy = 0.0973, dz = 0.03973 }, -- WorldItems/Bandage
   ["bandaid"] = { dx = 0.04028, dy = 0.1354, dz = 0.0003866 }, -- WorldItems/BandAid
@@ -93,6 +104,7 @@ local MeshSizes = {
   ["barbedwirestack"] = { dx = 0.4535, dy = 0.4779, dz = 0.1298 }, -- WorldItems/Bundle_Wire
   ["barbell_forged@weapon"] = { dx = 1.478, dy = 0.2929, dz = 0.1196, oz = -0.002693, cx = 0.01878 }, -- weapons/2handed/BarBell_Forged_Hand
   ["barbell@weapon"] = { dx = 1.485, dy = 0.3118, dz = 0.1273 }, -- weapons/2handed/BarBell
+  ["barleyseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
   ["barleysheaf"] = { dx = 0.4941, dy = 0.8869, dz = 0.03003 }, -- WorldItems/BundleGrain_Barley
   ["barleysheafdried"] = { dx = 0.4941, dy = 0.8869, dz = 0.03003 }, -- WorldItems/BundleGrain_Barley
   ["barricadecube_folded"] = { dx = 0.5682, dy = 1.106, dz = 0.08833, oz = -0.002192 }, -- WorldItems/HESCOBastion_Folded
@@ -112,29 +124,56 @@ local MeshSizes = {
   ["baseballbat_scrapsheet@weapon"] = { dx = 0.852, dy = 0.1133, dz = 0.04907, oz = 0.005076, cx = -0.02941 }, -- weapons/2handed/BaseBallBat_UnusableMetal_Hand
   ["baseballbat_spiked@weapon"] = { dx = 0.8517, dy = 0.2575, dz = 0.1242, oz = 0.03346, cx = -0.04161, cy = 0.05012 }, -- weapons/2handed/BaseBallBat_Mace_Hand
   ["baseballbat@weapon"] = { dx = 0.8385, dy = 0.09428, dz = 0.03961, cx = -0.03615 }, -- weapons/2handed/Baseballbat
+  ["basil_ground"] = { dx = 0.08373, dy = 0.1284, dz = 0.003784, cx = -0.01068, cy = 0.002997 }, -- WorldItems/HerbBasil
+  ["basilseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
   ["basketball"] = { dx = 0.276, dy = 0.276, dz = 0.1127 }, -- WorldItems/BasketBall
   ["bastingbrush"] = { dx = 0.2192, dy = 0.04594, dz = 0.009188 }, -- WorldItems/BastingBrush
   ["bathrobe_ground"] = { dx = 0.9778, dy = 0.7728, dz = 0.0145, oz = -0.002015 }, -- WorldItems/Clothing/Bob_LongJacket_Ground
   ["bathtowel"] = { dx = 0.2526, dy = 0.3136, dz = 0.01614 }, -- WorldItems/BathTowel
   ["battery"] = { dx = 0.03613, dy = 0.03613, dz = 0.05088 }, -- WorldItems/Battery
+  ["bbqsauce"] = { dx = 0.06263, dy = 0.1501, dz = 0.1255 }, -- WorldItems/BBQ_Sauce
   ["bbqstarterfluid"] = { dx = 0.1226, dy = 0.08117, dz = 0.121 }, -- WorldItems/BBQStarterFluid
+  ["beautyberries_ground"] = { dx = 0.2016, dy = 0.2041, dz = 0.02941 }, -- WorldItems/BeautyBerries
   ["beef"] = { dx = 0.264, dy = 0.2394, dz = 0.06799 }, -- WorldItems/Beef
+  ["beefjerky"] = { dx = 0.2024, dy = 0.3366, dz = 0.00675 }, -- WorldItems/BeefJerky
+  ["beerbottle"] = { dx = 0.1018, dy = 0.08812, dz = 0.1327, cx = 0.01869, cy = 0.005655 }, -- BeerBottle
+  ["beerbottleground"] = { dx = 0.09072, dy = 0.1047, dz = 0.1366 }, -- WorldItems/BeerBottle
+  ["beerbottlesixpack"] = { dx = 0.2106, dy = 0.2753, dz = 0.1464 }, -- WorldItems/BeerBottle_SixPack
+  ["beercan_ground"] = { dx = 0.1056, dy = 0.09147, dz = 0.06462 }, -- PopCanRed
+  ["beercanemptyworld"] = { dx = 0.1168, dy = 0.09322, dz = 0.06921, oz = 0.002449, cy = -0.09386 }, -- WorldItems/EmptyPopCan
+  ["beercansixpack"] = { dx = 0.263, dy = 0.1957, dz = 0.05987 }, -- WorldItems/Can_SixPack
   ["bell"] = { dx = 0.1549, dy = 0.1573, dz = 0.1089, cx = 0.002408 }, -- WorldItems/Bell
   ["bellows"] = { dx = 0.2081, dy = 0.4549, dz = 0.05794 }, -- WorldItems/Bellows
+  ["bellpepper_ground"] = { dx = 0.182, dy = 0.1141, dz = 0.05308, cy = -0.003368 }, -- WorldItems/BellPepper
+  ["bellpepperseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
   ["belt_ground"] = { dx = 0.3173, dy = 0.3077, dz = 0.05803 }, -- WorldItems/Belt
   ["benchanvil"] = { dx = 0.1537, dy = 0.4327, dz = 0.09256 }, -- WorldItems/Anvil_Jeweller
   ["benchanviluntreated"] = { dx = 0.1537, dy = 0.4327, dz = 0.09256 }, -- WorldItems/Anvil_Jeweller
+  ["berryblack"] = { dx = 0.08466, dy = 0.1635, dz = 0.04013, oz = 0.01508, cx = -0.002178, cy = -0.08093 }, -- WorldItems/BerryGeneric
+  ["berryblue"] = { dx = 0.08466, dy = 0.1635, dz = 0.04013, oz = 0.01508, cx = -0.002178, cy = -0.08093 }, -- WorldItems/BerryGeneric
+  ["berrygeneric1"] = { dx = 0.08466, dy = 0.1635, dz = 0.04013, oz = 0.01508, cx = -0.002178, cy = -0.08093 }, -- WorldItems/BerryGeneric
+  ["berrygeneric2"] = { dx = 0.08466, dy = 0.1635, dz = 0.04013, oz = 0.01508, cx = -0.002178, cy = -0.08093 }, -- WorldItems/BerryGeneric
+  ["berrygeneric3"] = { dx = 0.08466, dy = 0.1635, dz = 0.04013, oz = 0.01508, cx = -0.002178, cy = -0.08093 }, -- WorldItems/BerryGeneric
+  ["berrygeneric4"] = { dx = 0.08466, dy = 0.1635, dz = 0.04013, oz = 0.01508, cx = -0.002178, cy = -0.08093 }, -- WorldItems/BerryGeneric
+  ["berrygeneric5"] = { dx = 0.08466, dy = 0.1635, dz = 0.04013, oz = 0.01508, cx = -0.002178, cy = -0.08093 }, -- WorldItems/BerryGeneric
+  ["berrywhite"] = { dx = 0.08466, dy = 0.1635, dz = 0.04013, oz = 0.01508, cx = -0.002178, cy = -0.08093 }, -- WorldItems/BerryGeneric
   ["bicycle_sportsbottlegreenitem"] = { dx = 0.09629, dy = 0.09777, dz = 0.1123 }, -- WorldItems/Sportsbottle
   ["bicycle_sportsbottlepinkitem"] = { dx = 0.09629, dy = 0.09777, dz = 0.1123 }, -- WorldItems/Sportsbottle
   ["bicycle_sportsbottlepoliceitem"] = { dx = 0.09629, dy = 0.09777, dz = 0.1123 }, -- WorldItems/Sportsbottle
   ["biggastank"] = { dx = 0.7356, dy = 0.5149, dz = 0.1339 }, -- WorldItems/NormalGasTank1
+  ["bighikingbag_ground"] = { dx = 0.6105, dy = 0.3474, dz = 0.1172 }, -- WorldItems/Clothing/BigHikingBag_Ground
   ["bikini_ground"] = { dx = 0.5604, dy = 0.3558, dz = 0.002395, oz = -0.00398 }, -- WorldItems/Clothing/Bikini_Ground
   ["birdie"] = { dx = 0.059, dy = 0.08812, dz = 0.02687, cy = -0.004408 }, -- WorldItems/Birdie
+  ["biscuit_ground"] = { dx = 0.1194, dy = 0.1194, dz = 0.02335 }, -- WorldItems/Biscuit
+  ["blackbeans_ground"] = { dx = 0.09482, dy = 0.1379, dz = 0.008413 }, -- WorldItems/Blackbeans
   ["blackchesspieces"] = { dx = 0.1831, dy = 0.1237, dz = 0.07699 }, -- WorldItems/BlackChessPieces
   ["blackcrappie_ground"] = { dx = 0.5012, dy = 1.011, dz = 0.04017 }, -- WorldItems/Fish_Crappie_Perch
   ["blackforestcake_ground"] = { dx = 0.1043, dy = 0.1324, dz = 0.04049 }, -- WorldItems/CakeSlice_BlackForest
+  ["blacksage"] = { dx = 0.1459, dy = 0.1429, dz = 0.05824, cx = 0.003465 }, -- WorldItems/BlackSage
+  ["blacksageseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
   ["blacksmithanvil"] = { dx = 0.3073, dy = 0.8655, dz = 0.1851 }, -- WorldItems/Anvil_Jeweller
   ["blacksmithanviluntreated"] = { dx = 0.3073, dy = 0.8655, dz = 0.1851 }, -- WorldItems/Anvil_Jeweller
+  ["bleachbottle"] = { dx = 0.09811, dy = 0.1725, dz = 0.1592 }, -- BleachBottle
   ["blockanvil"] = { dx = 0.2485, dy = 0.3438, dz = 0.07493 }, -- WorldItems/Anvil_Block
   ["blockmace@weapon"] = { dx = 0.5329, dy = 0.1508, dz = 0.04307, oz = 0.009177, cx = 0.2394 }, -- weapons/1handed/ScrapMetal_MetalBlock_Hand
   ["blockmaul@weapon"] = { dx = 0.9133, dy = 0.1508, dz = 0.04487, oz = 0.007184, cx = 0.376, cy = -0.003757 }, -- weapons/2handed/ScrapMetal_MetalBlock_2Handed_Hand
@@ -173,14 +212,20 @@ local MeshSizes = {
   ["booklightblue_ground"] = { dx = 0.2678, dy = 0.4093, dz = 0.01665 }, -- WorldItems/BookOpen
   ["bookpurple_ground"] = { dx = 0.2678, dy = 0.4093, dz = 0.01665 }, -- WorldItems/BookOpen
   ["bookslipcase"] = { dx = 0.2796, dy = 0.2397, dz = 0.1185, oz = -0.002196 }, -- WorldItems/Book_Slipcase
+  ["bottlecrafted_ground"] = { dx = 0.0948, dy = 0.0948, dz = 0.1341 }, -- WorldItems/Bottle_Crafted
   ["bottleopener_keychain"] = { dx = 0.05639, dy = 0.1652, dz = 0.008565 }, -- WorldItems/BottleOpener_Keyring
   ["bottleopener"] = { dx = 0.06321, dy = 0.2399, dz = 0.006139 }, -- WorldItems/BottleOpener
+  ["bouillioncube_ground"] = { dx = 0.0442, dy = 0.0442, dz = 0.01805 }, -- WorldItems/BouillionCube
   ["bowlbraintan"] = { dx = 0.2164, dy = 0.2058, dz = 0.04541 }, -- WorldItems/BowlOfGlaze
+  ["bowlcraftedfired"] = { dx = 0.1988, dy = 0.1891, dz = 0.04171 }, -- WorldItems/Bowl_Kiln
+  ["bowlcraftedunfired"] = { dx = 0.1988, dy = 0.1891, dz = 0.04171 }, -- WorldItems/Bowl_Kiln
+  ["bowlground"] = { dx = 0.1893, dy = 0.1801, dz = 0.03973 }, -- WorldItems/Bowl
   ["bowlingballbag_ground"] = { dx = 0.1696, dy = 0.3109, dz = 0.154, cx = 0.01005, cy = 0.01085 }, -- WorldItems/Clothing/BowlingBallBag_Ground
   ["bowlingpin_nails@weapon"] = { dx = 0.1312, dy = 0.2458, dz = 0.1653, oz = -0.1214, cx = 0.006254, cy = -0.04227 }, -- weapons/1handed/BowlingPin_Nails_Hand
   ["bowlingpin@weapon"] = { dx = 0.1312, dy = 0.1312, dz = 0.1653, oz = -0.1214, cx = 0.006155 }, -- weapons/1handed/BowlingPin_Hand
   ["bowlpasta_ground"] = { dx = 0.1893, dy = 0.1801, dz = 0.04089 }, -- WorldItems/BowlRamen
   ["bowlramen_ground"] = { dx = 0.1893, dy = 0.1801, dz = 0.04089 }, -- WorldItems/BowlRamen
+  ["bowlsalad_ground"] = { dx = 0.1893, dy = 0.1801, dz = 0.04089 }, -- WorldItems/BowlRamen
   ["bowlsoup_ground"] = { dx = 0.1893, dy = 0.1801, dz = 0.03973 }, -- WorldItems/BowlSoup
   ["bowtie_ground"] = { dx = 0.1825, dy = 0.1859, dz = 0.008988 }, -- WorldItems/Clothing/BowTie_Ground
   ["boxers_ground"] = { dx = 0.3717, dy = 0.303, dz = 0.004828 }, -- WorldItems/Clothing/Boxers
@@ -217,24 +262,36 @@ local MeshSizes = {
   ["brastraplessfrillypink_ground"] = { dx = 0.5238, dy = 0.09661, dz = 0.008238, cy = -0.0528 }, -- WorldItems/Clothing/Female_Bra_Strapless_White_Ground
   ["brastraplessfrillyred_ground"] = { dx = 0.5238, dy = 0.09661, dz = 0.008238, cy = -0.0528 }, -- WorldItems/Clothing/Female_Bra_Strapless_White_Ground
   ["brastraplessredspots_ground"] = { dx = 0.5238, dy = 0.09661, dz = 0.008238, cy = -0.0528 }, -- WorldItems/Clothing/Female_Bra_Strapless_White_Ground
+  ["bread"] = { dx = 0.1448, dy = 0.1648, dz = 0.07731 }, -- WorldItems/Bread
   ["breaddough"] = { dx = 0.2822, dy = 0.2684, dz = 0.03717 }, -- WorldItems/BreadDough
   ["breadknife@weapon"] = { dx = 0.5533, dy = 0.05249, dz = 0.006545, cx = -0.02219 }, -- weapons/1handed/BreadKnife
+  ["breadslices_toast"] = { dx = 0.2442, dy = 0.2377, dz = 0.01489, cx = 0.02184, cy = -0.009855 }, -- WorldItems/BreadSlices
+  ["breadslices"] = { dx = 0.2442, dy = 0.2377, dz = 0.01489, cx = 0.02184, cy = -0.009855 }, -- WorldItems/BreadSlices
   ["bricktoys"] = { dx = 0.2058, dy = 0.1668, dz = 0.02406, cx = -0.01017, cy = 0.01019 }, -- WorldItems/BrickToys
   ["briefcase_ground"] = { dx = 0.4284, dy = 0.3406, dz = 0.03272 }, -- WorldItems/Clothing/Briefcase
   ["briefs_ground"] = { dx = 0.3255, dy = 0.2192, dz = 0.002539 }, -- WorldItems/Clothing/Male_Briefs
+  ["broadleafplantainseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
+  ["broccoli_ground"] = { dx = 0.1793, dy = 0.1539, dz = 0.06038 }, -- WorldItems/Broccoli
+  ["broccoliseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
   ["brochure"] = { dx = 0.1784, dy = 0.2646, dz = 0.03575 }, -- WorldItems/Brochure
   ["brokenfishingnet"] = { dx = 0.5142, dy = 0.5142, dz = 0.01036 }, -- WorldItems/BrokenFishingNet
   ["broom_barbedwire@weapon"] = { dx = 1.348, dy = 0.4506, dz = 0.134, oz = 0.03143, cx = 0.006543, cy = 0.005906 }, -- weapons/2handed/Broom_BarbedWire_Hand
   ["broom_twig@weapon"] = { dx = 1.313, dy = 0.2233, dz = 0.09541, oz = 0.02804, cx = -0.02193, cy = 0.01107 }, -- weapons/2handed/Broom_Crafted_Hand
   ["broom@weapon"] = { dx = 1.281, dy = 0.3535, dz = 0.04669, oz = 0.003594, cx = -0.0166, cy = 0.006612 }, -- weapons/2handed/Broom
   ["brush"] = { dx = 0.04032, dy = 0.2472, dz = 0.01647 }, -- WorldItems/Brush
+  ["brusselsprouts"] = { dx = 0.1716, dy = 0.1558, dz = 0.02459, cy = -0.02201 }, -- WorldItems/BrusselSprouts
   ["bucket_ground"] = { dx = 0.2552, dy = 0.2658, dz = 0.1139 }, -- WorldItems/Bucket
-  ["bucket"] = { dx = 0.2834, dy = 0.501, dz = 0.1205, oz = 0.06039, cy = 0.2355 }, -- Bucket
+  ["bucketcarved"] = { dx = 0.2701, dy = 0.3284, dz = 0.1436 }, -- WorldItems/BucketWood_Crude
+  ["bucketcarvedconcrete"] = { dx = 0.2701, dy = 0.3284, dz = 0.1436 }, -- WorldItems/BucketWoodCrude_Concrete
   ["bucketcarvedplaster"] = { dx = 0.2701, dy = 0.3284, dz = 0.1436 }, -- WorldItems/BucketWoodCrude_Concrete
+  ["bucketforged"] = { dx = 0.2598, dy = 0.2702, dz = 0.1122 }, -- WorldItems/Bucket_Forged
+  ["bucketfullconcrete_ground"] = { dx = 0.2552, dy = 0.2658, dz = 0.1139 }, -- WorldItems/BucketFull
   ["bucketfullplaster_ground"] = { dx = 0.2552, dy = 0.2658, dz = 0.1139 }, -- WorldItems/BucketFull
-  ["bucketlargewood_hand"] = { dx = 0.3868, dy = 0.3954, dz = 0.2685 }, -- WorldItems/Bucket_Quench_HandleUp
+  ["bucketlargewood"] = { dx = 0.3868, dy = 0.3994, dz = 0.1659 }, -- WorldItems/Bucket_Quench
   ["bucketmace_metal@weapon"] = { dx = 0.9306, dy = 0.3291, dz = 0.1954, oz = 0.05926, cx = 0.3562 }, -- weapons/2handed/ConcreteClubMetal_Bucket_Hand
   ["bucketmace_wood@weapon"] = { dx = 0.9298, dy = 0.3291, dz = 0.1953, oz = 0.05624, cx = 0.3539, cy = -0.002794 }, -- weapons/2handed/ConcreteClubWood_Bucket_Hand
+  ["bucketofsoup"] = { dx = 0.2552, dy = 0.2658, dz = 0.1139 }, -- WorldItems/BucketFull
+  ["bucketwood"] = { dx = 0.2616, dy = 0.2702, dz = 0.1122 }, -- WorldItems/Bucket_Quench
   ["buckle"] = { dx = 0.1099, dy = 0.0907, dz = 0.007073 }, -- WorldItems/BeltBuckle_Forged
   ["bull_head_black"] = { dx = 0.3689, dy = 0.3627, dz = 0.09221, cx = -0.005312, cy = -0.003178 }, -- WorldItems/Bull_Head
   ["bull_head_brown"] = { dx = 0.3689, dy = 0.3627, dz = 0.09221, cx = -0.005312, cy = -0.003178 }, -- WorldItems/Bull_Head
@@ -246,17 +303,23 @@ local MeshSizes = {
   ["bunnysuitblack_ground"] = { dx = 0.3282, dy = 0.5181, dz = 0.02551 }, -- WorldItems/Clothing/BunnyOutfit_Ground
   ["bunnysuitpink_ground"] = { dx = 0.3282, dy = 0.5181, dz = 0.02551 }, -- WorldItems/Clothing/BunnyOutfit_Ground
   ["bunnytail_ground"] = { dx = 0.1158, dy = 0.1076, dz = 0.04393 }, -- WorldItems/Clothing/BunnyTail
+  ["buns_hamburger_single"] = { dx = 0.1994, dy = 0.1898, dz = 0.03515, cy = 0.005937 }, -- WorldItems/Buns_Hamburger_Single
   ["buns_hamburger"] = { dx = 0.3539, dy = 0.3545, dz = 0.03515 }, -- WorldItems/Buns_Hamburger
+  ["buns_hotdog_single"] = { dx = 0.2782, dy = 0.08386, dz = 0.03066 }, -- WorldItems/Buns_Hotdog_Single
   ["buns_hotdog"] = { dx = 0.2782, dy = 0.2394, dz = 0.03066 }, -- WorldItems/Buns_Hotdog
   ["burger_ground"] = { dx = 0.1868, dy = 0.1853, dz = 0.03917 }, -- WorldItems/Burger
   ["burlappiece"] = { dx = 0.5554, dy = 0.7062, dz = 0.01948 }, -- WorldItems/BurlapFabric_Piece
   ["burrito_ground"] = { dx = 0.3043, dy = 0.1188, dz = 0.02518 }, -- WorldItems/Burrito
   ["businesscard"] = { dx = 0.1311, dy = 0.08199, dz = 0.001121 }, -- WorldItems/BusinessCard
+  ["butter"] = { dx = 0.3506, dy = 0.13, dz = 0.03993 }, -- WorldItems/Butter
   ["butterknife_gold@weapon"] = { dx = 0.3268, dy = 0.03223, dz = 0.00463, cx = 0.008632, cy = -0.003886 }, -- weapons/1handed/ButterKnife
   ["butterknife_silver@weapon"] = { dx = 0.3268, dy = 0.03223, dz = 0.00463, cx = 0.008632, cy = -0.003886 }, -- weapons/1handed/ButterKnife
   ["butterknife@weapon"] = { dx = 0.3268, dy = 0.03223, dz = 0.00463, cx = 0.008632, cy = -0.003886 }, -- weapons/1handed/ButterKnife
   ["button"] = { dx = 0.07787, dy = 0.07907, dz = 0.003055 }, -- WorldItems/Button
+  ["cabbage_ground"] = { dx = 0.1918, dy = 0.1966, dz = 0.0742, cx = 0.002374, cy = -0.004401 }, -- WorldItems/Cabbage
   ["cabbageroll"] = { dx = 0.1634, dy = 0.07091, dz = 0.0149 }, -- WorldItems/CabbageRoll
+  ["cabbageseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
+  ["caffeinepills"] = { dx = 0.06731, dy = 0.06731, dz = 0.04906 }, -- CaffinePills
   ["cake"] = { dx = 0.3065, dy = 0.3065, dz = 0.02403 }, -- WorldItems/Cake
   ["cakebatter"] = { dx = 0.3517, dy = 0.3116, dz = 0.09946, cx = -0.01039, cy = -0.002989 }, -- WorldItems/CakeBatter
   ["cakepreparation"] = { dx = 0.3075, dy = 0.3075, dz = 0.02212 }, -- WorldItems/CakePreparation
@@ -287,19 +350,46 @@ local MeshSizes = {
   ["canclosedtomatoes"] = { dx = 0.1066, dy = 0.1066, dz = 0.06097 }, -- CanClosed
   ["candiedapple"] = { dx = 0.1203, dy = 0.1282, dz = 0.07024 }, -- WorldItems/CandiedApple
   ["candleground"] = { dx = 0.2403, dy = 0.03063, dz = 0.01444 }, -- WorldItems/Candle
+  ["candycane"] = { dx = 0.2645, dy = 0.08013, dz = 0.007295, cy = 0.004656 }, -- WorldItems/CandyCane
+  ["candycaramels"] = { dx = 0.1088, dy = 0.0998, dz = 0.007403 }, -- WorldItems/Candy_Novapops
+  ["candycorn_ground"] = { dx = 0.09471, dy = 0.1306, dz = 0.01516 }, -- WorldItems/CandyCorn
+  ["candyfruitslices_ground"] = { dx = 0.1006, dy = 0.1033, dz = 0.004975 }, -- WorldItems/CandyFruitSlices
   ["candygummyfish"] = { dx = 0.115, dy = 0.1141, dz = 0.003046, cx = -0.01068, cy = 0.003047 }, -- WorldItems/Candy_GummyFish
+  ["candymolasses"] = { dx = 0.1426, dy = 0.1489, dz = 0.009665, cy = -0.01144 }, -- WorldItems/Candy_Molasses
+  ["candynovapops"] = { dx = 0.1088, dy = 0.0998, dz = 0.007403 }, -- WorldItems/Candy_Novapops
   ["candypackage"] = { dx = 0.3329, dy = 0.2209, dz = 0.0189, cx = 0.03922, cy = -0.005582 }, -- WorldItems/CandyPackage
   ["cannedsardines_ground"] = { dx = 0.1465, dy = 0.0876, dz = 0.01597 }, -- WorldItems/CannedSardines
+  ["cannedsardines_open_ground"] = { dx = 0.1465, dy = 0.0876, dz = 0.03832 }, -- WorldItems/CannedSardinesOpen
   ["canoepadel@weapon"] = { dx = 1.177, dy = 0.2085, dz = 0.01713, cx = -0.009886 }, -- weapons/2handed/CanoePadel
   ["canoepadelx2_broken@weapon"] = { dx = 1.06, dy = 0.2085, dz = 0.01713, cx = -0.06815 }, -- weapons/2handed/CanoePadelvX2_Broken_Hand
   ["canoepadelx2@weapon"] = { dx = 1.592, dy = 0.2089, dz = 0.01713, cx = -0.0184 }, -- weapons/2handed/CanoePadelX2
   ["canofoats"] = { dx = 0.1935, dy = 0.1892, dz = 0.1036 }, -- WorldItems/CanOfOats
+  ["canopen"] = { dx = 0.1286, dy = 0.1616, dz = 0.08634, cx = 0.01101, cy = -0.02748 }, -- CanOpen
+  ["canopenbolognese"] = { dx = 0.1286, dy = 0.1616, dz = 0.08634, cx = 0.01101, cy = -0.02748 }, -- CanOpen
+  ["canopencarrots"] = { dx = 0.1286, dy = 0.1616, dz = 0.08634, cx = 0.01101, cy = -0.02748 }, -- CanOpen
+  ["canopenchilli"] = { dx = 0.1286, dy = 0.1616, dz = 0.08634, cx = 0.01101, cy = -0.02748 }, -- CanOpen
+  ["canopencorn"] = { dx = 0.1286, dy = 0.1616, dz = 0.08634, cx = 0.01101, cy = -0.02748 }, -- CanOpen
+  ["canopencornerbeef"] = { dx = 0.1286, dy = 0.1616, dz = 0.08634, cx = 0.01101, cy = -0.02748 }, -- CanOpen
+  ["canopendogfood"] = { dx = 0.1286, dy = 0.1616, dz = 0.08634, cx = 0.01101, cy = -0.02748 }, -- CanOpen
+  ["canopenerground"] = { dx = 0.2518, dy = 0.08566, dz = 0.02396 }, -- WorldItems/CanOpener
   ["canopenerp38"] = { dx = 0.06094, dy = 0.1039, dz = 0.008389 }, -- WorldItems/CanopenerP38
+  ["canopenfruitbeverage_ground"] = { dx = 0.1286, dy = 0.1616, dz = 0.08634, cx = 0.01101, cy = -0.02748 }, -- CanOpen
+  ["canopenfruitcocktail_ground"] = { dx = 0.1286, dy = 0.1616, dz = 0.08634, cx = 0.01101, cy = -0.02748 }, -- CanOpen
+  ["canopenmilk"] = { dx = 0.1286, dy = 0.1616, dz = 0.08634, cx = 0.01101, cy = -0.02748 }, -- CanOpen
+  ["canopenmushroom"] = { dx = 0.1286, dy = 0.1616, dz = 0.08634, cx = 0.01101, cy = -0.02748 }, -- CanOpen
+  ["canopenpeaches_ground"] = { dx = 0.1286, dy = 0.1616, dz = 0.08634, cx = 0.01101, cy = -0.02748 }, -- CanOpen
+  ["canopenpeas"] = { dx = 0.1286, dy = 0.1616, dz = 0.08634, cx = 0.01101, cy = -0.02748 }, -- CanOpen
+  ["canopenpineapple_ground"] = { dx = 0.1286, dy = 0.1616, dz = 0.08634, cx = 0.01101, cy = -0.02748 }, -- CanOpen
+  ["canopenpotatoes"] = { dx = 0.1286, dy = 0.1616, dz = 0.08634, cx = 0.01101, cy = -0.02748 }, -- CanOpen
   ["canopensoup"] = { dx = 0.1286, dy = 0.1616, dz = 0.08634, cx = 0.01101, cy = -0.02748 }, -- CanOpen
+  ["canopentomatoes"] = { dx = 0.1286, dy = 0.1616, dz = 0.08634, cx = 0.01101, cy = -0.02748 }, -- CanOpen
   ["canpipe"] = { dx = 0.09393, dy = 0.17, dz = 0.04568, oz = -0.002293 }, -- WorldItems/Pipe_Can
+  ["canteenclay_ground"] = { dx = 0.2653, dy = 0.3891, dz = 0.02258 }, -- WorldItems/Canteen_Clay
   ["canteencowboy_ground"] = { dx = 0.1959, dy = 0.2352, dz = 0.0321, cx = -0.015, cy = 0.03906 }, -- WorldItems/Canteen_Cowboy_Floor
+  ["capers"] = { dx = 0.1137, dy = 0.1324, dz = 0.007192 }, -- WorldItems/Capers
   ["capguncap"] = { dx = 0.02445, dy = 0.02571, dz = 0.009382, oz = -0.00318 }, -- WorldItems/SnapCap
   ["capguncapbox"] = { dx = 0.09927, dy = 0.1403, dz = 0.02418 }, -- WorldItems/Box_SnapCaps
+  ["carbattery"] = { dx = 0.2238, dy = 0.3297, dz = 0.09846 }, -- WorldItems/CarBattery
   ["carbatterycharger"] = { dx = 0.4831, dy = 0.5584, dz = 0.07427 }, -- WorldItems/CarBatteryCharger
   ["card_birthday"] = { dx = 0.169, dy = 0.1923, dz = 0.108 }, -- WorldItems/GreetingsCard
   ["card_easter"] = { dx = 0.169, dy = 0.1923, dz = 0.108 }, -- WorldItems/GreetingsCard
@@ -309,6 +399,8 @@ local MeshSizes = {
   ["card_stpatrick"] = { dx = 0.169, dy = 0.1923, dz = 0.108 }, -- WorldItems/GreetingsCard
   ["card_sympathy"] = { dx = 0.169, dy = 0.1923, dz = 0.108 }, -- WorldItems/GreetingsCard
   ["carddeck"] = { dx = 0.2868, dy = 0.307, dz = 0.01542, cx = 0.0195, cy = -0.01506 }, -- WorldItems/CardDeck
+  ["cardoor"] = { dx = 0.6019, dy = 0.663, dz = 0.04592 }, -- WorldItems/CarDoor
+  ["carhood"] = { dx = 0.8764, dy = 0.8794, dz = 0.01479, oz = -0.01823, cx = -0.04293, cy = 0.04613 }, -- WorldItems/CarHood
   ["carjack"] = { dx = 0.5164, dy = 0.3691, dz = 0.08935 }, -- WorldItems/CarJack
   ["carkeys"] = { dx = 0.2647, dy = 0.1737, dz = 0.01895, oz = 0.00949, cx = -0.007757, cy = -0.01369 }, -- WorldItems/CarKeys
   ["carlightbarblue"] = { dx = 0.2718, dy = 1.313, dz = 0.1115, cx = 0.02049, cy = -0.09132 }, -- WorldItems/Lightbar
@@ -317,7 +409,10 @@ local MeshSizes = {
   ["carlightbaryellow"] = { dx = 0.1631, dy = 0.7878, dz = 0.06688, cx = 0.0123, cy = -0.05479 }, -- WorldItems/Lightbar
   ["carpentrychisel@weapon"] = { dx = 0.4883, dy = 0.04441, dz = 0.01716, cx = 0.182, cy = -0.005165 }, -- weapons/1handed/ChiselWoodHandle_Forged_Hand
   ["carrotcake_ground"] = { dx = 0.09591, dy = 0.1332, dz = 0.02834 }, -- WorldItems/CakeSlice
+  ["carrots_ground"] = { dx = 0.1825, dy = 0.2894, dz = 0.02361 }, -- WorldItems/Carrots
+  ["carrotseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
   ["carseat"] = { dx = 0.4286, dy = 0.6043, dz = 0.282 }, -- WorldItems/CarSeat
+  ["cartrunklid"] = { dx = 0.8356, dy = 0.6362, dz = 0.02795 }, -- WorldItems/CarTrunkLid
   ["carvingfork_hand@weapon"] = { dx = 0.3955, dy = 0.03911, dz = 0.01185, cx = 0.1337, cy = -0.002224 }, -- weapons/1handed/CarvingFork_Hand
   ["carwindow"] = { dx = 0.631, dy = 0.2959, dz = 0.01279, cy = -0.0176 }, -- WorldItems/CarWindshield
   ["carwindshield"] = { dx = 0.8764, dy = 0.411, dz = 0.01777, cy = -0.0176 }, -- WorldItems/CarWindshield
@@ -327,6 +422,10 @@ local MeshSizes = {
   ["catfoodbag"] = { dx = 0.222, dy = 0.1178, dz = 0.1149 }, -- WorldItems/PetFoodBag
   ["cattoy"] = { dx = 0.1133, dy = 0.4076, dz = 0.04053 }, -- WorldItems/CatToy
   ["cattreats"] = { dx = 0.1366, dy = 0.1356, dz = 0.005301 }, -- WorldItems/CatTreats
+  ["cauliflower_ground"] = { dx = 0.1855, dy = 0.2131, dz = 0.06638 }, -- WorldItems/Cauliflower
+  ["cauliflowerseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
+  ["caviar"] = { dx = 0.2211, dy = 0.1379, dz = 0.02245 }, -- WorldItems/Caviar
+  ["cdplayer"] = { dx = 0.1955, dy = 0.2055, dz = 0.01816 }, -- WorldItems/CDplayer
   ["ceramiccrucible_iron"] = { dx = 0.314, dy = 0.2874, dz = 0.1422 }, -- WorldItems/CrucibleCeramic_Smelted
   ["ceramiccrucible_steel"] = { dx = 0.314, dy = 0.2874, dz = 0.1422 }, -- WorldItems/CrucibleCeramic_Smelted
   ["ceramiccrucible"] = { dx = 0.314, dy = 0.2874, dz = 0.1422 }, -- WorldItems/Crucible_Ceramic
@@ -341,16 +440,22 @@ local MeshSizes = {
   ["chainmail_sleeve_r"] = { dx = 0.1675, dy = 0.6095, dz = 0.009231, oz = -0.002157 }, -- WorldItems/Clothing/Chainmail_Sleeve_R
   ["chairleg_nails@weapon"] = { dx = 0.5995, dy = 0.2973, dz = 0.149, oz = 0.04618, cx = 0.0217, cy = -0.01817 }, -- weapons/1handed/ChairLeg_Nails_Hand
   ["chairleg@weapon"] = { dx = 0.5633, dy = 0.147, dz = 0.01928, oz = 0.003041, cx = 0.02539, cy = -0.0558 }, -- weapons/1handed/ChairLeg
+  ["chamomile"] = { dx = 0.2755, dy = 0.3533, dz = 0.02736 }, -- WorldItems/Chamomile_Fresh
+  ["chamomiledried"] = { dx = 0.2637, dy = 0.3459, dz = 0.02736 }, -- WorldItems/Chamomile_Dried_Rotten
+  ["chamomileseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
   ["champagne"] = { dx = 0.07074, dy = 0.07074, dz = 0.1055 }, -- WorldItems/Champagne
   ["champagneglass"] = { dx = 0.07948, dy = 0.07559, dz = 0.1069 }, -- WorldItems/GlassChampagne
   ["channelcatfish_ground"] = { dx = 0.3859, dy = 1.104, dz = 0.03594 }, -- WorldItems/Fish_CatFish
   ["charcoal_ground"] = { dx = 0.1262, dy = 0.1994, dz = 0.02691 }, -- WorldItems/Charcoal
   ["charcoalwood"] = { dx = 0.3057, dy = 0.3881, dz = 0.0238, cy = 0.004929 }, -- WorldItems/Charcoal_Wood
   ["checkerboard_ground"] = { dx = 0.5573, dy = 0.5573, dz = 0.003988 }, -- WorldItems/CheckerBoard
+  ["cheese"] = { dx = 0.1133, dy = 0.1855, dz = 0.04843 }, -- WorldItems/Cheese
   ["cheesecake_ground"] = { dx = 0.09591, dy = 0.1332, dz = 0.02834 }, -- WorldItems/CakeSlice
   ["cheesecloth_ground"] = { dx = 0.2212, dy = 0.2396, dz = 0.008915 }, -- WorldItems/CheeseCloth
   ["cheesegrater"] = { dx = 0.09338, dy = 0.1307, dz = 0.09732 }, -- WorldItems/CheeseGrater
+  ["cheesepowdered"] = { dx = 0.1288, dy = 0.2231, dz = 0.005796 }, -- WorldItems/CheesePowdered
   ["cheesesandwich"] = { dx = 0.1423, dy = 0.1879, dz = 0.01556 }, -- WorldItems/CheeseSandwich
+  ["cherry_ground"] = { dx = 0.1377, dy = 0.2083, dz = 0.02918 }, -- WorldItems/Cherry
   ["chestrig_ground"] = { dx = 0.4097, dy = 0.4907, dz = 0.07676, oz = -0.002884 }, -- WorldItems/Clothing/ChestRig_Ground
   ["chestrigtarp_ground"] = { dx = 0.4097, dy = 0.4907, dz = 0.07676, oz = -0.002884 }, -- WorldItems/Clothing/ChestRig_Ground
   ["chicken_chick_skull"] = { dx = 0.1379, dy = 0.07234, dz = 0.0305, cx = -0.00753 }, -- WorldItems/Chicken_Chick_Skull
@@ -362,14 +467,30 @@ local MeshSizes = {
   ["chicken_head_white"] = { dx = 0.1879, dy = 0.1397, dz = 0.02532, cx = 0.009019, cy = -0.007482 }, -- WorldItems/Chicken_Head
   ["chicken_skull"] = { dx = 0.1683, dy = 0.08837, dz = 0.03726, cx = -0.009185, cy = -0.003355 }, -- WorldItems/Chicken_Skull
   ["chicken"] = { dx = 0.2122, dy = 0.145, dz = 0.01579 }, -- WorldItems/Chicken
+  ["chickenfoot_ground"] = { dx = 0.2306, dy = 0.0831, dz = 0.01384 }, -- WorldItems/ChickenFoot
   ["chickenfried_ground"] = { dx = 0.2357, dy = 0.09014, dz = 0.04515 }, -- WorldItems/ChickenFried
+  ["chickennuggets_ground"] = { dx = 0.1758, dy = 0.161, dz = 0.007118 }, -- WorldItems/ChickenNuggets
+  ["chickenwhole"] = { dx = 0.3185, dy = 0.4256, dz = 0.08089, oz = -0.002287 }, -- WorldItems/ChickenWhole
   ["childspicturebook"] = { dx = 0.339, dy = 0.2344, dz = 0.01407 }, -- WorldItems/Book_Childrens
   ["chippedstone"] = { dx = 0.1127, dy = 0.2085, dz = 0.01884 }, -- WorldItems/ChippedStone
   ["chips"] = { dx = 0.2949, dy = 0.2175, dz = 0.02522 }, -- WorldItems/Chips
   ["chips2"] = { dx = 0.3033, dy = 0.2237, dz = 0.02594 }, -- WorldItems/Chips2
   ["chips3"] = { dx = 0.3033, dy = 0.2237, dz = 0.02594 }, -- WorldItems/Chips3
   ["chips4"] = { dx = 0.3033, dy = 0.2237, dz = 0.02594 }, -- WorldItems/Chips4
+  ["chivesseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
+  ["chocolate_butterchunkers"] = { dx = 0.08352, dy = 0.3385, dz = 0.01273 }, -- WorldItems/Chocolate_Butterchunkers
+  ["chocolate_candy"] = { dx = 0.1551, dy = 0.1938, dz = 0.009494 }, -- WorldItems/Chocolate_Candy
+  ["chocolate_crackle"] = { dx = 0.09063, dy = 0.2676, dz = 0.01144 }, -- WorldItems/Chocolate_Crackle
+  ["chocolate_deux"] = { dx = 0.09735, dy = 0.2676, dz = 0.01144 }, -- WorldItems/Chocolate_Deux
+  ["chocolate_galacticdairy"] = { dx = 0.06814, dy = 0.261, dz = 0.01636 }, -- WorldItems/Chocolate_GalacticDairy
+  ["chocolate_royspbpucks"] = { dx = 0.1015, dy = 0.2547, dz = 0.01144, cx = 0.003026, cy = -0.004983 }, -- WorldItems/Chocolate_RoysPBPucks
+  ["chocolate_smirkers"] = { dx = 0.06814, dy = 0.2564, dz = 0.01636 }, -- WorldItems/Chocolate_Smirkers
+  ["chocolate_sniksnak"] = { dx = 0.1334, dy = 0.2369, dz = 0.009676 }, -- WorldItems/Chocolate_SnikSnak
+  ["chocolate"] = { dx = 0.1843, dy = 0.3199, dz = 0.01579 }, -- WorldItems/Chocolate
   ["chocolatecake_ground"] = { dx = 0.09591, dy = 0.1332, dz = 0.02834 }, -- WorldItems/CakeSlice
+  ["chocolatechips_ground"] = { dx = 0.2052, dy = 0.1746, dz = 0.02524, cx = -0.003613, cy = -0.002157 }, -- WorldItems/ChoccolateChips
+  ["chocolatecoveredcoffeebeans_ground"] = { dx = 0.08017, dy = 0.1008, dz = 0.0101 }, -- WorldItems/ChocolateCoveredCoffeeBeans
+  ["chocolateheartbox_ground"] = { dx = 0.2511, dy = 0.2655, dz = 0.03124 }, -- WorldItems/ChocolateHeartbox
   ["choker_amber_ground"] = { dx = 0.1478, dy = 0.1771, dz = 0.001053 }, -- WorldItems/Choker_Stone_Ground
   ["choker_diamond_ground"] = { dx = 0.1478, dy = 0.1771, dz = 0.001053 }, -- WorldItems/Choker_Stone_Ground
   ["choker_ground"] = { dx = 0.1478, dy = 0.157, dz = 1.116e-7 }, -- WorldItems/Choker_Ground
@@ -393,10 +514,13 @@ local MeshSizes = {
   ["cigarbox"] = { dx = 0.1296, dy = 0.2226, dz = 0.02864 }, -- WorldItems/CigarBox
   ["cigarette2"] = { dx = 0.1103, dy = 0.01129, dz = 0.004392 }, -- WorldItems/Cigarette
   ["cigarettecarton"] = { dx = 0.1216, dy = 0.3004, dz = 0.0367 }, -- WorldItems/Cigarette_Carton
+  ["cigarettepack_closed"] = { dx = 0.1306, dy = 0.08063, dz = 0.01313 }, -- WorldItems/CigarettePack_Closed
   ["cigarettepack_ground"] = { dx = 0.1166, dy = 0.1159, dz = 0.01719 }, -- WorldItems/CigarettePack
   ["cigaretterolled"] = { dx = 0.1028, dy = 0.01293, dz = 0.005325 }, -- WorldItems/CigaretteRolled
   ["cigaretterollingpapers"] = { dx = 0.2106, dy = 0.1677, dz = 0.01313, oz = -0.003263, cx = 0.02054 }, -- WorldItems/CigaretteRollingPaper
   ["cigarillo"] = { dx = 0.1324, dy = 0.01355, dz = 0.00527 }, -- WorldItems/Cigarillo
+  ["cilantroseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
+  ["cinnamon"] = { dx = 0.1094, dy = 0.1751, dz = 0.01772 }, -- WorldItems/Cinnamon
   ["cinnamonroll_ground"] = { dx = 0.1393, dy = 0.1391, dz = 0.02767, cx = -0.003178, cy = -0.004034 }, -- WorldItems/CinnamonRoll
   ["circularsawblade_half"] = { dx = 0.267, dy = 0.1335, dz = 0.002431 }, -- WorldItems/CircularSawBlade_Half
   ["circularsawblade"] = { dx = 0.267, dy = 0.267, dz = 0.002431 }, -- WorldItems/CircularSawBlade
@@ -423,10 +547,14 @@ local MeshSizes = {
   ["claytileunfired"] = { dx = 0.3382, dy = 0.3382, dz = 0.007404 }, -- WorldItems/TileClay
   ["claytool"] = { dx = 0.04219, dy = 0.2123, dz = 0.002291 }, -- WorldItems/ClaySculptingTool
   ["claytool2"] = { dx = 0.02599, dy = 0.2024, dz = 0.003424 }, -- WorldItems/ClaySculptingTool_2
+  ["cleaningliquid"] = { dx = 0.1382, dy = 0.08813, dz = 0.1302 }, -- WorldItems/CleaningLiquid
   ["clipboard"] = { dx = 0.2602, dy = 0.4154, dz = 0.007433 }, -- WorldItems/Clipboard
+  ["clubhammer@weapon"] = { dx = 0.4298, dy = 0.1446, dz = 0.03284, cx = 0.002227 }, -- weapons/1handed/ClubHammer
   ["clubhammerforged@weapon"] = { dx = 0.4298, dy = 0.1446, dz = 0.03284, oz = 0.003648, cx = 0.002227 }, -- weapons/1handed/HammerClub_Forged_Hand
   ["clubhammerforgedhead"] = { dx = 0.09173, dy = 0.134, dz = 0.03043 }, -- WorldItems/HammerClubHead_Forged
   ["cockerel_skull"] = { dx = 0.1847, dy = 0.09721, dz = 0.04112, cx = -0.01425 }, -- WorldItems/Cockerel_Skull
+  ["cockroach_ground"] = { dx = 0.07238, dy = 0.104, dz = 0.007733 }, -- WorldItems/Cockroach
+  ["cocoapowder_ground"] = { dx = 0.1144, dy = 0.1199, dz = 0.07328 }, -- WorldItems/CocoaPowder
   ["codpiece"] = { dx = 0.3488, dy = 0.2572, dz = 0.02736, cy = -0.003533 }, -- WorldItems/Clothing/CodPiece_Ground
   ["coffee"] = { dx = 0.1467, dy = 0.1246, dz = 0.1046 }, -- WorldItems/Coffee
   ["coffeeliquerbottle"] = { dx = 0.1231, dy = 0.05121, dz = 0.09016 }, -- WhiskeyBottle
@@ -435,7 +563,10 @@ local MeshSizes = {
   ["cologne"] = { dx = 0.118, dy = 0.08131, dz = 0.07716 }, -- WorldItems/Cologne
   ["comb"] = { dx = 0.1998, dy = 0.07545, dz = 0.001518 }, -- WorldItems/Comb
   ["combinationpadlock"] = { dx = 0.1045, dy = 0.04852, dz = 0.08386 }, -- WorldItems/CombinationPadlock
+  ["comfreyseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
   ["comicbookground"] = { dx = 0.3716, dy = 0.2711, dz = 0.006536, cy = -0.9529 }, -- WorldItems/MagazineOpen
+  ["commonmallow"] = { dx = 0.2533, dy = 0.2752, dz = 0.01013, cx = 0.02596 }, -- WorldItems/CommonMallow
+  ["commonmallowseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
   ["compassdirectional"] = { dx = 0.0924, dy = 0.1172, dz = 0.00819, cx = -0.002693, cy = -0.002342 }, -- WorldItems/CompassDirectional
   ["compassgeometry_world"] = { dx = 0.1182, dy = 0.2651, dz = 0.006809 }, -- WorldItems/CompassGeometry
   ["compostbag"] = { dx = 0.4098, dy = 0.3339, dz = 0.1325 }, -- WorldItems/CompostBag
@@ -450,8 +581,12 @@ local MeshSizes = {
   ["cookiejelly"] = { dx = 0.1356, dy = 0.1356, dz = 0.01331 }, -- WorldItems/CookieJelly
   ["cookiessugar_ground"] = { dx = 0.1644, dy = 0.1847, dz = 0.01416 }, -- WorldItems/Cookies
   ["cookingpotforged_pastaground"] = { dx = 0.3929, dy = 0.4235, dz = 0.136, cx = 0.009554, cy = -0.003306 }, -- WorldItems/CookingPot_Forged_Food
+  ["cookingpotforged_riceground"] = { dx = 0.3929, dy = 0.4235, dz = 0.136, cx = 0.009554, cy = -0.003306 }, -- WorldItems/CookingPot_Forged_Food
   ["cookingpotforged_soupground"] = { dx = 0.3929, dy = 0.4235, dz = 0.136, cx = 0.009554, cy = -0.003306 }, -- WorldItems/CookingPot_Forged_Food
+  ["cookingpotforged_stewground"] = { dx = 0.3929, dy = 0.4235, dz = 0.136, cx = 0.009554, cy = -0.003306 }, -- WorldItems/CookingPot_Forged_Food
+  ["cookingpotforgedground"] = { dx = 0.3929, dy = 0.4235, dz = 0.136, cx = 0.009554, cy = -0.003306 }, -- WorldItems/CookingPot_Forged
   ["cookingpotground_fluid"] = { dx = 0.3784, dy = 0.4171, dz = 0.132 }, -- WorldItems/CookingPotFull
+  ["cookingpotground"] = { dx = 0.3784, dy = 0.4171, dz = 0.132 }, -- WorldItems/CookingPot
   ["cookingpotpasta_ground"] = { dx = 0.3784, dy = 0.4171, dz = 0.132 }, -- WorldItems/CookingPotFull
   ["cookingpotrice_ground"] = { dx = 0.3784, dy = 0.4171, dz = 0.132 }, -- WorldItems/CookingPotFull
   ["cookingpotsoup_ground"] = { dx = 0.3784, dy = 0.4171, dz = 0.132 }, -- WorldItems/CookingPotFull
@@ -463,8 +598,15 @@ local MeshSizes = {
   ["cordlessphone"] = { dx = 0.0993, dy = 0.3916, dz = 0.02818 }, -- WorldItems/CordlessPhone
   ["cork"] = { dx = 0.05318, dy = 0.03852, dz = 0.01569 }, -- WorldItems/Cork
   ["corkscrew"] = { dx = 0.1134, dy = 0.2106, dz = 0.01453 }, -- WorldItems/Corkscrew
+  ["corn_ground"] = { dx = 0.1332, dy = 0.3223, dz = 0.03917, cy = -0.00221 }, -- WorldItems/Corn
+  ["cornbread_ground"] = { dx = 0.1163, dy = 0.1008, dz = 0.02716 }, -- WorldItems/Cornbread
   ["cornchips"] = { dx = 0.2949, dy = 0.2175, dz = 0.02522 }, -- WorldItems/Chips
   ["corndog_ground"] = { dx = 0.06035, dy = 0.3737, dz = 0.02366 }, -- WorldItems/Corndog
+  ["cornflour"] = { dx = 0.1911, dy = 0.1014, dz = 0.1055 }, -- WorldItems/Cornflour
+  ["cornfrozen_ground"] = { dx = 0.4247, dy = 0.2414, dz = 0.02845 }, -- WorldItems/FrozenFoodBag
+  ["cornmeal"] = { dx = 0.2158, dy = 0.09685, dz = 0.1238 }, -- WorldItems/Cornmeal
+  ["cornseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
+  ["correctionfluid"] = { dx = 0.04227, dy = 0.04227, dz = 0.04526 }, -- WorldItems/White_Out
   ["corset_black_ground"] = { dx = 0.2383, dy = 0.261, dz = 0.02024 }, -- WorldItems/Clothing/Corset_Ground
   ["corset_ground"] = { dx = 0.2383, dy = 0.261, dz = 0.02024 }, -- WorldItems/Clothing/Corset_Ground
   ["corset_medical_ground"] = { dx = 0.2529, dy = 0.199, dz = 0.003177 }, -- WorldItems/Clothing/Corset_Medical_Ground
@@ -490,13 +632,16 @@ local MeshSizes = {
   ["craftedtrigger"] = { dx = 0.2647, dy = 0.2525, dz = 0.03054 }, -- WorldItems/CraftedTrigger
   ["craftmag1"] = { dx = 0.2683, dy = 0.3726, dz = 0.006075 }, -- WorldItems/Magazine
   ["craftmag2"] = { dx = 0.2683, dy = 0.3726, dz = 0.006075 }, -- WorldItems/Magazine
+  ["crayfish_ground"] = { dx = 0.264, dy = 0.1113, dz = 0.01188 }, -- WorldItems/Crayfish
   ["crayons"] = { dx = 0.128, dy = 0.1997, dz = 0.01154 }, -- WorldItems/Crayons
   ["creamocle_melted"] = { dx = 0.3144, dy = 0.1529, dz = 0.009417 }, -- WorldItems/IceOcle_Melted
   ["creamocle"] = { dx = 0.2808, dy = 0.09303, dz = 0.01326, cy = -1.386 }, -- WorldItems/IceOcle
   ["creditcard"] = { dx = 0.1397, dy = 0.09613, dz = 0.0009727 }, -- WorldItems/CreditCard
+  ["cricket_ground"] = { dx = 0.07654, dy = 0.102, dz = 0.01426 }, -- WorldItems/Cricket
   ["crispyricesquare"] = { dx = 0.08002, dy = 0.07949, dz = 0.0226 }, -- WorldItems/CrispyRiceSquare
   ["croissant_ground"] = { dx = 0.2552, dy = 0.1104, dz = 0.0253 }, -- WorldItems/Croissant
   ["croptop_ground"] = { dx = 0.3625, dy = 0.2757, dz = 0.01199 }, -- WorldItems/Clothing/BoobTube
+  ["crowbar@weapon"] = { dx = 0.7932, dy = 0.1174, dz = 0.0161, oz = -0.002498, cx = 0.00258, cy = 0.03403 }, -- weapons/1handed/Crowbar
   ["crowbarforged@weapon"] = { dx = 0.7936, dy = 0.1091, dz = 0.01145, cy = 0.02294 }, -- weapons/1handed/Crowbar_Forged_Hand
   ["crudebenchvise"] = { dx = 0.448, dy = 0.2806, dz = 0.04095 }, -- WorldItems/Vise_Crude
   ["crudebenchviseparts"] = { dx = 0.4605, dy = 0.3576, dz = 0.04211 }, -- WorldItems/Vise_Crude_Parts
@@ -519,6 +664,8 @@ local MeshSizes = {
   ["crushedpepper_ground"] = { dx = 0.2242, dy = 0.2349, dz = 0.01969 }, -- WorldItems/Poultice
   ["crushedsalt_ground"] = { dx = 0.2242, dy = 0.2349, dz = 0.01969 }, -- WorldItems/Poultice
   ["cube_ground"] = { dx = 0.08612, dy = 0.08612, dz = 0.03517 }, -- WorldItems/Cube
+  ["cucumber"] = { dx = 0.07896, dy = 0.4192, dz = 0.02872, cx = -0.006001 }, -- WorldItems/Cucumber
+  ["cucumberseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
   ["cudgel_bone@weapon"] = { dx = 0.9139, dy = 0.4385, dz = 0.1709, oz = 0.06339, cx = 0.4335 }, -- weapons/2handed/Cudgel_Bone_Hand
   ["cudgel_brake@weapon"] = { dx = 0.9442, dy = 0.3045, dz = 0.1051, oz = 0.03552, cx = 0.09724, cy = 0.06829 }, -- weapons/2handed/Cudgel_BreakDisk_Hand
   ["cudgel_circularsaw@weapon"] = { dx = 1.012, dy = 0.5077, dz = 0.2114, oz = 0.07479, cx = 0.3095, cy = -0.04086 }, -- weapons/2handed/Cudgel_CircularSaw_Hand
@@ -534,9 +681,21 @@ local MeshSizes = {
   ["curacaobottle"] = { dx = 0.1231, dy = 0.05121, dz = 0.09016 }, -- WhiskeyBottle
   ["cuttingboard_plastic_ground"] = { dx = 0.5348, dy = 0.3752, dz = 0.006624 }, -- WorldItems/CuttingBoard_Plastic
   ["cuttingboard_wood_ground"] = { dx = 0.6231, dy = 0.3489, dz = 0.01164 }, -- WorldItems/CuttingBoard_Wood
+  ["daikon_ground"] = { dx = 0.08717, dy = 0.2887, dz = 0.0298 }, -- WorldItems/Daikon
+  ["dandelion_ground"] = { dx = 0.4467, dy = 0.5306, dz = 0.09149 }, -- WorldItems/Dandelion
   ["danish"] = { dx = 0.1538, dy = 0.1739, dz = 0.01096 }, -- WorldItems/Danish
   ["dart"] = { dx = 0.2417, dy = 0.04008, dz = 0.01607 }, -- WorldItems/Dart
+  ["deadbird"] = { dx = 0.1112, dy = 0.3358, dz = 0.04821 }, -- WorldItems/DeadBird
+  ["deadmousepupsskinnedworld"] = { dx = 0.1343, dy = 0.08555, dz = 0.008201 }, -- WorldItems/DeadRat
+  ["deadmousepupsworld"] = { dx = 0.1343, dy = 0.08555, dz = 0.008201 }, -- WorldItems/DeadRat
+  ["deadmouseskinnedworld"] = { dx = 0.2014, dy = 0.1283, dz = 0.0123 }, -- WorldItems/DeadRat
+  ["deadmouseworld"] = { dx = 0.2014, dy = 0.1283, dz = 0.0123 }, -- WorldItems/DeadRat
   ["deadrabbit"] = { dx = 0.4687, dy = 0.3321, dz = 0.0415, cx = -0.002234, cy = -0.03268 }, -- WorldItems/DeadRabbit
+  ["deadrat"] = { dx = 0.3693, dy = 0.2353, dz = 0.02255 }, -- WorldItems/DeadRat
+  ["deadratbaby"] = { dx = 0.2685, dy = 0.1711, dz = 0.0164 }, -- WorldItems/DeadRat
+  ["deadratbabyskinned"] = { dx = 0.2685, dy = 0.1711, dz = 0.0164 }, -- WorldItems/DeadRat
+  ["deadratskinned"] = { dx = 0.3693, dy = 0.2353, dz = 0.02255 }, -- WorldItems/DeadRat
+  ["deadsquirrel"] = { dx = 0.4195, dy = 0.413, dz = 0.03126 }, -- WorldItems/DeadSquirrel
   ["deerdoe_head"] = { dx = 0.276, dy = 0.2443, dz = 0.07579, cx = -0.01768 }, -- WorldItems/DeerDoe_Head
   ["deerdoe_skull"] = { dx = 0.2705, dy = 0.1054, dz = 0.05057, cx = -0.02366 }, -- WorldItems/DeerDoe_Skull
   ["deerfawn_head"] = { dx = 0.153, dy = 0.1737, dz = 0.04166, cx = -0.009781, cy = 0.002835 }, -- WorldItems/DeerFawn_Head
@@ -568,6 +727,9 @@ local MeshSizes = {
   ["digitalwatchblack"] = { dx = 0.1178, dy = 0.1316, dz = 0.02526 }, -- WorldItems/DigitalWatch
   ["digitalwatchgold"] = { dx = 0.1178, dy = 0.1316, dz = 0.02526 }, -- WorldItems/DigitalWatch
   ["digitalwatchred"] = { dx = 0.1178, dy = 0.1316, dz = 0.02526 }, -- WorldItems/DigitalWatch
+  ["dip_nachocheese_ground"] = { dx = 0.1539, dy = 0.1489, dz = 0.04261 }, -- WorldItems/DipJar
+  ["dip_ranch_ground"] = { dx = 0.1539, dy = 0.1489, dz = 0.04261 }, -- WorldItems/DipJar
+  ["dip_salsa_ground"] = { dx = 0.1539, dy = 0.1489, dz = 0.04261 }, -- WorldItems/DipJar
   ["dirtbag_ground"] = { dx = 0.6199, dy = 0.3543, dz = 0.05255 }, -- WorldItems/DirtBag
   ["dishtowel"] = { dx = 0.3507, dy = 0.2992, dz = 0.007927, oz = -0.00207 }, -- WorldItems/DishTowel
   ["dishtowelwet"] = { dx = 0.3507, dy = 0.2992, dz = 0.007927, oz = -0.00207 }, -- WorldItems/DishTowel
@@ -604,17 +766,21 @@ local MeshSizes = {
   ["dried_mag3_ground"] = { dx = 0.2683, dy = 0.3726, dz = 0.006075 }, -- WorldItems/Magazine
   ["dried_mag4_ground"] = { dx = 0.2683, dy = 0.3726, dz = 0.006075 }, -- WorldItems/Magazine
   ["dried_shrimp_ground"] = { dx = 0.07706, dy = 0.09247, dz = 0.006531 }, -- WorldItems/Shrimp_Raw_Rotten
+  ["driedapricots"] = { dx = 0.3082, dy = 0.3152, dz = 0.01536 }, -- WorldItems/DriedApricots
   ["driedblackbeans_ground"] = { dx = 0.4247, dy = 0.2377, dz = 0.02257 }, -- WorldItems/DriedPulses_Bag
   ["driedchickpeas_ground"] = { dx = 0.4247, dy = 0.2377, dz = 0.02257 }, -- WorldItems/DriedPulses_Bag
+  ["driedherbs_generic"] = { dx = 0.2541, dy = 0.1655, dz = 0.01189 }, -- WorldItems/DriedHerbs_generic
   ["driedkidneybeans_ground"] = { dx = 0.4247, dy = 0.2377, dz = 0.02257 }, -- WorldItems/DriedPulses_Bag
   ["driedlentils_ground"] = { dx = 0.4247, dy = 0.2377, dz = 0.02257 }, -- WorldItems/DriedPulses_Bag
   ["driedpeas"] = { dx = 0.06825, dy = 0.07557, dz = 0.004695 }, -- WorldItems/Dried_Peas_Soybeans
   ["driedsoybeans"] = { dx = 0.06825, dy = 0.07557, dz = 0.004695 }, -- WorldItems/Dried_Peas_Soybeans
   ["driedsplitpeas_ground"] = { dx = 0.4247, dy = 0.2377, dz = 0.02257 }, -- WorldItems/DriedPulses_Bag
   ["driedwhitebeans_ground"] = { dx = 0.4247, dy = 0.2377, dz = 0.02257 }, -- WorldItems/DriedPulses_Bag
+  ["drinkingglass"] = { dx = 0.1027, dy = 0.09769, dz = 0.04765 }, -- WorldItems/GlassCup
   ["drumstick@weapon"] = { dx = 0.4032, dy = 0.01762, dz = 0.006842, cx = 0.1973 }, -- weapons/1handed/Drumstick
   ["dryerlint"] = { dx = 0.05663, dy = 0.07425, dz = 0.001007 }, -- WorldItems/DryerLint
   ["dryfirestarterblock"] = { dx = 0.08756, dy = 0.03982, dz = 0.01626 }, -- WorldItems/DryFirestarterBlock
+  ["dryramennoodles"] = { dx = 0.1514, dy = 0.1554, dz = 0.023 }, -- WorldItems/DryRamenNoodles
   ["dtangerbookground1"] = { dx = 0.2785, dy = 0.2121, dz = 0.02583 }, -- WorldItems/BookClosed
   ["dtangerbookground2"] = { dx = 0.2785, dy = 0.2121, dz = 0.02583 }, -- WorldItems/BookClosed
   ["dtangerbookground3"] = { dx = 0.2785, dy = 0.2121, dz = 0.02583 }, -- WorldItems/BookClosed
@@ -659,7 +825,16 @@ local MeshSizes = {
   ["earring_loopmedsilver_ground"] = { dx = 0.0923, dy = 0.08435, dz = 0.00531 }, -- WorldItems/Earring_LoopMed_Ground
   ["earring_loopsmall_ground"] = { dx = 0.06923, dy = 0.06326, dz = 0.003983 }, -- WorldItems/Earring_LoopMed_Ground
   ["earring_loopsmallsilver_ground"] = { dx = 0.06923, dy = 0.06326, dz = 0.003983 }, -- WorldItems/Earring_LoopMed_Ground
+  ["edamame_ground"] = { dx = 0.1519, dy = 0.1135, dz = 0.00624 }, -- WorldItems/Edamame
+  ["egg_turkey"] = { dx = 0.05992, dy = 0.08535, dz = 0.02447 }, -- WorldItems/Egg
+  ["egg"] = { dx = 0.05992, dy = 0.08535, dz = 0.02447 }, -- WorldItems/Egg
+  ["eggboiled_ground"] = { dx = 0.1874, dy = 0.1583, dz = 0.01801 }, -- WorldItems/EggBoiled
   ["eggcarton"] = { dx = 0.4196, dy = 0.1528, dz = 0.03348 }, -- WorldItems/EggCarton
+  ["eggomlette_ground"] = { dx = 0.3054, dy = 0.161, dz = 0.009927 }, -- WorldItems/EggOmlette
+  ["eggomletteforged"] = { dx = 0.518, dy = 0.3064, dz = 0.01511 }, -- WorldItems/FryingPan_Forged_Food
+  ["eggplant_ground"] = { dx = 0.1135, dy = 0.1276, dz = 0.0871, cy = -0.00605 }, -- WorldItems/EggPlant
+  ["eggpoached_ground"] = { dx = 0.1199, dy = 0.121, dz = 0.01182 }, -- WorldItems/EggPoached
+  ["eggscrambled_ground"] = { dx = 0.1517, dy = 0.1502, dz = 0.01529 }, -- WorldItems/EggScrambled
   ["elbowpad_left"] = { dx = 0.1202, dy = 0.1567, dz = 0.04069 }, -- WorldItems/Clothing/ElbowPad_Ground_L
   ["elbowpad_right"] = { dx = 0.1202, dy = 0.1567, dz = 0.04069 }, -- WorldItems/Clothing/ElbowPad_Ground_R
   ["electricwirenew"] = { dx = 0.174, dy = 0.2163, dz = 0.03508 }, -- WorldItems/WireBundle
@@ -674,8 +849,13 @@ local MeshSizes = {
   ["entrenchingtoolfolded"] = { dx = 0.1915, dy = 0.2869, dz = 0.02332 }, -- WorldItems/EntrenchingTool_Folded
   ["epoxy"] = { dx = 0.3193, dy = 0.08432, dz = 0.02312 }, -- WorldItems/Epoxy_TwoPart
   ["eraser"] = { dx = 0.09051, dy = 0.02858, dz = 0.006275 }, -- WorldItems/Eraser
+  ["extinguisher"] = { dx = 0.3871, dy = 0.2113, dz = 0.2873, cx = -0.01559 }, -- WorldItems/Extinguisher_test4
   ["eyepatch_ground"] = { dx = 0.1699, dy = 0.2427, dz = 0.008554 }, -- WorldItems/Eyepatch_Ground
   ["eyesmakeup"] = { dx = 0.1964, dy = 0.129, dz = 0.01655 }, -- WorldItems/EyesMakeup
+  ["fabricroll_black"] = { dx = 0.5997, dy = 0.1503, dz = 0.05943 }, -- WorldItems/FabricRolled
+  ["fabricroll_blue"] = { dx = 0.5997, dy = 0.1503, dz = 0.05943 }, -- WorldItems/FabricRolled
+  ["fabricroll_darkblue"] = { dx = 0.5997, dy = 0.1503, dz = 0.05943 }, -- WorldItems/FabricRolled
+  ["fabricroll_white"] = { dx = 0.5997, dy = 0.1503, dz = 0.05943 }, -- WorldItems/FabricRolled
   ["fannypack_ground"] = { dx = 0.3139, dy = 0.2825, dz = 0.04318 }, -- WorldItems/Clothing/M_FannyPackFront_Ground
   ["farmpig_boarhead_black"] = { dx = 0.3091, dy = 0.2325, dz = 0.0822, cx = -0.04546 }, -- WorldItems/FarmPig_BoarHead
   ["farmpig_boarhead_pink"] = { dx = 0.3091, dy = 0.2325, dz = 0.0822, cx = -0.04546 }, -- WorldItems/FarmPig_BoarHead
@@ -683,6 +863,7 @@ local MeshSizes = {
   ["farmpig_piglethead_pink"] = { dx = 0.2814, dy = 0.1997, dz = 0.08072, cx = 0.01644 }, -- WorldItems/FarmPig_PigletHead
   ["farmpig_sowhead_black"] = { dx = 0.3042, dy = 0.1998, dz = 0.07338, cx = -0.04156 }, -- WorldItems/FarmPig_SowHead
   ["farmpig_sowhead_pink"] = { dx = 0.3042, dy = 0.1998, dz = 0.07338, cx = -0.04156 }, -- WorldItems/FarmPig_SowHead
+  ["fertilizer_ground"] = { dx = 0.4936, dy = 0.2999, dz = 0.04525, oz = 0.04524 }, -- WorldItems/Fertiizer
   ["fiberglasstape"] = { dx = 0.143, dy = 0.136, dz = 0.04506 }, -- WorldItems/Tape_Fibreglass
   ["fieldhockeystick_broken_nails@weapon"] = { dx = 0.8642, dy = 0.3055, dz = 0.1741, oz = 0.0563, cx = 0.3516, cy = 0.004862 }, -- weapons/1handed/HockeyStick_Broken_Nails_Hand
   ["fieldhockeystick_broken@weapon"] = { dx = 0.8268, dy = 0.06602, dz = 0.01619, cx = -0.05382, cy = 0.00281 }, -- weapons/1handed/HockeyStick_Broken_Hand
@@ -701,6 +882,7 @@ local MeshSizes = {
   ["firstaidkit_military"] = { dx = 0.08948, dy = 0.1948, dz = 0.06539 }, -- WorldItems/FirstAid_Military
   ["fisheggsac"] = { dx = 0.08525, dy = 0.3401, dz = 0.01422 }, -- WorldItems/FishEggSac
   ["fishfillet"] = { dx = 0.4406, dy = 0.1619, dz = 0.01136 }, -- WorldItems/FishFillet
+  ["fishfingers"] = { dx = 0.1307, dy = 0.1961, dz = 0.01082 }, -- WorldItems/FishFingers
   ["fishfried_ground"] = { dx = 0.4406, dy = 0.1619, dz = 0.01136 }, -- WorldItems/FishFillet
   ["fishguts"] = { dx = 0.1906, dy = 0.2362, dz = 0.01423 }, -- WorldItems/FishGuts
   ["fishingbasket_ground"] = { dx = 0.3025, dy = 0.3752, dz = 0.08686 }, -- WorldItems/Clothing/M_FishingBasket_Ground
@@ -714,6 +896,7 @@ local MeshSizes = {
   ["fishingrod_modern@weapon"] = { dx = 1.187, dy = 0.1347, dz = 0.03977, cy = -0.04821 }, -- weapons/2handed/FishingRod_Modern
   ["fishingtackle"] = { dx = 0.2129, dy = 0.1124, dz = 0.01214 }, -- WorldItems/FishingTackle
   ["fishingtrash"] = { dx = 0.2309, dy = 0.1746, dz = 0.1602, oz = 0.1611, cy = 0.008633 }, -- FishingTrash_Hand
+  ["fishroe_ground"] = { dx = 0.1036, dy = 0.07453, dz = 0.01287 }, -- WorldItems/FishRoe
   ["flametrap"] = { dx = 0.1246, dy = 0.1246, dz = 0.1453 }, -- WorldItems/FlameTrap
   ["flametrapsensor"] = { dx = 0.1414, dy = 0.1309, dz = 0.1453 }, -- WorldItems/FlameTrapSensor
   ["flashlight_anglehead_army_ground"] = { dx = 0.2599, dy = 0.1035, dz = 0.02766, cy = -0.007898 }, -- WorldItems/FlashLight_AngleHead_Ground
@@ -732,12 +915,15 @@ local MeshSizes = {
   ["flaxpress"] = { dx = 0.3093, dy = 0.3122, dz = 0.06421 }, -- WorldItems/Flax_Press
   ["flaxrippled"] = { dx = 0.1142, dy = 0.4954, dz = 0.004893 }, -- WorldItems/Flax_Rippled
   ["flaxscutched"] = { dx = 0.1598, dy = 0.6108, dz = 0.01049 }, -- WorldItems/Flax_Scutched
+  ["flaxseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
   ["flaxseedpasteblob"] = { dx = 0.1072, dy = 0.09041, dz = 0.01314 }, -- WorldItems/Flax_SeedPaste_Blob
+  ["flaxseeds"] = { dx = 0.1426, dy = 0.1422, dz = 0.01381 }, -- WorldItems/Flax_Seeds
   ["flaxtow"] = { dx = 0.113, dy = 0.1259, dz = 0.01008 }, -- WorldItems/Flax_Tow
   ["fleshing_tool_bone"] = { dx = 0.4191, dy = 0.07598, dz = 0.01755, oz = -0.002109 }, -- WorldItems/Bone_FleshingTool
   ["fleshingtool"] = { dx = 0.718, dy = 0.08658, dz = 0.01454 }, -- Knife_Fleshing
   ["flier1"] = { dx = 0.1201, dy = 0.2646, dz = 0.001763 }, -- WorldItems/Flier
   ["flintnodule_ground"] = { dx = 0.2518, dy = 0.2258, dz = 0.08004, oz = 0.02355, cx = 0.09451, cy = -0.00365 }, -- weapons/1handed/Flint_Stone_Hand
+  ["flour"] = { dx = 0.3572, dy = 0.4384, dz = 0.1493 }, -- WorldItems/Flour
   ["flute@weapon"] = { dx = 0.7185, dy = 0.0398, dz = 0.01531, oz = -0.009285, cx = 0.005933, cy = 0.01637 }, -- weapons/1handed/Flute
   ["flutecase_ground"] = { dx = 0.1582, dy = 0.6081, dz = 0.02122, cx = 0.0124 }, -- WorldItems/Clothing/FluteCase_Ground
   ["football"] = { dx = 0.3739, dy = 0.2055, dz = 0.08403 }, -- WorldItems/Football
@@ -748,7 +934,11 @@ local MeshSizes = {
   ["fork@weapon"] = { dx = 0.3195, dy = 0.04674, dz = 0.01148, cx = 0.1165 }, -- weapons/1handed/Fork
   ["forkforged@weapon"] = { dx = 0.319, dy = 0.0468, dz = 0.01032, cx = 0.1182 }, -- weapons/1handed/Fork_Forged_Hand
   ["foundationmakeup"] = { dx = 0.1763, dy = 0.204, dz = 0.06147 }, -- WorldItems/FoundationMakeup
+  ["fountaincup_ground"] = { dx = 0.09286, dy = 0.09286, dz = 0.04517 }, -- WorldItems/PlasticCup
+  ["fourleafclover"] = { dx = 0.1179, dy = 0.123, dz = 0.007561 }, -- WorldItems/FourLeafClover
+  ["fourlogsstack"] = { dx = 0.5413, dy = 0.457, dz = 0.1831 }, -- WorldItems/FourLogsStack
   ["frame"] = { dx = 0.24, dy = 0.4026, dz = 0.0115 }, -- WorldItems/Frame
+  ["frenchfries"] = { dx = 0.2941, dy = 0.2494, dz = 0.01295, cx = -0.004819, cy = -0.005897 }, -- WorldItems/FrenchFries
   ["freshwaterdrum_ground"] = { dx = 0.4409, dy = 1.049, dz = 0.04006 }, -- WorldItems/Fish_FreshWaterDrum
   ["fries"] = { dx = 0.1731, dy = 0.1173, dz = 0.09544 }, -- WorldItems/Fries
   ["frog_ground"] = { dx = 0.1878, dy = 0.1788, dz = 0.03795 }, -- WorldItems/Frog
@@ -780,10 +970,14 @@ local MeshSizes = {
   ["gardenfork_forged@weapon"] = { dx = 1.135, dy = 0.1842, dz = 0.0173, cx = 0.02462 }, -- weapons/2handed/GardenFork_Forged_Hand
   ["gardenfork_head@weapon"] = { dx = 0.6216, dy = 0.1842, dz = 0.01629, oz = 0.008503, cx = 0.2822 }, -- weapons/1handed/GardenFork_ForkBroken
   ["gardenfork@weapon"] = { dx = 1.104, dy = 0.1842, dz = 0.02114, cx = 0.04056 }, -- weapons/2handed/GardenFork
+  ["gardenhoe@weapon"] = { dx = 1.237, dy = 0.407, dz = 0.04254, oz = 0.004341, cy = 0.03047 }, -- weapons/2handed/GardenHoe
   ["gardenhoeforged@weapon"] = { dx = 1.237, dy = 0.407, dz = 0.04254, oz = 0.004966, cy = 0.03047 }, -- weapons/2handed/GardenHoe
   ["gardenhoeheadforged"] = { dx = 0.397, dy = 0.07658, dz = 0.03985, cy = -0.003606 }, -- WorldItems/GardenHoe_Head_Forged
   ["gardensawground"] = { dx = 0.6643, dy = 0.1644, dz = 0.0145 }, -- WorldItems/GardenSaw
+  ["gardensprayground"] = { dx = 0.1389, dy = 0.1707, dz = 0.1118 }, -- WorldItems/GardenSpray
   ["gardentoolhandle_broken@weapon"] = { dx = 0.482, dy = 0.1099, dz = 0.02114, cx = 0.06054 }, -- weapons/1handed/GardenFork_HandleBroken
+  ["garlic"] = { dx = 0.1118, dy = 0.09681, dz = 0.04289 }, -- WorldItems/Garlic
+  ["garlicseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
   ["garter_ground"] = { dx = 0.06315, dy = 0.173, dz = 2.109e-8 }, -- WorldItems/Clothing/Garter
   ["gascan_ground"] = { dx = 0.1803, dy = 0.3634, dz = 0.1524 }, -- WorldItems/Clothing/GasCan
   ["gasmaskfilter"] = { dx = 0.1006, dy = 0.09567, dz = 0.01542 }, -- WorldItems/GasmaskFilter
@@ -794,11 +988,15 @@ local MeshSizes = {
   ["ghillietop_ground"] = { dx = 1.284, dy = 1.045, dz = 0.02941, oz = -0.002933 }, -- WorldItems/Clothing/Bob_GhillieTop_Ground
   ["ghillietrousers_ground"] = { dx = 0.3994, dy = 0.9221, dz = 0.02265, oz = -0.00221 }, -- WorldItems/Clothing/Bob_GihillieTrousers_Ground
   ["ginbottle"] = { dx = 0.1297, dy = 0.1275, dz = 0.1345 }, -- WorldItems/Bottle_Generic
+  ["ginger_ground"] = { dx = 0.1427, dy = 0.1744, dz = 0.01509 }, -- WorldItems/Ginger
   ["gingerbreadman"] = { dx = 0.2176, dy = 0.2435, dz = 0.0102 }, -- WorldItems/Gingerbreadman
+  ["gingerpickled_ground"] = { dx = 0.1211, dy = 0.115, dz = 0.01755 }, -- WorldItems/GingerPickled
+  ["ginseng"] = { dx = 0.06782, dy = 0.3727, dz = 0.0301, oz = 0.01429, cx = -0.03391 }, -- WorldItems/Ginseng
   ["glassblowingpipefired"] = { dx = 0.03477, dy = 0.4176, dz = 0.0123 }, -- WorldItems/GlassBlowingPipe
   ["glassblowingpipeunfired"] = { dx = 0.03477, dy = 0.4176, dz = 0.0123 }, -- WorldItems/GlassBlowingPipe
   ["glasspanel"] = { dx = 0.4565, dy = 0.3246, dz = 0.003464 }, -- WorldItems/GlassPanel
   ["glassshiv@weapon"] = { dx = 0.327, dy = 0.05366, dz = 0.01249, oz = 0.006236, cx = -0.07916, cy = -0.01044 }, -- weapons/1handed/ShankGlass_Hand
+  ["glasstumbler_ground"] = { dx = 0.09876, dy = 0.09393, dz = 0.05482 }, -- WorldItems/GlassTumbler
   ["glasstumblercoffee_ground"] = { dx = 0.09392, dy = 0.08932, dz = 0.04357 }, -- WorldItems/GlassCup_Full
   ["glasswine_ground"] = { dx = 0.08985, dy = 0.08545, dz = 0.06584 }, -- WorldItems/GlassWine
   ["glazedclayjar"] = { dx = 0.2864, dy = 0.2908, dz = 0.1854 }, -- WorldItems/ClayJar
@@ -806,6 +1004,10 @@ local MeshSizes = {
   ["gloves_icehockeygloves"] = { dx = 0.3986, dy = 0.3153, dz = 0.05013, oz = -0.002383, cx = 0.01714, cy = 0.003832 }, -- WorldItems/Clothing/IceHockeyGloves_Ground
   ["gloveslong_ground"] = { dx = 0.2241, dy = 0.3159, dz = 0.006118 }, -- WorldItems/Clothing/GlovesLong_Ground
   ["glue"] = { dx = 0.09612, dy = 0.06497, dz = 0.08122 }, -- WorldItems/Glue
+  ["goblet_gold"] = { dx = 0.1163, dy = 0.1163, dz = 0.06498, oz = -0.002317 }, -- WorldItems/GobletPlain
+  ["goblet_silver"] = { dx = 0.1163, dy = 0.1163, dz = 0.06498, oz = -0.002317 }, -- WorldItems/GobletPlain
+  ["goblet_wood"] = { dx = 0.09475, dy = 0.09475, dz = 0.06919, oz = -0.002815 }, -- WorldItems/Chalice_Wood
+  ["goblet"] = { dx = 0.1169, dy = 0.1169, dz = 0.06864 }, -- WorldItems/Goblet
   ["goldbar"] = { dx = 0.1142, dy = 0.2652, dz = 0.02412 }, -- WorldItems/Ingot_Iron
   ["goldbarsmall"] = { dx = 0.0571, dy = 0.1326, dz = 0.01206 }, -- WorldItems/Ingot_Iron_Small
   ["goldcoin"] = { dx = 0.0556, dy = 0.05617, dz = 0.001693 }, -- WorldItems/Coin
@@ -816,9 +1018,14 @@ local MeshSizes = {
   ["golftee"] = { dx = 0.02685, dy = 0.1045, dz = 0.01144 }, -- WorldItems/GolfTee
   ["gorget"] = { dx = 0.2327, dy = 0.2778, dz = 0.02065 }, -- WorldItems/Clothing/Gorget_Ground
   ["granolabar_ground"] = { dx = 0.2288, dy = 0.1223, dz = 0.01634 }, -- WorldItems/GranolaBar
+  ["grapefruit_ground"] = { dx = 0.1963, dy = 0.2709, dz = 0.03864, cx = -0.004348 }, -- WorldItems/Grapefruit
+  ["grapeleaves"] = { dx = 0.2908, dy = 0.2019, dz = 0.01123, cx = 0.002866, cy = -0.002506 }, -- WorldItems/GrapeLeaves
+  ["grapes_ground"] = { dx = 0.2291, dy = 0.1331, dz = 0.05067 }, -- WorldItems/Grapes
   ["graphpaper"] = { dx = 0.2568, dy = 0.3704, dz = 0.003106 }, -- WorldItems/PaperWork
+  ["grasshopper_ground"] = { dx = 0.07714, dy = 0.1179, dz = 0.01004 }, -- WorldItems/Grasshopper
   ["grasstuft"] = { dx = 0.2073, dy = 0.46, dz = 0.05465, oz = 0.02686, cx = -0.005421, cy = 0.1908 }, -- GrassTuft
   ["gravelbag"] = { dx = 0.3126, dy = 0.3605, dz = 0.1452 }, -- WorldItems/GravelBag
+  ["gravyboat_full"] = { dx = 0.2666, dy = 0.1065, dz = 0.04287 }, -- WorldItems/GravyBoat_Full
   ["gravymix_ground"] = { dx = 0.1405, dy = 0.1928, dz = 0.005007 }, -- WorldItems/GravyMix
   ["greave_bodyarmour_ground_l"] = { dx = 0.1314, dy = 0.2847, dz = 0.0347 }, -- WorldItems/Clothing/Greave_BodyArmour_Ground_L
   ["greave_bodyarmour_ground_r"] = { dx = 0.1314, dy = 0.2847, dz = 0.0347 }, -- WorldItems/Clothing/Greave_BodyArmour_Ground_R
@@ -827,21 +1034,36 @@ local MeshSizes = {
   ["greavemagazine_right"] = { dx = 0.2449, dy = 0.1996, dz = 0.04541 }, -- WorldItems/Clothing/GreaveMagazine_Ground_R
   ["greavespike_left"] = { dx = 0.3488, dy = 0.1776, dz = 0.07085, cy = -0.006024 }, -- WorldItems/Clothing/GreaveSpike_Ground_L
   ["greavespike_right"] = { dx = 0.3488, dy = 0.1773, dz = 0.07087, cy = 0.006026 }, -- WorldItems/Clothing/GreaveSpike_Ground_R
+  ["greenonions"] = { dx = 0.09366, dy = 0.4263, dz = 0.02518 }, -- WorldItems/GreenOnion
+  ["greenpeas"] = { dx = 0.1306, dy = 0.09678, dz = 0.006639 }, -- WorldItems/GreenPeas
+  ["greenpeasseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
   ["greensunfish_ground"] = { dx = 0.54, dy = 1.014, dz = 0.044 }, -- WorldItems/Fish_Bluegill_Sunfish
   ["greentent"] = { dx = 0.638, dy = 0.1475, dz = 0.0587 }, -- WorldItems/TentRoll
   ["grenadinebottle"] = { dx = 0.1297, dy = 0.1275, dz = 0.1345 }, -- WorldItems/Bottle_Generic
+  ["griddlepanfriedvegetables_ground"] = { dx = 0.513, dy = 0.3138, dz = 0.02134 }, -- WorldItems/GriddlePanFriedVegetables
   ["gridlepan@weapon"] = { dx = 0.5131, dy = 0.325, dz = 0.1327, oz = 0.04596, cx = -0.04222, cy = 0.006611 }, -- weapons/1handed/GridlePan
   ["grillbrush_ground"] = { dx = 0.3822, dy = 0.08724, dz = 0.01273 }, -- WorldItems/GrillBrush
+  ["guacamole_ground"] = { dx = 0.1615, dy = 0.1384, dz = 0.02272 }, -- WorldItems/Guacamole
   ["guitar_acoustic@weapon"] = { dx = 1.085, dy = 0.3883, dz = 0.05019, cx = -0.03395 }, -- weapons/2handed/Guitar_Acoustic
+  ["guitar_electricbassblack@weapon"] = { dx = 1.263, dy = 0.3586, dz = 0.02388, cx = -0.01537, cy = 0.005911 }, -- weapons/2handed/Guitar_ElectricBassBlack
+  ["guitar_electricbassblue@weapon"] = { dx = 1.263, dy = 0.3586, dz = 0.02388, cx = -0.01537, cy = 0.005911 }, -- weapons/2handed/Guitar_ElectricBassBlue
+  ["guitar_electricbassred@weapon"] = { dx = 1.263, dy = 0.3586, dz = 0.02388, cx = -0.01537, cy = 0.005911 }, -- weapons/2handed/Guitar_ElectricBassRed
+  ["guitar_electricblack@weapon"] = { dx = 1.139, dy = 0.35, dz = 0.0212, cx = -0.0263 }, -- weapons/2handed/Guitar_ElectricBlack
+  ["guitar_electricblue@weapon"] = { dx = 1.139, dy = 0.35, dz = 0.0212, cx = -0.0263 }, -- weapons/2handed/Guitar_ElectricBlue
+  ["guitar_electricred@weapon"] = { dx = 1.139, dy = 0.35, dz = 0.0212, cx = -0.0263 }, -- weapons/2handed/Guitar_ElectricBlack
   ["guitaracoustic_broken@weapon"] = { dx = 0.5393, dy = 0.09134, dz = 0.01351, cx = 0.0537, cy = 0.03139 }, -- weapons/1handed/Guitar_Acoustic_Broken
   ["guitarcase_ground"] = { dx = 0.404, dy = 1.216, dz = 0.04182, cx = 0.02239 }, -- WorldItems/Clothing/GuitarCase_Ground
   ["guitarelectric_broken@weapon"] = { dx = 0.7079, dy = 0.1076, dz = 0.02016, oz = 0.003018, cx = 0.006531, cy = 0.0346 }, -- weapons/1handed/Guitar_Electric_Broken
   ["guitarelectricbass_broken@weapon"] = { dx = 0.8362, dy = 0.1301, dz = 0.02061, oz = 0.003102, cx = 0.03419, cy = 0.004135 }, -- weapons/1handed/Guitar_ElectricBass_Broken
   ["guitarpick"] = { dx = 0.04038, dy = 0.04523, dz = 0.0008298 }, -- WorldItems/Guitar_Pick
   ["gum_ground"] = { dx = 0.1549, dy = 0.04553, dz = 0.0111 }, -- WorldItems/Gum
+  ["gummybears_ground"] = { dx = 0.06793, dy = 0.08615, dz = 0.004841 }, -- WorldItems/GummyBears
+  ["gummyworms_ground"] = { dx = 0.08822, dy = 0.09358, dz = 0.006968 }, -- WorldItems/GummyWorms
   ["gun_magazine_ground"] = { dx = 0.1175, dy = 0.08816, dz = 0.0124 }, -- WorldItems/Gun_Magazine
   ["guncase_ground"] = { dx = 0.1006, dy = 0.2463, dz = 0.08112 }, -- WorldItems/Clothing/PlasticLunchBox_Ground
   ["gunpowderjar"] = { dx = 0.1286, dy = 0.1057, dz = 0.08492 }, -- WorldItems/GunpowderJar
+  ["habanerodried"] = { dx = 0.1163, dy = 0.06993, dz = 0.01323 }, -- WorldItems/PepperHabanero_Dried
+  ["habaneroseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
   ["hacksawblade"] = { dx = 0.01781, dy = 0.4051, dz = 0.00054 }, -- WorldItems/Saw_Forged_Blade
   ["hacksawbladesmall"] = { dx = 0.008864, dy = 0.2016, dz = 0.0002688 }, -- WorldItems/Saw_Forged_Blade2
   ["hacksawground"] = { dx = 0.4907, dy = 0.1644, dz = 0.01346 }, -- WorldItems/Hacksaw
@@ -853,8 +1075,12 @@ local MeshSizes = {
   ["hairiron"] = { dx = 0.1799, dy = 0.3826, dz = 0.0254 }, -- WorldItems/Hair_Iron
   ["hairspray"] = { dx = 0.08248, dy = 0.08248, dz = 0.09407 }, -- WorldItems/HairSpray
   ["halloweencandybucket"] = { dx = 0.2314, dy = 0.2096, dz = 0.1021 }, -- WorldItems/Jackolantern_Pail
+  ["ham"] = { dx = 0.2799, dy = 0.2491, dz = 0.09168 }, -- WorldItems/Ham
+  ["hammer@weapon"] = { dx = 0.4249, dy = 0.234, dz = 0.01885, cy = -0.007035 }, -- weapons/1handed/Hammer_Forged_Hand
   ["hammerforged@weapon"] = { dx = 0.4249, dy = 0.234, dz = 0.01885, cy = -0.007035 }, -- weapons/1handed/Hammer_Forged_Hand
+  ["hamslice"] = { dx = 0.2666, dy = 0.2312, dz = 0.004412, cx = -0.004759, cy = 0.004569 }, -- WorldItems/HamSlice
   ["handaxe_old@weapon"] = { dx = 0.4588, dy = 0.1849, dz = 0.01441, cx = -0.02239, cy = 0.04161 }, -- weapons/1handed/Axe_Forged_1Handed_Hand
+  ["handaxe@weapon"] = { dx = 0.4653, dy = 0.1519, dz = 0.01758, cx = -0.01036, cy = 0.03065 }, -- weapons/1handed/HandAxe
   ["handaxeforged@weapon"] = { dx = 0.4653, dy = 0.1519, dz = 0.01758, cx = 0.03299, cy = -0.03065 }, -- weapons/1handed/HandAxe_Forged_Hand
   ["handaxeheadforged"] = { dx = 0.08794, dy = 0.1467, dz = 0.0174 }, -- WorldItems/HandAxe_Forged_Head
   ["handdrill"] = { dx = 0.5752, dy = 0.2252, dz = 0.04188, oz = -0.003066 }, -- WorldItems/Drill_OldFashioned
@@ -865,6 +1091,7 @@ local MeshSizes = {
   ["handle_can@weapon"] = { dx = 0.4856, dy = 0.08237, dz = 0.04376, oz = 0.006742, cx = -0.01121 }, -- weapons/1handed/Can_ShortHandle_Hand
   ["handle_hand@weapon"] = { dx = 0.4306, dy = 0.03623, dz = 0.01166, cx = 0.1918 }, -- weapons/1handed/Handle_Hand
   ["handlenailspike@weapon"] = { dx = 0.4453, dy = 0.1631, dz = 0.08562, oz = 0.02412, cx = 0.1882, cy = 0.003772 }, -- weapons/1handed/Handle_Medium_Spiked_Hand
+  ["handscythe@weapon"] = { dx = 0.4787, dy = 0.2946, dz = 0.01782, oz = 0.003495, cy = 0.04557 }, -- weapons/1handed/HandScythe
   ["handscytheforged@weapon"] = { dx = 0.4787, dy = 0.2946, dz = 0.01782, cy = 0.04557 }, -- weapons/1handed/HandScythe
   ["handscytheheadforged"] = { dx = 0.3749, dy = 0.2843, dz = 0.005643 }, -- WorldItems/HandScythe_Head_Forged
   ["handtorch"] = { dx = 0.07837, dy = 0.06787, dz = 0.1096, oz = 0.02638 }, -- HandTorch
@@ -897,14 +1124,25 @@ local MeshSizes = {
   ["hempbundledried"] = { dx = 0.5058, dy = 0.672, dz = 0.03976, oz = -0.002572 }, -- WorldItems/IndustrialHemp_Bundle
   ["hempmag1"] = { dx = 0.2683, dy = 0.3726, dz = 0.006075 }, -- WorldItems/Magazine
   ["hempscutched"] = { dx = 0.6555, dy = 0.2289, dz = 0.01627 }, -- WorldItems/Hemp_Scutched
+  ["hempseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
+  ["herbchives_ground"] = { dx = 0.0988, dy = 0.2597, dz = 0.004176 }, -- WorldItems/HerbChives
+  ["herbcilantro_ground"] = { dx = 0.1492, dy = 0.175, dz = 0.004301, cx = -0.007693, cy = -0.006036 }, -- WorldItems/HerbCilantro_HerbParsley
   ["herbivoreteeth"] = { dx = 0.137, dy = 0.1423, dz = 0.008667, cx = -0.003449, cy = -0.009427 }, -- WorldItems/MammalTeeth_Pile
+  ["herboregano_ground"] = { dx = 0.1657, dy = 0.1603, dz = 0.004469, cx = 0.002047, cy = 0.004499 }, -- WorldItems/HerbOregano
+  ["herbparsley_ground"] = { dx = 0.1492, dy = 0.175, dz = 0.004301, cx = -0.007693, cy = -0.006036 }, -- WorldItems/HerbCilantro_HerbParsley
+  ["herbrosemary_ground"] = { dx = 0.08188, dy = 0.2733, dz = 0.008079 }, -- WorldItems/HerbRosemary
+  ["herbsage_ground"] = { dx = 0.1474, dy = 0.1989, dz = 0.004457, cx = 0.00812, cy = -0.009375 }, -- WorldItems/HerbSage
+  ["herbthyme_ground"] = { dx = 0.05796, dy = 0.2144, dz = 0.00317 }, -- WorldItems/HerbThyme
   ["hikingbag_ground"] = { dx = 0.5069, dy = 0.3417, dz = 0.1194 }, -- WorldItems/Clothing/HikingBag_Ground
   ["hit-list1map"] = { dx = 0.4082, dy = 0.4834, dz = 0.02714 }, -- WorldItems/Map
   ["hit-list2map"] = { dx = 0.4082, dy = 0.4834, dz = 0.02714 }, -- WorldItems/Map
   ["hit-list3map"] = { dx = 0.4082, dy = 0.4834, dz = 0.02714 }, -- WorldItems/Map
+  ["hobbyhorse_brown@weapon"] = { dx = 0.933, dy = 0.2237, dz = 0.1294, oz = 0.03479, cx = 0.02321, cy = 0.02572 }, -- weapons/2handed/HobbyHorse_Hand
+  ["hobbyhorse_pink@weapon"] = { dx = 0.933, dy = 0.2237, dz = 0.1294, oz = 0.03479, cx = 0.02321, cy = 0.02572 }, -- weapons/2handed/HobbyHorse_Hand
   ["hockeymask_metal"] = { dx = 0.3151, dy = 0.2581, dz = 0.04289, cx = -0.00274 }, -- WorldItems/Clothing/M_HockeyMask_Ground
   ["hockeystick@weapon"] = { dx = 1.143, dy = 0.1447, dz = 0.01633, oz = -0.005389, cx = -0.005301, cy = 0.03217 }, -- weapons/2handed/HockeyStick
   ["holepuncher_ground"] = { dx = 0.2503, dy = 0.09906, dz = 0.00753 }, -- WorldItems/HolePuncher
+  ["hollyberries_ground"] = { dx = 0.2086, dy = 0.1578, dz = 0.0355 }, -- WorldItems/HollyBerries
   ["holsterankle_ducttape"] = { dx = 0.1601, dy = 0.1245, dz = 0.02484 }, -- WorldItems/Clothing/AnkleHolster_Ground
   ["holsterdouble_ground"] = { dx = 0.5598, dy = 0.368, dz = 0.05113 }, -- WorldItems/Clothing/HolsterDouble_Ground
   ["holstersingle_ground"] = { dx = 0.1543, dy = 0.114, dz = 0.01763 }, -- WorldItems/Clothing/HolsterSingle_Ground
@@ -914,15 +1152,20 @@ local MeshSizes = {
   ["hominid_skull_fragment"] = { dx = 0.08707, dy = 0.1669, dz = 0.01459 }, -- WorldItems/Skull_Hominid_Piece
   ["hominid_skull_partial"] = { dx = 0.217, dy = 0.1568, dz = 0.0512, cx = -0.002402 }, -- WorldItems/Skull_Hominid_Part
   ["hominid_skull"] = { dx = 0.237, dy = 0.1696, dz = 0.06175 }, -- WorldItems/Skull_Hominid_Whole
+  ["honey"] = { dx = 0.1299, dy = 0.09289, dz = 0.1027 }, -- WorldItems/Honey
   ["hoodie_ground"] = { dx = 0.8479, dy = 0.6502, dz = 0.0112, oz = -0.002108 }, -- WorldItems/Clothing/Bob_Hoodie_Ground
   ["hops"] = { dx = 0.2243, dy = 0.2208, dz = 0.01815 }, -- WorldItems/Hops
   ["hopsdried"] = { dx = 0.2243, dy = 0.2208, dz = 0.01815 }, -- WorldItems/Hops
+  ["hopsseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
   ["hospitalgown_ground"] = { dx = 0.7616, dy = 0.9312, dz = 0.01373, oz = -0.002883 }, -- WorldItems/Clothing/Bob_HospitalGown_Ground
   ["hotdog_ground"] = { dx = 0.1086, dy = 0.3116, dz = 0.0351 }, -- WorldItems/HotDog
   ["hotdog_pack"] = { dx = 0.3251, dy = 0.1835, dz = 0.01642 }, -- WorldItems/Hotdogs_Pack
+  ["hotdog_single"] = { dx = 0.2827, dy = 0.03418, dz = 0.01612 }, -- WorldItems/Hotdog_Single
+  ["hotsauce"] = { dx = 0.05492, dy = 0.05492, dz = 0.08129 }, -- WorldItems/HotSauce
   ["hottiezground"] = { dx = 0.3716, dy = 0.2711, dz = 0.006536, cy = -0.9529 }, -- WorldItems/MagazineOpen
   ["hotwaterbottle"] = { dx = 0.3618, dy = 0.2074, dz = 0.01958 }, -- WorldItems/HotWaterBottle
   ["humidor"] = { dx = 0.1412, dy = 0.2226, dz = 0.03527 }, -- WorldItems/CigarBox_Fancy
+  ["huntingknife@weapon"] = { dx = 0.47, dy = 0.0797, dz = 0.01159, oz = 0.004266, cx = -0.008705, cy = -0.004434 }, -- weapons/1handed/HuntingKnife
   ["huntingknifebladeforged"] = { dx = 0.05861, dy = 0.36, dz = 0.002934 }, -- WorldItems/KnifeHunting_Forged_Blade
   ["huntingknifeforged@weapon"] = { dx = 0.4719, dy = 0.07458, dz = 0.01153, cx = 0.06147, cy = -0.006511 }, -- weapons/1handed/KnifeHunting_Forged_Hand
   ["huntingmag4"] = { dx = 0.2683, dy = 0.3726, dz = 0.006075 }, -- WorldItems/Magazine
@@ -943,6 +1186,7 @@ local MeshSizes = {
   ["insect_millipede_ground"] = { dx = 0.04181, dy = 0.1392, dz = 0.009589 }, -- WorldItems/Insect_Millipede
   ["insect_millipede2_ground"] = { dx = 0.04181, dy = 0.1392, dz = 0.009589 }, -- WorldItems/Insect_Millipede
   ["insect_pillbug_ground"] = { dx = 0.02546, dy = 0.04316, dz = 0.003035 }, -- WorldItems/Insect_Pillbug
+  ["insect_termite_ground"] = { dx = 0.0338, dy = 0.06766, dz = 0.009379 }, -- WorldItems/Insect_Termite
   ["insectrepellant"] = { dx = 0.07752, dy = 0.07498, dz = 0.09604 }, -- WorldItems/InsectRepellant
   ["ironband"] = { dx = 0.387, dy = 0.3683, dz = 0.01512 }, -- WorldItems/Metal_Band
   ["ironbandsmall"] = { dx = 0.1935, dy = 0.1842, dz = 0.007561 }, -- WorldItems/Metal_Band3
@@ -964,12 +1208,16 @@ local MeshSizes = {
   ["jacketleather_ground"] = { dx = 1.001, dy = 0.4897, dz = 0.01493, cy = 0.04681 }, -- WorldItems/Clothing/Bob_JacketLeather_Ground
   ["jacketlong_ground"] = { dx = 0.8067, dy = 0.6376, dz = 0.01197, oz = -0.00202 }, -- WorldItems/Clothing/Bob_LongJacket_Ground
   ["jackolantern_ground"] = { dx = 0.2825, dy = 0.2954, dz = 0.1116 }, -- WorldItems/Pumpkin
+  ["jalapenodried"] = { dx = 0.179, dy = 0.03186, dz = 0.01157 }, -- WorldItems/PepperJalapeno_Dried
+  ["jalapenoseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
   ["jamespic"] = { dx = 0.1663, dy = 0.08796, dz = 0.08262, cy = -0.0289 }, -- WorldItems/KatePic
   ["jamfruit_apple_ground"] = { dx = 0.1203, dy = 0.1203, dz = 0.06837 }, -- WorldItems/JarLid
   ["jamfruit_berry_ground"] = { dx = 0.1203, dy = 0.1203, dz = 0.06837 }, -- WorldItems/JarLid
   ["jamfruit_cherry_ground"] = { dx = 0.1203, dy = 0.1203, dz = 0.06837 }, -- WorldItems/JarLid
+  ["jamfruit_ground"] = { dx = 0.1203, dy = 0.1203, dz = 0.06837 }, -- WorldItems/JarLid
   ["jamfruit_peach_ground"] = { dx = 0.1203, dy = 0.1203, dz = 0.06837 }, -- WorldItems/JarLid
   ["jamfruit_strawberry_ground"] = { dx = 0.1203, dy = 0.1203, dz = 0.06837 }, -- WorldItems/JarLid
+  ["jammarmalade_ground"] = { dx = 0.1203, dy = 0.1203, dz = 0.06837 }, -- WorldItems/JarLid
   ["jammarmalade_orange_ground"] = { dx = 0.1203, dy = 0.1203, dz = 0.06837 }, -- WorldItems/JarLid
   ["jamspread_ground"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
   ["jamspread_open"] = { dx = 0.1083, dy = 0.1083, dz = 0.06035 }, -- WorldItems/JarFood_Open
@@ -983,10 +1231,16 @@ local MeshSizes = {
   ["jarfoodberry_ground_trex"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
   ["jarfoodberry_open_trex"] = { dx = 0.1083, dy = 0.1083, dz = 0.06035 }, -- WorldItems/JarFood_Open
   ["jarfoodbroccoli_ground"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
+  ["jarfoodbrown_open"] = { dx = 0.1083, dy = 0.1083, dz = 0.06035 }, -- WorldItems/JarFood_Open
+  ["jarfoodcabbage_ground"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
+  ["jarfoodcarrots_ground"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
   ["jarfoodcherry_ground_trex"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
   ["jarfoodcherry_open_trex"] = { dx = 0.1083, dy = 0.1083, dz = 0.06035 }, -- WorldItems/JarFood_Open
+  ["jarfoodeggplants_ground"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
   ["jarfoodfish_ground"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
   ["jarfoodfish_open"] = { dx = 0.1083, dy = 0.1083, dz = 0.06035 }, -- WorldItems/JarFood_Open
+  ["jarfoodgreen_open"] = { dx = 0.1083, dy = 0.1083, dz = 0.06035 }, -- WorldItems/JarFood_Open
+  ["jarfoodleeks_ground"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
   ["jarfoodlemon_ground_trex"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
   ["jarfoodlemon_open_trex"] = { dx = 0.1083, dy = 0.1083, dz = 0.06035 }, -- WorldItems/JarFood_Open
   ["jarfoodlime_ground_trex"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
@@ -997,6 +1251,7 @@ local MeshSizes = {
   ["jarfoodmeat_open"] = { dx = 0.1083, dy = 0.1083, dz = 0.06035 }, -- WorldItems/JarFood_Open
   ["jarfoodorange_ground_trex"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
   ["jarfoodorange_open_trex"] = { dx = 0.1083, dy = 0.1083, dz = 0.06035 }, -- WorldItems/JarFood_Open
+  ["jarfoodorange_open"] = { dx = 0.1083, dy = 0.1083, dz = 0.06035 }, -- WorldItems/JarFood_Open
   ["jarfoodpeach_ground_trex"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
   ["jarfoodpeach_open_trex"] = { dx = 0.1083, dy = 0.1083, dz = 0.06035 }, -- WorldItems/JarFood_Open
   ["jarfoodpear_ground_trex"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
@@ -1005,9 +1260,13 @@ local MeshSizes = {
   ["jarfoodpepper_open"] = { dx = 0.1083, dy = 0.1083, dz = 0.06035 }, -- WorldItems/JarFood_Open
   ["jarfoodpineapple_ground_trex"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
   ["jarfoodpineapple_open_trex"] = { dx = 0.1083, dy = 0.1083, dz = 0.06035 }, -- WorldItems/JarFood_Open
+  ["jarfoodpotatoes_ground"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
+  ["jarfoodpurple_open"] = { dx = 0.1083, dy = 0.1083, dz = 0.06035 }, -- WorldItems/JarFood_Open
+  ["jarfoodradish_ground"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
   ["jarfoodred_open"] = { dx = 0.1083, dy = 0.1083, dz = 0.06035 }, -- WorldItems/JarFood_Open
   ["jarfoodsalt_ground"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
   ["jarfoodsalt_open"] = { dx = 0.1083, dy = 0.1083, dz = 0.06035 }, -- WorldItems/JarFood_Open
+  ["jarfoodtomatoes_ground"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
   ["jarfoodwatermelon_ground_trex"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
   ["jarfoodwatermelon_open_trex"] = { dx = 0.1083, dy = 0.1083, dz = 0.06035 }, -- WorldItems/JarFood_Open
   ["jarfoodwhite_ground"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
@@ -1020,10 +1279,13 @@ local MeshSizes = {
   ["jarpickle_jalapeno_ground"] = { dx = 0.1804, dy = 0.1804, dz = 0.1026 }, -- WorldItems/JarFood
   ["jarpickle_onion_ground"] = { dx = 0.1804, dy = 0.1804, dz = 0.1026 }, -- WorldItems/JarFood
   ["jarpickle_radish_ground"] = { dx = 0.1804, dy = 0.1804, dz = 0.1026 }, -- WorldItems/JarFood
+  ["jarroeground"] = { dx = 0.09475, dy = 0.09475, dz = 0.04239 }, -- WorldItems/Jar_Roe
+  ["jarroeopen"] = { dx = 0.09475, dy = 0.09475, dz = 0.04186 }, -- WorldItems/Jar_Roe_Open
   ["jawbonebovide_axe@weapon"] = { dx = 0.7057, dy = 0.4043, dz = 0.09035, oz = 0.02844, cx = 0.03115, cy = 0.005003 }, -- weapons/1handed/JawBone_Axe_Hand
   ["jawbonebovide_club@weapon"] = { dx = 0.6031, dy = 0.2999, dz = 0.02381, oz = 0.00395, cx = 0.05045, cy = 0.1113 }, -- weapons/1handed/JawBone_Handle_Hand
   ["jawbonebovide_morningstar@weapon"] = { dx = 1.061, dy = 0.3617, dz = 0.05554, oz = 0.01814, cx = 0.4397, cy = 0.01621 }, -- weapons/2handed/JawBone_Axe_2Handed_Hand
   ["jawbonebovide@weapon"] = { dx = 0.4329, dy = 0.2936, dz = 0.02088, oz = 0.00372, cx = 0.002341, cy = 0.07451 }, -- weapons/1handed/JawBone_Hand
+  ["jellybeans"] = { dx = 0.1278, dy = 0.1312, dz = 0.006597, cx = 0.002703 }, -- WorldItems/JellyBeans
   ["jellyroll"] = { dx = 0.08811, dy = 0.1429, dz = 0.02771 }, -- WorldItems/JellyRoll
   ["jerrycan"] = { dx = 0.161, dy = 0.3073, dz = 0.21, cy = -0.00356 }, -- JerryCan
   ["jewellerybox_fancy"] = { dx = 0.2009, dy = 0.2859, dz = 0.07612 }, -- WorldItems/Box_Jewelry_Fancy
@@ -1041,8 +1303,11 @@ local MeshSizes = {
   ["juicebox_fruitpunch"] = { dx = 0.04438, dy = 0.08593, dz = 0.04784 }, -- WorldItems/JuiceBox
   ["juicebox_grape"] = { dx = 0.04438, dy = 0.08593, dz = 0.04784 }, -- WorldItems/JuiceBox
   ["juicebox_orange"] = { dx = 0.04438, dy = 0.08593, dz = 0.04784 }, -- WorldItems/JuiceBox
+  ["jujubes_ground"] = { dx = 0.08857, dy = 0.1277, dz = 0.009693 }, -- WorldItems/JujuJubes
   ["jumper_ground"] = { dx = 1.038, dy = 0.4679, dz = 0.01067, oz = -0.004876 }, -- WorldItems/Clothing/Bob_Jumper_Ground
   ["jumpersleeveless_ground"] = { dx = 0.3166, dy = 0.4794, dz = 0.01067, oz = -0.00211 }, -- WorldItems/Clothing/Bob_SleevelessJumper_Ground
+  ["kale"] = { dx = 0.2544, dy = 0.2994, dz = 0.02099 }, -- WorldItems/Kale
+  ["kaleseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
   ["katana_blade_broken"] = { dx = 0.384, dy = 0.04228, dz = 0.01069, oz = -0.003304 }, -- WorldItems/Katana_Blade_Broken_NoTang
   ["katana_blade"] = { dx = 0.7454, dy = 0.07446, dz = 0.01069, oz = -0.003304 }, -- WorldItems/Katana_Blade_NoTang
   ["katana_broken@weapon"] = { dx = 0.7818, dy = 0.08873, dz = 0.04741, oz = 0.01124, cx = -0.1814, cy = 0.02099 }, -- weapons/1handed/Katana_Broken
@@ -1050,6 +1315,9 @@ local MeshSizes = {
   ["katana_shard"] = { dx = 0.05134, dy = 0.2785, dz = 0.005201, cy = -0.02238 }, -- WorldItems/Katana_BrokenShard_Ground
   ["katana@weapon"] = { dx = 1.068, dy = 0.1067, dz = 0.04843, oz = 0.01281, cx = -0.03796, cy = 0.01203 }, -- weapons/2handed/Katana
   ["katepic"] = { dx = 0.1663, dy = 0.08796, dz = 0.08262, cy = -0.0289 }, -- WorldItems/KatePic
+  ["ketchup"] = { dx = 0.1371, dy = 0.08841, dz = 0.1198 }, -- WorldItems/Ketchup
+  ["kettle_copper"] = { dx = 0.2346, dy = 0.3444, dz = 0.139 }, -- WorldItems/Kettle_Copper
+  ["kettleground"] = { dx = 0.256, dy = 0.3075, dz = 0.122 }, -- WorldItems/Kettle
   ["kettlemace_metal@weapon"] = { dx = 0.8542, dy = 0.4022, dz = 0.209, oz = 0.07974, cx = 0.3178, cy = -0.008876 }, -- weapons/2handed/ConcreteClubMetal_Kettle_Hand
   ["kettlemace_wood@weapon"] = { dx = 0.9565, dy = 0.4022, dz = 0.2156, oz = 0.07787, cx = 0.3678, cy = -0.01029 }, -- weapons/2handed/ConcreteClubWood_Kettle_Hand
   ["key_blank"] = { dx = 0.1745, dy = 0.05721, dz = 0.007335 }, -- WorldItems/Key
@@ -1092,9 +1360,16 @@ local MeshSizes = {
   ["kneepad_left"] = { dx = 0.1987, dy = 0.1421, dz = 0.03083 }, -- WorldItems/Clothing/Kneepad_Ground_L
   ["kneepad_right"] = { dx = 0.1987, dy = 0.1421, dz = 0.03083 }, -- WorldItems/Clothing/Kneepad_Ground_R
   ["knife_bone@weapon"] = { dx = 0.3276, dy = 0.0461, dz = 0.008742, cx = 0.01051, cy = -0.005028 }, -- weapons/1handed/Knife_Bone_Hand
+  ["knife@weapon"] = { dx = 0.3968, dy = 0.06549, dz = 0.006545, cy = 0.002219 }, -- weapons/1handed/Knife
+  ["knifebutterfly@weapon"] = { dx = 0.2924, dy = 0.05557, dz = 0.003933, cx = 0.0466, cy = 0.00595 }, -- weapons/1handed/ButterflyKnife
+  ["knifebutterfly2@weapon"] = { dx = 0.3423, dy = 0.04974, dz = 0.004295, cx = 0.0353, cy = 0.00442 }, -- weapons/1handed/ButterflyKnife2
   ["knifefillet@weapon"] = { dx = 0.4784, dy = 0.06647, dz = 0.007471, cx = 0.03959, cy = -0.01357 }, -- weapons/1handed/Knife_Fillet_Hand
   ["knifeforged@weapon"] = { dx = 0.3668, dy = 0.05005, dz = 0.002618, oz = -0.003201, cx = 0.05254, cy = -0.01698 }, -- weapons/1handed/KnifeKitchen_Forged_Hand
   ["knifeparing@weapon"] = { dx = 0.284, dy = 0.04123, dz = 0.006525, cx = 0.02325, cy = -0.008723 }, -- weapons/1handed/KnifeParing_Hand
+  ["knifepocket@weapon"] = { dx = 0.3293, dy = 0.0267, dz = 0.006146, cx = 0.0306, cy = -0.01198 }, -- weapons/1handed/PenKnife
+  ["knifepocket2@weapon"] = { dx = 0.3232, dy = 0.05124, dz = 0.00777, cx = 0.08353, cy = 0.02102 }, -- weapons/1handed/PenKnife2
+  ["knifeshiv@weapon"] = { dx = 0.2995, dy = 0.05366, dz = 0.01249, cx = 0.06109, cy = -0.01044 }, -- weapons/1handed/Shiv
+  ["knifeshiv2@weapon"] = { dx = 0.3001, dy = 0.05391, dz = 0.01096, cx = 0.05331, cy = -0.01015 }, -- weapons/1handed/Shiv2
   ["knifesteak@weapon"] = { dx = 0.3488, dy = 0.03555, dz = 0.006313, oz = 0.003182, cx = 0.1262, cy = -0.007129 }, -- weapons/1handed/Knife_Steak_Hand
   ["knifesushi@weapon"] = { dx = 0.4642, dy = 0.03987, dz = 0.01299, cx = 0.04009, cy = -0.008637 }, -- weapons/1handed/Knife_Sushi_Fillet_Hand
   ["knittingneedles_bone"] = { dx = 0.2045, dy = 0.3388, dz = 0.006339, oz = -0.002259 }, -- WorldItems/KnittingNeedle_Crafted
@@ -1124,6 +1399,7 @@ local MeshSizes = {
   ["latch"] = { dx = 0.1242, dy = 0.06387, dz = 0.006934 }, -- WorldItems/Latch_Forged
   ["lavender"] = { dx = 0.1946, dy = 0.4237, dz = 0.03227, oz = -0.003996 }, -- WorldItems/Lavender_Fresh
   ["lavenderpetals"] = { dx = 0.1343, dy = 0.1288, dz = 0.01248 }, -- WorldItems/PoppySeeds_Lavender_Dried
+  ["lavenderseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
   ["leadpipe@weapon"] = { dx = 0.6663, dy = 0.065, dz = 0.01843, cx = 0.0103, cy = 0.01296 }, -- weapons/1handed/LeadPipe
   ["leafrake@weapon"] = { dx = 1.415, dy = 0.5017, dz = 0.04476, oz = 0.005954, cx = 0.01216 }, -- weapons/2handed/LeafRake
   ["leash"] = { dx = 0.3947, dy = 0.6587, dz = 0.03089 }, -- WorldItems/Leash
@@ -1155,8 +1431,15 @@ local MeshSizes = {
   ["leatherstripsdirtybundle"] = { dx = 0.2472, dy = 0.2495, dz = 0.07091 }, -- WorldItems/Bundle_Rags_Strips
   ["leatherwaterbag_ground"] = { dx = 0.3224, dy = 0.2376, dz = 0.02731, cx = 0.0153, cy = -0.02391 }, -- WorldItems/Clothing/LeatherWaterBag_Ground
   ["leech"] = { dx = 0.04735, dy = 0.2429, dz = 0.006024 }, -- WorldItems/Leech
+  ["leek_ground"] = { dx = 0.09586, dy = 0.5038, dz = 0.02623 }, -- WorldItems/Leek
+  ["leekseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
+  ["lemon_ground"] = { dx = 0.1003, dy = 0.1519, dz = 0.03677 }, -- WorldItems/Lemon
   ["lemonbar"] = { dx = 0.1218, dy = 0.08568, dz = 0.01723 }, -- WorldItems/LemonBar
+  ["lemongrass"] = { dx = 0.1199, dy = 0.3549, dz = 0.01159 }, -- WorldItems/LemonGrass
   ["letteropener@weapon"] = { dx = 0.395, dy = 0.02478, dz = 0.005689, cx = 0.1557, cy = -0.005384 }, -- weapons/1handed/LetterOpener
+  ["lettuce_ground"] = { dx = 0.2242, dy = 0.2326, dz = 0.04967 }, -- WorldItems/Lettuce
+  ["licoriceblack_ground"] = { dx = 0.2156, dy = 0.08766, dz = 0.001896 }, -- WorldItems/Licorice
+  ["licoricered_ground"] = { dx = 0.2156, dy = 0.08766, dz = 0.001896 }, -- WorldItems/Licorice
   ["lidjar"] = { dx = 0.1203, dy = 0.1203, dz = 0.007149 }, -- WorldItems/LidJar
   ["lightbulb"] = { dx = 0.1446, dy = 0.09189, dz = 0.03661 }, -- WorldItems/LightBulb
   ["lightbulbblue"] = { dx = 0.1446, dy = 0.09189, dz = 0.03661 }, -- WorldItems/LightBulb
@@ -1172,11 +1455,14 @@ local MeshSizes = {
   ["lighterbbq"] = { dx = 0.06529, dy = 0.3745, dz = 0.00716 }, -- WorldItems/BBQ_Lighter
   ["lighterdisposable"] = { dx = 0.1433, dy = 0.0444, dz = 0.007184 }, -- WorldItems/LighterDisposable
   ["lighterfluid"] = { dx = 0.08532, dy = 0.04814, dz = 0.07322 }, -- WorldItems/LighterFluid
+  ["lime_ground"] = { dx = 0.1569, dy = 0.1466, dz = 0.0291 }, -- WorldItems/Lime
   ["limestone"] = { dx = 0.1726, dy = 0.1734, dz = 0.04769, cx = -0.01323, cy = 0.08791 }, -- WorldItems/Limestone
   ["lipstick"] = { dx = 0.1368, dy = 0.1457, dz = 0.07138 }, -- WorldItems/Lipstick
   ["liquorlicense"] = { dx = 0.1834, dy = 0.2646, dz = 0.002219 }, -- WorldItems/PaperWork
   ["littlebaitfish"] = { dx = 0.1228, dy = 0.4083, dz = 0.01541, cx = 0.04789 }, -- WorldItems/LittleBaitFish
+  ["lobster_ground"] = { dx = 0.5119, dy = 0.2158, dz = 0.02194 }, -- WorldItems/Lobster
   ["locket"] = { dx = 0.1586, dy = 0.1636, dz = 0.01419 }, -- WorldItems/Locket
+  ["log"] = { dx = 0.2415, dy = 0.5413, dz = 0.09842 }, -- WorldItems/Log
   ["lollipop"] = { dx = 0.2535, dy = 0.08919, dz = 0.03591 }, -- WorldItems/Lollipop
   ["longcrudeblade_notweapon"] = { dx = 0.5209, dy = 0.06814, dz = 0.01011, cx = 0.2507, cy = 0.006415 }, -- weapons/1handed/Spear_Crude_Longer_Head_Hand
   ["longcrudeknife@weapon"] = { dx = 0.5662, dy = 0.06814, dz = 0.01096, oz = 0.002993, cx = 0.03359, cy = -0.007307 }, -- weapons/1handed/Shiv_SpearCrude_Longer_Hand
@@ -1203,10 +1489,12 @@ local MeshSizes = {
   ["lunchbox2_ground"] = { dx = 0.1006, dy = 0.2463, dz = 0.08112 }, -- WorldItems/Clothing/PlasticLunchBox_Ground
   ["lunchboxmedic_ground"] = { dx = 0.1006, dy = 0.2463, dz = 0.08112 }, -- WorldItems/Clothing/PlasticLunchBox_Ground
   ["macandcheese"] = { dx = 0.1815, dy = 0.09491, dz = 0.1011 }, -- WorldItems/MacAndCheese
+  ["macaroni"] = { dx = 0.2594, dy = 0.2593, dz = 0.01178 }, -- WorldItems/Macaroni
   ["mace_stone@weapon"] = { dx = 0.4366, dy = 0.1205, dz = 0.05838, oz = 0.01865, cx = -0.07639, cy = 0.00643 }, -- weapons/1handed/Mace_RoundAngle_Short_Hand
   ["mace@weapon"] = { dx = 0.7227, dy = 0.1061, dz = 0.05944, oz = 0.0148, cx = 0.05802, cy = 0.008524 }, -- weapons/1handed/Mace_Hand
   ["macehead"] = { dx = 0.1021, dy = 0.2166, dz = 0.0418 }, -- WorldItems/Mace_Head
   ["machete_crude@weapon"] = { dx = 0.5617, dy = 0.07509, dz = 0.01199, cx = 0.2288, cy = -0.02056 }, -- weapons/1handed/Machete_ScrapMetal_Hand
+  ["machete@weapon"] = { dx = 0.5688, dy = 0.09624, dz = 0.00985, cy = -0.00916 }, -- weapons/1handed/Machete
   ["macheteblade_notang"] = { dx = 0.0914, dy = 0.3868, dz = 0.002527 }, -- WorldItems/Machete_Forged_Blade_NoTang
   ["machetebladeforged"] = { dx = 0.0914, dy = 0.4643, dz = 0.002527 }, -- WorldItems/Machete_Forged_Blade
   ["macheteforged@weapon"] = { dx = 0.5658, dy = 0.1203, dz = 0.01188, cy = 0.003016 }, -- weapons/1handed/Machete_Forged_Hand
@@ -1283,13 +1571,21 @@ local MeshSizes = {
   ["magnifyingglass"] = { dx = 0.1735, dy = 0.3216, dz = 0.01147 }, -- WorldItems/MagnifyingGlass
   ["makeupcase_professional"] = { dx = 0.2388, dy = 0.3426, dz = 0.1388 }, -- WorldItems/MakeupCase_Professional
   ["maki_ground"] = { dx = 0.1212, dy = 0.1307, dz = 0.02562 }, -- WorldItems/Maki
+  ["mango_ground"] = { dx = 0.1379, dy = 0.1023, dz = 0.03983 }, -- WorldItems/Mango
   ["manpackradio_ground"] = { dx = 0.2923, dy = 0.3595, dz = 0.3466, cx = -0.01661, cy = 0.01992 }, -- WorldItems/ManPackRadio_Ground
   ["map"] = { dx = 0.4082, dy = 0.4834, dz = 0.02714 }, -- WorldItems/Map
+  ["maplesyrup_ground"] = { dx = 0.1531, dy = 0.1092, dz = 0.1021 }, -- WorldItems/MapleSyrup
+  ["margerine_ground"] = { dx = 0.216, dy = 0.1504, dz = 0.03318 }, -- WorldItems/Margerine
   ["mariannepic"] = { dx = 0.1663, dy = 0.08796, dz = 0.08262, cy = -0.0289 }, -- WorldItems/KatePic
+  ["marigold"] = { dx = 0.262, dy = 0.3545, dz = 0.04381 }, -- WorldItems/Marigolds
+  ["marigolddried"] = { dx = 0.262, dy = 0.3545, dz = 0.04381 }, -- WorldItems/Marigolds
+  ["marigoldseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
+  ["marinara"] = { dx = 0.1302, dy = 0.1251, dz = 0.07995 }, -- WorldItems/Marinara
   ["markerblack"] = { dx = 0.1739, dy = 0.02377, dz = 0.009704 }, -- WorldItems/Marker
   ["markerblue"] = { dx = 0.1739, dy = 0.02377, dz = 0.009704 }, -- WorldItems/Marker
   ["markergreen"] = { dx = 0.1739, dy = 0.02377, dz = 0.009704 }, -- WorldItems/Marker
   ["markerred"] = { dx = 0.1739, dy = 0.02377, dz = 0.009704 }, -- WorldItems/Marker
+  ["marshmallows_ground"] = { dx = 0.1394, dy = 0.09231, dz = 0.0218 }, -- WorldItems/Marshmallows
   ["mashedberries"] = { dx = 0.2242, dy = 0.2349, dz = 0.01969 }, -- WorldItems/Poultice
   ["masonschisel@weapon"] = { dx = 0.4089, dy = 0.06831, dz = 0.02634, oz = 0.006681, cx = 0.1592, cy = -0.004478 }, -- weapons/1handed/Chisel_Forged_Hand
   ["masonstrowel_wood"] = { dx = 0.3158, dy = 0.06642, dz = 0.01298 }, -- WorldItems/Trowel_Wood
@@ -1297,11 +1593,15 @@ local MeshSizes = {
   ["matchbox"] = { dx = 0.1236, dy = 0.1471, dz = 0.01109 }, -- WorldItems/MatchBox
   ["matches"] = { dx = 0.05965, dy = 0.1609, dz = 0.01591 }, -- WorldItems/Matches
   ["mattress_ground"] = { dx = 1.287, dy = 2.292, dz = 0.1584 }, -- WorldItems/Mattress
+  ["mayojar_ground"] = { dx = 0.1203, dy = 0.1203, dz = 0.06837 }, -- WorldItems/JarLid
+  ["mayojarempty_ground"] = { dx = 0.1203, dy = 0.1203, dz = 0.06837 }, -- WorldItems/JarLid
   ["measuringtape"] = { dx = 0.1729, dy = 0.206, dz = 0.01294 }, -- WorldItems/MeasuringTape
   ["meatcleaver_scrap@weapon"] = { dx = 0.4789, dy = 0.1495, dz = 0.01653, oz = 0.003709, cx = 0.02352, cy = -0.06364 }, -- weapons/1handed/MeatCleaver_ScrapMetal_Hand
+  ["meatcleaver@weapon"] = { dx = 0.4106, dy = 0.1499, dz = 0.006545, cx = -0.01196, cy = 0.03061 }, -- weapons/1handed/MeatCleaver
   ["meatcleaverbladeforged"] = { dx = 0.1447, dy = 0.3137, dz = 0.004427 }, -- WorldItems/MeatCleaver_Forged_Blade
   ["meatcleaverforged@weapon"] = { dx = 0.4077, dy = 0.1499, dz = 0.006615, cx = 0.1593, cy = -0.0305 }, -- weapons/1handed/MeatCleaver_Forged_Hand
   ["meatdumplings_ground"] = { dx = 0.1479, dy = 0.1426, dz = 0.0287 }, -- WorldItems/MeatDumplings
+  ["meatpatty"] = { dx = 0.169, dy = 0.169, dz = 0.00974 }, -- WorldItems/MeatPatty
   ["meatsteambun_ground"] = { dx = 0.226, dy = 0.2446, dz = 0.03074 }, -- WorldItems/MeatSteamBun
   ["medal_bronze"] = { dx = 0.3003, dy = 0.2896, dz = 0.005273 }, -- WorldItems/Medal
   ["medal_gold"] = { dx = 0.3003, dy = 0.2896, dz = 0.005273 }, -- WorldItems/Medal
@@ -1310,6 +1610,7 @@ local MeshSizes = {
   ["medicalparcel_red"] = { dx = 0.2805, dy = 0.246, dz = 0.0333 }, -- WorldItems/Parcel_Present_3
   ["medicinalherbsleafbundle"] = { dx = 0.1839, dy = 0.3583, dz = 0.006863, cx = 0.003336 }, -- WorldItems/MedicinalHerbsLeafBundle
   ["medicinalherbsleafbundledried"] = { dx = 0.1839, dy = 0.3583, dz = 0.006863, cx = 0.003336 }, -- WorldItems/MedicinalHerbsLeafBundle
+  ["megaphone"] = { dx = 0.4592, dy = 0.3902, dz = 0.09786 }, -- WorldItems/Megaphone
   ["menucard"] = { dx = 0.2646, dy = 0.2043, dz = 0.001095 }, -- WorldItems/MenuCard
   ["metalpieces"] = { dx = 0.2144, dy = 0.2578, dz = 0.01844, cy = -0.002046 }, -- WorldItems/MetalPieces
   ["metalpipe_broken@weapon"] = { dx = 0.5232, dy = 0.03494, dz = 0.01348, oz = -0.002648, cx = -0.06231 }, -- weapons/1handed/MetalPipe_Broken_Hand
@@ -1323,6 +1624,7 @@ local MeshSizes = {
   ["microphone"] = { dx = 0.3193, dy = 0.09583, dz = 0.04066 }, -- WorldItems/Microphone
   ["milk_ground"] = { dx = 0.07861, dy = 0.1161, dz = 0.08226, cy = -0.01505 }, -- WorldItems/Milk
   ["milk_personalsized"] = { dx = 0.0847, dy = 0.07623, dz = 0.04909 }, -- WorldItems/MilkPersonalsized
+  ["milkbottle"] = { dx = 0.07741, dy = 0.07656, dz = 0.09111 }, -- WorldItems/Milk_Bottle
   ["milkchocolate_personalsized"] = { dx = 0.0847, dy = 0.07623, dz = 0.04909 }, -- WorldItems/MilkPersonalsized
   ["milkpowder_sack"] = { dx = 0.7198, dy = 0.4373, dz = 0.06599, oz = -0.0206 }, -- WorldItems/MilkPowder_Sack
   ["mincedgarlic_ground"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
@@ -1330,6 +1632,8 @@ local MeshSizes = {
   ["mincedgarlicmash_ground"] = { dx = 0.2242, dy = 0.2349, dz = 0.01969 }, -- WorldItems/Poultice
   ["mincedmeat_ground"] = { dx = 0.1823, dy = 0.1906, dz = 0.0419 }, -- WorldItems/MincedMeat
   ["mintcandy"] = { dx = 0.06984, dy = 0.1392, dz = 0.00574 }, -- WorldItems/MintCandy
+  ["mintherb"] = { dx = 0.1779, dy = 0.2207, dz = 0.01195 }, -- WorldItems/Mint
+  ["mintseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
   ["mirror"] = { dx = 0.2887, dy = 0.406, dz = 0.003081 }, -- WorldItems/Mirror
   ["modjeska"] = { dx = 0.1115, dy = 0.1252, dz = 0.02171 }, -- WorldItems/Modjeska
   ["moldglass_fired"] = { dx = 0.5863, dy = 0.3867, dz = 0.01758 }, -- WorldItems/MoldGlass
@@ -1349,18 +1653,33 @@ local MeshSizes = {
   ["muffingeneric_ground"] = { dx = 0.1476, dy = 0.1476, dz = 0.05663 }, -- WorldItems/Muffin
   ["muffintray_batter"] = { dx = 0.4925, dy = 0.3516, dz = 0.02688 }, -- WorldItems/MuffinTray_Batter
   ["muffintray"] = { dx = 0.4925, dy = 0.3516, dz = 0.02688 }, -- WorldItems/MuffinTray
+  ["muffler"] = { dx = 0.6411, dy = 0.2172, dz = 0.05085 }, -- WorldItems/Muffler
   ["mug_copper_coffee"] = { dx = 0.1239, dy = 0.1753, dz = 0.06023, cy = -0.02867 }, -- WorldItems/MugTin_Fluid
+  ["mug_copper"] = { dx = 0.1239, dy = 0.1753, dz = 0.06023, cy = -0.02867 }, -- WorldItems/Mug_Tin
   ["mug_gold_coffee"] = { dx = 0.1239, dy = 0.1753, dz = 0.06023, cy = -0.02867 }, -- WorldItems/MugTin_Fluid
+  ["mug_gold"] = { dx = 0.1239, dy = 0.1753, dz = 0.06023, cy = -0.02867 }, -- WorldItems/Mug_Tin
   ["mug_metal_coffee"] = { dx = 0.1239, dy = 0.1753, dz = 0.06023 }, -- WorldItems/MugTin_Fluid
+  ["mug_metal"] = { dx = 0.1239, dy = 0.1753, dz = 0.06023 }, -- WorldItems/Mug_Tin
   ["mug_silver_coffee"] = { dx = 0.1239, dy = 0.1753, dz = 0.06023, cy = -0.02867 }, -- WorldItems/MugTin_Fluid
+  ["mug_silver"] = { dx = 0.1239, dy = 0.1753, dz = 0.06023, cy = -0.02867 }, -- WorldItems/Mug_Tin
   ["mug"] = { dx = 0.1255, dy = 0.1616, dz = 0.04787, cx = -0.003181, cy = -0.02167 }, -- WorldItems/Mug
   ["mugclay"] = { dx = 0.1255, dy = 0.1616, dz = 0.04787, cx = -0.003181, cy = -0.02167 }, -- WorldItems/Mug
+  ["mugclayunfired"] = { dx = 0.1255, dy = 0.1616, dz = 0.04787, cx = -0.003181, cy = -0.02167 }, -- WorldItems/Mug
   ["mugred"] = { dx = 0.1255, dy = 0.1616, dz = 0.04787, cx = -0.003181, cy = -0.02167 }, -- WorldItems/Mug
   ["mugspiffo"] = { dx = 0.1255, dy = 0.1616, dz = 0.04787, cx = -0.003181, cy = -0.02167 }, -- WorldItems/Mug
   ["mugwhite"] = { dx = 0.1255, dy = 0.1616, dz = 0.04787, cx = -0.003181, cy = -0.02167 }, -- WorldItems/Mug
   ["multitool_closed"] = { dx = 0.1853, dy = 0.05413, dz = 0.004536, cx = -0.04123, cy = 0.009287 }, -- WorldItems/MultiTool_Closed_Hand
+  ["mushroomgeneric1"] = { dx = 0.1093, dy = 0.1405, dz = 0.03706 }, -- WorldItems/MushroomGeneric_1_2
+  ["mushroomgeneric2"] = { dx = 0.1458, dy = 0.1874, dz = 0.04941 }, -- WorldItems/MushroomGeneric_1_2
+  ["mushroomgeneric3"] = { dx = 0.1814, dy = 0.1778, dz = 0.06818 }, -- WorldItems/MushroomGeneric3
+  ["mushroomgeneric4"] = { dx = 0.118, dy = 0.1148, dz = 0.04543 }, -- WorldItems/MushroomGeneric_4_5
+  ["mushroomgeneric5"] = { dx = 0.1574, dy = 0.1531, dz = 0.06058 }, -- WorldItems/MushroomGeneric_4_5
+  ["mushroomgeneric6"] = { dx = 0.06314, dy = 0.06676, dz = 0.03917 }, -- WorldItems/MushroomGeneric_6_7
+  ["mushroomgeneric7"] = { dx = 0.08418, dy = 0.08902, dz = 0.05223 }, -- WorldItems/MushroomGeneric_6_7
+  ["mushroomsbutton"] = { dx = 0.1397, dy = 0.1135, dz = 0.03193, cx = 0.005158, cy = -0.003523 }, -- WorldItems/Mushroom_Button
   ["muskellunge_ground"] = { dx = 0.359, dy = 1.07, dz = 0.0416, oz = 0.003785 }, -- WorldItems/Fish_Muskellunge_Pike
   ["mussels"] = { dx = 0.1233, dy = 0.09772, dz = 0.008037, cx = -0.002583, cy = -0.004926 }, -- WorldItems/Mussels_Raw
+  ["mustard"] = { dx = 0.1357, dy = 0.09701, dz = 0.109 }, -- WorldItems/Mustard
   ["muttonchop"] = { dx = 0.1556, dy = 0.3951, dz = 0.01875 }, -- WorldItems/MuttonChop
   ["mysterycan_open"] = { dx = 0.1286, dy = 0.1616, dz = 0.08634, cx = 0.01101, cy = -0.02748 }, -- CanOpen
   ["mysterycan"] = { dx = 0.1066, dy = 0.1066, dz = 0.06097 }, -- CanClosed
@@ -1394,6 +1713,7 @@ local MeshSizes = {
   ["needle_brass"] = { dx = 0.01281, dy = 0.1498, dz = 0.002797 }, -- WorldItems/SewingNeedle_Forged
   ["needle_forged"] = { dx = 0.01281, dy = 0.1498, dz = 0.002797 }, -- WorldItems/SewingNeedle_Forged
   ["needle"] = { dx = 0.04515, dy = 0.1617, dz = 0.003719 }, -- WorldItems/Needle
+  ["nettles_ground"] = { dx = 0.1774, dy = 0.129, dz = 0.004877 }, -- WorldItems/Nettle
   ["newspaper_ground"] = { dx = 0.3388, dy = 0.2946, dz = 0.02127 }, -- WorldItems/Newspaper
   ["nightstick@weapon"] = { dx = 0.696, dy = 0.1755, dz = 0.01905, oz = 0.003953, cx = 0.005471, cy = 0.07013 }, -- weapons/1handed/Nightstick
   ["noisemaker"] = { dx = 0.2226, dy = 0.2536, dz = 0.11 }, -- WorldItems/NoiseMaker
@@ -1409,32 +1729,49 @@ local MeshSizes = {
   ["nutsandbolts"] = { dx = 0.2086, dy = 0.2576, dz = 0.04011 }, -- WorldItems/NutsAndBolts
   ["nutspread_ground"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
   ["nutspread_open"] = { dx = 0.1083, dy = 0.1083, dz = 0.06035 }, -- WorldItems/JarFood_Open
+  ["oilolive_ground"] = { dx = 0.09997, dy = 0.08893, dz = 0.1658 }, -- WorldItems/OilOlive
   ["oilvegetable_ground"] = { dx = 0.1158, dy = 0.0968, dz = 0.1343 }, -- WorldItems/OilVegetable
   ["olddrill"] = { dx = 0.2996, dy = 0.1928, dz = 0.02123, oz = 0.004119 }, -- WorldItems/Drill_HandAuger
+  ["olives"] = { dx = 0.1058, dy = 0.09703, dz = 0.01132 }, -- WorldItems/Olives
+  ["onion_ground"] = { dx = 0.1321, dy = 0.1606, dz = 0.04755 }, -- WorldItems/Onion
+  ["onionrings_ground"] = { dx = 0.1612, dy = 0.1465, dz = 0.01979, cy = 0.002169 }, -- WorldItems/OnionRings
+  ["onionseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
+  ["orange_ground"] = { dx = 0.1081, dy = 0.1081, dz = 0.03763 }, -- WorldItems/Orange
+  ["oreganoseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
   ["oujaboard"] = { dx = 0.3098, dy = 0.4168, dz = 0.009877, oz = -0.002063 }, -- WorldItems/Ouija_Board
   ["ovenmitt_ground"] = { dx = 0.2556, dy = 0.3431, dz = 0.008643 }, -- WorldItems/OvenMitt
+  ["oxygen_tank_ground"] = { dx = 0.4835, dy = 0.1422, dz = 0.06106 }, -- WorldItems/oygen_tank_Ground
+  ["oysterfried_ground"] = { dx = 0.1522, dy = 0.1816, dz = 0.01233, cx = 0.00674, cy = 0.004143 }, -- WorldItems/OysterFried
+  ["oysters_ground"] = { dx = 0.1944, dy = 0.2005, dz = 0.01054, cx = 0.006773, cy = 0.008392 }, -- WorldItems/Oysters
   ["paddlefish_ground"] = { dx = 0.2608, dy = 1.043, dz = 0.03755, oz = 0.00357 }, -- WorldItems/Fish_PaddleFish
   ["padlock"] = { dx = 0.1089, dy = 0.1874, dz = 0.02065 }, -- WorldItems/Padlock
   ["pager"] = { dx = 0.0772, dy = 0.1222, dz = 0.01051 }, -- WorldItems/Pager
   ["painauchocolat_ground"] = { dx = 0.2005, dy = 0.1021, dz = 0.02424 }, -- WorldItems/Painauchocolat
-  ["painttin2black_ground"] = { dx = 0.183, dy = 0.1921, dz = 0.1148 }, -- WorldItems/PaintTin
-  ["painttin2blue_ground"] = { dx = 0.183, dy = 0.1921, dz = 0.1148 }, -- WorldItems/PaintTin
-  ["painttin2brown_ground"] = { dx = 0.183, dy = 0.1921, dz = 0.1148 }, -- WorldItems/PaintTin
-  ["painttin2cyan_ground"] = { dx = 0.183, dy = 0.1921, dz = 0.1148 }, -- WorldItems/PaintTin
-  ["painttin2green_ground"] = { dx = 0.183, dy = 0.1921, dz = 0.1148 }, -- WorldItems/PaintTin
-  ["painttin2grey_ground"] = { dx = 0.183, dy = 0.1921, dz = 0.1148 }, -- WorldItems/PaintTin
-  ["painttin2lightblue_ground"] = { dx = 0.183, dy = 0.1921, dz = 0.1148 }, -- WorldItems/PaintTin
-  ["painttin2lightbrown_ground"] = { dx = 0.183, dy = 0.1921, dz = 0.1148 }, -- WorldItems/PaintTin
-  ["painttin2orange_ground"] = { dx = 0.183, dy = 0.1921, dz = 0.1148 }, -- WorldItems/PaintTin
-  ["painttin2pink_ground"] = { dx = 0.183, dy = 0.1921, dz = 0.1148 }, -- WorldItems/PaintTin
-  ["painttin2purple_ground"] = { dx = 0.183, dy = 0.1921, dz = 0.1148 }, -- WorldItems/PaintTin
-  ["painttin2red_ground"] = { dx = 0.183, dy = 0.1921, dz = 0.1148 }, -- WorldItems/PaintTin
-  ["painttin2turquoise_ground"] = { dx = 0.183, dy = 0.1921, dz = 0.1148 }, -- WorldItems/PaintTin
-  ["painttin2white_ground"] = { dx = 0.183, dy = 0.1921, dz = 0.1148 }, -- WorldItems/PaintTin
-  ["painttin2yellow_ground"] = { dx = 0.183, dy = 0.1921, dz = 0.1148 }, -- WorldItems/PaintTin
+  ["painkillers_ground"] = { dx = 0.2202, dy = 0.08202, dz = 0.003902 }, -- WorldItems/PainKillers
+  ["paintbrush_ground"] = { dx = 0.3702, dy = 0.1253, dz = 0.0139 }, -- WorldItems/PaintBrush
+  ["paintbrushcrafted_ground"] = { dx = 0.3624, dy = 0.1383, dz = 0.01441, oz = -0.002635 }, -- WorldItems/PaintBrush_Crafted
+  ["painttinblack_ground"] = { dx = 0.183, dy = 0.1921, dz = 0.1148 }, -- WorldItems/PaintTin
+  ["painttinblue_ground"] = { dx = 0.183, dy = 0.1921, dz = 0.1148 }, -- WorldItems/PaintTin
+  ["painttinbrown_ground"] = { dx = 0.183, dy = 0.1921, dz = 0.1148 }, -- WorldItems/PaintTin
+  ["painttincyan_ground"] = { dx = 0.183, dy = 0.1921, dz = 0.1148 }, -- WorldItems/PaintTin
+  ["painttinempty_ground"] = { dx = 0.2002, dy = 0.2101, dz = 0.1256 }, -- WorldItems/PaintTinEmpty
+  ["painttingreen_ground"] = { dx = 0.183, dy = 0.1921, dz = 0.1148 }, -- WorldItems/PaintTin
+  ["painttingrey_ground"] = { dx = 0.183, dy = 0.1921, dz = 0.1148 }, -- WorldItems/PaintTin
+  ["painttinlightblue_ground"] = { dx = 0.183, dy = 0.1921, dz = 0.1148 }, -- WorldItems/PaintTin
+  ["painttinlightbrown_ground"] = { dx = 0.183, dy = 0.1921, dz = 0.1148 }, -- WorldItems/PaintTin
+  ["painttinorange_ground"] = { dx = 0.183, dy = 0.1921, dz = 0.1148 }, -- WorldItems/PaintTin
+  ["painttinpink_ground"] = { dx = 0.183, dy = 0.1921, dz = 0.1148 }, -- WorldItems/PaintTin
+  ["painttinpurple_ground"] = { dx = 0.183, dy = 0.1921, dz = 0.1148 }, -- WorldItems/PaintTin
+  ["painttinred_ground"] = { dx = 0.183, dy = 0.1921, dz = 0.1148 }, -- WorldItems/PaintTin
+  ["painttinturquoise_ground"] = { dx = 0.183, dy = 0.1921, dz = 0.1148 }, -- WorldItems/PaintTin
+  ["painttinwhite_ground"] = { dx = 0.183, dy = 0.1921, dz = 0.1148 }, -- WorldItems/PaintTin
+  ["painttinyellow_ground"] = { dx = 0.183, dy = 0.1921, dz = 0.1148 }, -- WorldItems/PaintTin
   ["pancakemix_ground"] = { dx = 0.2089, dy = 0.1008, dz = 0.1095 }, -- WorldItems/PancakeMix
   ["pancakes"] = { dx = 0.2845, dy = 0.28, dz = 0.01834 }, -- WorldItems/Pancakes
   ["pancakesfruit_ground"] = { dx = 0.2845, dy = 0.28, dz = 0.01834 }, -- WorldItems/Pancakes
+  ["pancho"] = { dx = 0.3033, dy = 0.2478, dz = 0.1385 }, -- WorldItems/Plushie_Pancho
+  ["panfriedvegetables_ground"] = { dx = 0.4889, dy = 0.3039, dz = 0.01906 }, -- WorldItems/PanFriedVegetables
+  ["panfriedvegetablesforged"] = { dx = 0.518, dy = 0.3064, dz = 0.01511 }, -- WorldItems/FryingPan_Forged_Food
   ["paperbag_ground"] = { dx = 0.2828, dy = 0.1265, dz = 0.1293 }, -- WorldItems/Paperbag
   ["paperbagjays_ground"] = { dx = 0.2828, dy = 0.1265, dz = 0.1293 }, -- WorldItems/Paperbag
   ["paperbagspiffo_ground"] = { dx = 0.2828, dy = 0.1265, dz = 0.1293 }, -- WorldItems/Paperbag
@@ -1458,7 +1795,13 @@ local MeshSizes = {
   ["parcel4"] = { dx = 0.3128, dy = 0.2772, dz = 0.06722, oz = -0.00273 }, -- WorldItems/Parcel4_Text
   ["parcel5"] = { dx = 0.225, dy = 0.2538, dz = 0.05456 }, -- WorldItems/Parcel_Present_5
   ["parkingticket"] = { dx = 0.09541, dy = 0.2008, dz = 0.0007747, oz = -0.002385 }, -- WorldItems/ParkingTicket
+  ["parsleyseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
   ["passport"] = { dx = 0.1181, dy = 0.1751, dz = 0.003822 }, -- WorldItems/PassPort
+  ["peach_ground"] = { dx = 0.1081, dy = 0.1081, dz = 0.03738 }, -- WorldItems/Peach
+  ["peanutbutter"] = { dx = 0.1199, dy = 0.1142, dz = 0.08172 }, -- WorldItems/PeanutButter
+  ["peanuts"] = { dx = 0.1396, dy = 0.1353, dz = 0.008528, cy = -0.01213 }, -- WorldItems/Peanuts
+  ["pear_ground"] = { dx = 0.09397, dy = 0.08677, dz = 0.05691, cx = -0.004345, cy = 0.006984 }, -- WorldItems/Pear
+  ["peas"] = { dx = 0.3861, dy = 0.2195, dz = 0.02586 }, -- WorldItems/Peas
   ["pen@weapon"] = { dx = 0.2152, dy = 0.01557, dz = 0.006045, cx = 0.002967 }, -- weapons/1handed/Pen
   ["pencil@weapon"] = { dx = 0.2152, dy = 0.01557, dz = 0.006045, oz = -0.004516, cx = 0.002967 }, -- weapons/1handed/Pencil
   ["pencilcase"] = { dx = 0.106, dy = 0.3155, dz = 0.03794 }, -- WorldItems/PencilCase
@@ -1467,8 +1810,12 @@ local MeshSizes = {
   ["penlight"] = { dx = 0.1937, dy = 0.02377, dz = 0.01245 }, -- WorldItems/PenLight
   ["penmulticolor@weapon"] = { dx = 0.2219, dy = 0.01816, dz = 0.007408, cx = 0.09468 }, -- weapons/1handed/PenMulticolor_Hand
   ["penspiffo@weapon"] = { dx = 0.2462, dy = 0.06122, dz = 0.01001, cx = 0.08542, cy = -0.005876 }, -- weapons/1handed/PenSpiffo_Hand
+  ["pepper"] = { dx = 0.1218, dy = 0.1055, dz = 0.07261 }, -- WorldItems/Pepper
   ["peppercorn_ground"] = { dx = 0.1774, dy = 0.129, dz = 0.004877 }, -- WorldItems/Nettle
+  ["pepperhabanero_ground"] = { dx = 0.04653, dy = 0.05006, dz = 0.02972, cx = -0.002389 }, -- WorldItems/PepperHabanero
+  ["pepperjalapeno_ground"] = { dx = 0.1282, dy = 0.01946, dz = 0.009086 }, -- WorldItems/PepperJalapeno
   ["peppermint_ground"] = { dx = 0.1195, dy = 0.05451, dz = 0.008416 }, -- WorldItems/Peppermint
+  ["pepperoni_ground"] = { dx = 0.1353, dy = 0.1699, dz = 0.003184 }, -- WorldItems/Pepperoni
   ["percedwood"] = { dx = 0.6335, dy = 0.1523, dz = 0.01248 }, -- WorldItems/PercedWood
   ["perfume"] = { dx = 0.1827, dy = 0.1435, dz = 0.09416 }, -- WorldItems/Perfume
   ["perogies_ground"] = { dx = 0.2173, dy = 0.181, dz = 0.01479, cx = 0.004571, cy = -0.01105 }, -- WorldItems/Perogies
@@ -1478,8 +1825,10 @@ local MeshSizes = {
   ["photo_secret"] = { dx = 0.2093, dy = 0.15, dz = 0.001113 }, -- WorldItems/Photo_Secret
   ["photoalbum"] = { dx = 0.3317, dy = 0.2723, dz = 0.0278 }, -- WorldItems/PhotoAlbum
   ["photobook"] = { dx = 0.2954, dy = 0.2094, dz = 0.02108 }, -- WorldItems/Book_CoffeeTable
+  ["pickaxe@weapon"] = { dx = 0.9301, dy = 0.6695, dz = 0.02787, cx = -0.01068 }, -- weapons/2handed/PickAxe_Hand
   ["pickaxeforged@weapon"] = { dx = 0.9301, dy = 0.6695, dz = 0.02787, cx = -0.01068 }, -- weapons/2handed/PickAxe_Hand
   ["pickaxeheadforged"] = { dx = 0.09599, dy = 0.6461, dz = 0.0271 }, -- WorldItems/PickAxe_Head_Forged
+  ["pickles"] = { dx = 0.1439, dy = 0.1915, dz = 0.02385 }, -- WorldItems/Pickles
   ["picnicbasket_ground"] = { dx = 0.3756, dy = 0.2616, dz = 0.1685 }, -- WorldItems/Clothing/PicnicBasket_Ground
   ["pie_keylime_ground"] = { dx = 0.106, dy = 0.1361, dz = 0.03112 }, -- WorldItems/Pie_Keylime
   ["pie"] = { dx = 0.1629, dy = 0.2399, dz = 0.02913 }, -- WorldItems/PiePumpkin
@@ -1496,9 +1845,11 @@ local MeshSizes = {
   ["piercedsteelingot"] = { dx = 0.1079, dy = 0.2245, dz = 0.02711 }, -- WorldItems/Ingot_Holed
   ["pig_skull"] = { dx = 0.2204, dy = 0.1173, dz = 0.06795, cx = -0.003949 }, -- WorldItems/Pig_Skull
   ["piglet_skull"] = { dx = 0.1812, dy = 0.1207, dz = 0.05557, cx = 0.002017 }, -- WorldItems/Piglet_Skull
+  ["pillbottleground"] = { dx = 0.08063, dy = 0.06846, dz = 0.04367, oz = -0.01631 }, -- PillBottle
   ["pillow_crafted"] = { dx = 0.6101, dy = 0.389, dz = 0.04577, oz = -0.002143 }, -- WorldItems/Pillow_Crafted
   ["pillow_ground"] = { dx = 0.583, dy = 0.405, dz = 0.04381 }, -- WorldItems/Pillow
   ["pillow_happyface"] = { dx = 0.4119, dy = 0.4119, dz = 0.07213, oz = -0.00421 }, -- WorldItems/Pillow_Happyface
+  ["pineapple_ground"] = { dx = 0.1306, dy = 0.3415, dz = 0.06727 }, -- WorldItems/Pineapple
   ["pinecone"] = { dx = 0.1247, dy = 0.1347, dz = 0.06069, cy = 0.007934 }, -- WorldItems/PineCone
   ["pipebomb"] = { dx = 0.07185, dy = 0.07185, dz = 0.1042 }, -- WorldItems/PipeBomb
   ["pipebombsensor"] = { dx = 0.1013, dy = 0.1233, dz = 0.1492, cx = 0.004558 }, -- WorldItems/PipeBombSensor
@@ -1515,6 +1866,7 @@ local MeshSizes = {
   ["plank@weapon"] = { dx = 0.9457, dy = 0.1129, dz = 0.01628, cx = 0.003641 }, -- weapons/2handed/Plank
   ["plastertrowel"] = { dx = 0.3705, dy = 0.1553, dz = 0.04429 }, -- WorldItems/PlasterTrowel
   ["plasticbag_ground"] = { dx = 0.2045, dy = 0.3505, dz = 0.2175 }, -- WorldItems/Clothing/PlasticBag_Ground
+  ["plasticcup_ground"] = { dx = 0.09286, dy = 0.09286, dz = 0.04517 }, -- WorldItems/PlasticCup
   ["plasticfork"] = { dx = 0.3036, dy = 0.04172, dz = 0.01792, oz = 0.005491, cx = -0.109 }, -- weapons/1handed/Plastic_Fork_Hand
   ["plasticknife"] = { dx = 0.3072, dy = 0.02693, dz = 0.002535, cx = 0.1119, cy = 0.006545 }, -- weapons/1handed/Plastic_Knife_Hand
   ["plasticpipe"] = { dx = 0.8539, dy = 0.07441, dz = 0.02646 }, -- WorldItems/PlasticPipe
@@ -1526,21 +1878,16 @@ local MeshSizes = {
   ["pliers"] = { dx = 0.3016, dy = 0.09817, dz = 0.009512 }, -- WorldItems/Pliers
   ["plunger_barbedwire@weapon"] = { dx = 0.8085, dy = 0.3398, dz = 0.1789, oz = 0.05985, cx = 0.3243, cy = 0.02184 }, -- weapons/1handed/Plunger_BarbedWire_Hand
   ["plunger@weapon"] = { dx = 0.1803, dy = 0.1803, dz = 0.285 }, -- weapons/1handed/Plunger
+  ["plushabug"] = { dx = 0.4065, dy = 0.4019, dz = 0.05759 }, -- WorldItems/Plumpabug_Plushie
   ["plushiebadger_ground"] = { dx = 0.2553, dy = 0.2643, dz = 0.1256 }, -- WorldItems/PlushieBadger
-  ["plushiebadger_hand"] = { dx = 0.2553, dy = 0.2643, dz = 0.1256 }, -- WorldItems/PlushieBadger
   ["plushiebeaver_ground"] = { dx = 0.2752, dy = 0.3312, dz = 0.1212 }, -- WorldItems/PlushieBeaver
-  ["plushieeyeofchulhu_hand"] = { dx = 0.4016, dy = 0.4195, dz = 0.08948 }, -- WorldItems/Plushie_EyeOfCthulhu
+  ["plushieeyeofchulhu_ground"] = { dx = 0.4016, dy = 0.4195, dz = 0.08948 }, -- WorldItems/Plushie_EyeOfCthulhu
   ["plushiefox_ground"] = { dx = 0.291, dy = 0.3307, dz = 0.124 }, -- WorldItems/PlushieFox
-  ["plushiefox_hand"] = { dx = 0.291, dy = 0.3307, dz = 0.124 }, -- WorldItems/PlushieFox
   ["plushiehedgehog_ground"] = { dx = 0.2157, dy = 0.2354, dz = 0.1121 }, -- WorldItems/PlushieHedgehog
-  ["plushiehedgehog_hand"] = { dx = 0.2157, dy = 0.2354, dz = 0.1121 }, -- WorldItems/PlushieHedgehog
   ["plushiemole_ground"] = { dx = 0.2554, dy = 0.2643, dz = 0.1154 }, -- WorldItems/PlushieMole
-  ["plushiemole_hand"] = { dx = 0.2554, dy = 0.2643, dz = 0.1154 }, -- WorldItems/PlushieMole
   ["plushierabbit_ground"] = { dx = 0.2128, dy = 0.2422, dz = 0.1547 }, -- WorldItems/PlushieRabbit
-  ["plushierabbit_hand"] = { dx = 0.2128, dy = 0.2422, dz = 0.1547 }, -- WorldItems/PlushieRabbit
   ["plushiesquirrel_ground"] = { dx = 0.2006, dy = 0.3267, dz = 0.1264 }, -- WorldItems/PlushieSquirrel
-  ["plushiesquirrel_hand"] = { dx = 0.2006, dy = 0.3267, dz = 0.1264 }, -- WorldItems/PlushieSquirrel
-  ["plushietrashgoblin_hand"] = { dx = 0.3519, dy = 0.1758, dz = 0.1347 }, -- WorldItems/Plushie_TrashGoblin
+  ["plushietrashgoblin_ground"] = { dx = 0.3519, dy = 0.1758, dz = 0.1347 }, -- WorldItems/Plushie_TrashGoblin
   ["pocketwatch"] = { dx = 0.1325, dy = 0.2007, dz = 0.02207 }, -- WorldItems/PocketWatch
   ["pokerchips_ground"] = { dx = 0.1951, dy = 0.1893, dz = 0.02881 }, -- WorldItems/PokerChips
   ["poncho_ground"] = { dx = 0.7665, dy = 1.072, dz = 0.02122 }, -- WorldItems/Clothing/Bob_Poncho_Ground
@@ -1548,22 +1895,33 @@ local MeshSizes = {
   ["poolcue@weapon"] = { dx = 1.199, dy = 0.03673, dz = 0.015 }, -- weapons/2handed/PoolCue
   ["popbottle"] = { dx = 0.1012, dy = 0.08765, dz = 0.1344, oz = 0.02367, cx = 0.01902, cy = 0.00546 }, -- PopBottle
   ["popbottleworld"] = { dx = 0.1271, dy = 0.1271, dz = 0.1482 }, -- WorldItems/EmptyPopBottle
+  ["popcandiet"] = { dx = 0.1056, dy = 0.09147, dz = 0.06462 }, -- PopCanDiet
+  ["popcandietworld"] = { dx = 0.1168, dy = 0.09322, dz = 0.06921, oz = 0.002449, cy = -0.09386 }, -- WorldItems/EmptyPopCan
   ["popcanfizz"] = { dx = 0.1056, dy = 0.09147, dz = 0.06462 }, -- PopCanRed
+  ["popcanfizzworld"] = { dx = 0.1168, dy = 0.09322, dz = 0.06921, oz = 0.002449, cy = -0.09386 }, -- WorldItems/EmptyPopCan
   ["popcangeneric"] = { dx = 0.1056, dy = 0.09147, dz = 0.06462 }, -- PopCanDiet
+  ["popcanred"] = { dx = 0.1056, dy = 0.09147, dz = 0.06462 }, -- PopCanRed
+  ["popcanredworld"] = { dx = 0.1168, dy = 0.09322, dz = 0.06921, oz = 0.002449, cy = -0.09386 }, -- WorldItems/EmptyPopCan
   ["popcorn"] = { dx = 0.2201, dy = 0.2968, dz = 0.04216 }, -- WorldItems/Popcorn
   ["poppies"] = { dx = 0.3142, dy = 0.4745, dz = 0.05067, oz = -0.003785 }, -- WorldItems/Poppies_Fresh
   ["poppypods"] = { dx = 0.1888, dy = 0.2778, dz = 0.01571 }, -- WorldItems/PoppySeed_Pods
+  ["poppyseed"] = { dx = 0.1343, dy = 0.1288, dz = 0.01248 }, -- WorldItems/PoppySeeds_Lavender_Dried
+  ["poppyseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
   ["popsicle_melted"] = { dx = 0.301, dy = 0.2438, dz = 0.01269 }, -- WorldItems/Popsicle_Melted
   ["popsicle"] = { dx = 0.2862, dy = 0.1045, dz = 0.01586 }, -- WorldItems/Popsicle
   ["pork"] = { dx = 0.3906, dy = 0.1772, dz = 0.05724 }, -- WorldItems/Pork
   ["porkchop"] = { dx = 0.1297, dy = 0.2001, dz = 0.009617 }, -- WorldItems/PorkChop
   ["porkrinds"] = { dx = 0.1507, dy = 0.1819, dz = 0.02668, cx = 0.01482, cy = -0.01948 }, -- WorldItems/PorkRinds
   ["portbottle"] = { dx = 0.1297, dy = 0.1275, dz = 0.1345 }, -- WorldItems/Bottle_Generic
+  ["potato_ground"] = { dx = 0.1144, dy = 0.1851, dz = 0.03713 }, -- WorldItems/Potato
   ["potatopancakes_ground"] = { dx = 0.2117, dy = 0.2164, dz = 0.01639 }, -- WorldItems/PotatoPancakes
+  ["potatoseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
   ["potscrubberfrog"] = { dx = 0.1415, dy = 0.1292, dz = 0.04941 }, -- WorldItems/PotScrubber_Frog
   ["poultice"] = { dx = 0.2242, dy = 0.2349, dz = 0.01969 }, -- WorldItems/Poultice
   ["poultryfillet"] = { dx = 0.1296, dy = 0.2679, dz = 0.02108 }, -- WorldItems/PoultryFillet
   ["poultrywing"] = { dx = 0.2666, dy = 0.2534, dz = 0.02809, oz = -0.002305 }, -- WorldItems/PoultryWing
+  ["powderedgarlic"] = { dx = 0.079, dy = 0.079, dz = 0.0664 }, -- WorldItems/PowderedJar
+  ["powderedonion"] = { dx = 0.079, dy = 0.079, dz = 0.0664 }, -- WorldItems/PowderedJar
   ["powerbar"] = { dx = 0.4933, dy = 0.1322, dz = 0.01999 }, -- WorldItems/Powerbar
   ["prepared_baitfish_ground"] = { dx = 0.1228, dy = 0.4083, dz = 0.01541, cx = 0.04789 }, -- WorldItems/LittleBaitFish
   ["prepared_fishfillet_ground"] = { dx = 0.4406, dy = 0.1619, dz = 0.01136 }, -- WorldItems/FishFillet
@@ -1576,15 +1934,22 @@ local MeshSizes = {
   ["pressid"] = { dx = 0.0987, dy = 0.2085, dz = 0.001868, oz = -0.00291 }, -- WorldItems/Press_ID
   ["pretzel_ground"] = { dx = 0.1961, dy = 0.2107, dz = 0.01382 }, -- WorldItems/Pretzel
   ["primitivescythe@weapon"] = { dx = 0.4622, dy = 0.2624, dz = 0.01191, cx = -0.007496, cy = 0.08859 }, -- weapons/1handed/Scythe_Primitive_Hand
+  ["processedcheese"] = { dx = 0.29, dy = 0.2901, dz = 0.007797 }, -- WorldItems/ProcessedCheese
   ["producebox_extralarge"] = { dx = 0.4637, dy = 0.3657, dz = 0.1237 }, -- WorldItems/Parcel_Present_1
   ["producebox_extrasmall"] = { dx = 0.2244, dy = 0.1968, dz = 0.02664 }, -- WorldItems/Parcel_Present_3
   ["producebox_large"] = { dx = 0.3261, dy = 0.3331, dz = 0.1237 }, -- WorldItems/Parcel2_Text
   ["producebox_medium"] = { dx = 0.3128, dy = 0.2772, dz = 0.06722, oz = -0.00273 }, -- WorldItems/Parcel4_Text
   ["producebox_small"] = { dx = 0.225, dy = 0.2538, dz = 0.05456 }, -- WorldItems/Parcel_Present_5
   ["propane_refill"] = { dx = 0.1036, dy = 0.09852, dz = 0.08526 }, -- WorldItems/Propane_Refill
+  ["propanetank"] = { dx = 0.2355, dy = 0.2355, dz = 0.15 }, -- WorldItems/PropaneTank
   ["protectivecase_ground"] = { dx = 0.4625, dy = 0.4787, dz = 0.0662, cx = 0.01381 }, -- WorldItems/Clothing/ProtectiveCase_Ground
   ["protectivecasebulky_ground"] = { dx = 0.3566, dy = 0.4252, dz = 0.1475 }, -- WorldItems/Clothing/ProtectiveCaseBulky_Ground
   ["protectivecasesmall_ground"] = { dx = 0.3069, dy = 0.3087, dz = 0.04252, cx = 0.004951 }, -- WorldItems/Clothing/ProtectiveCaseSmall_Ground
+  ["pumpkin_ground"] = { dx = 0.2825, dy = 0.2954, dz = 0.1116 }, -- WorldItems/Pumpkin
+  ["pumpkinseed"] = { dx = 0.1426, dy = 0.1422, dz = 0.01381 }, -- WorldItems/PumpkinSeeds
+  ["pumpkinseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
+  ["pumpkinslice"] = { dx = 0.06627, dy = 0.1668, dz = 0.03195 }, -- WorldItems/Pumpkin_Slice
+  ["pumpkinsmashed"] = { dx = 0.2066, dy = 0.1292, dz = 0.01429 }, -- WorldItems/Pumpkin_Smashed
   ["purse_ground"] = { dx = 0.3181, dy = 0.3491, dz = 0.04831, oz = 0.007079, cx = 0.04012 }, -- WorldItems/Clothing/Purse_Ground
   ["quicklime"] = { dx = 0.8952, dy = 0.8988, dz = 0.1436 }, -- WorldItems/Quicklime
   ["rabbit_head_appalachian"] = { dx = 0.2297, dy = 0.06694, dz = 0.03478, cx = 0.05443 }, -- WorldItems/Rabbit_Head
@@ -1599,30 +1964,43 @@ local MeshSizes = {
   ["raccoon_head"] = { dx = 0.2607, dy = 0.242, dz = 0.07994, cx = -0.01405 }, -- WorldItems/Raccoon_Head
   ["raccoon_skull"] = { dx = 0.1417, dy = 0.08255, dz = 0.03553, cx = -0.004474, cy = -0.005202 }, -- WorldItems/Raccoon_Skull
   ["raccoonkit_head"] = { dx = 0.1805, dy = 0.1675, dz = 0.05535, cx = -0.009728 }, -- WorldItems/Raccoon_Head
+  ["radioblack_ground"] = { dx = 0.2771, dy = 0.1043, dz = 0.1257 }, -- WorldItems/Radio
+  ["radioblue_ground"] = { dx = 0.2771, dy = 0.1043, dz = 0.1257 }, -- WorldItems/Radio
   ["radiomag2"] = { dx = 0.2683, dy = 0.3726, dz = 0.006075 }, -- WorldItems/Magazine
   ["radioreceiver_ground"] = { dx = 0.09291, dy = 0.1114, dz = 0.0028 }, -- WorldItems/Radio_Receiver
+  ["radiored_ground"] = { dx = 0.2771, dy = 0.1043, dz = 0.1257 }, -- WorldItems/Radio
   ["radiotransmitter_ground"] = { dx = 0.08495, dy = 0.1018, dz = 0.00256 }, -- WorldItems/Radio_Transmitter
+  ["radishseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
   ["railroadspike@weapon"] = { dx = 0.3702, dy = 0.07083, dz = 0.009832, oz = 0.004649, cx = 0.1467, cy = -0.01446 }, -- weapons/1handed/Railroad_Spike_Hand
   ["railroadspikeknife@weapon"] = { dx = 0.3936, dy = 0.07511, dz = 0.01063, cx = 0.06247, cy = -0.01509 }, -- weapons/1handed/Knife_RailroadSpike_Hand
+  ["railroadspikepuller1@weapon"] = { dx = 1.139, dy = 0.1845, dz = 0.01669, cx = -0.04406, cy = 0.002051 }, -- weapons/2handed/Railroad_SpikePuller_ModernLRG_Hand
+  ["railroadspikepuller2@weapon"] = { dx = 1.139, dy = 0.1845, dz = 0.01669, cx = -0.04406, cy = 0.002051 }, -- weapons/2handed/Railroad_SpikePuller_ModernLRG_Hand
   ["railroadspikepullerold@weapon"] = { dx = 1.079, dy = 0.1592, dz = 0.03759, oz = 0.004092, cx = -0.06765, cy = -0.03639 }, -- weapons/2handed/Railroad_SpikePullerLRG_Hand
   ["railroadtie"] = { dx = 2.998, dy = 0.2463, dz = 0.02645 }, -- WorldItems/Railroad_Tie
   ["rake@weapon"] = { dx = 1.308, dy = 0.384, dz = 0.04052, cx = 0.002839 }, -- weapons/2handed/Rake
   ["rakehead"] = { dx = 0.3706, dy = 0.08868, dz = 0.01227 }, -- WorldItems/RakeHead
   ["ratchet_set"] = { dx = 0.1335, dy = 0.3639, dz = 0.01856 }, -- WorldItems/Ratchet_Set
   ["ratking"] = { dx = 0.924, dy = 0.8768, dz = 0.02501 }, -- WorldItems/RatKing
+  ["ratpoisonbox"] = { dx = 0.1717, dy = 0.073, dz = 0.09559 }, -- WorldItems/RatPoisonBox
   ["razor_ground"] = { dx = 0.1666, dy = 0.05893, dz = 0.006069 }, -- WorldItems/Razor
   ["receipt"] = { dx = 0.1027, dy = 0.2114, dz = 0.01239 }, -- WorldItems/Receipt
   ["receiver"] = { dx = 0.1627, dy = 0.1831, dz = 0.003839 }, -- WorldItems/Receiver
   ["recipeclipping"] = { dx = 0.1834, dy = 0.2642, dz = 0.01549 }, -- WorldItems/Note
   ["redearsunfish_ground"] = { dx = 0.54, dy = 1.014, dz = 0.044 }, -- WorldItems/Fish_Bluegill_Sunfish
+  ["redradish_ground"] = { dx = 0.1016, dy = 0.1925, dz = 0.02572, cy = 0.002281 }, -- WorldItems/RedRadish
   ["redtent"] = { dx = 0.638, dy = 0.1475, dz = 0.0587 }, -- WorldItems/TentRoll
   ["redvelvetcake_ground"] = { dx = 0.09591, dy = 0.1332, dz = 0.02834 }, -- WorldItems/CakeSlice
+  ["refriedbeans_ground"] = { dx = 0.1858, dy = 0.1884, dz = 0.02441, cx = 0.002724 }, -- WorldItems/RefriedBeans
   ["remote"] = { dx = 0.127, dy = 0.3571, dz = 0.01753 }, -- WorldItems/Remote
+  ["remotecontroller"] = { dx = 0.4045, dy = 0.1716, dz = 0.03771 }, -- WorldItems/RemoteController
+  ["remoulade_ground"] = { dx = 0.1203, dy = 0.1203, dz = 0.06837 }, -- WorldItems/JarLid
+  ["remouladeempty_ground"] = { dx = 0.1203, dy = 0.1203, dz = 0.06837 }, -- WorldItems/JarLid
   ["respiratorfilters_taped"] = { dx = 0.1252, dy = 0.1476, dz = 0.01125 }, -- WorldItems/RespiratorFilters_Taped
   ["respiratorfilters"] = { dx = 0.1242, dy = 0.1531, dz = 0.01125 }, -- WorldItems/RespiratorFilters
   ["revolver_capgun@weapon"] = { dx = 0.2801, dy = 0.1599, dz = 0.02034, cx = 0.04215, cy = 0.008392 }, -- weapons/firearm/ToyGun_Hand
   ["rice"] = { dx = 0.3897, dy = 0.2558, dz = 0.03154 }, -- WorldItems/Rice
   ["ricepaper_ground"] = { dx = 0.1711, dy = 0.1738, dz = 0.0008755 }, -- WorldItems/RicePaper
+  ["ricevinegar_ground"] = { dx = 0.1003, dy = 0.1003, dz = 0.1283 }, -- WorldItems/RiceVinegar
   ["rifle_capgun@weapon"] = { dx = 0.8393, dy = 0.1938, dz = 0.02023, oz = 0.002507, cx = -0.06985, cy = 0.01492 }, -- weapons/firearm/ToyRifle_Hand
   ["rifle_recoilpad_ground"] = { dx = 0.0421, dy = 0.1382, dz = 0.009889, oz = -0.006939 }, -- WorldItems/Rifle_RecoilPad
   ["rifleammo"] = { dx = 0.108, dy = 0.1417, dz = 0.03693 }, -- WorldItems/RifleAmmo
@@ -1636,6 +2014,8 @@ local MeshSizes = {
   ["rippedsheetsdirty"] = { dx = 0.5663, dy = 0.1999, dz = 0.009774 }, -- WorldItems/RippedSheets
   ["rippedsheetsdirtybundle"] = { dx = 0.2472, dy = 0.2495, dz = 0.07091 }, -- WorldItems/Bundle_Rags_Strips
   ["roastingpan"] = { dx = 0.2228, dy = 0.3107, dz = 0.02738 }, -- WorldItems/RoastingPan
+  ["roastingpanfriedvegetables"] = { dx = 0.2572, dy = 0.3588, dz = 0.03161 }, -- WorldItems/RoastedVegtables
+  ["rockcandy_ground"] = { dx = 0.2425, dy = 0.03269, dz = 0.008459 }, -- WorldItems/RockCandy
   ["rolleddough"] = { dx = 0.2717, dy = 0.2662, dz = 0.006549, cy = 0.003952 }, -- WorldItems/RolledDough
   ["rolledhide_large"] = { dx = 0.1125, dy = 0.6683, dz = 0.04595 }, -- WorldItems/Hide_Rolled_Cow
   ["rolledhide"] = { dx = 0.1023, dy = 0.4803, dz = 0.04178 }, -- WorldItems/Hide_Rolled_Deer
@@ -1643,8 +2023,11 @@ local MeshSizes = {
   ["rope_looped"] = { dx = 0.4537, dy = 0.1517, dz = 0.03089 }, -- WorldItems/Rope_Looped
   ["ropebelt"] = { dx = 0.3231, dy = 0.3988, dz = 0.0147 }, -- WorldItems/Clothing/Belt_Rope
   ["ropestack"] = { dx = 0.3702, dy = 0.3768, dz = 0.09467 }, -- WorldItems/Bundle_Rope
+  ["rosehips"] = { dx = 0.1953, dy = 0.2046, dz = 0.0337, cx = 0.01327, cy = 0.004663 }, -- WorldItems/RoseHips
+  ["rosemaryseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
   ["rosepetals"] = { dx = 0.1913, dy = 0.2258, dz = 0.007755, cy = 0.002119 }, -- WorldItems/RosePetals_Dried
   ["roses"] = { dx = 0.2877, dy = 0.4918, dz = 0.05239, oz = -0.003051 }, -- WorldItems/Roses_Fresh
+  ["roseseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
   ["rpgmanual"] = { dx = 0.3793, dy = 0.2687, dz = 0.0118 }, -- WorldItems/RPGmanual
   ["rubberband"] = { dx = 0.1621, dy = 0.1612, dz = 0.004164 }, -- WorldItems/RubberBand
   ["rubberducky2"] = { dx = 0.07851, dy = 0.1695, dz = 0.0462 }, -- WorldItems/Rubberducky
@@ -1653,8 +2036,15 @@ local MeshSizes = {
   ["rubberspider"] = { dx = 0.2445, dy = 0.1581, dz = 0.03732 }, -- WorldItems/RubberSpider
   ["ruby"] = { dx = 0.02408, dy = 0.04326, dz = 0.004424 }, -- WorldItems/Ruby
   ["rumbottle"] = { dx = 0.1231, dy = 0.05121, dz = 0.09016 }, -- WhiskeyBottle
+  ["ryeseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
   ["ryesheaf"] = { dx = 0.4231, dy = 0.8003, dz = 0.02547 }, -- WorldItems/BundleGrain_Rye
   ["ryesheafdried"] = { dx = 0.4231, dy = 0.8003, dz = 0.02547 }, -- WorldItems/BundleGrain_Rye
+  ["sageseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
+  ["salad_ground"] = { dx = 0.2043, dy = 0.1943, dz = 0.04455 }, -- WorldItems/Salad
+  ["salami_ground"] = { dx = 0.07115, dy = 0.1996, dz = 0.02832 }, -- WorldItems/Salami
+  ["salamislice"] = { dx = 0.1362, dy = 0.126, dz = 0.007305, cx = 0.008967, cy = 0.002611 }, -- WorldItems/SalamiSlice
+  ["salmon"] = { dx = 0.2311, dy = 0.1349, dz = 0.007991 }, -- WorldItems/Salmon
+  ["salt"] = { dx = 0.1218, dy = 0.1054, dz = 0.07259 }, -- WorldItems/Salt
   ["sandbag_ground"] = { dx = 0.5077, dy = 0.2214, dz = 0.05914, cx = 0.01299, cy = -0.01889 }, -- WorldItems/Clothing/SandBag_Ground
   ["sandbag"] = { dx = 0.6199, dy = 0.3543, dz = 0.05255 }, -- WorldItems/SandBag
   ["santahat_debug"] = { dx = 0.6022, dy = 0.8314, dz = 0.383, oz = 0.1465, cx = 0.7215, cy = 0.02259 }, -- Static/Clothes/M_SantaHat
@@ -1670,8 +2060,10 @@ local MeshSizes = {
   ["saucepan"] = { dx = 0.3427, dy = 0.3427, dz = 0.166, oz = 0.1192, cx = 0.0702 }, -- weapons/1handed/SaucePan
   ["saucepancopper"] = { dx = 0.3335, dy = 0.3335, dz = 0.1704, oz = 0.1217, cx = 0.08332 }, -- weapons/1handed/SaucePan_Copper_Hand
   ["saucepancopperpasta"] = { dx = 0.214, dy = 0.3917, dz = 0.05398 }, -- WorldItems/SaucePan_Copper_Pasta
+  ["saucepancopperrice"] = { dx = 0.214, dy = 0.3917, dz = 0.05398 }, -- WorldItems/SaucePan_Copper_Rice
   ["saucepancopperworld"] = { dx = 0.214, dy = 0.3917, dz = 0.05398 }, -- WorldItems/SaucePan_Copper
   ["saucepanpasta"] = { dx = 0.3828, dy = 0.2073, dz = 0.0514 }, -- WorldItems/SaucePan_FoodFluid
+  ["saucepanrice"] = { dx = 0.3828, dy = 0.2073, dz = 0.0514 }, -- WorldItems/SaucePan_FoodFluid
   ["sauger_ground"] = { dx = 0.3687, dy = 1.055, dz = 0.04028 }, -- WorldItems/Fish_Sauger_Walleye
   ["sausage_ground"] = { dx = 0.2359, dy = 0.06581, dz = 0.02152 }, -- WorldItems/Sausage
   ["saw_flint@weapon"] = { dx = 0.4975, dy = 0.1081, dz = 0.03487, oz = 0.007462, cx = 0.2383, cy = -0.01231 }, -- weapons/1handed/Saw_Flint_Hand
@@ -1703,13 +2095,25 @@ local MeshSizes = {
   ["scratchticket"] = { dx = 0.09873, dy = 0.1059, dz = 0.0007522 }, -- WorldItems/ScratchTicket
   ["screwdriver_improvised@weapon"] = { dx = 0.3824, dy = 0.04575, dz = 0.0148, oz = 0.007189, cx = 0.1324 }, -- weapons/1handed/ScrewDriver_ScrapMetal_Hand
   ["screwdriver_old@weapon"] = { dx = 0.3739, dy = 0.03938, dz = 0.01601, oz = 0.007739, cx = 0.14 }, -- weapons/1handed/ScrewDriver_Crafted_Hand
+  ["screwdriver_red@weapon"] = { dx = 0.3737, dy = 0.03922, dz = 0.01525, cx = -0.007856 }, -- weapons/1handed/Screwdriver
+  ["screwdriver@weapon"] = { dx = 0.3737, dy = 0.03922, dz = 0.01525, cx = -0.007856 }, -- weapons/1handed/Screwdriver
   ["screws"] = { dx = 0.09743, dy = 0.1165, dz = 0.01299, cx = -0.008649, cy = 0.002809 }, -- WorldItems/Screws
   ["screwsbox"] = { dx = 0.2471, dy = 0.181, dz = 0.04696 }, -- WorldItems/ScrewsBox
   ["scythe_grounded"] = { dx = 1.454, dy = 0.7942, dz = 0.05973 }, -- WorldItems/Scythe_Grounded
   ["scytheforged_grounded"] = { dx = 1.467, dy = 0.7933, dz = 0.0602 }, -- WorldItems/Scythe_Forged
   ["scytheheadforged"] = { dx = 0.1163, dy = 0.6832, dz = 0.02885, cx = -0.006035 }, -- WorldItems/ScytheHead_Forged
+  ["seasoning_basil"] = { dx = 0.07956, dy = 0.07956, dz = 0.0698 }, -- WorldItems/Seasoning
+  ["seasoning_chives"] = { dx = 0.07956, dy = 0.07956, dz = 0.0698 }, -- WorldItems/Seasoning
+  ["seasoning_cilantro"] = { dx = 0.07956, dy = 0.07956, dz = 0.0698 }, -- WorldItems/Seasoning
+  ["seasoning_oregano"] = { dx = 0.07956, dy = 0.07956, dz = 0.0698 }, -- WorldItems/Seasoning
+  ["seasoning_parsley"] = { dx = 0.07956, dy = 0.07956, dz = 0.0698 }, -- WorldItems/Seasoning
+  ["seasoning_rosemary"] = { dx = 0.07956, dy = 0.07956, dz = 0.0698 }, -- WorldItems/Seasoning
+  ["seasoning_sage"] = { dx = 0.07956, dy = 0.07956, dz = 0.0698 }, -- WorldItems/Seasoning
+  ["seasoning_thyme"] = { dx = 0.07956, dy = 0.07956, dz = 0.0698 }, -- WorldItems/Seasoning
+  ["seasoningsalt"] = { dx = 0.079, dy = 0.079, dz = 0.0664 }, -- WorldItems/Seasoning_Salt
   ["seedbag"] = { dx = 0.1727, dy = 0.1025, dz = 0.07319 }, -- WorldItems/SeedBag
   ["seeds_generic"] = { dx = 0.101, dy = 0.09362, dz = 0.003171 }, -- WorldItems/Seed_Generic
+  ["sesameoil"] = { dx = 0.07661, dy = 0.07661, dz = 0.07426 }, -- WorldItems/SesameOil
   ["sewingbox"] = { dx = 0.1747, dy = 0.1517, dz = 0.08097 }, -- WorldItems/SewingBox
   ["sewingpattern"] = { dx = 0.2683, dy = 0.3726, dz = 0.006075 }, -- WorldItems/Magazine
   ["shaker"] = { dx = 0.1218, dy = 0.1054, dz = 0.07259 }, -- WorldItems/Salt
@@ -1775,6 +2179,9 @@ local MeshSizes = {
   ["shoulderpads_icehockey"] = { dx = 0.7091, dy = 0.322, dz = 0.1012 }, -- WorldItems/Clothing/IceHockey_Shoulderpads_Ground
   ["shovel@weapon"] = { dx = 1.106, dy = 0.2694, dz = 0.02221, cx = 0.08126 }, -- weapons/2handed/Shovel
   ["shovel02@weapon"] = { dx = 1.1, dy = 0.2386, dz = 0.02669, oz = 0.005567, cx = 0.06439 }, -- weapons/2handed/Shovel02
+  ["shrimp_ground"] = { dx = 0.07706, dy = 0.09247, dz = 0.006531 }, -- WorldItems/Shrimp_Raw_Rotten
+  ["shrimpdumpling_ground"] = { dx = 0.1327, dy = 0.1694, dz = 0.0333 }, -- WorldItems/ShrimpDumpling
+  ["shrimpfried_ground"] = { dx = 0.08161, dy = 0.08323, dz = 0.006531, cx = -0.003712, cy = -0.004193 }, -- WorldItems/Shrimp_Cooked_Fried_Burnt
   ["silencermag"] = { dx = 0.2683, dy = 0.3726, dz = 0.006075 }, -- WorldItems/Magazine
   ["silkmothcaterpillar_ground"] = { dx = 0.03519, dy = 0.1442, dz = 0.01063 }, -- WorldItems/Insect_Caterpillar
   ["silverbar"] = { dx = 0.1142, dy = 0.2652, dz = 0.02412 }, -- WorldItems/Ingot_Iron
@@ -1797,8 +2204,10 @@ local MeshSizes = {
   ["sleepingbag_rolled_sty2_blue"] = { dx = 0.1564, dy = 0.3502, dz = 0.06387 }, -- WorldItems/SleepingBag_Roll
   ["sleepingbag_rolled_sty2_green"] = { dx = 0.1564, dy = 0.3502, dz = 0.06387 }, -- WorldItems/SleepingBag_Roll
   ["sleepingbag_rolled_sty2_grey"] = { dx = 0.1564, dy = 0.3502, dz = 0.06387 }, -- WorldItems/SleepingBag_Roll
+  ["sleepingtablets_ground"] = { dx = 0.1238, dy = 0.08847, dz = 0.01243 }, -- WorldItems/SleepingTablets
   ["slug1_ground"] = { dx = 0.04481, dy = 0.1308, dz = 0.01746 }, -- WorldItems/Slug
   ["slug2_ground"] = { dx = 0.04481, dy = 0.1308, dz = 0.01746 }, -- WorldItems/Slug
+  ["slugrepellent"] = { dx = 0.1515, dy = 0.0883, dz = 0.09885 }, -- WorldItems/SlugRepellent
   ["smallanimalmeat_ground"] = { dx = 0.2039, dy = 0.1467, dz = 0.01618 }, -- WorldItems/SmallAnimalMeat
   ["smallbirdmeat_ground"] = { dx = 0.155, dy = 0.1357, dz = 0.01459 }, -- WorldItems/SmallBirdMeat
   ["smallcoppersheet"] = { dx = 0.1621, dy = 0.3193, dz = 0.001171 }, -- WorldItems/Sheet_Copper_Small
@@ -1831,10 +2240,16 @@ local MeshSizes = {
   ["snail_ground"] = { dx = 0.09798, dy = 0.03972, dz = 0.02763 }, -- WorldItems/Snail
   ["snowglobe"] = { dx = 0.1046, dy = 0.149, dz = 0.03718 }, -- WorldItems/SnowGlobe
   ["snowshovel@weapon"] = { dx = 1.343, dy = 0.3879, dz = 0.02596, cx = 0.07092 }, -- weapons/2handed/SnowShovel
+  ["soap"] = { dx = 0.0966, dy = 0.1417, dz = 0.01131 }, -- WorldItems/Soap
   ["soccerball"] = { dx = 0.2412, dy = 0.2412, dz = 0.09849 }, -- WorldItems/SoccerBall
   ["sock_ankle_ground"] = { dx = 0.4002, dy = 0.4095, dz = 0.004877 }, -- WorldItems/Clothing/Sock_Ankle
   ["socks_long_ground"] = { dx = 0.4864, dy = 0.4354, dz = 0.006608 }, -- WorldItems/Clothing/Socks_Long
+  ["sourcream"] = { dx = 0.1203, dy = 0.1203, dz = 0.02655 }, -- WorldItems/SourCream
+  ["soybeans"] = { dx = 0.08074, dy = 0.07989, dz = 0.004752, cx = -0.005348 }, -- WorldItems/Soybeans
+  ["soybeansseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
+  ["soysauce_ground"] = { dx = 0.1219, dy = 0.1219, dz = 0.0828 }, -- WorldItems/Soysauce
   ["spadeforged@weapon"] = { dx = 1.105, dy = 0.2076, dz = 0.01882, oz = 0.002125, cx = 0.0703 }, -- weapons/2handed/Spade_Forged_Hand
+  ["spadehead2@weapon"] = { dx = 0.6245, dy = 0.2444, dz = 0.03714, oz = 0.009586, cx = 0.07578 }, -- weapons/1handed/Shovel_HeadBroken
   ["spadeheadforged"] = { dx = 0.3853, dy = 0.2003, dz = 0.01576 }, -- WorldItems/Spade_Forged_Head
   ["spadewood@weapon"] = { dx = 1.065, dy = 0.1753, dz = 0.01125, cx = 0.09329 }, -- weapons/2handed/Spade_Wood_Hand
   ["spatula_ground"] = { dx = 0.387, dy = 0.08325, dz = 0.01719 }, -- WorldItems/Spatula
@@ -1845,6 +2260,7 @@ local MeshSizes = {
   ["spearcrafted@weapon"] = { dx = 1.31, dy = 0.03063, dz = 0.01197, cx = 0.008357 }, -- weapons/2handed/SpearCrafted
   ["spearcraftedfirehardened@weapon"] = { dx = 1.27, dy = 0.0285, dz = 0.01125, oz = -0.002618, cx = 0.04086 }, -- weapons/2handed/Shaft_Spear_Hand
   ["spearcrude@weapon"] = { dx = 1.222, dy = 0.05723, dz = 0.01958, cx = 0.07137 }, -- weapons/2handed/Spear_Crude_Hand
+  ["spearcrudelong@weapon"] = { dx = 1.418, dy = 0.06814, dz = 0.01958, cx = 0.07624 }, -- weapons/2handed/Spear_Crude_Longer_Hand
   ["spearfightingknife@weapon"] = { dx = 1.188, dy = 0.06824, dz = 0.02203, cx = 0.04092, cy = -0.004809 }, -- weapons/2handed/Spear_FightingKnife_Hand
   ["spearglass@weapon"] = { dx = 1.312, dy = 0.04484, dz = 0.0145, oz = -0.00441, cx = 0.1434, cy = -0.003128 }, -- weapons/2handed/Spear_Glass_Hand
   ["spearhandfork@weapon"] = { dx = 1.305, dy = 0.09549, dz = 0.0374, oz = 0.005988, cx = 0.09927 }, -- weapons/2handed/SpearHandFork
@@ -1853,6 +2269,8 @@ local MeshSizes = {
   ["spearknifesmall@weapon"] = { dx = 1.166, dy = 0.05756, dz = 0.02094, cx = 0.05325, cy = -0.007433 }, -- weapons/2handed/Spear_KnifeForged_Small_Hand
   ["spearknifesteak@weapon"] = { dx = 1.13, dy = 0.04778, dz = 0.02345, oz = 0.008794, cx = 0.0354, cy = -0.003197 }, -- weapons/2handed/Spear_Knife_Steak_Hand
   ["spearlargeknife@weapon"] = { dx = 1.237, dy = 0.09158, dz = 0.03844, oz = 0.009889, cx = 0.06345, cy = 0.01503 }, -- weapons/2handed/Spear_KnifeForged_Large_Hand
+  ["spearlongforged@weapon"] = { dx = 1.481, dy = 0.09795, dz = 0.01612, cx = 0.1778 }, -- weapons/2handed/Spear_Forged_Hand
+  ["spearlongforged2@weapon"] = { dx = 1.481, dy = 0.09795, dz = 0.01612, cx = 0.1732 }, -- weapons/2handed/Spear_Forged_Hand
   ["spearlongheadforged_notweapon"] = { dx = 0.507, dy = 0.09795, dz = 0.01232, cx = 0.2216, cy = -0.004658 }, -- weapons/1handed/Spear_Forged_Head_Hand
   ["spearscissors@weapon"] = { dx = 1.255, dy = 0.1136, dz = 0.02724, oz = 0.003973, cx = 0.006308, cy = 0.02344 }, -- weapons/2handed/SpearScissors
   ["spearscrapknife@weapon"] = { dx = 1.218, dy = 0.0656, dz = 0.02783, oz = 0.006963, cx = 0.05252, cy = 0.009296 }, -- weapons/2handed/Spear_Knife_ScrapMetal_Hand
@@ -1874,12 +2292,13 @@ local MeshSizes = {
   ["specimen_octopus"] = { dx = 0.1208, dy = 0.1208, dz = 0.1065 }, -- WorldItems/Jar_Specimen
   ["specimen_tapeworm"] = { dx = 0.1208, dy = 0.1208, dz = 0.1065 }, -- WorldItems/Jar_Specimen
   ["speedingticket"] = { dx = 0.09541, dy = 0.2008, dz = 0.001274 }, -- WorldItems/SpeedingTicket
-  ["spiffoplushie_hand"] = { dx = 0.2506, dy = 0.3516, dz = 0.1256 }, -- WorldItems/SpiffoPlushie
   ["spiffoplushie"] = { dx = 0.2506, dy = 0.3516, dz = 0.1256 }, -- WorldItems/SpiffoPlushie
-  ["spiffoplushiebig_hand"] = { dx = 0.6264, dy = 0.879, dz = 0.3141 }, -- WorldItems/SpiffoPlushie
+  ["spiffoplushiebig"] = { dx = 0.6264, dy = 0.879, dz = 0.3141 }, -- WorldItems/SpiffoPlushie
   ["spiffotail_ground"] = { dx = 0.2487, dy = 0.5753, dz = 0.08051, cy = 0.004327 }, -- WorldItems/SpiffoTail_Ground
   ["spikedclub@weapon"] = { dx = 0.6718, dy = 0.09386, dz = 0.05222, oz = 0.00978, cx = 0.2705, cy = 0.009323 }, -- weapons/1handed/Mace_Basic_Hand
   ["spikepipe@weapon"] = { dx = 0.6663, dy = 0.2914, dz = 0.02714, cx = 0.2705, cy = -0.05127 }, -- weapons/1handed/MetalPipe_RailSpike_Hand
+  ["spinach"] = { dx = 0.1938, dy = 0.2368, dz = 0.009973, cx = -0.01453 }, -- WorldItems/Spinach
+  ["spinachseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
   ["splint"] = { dx = 0.4891, dy = 0.4149, dz = 0.01322 }, -- WorldItems/Splint
   ["splinters"] = { dx = 0.3611, dy = 0.3448, dz = 0.009972, oz = -0.002187 }, -- WorldItems/Wooden_Splinters
   ["sponge"] = { dx = 0.1629, dy = 0.1096, dz = 0.02511 }, -- WorldItems/Sponge
@@ -1889,8 +2308,13 @@ local MeshSizes = {
   ["spoon@weapon"] = { dx = 0.3189, dy = 0.07105, dz = 0.01154, oz = 0.002387, cx = 0.1162 }, -- weapons/1handed/Spoon
   ["spoonforged@weapon"] = { dx = 0.3097, dy = 0.08182, dz = 0.01105, cx = 0.114 }, -- weapons/1handed/Spoon_Forged_Hand
   ["spork"] = { dx = 0.04937, dy = 0.2185, dz = 0.0069 }, -- WorldItems/Spork
+  ["sportsbottle"] = { dx = 0.09629, dy = 0.09777, dz = 0.1123 }, -- WorldItems/Sportsbottle
   ["spottedbass_ground"] = { dx = 0.4007, dy = 1.084, dz = 0.04137 }, -- WorldItems/Fish_Bass_Spotted_Stripped
+  ["spraypaint"] = { dx = 0.08248, dy = 0.08248, dz = 0.09407 }, -- WorldItems/HairSpray
   ["springroll_ground"] = { dx = 0.1575, dy = 0.1654, dz = 0.01354, cx = -0.01602, cy = 0.005896 }, -- WorldItems/Springroll
+  ["squash"] = { dx = 0.1361, dy = 0.1465, dz = 0.09594 }, -- WorldItems/Squash
+  ["squid_ground"] = { dx = 0.3804, dy = 0.1403, dz = 0.02382 }, -- WorldItems/Squid
+  ["squidcalimari_ground"] = { dx = 0.1884, dy = 0.2066, dz = 0.004668 }, -- WorldItems/SquidCalimari
   ["stake@weapon"] = { dx = 0.3931, dy = 0.03494, dz = 0.01384, cx = 0.07593 }, -- weapons/1handed/Stake
   ["stapler_ground"] = { dx = 0.2114, dy = 0.0601, dz = 0.03736 }, -- WorldItems/Stapler
   ["staples_ground"] = { dx = 0.1877, dy = 0.08923, dz = 0.008637 }, -- WorldItems/Staples
@@ -1936,14 +2360,23 @@ local MeshSizes = {
   ["straightrazor"] = { dx = 0.2124, dy = 0.1105, dz = 0.008428 }, -- WorldItems/StraightRazor
   ["strainer"] = { dx = 0.468, dy = 0.2287, dz = 0.0519, cx = -0.009661 }, -- WorldItems/Strainer
   ["straw_ground"] = { dx = 0.3056, dy = 0.08653, dz = 0.005379 }, -- WorldItems/Straw
+  ["strawberry_ground"] = { dx = 0.06015, dy = 0.07559, dz = 0.02529 }, -- WorldItems/Strawberry
+  ["strawberryseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
   ["strawberryshortcake_ground"] = { dx = 0.1043, dy = 0.1324, dz = 0.03736 }, -- WorldItems/CakeSlice_StrawberryShortcake
   ["string"] = { dx = 0.2354, dy = 0.2663, dz = 0.003178, cx = -0.003424, cy = 0.01696 }, -- WorldItems/String
   ["stripedbass_ground"] = { dx = 0.4007, dy = 1.084, dz = 0.04137 }, -- WorldItems/Fish_Bass_Spotted_Stripped
   ["sugar"] = { dx = 0.1803, dy = 0.1451, dz = 0.1082 }, -- WorldItems/Sugar
+  ["sugarbeet_ground"] = { dx = 0.2589, dy = 0.4194, dz = 0.05654 }, -- WorldItems/SugarBeet
+  ["sugarbeetseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
+  ["sugarbrown_ground"] = { dx = 0.1442, dy = 0.1161, dz = 0.08655 }, -- WorldItems/Sugar
+  ["sugarcubes"] = { dx = 0.09202, dy = 0.0828, dz = 0.01048 }, -- WorldItems/SugarCubes
+  ["sugarpacket_ground"] = { dx = 0.1192, dy = 0.1002, dz = 0.004226 }, -- WorldItems/SugarPacket
   ["suitcase_ground"] = { dx = 0.5186, dy = 0.3554, dz = 0.06165 }, -- WorldItems/Clothing/Suitcase
   ["suitjacket_ground"] = { dx = 0.8836, dy = 0.534, dz = 0.00821 }, -- WorldItems/Clothing/Bob_SuitJacket_Ground
   ["sunflowerhead"] = { dx = 0.185, dy = 0.1918, dz = 0.03505 }, -- WorldItems/Sunflower_Fresh
   ["sunflowerheaddried"] = { dx = 0.1746, dy = 0.1979, dz = 0.02786, cx = 0.01361 }, -- WorldItems/Sunflower_Dried
+  ["sunflowerseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
+  ["sunflowerseeds"] = { dx = 0.09988, dy = 0.1069, dz = 0.006016, cx = 0.005457 }, -- WorldItems/SunflowerSeeds
   ["survivalmag1"] = { dx = 0.2683, dy = 0.3726, dz = 0.006075 }, -- WorldItems/Magazine
   ["sushegg_ground"] = { dx = 0.1233, dy = 0.04689, dz = 0.01809 }, -- WorldItems/SushEgg
   ["sushifish_ground"] = { dx = 0.1319, dy = 0.1456, dz = 0.01725 }, -- WorldItems/SushiFish
@@ -1952,6 +2385,8 @@ local MeshSizes = {
   ["sutureneedle"] = { dx = 0.07509, dy = 0.1792, dz = 0.003099 }, -- WorldItems/SutureNeedle
   ["sutureneedleholder"] = { dx = 0.1399, dy = 0.2926, dz = 0.003603 }, -- WorldItems/SutureNeedleHolder
   ["swallowtailcaterpillar_ground"] = { dx = 0.03519, dy = 0.1442, dz = 0.01063 }, -- WorldItems/Insect_Caterpillar
+  ["sweetpotato_ground"] = { dx = 0.2699, dy = 0.1078, dz = 0.03449 }, -- WorldItems/SweetPotato
+  ["sweetpotatoseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
   ["swimsuit_ground"] = { dx = 0.2185, dy = 0.7126, dz = 0.005364 }, -- WorldItems/Clothing/SwimSuit_Ground
   ["swimtrunks_ground"] = { dx = 0.3257, dy = 0.25, dz = 0.007126 }, -- WorldItems/Clothing/SwimTrunks_Ground
   ["switchknifeclosed"] = { dx = 0.1571, dy = 0.04336, dz = 0.008175, cx = 0.00546, cy = -0.005285 }, -- weapons/Floor_FBX/SwitchKnifeClosed
@@ -1995,8 +2430,11 @@ local MeshSizes = {
   ["takeoutbox_chinese"] = { dx = 0.1427, dy = 0.1168, dz = 0.08995 }, -- WorldItems/TakeoutBox_Classic
   ["takeoutbox_styrofoam"] = { dx = 0.1988, dy = 0.3519, dz = 0.04546 }, -- WorldItems/TakeoutBox_Styrofoam
   ["tarotcarddeck"] = { dx = 0.3243, dy = 0.2531, dz = 0.01193, oz = -0.002673 }, -- WorldItems/Tarot_Cards
+  ["tatodots"] = { dx = 0.194, dy = 0.1938, dz = 0.02036, cx = 0.01624, cy = 0.005506 }, -- WorldItems/TatoDots
   ["teabag"] = { dx = 0.104, dy = 0.03714, dz = 0.06574 }, -- WorldItems/TeaBag
+  ["teacup_fired"] = { dx = 0.1173, dy = 0.1001, dz = 0.03123 }, -- WorldItems/TeaCup
   ["teacup_ground"] = { dx = 0.1173, dy = 0.1001, dz = 0.03123 }, -- WorldItems/TeaCup
+  ["teacup_unfired"] = { dx = 0.1173, dy = 0.1001, dz = 0.03123 }, -- WorldItems/TeaCup
   ["tempnilitem@weapon"] = { dx = 0.0003497, dy = 0.002036, dz = 0.00122 }, -- WorldItems/Nails
   ["tennisball"] = { dx = 0.1224, dy = 0.1224, dz = 0.04904 }, -- WorldItems/TennisBall
   ["tennisracket@weapon"] = { dx = 0.7578, dy = 0.3092, dz = 0.01775, oz = 0.005058, cx = -0.00778 }, -- weapons/1handed/TennisRacket
@@ -2012,15 +2450,20 @@ local MeshSizes = {
   ["thighmagazine_l"] = { dx = 0.25, dy = 0.2264, dz = 0.04595 }, -- WorldItems/Clothing/ThighMagazine_Ground_L
   ["thighmagazine_r"] = { dx = 0.25, dy = 0.2264, dz = 0.04752 }, -- WorldItems/Clothing/ThighMagazine_Ground_R
   ["thimble"] = { dx = 0.03735, dy = 0.03831, dz = 0.01488 }, -- WorldItems/Thimble
+  ["thistle_ground"] = { dx = 0.2881, dy = 0.1828, dz = 0.03935, cx = -0.01304, cy = 0.008837 }, -- WorldItems/Thistle
   ["thread_aramid"] = { dx = 0.2336, dy = 0.08163, dz = 0.03333 }, -- WorldItems/SinewThread
   ["thread_sinew"] = { dx = 0.2336, dy = 0.08163, dz = 0.03333 }, -- WorldItems/SinewThread
   ["thread"] = { dx = 0.0846, dy = 0.08314, dz = 0.04631 }, -- WorldItems/Thread
+  ["threelogsstack"] = { dx = 0.5413, dy = 0.4565, dz = 0.18 }, -- WorldItems/ThreeLogsStack
+  ["thymeseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
   ["tie_ground"] = { dx = 0.1113, dy = 0.4162, dz = 0.006127, oz = -0.004065 }, -- WorldItems/Clothing/Bob_Tie_Ground
   ["tightsblack_ground"] = { dx = 0.2253, dy = 0.4767, dz = 7.693e-7 }, -- WorldItems/Clothing/Tights_Ground
   ["tightsfishnet_ground"] = { dx = 0.2253, dy = 0.4767, dz = 7.693e-7, oz = -0.003118 }, -- WorldItems/Clothing/Tights_Ground
   ["tightstrans_ground"] = { dx = 0.2253, dy = 0.4767, dz = 7.693e-7 }, -- WorldItems/Clothing/Tights_Ground
   ["timer"] = { dx = 0.1696, dy = 0.107, dz = 0.07901 }, -- WorldItems/Timer
+  ["tincanempty"] = { dx = 0.1247, dy = 0.1472, dz = 0.07999, oz = -0.002096 }, -- WorldItems/CanOpen
   ["tinnedtuna_ground"] = { dx = 0.1098, dy = 0.1098, dz = 0.01934 }, -- WorldItems/TinnedTuna
+  ["tinnedtuna_open_ground"] = { dx = 0.1324, dy = 0.1663, dz = 0.04546 }, -- WorldItems/TinnedTunaOpen
   ["tinopener_old@weapon"] = { dx = 0.3554, dy = 0.08479, dz = 0.009427, oz = 0.004783, cx = 0.1323, cy = -0.01031 }, -- weapons/1handed/CanOpener_Forged_Hand
   ["tireiron@weapon"] = { dx = 0.5943, dy = 0.1315, dz = 0.02043, oz = 0.002939, cx = -0.1588, cy = -0.05247 }, -- weapons/1handed/TireIron
   ["tirepiece"] = { dx = 0.3478, dy = 0.3469, dz = 0.0721, oz = -0.003106 }, -- WorldItems/Tire_QuarterPiece
@@ -2031,8 +2474,14 @@ local MeshSizes = {
   ["tobaccoleaf"] = { dx = 0.2083, dy = 0.3451, dz = 0.006358 }, -- WorldItems/TobaccoLeaf
   ["tobaccoleafdried"] = { dx = 0.2083, dy = 0.3451, dz = 0.006358 }, -- WorldItems/TobaccoLeaf
   ["tobaccoloose"] = { dx = 0.2358, dy = 0.2817, dz = 0.01054 }, -- WorldItems/TobaccoLoose
+  ["tobaccoseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
+  ["tofu"] = { dx = 0.1175, dy = 0.1106, dz = 0.02398 }, -- WorldItems/Tofu
+  ["tofufried_ground"] = { dx = 0.1613, dy = 0.1512, dz = 0.01547, cx = 0.002853, cy = -0.01544 }, -- WorldItems/TofuFried
   ["toiletbrushinholder"] = { dx = 0.1427, dy = 0.1357, dz = 0.1719 }, -- WorldItems/ToiletBrush_In_Holder
   ["toiletpaper"] = { dx = 0.1594, dy = 0.1594, dz = 0.06408 }, -- WorldItems/ToiletPaper
+  ["tomato_ground"] = { dx = 0.1018, dy = 0.1018, dz = 0.04191 }, -- WorldItems/Tomato
+  ["tomatopaste_ground"] = { dx = 0.08838, dy = 0.2736, dz = 0.0218 }, -- WorldItems/TomatoPaste
+  ["tomatoseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
   ["tongs_twine"] = { dx = 0.4953, dy = 0.2182, dz = 0.02892, cx = 0.0216, cy = -0.01138 }, -- WorldItems/Tongs_Twine
   ["tongs"] = { dx = 0.6847, dy = 0.2341, dz = 0.01461, cx = 0.002493 }, -- WorldItems/Tongs
   ["tonguedepressor"] = { dx = 0.03315, dy = 0.1772, dz = 0.001751 }, -- WorldItems/TongueDepressor
@@ -2046,11 +2495,10 @@ local MeshSizes = {
   ["toothpaste"] = { dx = 0.15, dy = 0.2695, dz = 0.02902 }, -- WorldItems/Toothpaste
   ["toothpastecurio"] = { dx = 0.125, dy = 0.2246, dz = 0.02418 }, -- WorldItems/Toothpaste
   ["tortilla_ground"] = { dx = 0.2921, dy = 0.2763, dz = 0.001405 }, -- WorldItems/Tortilla
+  ["tortillachips_ground"] = { dx = 0.2252, dy = 0.2589, dz = 0.004018, cx = 0.0187, cy = -0.02065 }, -- WorldItems/TortillaChips
   ["totesbag_ground"] = { dx = 0.09863, dy = 0.2728, dz = 0.2146 }, -- WorldItems/Clothing/TotesBag_Ground
-  ["toybear_crafted_cotton_hand"] = { dx = 0.307, dy = 0.4115, dz = 0.2101, oz = -0.002289 }, -- WorldItems/TeddyBear_Crafted
   ["toybear_crafted_cotton"] = { dx = 0.4115, dy = 0.307, dz = 0.2101, oz = -0.002289 }, -- WorldItems/TeddyBear_Crafted
   ["toybear_crafted_denim"] = { dx = 0.4173, dy = 0.3103, dz = 0.2021, oz = -0.002803 }, -- WorldItems/TeddyBear_Crafted2
-  ["toybear_hand"] = { dx = 0.4944, dy = 0.3903, dz = 0.2263 }, -- WorldItems/ToyBear
   ["toybear"] = { dx = 0.4944, dy = 0.3903, dz = 0.2263 }, -- WorldItems/ToyBear
   ["toybearsmall"] = { dx = 0.2472, dy = 0.1952, dz = 0.1132 }, -- WorldItems/ToyBear
   ["toycar"] = { dx = 0.1605, dy = 0.1085, dz = 0.04006 }, -- WorldItems/ToyCar
@@ -2079,12 +2527,15 @@ local MeshSizes = {
   ["turkey_poultskull"] = { dx = 0.1447, dy = 0.07968, dz = 0.03351, cx = -0.00731 }, -- WorldItems/Turkey_PoultSkull
   ["turkey_skull"] = { dx = 0.1583, dy = 0.08741, dz = 0.03693, cx = -0.00793 }, -- WorldItems/Turkey_Skull
   ["turkeyhead"] = { dx = 0.2042, dy = 0.1557, dz = 0.02254, cx = 0.007585, cy = -0.01302 }, -- WorldItems/TurkeyHead
+  ["turkeywhole"] = { dx = 0.4043, dy = 0.6075, dz = 0.1073, oz = -0.002387 }, -- WorldItems/TurkeyWhole
+  ["turnip"] = { dx = 0.1384, dy = 0.3041, dz = 0.05281, cy = 0.007405 }, -- WorldItems/Turnip
   ["tvmagazineground"] = { dx = 0.2683, dy = 0.3726, dz = 0.006075 }, -- WorldItems/Magazine
   ["tweezers_forged"] = { dx = 0.04746, dy = 0.1849, dz = 0.004811 }, -- WorldItems/Tweezers_Forged
   ["tweezers"] = { dx = 0.156, dy = 0.01417, dz = 0.009003 }, -- WorldItems/Tweezers
   ["twigs"] = { dx = 0.3319, dy = 0.1805, dz = 0.01451, cx = -0.01897, cy = -0.01269 }, -- WorldItems/Twigs
   ["twigsbundle"] = { dx = 0.2196, dy = 0.2613, dz = 0.03984, cx = -0.004127 }, -- WorldItems/Kindling_Bundle
   ["twine"] = { dx = 0.2284, dy = 0.1652, dz = 0.06957 }, -- WorldItems/Twine
+  ["twologsstack"] = { dx = 0.5413, dy = 0.4566, dz = 0.09694 }, -- WorldItems/TwoLogsStack
   ["umbrella_closed_black@weapon"] = { dx = 1.032, dy = 0.1213, dz = 0.03322, oz = 0.006659, cx = -0.003607, cy = -0.01967 }, -- weapons/2handed/Umbrella_Closed
   ["umbrella_closed_blue@weapon"] = { dx = 1.032, dy = 0.1213, dz = 0.03322, oz = 0.006659, cx = -0.003607, cy = -0.01967 }, -- weapons/2handed/Umbrella_Closed
   ["umbrella_closed_red@weapon"] = { dx = 1.032, dy = 0.1213, dz = 0.03322, oz = 0.01659, cx = -0.003607, cy = -0.01967 }, -- weapons/2handed/Umbrella_Closed
@@ -2111,15 +2562,22 @@ local MeshSizes = {
   ["vambracemagazine_right"] = { dx = 0.2617, dy = 0.1745, dz = 0.04011 }, -- WorldItems/Clothing/VambraceMagazine_Ground_R
   ["vambracespike_left"] = { dx = 0.2172, dy = 0.1312, dz = 0.0385 }, -- WorldItems/Clothing/VambraceSpike_Ground_L
   ["vambracespike_right"] = { dx = 0.2172, dy = 0.1312, dz = 0.0385 }, -- WorldItems/Clothing/VambraceSpike_Ground_R
+  ["vegetablefrozen_ground"] = { dx = 0.4247, dy = 0.2414, dz = 0.02845 }, -- WorldItems/FrozenFoodBag
   ["venison"] = { dx = 0.199, dy = 0.4541, dz = 0.04979 }, -- Venison
   ["vermouthbottle"] = { dx = 0.1297, dy = 0.1275, dz = 0.1345 }, -- WorldItems/Bottle_Generic
   ["vest_catchervest"] = { dx = 0.3487, dy = 0.4261, dz = 0.05286 }, -- WorldItems/Clothing/CatcherVest_Ground
   ["vfx_acornflour"] = { dx = 0.3572, dy = 0.4384, dz = 0.1493 }, -- WorldItems/Flour
   ["vfx_admiralchomp"] = { dx = 0.2938, dy = 0.1181, dz = 0.1539 }, -- WorldItems/Cereal
+  ["vfx_aioli"] = { dx = 0.1371, dy = 0.08841, dz = 0.1198 }, -- WorldItems/Ketchup
+  ["vfx_alfredosauce"] = { dx = 0.1302, dy = 0.1251, dz = 0.07995 }, -- WorldItems/Marinara
+  ["vfx_allspice"] = { dx = 0.079, dy = 0.079, dz = 0.0664 }, -- WorldItems/PowderedJar
   ["vfx_almondgranolabar"] = { dx = 0.2288, dy = 0.1223, dz = 0.01634 }, -- WorldItems/GranolaBar
+  ["vfx_applebutter"] = { dx = 0.1203, dy = 0.1203, dz = 0.06837 }, -- WorldItems/JarLid
   ["vfx_applecinnamonmuffin"] = { dx = 0.1476, dy = 0.1476, dz = 0.05663 }, -- WorldItems/Muffin
   ["vfx_applecinnamonmuffinprep"] = { dx = 0.4925, dy = 0.3516, dz = 0.02688 }, -- WorldItems/MuffinTray_Batter
+  ["vfx_apricotjam"] = { dx = 0.1203, dy = 0.1203, dz = 0.06837 }, -- WorldItems/JarLid
   ["vfx_arboriorice"] = { dx = 0.3897, dy = 0.2558, dz = 0.03154 }, -- WorldItems/Rice
+  ["vfx_baconcheddardip"] = { dx = 0.1539, dy = 0.1489, dz = 0.04261 }, -- WorldItems/DipJar
   ["vfx_bageldough"] = { dx = 0.1324, dy = 0.1324, dz = 0.01776 }, -- WorldItems/Bagel
   ["vfx_bakedpotato"] = { dx = 0.1144, dy = 0.1851, dz = 0.03713 }, -- WorldItems/Potato
   ["vfx_bakersdailyloaf"] = { dx = 0.2678, dy = 0.204, dz = 0.02484 }, -- WorldItems/BookClosedNew
@@ -2128,18 +2586,24 @@ local MeshSizes = {
   ["vfx_bananamilk"] = { dx = 0.04438, dy = 0.08593, dz = 0.04784 }, -- WorldItems/JuiceBox
   ["vfx_bananapopsicle"] = { dx = 0.2862, dy = 0.1045, dz = 0.01586 }, -- WorldItems/Popsicle
   ["vfx_bananapopsiclemelted"] = { dx = 0.301, dy = 0.2438, dz = 0.01269 }, -- WorldItems/Popsicle_Melted
+  ["vfx_bananayogurt"] = { dx = 0.1089, dy = 0.1089, dz = 0.04443 }, -- WorldItems/Yogurt
+  ["vfx_barbequerub"] = { dx = 0.079, dy = 0.079, dz = 0.0664 }, -- WorldItems/PowderedJar
   ["vfx_barleyflour"] = { dx = 0.3572, dy = 0.4384, dz = 0.1493 }, -- WorldItems/Flour
+  ["vfx_basilpestosauce"] = { dx = 0.1302, dy = 0.1251, dz = 0.07995 }, -- WorldItems/Marinara
   ["vfx_basmatirice"] = { dx = 0.3897, dy = 0.2558, dz = 0.03154 }, -- WorldItems/Rice
   ["vfx_batteredchicken"] = { dx = 0.1011, dy = 0.08757, dz = 0.09599, oz = 0.01003, cx = -0.004096 }, -- FriedChicken
   ["vfx_batteredfish"] = { dx = 0.4406, dy = 0.1619, dz = 0.01136 }, -- WorldItems/FishFillet
   ["vfx_batteredoysters"] = { dx = 0.1522, dy = 0.1816, dz = 0.01233, cx = 0.00674, cy = 0.004143 }, -- WorldItems/OysterFried
   ["vfx_batteredtofu"] = { dx = 0.1613, dy = 0.1512, dz = 0.01547, cx = 0.002853, cy = -0.01544 }, -- WorldItems/TofuFried
-  ["vfx_beerbottlesixpack"] = { dx = 0.2106, dy = 0.2753, dz = 0.1464 }, -- WorldItems/BeerBottle_SixPack
-  ["vfx_beercansixpack"] = { dx = 0.263, dy = 0.1957, dz = 0.05987 }, -- WorldItems/Can_SixPack
+  ["vfx_bayleaves"] = { dx = 0.079, dy = 0.079, dz = 0.0664 }, -- WorldItems/PowderedJar
+  ["vfx_bechamelsauce"] = { dx = 0.1302, dy = 0.1251, dz = 0.07995 }, -- WorldItems/Marinara
   ["vfx_beerjar"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
+  ["vfx_blackberryjam"] = { dx = 0.1203, dy = 0.1203, dz = 0.06837 }, -- WorldItems/JarLid
   ["vfx_blackpudding"] = { dx = 0.07115, dy = 0.1996, dz = 0.02832 }, -- WorldItems/Salami
+  ["vfx_blueberryjam"] = { dx = 0.1203, dy = 0.1203, dz = 0.06837 }, -- WorldItems/JarLid
   ["vfx_blueberrymuffin"] = { dx = 0.1476, dy = 0.1476, dz = 0.05663 }, -- WorldItems/Muffin
   ["vfx_blueberrymuffinprep"] = { dx = 0.4925, dy = 0.3516, dz = 0.02688 }, -- WorldItems/MuffinTray_Batter
+  ["vfx_blueberryyogurt"] = { dx = 0.1089, dy = 0.1089, dz = 0.04443 }, -- WorldItems/Yogurt
   ["vfx_bottlehomemadewine"] = { dx = 0.1107, dy = 0.1107, dz = 0.1791 }, -- WorldItems/Wine
   ["vfx_boxsoupsachets_chickennoodle"] = { dx = 0.1815, dy = 0.09491, dz = 0.1011 }, -- WorldItems/MacAndCheese
   ["vfx_boxsoupsachets_peaandham"] = { dx = 0.1815, dy = 0.09491, dz = 0.1011 }, -- WorldItems/MacAndCheese
@@ -2149,8 +2613,10 @@ local MeshSizes = {
   ["vfx_branmuffinprep"] = { dx = 0.4925, dy = 0.3516, dz = 0.02688 }, -- WorldItems/MuffinTray_Batter
   ["vfx_brownrice"] = { dx = 0.3897, dy = 0.2558, dz = 0.03154 }, -- WorldItems/Rice
   ["vfx_buffalochickenpizzaslice"] = { dx = 0.2524, dy = 0.2644, dz = 0.007783 }, -- WorldItems/PizzaSlice
+  ["vfx_buffalodip"] = { dx = 0.1539, dy = 0.1489, dz = 0.04261 }, -- WorldItems/DipJar
   ["vfx_butterpecanicecreamcone"] = { dx = 0.2307, dy = 0.1195, dz = 0.04557 }, -- WorldItems/ConeIceCream
   ["vfx_butterpecanicecreamconemelted"] = { dx = 0.315, dy = 0.1517, dz = 0.03453 }, -- WorldItems/ConeIceCream_Melted
+  ["vfx_cajunseasoning"] = { dx = 0.079, dy = 0.079, dz = 0.0664 }, -- WorldItems/PowderedJar
   ["vfx_cakebatter"] = { dx = 0.3517, dy = 0.3116, dz = 0.09946, cx = -0.01039, cy = -0.002989 }, -- WorldItems/CakeBatter
   ["vfx_cakebatterbeige"] = { dx = 0.3517, dy = 0.3116, dz = 0.09946, cx = -0.01039, cy = -0.002989 }, -- WorldItems/CakeBatter
   ["vfx_cakebatterbrown"] = { dx = 0.3517, dy = 0.3116, dz = 0.09946, cx = -0.01039, cy = -0.002989 }, -- WorldItems/CakeBatter
@@ -2169,6 +2635,7 @@ local MeshSizes = {
   ["vfx_canamericanlightlager"] = { dx = 0.1056, dy = 0.09147, dz = 0.06462 }, -- PopCanDiet
   ["vfx_canamericanwheatbeer"] = { dx = 0.1056, dy = 0.09147, dz = 0.06462 }, -- PopCanDiet
   ["vfx_cannedanchovies"] = { dx = 0.1098, dy = 0.1098, dz = 0.01934 }, -- WorldItems/TinnedTuna
+  ["vfx_cannedanchoviesopen"] = { dx = 0.1324, dy = 0.1663, dz = 0.04546 }, -- WorldItems/TinnedTunaOpen
   ["vfx_cannedapplepiefilling"] = { dx = 0.1066, dy = 0.1066, dz = 0.06097 }, -- CanClosed
   ["vfx_cannedappleslices"] = { dx = 0.1066, dy = 0.1066, dz = 0.06097 }, -- CanClosed
   ["vfx_cannedapricots"] = { dx = 0.1066, dy = 0.1066, dz = 0.06097 }, -- CanClosed
@@ -2177,8 +2644,10 @@ local MeshSizes = {
   ["vfx_cannedblackberrypiefilling"] = { dx = 0.1066, dy = 0.1066, dz = 0.06097 }, -- CanClosed
   ["vfx_cannedblueberrypiefilling"] = { dx = 0.1066, dy = 0.1066, dz = 0.06097 }, -- CanClosed
   ["vfx_cannedcatfood"] = { dx = 0.1098, dy = 0.1098, dz = 0.01934 }, -- WorldItems/TinnedTuna
+  ["vfx_cannedcatfoodopen"] = { dx = 0.1324, dy = 0.1663, dz = 0.04546 }, -- WorldItems/TinnedTunaOpen
   ["vfx_cannedcherrypiefilling"] = { dx = 0.1066, dy = 0.1066, dz = 0.06097 }, -- CanClosed
   ["vfx_cannedchicken"] = { dx = 0.1098, dy = 0.1098, dz = 0.01934 }, -- WorldItems/TinnedTuna
+  ["vfx_cannedchickenopen"] = { dx = 0.1324, dy = 0.1663, dz = 0.04546 }, -- WorldItems/TinnedTunaOpen
   ["vfx_cannedchickpeas"] = { dx = 0.1066, dy = 0.1066, dz = 0.06097 }, -- CanClosed
   ["vfx_cannedclamchowder"] = { dx = 0.1066, dy = 0.1066, dz = 0.06097 }, -- CanClosed
   ["vfx_cannedcoconutcream"] = { dx = 0.1066, dy = 0.1066, dz = 0.06097 }, -- CanClosed
@@ -2188,6 +2657,7 @@ local MeshSizes = {
   ["vfx_cannededamamebeans"] = { dx = 0.1066, dy = 0.1066, dz = 0.06097 }, -- CanClosed
   ["vfx_cannedgreenbeans"] = { dx = 0.1066, dy = 0.1066, dz = 0.06097 }, -- CanClosed
   ["vfx_cannedham"] = { dx = 0.1098, dy = 0.1098, dz = 0.01934 }, -- WorldItems/TinnedTuna
+  ["vfx_cannedhamopen"] = { dx = 0.1324, dy = 0.1663, dz = 0.04546 }, -- WorldItems/TinnedTunaOpen
   ["vfx_cannedkidneybeans"] = { dx = 0.1066, dy = 0.1066, dz = 0.06097 }, -- CanClosed
   ["vfx_cannedlemoncreampiefilling"] = { dx = 0.1066, dy = 0.1066, dz = 0.06097 }, -- CanClosed
   ["vfx_cannedlentils"] = { dx = 0.1066, dy = 0.1066, dz = 0.06097 }, -- CanClosed
@@ -2204,6 +2674,7 @@ local MeshSizes = {
   ["vfx_cannedraspberrypiefilling"] = { dx = 0.1066, dy = 0.1066, dz = 0.06097 }, -- CanClosed
   ["vfx_cannedredbeansandrice"] = { dx = 0.1066, dy = 0.1066, dz = 0.06097 }, -- CanClosed
   ["vfx_cannedsalmon"] = { dx = 0.1098, dy = 0.1098, dz = 0.01934 }, -- WorldItems/TinnedTuna
+  ["vfx_cannedsalmonopen"] = { dx = 0.1324, dy = 0.1663, dz = 0.04546 }, -- WorldItems/TinnedTunaOpen
   ["vfx_cannedsavorymince"] = { dx = 0.1066, dy = 0.1066, dz = 0.06097 }, -- CanClosed
   ["vfx_cannedslicedmushroom"] = { dx = 0.1066, dy = 0.1066, dz = 0.06097 }, -- CanClosed
   ["vfx_cannedsloppyjoe"] = { dx = 0.1066, dy = 0.1066, dz = 0.06097 }, -- CanClosed
@@ -2224,27 +2695,42 @@ local MeshSizes = {
   ["vfx_canporter"] = { dx = 0.1056, dy = 0.09147, dz = 0.06462 }, -- PopCanDiet
   ["vfx_canstout"] = { dx = 0.1056, dy = 0.09147, dz = 0.06462 }, -- PopCanDiet
   ["vfx_canviennalager"] = { dx = 0.1056, dy = 0.09147, dz = 0.06462 }, -- PopCanDiet
+  ["vfx_caramelfrosting"] = { dx = 0.1408, dy = 0.1348, dz = 0.04984 }, -- WorldItems/Icing
+  ["vfx_cardamom"] = { dx = 0.079, dy = 0.079, dz = 0.0664 }, -- WorldItems/PowderedJar
+  ["vfx_cayennepepper"] = { dx = 0.079, dy = 0.079, dz = 0.0664 }, -- WorldItems/PowderedJar
+  ["vfx_celerysalt"] = { dx = 0.079, dy = 0.079, dz = 0.0664 }, -- WorldItems/PowderedJar
+  ["vfx_cheddarbiscuit"] = { dx = 0.1644, dy = 0.1847, dz = 0.01416 }, -- WorldItems/Cookies
   ["vfx_cheddarbiscuittray"] = { dx = 0.6455, dy = 0.417, dz = 0.01879 }, -- WorldItems/BakingTray_Cookies
   ["vfx_cheddarchips"] = { dx = 0.2949, dy = 0.2175, dz = 0.02522 }, -- WorldItems/Chips
   ["vfx_cheesepizzaslice"] = { dx = 0.2524, dy = 0.2644, dz = 0.007783 }, -- WorldItems/PizzaSlice
+  ["vfx_cheesespread"] = { dx = 0.1203, dy = 0.1203, dz = 0.06837 }, -- WorldItems/JarLid
   ["vfx_cherrycolabottle"] = { dx = 0.1271, dy = 0.1271, dz = 0.1482 }, -- WorldItems/EmptyPopBottle
   ["vfx_cherrypopsicle"] = { dx = 0.2862, dy = 0.1045, dz = 0.01586 }, -- WorldItems/Popsicle
   ["vfx_cherrypopsiclemelted"] = { dx = 0.301, dy = 0.2438, dz = 0.01269 }, -- WorldItems/Popsicle_Melted
   ["vfx_chickenpotpiefrozenmeal"] = { dx = 0.1578, dy = 0.2678, dz = 0.02214 }, -- WorldItems/TVDinner
+  ["vfx_chiliflakes"] = { dx = 0.079, dy = 0.079, dz = 0.0664 }, -- WorldItems/PowderedJar
+  ["vfx_chinesefivespice"] = { dx = 0.079, dy = 0.079, dz = 0.0664 }, -- WorldItems/PowderedJar
+  ["vfx_chocolatechipgranola"] = { dx = 0.2938, dy = 0.1181, dz = 0.1539 }, -- WorldItems/Cereal
   ["vfx_chocolatechipgranolabar"] = { dx = 0.2288, dy = 0.1223, dz = 0.01634 }, -- WorldItems/GranolaBar
   ["vfx_chocolatechipicecreamcone"] = { dx = 0.2307, dy = 0.1195, dz = 0.04557 }, -- WorldItems/ConeIceCream
   ["vfx_chocolatechipicecreamconemelted"] = { dx = 0.315, dy = 0.1517, dz = 0.03453 }, -- WorldItems/ConeIceCream_Melted
   ["vfx_chocolatechipmuffin"] = { dx = 0.1476, dy = 0.1476, dz = 0.05663 }, -- WorldItems/Muffin
   ["vfx_chocolatechipmuffinprep"] = { dx = 0.4925, dy = 0.3516, dz = 0.02688 }, -- WorldItems/MuffinTray_Batter
+  ["vfx_chocolatefrosting"] = { dx = 0.1408, dy = 0.1348, dz = 0.04984 }, -- WorldItems/Icing
   ["vfx_chocolateicecreamcone"] = { dx = 0.2307, dy = 0.1195, dz = 0.04557 }, -- WorldItems/ConeIceCream
   ["vfx_chocolateicecreamconemelted"] = { dx = 0.315, dy = 0.1517, dz = 0.03453 }, -- WorldItems/ConeIceCream_Melted
   ["vfx_chocolatemilk"] = { dx = 0.04438, dy = 0.08593, dz = 0.04784 }, -- WorldItems/JuiceBox
   ["vfx_chocolateswirlbreadprep"] = { dx = 0.1448, dy = 0.1648, dz = 0.07731 }, -- WorldItems/Bread
   ["vfx_chocolateswirlbreadslice"] = { dx = 0.2442, dy = 0.2377, dz = 0.01489, cx = 0.02184, cy = -0.009855 }, -- WorldItems/BreadSlices
+  ["vfx_cinnamonbutter"] = { dx = 0.1203, dy = 0.1203, dz = 0.06837 }, -- WorldItems/JarLid
+  ["vfx_cinnamonsugar"] = { dx = 0.079, dy = 0.079, dz = 0.0664 }, -- WorldItems/PowderedJar
   ["vfx_cinnamonswirlbreadprep"] = { dx = 0.1448, dy = 0.1648, dz = 0.07731 }, -- WorldItems/Bread
   ["vfx_cinnamonswirlbreadslice"] = { dx = 0.2442, dy = 0.2377, dz = 0.01489, cx = 0.02184, cy = -0.009855 }, -- WorldItems/BreadSlices
+  ["vfx_cloves"] = { dx = 0.079, dy = 0.079, dz = 0.0664 }, -- WorldItems/PowderedJar
   ["vfx_cocoapuffs"] = { dx = 0.2938, dy = 0.1181, dz = 0.1539 }, -- WorldItems/Cereal
+  ["vfx_coconutalmondgranola"] = { dx = 0.2938, dy = 0.1181, dz = 0.1539 }, -- WorldItems/Cereal
   ["vfx_comfortfoodclassics"] = { dx = 0.2678, dy = 0.204, dz = 0.02484 }, -- WorldItems/BookClosedNew
+  ["vfx_confettifrosting"] = { dx = 0.1408, dy = 0.1348, dz = 0.04984 }, -- WorldItems/Icing
   ["vfx_cookiesandcreamicecreamcone"] = { dx = 0.2307, dy = 0.1195, dz = 0.04557 }, -- WorldItems/ConeIceCream
   ["vfx_cookiesandcreamicecreamconemelted"] = { dx = 0.315, dy = 0.1517, dz = 0.03453 }, -- WorldItems/ConeIceCream_Melted
   ["vfx_cookieschocolateprep"] = { dx = 0.6455, dy = 0.417, dz = 0.01879 }, -- WorldItems/BakingTray_Cookies
@@ -2262,34 +2748,58 @@ local MeshSizes = {
   ["vfx_cottagepiefrozenmeal"] = { dx = 0.1578, dy = 0.2678, dz = 0.02214 }, -- WorldItems/TVDinner
   ["vfx_cranberrybreadprep"] = { dx = 0.1448, dy = 0.1648, dz = 0.07731 }, -- WorldItems/Bread
   ["vfx_cranberrybreadslice"] = { dx = 0.2442, dy = 0.2377, dz = 0.01489, cx = 0.02184, cy = -0.009855 }, -- WorldItems/BreadSlices
+  ["vfx_creamcheesefrosting"] = { dx = 0.1408, dy = 0.1348, dz = 0.04984 }, -- WorldItems/Icing
   ["vfx_creamsodabottle"] = { dx = 0.1271, dy = 0.1271, dz = 0.1482 }, -- WorldItems/EmptyPopBottle
   ["vfx_crispykitchenchronicles"] = { dx = 0.2678, dy = 0.204, dz = 0.02484 }, -- WorldItems/BookClosedNew
+  ["vfx_cumin"] = { dx = 0.079, dy = 0.079, dz = 0.0664 }, -- WorldItems/PowderedJar
   ["vfx_currymastersmanual"] = { dx = 0.2678, dy = 0.204, dz = 0.02484 }, -- WorldItems/BookClosedNew
+  ["vfx_currypowder"] = { dx = 0.079, dy = 0.079, dz = 0.0664 }, -- WorldItems/PowderedJar
   ["vfx_dairyjar"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
   ["vfx_dawnaroundtheworldcookbook"] = { dx = 0.2678, dy = 0.204, dz = 0.02484 }, -- WorldItems/BookClosedNew
   ["vfx_deadsourdoughstarter"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
   ["vfx_deadyeaststarter"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
   ["vfx_delicountercollection"] = { dx = 0.2678, dy = 0.204, dz = 0.02484 }, -- WorldItems/BookClosedNew
   ["vfx_dessertartisansguide"] = { dx = 0.2678, dy = 0.204, dz = 0.02484 }, -- WorldItems/BookClosedNew
+  ["vfx_dill"] = { dx = 0.079, dy = 0.079, dz = 0.0664 }, -- WorldItems/PowderedJar
   ["vfx_dillpicklechips"] = { dx = 0.2949, dy = 0.2175, dz = 0.02522 }, -- WorldItems/Chips
   ["vfx_doublechocolatemuffin"] = { dx = 0.1476, dy = 0.1476, dz = 0.05663 }, -- WorldItems/Muffin
   ["vfx_doublechocolatemuffinprep"] = { dx = 0.4925, dy = 0.3516, dz = 0.02688 }, -- WorldItems/MuffinTray_Batter
   ["vfx_earlybirdskitchen"] = { dx = 0.2678, dy = 0.204, dz = 0.02484 }, -- WorldItems/BookClosedNew
   ["vfx_emptyjamjar"] = { dx = 0.1203, dy = 0.1203, dz = 0.06837 }, -- WorldItems/JarLid
+  ["vfx_fennelseeds"] = { dx = 0.079, dy = 0.079, dz = 0.0664 }, -- WorldItems/PowderedJar
   ["vfx_festivefingerfood"] = { dx = 0.2678, dy = 0.204, dz = 0.02484 }, -- WorldItems/BookClosedNew
+  ["vfx_frenchoniondip"] = { dx = 0.1539, dy = 0.1489, dz = 0.04261 }, -- WorldItems/DipJar
   ["vfx_frostycrunch"] = { dx = 0.2938, dy = 0.1181, dz = 0.1539 }, -- WorldItems/Cereal
   ["vfx_frozenbuffalochickenpizza"] = { dx = 0.482, dy = 0.482, dz = 0.01146 }, -- WorldItems/Pizza
   ["vfx_frozencheesepizza"] = { dx = 0.482, dy = 0.482, dz = 0.01146 }, -- WorldItems/Pizza
   ["vfx_frozenpepperonipizza"] = { dx = 0.482, dy = 0.482, dz = 0.01146 }, -- WorldItems/Pizza
   ["vfx_frozensupremepizza"] = { dx = 0.482, dy = 0.482, dz = 0.01146 }, -- WorldItems/Pizza
   ["vfx_frozenthreemeatpizza"] = { dx = 0.482, dy = 0.482, dz = 0.01146 }, -- WorldItems/Pizza
+  ["vfx_fruitnutgranola"] = { dx = 0.2938, dy = 0.1181, dz = 0.1539 }, -- WorldItems/Cereal
   ["vfx_fruityloops"] = { dx = 0.2938, dy = 0.1181, dz = 0.1539 }, -- WorldItems/Cereal
+  ["vfx_garammasala"] = { dx = 0.079, dy = 0.079, dz = 0.0664 }, -- WorldItems/PowderedJar
   ["vfx_gardentotabletreasures"] = { dx = 0.2678, dy = 0.204, dz = 0.02484 }, -- WorldItems/BookClosedNew
+  ["vfx_garlicsalt"] = { dx = 0.079, dy = 0.079, dz = 0.0664 }, -- WorldItems/PowderedJar
   ["vfx_gentlemansdinnertable"] = { dx = 0.2678, dy = 0.204, dz = 0.02484 }, -- WorldItems/BookClosedNew
   ["vfx_grapefruitjuice"] = { dx = 0.09495, dy = 0.09858, dz = 0.1103 }, -- WorldItems/Juice_Bottle
+  ["vfx_grapejam"] = { dx = 0.1203, dy = 0.1203, dz = 0.06837 }, -- WorldItems/JarLid
   ["vfx_grapepopsicle"] = { dx = 0.2862, dy = 0.1045, dz = 0.01586 }, -- WorldItems/Popsicle
   ["vfx_grapepopsiclemelted"] = { dx = 0.301, dy = 0.2438, dz = 0.01269 }, -- WorldItems/Popsicle_Melted
+  ["vfx_groundchicken"] = { dx = 0.1823, dy = 0.1906, dz = 0.0419 }, -- WorldItems/MincedMeat
+  ["vfx_groundchili"] = { dx = 0.079, dy = 0.079, dz = 0.0664 }, -- WorldItems/PowderedJar
+  ["vfx_groundfish"] = { dx = 0.1823, dy = 0.1906, dz = 0.0419 }, -- WorldItems/MincedMeat
+  ["vfx_groundfrog"] = { dx = 0.1139, dy = 0.1191, dz = 0.02618 }, -- WorldItems/MincedMeat
+  ["vfx_groundginger"] = { dx = 0.079, dy = 0.079, dz = 0.0664 }, -- WorldItems/PowderedJar
+  ["vfx_groundlamb"] = { dx = 0.1823, dy = 0.1906, dz = 0.0419 }, -- WorldItems/MincedMeat
+  ["vfx_groundpork"] = { dx = 0.1823, dy = 0.1906, dz = 0.0419 }, -- WorldItems/MincedMeat
+  ["vfx_groundrabbit"] = { dx = 0.1367, dy = 0.1429, dz = 0.03142 }, -- WorldItems/MincedMeat
+  ["vfx_groundrodent"] = { dx = 0.1139, dy = 0.1191, dz = 0.02618 }, -- WorldItems/MincedMeat
+  ["vfx_groundsalmon"] = { dx = 0.1367, dy = 0.1429, dz = 0.03142 }, -- WorldItems/MincedMeat
+  ["vfx_groundsmallbird"] = { dx = 0.1139, dy = 0.1191, dz = 0.02618 }, -- WorldItems/MincedMeat
+  ["vfx_groundturkey"] = { dx = 0.1823, dy = 0.1906, dz = 0.0419 }, -- WorldItems/MincedMeat
+  ["vfx_groundvenison"] = { dx = 0.1823, dy = 0.1906, dz = 0.0419 }, -- WorldItems/MincedMeat
   ["vfx_hamburgerbunhomemade"] = { dx = 0.1994, dy = 0.1898, dz = 0.03515, cy = 0.005937 }, -- WorldItems/Buns_Hamburger_Single
+  ["vfx_hazelnutspread"] = { dx = 0.1203, dy = 0.1203, dz = 0.06837 }, -- WorldItems/JarLid
   ["vfx_homemadealfredosauce"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
   ["vfx_homemadebasilpestosauce"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
   ["vfx_homemadebechamelsauce"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
@@ -2299,19 +2809,19 @@ local MeshSizes = {
   ["vfx_homemademarinara"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
   ["vfx_homemademeatsauce"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
   ["vfx_homemadepotatopancakes"] = { dx = 0.2117, dy = 0.2164, dz = 0.01639 }, -- WorldItems/PotatoPancakes
+  ["vfx_homemadesaucecream"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
+  ["vfx_homemadesauceoil"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
+  ["vfx_homemadesaucestock"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
+  ["vfx_homemadesaucetomato"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
+  ["vfx_homemadesaucevinegar"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
+  ["vfx_homestylebiscuit"] = { dx = 0.1644, dy = 0.1847, dz = 0.01416 }, -- WorldItems/Cookies
   ["vfx_homestylebiscuittray"] = { dx = 0.6455, dy = 0.417, dz = 0.01879 }, -- WorldItems/BakingTray_Cookies
   ["vfx_honeybarbecuechips"] = { dx = 0.2949, dy = 0.2175, dz = 0.02522 }, -- WorldItems/Chips
+  ["vfx_honeybbqsauce"] = { dx = 0.1371, dy = 0.08841, dz = 0.1198 }, -- WorldItems/Ketchup
+  ["vfx_honeyoatsgranola"] = { dx = 0.2938, dy = 0.1181, dz = 0.1539 }, -- WorldItems/Cereal
   ["vfx_honeyoatyos"] = { dx = 0.2938, dy = 0.1181, dz = 0.1539 }, -- WorldItems/Cereal
-  ["vfx_jar_bellpepper"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
-  ["vfx_jar_broccoli"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
-  ["vfx_jar_cabbage"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
-  ["vfx_jar_carrots"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
-  ["vfx_jar_eggplant"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
-  ["vfx_jar_leek"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
-  ["vfx_jar_potato"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
-  ["vfx_jar_redradish"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
-  ["vfx_jar_roe"] = { dx = 0.09475, dy = 0.09475, dz = 0.04239 }, -- WorldItems/Jar_Roe
-  ["vfx_jar_tomato"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
+  ["vfx_hummusdip"] = { dx = 0.1539, dy = 0.1489, dz = 0.04261 }, -- WorldItems/DipJar
+  ["vfx_italianherbsseasoning"] = { dx = 0.079, dy = 0.079, dz = 0.0664 }, -- WorldItems/PowderedJar
   ["vfx_jarapricots"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
   ["vfx_jarbeetroot"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
   ["vfx_jarbrusselsprouts"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
@@ -2338,12 +2848,16 @@ local MeshSizes = {
   ["vfx_juiceboxpineapple"] = { dx = 0.04438, dy = 0.08593, dz = 0.04784 }, -- WorldItems/JuiceBox
   ["vfx_juiceboxtropical"] = { dx = 0.04438, dy = 0.08593, dz = 0.04784 }, -- WorldItems/JuiceBox
   ["vfx_lasagnafrozenmeal"] = { dx = 0.1578, dy = 0.2678, dz = 0.02214 }, -- WorldItems/TVDinner
+  ["vfx_lemonfrosting"] = { dx = 0.1408, dy = 0.1348, dz = 0.04984 }, -- WorldItems/Icing
   ["vfx_lemonlimesodabottle"] = { dx = 0.1271, dy = 0.1271, dz = 0.1482 }, -- WorldItems/EmptyPopBottle
+  ["vfx_lemonmarmalade"] = { dx = 0.1203, dy = 0.1203, dz = 0.06837 }, -- WorldItems/JarLid
+  ["vfx_lemonpepperseasoning"] = { dx = 0.079, dy = 0.079, dz = 0.0664 }, -- WorldItems/PowderedJar
   ["vfx_lemonpoppymuffin"] = { dx = 0.1476, dy = 0.1476, dz = 0.05663 }, -- WorldItems/Muffin
   ["vfx_lemonpoppymuffinprep"] = { dx = 0.4925, dy = 0.3516, dz = 0.02688 }, -- WorldItems/MuffinTray_Batter
   ["vfx_lemonsodabottle"] = { dx = 0.1271, dy = 0.1271, dz = 0.1482 }, -- WorldItems/EmptyPopBottle
   ["vfx_limepopsicle"] = { dx = 0.2862, dy = 0.1045, dz = 0.01586 }, -- WorldItems/Popsicle
   ["vfx_limepopsiclemelted"] = { dx = 0.301, dy = 0.2438, dz = 0.01269 }, -- WorldItems/Popsicle_Melted
+  ["vfx_liverspread"] = { dx = 0.1203, dy = 0.1203, dz = 0.06837 }, -- WorldItems/JarLid
   ["vfx_macncheesefrozenmeal"] = { dx = 0.1578, dy = 0.2678, dz = 0.02214 }, -- WorldItems/TVDinner
   ["vfx_magazinebaking1"] = { dx = 0.2683, dy = 0.3726, dz = 0.006075 }, -- WorldItems/Magazine
   ["vfx_magazinebaking2"] = { dx = 0.2683, dy = 0.3726, dz = 0.006075 }, -- WorldItems/Magazine
@@ -2375,23 +2889,44 @@ local MeshSizes = {
   ["vfx_magazinevfxcooking2"] = { dx = 0.2683, dy = 0.3726, dz = 0.006075 }, -- WorldItems/Magazine
   ["vfx_magazinevfxcooking3"] = { dx = 0.2683, dy = 0.3726, dz = 0.006075 }, -- WorldItems/Magazine
   ["vfx_magazinevfxcooking4"] = { dx = 0.2683, dy = 0.3726, dz = 0.006075 }, -- WorldItems/Magazine
+  ["vfx_maplebutter"] = { dx = 0.1203, dy = 0.1203, dz = 0.06837 }, -- WorldItems/JarLid
+  ["vfx_maplepecangranola"] = { dx = 0.2938, dy = 0.1181, dz = 0.1539 }, -- WorldItems/Cereal
+  ["vfx_mashedpotato"] = { dx = 0.2112, dy = 0.2022, dz = 0.07476 }, -- WorldItems/Icing
   ["vfx_meatloaffrozenmeal"] = { dx = 0.1578, dy = 0.2678, dz = 0.02214 }, -- WorldItems/TVDinner
+  ["vfx_meatsauce"] = { dx = 0.1302, dy = 0.1251, dz = 0.07995 }, -- WorldItems/Marinara
+  ["vfx_memphisbarbequerub"] = { dx = 0.079, dy = 0.079, dz = 0.0664 }, -- WorldItems/PowderedJar
   ["vfx_mintchocolatechipicecreamcone"] = { dx = 0.2307, dy = 0.1195, dz = 0.04557 }, -- WorldItems/ConeIceCream
   ["vfx_mintchocolatechipicecreamconemelted"] = { dx = 0.315, dy = 0.1517, dz = 0.03453 }, -- WorldItems/ConeIceCream_Melted
+  ["vfx_mixedberryyogurt"] = { dx = 0.1089, dy = 0.1089, dz = 0.04443 }, -- WorldItems/Yogurt
   ["vfx_mug"] = { dx = 0.1017, dy = 0.1462, dz = 0.04787, oz = -0.002617 }, -- WorldItems/Mug
   ["vfx_mugclay"] = { dx = 0.1017, dy = 0.1462, dz = 0.04787, oz = -0.002617 }, -- WorldItems/Mug
   ["vfx_mugspiffo"] = { dx = 0.1017, dy = 0.1462, dz = 0.04787, oz = -0.002617 }, -- WorldItems/Mug
   ["vfx_mugwhite"] = { dx = 0.1017, dy = 0.1462, dz = 0.04787, oz = -0.002617 }, -- WorldItems/Mug
+  ["vfx_mustardpowder"] = { dx = 0.079, dy = 0.079, dz = 0.0664 }, -- WorldItems/PowderedJar
   ["vfx_neapolitanicecreamcone"] = { dx = 0.2307, dy = 0.1195, dz = 0.04557 }, -- WorldItems/ConeIceCream
   ["vfx_neapolitanicecreamconemelted"] = { dx = 0.315, dy = 0.1517, dz = 0.03453 }, -- WorldItems/ConeIceCream_Melted
   ["vfx_nonnaskitchenchronicles"] = { dx = 0.2678, dy = 0.204, dz = 0.02484 }, -- WorldItems/BookClosedNew
+  ["vfx_nutmeg"] = { dx = 0.079, dy = 0.079, dz = 0.0664 }, -- WorldItems/PowderedJar
   ["vfx_nuttygranolabar"] = { dx = 0.2288, dy = 0.1223, dz = 0.01634 }, -- WorldItems/GranolaBar
   ["vfx_oatflour"] = { dx = 0.3572, dy = 0.4384, dz = 0.1493 }, -- WorldItems/Flour
   ["vfx_oatgranolabar"] = { dx = 0.2288, dy = 0.1223, dz = 0.01634 }, -- WorldItems/GranolaBar
   ["vfx_oatyos"] = { dx = 0.2938, dy = 0.1181, dz = 0.1539 }, -- WorldItems/Cereal
+  ["vfx_oldbayseasoning"] = { dx = 0.079, dy = 0.079, dz = 0.0664 }, -- WorldItems/PowderedJar
+  ["vfx_onionflakes"] = { dx = 0.079, dy = 0.079, dz = 0.0664 }, -- WorldItems/PowderedJar
+  ["vfx_openhomemadealfredosauce"] = { dx = 0.1083, dy = 0.1083, dz = 0.06035 }, -- WorldItems/JarFood_Open
+  ["vfx_openhomemadebasilpestosauce"] = { dx = 0.1083, dy = 0.1083, dz = 0.06035 }, -- WorldItems/JarFood_Open
+  ["vfx_openhomemadebechamelsauce"] = { dx = 0.1083, dy = 0.1083, dz = 0.06035 }, -- WorldItems/JarFood_Open
+  ["vfx_openhomemademarinara"] = { dx = 0.1083, dy = 0.1083, dz = 0.06035 }, -- WorldItems/JarFood_Open
+  ["vfx_openhomemademeatsauce"] = { dx = 0.1083, dy = 0.1083, dz = 0.06035 }, -- WorldItems/JarFood_Open
   ["vfx_orangepopsicle"] = { dx = 0.2862, dy = 0.1045, dz = 0.01586 }, -- WorldItems/Popsicle
   ["vfx_orangepopsiclemelted"] = { dx = 0.301, dy = 0.2438, dz = 0.01269 }, -- WorldItems/Popsicle_Melted
   ["vfx_orangesodabottle"] = { dx = 0.1271, dy = 0.1271, dz = 0.1482 }, -- WorldItems/EmptyPopBottle
+  ["vfx_packagedbeans"] = { dx = 0.4247, dy = 0.2414, dz = 0.02845 }, -- WorldItems/FrozenFoodBag
+  ["vfx_packagedbroccoli"] = { dx = 0.4247, dy = 0.2414, dz = 0.02845 }, -- WorldItems/FrozenFoodBag
+  ["vfx_packagedcarrot"] = { dx = 0.4247, dy = 0.2414, dz = 0.02845 }, -- WorldItems/FrozenFoodBag
+  ["vfx_packagedcauliflower"] = { dx = 0.4247, dy = 0.2414, dz = 0.02845 }, -- WorldItems/FrozenFoodBag
+  ["vfx_packagedpeas"] = { dx = 0.4247, dy = 0.2414, dz = 0.02845 }, -- WorldItems/FrozenFoodBag
+  ["vfx_packagedpumpkin"] = { dx = 0.4247, dy = 0.2414, dz = 0.02845 }, -- WorldItems/FrozenFoodBag
   ["vfx_packcanamberale"] = { dx = 0.263, dy = 0.1957, dz = 0.05987 }, -- WorldItems/Can_SixPack
   ["vfx_packcanamericanlager"] = { dx = 0.263, dy = 0.1957, dz = 0.05987 }, -- WorldItems/Can_SixPack
   ["vfx_packcanamericanlightlager"] = { dx = 0.263, dy = 0.1957, dz = 0.05987 }, -- WorldItems/Can_SixPack
@@ -2401,16 +2936,38 @@ local MeshSizes = {
   ["vfx_packcanporter"] = { dx = 0.263, dy = 0.1957, dz = 0.05987 }, -- WorldItems/Can_SixPack
   ["vfx_packcanstout"] = { dx = 0.263, dy = 0.1957, dz = 0.05987 }, -- WorldItems/Can_SixPack
   ["vfx_packcanviennalager"] = { dx = 0.263, dy = 0.1957, dz = 0.05987 }, -- WorldItems/Can_SixPack
+  ["vfx_paprika"] = { dx = 0.079, dy = 0.079, dz = 0.0664 }, -- WorldItems/PowderedJar
   ["vfx_pastrychefssecrets"] = { dx = 0.2678, dy = 0.204, dz = 0.02484 }, -- WorldItems/BookClosedNew
+  ["vfx_pattychicken"] = { dx = 0.169, dy = 0.169, dz = 0.00974 }, -- WorldItems/MeatPatty
+  ["vfx_pattyfish"] = { dx = 0.169, dy = 0.169, dz = 0.00974 }, -- WorldItems/MeatPatty
+  ["vfx_pattyfrog"] = { dx = 0.169, dy = 0.169, dz = 0.00974 }, -- WorldItems/MeatPatty
+  ["vfx_pattylamb"] = { dx = 0.169, dy = 0.169, dz = 0.00974 }, -- WorldItems/MeatPatty
+  ["vfx_pattypork"] = { dx = 0.169, dy = 0.169, dz = 0.00974 }, -- WorldItems/MeatPatty
+  ["vfx_pattyrabbit"] = { dx = 0.169, dy = 0.169, dz = 0.00974 }, -- WorldItems/MeatPatty
+  ["vfx_pattyrodent"] = { dx = 0.169, dy = 0.169, dz = 0.00974 }, -- WorldItems/MeatPatty
+  ["vfx_pattysalmon"] = { dx = 0.169, dy = 0.169, dz = 0.00974 }, -- WorldItems/MeatPatty
+  ["vfx_pattysmallbird"] = { dx = 0.169, dy = 0.169, dz = 0.00974 }, -- WorldItems/MeatPatty
+  ["vfx_pattyturkey"] = { dx = 0.169, dy = 0.169, dz = 0.00974 }, -- WorldItems/MeatPatty
+  ["vfx_pattyvenison"] = { dx = 0.169, dy = 0.169, dz = 0.00974 }, -- WorldItems/MeatPatty
+  ["vfx_peachjam"] = { dx = 0.1203, dy = 0.1203, dz = 0.06837 }, -- WorldItems/JarLid
+  ["vfx_peachyogurt"] = { dx = 0.1089, dy = 0.1089, dz = 0.04443 }, -- WorldItems/Yogurt
   ["vfx_pepperonipizzaslice"] = { dx = 0.2524, dy = 0.2644, dz = 0.007783 }, -- WorldItems/PizzaSlice
   ["vfx_pineapplejuice"] = { dx = 0.09495, dy = 0.09858, dz = 0.1103 }, -- WorldItems/Juice_Bottle
   ["vfx_pistachioicecreamcone"] = { dx = 0.2307, dy = 0.1195, dz = 0.04557 }, -- WorldItems/ConeIceCream
   ["vfx_pistachioicecreamconemelted"] = { dx = 0.315, dy = 0.1517, dz = 0.03453 }, -- WorldItems/ConeIceCream_Melted
   ["vfx_poppybageldough"] = { dx = 0.1324, dy = 0.1324, dz = 0.01776 }, -- WorldItems/Bagel
+  ["vfx_poultryseasoning"] = { dx = 0.079, dy = 0.079, dz = 0.0664 }, -- WorldItems/PowderedJar
+  ["vfx_powderedsugar"] = { dx = 0.1803, dy = 0.1451, dz = 0.1082 }, -- WorldItems/Sugar
   ["vfx_prunejuice"] = { dx = 0.09495, dy = 0.09858, dz = 0.1103 }, -- WorldItems/Juice_Bottle
   ["vfx_pumpkinbreadprep"] = { dx = 0.1448, dy = 0.1648, dz = 0.07731 }, -- WorldItems/Bread
   ["vfx_pumpkinbreadslice"] = { dx = 0.2442, dy = 0.2377, dz = 0.01489, cx = 0.02184, cy = -0.009855 }, -- WorldItems/BreadSlices
+  ["vfx_pumpkinspiceseasoning"] = { dx = 0.079, dy = 0.079, dz = 0.0664 }, -- WorldItems/PowderedJar
+  ["vfx_ranch"] = { dx = 0.1371, dy = 0.08841, dz = 0.1198 }, -- WorldItems/Ketchup
   ["vfx_ranchchips"] = { dx = 0.2949, dy = 0.2175, dz = 0.02522 }, -- WorldItems/Chips
+  ["vfx_ranchseasoning"] = { dx = 0.079, dy = 0.079, dz = 0.0664 }, -- WorldItems/PowderedJar
+  ["vfx_raspberryjam"] = { dx = 0.1203, dy = 0.1203, dz = 0.06837 }, -- WorldItems/JarLid
+  ["vfx_raspberryyogurt"] = { dx = 0.1089, dy = 0.1089, dz = 0.04443 }, -- WorldItems/Yogurt
+  ["vfx_redcabbage"] = { dx = 0.1918, dy = 0.1966, dz = 0.0742, cx = 0.002374, cy = -0.004401 }, -- WorldItems/Cabbage
   ["vfx_redcandiedapple"] = { dx = 0.1203, dy = 0.1282, dz = 0.07024 }, -- WorldItems/CandiedApple
   ["vfx_ricekrisps"] = { dx = 0.2938, dy = 0.1181, dz = 0.1539 }, -- WorldItems/Cereal
   ["vfx_roastturkeyfrozenmeal"] = { dx = 0.1578, dy = 0.2678, dz = 0.02214 }, -- WorldItems/TVDinner
@@ -2420,21 +2977,35 @@ local MeshSizes = {
   ["vfx_ryeflour"] = { dx = 0.3572, dy = 0.4384, dz = 0.1493 }, -- WorldItems/Flour
   ["vfx_salisburysteakfrozenmeal"] = { dx = 0.1578, dy = 0.2678, dz = 0.02214 }, -- WorldItems/TVDinner
   ["vfx_saucepancopperpasta"] = { dx = 0.214, dy = 0.3917, dz = 0.05398 }, -- WorldItems/SaucePan_Copper_Pasta
+  ["vfx_saucepancopperrice"] = { dx = 0.214, dy = 0.3917, dz = 0.05398 }, -- WorldItems/SaucePan_Copper_Rice
   ["vfx_saucepanpasta"] = { dx = 0.3828, dy = 0.2073, dz = 0.0514 }, -- WorldItems/SaucePan_FoodFluid
+  ["vfx_saucepanrice"] = { dx = 0.3828, dy = 0.2073, dz = 0.0514 }, -- WorldItems/SaucePan_FoodFluid
   ["vfx_sesamebageldough"] = { dx = 0.1324, dy = 0.1324, dz = 0.01776 }, -- WorldItems/Bagel
   ["vfx_sidedishcompanions"] = { dx = 0.2678, dy = 0.204, dz = 0.02484 }, -- WorldItems/BookClosedNew
   ["vfx_simmeringpotchronicles"] = { dx = 0.2678, dy = 0.204, dz = 0.02484 }, -- WorldItems/BookClosedNew
   ["vfx_smallbitesbigflavors"] = { dx = 0.2678, dy = 0.204, dz = 0.02484 }, -- WorldItems/BookClosedNew
+  ["vfx_smokedpaprika"] = { dx = 0.079, dy = 0.079, dz = 0.0664 }, -- WorldItems/PowderedJar
+  ["vfx_sourdoughbaguette"] = { dx = 0.4659, dy = 0.1062, dz = 0.0265 }, -- WorldItems/Baguette
   ["vfx_sourdoughburger"] = { dx = 0.1868, dy = 0.1853, dz = 0.03917 }, -- WorldItems/Burger
+  ["vfx_sourdoughhamburgerbun"] = { dx = 0.1994, dy = 0.1898, dz = 0.03515, cy = 0.005937 }, -- WorldItems/Buns_Hamburger_Single
   ["vfx_sourdoughstarter"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
   ["vfx_spaghettimeatballsfrozenmeal"] = { dx = 0.1578, dy = 0.2678, dz = 0.02214 }, -- WorldItems/TVDinner
+  ["vfx_spicymarinara"] = { dx = 0.1302, dy = 0.1251, dz = 0.07995 }, -- WorldItems/Marinara
+  ["vfx_spinachartichokedip"] = { dx = 0.1539, dy = 0.1489, dz = 0.04261 }, -- WorldItems/DipJar
+  ["vfx_steakhouseseasoning"] = { dx = 0.079, dy = 0.079, dz = 0.0664 }, -- WorldItems/PowderedJar
+  ["vfx_strawberryfrosting"] = { dx = 0.1408, dy = 0.1348, dz = 0.04984 }, -- WorldItems/Icing
   ["vfx_strawberryicecreamcone"] = { dx = 0.2307, dy = 0.1195, dz = 0.04557 }, -- WorldItems/ConeIceCream
   ["vfx_strawberryicecreamconemelted"] = { dx = 0.315, dy = 0.1517, dz = 0.03453 }, -- WorldItems/ConeIceCream_Melted
+  ["vfx_strawberryjam"] = { dx = 0.1203, dy = 0.1203, dz = 0.06837 }, -- WorldItems/JarLid
   ["vfx_strawberrymilk"] = { dx = 0.04438, dy = 0.08593, dz = 0.04784 }, -- WorldItems/JuiceBox
   ["vfx_strawberrypopsicle"] = { dx = 0.2862, dy = 0.1045, dz = 0.01586 }, -- WorldItems/Popsicle
   ["vfx_strawberrypopsiclemelted"] = { dx = 0.301, dy = 0.2438, dz = 0.01269 }, -- WorldItems/Popsicle_Melted
+  ["vfx_strawberryyogurt"] = { dx = 0.1089, dy = 0.1089, dz = 0.04443 }, -- WorldItems/Yogurt
+  ["vfx_sugarbeetsugar"] = { dx = 0.1803, dy = 0.1451, dz = 0.1082 }, -- WorldItems/Sugar
   ["vfx_summerharvestmedley"] = { dx = 0.2678, dy = 0.204, dz = 0.02484 }, -- WorldItems/BookClosedNew
   ["vfx_supremepizzaslice"] = { dx = 0.2524, dy = 0.2644, dz = 0.007783 }, -- WorldItems/PizzaSlice
+  ["vfx_tartarsauce"] = { dx = 0.1371, dy = 0.08841, dz = 0.1198 }, -- WorldItems/Ketchup
+  ["vfx_texmexseasoning"] = { dx = 0.079, dy = 0.079, dz = 0.0664 }, -- WorldItems/PowderedJar
   ["vfx_threemeatpizzaslice"] = { dx = 0.2524, dy = 0.2644, dz = 0.007783 }, -- WorldItems/PizzaSlice
   ["vfx_tropicaljuice"] = { dx = 0.09495, dy = 0.09858, dz = 0.1103 }, -- WorldItems/Juice_Bottle
   ["vfx_tropicalpopsicle"] = { dx = 0.2862, dy = 0.1045, dz = 0.01586 }, -- WorldItems/Popsicle
@@ -2448,6 +3019,7 @@ local MeshSizes = {
   ["vfx_vinegarjar"] = { dx = 0.1143, dy = 0.1143, dz = 0.06495 }, -- WorldItems/JarFood
   ["vfx_wanderingmerchantsguide"] = { dx = 0.2678, dy = 0.204, dz = 0.02484 }, -- WorldItems/BookClosedNew
   ["vfx_wheaties"] = { dx = 0.2938, dy = 0.1181, dz = 0.1539 }, -- WorldItems/Cereal
+  ["vfx_whitepepper"] = { dx = 0.079, dy = 0.079, dz = 0.0664 }, -- WorldItems/PowderedJar
   ["vfx_winebottlecabernetsauvignon"] = { dx = 0.1107, dy = 0.1107, dz = 0.1791 }, -- WorldItems/Wine
   ["vfx_winebottlechardonnay"] = { dx = 0.1107, dy = 0.1107, dz = 0.1791 }, -- WorldItems/Wine
   ["vfx_winebottlemerlot"] = { dx = 0.1107, dy = 0.1107, dz = 0.1791 }, -- WorldItems/Wine
@@ -2477,15 +3049,32 @@ local MeshSizes = {
   ["vhsbox2"] = { dx = 0.2619, dy = 0.1572, dz = 0.01573 }, -- WorldItems/VhsBox
   ["vhsbox3"] = { dx = 0.2619, dy = 0.1572, dz = 0.01573 }, -- WorldItems/VhsBox
   ["videogame"] = { dx = 0.3602, dy = 0.2058, dz = 0.01514 }, -- WorldItems/VideoGame
+  ["vinegar_jug"] = { dx = 0.2244, dy = 0.1133, dz = 0.1273 }, -- WorldItems/Vinegar_Jug
+  ["vinegar"] = { dx = 0.1185, dy = 0.09843, dz = 0.1278 }, -- WorldItems/Vinegar
+  ["violets"] = { dx = 0.2894, dy = 0.1918, dz = 0.03002, cx = 0.007589 }, -- WorldItems/Violets
   ["violin@weapon"] = { dx = 0.6186, dy = 0.2193, dz = 0.04352, oz = 0.01043, cx = -0.01064 }, -- weapons/1handed/Violin
   ["violincase_ground"] = { dx = 0.2799, dy = 0.7273, dz = 0.04626 }, -- WorldItems/Clothing/ViolinCase_Ground
   ["visegrips"] = { dx = 0.0981, dy = 0.3098, dz = 0.007155 }, -- WorldItems/ViseGrip
   ["vodkabottle"] = { dx = 0.1297, dy = 0.1275, dz = 0.1345 }, -- WorldItems/Bottle_Generic
   ["waffles_ground"] = { dx = 0.3548, dy = 0.2867, dz = 0.03462 }, -- WorldItems/Waffles
   ["wafflesfruit_ground"] = { dx = 0.3548, dy = 0.2867, dz = 0.03462 }, -- WorldItems/Waffles
+  ["walkietalkiemakeshift"] = { dx = 0.04791, dy = 0.1032, dz = 0.1157, cy = -0.005842 }, -- weapons/1handed/WalkieTalkie
+  ["walkietalkiepremium"] = { dx = 0.04791, dy = 0.1032, dz = 0.1157, cy = -0.005842 }, -- weapons/1handed/WalkieTalkie
+  ["walkietalkietactical"] = { dx = 0.04791, dy = 0.1032, dz = 0.1157, cy = -0.005842 }, -- weapons/1handed/WalkieTalkie
+  ["walkietalkietoy"] = { dx = 0.04791, dy = 0.1032, dz = 0.1157, cy = -0.005842 }, -- weapons/1handed/WalkieTalkie
+  ["walkietalkieusarmy"] = { dx = 0.04791, dy = 0.1032, dz = 0.1157, cy = -0.005842 }, -- weapons/1handed/WalkieTalkie
+  ["walkietalkievalue"] = { dx = 0.04791, dy = 0.1032, dz = 0.1157, cy = -0.005842 }, -- weapons/1handed/WalkieTalkie
   ["wallet_hide"] = { dx = 0.1483, dy = 0.1235, dz = 0.009942 }, -- WorldItems/Wallet
   ["walleye_ground"] = { dx = 0.3687, dy = 1.055, dz = 0.04028 }, -- WorldItems/Fish_Sauger_Walleye
+  ["wallpaper_beigestripe"] = { dx = 0.9941, dy = 0.6991, dz = 0.09433 }, -- WorldItems/Wallpaper
+  ["wallpaper_blackfloral"] = { dx = 0.6627, dy = 0.4661, dz = 0.06289 }, -- WorldItems/Wallpaper
+  ["wallpaper_bluestripe"] = { dx = 0.6627, dy = 0.4661, dz = 0.06289 }, -- WorldItems/Wallpaper
+  ["wallpaper_greendiamond"] = { dx = 0.6627, dy = 0.4661, dz = 0.06289 }, -- WorldItems/Wallpaper
+  ["wallpaper_greenfloral"] = { dx = 0.6627, dy = 0.4661, dz = 0.06289 }, -- WorldItems/Wallpaper
+  ["wallpaper_pinkchevron"] = { dx = 0.6627, dy = 0.4661, dz = 0.06289 }, -- WorldItems/Wallpaper
+  ["wallpaper_pinkfloral"] = { dx = 0.6627, dy = 0.4661, dz = 0.06289 }, -- WorldItems/Wallpaper
   ["wallpaperpastepowder"] = { dx = 0.1917, dy = 0.1284, dz = 0.1085 }, -- WorldItems/WallpaperPastePowder
+  ["wasabi"] = { dx = 0.1242, dy = 0.1261, dz = 0.016 }, -- WorldItems/Wasabi
   ["watchclassicblack"] = { dx = 0.1263, dy = 0.1111, dz = 0.02728 }, -- WorldItems/WatchClassic
   ["watchclassicbrown"] = { dx = 0.1263, dy = 0.1111, dz = 0.02728 }, -- WorldItems/WatchClassic
   ["watchclassicgold"] = { dx = 0.1263, dy = 0.1111, dz = 0.02728 }, -- WorldItems/WatchClassic
@@ -2494,10 +3083,16 @@ local MeshSizes = {
   ["waterbottlefull"] = { dx = 0.09346, dy = 0.09346, dz = 0.109 }, -- WorldItems/Bottle
   ["waterdish"] = { dx = 0.2491, dy = 0.2491, dz = 0.03333 }, -- WorldItems/WaterDish
   ["wateringcanground"] = { dx = 0.2386, dy = 0.7459, dz = 0.17, cy = 0.01164 }, -- WorldItems/WateringCan
+  ["watermelon_ground"] = { dx = 0.2145, dy = 0.149, dz = 0.05788 }, -- WorldItems/Watermelon
+  ["watermelonchunks_ground"] = { dx = 0.2083, dy = 0.2123, dz = 0.03894 }, -- WorldItems/WaterMelonChunks
+  ["watermelonseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
+  ["watermelonslice_ground"] = { dx = 0.1834, dy = 0.1973, dz = 0.02063 }, -- WorldItems/WaterMelonSlice
+  ["waterpurificationtablets"] = { dx = 0.1355, dy = 0.08233, dz = 0.05269 }, -- WorldItems/WaterPurificationTablets
   ["waterrationcan_open"] = { dx = 0.1286, dy = 0.1616, dz = 0.08634, cx = 0.01101, cy = -0.02748 }, -- CanOpen
   ["waterrationcan"] = { dx = 0.1066, dy = 0.1066, dz = 0.06097 }, -- CanClosed
   ["watersaucepanpasta"] = { dx = 0.3828, dy = 0.2073, dz = 0.0514 }, -- WorldItems/SaucePan_FoodFluid
   ["watersaucepanrice"] = { dx = 0.3828, dy = 0.2073, dz = 0.0514 }, -- WorldItems/SaucePan_FoodFluid
+  ["watertank"] = { dx = 0.3121, dy = 0.3121, dz = 0.2186 }, -- WorldItems/WaterTank
   ["weaponmag1"] = { dx = 0.2683, dy = 0.3726, dz = 0.006075 }, -- WorldItems/Magazine
   ["weaponmag2"] = { dx = 0.2683, dy = 0.3726, dz = 0.006075 }, -- WorldItems/Magazine
   ["weaponmag3"] = { dx = 0.2683, dy = 0.3726, dz = 0.006075 }, -- WorldItems/Magazine
@@ -2512,18 +3107,28 @@ local MeshSizes = {
   ["weddingveilpink_ground"] = { dx = 0.4408, dy = 0.522, dz = 0.01325 }, -- WorldItems/WeddingVeil_Ground
   ["weldingrods"] = { dx = 0.1793, dy = 0.1641, dz = 0.1482 }, -- WorldItems/WeldingRods
   ["wheatgrains"] = { dx = 0.07131, dy = 0.07111, dz = 0.006905 }, -- WorldItems/WheatGrains
+  ["wheatseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
   ["wheatsheaf"] = { dx = 0.3944, dy = 0.8003, dz = 0.02584 }, -- WorldItems/BundleGrain_Wheat
   ["wheatsheafdried"] = { dx = 0.3944, dy = 0.8003, dz = 0.02584 }, -- WorldItems/BundleGrain_Wheat
+  ["wheel"] = { dx = 0.6358, dy = 0.6358, dz = 0.06882 }, -- WorldItems/Wheel
   ["whetstone"] = { dx = 0.07275, dy = 0.2282, dz = 0.01365 }, -- WorldItems/Whetstone_Modern
   ["whisk"] = { dx = 0.07608, dy = 0.298, dz = 0.03237 }, -- WorldItems/Whisk
+  ["whiskeybottleground"] = { dx = 0.1268, dy = 0.05272, dz = 0.09281 }, -- WorldItems/WhiskeyBottle
   ["whistle_bone"] = { dx = 0.2239, dy = 0.03155, dz = 0.01259 }, -- WorldItems/Bone_Whistle
   ["whistle"] = { dx = 0.08727, dy = 0.03226, dz = 0.03261, oz = 0.006454, cx = 0.02462 }, -- WorldItems/Whistle
   ["whitebass_ground"] = { dx = 0.5479, dy = 1.043, dz = 0.04388 }, -- WorldItems/Fish_Bass_White
   ["whitechesspieces"] = { dx = 0.1831, dy = 0.1237, dz = 0.07699 }, -- WorldItems/WhiteChessPieces
   ["whitecrappie_ground"] = { dx = 0.5012, dy = 1.011, dz = 0.04017 }, -- WorldItems/Fish_Crappie_Perch
+  ["wildeggs"] = { dx = 0.1598, dy = 0.0987, dz = 0.02999 }, -- WorldItems/WildEggs
+  ["wildgarlicseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
   ["winebox"] = { dx = 0.1812, dy = 0.09983, dz = 0.1028 }, -- WorldItems/WineBox
+  ["wineredground"] = { dx = 0.1107, dy = 0.1107, dz = 0.1791 }, -- WorldItems/Wine
+  ["winescrewtop"] = { dx = 0.08958, dy = 0.08959, dz = 0.1289 }, -- WorldItems/Wine_Aged_Screwtop
+  ["winewhiteground"] = { dx = 0.1107, dy = 0.1107, dz = 0.1791 }, -- WorldItems/Wine
+  ["winterberries_ground"] = { dx = 0.07168, dy = 0.0689, dz = 0.02912 }, -- WorldItems/WinterBerries
   ["wire"] = { dx = 0.4578, dy = 0.4544, dz = 0.03613 }, -- WorldItems/Wire
   ["wirestack"] = { dx = 0.4535, dy = 0.4779, dz = 0.1298 }, -- WorldItems/Bundle_Wire
+  ["woodaxe@weapon"] = { dx = 0.9868, dy = 0.2002, dz = 0.01789, cx = -0.01746, cy = 0.009763 }, -- weapons/2handed/WoodAxe_Forged_Hand
   ["woodaxeforged@weapon"] = { dx = 0.9868, dy = 0.2002, dz = 0.01789, oz = -0.002545, cx = -0.01746, cy = 0.009763 }, -- weapons/2handed/WoodAxe_Forged_Hand
   ["woodaxeheadforged"] = { dx = 0.1079, dy = 0.1932, dz = 0.01726 }, -- WorldItems/WoodAxeHead_Forged
   ["woodenbarstockcastmold"] = { dx = 0.1649, dy = 0.8178, dz = 0.04354 }, -- WorldItems/WoodenMold_LongMetalBar_Cast
@@ -2546,14 +3151,18 @@ local MeshSizes = {
   ["woolraw_ground"] = { dx = 0.2259, dy = 0.1463, dz = 0.04498 }, -- WorldItems/WoolRaw
   ["worlditem_headphones"] = { dx = 0.3786, dy = 0.4322, dz = 0.05393 }, -- WorldItems/HeadPhones
   ["worlditem-necklace_goldcrucifix"] = { dx = 0.3559, dy = 0.5421, dz = 0.003342 }, -- WorldItems/Necklace_Crucifix_Ground
+  ["worm_ground"] = { dx = 0.05037, dy = 0.1206, dz = 0.005584 }, -- WorldItems/Worm
   ["wrench@weapon"] = { dx = 0.4832, dy = 0.1244, dz = 0.01359, cx = -0.008438, cy = -0.006129 }, -- weapons/1handed/Wrench
   ["yardstickdebug@weapon"] = { dx = 0.8366, dy = 0.03347, dz = 0.01367, oz = 0.006833, cx = 0.4183 }, -- weapons/1handed/Yardstick
   ["yarn"] = { dx = 0.2231, dy = 0.1963, dz = 0.07957, cy = 0.004916 }, -- WorldItems/Yarn
+  ["yeast"] = { dx = 0.2079, dy = 0.1864, dz = 0.01753 }, -- WorldItems/Yeast
   ["yellowperch_ground"] = { dx = 0.4047, dy = 1.061, dz = 0.04062 }, -- WorldItems/Fish_Perch_Yellow
   ["yellowtent"] = { dx = 0.638, dy = 0.1475, dz = 0.0587 }, -- WorldItems/TentRoll
   ["yoyo"] = { dx = 0.1904, dy = 0.306, dz = 0.01829 }, -- WorldItems/Yoyo
   ["zippoground"] = { dx = 0.1263, dy = 0.02481, dz = 0.04535 }, -- WorldItems/Zippo
   ["zipties"] = { dx = 0.1322, dy = 0.3978, dz = 0.003918, cx = 0.005306 }, -- WorldItems/Zipties
+  ["zucchini_ground"] = { dx = 0.07955, dy = 0.2484, dz = 0.02621 }, -- WorldItems/Zucchini
+  ["zucchiniseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
   -- 63beetle
   ["63beetlebodykitwi"] = { dx = 0.85, dy = 1.675, dz = 0.06226 }, -- vehicles/Vehicles_63beetle_Objects|63beetle_bodykitWI
   ["63beetlebuggyspoilerwi"] = { dx = 1.008, dy = 0.6989, dz = 0.1011 }, -- vehicles/Vehicles_63beetle_Objects|63beetle_spoiler0WI
@@ -2900,6 +3509,13 @@ local MeshSizes = {
   ["ammomaker_slug12"] = { dx = 0.0567, dy = 0.0567, dz = 0.03551 }, -- WorldItems/ammomaker_Slug12
   ["ammomaker_sulfur"] = { dx = 0.4564, dy = 0.3646, dz = 0.06628, oz = 0.009417, cx = 0.01383, cy = -0.0163 }, -- WorldItems/ammomaker_Sulfur
   -- Authentic Z - Current
+  ["authenticpoolnoodle_blue@weapon"] = { dx = 1.42, dy = 0.07522, dz = 0.03072, oz = 0.01536, cx = 0.5763 }, -- Weapons/2Handed/AuthenticPoolNoodle
+  ["authenticpoolnoodle_green@weapon"] = { dx = 1.42, dy = 0.07522, dz = 0.03072, oz = 0.01536, cx = 0.5763 }, -- Weapons/2Handed/AuthenticPoolNoodle
+  ["authenticpoolnoodle_orange@weapon"] = { dx = 1.42, dy = 0.07522, dz = 0.03072, oz = 0.01536, cx = 0.5763 }, -- Weapons/2Handed/AuthenticPoolNoodle
+  ["authenticpoolnoodle_pink@weapon"] = { dx = 1.42, dy = 0.07522, dz = 0.03072, oz = 0.01536, cx = 0.5763 }, -- Weapons/2Handed/AuthenticPoolNoodle
+  ["authenticpoolnoodle_purple@weapon"] = { dx = 1.42, dy = 0.07522, dz = 0.03072, oz = 0.01536, cx = 0.5763 }, -- Weapons/2Handed/AuthenticPoolNoodle
+  ["authenticpoolnoodle_red@weapon"] = { dx = 1.42, dy = 0.07522, dz = 0.03072, oz = 0.01536, cx = 0.5763 }, -- Weapons/2Handed/AuthenticPoolNoodle
+  ["authenticpoolnoodle_yellow@weapon"] = { dx = 1.42, dy = 0.07522, dz = 0.03072, oz = 0.01536, cx = 0.5763 }, -- Weapons/2Handed/AuthenticPoolNoodle
   ["worlditem_cigaraz"] = { dx = 0.02705, dy = 0.1783, dz = 0.01105, cy = -0.005862 }, -- WorldItems/WorldItem-AZCigar
   ["worlditem_plaguedoctormask"] = { dx = 0.3939, dy = 0.4912, dz = 0.1296, oz = 0.03249, cy = -0.07935 }, -- WorldItems/WorldItem_PlagueDoctorMask
   ["worlditem_wendigobody"] = { dx = 1.724, dy = 1.592, dz = 0.1459, oz = 0.03736, cx = -0.01486, cy = 0.01179 }, -- WorldItems/WorldItem_WendigoBody
@@ -3334,39 +3950,6 @@ local MeshSizes = {
   ["boots_ground"] = { dx = 0.6239, dy = 0.4047, dz = 0.1623, oz = 0.04048, cx = 0.009629, cy = 0.0488 }, -- WorldItems/Clothing/Boots_Ground
   ["shoes_ground"] = { dx = 0.2192, dy = 0.2306, dz = 0.04743, cx = 0.01068, cy = -0.0202 }, -- WorldItems/Clothing/Shoes_Ground
   ["shoes_slippers_ground"] = { dx = 0.2656, dy = 0.2795, dz = 0.1242, oz = -0.003729, cx = 0.01295, cy = -0.02448 }, -- WorldItems/Clothing/Shoes_Slippers
-  -- CarriableItems
-  ["bucket_forged_hand"] = { dx = 0.2754, dy = 0.4618, dz = 0.117, oz = 0.05033, cy = -0.1958 }, -- WorldItems/Bucket_Forged_Hand
-  ["carbattery_hand"] = { dx = 0.2014, dy = 0.2886, dz = 0.1212, oz = 0.06526, cy = -0.1319 }, -- WorldItems/CarBattery_Hand
-  ["cardoor_hand"] = { dx = 0.1954, dy = 0.9709, dz = 0.3596, oz = 0.1453, cx = 0.01676, cy = 0.1019 }, -- WorldItems/CarDoor_Hand
-  ["carhood_hand"] = { dx = 0.04948, dy = 1.202, dz = 0.489, oz = 0.2425 }, -- WorldItems/CarHood_Hand
-  ["cartrunk_hand"] = { dx = 0.08948, dy = 0.8318, dz = 0.4461, oz = 0.2026 }, -- WorldItems/CarTrunk_Hand
-  ["cdplayer_hand"] = { dx = 0.04067, dy = 0.1787, dz = 0.07673, oz = 0.02309, cy = -0.07643 }, -- WorldItems/CDPlayer_Hand
-  ["extinguisher_hand"] = { dx = 0.1664, dy = 0.3363, dz = 0.2396, oz = 0.1853, cy = 0.01157 }, -- WorldItems/Extinguisher_Hand
-  ["fabricroll_black_hand"] = { dx = 0.1309, dy = 0.1267, dz = 0.2133, oz = 0.1061, cy = -0.03992 }, -- WorldItems/FabricRolled_Hand
-  ["fabricroll_blue_hand"] = { dx = 0.1309, dy = 0.1267, dz = 0.2133, oz = 0.1061, cy = -0.03992 }, -- WorldItems/FabricRolled_Hand
-  ["fabricroll_darkblue_hand"] = { dx = 0.1309, dy = 0.1267, dz = 0.2133, oz = 0.1061, cy = -0.03992 }, -- WorldItems/FabricRolled_Hand
-  ["fabricroll_white_hand"] = { dx = 0.1309, dy = 0.1267, dz = 0.2133, oz = 0.1061, cy = -0.03992 }, -- WorldItems/FabricRolled_Hand
-  ["gardenspray_hand"] = { dx = 0.1694, dy = 0.2081, dz = 0.1363, oz = 0.06132, cy = -0.06784 }, -- WorldItems/GardenSpray_Hand
-  ["kettle_copper_hand"] = { dx = 0.286, dy = 0.4157, dz = 0.1714, oz = 0.05284, cy = -0.1742 }, -- WorldItems/Kettle_Copper_Hand
-  ["megaphone_hands"] = { dx = 0.2374, dy = 0.352, dz = 0.1801, oz = 0.07736, cx = 0.005594, cy = -0.04577 }, -- WorldItems/Megaphone_Hand
-  ["muffler_hand"] = { dx = 0.1139, dy = 0.1986, dz = 0.2394, oz = 0.1011, cy = -0.07095 }, -- WorldItems/Muffler_Hand
-  ["oxygentank_hand"] = { dx = 0.1387, dy = 0.4716, dz = 0.05956, oz = 0.02461, cy = -0.1907 }, -- WorldItems/OxygenTank_Hand
-  ["paintbrush_hand"] = { dx = 0.03113, dy = 0.1146, dz = 0.1382, oz = 0.02245, cy = 0.01754 }, -- WorldItems/PaintBrush_Hand
-  ["potforged_hand"] = { dx = 0.3401, dy = 0.4341, dz = 0.1611, oz = 0.08024, cy = -0.1936 }, -- WorldItems/PotForged_Hand
-  ["radioblack_hand"] = { dx = 0.09537, dy = 0.2816, dz = 0.1035, oz = 0.0328, cy = -0.05043 }, -- WorldItems/Radio_Hand
-  ["radioblue_hand"] = { dx = 0.09537, dy = 0.2816, dz = 0.1035, oz = 0.0328, cy = -0.05043 }, -- WorldItems/Radio_Hand
-  ["radiored_hand"] = { dx = 0.09537, dy = 0.2816, dz = 0.1035, oz = 0.0328, cy = -0.05043 }, -- WorldItems/Radio_Hand
-  ["remotecontroller_hand"] = { dx = 0.06322, dy = 0.1175, dz = 0.1131, oz = 0.02076, cy = -0.04599 }, -- WorldItems/RemoteController_Hand
-  ["vinegarjug_hand"] = { dx = 0.1151, dy = 0.3365, dz = 0.1247, oz = 0.04831, cy = -0.1228 }, -- WorldItems/VinegarJug_Hand
-  ["wallpaper_beigestripe_hand"] = { dx = 0.1315, dy = 0.3979, dz = 0.231, oz = 0.1018, cy = -0.165 }, -- WorldItems/Wallpaper_Hand
-  ["wallpaper_blackfloral_hand"] = { dx = 0.1315, dy = 0.3979, dz = 0.231, oz = 0.1018, cy = -0.165 }, -- WorldItems/Wallpaper_Hand
-  ["wallpaper_bluestripe_hand"] = { dx = 0.1315, dy = 0.3979, dz = 0.231, oz = 0.1018, cy = -0.165 }, -- WorldItems/Wallpaper_Hand
-  ["wallpaper_greendiamond_hand"] = { dx = 0.1315, dy = 0.3979, dz = 0.231, oz = 0.1018, cy = -0.165 }, -- WorldItems/Wallpaper_Hand
-  ["wallpaper_greenfloral_hand"] = { dx = 0.1315, dy = 0.3979, dz = 0.231, oz = 0.1018, cy = -0.165 }, -- WorldItems/Wallpaper_Hand
-  ["wallpaper_pinkchevron_hand"] = { dx = 0.1315, dy = 0.3979, dz = 0.231, oz = 0.1018, cy = -0.165 }, -- WorldItems/Wallpaper_Hand
-  ["wallpaper_pinkfloral_hand"] = { dx = 0.1315, dy = 0.3979, dz = 0.231, oz = 0.1018, cy = -0.165 }, -- WorldItems/Wallpaper_Hand
-  ["watertank_hand"] = { dx = 0.2718, dy = 0.2718, dz = 0.1903, oz = 0.0696, cy = -0.1139 }, -- WorldItems/WaterTank_Hand
-  ["wheel_hand"] = { dx = 0.1666, dy = 0.6285, dz = 0.2566, oz = 0.1226, cy = -0.2224 }, -- WorldItems/Wheel_Hand
   -- ClothingLine
   ["cl_ch"] = { dx = 0.8136, dy = 0.5161, dz = 0.07387 }, -- CL_CH_model
   -- damnlib
@@ -3559,6 +4142,7 @@ local MeshSizes = {
   -- FirearmsBETA
   ["12xscope_wm"] = { dx = 0.05459, dy = 0.2545, dz = 0.01785, oz = 0.00863, cx = 0.02729, cy = 0.007323 }, -- weapons/firearms/attachments/12xScope_wm
   ["ak_mag"] = { dx = 0.02436, dy = 0.2217, dz = 0.0586, oz = 0.01068, cy = 0.09464 }, -- weapons/firearms/attachments/AK_Mag
+  ["akm_bakelite@weapon"] = { dx = 0.2132, dy = 0.7067, dz = 0.02695, cx = 0.04926, cy = 0.1378 }, -- weapons/firearms/AKM_Bakelite
   ["akm_foregrip_wood"] = { dx = 0.03577, dy = 0.1904, dz = 0.07371, oz = 0.0232, cy = 0.06309 }, -- weapons/firearms/attachments/AKM_Handguard_Foregrip
   ["akm_handguard_bakelite"] = { dx = 0.03577, dy = 0.08395, dz = 0.07371, oz = 0.0232, cy = 0.009871 }, -- weapons/firearms/attachments/AKM_Handguard
   ["akm_handguard_plastic"] = { dx = 0.03577, dy = 0.08395, dz = 0.07371, oz = 0.0232, cy = 0.009871 }, -- weapons/firearms/attachments/AKM_Handguard
@@ -3576,6 +4160,9 @@ local MeshSizes = {
   ["coltpeacemaker@weapon"] = { dx = 0.0000974, dy = 0.006228, dz = 5162, oz = 0.02628, cx = -0.004627, cy = 0.009066 }, -- weapons/firearms/ColtPeacemaker
   ["coltsingleactionfrontierscout@weapon"] = { dx = 0.2495, dy = 0.1141, dz = 0.01404, oz = 0.007018, cx = 0.1308, cy = -0.004749 }, -- weapons/firearms/CSAFS
   ["compensator_pistol_wm"] = { dx = 482.8, dy = 0.004107, dz = 0.001765, oz = -0.01048, cx = 241.4, cy = 0.00763 }, -- weapons/firearms/attachments/Compensator_Pistol_wm
+  ["deagle_black@weapon"] = { dx = 0.2796, dy = 0.1534, dz = 0.01335, cx = 0.004167, cy = -0.01307 }, -- weapons/firearms/DEagle
+  ["deagle_golden@weapon"] = { dx = 0.2796, dy = 0.1534, dz = 0.01335, cx = 0.004167, cy = -0.01307 }, -- weapons/firearms/DEagle
+  ["deagle@weapon"] = { dx = 0.2796, dy = 0.1534, dz = 0.01335, cx = 0.004167, cy = -0.01307 }, -- weapons/firearms/DEagle
   ["doublebarrelsawnstock@weapon"] = { dx = 0.5489, dy = 0.115, dz = 0.02078, oz = 0.01036, cx = -0.04432, cy = 0.004561 }, -- weapons/firearms/DoubleBarrel_Sawn_Stock
   ["fn_fal@weapon"] = { dx = 0.9633, dy = 0.2054, dz = 0.02566, oz = 0.002041, cx = -0.1797, cy = -0.004411 }, -- weapons/firearms/FN_FAL
   ["fnfalmag"] = { dx = 0.1412, dy = 0.06791, dz = 0.00816 }, -- weapons/Firearms/Magazines/FNFalMag
@@ -3584,25 +4171,44 @@ local MeshSizes = {
   ["glock_mag"] = { dx = 0.5748, dy = 17.59, dz = 0.03144, oz = 0.01575, cx = 0.2225, cy = -8.795 }, -- ammo/glock_mag
   ["guntoolkit"] = { dx = 0.3803, dy = 0.3429, dz = 0.04285, cy = 0.02074 }, -- tools/GunToolKit
   ["hkg3mag"] = { dx = 0.1445, dy = 0.07105, dz = 0.009089, cx = 0.002458 }, -- weapons/Firearms/Magazines/HKG3Mag
+  ["ica19_gold@weapon"] = { dx = 0.2347, dy = 0.145, dz = 0.009682, oz = -0.004999, cx = 0.08734, cy = -0.03017 }, -- weapons/firearms/ICA19
+  ["ica19@weapon"] = { dx = 0.2347, dy = 0.145, dz = 0.009682, oz = -0.004034, cx = 0.08734, cy = -0.03017 }, -- weapons/firearms/ICA19
   ["improvised_guntoolkit"] = { dx = 0, dy = 0, dz = 0, oz = -186.7, cy = -0.1444 }, -- tools/Improvised_GunToolKit
   ["law12@weapon"] = { dx = 0.9135, dy = 0.1904, dz = 0.01893, cx = -0.03944, cy = -0.01055 }, -- weapons/firearms/LAW-12
   ["m1clip"] = { dx = 0.04507, dy = 0.02145, dz = 0.02737, oz = 0.01395, cy = 0.01103 }, -- ammo/M1Clip
   ["m4_carryhandle"] = { dx = 0.02191, dy = 0.04066, dz = 0.069, oz = 0.02568, cy = -0.01864 }, -- weapons/firearms/attachments/M4_Carryhandle
+  ["m9_silver@weapon"] = { dx = 0.2268, dy = 0.1455, dz = 0.01377, cx = 0.01256, cy = -0.02396 }, -- weapons/firearms/M9
   ["m14_mag"] = { dx = 0.01772, dy = 0.08924, dz = 0.02803, oz = 0.01333, cy = 0.03571 }, -- weapons/firearms/attachments/M14_Mag
+  ["m16a1@weapon"] = { dx = 0.9746, dy = 0.2148, dz = 0.02885, oz = 0.004429, cx = 0.08315, cy = 0.01696 }, -- weapons/firearms/M16A1
   ["m60_mag"] = { dx = 0.1397, dy = 0.07705, dz = 0.06341, cy = -0.008204 }, -- ammo/M60_mag
+  ["m1911_silver@weapon"] = { dx = 0.2347, dy = 0.145, dz = 0.009682, oz = -0.005899, cx = 0.08734, cy = -0.02859 }, -- weapons/firearms/M1911
   ["mac10_magazine"] = { dx = 0.02477, dy = 0.2349, dz = 0.01276, oz = 0.006889, cy = 0.1174 }, -- weapons/firearms/attachments/Mac10_Mag
   ["mac10_stock_extended"] = { dx = 0.03169, dy = 0.1043, dz = 0.05163, oz = 0.06931, cy = -0.02012 }, -- weapons/firearms/attachments/Mac10_Stock_Extended
+  ["model700_camo@weapon"] = { dx = 1.093, dy = 0.184, dz = 0.02803, cx = 0.2875, cy = -0.01933 }, -- weapons/firearms/BoltActionRifle
+  ["model700_desert@weapon"] = { dx = 1.093, dy = 0.184, dz = 0.02803, cx = 0.2875, cy = -0.01933 }, -- weapons/firearms/BoltActionRifle
+  ["model700_green@weapon"] = { dx = 1.093, dy = 0.184, dz = 0.02803, cx = 0.2875, cy = -0.01933 }, -- weapons/firearms/BoltActionRifle
+  ["model700_snow@weapon"] = { dx = 1.093, dy = 0.184, dz = 0.02803, cx = 0.2875, cy = -0.01933 }, -- weapons/firearms/BoltActionRifle
   ["model700@weapon"] = { dx = 1.093, dy = 0.184, dz = 0.02803, cx = 0.2875, cy = -0.01933 }, -- weapons/firearms/BoltActionRifle
   ["model788_sawn@weapon"] = { dx = 0.5784, dy = 0.1316, dz = 0.02493, oz = 0.007064, cy = 0.005054 }, -- weapons/firearms/BoltActionRifle_Sawn
   ["model788@weapon"] = { dx = 1.093, dy = 0.1836, dz = 0.02747, cx = 0.07174, cy = -0.01943 }, -- weapons/firearms/BoltActionRifle
+  ["mossberg500@weapon"] = { dx = 0.9055, dy = 0.1683, dz = 0.01883, cx = -0.04343, cy = -0.02171 }, -- weapons/firearms/Mossberg_Plastic
+  ["mossberg500black@weapon"] = { dx = 0.9055, dy = 0.1683, dz = 0.01926, oz = 0.01, cx = -0.04343, cy = -0.02174 }, -- weapons/firearms/Mossberg_Plastic_Black
+  ["mossberg500tactical@weapon"] = { dx = 0.6232, dy = 0.1453, dz = 0.01867, oz = 0.009432, cx = 0.03856, cy = -0.01023 }, -- weapons/firearms/Mossberg_Tactical
+  ["mossberg500tacticalblack@weapon"] = { dx = 0.6232, dy = 0.1453, dz = 0.01866, cx = 0.03856, cy = -0.01018 }, -- weapons/firearms/Mossberg_Tactical_Black
+  ["mossberg500wood@weapon"] = { dx = 0.9055, dy = 0.1683, dz = 0.01883, oz = 0.00938, cx = -0.04343, cy = -0.02175 }, -- weapons/firearms/Mossberg_Wood
   ["mossberg500woodblack@weapon"] = { dx = 0.9055, dy = 0.1683, dz = 0.01883, oz = 0.009568, cx = -0.04343, cy = -0.02175 }, -- weapons/firearms/Mossberg_Wood_Black
   ["mossberg500woodblacksawnoff@weapon"] = { dx = 0.6727, dy = 0.1153, dz = 0.01845, cx = 0.01393, cy = 0.004669 }, -- weapons/firearms/Mossberg_Wood_Black_Sawed
+  ["mossberg500woodsawnoff@weapon"] = { dx = 0.6727, dy = 0.1153, dz = 0.01847, cx = 0.01393, cy = 0.004711 }, -- weapons/firearms/Mossberg_Wood_Sawed
   ["mp5_magazine"] = { dx = 0.02404, dy = 0.1658, dz = 0.03269, oz = 0.007633, cy = 0.05994 }, -- weapons/firearms/attachments/MP5_Mag
   ["mp5_stock_wm"] = { dx = 0.1091, dy = 0.2725, dz = 0.01916, cx = -0.003499, cy = -0.02406 }, -- weapons/firearms/attachments/MP5_Stock_wm
   ["mp510_magazine"] = { dx = 0.02404, dy = 0.1834, dz = 0.03016, oz = 0.007755, cy = 0.06895 }, -- weapons/firearms/attachments/MP510_Mag
   ["mp510mag"] = { dx = 0.1834, dy = 0.07386, dz = 0.009817, cx = -0.005954, cy = -0.00289 }, -- weapons/Firearms/Magazines/MP510Mag
   ["pythonhunter@weapon"] = { dx = 0.3261, dy = 0.143, dz = 0.0139, oz = 0.006949, cx = 0.1659, cy = -0.0109 }, -- weapons/firearms/PythonHunter
   ["recoil_pad"] = { dx = 0.03566, dy = 0.1242, dz = 0.007953, oz = 0.007238, cy = 0.003756 }, -- weapons/firearms/attachments/Recoil_Pad
+  ["remington870black@weapon"] = { dx = 0.9552, dy = 0.1683, dz = 0.01926, cx = -0.01861, cy = -0.02177 }, -- weapons/firearms/Remington_Plastic_Black
+  ["remington870sawnoff@weapon"] = { dx = 0.6121, dy = 0.1153, dz = 0.01868, cx = -0.0164, cy = 0.004715 }, -- weapons/firearms/Remington_Wood_Sawed
+  ["remington870wood@weapon"] = { dx = 0.9552, dy = 0.1683, dz = 0.01883, cx = -0.01861, cy = -0.02178 }, -- weapons/firearms/Remington_Wood
+  ["remington870woodblack@weapon"] = { dx = 0.9552, dy = 0.1683, dz = 0.01883, cx = -0.01861, cy = -0.02178 }, -- weapons/firearms/Remington_Wood_Black
   ["rifle_flashlight_wm"] = { dx = 0.06154, dy = 0.1302, dz = 0.0139, cy = -0.01569 }, -- weapons/firearms/attachments/Rifle_Flashlight_WM
   ["rifle_mag"] = { dx = 0.02125, dy = 0.03423, dz = 0.02258, oz = 0.01134, cy = 0.01136 }, -- weapons/firearms/attachments/Rifle_Mag
   ["ris_foregrip"] = { dx = 0.0378, dy = 0.1071, dz = 0.01543, oz = 0.009851, cy = 0.05947 }, -- weapons/firearms/attachments/RIS_Foregrip
@@ -3621,11 +4227,17 @@ local MeshSizes = {
   ["stock_tactical"] = { dx = 0.05642, dy = 0.1081, dz = 0.0945, oz = 0.04733, cx = 0.02256, cy = 0.004909 }, -- weapons/firearms/attachments/Stock_Tactical
   ["stock"] = { dx = 0.03716, dy = 0.1388, dz = 0.1053, oz = 0.09585, cy = 0.03613 }, -- weapons/firearms/attachments/Stock
   ["uzi_magazine"] = { dx = 0.02753, dy = 0.1852, dz = 0.01463, oz = 0.007774, cy = 0.07683 }, -- weapons/firearms/attachments/UZI_Mag
+  ["winchester73_sawn@weapon"] = { dx = 0.5223, dy = 0.1315, dz = 0.01461, oz = -0.003116, cx = 0.2271, cy = 0.009267 }, -- weapons/firearms/Winchester_Sawn
+  ["winchester73@weapon"] = { dx = 0.8592, dy = 0.1763, dz = 0.01461, cx = 0.168, cy = -0.01312 }, -- weapons/firearms/Winchester
+  ["winchester94_sawn@weapon"] = { dx = 0.5223, dy = 0.1315, dz = 0.01461, oz = -0.002344, cx = 0.04157, cy = 0.009267 }, -- weapons/firearms/Winchester_Sawn
+  ["winchester94@weapon"] = { dx = 0.8592, dy = 0.1763, dz = 0.01461, cx = 0.168, cy = -0.01312 }, -- weapons/firearms/Winchester
   ["wmd"] = { dx = 0.08006, dy = 0.08006, dz = 0.08365 }, -- Tools/WMD
   -- FirearmsVanilla
   ["js3t_shotgun@weapon"] = { dx = 0.9552, dy = 0.1683, dz = 0.01883, cx = -0.01861, cy = -0.02178 }, -- weapons/firearm/Remington_Wood_Black
+  ["l92_carbine@weapon"] = { dx = 0.8592, dy = 0.1763, dz = 0.01461, cx = 0.168, cy = -0.01312 }, -- weapons/firearm/Winchester
   ["l94_rifle@weapon"] = { dx = 0.8592, dy = 0.1763, dz = 0.01461, cx = 0.168, cy = -0.01312 }, -- weapons/firearm/Winchester
   ["msr7t_rifle@weapon"] = { dx = 1.093, dy = 0.1791, dz = 0.02233, cx = 0.03552, cy = -0.02123 }, -- weapons/firearm/BoltActionRifle
+  ["remington870sawnoffblack@weapon"] = { dx = 0.6129, dy = 0.1153, dz = 0.01868, cx = -0.01599, cy = 0.004715 }, -- weapons/firearm/Remington_Wood_Black_Sawed
   ["trapper_carbine@weapon"] = { dx = 0.8592, dy = 0.1763, dz = 0.01461, cx = 0.168, cy = -0.01312 }, -- weapons/firearm/Winchester
   -- Frockin Backstage!
   ["wdobj_clothescontainer_v5"] = { dx = 0.5077, dy = 0.3252, dz = 0.1083, oz = -0.008871, cx = 0.002687, cy = 0.02693 }, -- WorldItems/WdObj_ClothesContainer
@@ -3845,6 +4457,7 @@ local MeshSizes = {
   ["ak19_stock"] = { dx = 0.04708, dy = 0.1149, dz = 0.09243, oz = 0.09007, cx = 0.002592, cy = -0.0196 }, -- Stock/Stocks|AK19_stock
   ["ak19@weapon"] = { dx = 0.6217, dy = 0.1799, dz = 0.02682, oz = -0.003404, cx = 0.3126, cy = 0.008553 }, -- AR/AssaultRifles|AK19
   ["ak47_stock"] = { dx = 0.03053, dy = 0.1056, dz = 0.09064, oz = 0.08907, cx = -0.003372, cy = -0.01642 }, -- Stock/Stocks|AK47_stock
+  ["ak47@weapon"] = { dx = 0.5822, dy = 0.1688, dz = 0.0259, oz = -0.00205, cx = 0.2931, cy = 0.004679 }, -- AR/AssaultRifles|AK47
   ["ak74_std_plastic"] = { dx = 0.03753, dy = 0.08737, dz = 0.09673, oz = 0.08295, cx = 0.002577, cy = -0.006569 }, -- Stock/Stocks|ak74_std_plastic
   ["ak74_stock_plum"] = { dx = 0.0417, dy = 0.09708, dz = 0.1075, oz = 0.09301, cx = 0.002875, cy = -0.008248 }, -- Stock/Stocks|ak74_stock_plum
   ["ak74_stock"] = { dx = 0.03586, dy = 0.08243, dz = 0.1025, oz = 0.09129, cx = -0.002389, cy = -0.005275 }, -- Stock/Stocks|AK74_stock
@@ -3926,6 +4539,7 @@ local MeshSizes = {
   ["ar15_viper_pdw_stock"] = { dx = 0.05203, dy = 0.09066, dz = 0.1001, oz = 0.09577, cy = 0.02029 }, -- Stock/Stocks|ar15_viper_pdw_stock
   ["ar15_vltor_emod_stock"] = { dx = 0.06166, dy = 0.1472, dz = 0.1205, oz = 0.1162, cy = 0.004807 }, -- Stock/Stocks|ar15_vltor_emod_stock
   ["ar15_wing_and_skull_12"] = { dx = 0.05509, dy = 0.05488, dz = 0.121 }, -- Handguard/Handguard|ar15_wing_and_skull_12
+  ["ar15@weapon"] = { dx = 0.5632, dy = 0.1807, dz = 0.02553, oz = -0.004761, cx = 0.252, cy = 0.01259 }, -- AR/AssaultRifles|AR15
   ["ar160@weapon"] = { dx = 0.7803, dy = 0.1999, dz = 0.03255, oz = -0.00575, cx = 0.1774, cy = -0.005355 }, -- AR/AssaultRifles|AR160
   ["ar6951@weapon"] = { dx = 0.6484, dy = 0.2131, dz = 0.02242, oz = 0.01152, cx = 0.2984, cy = -0.006897 }, -- AR/AssaultRifles|AR6951
   ["arrow_carbon_floor"] = { dx = 0.3086, dy = 0.03025, dz = 0.2853, oz = 0.135, cx = -0.005914, cy = 0.02021 }, -- weapons/firearms/Ranged_Weaponry_Misc|Arrow_carbon_floor
@@ -3940,6 +4554,7 @@ local MeshSizes = {
   ["arrow_wood_fly"] = { dx = 0.7605, dy = 0.02932, dz = 0.01146, oz = 0.007577, cx = -0.2986 }, -- weapons/firearms/Ranged_Weaponry_Misc|Arrow_wood_fly
   ["arrow_wood_pack"] = { dx = 0.2684, dy = 0.7605, dz = 0.0126, cx = 0.00252, cy = 0.07795 }, -- weapons/firearms/Ranged_Weaponry_Misc|Arrow_wood_pack
   ["ash_12@weapon"] = { dx = 0.7791, dy = 0.2402, dz = 0.02599, oz = -0.005715, cx = 0.03739, cy = -0.01576 }, -- AR/AssaultRifles|ASH_12
+  ["assaultrifle_new@weapon"] = { dx = 0.7425, dy = 0.2319, dz = 0.02643, oz = -0.003557, cx = 0.3322, cy = -0.01014 }, -- AR/AssaultRifles|M16A1
   ["atn_thor"] = { dx = 0.06993, dy = 0.0816, dz = 0.0845, oz = 0.05244, cy = 0.03418 }, -- Scope/Scopes|ATN_Thor
   ["aug_9mm@weapon"] = { dx = 0.7842, dy = 0.2488, dz = 0.03228, oz = -0.006621, cx = 0.05243 }, -- SMG/SMG|AUG_9mm
   ["aug_a1@weapon"] = { dx = 0.7633, dy = 0.219, dz = 0.02993, oz = -0.007886, cx = 0.09784, cy = -0.01472 }, -- AR/AssaultRifles|AUG_A1
@@ -4161,6 +4776,7 @@ local MeshSizes = {
   ["g43@weapon"] = { dx = 0.8773, dy = 0.1545, dz = 0.01659, oz = -0.01201, cx = 0.2256, cy = -0.008181 }, -- Rifle/Rifle|G43
   ["galil@weapon"] = { dx = 0.9032, dy = 0.226, dz = 0.02315, oz = -0.006676, cx = 0.1629, cy = 0.02107 }, -- AR/AssaultRifles|Galil
   ["glock_tactical@weapon"] = { dx = 0.2598, dy = 0.163, dz = 0.0147, oz = -0.01203, cx = 0.1095, cy = -0.02599 }, -- Pistol/Pistol|Glock_tactical
+  ["glock23@weapon"] = { dx = 0.2258, dy = 0.1371, dz = 0.01817, oz = -0.01024, cx = 0.08694, cy = -0.01578 }, -- Pistol/Pistol|Glock23
   ["glock43@weapon"] = { dx = 0.2171, dy = 0.1369, dz = 0.01636, oz = -0.01071, cx = 0.09463, cy = -0.008499 }, -- Pistol/Pistol|Glock43
   ["gm94@weapon"] = { dx = 0.701, dy = 0.2243, dz = 0.02839, oz = 0.007352, cx = 0.02201, cy = -0.01327 }, -- Explosives/Boom|GM94
   ["gol@weapon"] = { dx = 0.9715, dy = 0.2227, dz = 0.02723, cx = 0.2442, cy = 0.04277 }, -- Rifle/Rifle|GOL
@@ -4178,6 +4794,8 @@ local MeshSizes = {
   ["guncleaningtools"] = { dx = 0.2479, dy = 0.4788, dz = 0.02742, oz = -0.002123 }, -- Items/items|GunCleaningTools
   ["guntoolskit"] = { dx = 0.4137, dy = 0.2089, dz = 0.04184 }, -- Items/items|GunToolsKit
   ["hamr"] = { dx = 0.06435, dy = 0.09687, dz = 0.05918, oz = 0.03565, cx = 0.003265, cy = 0.04378 }, -- Scope/Scopes|HAMR
+  ["handgun_new@weapon"] = { dx = 0.3252, dy = 0.1798, dz = 0.02308, oz = -0.007672, cx = 0.1152, cy = -0.01882 }, -- Pistol/Pistol|Deagle44
+  ["handgun02_new@weapon"] = { dx = 0.297, dy = 0.173, dz = 0.01965, oz = -0.008606, cx = 0.1252, cy = -0.0274 }, -- Pistol/Pistol|M1911
   ["hera_arms"] = { dx = 0.02402, dy = 0.09585, dz = 0.0646, oz = 0.03445, cy = -0.04781 }, -- Grip/Grips|hera_arms
   ["hexagon_12g_suppressor"] = { dx = 0.06511, dy = 0.06495, dz = 0.1102 }, -- Canon/Silencers|Hexagon_12G_Suppressor
   ["hk_121@weapon"] = { dx = 0.8739, dy = 0.2181, dz = 0.0342, cx = 0.1974, cy = 0.0142 }, -- LMG/LMG|HK_121
@@ -4186,6 +4804,7 @@ local MeshSizes = {
   ["hkg28@weapon"] = { dx = 0.6425, dy = 0.1954, dz = 0.02655, oz = -0.003857, cx = 0.3058, cy = -0.01063 }, -- Rifle/Rifle|HKG28
   ["hkmk23@weapon"] = { dx = 0.28, dy = 0.1721, dz = 0.01588, oz = -0.01135, cx = 0.1213, cy = -0.0228 }, -- Pistol/Pistol|HKMK23
   ["honeybadger@weapon"] = { dx = 0.5436, dy = 0.23, dz = 0.02576, oz = -0.006278, cx = 0.2507, cy = -0.01676 }, -- AR/AssaultRifles|HoneyBadger
+  ["huntingrifle_new@weapon"] = { dx = 0.9564, dy = 0.1573, dz = 0.02626, cx = 0.2228, cy = 0.01551 }, -- Rifle/Rifle|R783
   ["huotautomaticrifle@weapon"] = { dx = 1.107, dy = 0.1776, dz = 0.05329, oz = 0.007388, cx = 0.2939, cy = -0.02678 }, -- Rifle/Rifle|HuotAutomaticRifle
   ["ia2_308@weapon"] = { dx = 0.9338, dy = 0.1868, dz = 0.02255, oz = -0.007665, cx = 0.1956, cy = 0.005768 }, -- AR/AssaultRifles|IA2_308
   ["ia2@weapon"] = { dx = 0.735, dy = 0.1727, dz = 0.02288, oz = -0.008357, cx = 0.1209, cy = 0.002882 }, -- AR/AssaultRifles|IA2
@@ -4193,6 +4812,8 @@ local MeshSizes = {
   ["insightla5"] = { dx = 0.04246, dy = 0.07974, dz = 0.0496, oz = 0.01935, cx = -0.01801 }, -- Laser/Lasers|InsightLA5
   ["insightwmx200"] = { dx = 0.03958, dy = 0.04288, dz = 0.053, oz = 0.02721, cx = 0.0196 }, -- Light/Light|InsightWMX200
   ["irnv"] = { dx = 0.06103, dy = 0.07548, dz = 0.07104, oz = 0.04864, cx = 0.006906, cy = 0.02743 }, -- Scope/Scopes|IRNV
+  ["izh58_short@weapon"] = { dx = 0.432, dy = 0.09493, dz = 0.01883, cx = 0.0756, cy = -0.003796 }, -- Shotgun/Shotgun|IZH58_short
+  ["izh58@weapon"] = { dx = 1.065, dy = 0.1847, dz = 0.01859, cx = 0.1606, cy = 0.04108 }, -- Shotgun/Shotgun|IZH58
   ["jackhammer@weapon"] = { dx = 0.6962, dy = 0.2211, dz = 0.05042, oz = 0.01756, cx = -0.008579, cy = -0.0151 }, -- Shotgun/Shotgun|Jackhammer
   ["jericho941@weapon"] = { dx = 0.2458, dy = 0.1746, dz = 0.01829, oz = -0.009375, cx = 0.09846, cy = -0.0206 }, -- Pistol/Pistol|Jericho941
   ["jng90@weapon"] = { dx = 0.8978, dy = 0.1628, dz = 0.02862, cx = 0.227 }, -- Rifle/Rifle|JNG90
@@ -4230,10 +4851,12 @@ local MeshSizes = {
   ["m9_bayonet"] = { dx = 0.02928, dy = 0.07304, dz = 0.114 }, -- Bipod/Bipods|M9_bayonet
   ["m9_samurai@weapon"] = { dx = 0.259, dy = 0.1718, dz = 0.01624, oz = -0.01076, cx = 0.1091, cy = -0.02278 }, -- Pistol/Pistol|M9_Samurai
   ["m9a3@weapon"] = { dx = 0.2709, dy = 0.1634, dz = 0.0182, oz = -0.009981, cx = 0.1221, cy = -0.0217 }, -- Pistol/Pistol|M9A3
+  ["m14_new@weapon"] = { dx = 0.9703, dy = 0.1791, dz = 0.01966, oz = -0.007142, cx = 0.2587, cy = 0.0142 }, -- Rifle/Rifle|M14
   ["m16_handguard"] = { dx = 0.06711, dy = 0.06908, dz = 0.1243, cy = -0.005559 }, -- Handguard/Handguard|M16_handguard
   ["m16_hg_launcher"] = { dx = 0.05859, dy = 0.07633, dz = 0.1234, oz = 0.002188, cx = 0.006286, cy = 0.008051 }, -- Handguard/Handguard|m16_hg_launcher
   ["m16_stock"] = { dx = 0.05001, dy = 0.1295, dz = 0.1099, oz = 0.1108 }, -- Stock/Stocks|M16_stock
   ["m16a2_handguard"] = { dx = 0.06334, dy = 0.06124, dz = 0.07474 }, -- Handguard/Handguard|m16a2_hg_plastic
+  ["m16a2@weapon"] = { dx = 0.6414, dy = 0.2319, dz = 0.02621, oz = -0.004781, cx = 0.2899, cy = -0.01121 }, -- AR/AssaultRifles|M16A2
   ["m21@weapon"] = { dx = 0.9512, dy = 0.1511, dz = 0.02399, oz = -0.006218, cx = 0.2804, cy = 0.0037 }, -- Rifle/Rifle|M21
   ["m39@weapon"] = { dx = 0.8957, dy = 0.1598, dz = 0.02661, oz = -0.005249, cx = 0.2434 }, -- Rifle/Rifle|M39
   ["m40@weapon"] = { dx = 1.029, dy = 0.1661, dz = 0.03274, cx = 0.2691 }, -- Rifle/Rifle|M40
@@ -4329,6 +4952,7 @@ local MeshSizes = {
   ["pieperm1893@weapon"] = { dx = 0.8604, dy = 0.1818, dz = 0.02039, oz = -0.00898, cx = 0.1677, cy = 0.006793 }, -- Rifle/Rifle|PieperM1893
   ["pistol_bullet_tip"] = { dx = 0.02268, dy = 0.02268, dz = 0.01103 }, -- Items/items|pistol_bullet_tip
   ["pistol_casing"] = { dx = 0.01478, dy = 0.02935, dz = 0.006034 }, -- Items/items|pistol_casing
+  ["pistol_new@weapon"] = { dx = 0.2561, dy = 0.1677, dz = 0.01459, oz = -0.01156, cx = 0.1145, cy = -0.02645 }, -- Pistol/Pistol|M9
   ["pistol_shotgun@weapon"] = { dx = 0.4271, dy = 0.1878, dz = 0.01811, oz = -0.01009, cx = 0.1756, cy = -0.02675 }, -- Pistol/Pistol|pistol_shotgun
   ["pistolscope"] = { dx = 0.04692, dy = 0.05757, dz = 0.1009, oz = 0.04223, cx = 0.002854, cy = 0.02619 }, -- Scope/Scopes|PistolScope
   ["pk_stock_plastic"] = { dx = 0.03942, dy = 0.1205, dz = 0.1073, oz = 0.1027 }, -- Stock/Stocks|pk_stock_plastic
@@ -4370,6 +4994,7 @@ local MeshSizes = {
   ["revolver_bullet_tip"] = { dx = 0.0196, dy = 0.0196, dz = 0.01139 }, -- Items/items|revolver_bullet_tip
   ["revolver_casing"] = { dx = 0.01305, dy = 0.04883, dz = 0.005327, cy = 0.002588 }, -- Items/items|revolver_casing
   ["revolver_long_new@weapon"] = { dx = 0.4515, dy = 0.1951, dz = 0.02383, oz = -0.007197, cx = 0.191, cy = -0.01369 }, -- Revolver/Revolver|Revolver_long
+  ["revolver_new@weapon"] = { dx = 0.3053, dy = 0.2076, dz = 0.02341, oz = -0.007635, cx = 0.1274, cy = -0.01599 }, -- Revolver/Revolver|Revolver
   ["revolver_short_new@weapon"] = { dx = 0.2448, dy = 0.1681, dz = 0.02074, oz = -0.008608, cx = 0.1017, cy = -0.01049 }, -- Revolver/Revolver|Revolver_short
   ["revolver38@weapon"] = { dx = 0.2657, dy = 0.1535, dz = 0.01668, oz = -0.01098, cx = 0.122, cy = -0.01158 }, -- Revolver/Revolver|Revolver38
   ["revolver666@weapon"] = { dx = 0.4591, dy = 0.1724, dz = 0.02194, oz = -0.008124, cx = 0.2038, cy = -0.00417 }, -- Revolver/Revolver|Revolver666
@@ -4429,6 +5054,8 @@ local MeshSizes = {
   ["shells_casing"] = { dx = 0.02667, dy = 0.07812, dz = 0.01073 }, -- Items/items|shells_casing
   ["shorty@weapon"] = { dx = 0.5466, dy = 0.2548, dz = 0.01695, cx = 0.1521, cy = 0.06047 }, -- Shotgun/Shotgun|Shorty
   ["shotgun_buckshot"] = { dx = 0.4137, dy = 0.4788, dz = 0.2235, oz = 0.1048 }, -- Items/items|shotgun_buckshot
+  ["shotgun_new@weapon"] = { dx = 0.6259, dy = 0.09167, dz = 0.01802, cx = 0.2647, cy = -0.00412 }, -- Shotgun/Shotgun|IthacaM37
+  ["shotgunsawnoff_new@weapon"] = { dx = 0.4977, dy = 0.09041, dz = 0.01802, cx = 0.2005, cy = -0.003489 }, -- Shotgun/Shotgun|IthacaM37_short
   ["shotgunshellsbox"] = { dx = 0.2551, dy = 0.2263, dz = 0.1211, cx = 0.002214, cy = 0.02243 }, -- Ammo/ShotgunShellsBox
   ["sig_553@weapon"] = { dx = 0.7481, dy = 0.1847, dz = 0.02023, oz = -0.00776, cx = 0.1546, cy = 0.005774 }, -- AR/AssaultRifles|SIG_553
   ["sig516@weapon"] = { dx = 0.6078, dy = 0.1807, dz = 0.02691, oz = -0.003797, cx = 0.2837, cy = 0.01138 }, -- AR/AssaultRifles|SIG516
@@ -4510,6 +5137,7 @@ local MeshSizes = {
   ["usp45@weapon"] = { dx = 0.2711, dy = 0.1795, dz = 0.01857, oz = -0.009004, cx = 0.1166, cy = -0.02644 }, -- Pistol/Pistol|USP45
   ["v_m87@weapon"] = { dx = 0.892, dy = 0.1575, dz = 0.02856, oz = -0.004669, cx = 0.2128 }, -- Rifle/Rifle|V_M87
   ["valmetm82@weapon"] = { dx = 0.6886, dy = 0.1852, dz = 0.03257, cx = 0.03925, cy = 0.01353 }, -- AR/AssaultRifles|ValmetM82
+  ["varmintrifle_new@weapon"] = { dx = 0.8394, dy = 0.1294, dz = 0.02037, oz = -0.007375, cx = 0.2065, cy = 0.0101 }, -- Rifle/Rifle|R700
   ["venomrds"] = { dx = 0.02997, dy = 0.03165, dz = 0.02093, oz = 0.01125, cy = 0.0164 }, -- Scope/Scopes|VenomRDS
   ["vepr@weapon"] = { dx = 0.7658, dy = 0.1774, dz = 0.02287, oz = -0.004406, cx = 0.14, cy = 0.01495 }, -- Rifle/Rifle|VEPR
   ["veresk@weapon"] = { dx = 0.7041, dy = 0.2009, dz = 0.02537, oz = 0.005057, cx = -0.1169, cy = -0.01486 }, -- SMG/SMG|Veresk
@@ -7018,6 +7646,7 @@ local MeshSizes = {
   ["sausagemag_ground"] = { dx = 0.276, dy = 0.3833, dz = 0.00625 }, -- Worlditems/Magazine_Ground
   ["schnitzel_ground"] = { dx = 0.3547, dy = 0.3036, dz = 0.01274, cx = -0.00729, cy = 0.03117 }, -- Worlditems/ThinMeat
   ["scotchegg_ground"] = { dx = 0.1875, dy = 0.1282, dz = 0.0185, cx = -0.002661, cy = 0.01734 }, -- Worlditems/ScotchEgg
+  ["seaweed_ground"] = { dx = 0.1795, dy = 0.2425, dz = 0.00706, cx = 0.01109, cy = -0.02499 }, -- WorldItems/SeaWeed
   ["slicedbananabread_ground"] = { dx = 0.3349, dy = 0.326, dz = 0.02042, cx = 0.02996, cy = -0.01352 }, -- Worlditems/BreadSliceToast
   ["slicedbeef_ground"] = { dx = 0.2079, dy = 0.1475, dz = 0.01509, oz = -0.005055, cx = -0.003234, cy = 0.006863 }, -- Worlditems/Sliced_Tomato
   ["slicedbellpepper_ground"] = { dx = 0.1622, dy = 0.1734, dz = 0.01796, oz = -0.009704, cx = 0.01258, cy = -0.004186 }, -- Worlditems/Sliced_Pepper
@@ -7089,9 +7718,14 @@ local MeshSizes = {
   ["skillrecoveryjournal_ground"] = { dx = 0.2992, dy = 0.2189, dz = 0.02016, cy = -0.00203 }, -- WorldItems/SkillRecoveryJournal
   -- Vanilla Foods Expanded
   ["vfx_almondgranolabarbox"] = { dx = 0.2609, dy = 0.07236, dz = 0.07628 }, -- WorldItems/VFX_GranolaBarBox
+  ["vfx_almonds"] = { dx = 0.1913, dy = 0.05474, dz = 0.1149 }, -- WorldItems/VFX_Pouch
   ["vfx_applecinnamonmuffinmix"] = { dx = 0.1866, dy = 0.08945, dz = 0.1233 }, -- WorldItems/VFX_BoxMix
+  ["vfx_applesauce"] = { dx = 0.1072, dy = 0.1072, dz = 0.06079 }, -- WorldItems/VFX_WM_SmallJar
+  ["vfx_apricot"] = { dx = 0.08937, dy = 0.09101, dz = 0.03427, cy = -0.003238 }, -- WorldItems/VFX_Fruit_Apricot
+  ["vfx_asparagus"] = { dx = 0.2437, dy = 0.07339, dz = 0.0259, cx = 0.006261, cy = 0.00892 }, -- WorldItems/VFX_Vegetable_Asparagus
   ["vfx_bagchickentenders"] = { dx = 0.4885, dy = 0.2745, dz = 0.0299 }, -- WorldItems/VFX_Packaging_Bag
   ["vfx_bagcolagummies"] = { dx = 0.2828, dy = 0.2063, dz = 0.02927 }, -- WorldItems/VFX_SmallBag
+  ["vfx_baggreenbeans"] = { dx = 0.3521, dy = 0.2254, dz = 0.02826, cx = -0.008916 }, -- WorldItems/VFX_Vegetable_Bag
   ["vfx_baggummybears"] = { dx = 0.2828, dy = 0.2063, dz = 0.02927 }, -- WorldItems/VFX_SmallBag
   ["vfx_baggummyfish"] = { dx = 0.2828, dy = 0.2063, dz = 0.02927 }, -- WorldItems/VFX_SmallBag
   ["vfx_baggummyworms"] = { dx = 0.2828, dy = 0.2063, dz = 0.02927 }, -- WorldItems/VFX_SmallBag
@@ -7119,29 +7753,45 @@ local MeshSizes = {
   ["vfx_bananacreampuddingcup"] = { dx = 0.1036, dy = 0.1036, dz = 0.0274 }, -- WorldItems/VFX_JelloCup
   ["vfx_bananacreampuddingmix"] = { dx = 0.1866, dy = 0.08945, dz = 0.1233 }, -- WorldItems/VFX_BoxMix
   ["vfx_bananaproteinpowder"] = { dx = 0.2655, dy = 0.2655, dz = 0.1383, oz = 0.002118 }, -- WorldItems/VFX_ProteinPowder
+  ["vfx_bananayogurtpot"] = { dx = 0.1574, dy = 0.1574, dz = 0.06726 }, -- WorldItems/VFX_FrostingTub
+  ["vfx_barleybread"] = { dx = 0.2256, dy = 0.2145, dz = 0.02971 }, -- WorldItems/VFX_Dough
   ["vfx_barleybreadsandwich"] = { dx = 0.1564, dy = 0.1902, dz = 0.01555, cy = -0.01897 }, -- WorldItems/VFX_Sandwich
+  ["vfx_barleybreadslice"] = { dx = 0.1518, dy = 0.1844, dz = 0.005845, cy = -0.01842 }, -- WorldItems/VFX_SliceBread
   ["vfx_barleybreadtoast"] = { dx = 0.1518, dy = 0.1844, dz = 0.005845, cy = -0.01842 }, -- WorldItems/VFX_SliceBread
+  ["vfx_barleysourdough"] = { dx = 0.282, dy = 0.2682, dz = 0.03713 }, -- WorldItems/VFX_Dough
   ["vfx_barleysourdoughsandwich"] = { dx = 0.1861, dy = 0.2508, dz = 0.02265, cx = -0.0125 }, -- WorldItems/VFX_SandwichSourdough
+  ["vfx_barleysourdoughslice"] = { dx = 0.1805, dy = 0.2425, dz = 0.009481, cx = -0.01176 }, -- WorldItems/VFX_SliceSourdough
   ["vfx_barleysourdoughtoast"] = { dx = 0.1805, dy = 0.2425, dz = 0.009481, cx = -0.01176 }, -- WorldItems/VFX_SliceSourdough
   ["vfx_becbreakfastsandwich_box"] = { dx = 0.2037, dy = 0.2299, dz = 0.02575 }, -- WorldItems/VFX_RectangleBox
   ["vfx_beefbrisket"] = { dx = 0.3758, dy = 0.3026, dz = 0.03244, cx = 0.002947, cy = -0.002834 }, -- WorldItems/VFX_BeefBrisket
   ["vfx_beefmeatball"] = { dx = 0.09905, dy = 0.09793, dz = 0.03792, oz = -0.005302 }, -- WorldItems/VFX_Meatball
   ["vfx_beefmeatballsbag"] = { dx = 0.4705, dy = 0.358, dz = 0.03945, oz = -0.004968, cx = -0.03273 }, -- WorldItems/VFX_MeatballBag
+  ["vfx_beefporksausage"] = { dx = 0.04017, dy = 0.1915, dz = 0.01554 }, -- WorldItems/VFX_Sausage
   ["vfx_beefporksausagepack"] = { dx = 0.2782, dy = 0.2533, dz = 0.01821 }, -- WorldItems/VFX_SausagePack
+  ["vfx_beefsausage"] = { dx = 0.04017, dy = 0.1915, dz = 0.01554 }, -- WorldItems/VFX_Sausage
   ["vfx_beefsausagepack"] = { dx = 0.2782, dy = 0.2533, dz = 0.01821 }, -- WorldItems/VFX_SausagePack
   ["vfx_beefshank"] = { dx = 0.2608, dy = 0.1332, dz = 0.04273, cx = 0.031 }, -- WorldItems/VFX_BeefShank
   ["vfx_beefshortribs"] = { dx = 0.4075, dy = 0.2827, dz = 0.01947, cx = -0.01876, cy = -0.02068 }, -- WorldItems/VFX_BeefShortRibs
   ["vfx_beerbottle"] = { dx = 0.1025, dy = 0.1025, dz = 0.1315 }, -- WorldItems/VFX_BeerBottle
   ["vfx_beerbottleunsealed"] = { dx = 0.1034, dy = 0.1034, dz = 0.1327, oz = 0.003161, cx = -0.04127 }, -- WorldItems/VFX_BeerBottle_SM
+  ["vfx_beerbread"] = { dx = 0.2256, dy = 0.2145, dz = 0.02971 }, -- WorldItems/VFX_Dough
   ["vfx_beerbreadsandwich"] = { dx = 0.1564, dy = 0.1902, dz = 0.01555, cy = -0.01897 }, -- WorldItems/VFX_Sandwich
+  ["vfx_beerbreadslice"] = { dx = 0.1518, dy = 0.1844, dz = 0.005845, cy = -0.01842 }, -- WorldItems/VFX_SliceBread
   ["vfx_beerbreadtoast"] = { dx = 0.1518, dy = 0.1844, dz = 0.005845, cy = -0.01842 }, -- WorldItems/VFX_SliceBread
+  ["vfx_beetroot"] = { dx = 0.1492, dy = 0.07402, dz = 0.04415, cx = -0.01175 }, -- WorldItems/VFX_Vegetable_Beetroot
   ["vfx_berrybluejellobox"] = { dx = 0.2167, dy = 0.1053, dz = 0.05556 }, -- WorldItems/VFX_JelloBox
   ["vfx_berrybluejellocup"] = { dx = 0.1036, dy = 0.1036, dz = 0.0274 }, -- WorldItems/VFX_JelloCup
+  ["vfx_berrymedley"] = { dx = 0.1913, dy = 0.05474, dz = 0.1149 }, -- WorldItems/VFX_Pouch
   ["vfx_birthdaycandle"] = { dx = 0.02145, dy = 0.01858, dz = 0.05951 }, -- WorldItems/VFX_BirthdayCandle
   ["vfx_birthdaycandlelit"] = { dx = 0.02145, dy = 0.01858, dz = 0.0658 }, -- WorldItems/VFX_BirthdayCandleLit
+  ["vfx_blackberries"] = { dx = 0.1913, dy = 0.05474, dz = 0.1149 }, -- WorldItems/VFX_Pouch
   ["vfx_blackteabox"] = { dx = 0.0832, dy = 0.0832, dz = 0.03397 }, -- WorldItems/VFX_TeaBox
+  ["vfx_blueberries"] = { dx = 0.1913, dy = 0.05474, dz = 0.1149 }, -- WorldItems/VFX_Pouch
   ["vfx_blueberrymuffinmix"] = { dx = 0.1866, dy = 0.08945, dz = 0.1233 }, -- WorldItems/VFX_BoxMix
   ["vfx_blueberrystrudelsbox"] = { dx = 0.2022, dy = 0.0888, dz = 0.04803 }, -- WorldItems/VFX_SnackBox
+  ["vfx_blueberryyogurtpot"] = { dx = 0.1574, dy = 0.1574, dz = 0.06726 }, -- WorldItems/VFX_FrostingTub
+  ["vfx_bluecheese"] = { dx = 0.1105, dy = 0.1501, dz = 0.03875, cy = 0.02501 }, -- WorldItems/VFX_CheeseWedge
+  ["vfx_bokchoy"] = { dx = 0.2738, dy = 0.1636, dz = 0.0594, oz = 0.003285, cx = 0.008144, cy = 0.002102 }, -- WorldItems/VFX_Vegetable_BokChoy
   ["vfx_bonebrothpot"] = { dx = 0.3158, dy = 0.3481, dz = 0.1102 }, -- WorldItems/VFX_PotFull
   ["vfx_bonebrothpotforged"] = { dx = 0.4153, dy = 0.4477, dz = 0.1437, cx = 0.0101, cy = -0.003494 }, -- WorldItems/VFX_PotForgedFull
   ["vfx_bottleamberale"] = { dx = 0.1025, dy = 0.1025, dz = 0.1315 }, -- WorldItems/VFX_BeerBottle
@@ -7157,10 +7807,13 @@ local MeshSizes = {
   ["vfx_bottleviennalager"] = { dx = 0.1025, dy = 0.1025, dz = 0.1315 }, -- WorldItems/VFX_BeerBottle
   ["vfx_bowladmiralchomp"] = { dx = 0.1888, dy = 0.1795, dz = 0.03961 }, -- WorldItems/VFX_BowlFull
   ["vfx_bowlalfredopasta"] = { dx = 0.1888, dy = 0.1795, dz = 0.03961 }, -- WorldItems/VFX_BowlFull
+  ["vfx_bowlarboriorice"] = { dx = 0.1888, dy = 0.1795, dz = 0.03961 }, -- WorldItems/VFX_BowlFull
   ["vfx_bowlbananacreampudding"] = { dx = 0.1888, dy = 0.1795, dz = 0.03961 }, -- WorldItems/VFX_BowlFull
+  ["vfx_bowlbasmatirice"] = { dx = 0.1888, dy = 0.1795, dz = 0.03961 }, -- WorldItems/VFX_BowlFull
   ["vfx_bowlbeefmushroomstew"] = { dx = 0.1888, dy = 0.1795, dz = 0.03961 }, -- WorldItems/VFX_BowlFull
   ["vfx_bowlbeefravioli"] = { dx = 0.1888, dy = 0.1795, dz = 0.03961 }, -- WorldItems/VFX_BowlFull
   ["vfx_bowlbroccolicheddarsoup"] = { dx = 0.1888, dy = 0.1795, dz = 0.03961 }, -- WorldItems/VFX_BowlFull
+  ["vfx_bowlbrownrice"] = { dx = 0.1888, dy = 0.1795, dz = 0.03961 }, -- WorldItems/VFX_BowlFull
   ["vfx_bowlbutterchicken"] = { dx = 0.1888, dy = 0.1795, dz = 0.03961 }, -- WorldItems/VFX_BowlFull
   ["vfx_bowlbutterscotchpudding"] = { dx = 0.1888, dy = 0.1795, dz = 0.03961 }, -- WorldItems/VFX_BowlFull
   ["vfx_bowlchanamasala"] = { dx = 0.1888, dy = 0.1795, dz = 0.03961 }, -- WorldItems/VFX_BowlFull
@@ -7190,6 +7843,7 @@ local MeshSizes = {
   ["vfx_bowlhoneyoatsgranola"] = { dx = 0.1888, dy = 0.1795, dz = 0.03961 }, -- WorldItems/VFX_BowlFull
   ["vfx_bowlhoneyoatyos"] = { dx = 0.1888, dy = 0.1795, dz = 0.03961 }, -- WorldItems/VFX_BowlFull
   ["vfx_bowlirishstew"] = { dx = 0.1888, dy = 0.1795, dz = 0.03961 }, -- WorldItems/VFX_BowlFull
+  ["vfx_bowljasminerice"] = { dx = 0.1888, dy = 0.1795, dz = 0.03961 }, -- WorldItems/VFX_BowlFull
   ["vfx_bowllaksanoodlesoup"] = { dx = 0.1888, dy = 0.1795, dz = 0.03961 }, -- WorldItems/VFX_BowlFull
   ["vfx_bowllentilsoup"] = { dx = 0.1888, dy = 0.1795, dz = 0.03961 }, -- WorldItems/VFX_BowlFull
   ["vfx_bowlmacaroni"] = { dx = 0.1888, dy = 0.1795, dz = 0.03961 }, -- WorldItems/VFX_BowlFull
@@ -7242,13 +7896,18 @@ local MeshSizes = {
   ["vfx_boxramensoysauce"] = { dx = 0.2341, dy = 0.1869, dz = 0.08462 }, -- WorldItems/VFX_BoxRamen
   ["vfx_boxvegetablebouilloncube"] = { dx = 0.0832, dy = 0.0832, dz = 0.03397 }, -- WorldItems/VFX_TeaBox
   ["vfx_branmuffinmix"] = { dx = 0.1866, dy = 0.08945, dz = 0.1233 }, -- WorldItems/VFX_BoxMix
+  ["vfx_breadcrumbs"] = { dx = 0.1913, dy = 0.05474, dz = 0.1149 }, -- WorldItems/VFX_Pouch
+  ["vfx_breadstick"] = { dx = 0.1872, dy = 0.08306, dz = 0.01116 }, -- WorldItems/VFX_Breadstick
   ["vfx_breakfastsandwichbacon"] = { dx = 0.1789, dy = 0.1767, dz = 0.03478, cy = -0.00217 }, -- WorldItems/VFX_BreakfastSandwichBacon
   ["vfx_breakfastsandwichegg"] = { dx = 0.168, dy = 0.168, dz = 0.02896 }, -- WorldItems/VFX_BreakfastSandwichEgg
   ["vfx_breakfastsandwichsausage"] = { dx = 0.168, dy = 0.168, dz = 0.03521 }, -- WorldItems/VFX_BreakfastSandwichMeat
   ["vfx_breakfastsandwichturkey"] = { dx = 0.168, dy = 0.168, dz = 0.03521 }, -- WorldItems/VFX_BreakfastSandwichMeat
   ["vfx_breakfastteabox"] = { dx = 0.0832, dy = 0.0832, dz = 0.03397 }, -- WorldItems/VFX_TeaBox
   ["vfx_breakfasttrailmix"] = { dx = 0.1913, dy = 0.05474, dz = 0.1149 }, -- WorldItems/VFX_Pouch
+  ["vfx_briecheese"] = { dx = 0.1423, dy = 0.1423, dz = 0.01864 }, -- WorldItems/VFX_CheeseRound
+  ["vfx_brioche"] = { dx = 0.2256, dy = 0.2145, dz = 0.02971 }, -- WorldItems/VFX_Dough
   ["vfx_briochesandwich"] = { dx = 0.1564, dy = 0.1902, dz = 0.01555, cy = -0.01897 }, -- WorldItems/VFX_Sandwich
+  ["vfx_briocheslice"] = { dx = 0.1518, dy = 0.1844, dz = 0.005845, cy = -0.01842 }, -- WorldItems/VFX_SliceBread
   ["vfx_briochetoast"] = { dx = 0.1518, dy = 0.1844, dz = 0.005845, cy = -0.01842 }, -- WorldItems/VFX_SliceBread
   ["vfx_brownie"] = { dx = 0.1276, dy = 0.1078, dz = 0.0148 }, -- WorldItems/VFX_Brownie
   ["vfx_browniemix"] = { dx = 0.1866, dy = 0.08945, dz = 0.1233 }, -- WorldItems/VFX_BoxMix
@@ -7260,8 +7919,11 @@ local MeshSizes = {
   ["vfx_bubblegumtapesourblueraspberry"] = { dx = 0.1574, dy = 0.1616, dz = 0.01571 }, -- WorldItems/VFX_BubblegumTape
   ["vfx_bubblegumtapestrawberry"] = { dx = 0.1574, dy = 0.1616, dz = 0.01571 }, -- WorldItems/VFX_BubblegumTape
   ["vfx_bubblegumtapetangytropical"] = { dx = 0.1574, dy = 0.1616, dz = 0.01571 }, -- WorldItems/VFX_BubblegumTape
+  ["vfx_buffalosauce"] = { dx = 0.07945, dy = 0.07945, dz = 0.1136 }, -- WorldItems/VFX_GlassBottle
+  ["vfx_butterpecanicecream"] = { dx = 0.162, dy = 0.162, dz = 0.07058, oz = -0.04436 }, -- WorldItems/VFX_IceCream
   ["vfx_butterpecanicecreammelted"] = { dx = 0.162, dy = 0.162, dz = 0.07058, oz = -0.04436 }, -- WorldItems/VFX_IceCream
   ["vfx_butterscotchpuddingmix"] = { dx = 0.1866, dy = 0.08945, dz = 0.1233 }, -- WorldItems/VFX_BoxMix
+  ["vfx_caesarsaladdressing"] = { dx = 0.07945, dy = 0.07945, dz = 0.1136 }, -- WorldItems/VFX_GlassBottle
   ["vfx_cakecaramel"] = { dx = 0.2971, dy = 0.3124, dz = 0.03695 }, -- WorldItems/VFX_WholeCake
   ["vfx_cakecaramel5candles"] = { dx = 0.2971, dy = 0.3124, dz = 0.07524 }, -- WorldItems/VFX_WholeCake5Candles
   ["vfx_cakecaramelcandle"] = { dx = 0.2971, dy = 0.3124, dz = 0.07818 }, -- WorldItems/VFX_WholeCake1Candle
@@ -7473,13 +8135,60 @@ local MeshSizes = {
   ["vfx_cakeyellow"] = { dx = 0.2971, dy = 0.3124, dz = 0.03695 }, -- WorldItems/VFX_WholeCake
   ["vfx_cakeyellow5candles"] = { dx = 0.2971, dy = 0.3124, dz = 0.07524 }, -- WorldItems/VFX_WholeCake5Candles
   ["vfx_cakeyellowcandle"] = { dx = 0.2971, dy = 0.3124, dz = 0.07818 }, -- WorldItems/VFX_WholeCake1Candle
+  ["vfx_camembertcheese"] = { dx = 0.1423, dy = 0.1423, dz = 0.01864 }, -- WorldItems/VFX_CheeseRound
   ["vfx_candycrunchtrailmix"] = { dx = 0.1913, dy = 0.05474, dz = 0.1149 }, -- WorldItems/VFX_Pouch
   ["vfx_candynecklace"] = { dx = 0.1644, dy = 0.162, dz = 0.01025 }, -- WorldItems/VFX_CandyNecklace
+  ["vfx_cannedapplepiefillingopen"] = { dx = 0.1338, dy = 0.158, dz = 0.08585, oz = -0.002249 }, -- WorldItems/VFX_CanOpen
+  ["vfx_cannedappleslicesopen"] = { dx = 0.1338, dy = 0.158, dz = 0.08585, oz = -0.002249 }, -- WorldItems/VFX_CanOpen
+  ["vfx_cannedapricotsopen"] = { dx = 0.1338, dy = 0.158, dz = 0.08585, oz = -0.002249 }, -- WorldItems/VFX_CanOpen
+  ["vfx_cannedbeefravioliopen"] = { dx = 0.1338, dy = 0.158, dz = 0.08585, oz = -0.002249 }, -- WorldItems/VFX_CanOpen
+  ["vfx_cannedblackbeansopen"] = { dx = 0.1338, dy = 0.158, dz = 0.08585, oz = -0.002249 }, -- WorldItems/VFX_CanOpen
+  ["vfx_cannedblackberrypiefillingopen"] = { dx = 0.1338, dy = 0.158, dz = 0.08585, oz = -0.002249 }, -- WorldItems/VFX_CanOpen
+  ["vfx_cannedblueberrypiefillingopen"] = { dx = 0.1338, dy = 0.158, dz = 0.08585, oz = -0.002249 }, -- WorldItems/VFX_CanOpen
+  ["vfx_cannedcherrypiefillingopen"] = { dx = 0.1338, dy = 0.158, dz = 0.08585, oz = -0.002249 }, -- WorldItems/VFX_CanOpen
+  ["vfx_cannedchickpeasopen"] = { dx = 0.1338, dy = 0.158, dz = 0.08585, oz = -0.002249 }, -- WorldItems/VFX_CanOpen
+  ["vfx_cannedclamchowderopen"] = { dx = 0.1338, dy = 0.158, dz = 0.08585, oz = -0.002249 }, -- WorldItems/VFX_CanOpen
+  ["vfx_cannedcoconutcreamopen"] = { dx = 0.1338, dy = 0.158, dz = 0.08585, oz = -0.002249 }, -- WorldItems/VFX_CanOpen
+  ["vfx_cannedcoconutmilkopen"] = { dx = 0.1338, dy = 0.158, dz = 0.08585, oz = -0.002249 }, -- WorldItems/VFX_CanOpen
+  ["vfx_cannedcreamcornopen"] = { dx = 0.1338, dy = 0.158, dz = 0.08585, oz = -0.002249 }, -- WorldItems/VFX_CanOpen
+  ["vfx_cannededamamebeansopen"] = { dx = 0.1338, dy = 0.158, dz = 0.08585, oz = -0.002249 }, -- WorldItems/VFX_CanOpen
+  ["vfx_cannedgreenbeansopen"] = { dx = 0.1338, dy = 0.158, dz = 0.08585, oz = -0.002249 }, -- WorldItems/VFX_CanOpen
+  ["vfx_cannedkidneybeansopen"] = { dx = 0.1338, dy = 0.158, dz = 0.08585, oz = -0.002249 }, -- WorldItems/VFX_CanOpen
+  ["vfx_cannedlemoncreampiefillingopen"] = { dx = 0.1338, dy = 0.158, dz = 0.08585, oz = -0.002249 }, -- WorldItems/VFX_CanOpen
+  ["vfx_cannedlentilsopen"] = { dx = 0.1338, dy = 0.158, dz = 0.08585, oz = -0.002249 }, -- WorldItems/VFX_CanOpen
+  ["vfx_cannedlycheesopen"] = { dx = 0.1338, dy = 0.158, dz = 0.08585, oz = -0.002249 }, -- WorldItems/VFX_CanOpen
+  ["vfx_cannedmangoslicesopen"] = { dx = 0.1338, dy = 0.158, dz = 0.08585, oz = -0.002249 }, -- WorldItems/VFX_CanOpen
+  ["vfx_cannedmeatloafopen"] = { dx = 0.1338, dy = 0.158, dz = 0.08585, oz = -0.002249 }, -- WorldItems/VFX_CanOpen
+  ["vfx_cannedmixedberrypiefillingopen"] = { dx = 0.1338, dy = 0.158, dz = 0.08585, oz = -0.002249 }, -- WorldItems/VFX_CanOpen
+  ["vfx_cannedmixedvegetablemedleyopen"] = { dx = 0.1338, dy = 0.158, dz = 0.08585, oz = -0.002249 }, -- WorldItems/VFX_CanOpen
+  ["vfx_cannedmushroomravioliopen"] = { dx = 0.1338, dy = 0.158, dz = 0.08585, oz = -0.002249 }, -- WorldItems/VFX_CanOpen
+  ["vfx_cannedpassionfruitopen"] = { dx = 0.1338, dy = 0.158, dz = 0.08585, oz = -0.002249 }, -- WorldItems/VFX_CanOpen
+  ["vfx_cannedpeachpiefillingopen"] = { dx = 0.1338, dy = 0.158, dz = 0.08585, oz = -0.002249 }, -- WorldItems/VFX_CanOpen
+  ["vfx_cannedpearslicesopen"] = { dx = 0.1338, dy = 0.158, dz = 0.08585, oz = -0.002249 }, -- WorldItems/VFX_CanOpen
+  ["vfx_cannedpumpkinpureeopen"] = { dx = 0.1338, dy = 0.158, dz = 0.08585, oz = -0.002249 }, -- WorldItems/VFX_CanOpen
+  ["vfx_cannedraspberrypiefillingopen"] = { dx = 0.1338, dy = 0.158, dz = 0.08585, oz = -0.002249 }, -- WorldItems/VFX_CanOpen
+  ["vfx_cannedredbeansandriceopen"] = { dx = 0.1338, dy = 0.158, dz = 0.08585, oz = -0.002249 }, -- WorldItems/VFX_CanOpen
+  ["vfx_cannedsavoryminceopen"] = { dx = 0.1338, dy = 0.158, dz = 0.08585, oz = -0.002249 }, -- WorldItems/VFX_CanOpen
+  ["vfx_cannedslicedmushroomopen"] = { dx = 0.1338, dy = 0.158, dz = 0.08585, oz = -0.002249 }, -- WorldItems/VFX_CanOpen
+  ["vfx_cannedsloppyjoeopen"] = { dx = 0.1338, dy = 0.158, dz = 0.08585, oz = -0.002249 }, -- WorldItems/VFX_CanOpen
+  ["vfx_cannedsoupopen"] = { dx = 0.1338, dy = 0.158, dz = 0.08585, oz = -0.002249 }, -- WorldItems/VFX_CanOpen
+  ["vfx_cannedspaghettimeatballsopen"] = { dx = 0.1338, dy = 0.158, dz = 0.08585, oz = -0.002249 }, -- WorldItems/VFX_CanOpen
+  ["vfx_cannedspaghettiopen"] = { dx = 0.1338, dy = 0.158, dz = 0.08585, oz = -0.002249 }, -- WorldItems/VFX_CanOpen
+  ["vfx_cannedspinachopen"] = { dx = 0.1338, dy = 0.158, dz = 0.08585, oz = -0.002249 }, -- WorldItems/VFX_CanOpen
+  ["vfx_cannedspinachravioliopen"] = { dx = 0.1338, dy = 0.158, dz = 0.08585, oz = -0.002249 }, -- WorldItems/VFX_CanOpen
+  ["vfx_cannedstewopen"] = { dx = 0.1338, dy = 0.158, dz = 0.08585, oz = -0.002249 }, -- WorldItems/VFX_CanOpen
+  ["vfx_cannedstrawberrypiefillingopen"] = { dx = 0.1338, dy = 0.158, dz = 0.08585, oz = -0.002249 }, -- WorldItems/VFX_CanOpen
+  ["vfx_cannedthreebeanmixopen"] = { dx = 0.1338, dy = 0.158, dz = 0.08585, oz = -0.002249 }, -- WorldItems/VFX_CanOpen
+  ["vfx_cannedvegetarianchiliopen"] = { dx = 0.1338, dy = 0.158, dz = 0.08585, oz = -0.002249 }, -- WorldItems/VFX_CanOpen
+  ["vfx_cannedwhitebeansopen"] = { dx = 0.1338, dy = 0.158, dz = 0.08585, oz = -0.002249 }, -- WorldItems/VFX_CanOpen
   ["vfx_caramelcakemix"] = { dx = 0.1866, dy = 0.08945, dz = 0.1233 }, -- WorldItems/VFX_BoxMix
+  ["vfx_caramelfrostingtub"] = { dx = 0.1574, dy = 0.1574, dz = 0.06726 }, -- WorldItems/VFX_FrostingTub
   ["vfx_carrotcakemix"] = { dx = 0.1866, dy = 0.08945, dz = 0.1233 }, -- WorldItems/VFX_BoxMix
+  ["vfx_cashews"] = { dx = 0.1913, dy = 0.05474, dz = 0.1149 }, -- WorldItems/VFX_Pouch
   ["vfx_casserole"] = { dx = 0.2225, dy = 0.3104, dz = 0.02735 }, -- WorldItems/VFX_RoastingPanFull
   ["vfx_chamomileteabox"] = { dx = 0.0832, dy = 0.0832, dz = 0.03397 }, -- WorldItems/VFX_TeaBox
   ["vfx_cheddarbiscuitmix"] = { dx = 0.1866, dy = 0.08945, dz = 0.1233 }, -- WorldItems/VFX_BoxMix
+  ["vfx_cheddarcheese"] = { dx = 0.1105, dy = 0.1501, dz = 0.03875, cy = 0.02501 }, -- WorldItems/VFX_CheeseWedge
   ["vfx_cheeps"] = { dx = 0.2828, dy = 0.2063, dz = 0.02927 }, -- WorldItems/VFX_SmallBag
   ["vfx_cheesecake"] = { dx = 0.2709, dy = 0.2576, dz = 0.02489 }, -- WorldItems/VFX_BakingPanFull
   ["vfx_cheesekitbasic"] = { dx = 0.3811, dy = 0.1553, dz = 0.1071 }, -- WorldItems/VFX_CheeseKitBox
@@ -7489,34 +8198,55 @@ local MeshSizes = {
   ["vfx_cheesekitmaster"] = { dx = 0.3811, dy = 0.1553, dz = 0.1071 }, -- WorldItems/VFX_CheeseKitBox
   ["vfx_cheesekitswiss"] = { dx = 0.3811, dy = 0.1553, dz = 0.1071 }, -- WorldItems/VFX_CheeseKitBox
   ["vfx_cheesepizzaroll_box"] = { dx = 0.4885, dy = 0.2745, dz = 0.0299 }, -- WorldItems/VFX_Packaging_Bag
+  ["vfx_cheesesausage"] = { dx = 0.04017, dy = 0.1915, dz = 0.01554 }, -- WorldItems/VFX_Sausage
   ["vfx_cheesesausagepack"] = { dx = 0.2782, dy = 0.2533, dz = 0.01821 }, -- WorldItems/VFX_SausagePack
   ["vfx_cheezitz"] = { dx = 0.1784, dy = 0.0888, dz = 0.09017 }, -- WorldItems/VFX_CrackerBox
   ["vfx_cherrycolacan"] = { dx = 0.09882, dy = 0.09882, dz = 0.05887 }, -- WorldItems/VFX_Can
   ["vfx_cherryjellobox"] = { dx = 0.2167, dy = 0.1053, dz = 0.05556 }, -- WorldItems/VFX_JelloBox
   ["vfx_cherryjellocup"] = { dx = 0.1036, dy = 0.1036, dz = 0.0274 }, -- WorldItems/VFX_JelloCup
   ["vfx_cherrystrudelsbox"] = { dx = 0.2022, dy = 0.0888, dz = 0.04803 }, -- WorldItems/VFX_SnackBox
+  ["vfx_chickendrumsticks"] = { dx = 0.09187, dy = 0.1911, dz = 0.01704, cx = -0.002526, cy = -0.004065 }, -- WorldItems/VFX_ChickenDrumsticks
   ["vfx_chickenmeatball"] = { dx = 0.09905, dy = 0.09793, dz = 0.03792, oz = -0.005302 }, -- WorldItems/VFX_Meatball
   ["vfx_chickenmeatballsbag"] = { dx = 0.4705, dy = 0.358, dz = 0.03945, oz = -0.004968, cx = -0.03273 }, -- WorldItems/VFX_MeatballBag
+  ["vfx_chickenmushroomravioli"] = { dx = 0.3521, dy = 0.2527, dz = 0.03286 }, -- WorldItems/VFX_FlatTopPacket
   ["vfx_chickennoodlesoupsachet"] = { dx = 0.0557, dy = 0.2398, dz = 0.01118, cy = -0.003661 }, -- WorldItems/VFX_SoupSachet
+  ["vfx_chickensausage"] = { dx = 0.04017, dy = 0.1915, dz = 0.01554 }, -- WorldItems/VFX_Sausage
   ["vfx_chickensausagepack"] = { dx = 0.2782, dy = 0.2533, dz = 0.01821 }, -- WorldItems/VFX_SausagePack
+  ["vfx_chickenthighs"] = { dx = 0.1716, dy = 0.1416, dz = 0.02248, cx = 0.004755 }, -- WorldItems/VFX_ChickenThighs
+  ["vfx_chipotlesauce"] = { dx = 0.07945, dy = 0.07945, dz = 0.1136 }, -- WorldItems/VFX_GlassBottle
+  ["vfx_chocolatealmonds"] = { dx = 0.2828, dy = 0.2063, dz = 0.02927 }, -- WorldItems/VFX_SmallBag
+  ["vfx_chocolatebaralmond"] = { dx = 0.1095, dy = 0.301, dz = 0.01287 }, -- WorldItems/VFX_ChocolateBar
+  ["vfx_chocolatebarcookiesandcream"] = { dx = 0.1095, dy = 0.301, dz = 0.01287 }, -- WorldItems/VFX_ChocolateBar
+  ["vfx_chocolatebardark"] = { dx = 0.1095, dy = 0.301, dz = 0.01287 }, -- WorldItems/VFX_ChocolateBar
+  ["vfx_chocolatebarporkie"] = { dx = 0.1095, dy = 0.301, dz = 0.01287 }, -- WorldItems/VFX_ChocolateBar
+  ["vfx_chocolatebarwhite"] = { dx = 0.1095, dy = 0.301, dz = 0.01287 }, -- WorldItems/VFX_ChocolateBar
   ["vfx_chocolatecakemix"] = { dx = 0.1866, dy = 0.08945, dz = 0.1233 }, -- WorldItems/VFX_BoxMix
+  ["vfx_chocolatecaramelduds"] = { dx = 0.2314, dy = 0.05085, dz = 0.04342 }, -- WorldItems/VFX_CandyBox
   ["vfx_chocolatechipcookiemix"] = { dx = 0.1866, dy = 0.08945, dz = 0.1233 }, -- WorldItems/VFX_BoxMix
   ["vfx_chocolatechipgranolabarbox"] = { dx = 0.2609, dy = 0.07236, dz = 0.07628 }, -- WorldItems/VFX_GranolaBarBox
+  ["vfx_chocolatechipicecream"] = { dx = 0.162, dy = 0.162, dz = 0.07058, oz = -0.04436 }, -- WorldItems/VFX_IceCream
   ["vfx_chocolatechipicecreammelted"] = { dx = 0.162, dy = 0.162, dz = 0.07058, oz = -0.04436 }, -- WorldItems/VFX_IceCream
   ["vfx_chocolatechipmuffinmix"] = { dx = 0.1866, dy = 0.08945, dz = 0.1233 }, -- WorldItems/VFX_BoxMix
   ["vfx_chocolatecoins"] = { dx = 0.1864, dy = 0.1139, dz = 0.01526 }, -- WorldItems/VFX_ChocolateCoins
   ["vfx_chocolatecookiemix"] = { dx = 0.1866, dy = 0.08945, dz = 0.1233 }, -- WorldItems/VFX_BoxMix
+  ["vfx_chocolatefrostingtub"] = { dx = 0.1574, dy = 0.1574, dz = 0.06726 }, -- WorldItems/VFX_FrostingTub
+  ["vfx_chocolateicecream"] = { dx = 0.162, dy = 0.162, dz = 0.07058, oz = -0.04436 }, -- WorldItems/VFX_IceCream
   ["vfx_chocolateicecreammelted"] = { dx = 0.162, dy = 0.162, dz = 0.07058, oz = -0.04436 }, -- WorldItems/VFX_IceCream
+  ["vfx_chocolatekisses"] = { dx = 0.2828, dy = 0.2063, dz = 0.02927 }, -- WorldItems/VFX_SmallBag
+  ["vfx_chocolatemaltballs"] = { dx = 0.2314, dy = 0.05085, dz = 0.04342 }, -- WorldItems/VFX_CandyBox
   ["vfx_chocolatemoussemix"] = { dx = 0.1866, dy = 0.08945, dz = 0.1233 }, -- WorldItems/VFX_BoxMix
   ["vfx_chocolatepretzels"] = { dx = 0.2214, dy = 0.1833, dz = 0.01402, cx = -0.003962, cy = -0.008868 }, -- WorldItems/VFX_ChocolatePretzels
   ["vfx_chocolateproteinpowder"] = { dx = 0.2655, dy = 0.2655, dz = 0.1383, oz = 0.002118 }, -- WorldItems/VFX_ProteinPowder
   ["vfx_chocolatepuddingbox"] = { dx = 0.2167, dy = 0.1053, dz = 0.05556 }, -- WorldItems/VFX_JelloBox
   ["vfx_chocolatepuddingcup"] = { dx = 0.1036, dy = 0.1036, dz = 0.0274 }, -- WorldItems/VFX_JelloCup
+  ["vfx_chocolateseniormints"] = { dx = 0.2314, dy = 0.05085, dz = 0.04342 }, -- WorldItems/VFX_CandyBox
   ["vfx_chocolateswirlbreadmix"] = { dx = 0.1866, dy = 0.08945, dz = 0.1233 }, -- WorldItems/VFX_BoxMix
+  ["vfx_chorizo"] = { dx = 0.04017, dy = 0.1915, dz = 0.01554 }, -- WorldItems/VFX_Sausage
   ["vfx_chorizopack"] = { dx = 0.2782, dy = 0.2533, dz = 0.01821 }, -- WorldItems/VFX_SausagePack
   ["vfx_chuncrustable_box"] = { dx = 0.2037, dy = 0.2299, dz = 0.02575 }, -- WorldItems/VFX_RectangleBox
   ["vfx_cinnamonswirlbreadmix"] = { dx = 0.1866, dy = 0.08945, dz = 0.1233 }, -- WorldItems/VFX_BoxMix
   ["vfx_classictrailmix"] = { dx = 0.1913, dy = 0.05474, dz = 0.1149 }, -- WorldItems/VFX_Pouch
+  ["vfx_cocktailsauce"] = { dx = 0.07945, dy = 0.07945, dz = 0.1136 }, -- WorldItems/VFX_GlassBottle
   ["vfx_coffeecake"] = { dx = 0.09924, dy = 0.09928, dz = 0.02768 }, -- WorldItems/VFX_SnackCake_CoffeeCake
   ["vfx_coffeecakesbox"] = { dx = 0.2022, dy = 0.0888, dz = 0.04803 }, -- WorldItems/VFX_SnackBox
   ["vfx_coffeecreameralmond"] = { dx = 0.09804, dy = 0.09804, dz = 0.105 }, -- WorldItems/VFX_CoffeeCreamerBottle
@@ -7524,15 +8254,29 @@ local MeshSizes = {
   ["vfx_coffeecreamerhazelnut"] = { dx = 0.09804, dy = 0.09804, dz = 0.105 }, -- WorldItems/VFX_CoffeeCreamerBottle
   ["vfx_coffeecreameririshcream"] = { dx = 0.09804, dy = 0.09804, dz = 0.105 }, -- WorldItems/VFX_CoffeeCreamerBottle
   ["vfx_coffeecreameroriginal"] = { dx = 0.09804, dy = 0.09804, dz = 0.105 }, -- WorldItems/VFX_CoffeeCreamerBottle
+  ["vfx_coleslawdressing"] = { dx = 0.07945, dy = 0.07945, dz = 0.1136 }, -- WorldItems/VFX_GlassBottle
   ["vfx_confetticakemix"] = { dx = 0.1866, dy = 0.08945, dz = 0.1233 }, -- WorldItems/VFX_BoxMix
+  ["vfx_confettifrostingtub"] = { dx = 0.1574, dy = 0.1574, dz = 0.06726 }, -- WorldItems/VFX_FrostingTub
+  ["vfx_cookiesandcreamicecream"] = { dx = 0.162, dy = 0.162, dz = 0.07058, oz = -0.04436 }, -- WorldItems/VFX_IceCream
   ["vfx_cookiesandcreamicecreammelted"] = { dx = 0.162, dy = 0.162, dz = 0.07058, oz = -0.04436 }, -- WorldItems/VFX_IceCream
   ["vfx_cookiesandcreamstrudelsbox"] = { dx = 0.2022, dy = 0.0888, dz = 0.04803 }, -- WorldItems/VFX_SnackBox
   ["vfx_cornmuffinmix"] = { dx = 0.1866, dy = 0.08945, dz = 0.1233 }, -- WorldItems/VFX_BoxMix
   ["vfx_cosmicbrownie"] = { dx = 0.0659, dy = 0.1331, dz = 0.01786 }, -- WorldItems/VFX_SnackCake_CosmicBrownie
   ["vfx_cosmicbrowniesbox"] = { dx = 0.2022, dy = 0.0888, dz = 0.04803 }, -- WorldItems/VFX_SnackBox
+  ["vfx_cottagecheese"] = { dx = 0.1757, dy = 0.1757, dz = 0.0382 }, -- WorldItems/VFX_SmallTub
+  ["vfx_cranberries"] = { dx = 0.08488, dy = 0.08644, dz = 0.03166, cy = -0.003076 }, -- WorldItems/VFX_Fruit_Cranberry
   ["vfx_cranberrybreadmix"] = { dx = 0.1866, dy = 0.08945, dz = 0.1233 }, -- WorldItems/VFX_BoxMix
+  ["vfx_cranberrysauce"] = { dx = 0.1072, dy = 0.1072, dz = 0.06079 }, -- WorldItems/VFX_WM_SmallJar
+  ["vfx_creamcheese"] = { dx = 0.1757, dy = 0.1757, dz = 0.0382 }, -- WorldItems/VFX_SmallTub
+  ["vfx_creamcheesefrostingtub"] = { dx = 0.1574, dy = 0.1574, dz = 0.06726 }, -- WorldItems/VFX_FrostingTub
   ["vfx_creamsodacan"] = { dx = 0.09882, dy = 0.09882, dz = 0.05887 }, -- WorldItems/VFX_Can
   ["vfx_croissantdough"] = { dx = 0.1128, dy = 0.1073, dz = 0.01485 }, -- WorldItems/VFX_Dough
+  ["vfx_croutons"] = { dx = 0.1913, dy = 0.05474, dz = 0.1149 }, -- WorldItems/VFX_Pouch
+  ["vfx_croutonscheddar"] = { dx = 0.1913, dy = 0.05474, dz = 0.1149 }, -- WorldItems/VFX_Pouch
+  ["vfx_croutonsgarlic"] = { dx = 0.1913, dy = 0.05474, dz = 0.1149 }, -- WorldItems/VFX_Pouch
+  ["vfx_croutonsherbbutter"] = { dx = 0.1913, dy = 0.05474, dz = 0.1149 }, -- WorldItems/VFX_Pouch
+  ["vfx_crumpet"] = { dx = 0.1688, dy = 0.1615, dz = 0.01161, cx = -0.002131, cy = -0.003543 }, -- WorldItems/VFX_Crumpet
+  ["vfx_crumpetdough"] = { dx = 0.1128, dy = 0.1073, dz = 0.01485 }, -- WorldItems/VFX_Dough
   ["vfx_csuncrustable_box"] = { dx = 0.2037, dy = 0.2299, dz = 0.02575 }, -- WorldItems/VFX_RectangleBox
   ["vfx_custardpuddingbox"] = { dx = 0.2167, dy = 0.1053, dz = 0.05556 }, -- WorldItems/VFX_JelloBox
   ["vfx_custardpuddingcup"] = { dx = 0.1036, dy = 0.1036, dz = 0.0274 }, -- WorldItems/VFX_JelloCup
@@ -7541,8 +8285,20 @@ local MeshSizes = {
   ["vfx_dairypotforged"] = { dx = 0.4153, dy = 0.4477, dz = 0.1437, cx = 0.0101, cy = -0.003494 }, -- WorldItems/VFX_PotForgedFull
   ["vfx_dairysaucepan"] = { dx = 0.3829, dy = 0.2074, dz = 0.05141 }, -- WorldItems/VFX_SaucepanFull
   ["vfx_dairysaucepancopper"] = { dx = 0.2204, dy = 0.4033, dz = 0.05558 }, -- WorldItems/VFX_SaucepanCopperFull
+  ["vfx_dairysmalljar"] = { dx = 0.1564, dy = 0.1512, dz = 0.04467 }, -- WorldItems/VFX_SmallJar
   ["vfx_dairystarter"] = { dx = 0.08052, dy = 0.09172, dz = 0.003569 }, -- WorldItems/VFX_RamenFlavor
+  ["vfx_darksweetcherries"] = { dx = 0.1913, dy = 0.05474, dz = 0.1149 }, -- WorldItems/VFX_Pouch
+  ["vfx_dijonmustard"] = { dx = 0.1276, dy = 0.09006, dz = 0.1014, oz = -0.002729, cy = 0.002507 }, -- WorldItems/VFX_Mustard
   ["vfx_doublechocolatemuffinmix"] = { dx = 0.1866, dy = 0.08945, dz = 0.1233 }, -- WorldItems/VFX_BoxMix
+  ["vfx_driedappleslices"] = { dx = 0.1913, dy = 0.05474, dz = 0.1149 }, -- WorldItems/VFX_Pouch
+  ["vfx_driedapricots"] = { dx = 0.1913, dy = 0.05474, dz = 0.1149 }, -- WorldItems/VFX_Pouch
+  ["vfx_driedbananachips"] = { dx = 0.1913, dy = 0.05474, dz = 0.1149 }, -- WorldItems/VFX_Pouch
+  ["vfx_driedcranberries"] = { dx = 0.1913, dy = 0.05474, dz = 0.1149 }, -- WorldItems/VFX_Pouch
+  ["vfx_drieddates"] = { dx = 0.1913, dy = 0.05474, dz = 0.1149 }, -- WorldItems/VFX_Pouch
+  ["vfx_driedmangoslices"] = { dx = 0.1913, dy = 0.05474, dz = 0.1149 }, -- WorldItems/VFX_Pouch
+  ["vfx_driedpineapple"] = { dx = 0.1913, dy = 0.05474, dz = 0.1149 }, -- WorldItems/VFX_Pouch
+  ["vfx_driedprunes"] = { dx = 0.1913, dy = 0.05474, dz = 0.1149 }, -- WorldItems/VFX_Pouch
+  ["vfx_driedsultanas"] = { dx = 0.1913, dy = 0.05474, dz = 0.1149 }, -- WorldItems/VFX_Pouch
   ["vfx_drinkmixcherry"] = { dx = 0.1348, dy = 0.1522, dz = 0.01704 }, -- WorldItems/VFX_SmallRectangleBox
   ["vfx_drinkmixfruitpunch"] = { dx = 0.1348, dy = 0.1522, dz = 0.01704 }, -- WorldItems/VFX_SmallRectangleBox
   ["vfx_drinkmixgrape"] = { dx = 0.1348, dy = 0.1522, dz = 0.01704 }, -- WorldItems/VFX_SmallRectangleBox
@@ -7555,9 +8311,18 @@ local MeshSizes = {
   ["vfx_ecbreakfastsandwich_box"] = { dx = 0.2037, dy = 0.2299, dz = 0.02575 }, -- WorldItems/VFX_RectangleBox
   ["vfx_enchilada"] = { dx = 0.2225, dy = 0.3104, dz = 0.02735 }, -- WorldItems/VFX_RoastingPanFull
   ["vfx_energytrailmix"] = { dx = 0.1913, dy = 0.05474, dz = 0.1149 }, -- WorldItems/VFX_Pouch
+  ["vfx_englishmuffin"] = { dx = 0.1759, dy = 0.1759, dz = 0.02128 }, -- WorldItems/VFX_EnglishMuffin
+  ["vfx_fetacheese"] = { dx = 0.2488, dy = 0.1587, dz = 0.03897, cx = 0.03138, cy = -0.0195 }, -- WorldItems/VFX_FetaCheese
+  ["vfx_fettuccine"] = { dx = 0.3221, dy = 0.06425, dz = 0.02633 }, -- WorldItems/VFX_LongRectangleBox
+  ["vfx_figs"] = { dx = 0.06189, dy = 0.06189, dz = 0.02865 }, -- WorldItems/VFX_Fruit_Figs
+  ["vfx_flatbread"] = { dx = 0.2178, dy = 0.2216, dz = 0.008928 }, -- WorldItems/VFX_Flatbread
+  ["vfx_flatbreadpizzadough"] = { dx = 0.1974, dy = 0.1877, dz = 0.02599 }, -- WorldItems/VFX_Dough
+  ["vfx_focacciabread"] = { dx = 0.2148, dy = 0.3434, dz = 0.01574 }, -- WorldItems/VFX_Focaccia
   ["vfx_focacciasandwich"] = { dx = 0.2218, dy = 0.1203, dz = 0.01574 }, -- WorldItems/VFX_SandwichFocaccia
+  ["vfx_focacciaslice"] = { dx = 0.2148, dy = 0.1164, dz = 0.01574 }, -- WorldItems/VFX_SliceFocaccia
   ["vfx_focacciatoast"] = { dx = 0.2148, dy = 0.1164, dz = 0.01574 }, -- WorldItems/VFX_SliceFocaccia
   ["vfx_foodstoragecontainer"] = { dx = 0.3219, dy = 0.3219, dz = 0.06957 }, -- WorldItems/VFX_FoodStorageContainer
+  ["vfx_fourcheesetortellini"] = { dx = 0.3521, dy = 0.2527, dz = 0.03286 }, -- WorldItems/VFX_FlatTopPacket
   ["vfx_frenchvanillacakemix"] = { dx = 0.1866, dy = 0.08945, dz = 0.1233 }, -- WorldItems/VFX_BoxMix
   ["vfx_friedrice"] = { dx = 0.4532, dy = 0.2817, dz = 0.01415, cx = -0.01854 }, -- WorldItems/VFX_FryingPanFull
   ["vfx_friedriceforged"] = { dx = 0.4765, dy = 0.2819, dz = 0.01823 }, -- WorldItems/VFX_FryingPanForgedFull
@@ -7574,6 +8339,7 @@ local MeshSizes = {
   ["vfx_fruitchewwatermelon"] = { dx = 0.0898, dy = 0.0426, dz = 0.01739 }, -- WorldItems/VFX_FruitChew
   ["vfx_fruitsaladfruitbox"] = { dx = 0.2167, dy = 0.1053, dz = 0.05556 }, -- WorldItems/VFX_JelloBox
   ["vfx_fruitsaladfruitcup"] = { dx = 0.1036, dy = 0.1036, dz = 0.0274 }, -- WorldItems/VFX_JelloCup
+  ["vfx_frybread"] = { dx = 0.2613, dy = 0.2659, dz = 0.01071 }, -- WorldItems/VFX_Flatbread
   ["vfx_fudge"] = { dx = 0.2828, dy = 0.2063, dz = 0.02927 }, -- WorldItems/VFX_SmallBag
   ["vfx_fudgeround"] = { dx = 0.1117, dy = 0.1117, dz = 0.01914 }, -- WorldItems/VFX_SnackCake_FudgeRound
   ["vfx_fudgeroundsbox"] = { dx = 0.2022, dy = 0.0888, dz = 0.04803 }, -- WorldItems/VFX_SnackBox
@@ -7607,10 +8373,17 @@ local MeshSizes = {
   ["vfx_giantlollipopwildberry"] = { dx = 0.2461, dy = 0.1092, dz = 0.04336, cx = 0.01907 }, -- WorldItems/VFX_GiantLollipop
   ["vfx_gingerbreadcookiemix"] = { dx = 0.1866, dy = 0.08945, dz = 0.1233 }, -- WorldItems/VFX_BoxMix
   ["vfx_gingerteabox"] = { dx = 0.0832, dy = 0.0832, dz = 0.03397 }, -- WorldItems/VFX_TeaBox
+  ["vfx_gnocchi"] = { dx = 0.3521, dy = 0.2527, dz = 0.03286 }, -- WorldItems/VFX_FlatTopPacket
+  ["vfx_goatcheese"] = { dx = 0.1222, dy = 0.1026, dz = 0.04988 }, -- WorldItems/VFX_CheeseGoat
   ["vfx_goldfish"] = { dx = 0.1784, dy = 0.0888, dz = 0.09017 }, -- WorldItems/VFX_CrackerBox
+  ["vfx_goldkiwi"] = { dx = 0.07752, dy = 0.07752, dz = 0.04142 }, -- WorldItems/VFX_Fruit_Kiwi
   ["vfx_grapejellobox"] = { dx = 0.2167, dy = 0.1053, dz = 0.05556 }, -- WorldItems/VFX_JelloBox
   ["vfx_grapejellocup"] = { dx = 0.1036, dy = 0.1036, dz = 0.0274 }, -- WorldItems/VFX_JelloCup
+  ["vfx_greekyogurtpot"] = { dx = 0.1574, dy = 0.1574, dz = 0.06726 }, -- WorldItems/VFX_FrostingTub
+  ["vfx_greenkiwi"] = { dx = 0.07752, dy = 0.07752, dz = 0.04142 }, -- WorldItems/VFX_Fruit_Kiwi
   ["vfx_greenteabox"] = { dx = 0.0832, dy = 0.0832, dz = 0.03397 }, -- WorldItems/VFX_TeaBox
+  ["vfx_groundbeefravioli"] = { dx = 0.3521, dy = 0.2527, dz = 0.03286 }, -- WorldItems/VFX_FlatTopPacket
+  ["vfx_groundbeeftortellini"] = { dx = 0.3521, dy = 0.2527, dz = 0.03286 }, -- WorldItems/VFX_FlatTopPacket
   ["vfx_gumballbanana"] = { dx = 0.08921, dy = 0.08921, dz = 0.03643 }, -- WorldItems/VFX_GumBall
   ["vfx_gumballblueberry"] = { dx = 0.08921, dy = 0.08921, dz = 0.03643 }, -- WorldItems/VFX_GumBall
   ["vfx_gumballcherry"] = { dx = 0.08921, dy = 0.08921, dz = 0.03643 }, -- WorldItems/VFX_GumBall
@@ -7621,31 +8394,66 @@ local MeshSizes = {
   ["vfx_gumballstrawberry"] = { dx = 0.08921, dy = 0.08921, dz = 0.03643 }, -- WorldItems/VFX_GumBall
   ["vfx_gumcinnamon"] = { dx = 0.1594, dy = 0.04683, dz = 0.01141 }, -- WorldItems/VFX_Gum
   ["vfx_gumgreenapple"] = { dx = 0.1594, dy = 0.04683, dz = 0.01141 }, -- WorldItems/VFX_Gum
+  ["vfx_gummycola"] = { dx = 0.134, dy = 0.1417, dz = 0.008138, cx = -0.003754, cy = 0.03476 }, -- WorldItems/VFX_ColaGummy
+  ["vfx_gummypeachrings"] = { dx = 0.1832, dy = 0.1268, dz = 0.01466, cx = 0.005717, cy = 0.02076 }, -- WorldItems/VFX_PeachRings
   ["vfx_gumpeppermint"] = { dx = 0.1594, dy = 0.04683, dz = 0.01141 }, -- WorldItems/VFX_Gum
   ["vfx_gumpinkbubblegum"] = { dx = 0.1594, dy = 0.04683, dz = 0.01141 }, -- WorldItems/VFX_Gum
   ["vfx_gumspearmint"] = { dx = 0.1594, dy = 0.04683, dz = 0.01141 }, -- WorldItems/VFX_Gum
   ["vfx_gumtuttifruity"] = { dx = 0.1594, dy = 0.04683, dz = 0.01141 }, -- WorldItems/VFX_Gum
   ["vfx_gumwatermelon"] = { dx = 0.1594, dy = 0.04683, dz = 0.01141 }, -- WorldItems/VFX_Gum
+  ["vfx_hashbrowns"] = { dx = 0.2207, dy = 0.1675, dz = 0.02614, oz = 0.002261, cx = 0.009333, cy = -0.004199 }, -- WorldItems/VFX_Hashbrowns
+  ["vfx_hazelnuts"] = { dx = 0.1913, dy = 0.05474, dz = 0.1149 }, -- WorldItems/VFX_Pouch
+  ["vfx_heavycream"] = { dx = 0.1139, dy = 0.08008, dz = 0.06235 }, -- WorldItems/VFX_SmallCarton
+  ["vfx_homemadegnocchi"] = { dx = 0.1848, dy = 0.1948, dz = 0.02329, cx = -0.01455, cy = 0.009739 }, -- WorldItems/VFX_HomemadeGnocchi
+  ["vfx_homemadepasta"] = { dx = 0.2339, dy = 0.2339, dz = 0.02692 }, -- WorldItems/VFX_HomemadePasta
   ["vfx_homestylebiscuitmix"] = { dx = 0.1866, dy = 0.08945, dz = 0.1233 }, -- WorldItems/VFX_BoxMix
+  ["vfx_honeymustard"] = { dx = 0.1276, dy = 0.09006, dz = 0.1014, oz = -0.002729, cy = 0.002507 }, -- WorldItems/VFX_Mustard
+  ["vfx_horseradish"] = { dx = 0.1072, dy = 0.1072, dz = 0.06079 }, -- WorldItems/VFX_WM_SmallJar
   ["vfx_hotdoghomemade"] = { dx = 0.2561, dy = 0.06113, dz = 0.02285 }, -- WorldItems/VFX_HotdogDough
   ["vfx_icedteagreen"] = { dx = 0.1269, dy = 0.1269, dz = 0.1819 }, -- WorldItems/VFX_IcedTeaBottle
   ["vfx_icedtealemon"] = { dx = 0.1269, dy = 0.1269, dz = 0.1819 }, -- WorldItems/VFX_IcedTeaBottle
   ["vfx_icedteapeach"] = { dx = 0.1269, dy = 0.1269, dz = 0.1819 }, -- WorldItems/VFX_IcedTeaBottle
   ["vfx_icedtearaspberry"] = { dx = 0.1269, dy = 0.1269, dz = 0.1819 }, -- WorldItems/VFX_IcedTeaBottle
   ["vfx_icedteasweet"] = { dx = 0.1269, dy = 0.1269, dz = 0.1819 }, -- WorldItems/VFX_IcedTeaBottle
+  ["vfx_imitationcrab"] = { dx = 0.2072, dy = 0.07338, dz = 0.01563, cx = 0.002923 }, -- WorldItems/VFX_WM_ImitationCrab
+  ["vfx_jarapricotsopen"] = { dx = 0.1098, dy = 0.1098, dz = 0.06243 }, -- WorldItems/VFX_JarFoodOpen
+  ["vfx_jarbeetrootopen"] = { dx = 0.1098, dy = 0.1098, dz = 0.06243 }, -- WorldItems/VFX_JarFoodOpen
   ["vfx_jarblackolives"] = { dx = 0.1454, dy = 0.1454, dz = 0.08266 }, -- WorldItems/VFX_Jar
+  ["vfx_jarblackolivesopen"] = { dx = 0.1512, dy = 0.1512, dz = 0.07735 }, -- WorldItems/VFX_JarOpen
+  ["vfx_jarbrusselsproutsopen"] = { dx = 0.1098, dy = 0.1098, dz = 0.06243 }, -- WorldItems/VFX_JarFoodOpen
+  ["vfx_jarcherryopen"] = { dx = 0.1098, dy = 0.1098, dz = 0.06243 }, -- WorldItems/VFX_JarFoodOpen
+  ["vfx_jarcucumberopen"] = { dx = 0.1098, dy = 0.1098, dz = 0.06243 }, -- WorldItems/VFX_JarFoodOpen
+  ["vfx_jargarlicopen"] = { dx = 0.1098, dy = 0.1098, dz = 0.06243 }, -- WorldItems/VFX_JarFoodOpen
+  ["vfx_jargreenbeansopen"] = { dx = 0.1098, dy = 0.1098, dz = 0.06243 }, -- WorldItems/VFX_JarFoodOpen
   ["vfx_jargreenolives"] = { dx = 0.1454, dy = 0.1454, dz = 0.08266 }, -- WorldItems/VFX_Jar
+  ["vfx_jargreenolivesopen"] = { dx = 0.1512, dy = 0.1512, dz = 0.07735 }, -- WorldItems/VFX_JarOpen
+  ["vfx_jargreenpeasopen"] = { dx = 0.1098, dy = 0.1098, dz = 0.06243 }, -- WorldItems/VFX_JarFoodOpen
+  ["vfx_jaronionopen"] = { dx = 0.1098, dy = 0.1098, dz = 0.06243 }, -- WorldItems/VFX_JarFoodOpen
+  ["vfx_jarpeachopen"] = { dx = 0.1098, dy = 0.1098, dz = 0.06243 }, -- WorldItems/VFX_JarFoodOpen
+  ["vfx_jarpearopen"] = { dx = 0.1098, dy = 0.1098, dz = 0.06243 }, -- WorldItems/VFX_JarFoodOpen
+  ["vfx_jarpepperjalapenoopen"] = { dx = 0.1098, dy = 0.1098, dz = 0.06243 }, -- WorldItems/VFX_JarFoodOpen
   ["vfx_jarpickledeggs"] = { dx = 0.1454, dy = 0.1454, dz = 0.08266 }, -- WorldItems/VFX_Jar
+  ["vfx_jarpickledeggsopen"] = { dx = 0.1512, dy = 0.1512, dz = 0.07735 }, -- WorldItems/VFX_JarOpen
   ["vfx_jarpickledpeppers"] = { dx = 0.1454, dy = 0.1454, dz = 0.08266 }, -- WorldItems/VFX_Jar
+  ["vfx_jarpickledpeppersopen"] = { dx = 0.1512, dy = 0.1512, dz = 0.07735 }, -- WorldItems/VFX_JarOpen
   ["vfx_jarpicklejuiceopen"] = { dx = 0.1512, dy = 0.1512, dz = 0.07735 }, -- WorldItems/VFX_JarOpen
   ["vfx_jarpickles"] = { dx = 0.1454, dy = 0.1454, dz = 0.08266 }, -- WorldItems/VFX_Jar
+  ["vfx_jarplumsopen"] = { dx = 0.1098, dy = 0.1098, dz = 0.06243 }, -- WorldItems/VFX_JarFoodOpen
+  ["vfx_jarpumpkinopen"] = { dx = 0.1098, dy = 0.1098, dz = 0.06243 }, -- WorldItems/VFX_JarFoodOpen
+  ["vfx_jarsquashopen"] = { dx = 0.1098, dy = 0.1098, dz = 0.06243 }, -- WorldItems/VFX_JarFoodOpen
   ["vfx_jarsundriedtomatoes"] = { dx = 0.1454, dy = 0.1454, dz = 0.08266 }, -- WorldItems/VFX_Jar
+  ["vfx_jarsundriedtomatoesopen"] = { dx = 0.1512, dy = 0.1512, dz = 0.07735 }, -- WorldItems/VFX_JarOpen
+  ["vfx_jarsweetcornopen"] = { dx = 0.1098, dy = 0.1098, dz = 0.06243 }, -- WorldItems/VFX_JarFoodOpen
+  ["vfx_jarsweetpotatoopen"] = { dx = 0.1098, dy = 0.1098, dz = 0.06243 }, -- WorldItems/VFX_JarFoodOpen
+  ["vfx_jarzucchiniopen"] = { dx = 0.1098, dy = 0.1098, dz = 0.06243 }, -- WorldItems/VFX_JarFoodOpen
   ["vfx_jawbreaker"] = { dx = 0.116, dy = 0.116, dz = 0.04736, oz = 0.004227 }, -- WorldItems/VFX_GumBall
   ["vfx_lambleg"] = { dx = 0.4114, dy = 0.1146, dz = 0.02428, cx = -0.01314, cy = 0.009872 }, -- WorldItems/VFX_LambLeg
   ["vfx_lasagna"] = { dx = 0.2225, dy = 0.3104, dz = 0.02735 }, -- WorldItems/VFX_RoastingPanFull
   ["vfx_lasagnasheets"] = { dx = 0.1866, dy = 0.08945, dz = 0.1233 }, -- WorldItems/VFX_BoxMix
+  ["vfx_lemonfrostingtub"] = { dx = 0.1574, dy = 0.1574, dz = 0.06726 }, -- WorldItems/VFX_FrostingTub
   ["vfx_lemonjellobox"] = { dx = 0.2167, dy = 0.1053, dz = 0.05556 }, -- WorldItems/VFX_JelloBox
   ["vfx_lemonjellocup"] = { dx = 0.1036, dy = 0.1036, dz = 0.0274 }, -- WorldItems/VFX_JelloCup
+  ["vfx_lemonjuice"] = { dx = 0.08764, dy = 0.08764, dz = 0.05292 }, -- WorldItems/VFX_LemonBottle
   ["vfx_lemonlimejellobox"] = { dx = 0.2167, dy = 0.1053, dz = 0.05556 }, -- WorldItems/VFX_JelloBox
   ["vfx_lemonlimejellocup"] = { dx = 0.1036, dy = 0.1036, dz = 0.0274 }, -- WorldItems/VFX_JelloCup
   ["vfx_lemonlimesodacan"] = { dx = 0.09882, dy = 0.09882, dz = 0.05887 }, -- WorldItems/VFX_Can
@@ -7654,6 +8462,8 @@ local MeshSizes = {
   ["vfx_lemonteabox"] = { dx = 0.0832, dy = 0.0832, dz = 0.03397 }, -- WorldItems/VFX_TeaBox
   ["vfx_limejellobox"] = { dx = 0.2167, dy = 0.1053, dz = 0.05556 }, -- WorldItems/VFX_JelloBox
   ["vfx_limejellocup"] = { dx = 0.1036, dy = 0.1036, dz = 0.0274 }, -- WorldItems/VFX_JelloCup
+  ["vfx_limejuice"] = { dx = 0.08764, dy = 0.08764, dz = 0.05292 }, -- WorldItems/VFX_LemonBottle
+  ["vfx_lobsterravioli"] = { dx = 0.3521, dy = 0.2527, dz = 0.03286 }, -- WorldItems/VFX_FlatTopPacket
   ["vfx_lollipopblueraspberry"] = { dx = 0.2218, dy = 0.07804, dz = 0.03142, cx = 0.01411 }, -- WorldItems/VFX_Lollipop
   ["vfx_lollipopbutterscotch"] = { dx = 0.2218, dy = 0.07804, dz = 0.03142, cx = 0.01411 }, -- WorldItems/VFX_Lollipop
   ["vfx_lollipopcherry"] = { dx = 0.2218, dy = 0.07804, dz = 0.03142, cx = 0.01411 }, -- WorldItems/VFX_Lollipop
@@ -7667,21 +8477,43 @@ local MeshSizes = {
   ["vfx_lollipopstrawberry"] = { dx = 0.2218, dy = 0.07804, dz = 0.03142, cx = 0.01411 }, -- WorldItems/VFX_Lollipop
   ["vfx_lollipopwatermelon"] = { dx = 0.2218, dy = 0.07804, dz = 0.03142, cx = 0.01411 }, -- WorldItems/VFX_Lollipop
   ["vfx_lollipopwildberry"] = { dx = 0.2218, dy = 0.07804, dz = 0.03142, cx = 0.01411 }, -- WorldItems/VFX_Lollipop
+  ["vfx_macaroni"] = { dx = 0.1866, dy = 0.08945, dz = 0.1233 }, -- WorldItems/VFX_BoxMix
   ["vfx_mandarinfruitbox"] = { dx = 0.2167, dy = 0.1053, dz = 0.05556 }, -- WorldItems/VFX_JelloBox
   ["vfx_mandarinfruitcup"] = { dx = 0.1036, dy = 0.1036, dz = 0.0274 }, -- WorldItems/VFX_JelloCup
+  ["vfx_mangochunks"] = { dx = 0.1913, dy = 0.05474, dz = 0.1149 }, -- WorldItems/VFX_Pouch
   ["vfx_mashpot"] = { dx = 0.3158, dy = 0.3481, dz = 0.1102 }, -- WorldItems/VFX_PotFull
   ["vfx_mashpotforged"] = { dx = 0.4153, dy = 0.4477, dz = 0.1437, cx = 0.0101, cy = -0.003494 }, -- WorldItems/VFX_PotForgedFull
+  ["vfx_meatballfish"] = { dx = 0.09905, dy = 0.09793, dz = 0.03792, oz = -0.005302 }, -- WorldItems/VFX_Meatball
+  ["vfx_meatballfrog"] = { dx = 0.09905, dy = 0.09793, dz = 0.03792, oz = -0.005302 }, -- WorldItems/VFX_Meatball
+  ["vfx_meatballlamb"] = { dx = 0.09905, dy = 0.09793, dz = 0.03792, oz = -0.005302 }, -- WorldItems/VFX_Meatball
+  ["vfx_meatballrabbit"] = { dx = 0.09905, dy = 0.09793, dz = 0.03792, oz = -0.005302 }, -- WorldItems/VFX_Meatball
+  ["vfx_meatballrodent"] = { dx = 0.09905, dy = 0.09793, dz = 0.03792, oz = -0.005302 }, -- WorldItems/VFX_Meatball
+  ["vfx_meatballsalmon"] = { dx = 0.09905, dy = 0.09793, dz = 0.03792, oz = -0.005302 }, -- WorldItems/VFX_Meatball
+  ["vfx_meatballsmallbird"] = { dx = 0.09905, dy = 0.09793, dz = 0.03792, oz = -0.005302 }, -- WorldItems/VFX_Meatball
+  ["vfx_meatballvenison"] = { dx = 0.09905, dy = 0.09793, dz = 0.03792, oz = -0.005302 }, -- WorldItems/VFX_Meatball
   ["vfx_meatloaf"] = { dx = 0.2225, dy = 0.3104, dz = 0.02735 }, -- WorldItems/VFX_RoastingPanFull
   ["vfx_meatloverspizzaroll_box"] = { dx = 0.4885, dy = 0.2745, dz = 0.0299 }, -- WorldItems/VFX_Packaging_Bag
   ["vfx_metalfoodstoragecontainer"] = { dx = 0.2519, dy = 0.3668, dz = 0.0469 }, -- WorldItems/VFX_MetalFoodStorageContainer
+  ["vfx_milkbread"] = { dx = 0.2256, dy = 0.2145, dz = 0.02971 }, -- WorldItems/VFX_Dough
   ["vfx_milkbreadsandwich"] = { dx = 0.1564, dy = 0.1902, dz = 0.01555, cy = -0.01897 }, -- WorldItems/VFX_Sandwich
+  ["vfx_milkbreadslice"] = { dx = 0.1518, dy = 0.1844, dz = 0.005845, cy = -0.01842 }, -- WorldItems/VFX_SliceBread
   ["vfx_milkbreadtoast"] = { dx = 0.1518, dy = 0.1844, dz = 0.005845, cy = -0.01842 }, -- WorldItems/VFX_SliceBread
   ["vfx_milkshake"] = { dx = 0.09986, dy = 0.09186, dz = 0.1045, cx = 0.004 }, -- WorldItems/VFX_Milkshake
   ["vfx_milkshakeglass"] = { dx = 0.09186, dy = 0.09186, dz = 0.06865 }, -- WorldItems/VFX_MilkshakeGlass
+  ["vfx_mintchocolatechipicecream"] = { dx = 0.162, dy = 0.162, dz = 0.07058, oz = -0.04436 }, -- WorldItems/VFX_IceCream
   ["vfx_mintchocolatechipicecreammelted"] = { dx = 0.162, dy = 0.162, dz = 0.07058, oz = -0.04436 }, -- WorldItems/VFX_IceCream
+  ["vfx_mixedberryyogurtpot"] = { dx = 0.1574, dy = 0.1574, dz = 0.06726 }, -- WorldItems/VFX_FrostingTub
+  ["vfx_mixedfruit"] = { dx = 0.1913, dy = 0.05474, dz = 0.1149 }, -- WorldItems/VFX_Pouch
+  ["vfx_mixednuts"] = { dx = 0.1913, dy = 0.05474, dz = 0.1149 }, -- WorldItems/VFX_Pouch
+  ["vfx_molasses"] = { dx = 0.06421, dy = 0.06421, dz = 0.06705 }, -- WorldItems/VFX_VanillaExtract
   ["vfx_mountaintrailmix"] = { dx = 0.1913, dy = 0.05474, dz = 0.1149 }, -- WorldItems/VFX_Pouch
+  ["vfx_mozzarellacheese"] = { dx = 0.1359, dy = 0.1359, dz = 0.02933 }, -- WorldItems/VFX_CheeseMozzarella
+  ["vfx_naanbread"] = { dx = 0.317, dy = 0.2668, dz = 0.01326, cx = 0.02841 }, -- WorldItems/VFX_NaanBread
   ["vfx_nachos"] = { dx = 0.2225, dy = 0.3104, dz = 0.02735 }, -- WorldItems/VFX_RoastingPanNachos
+  ["vfx_naturalyogurtpot"] = { dx = 0.1574, dy = 0.1574, dz = 0.06726 }, -- WorldItems/VFX_FrostingTub
+  ["vfx_neapolitanicecream"] = { dx = 0.162, dy = 0.162, dz = 0.07058, oz = -0.04436 }, -- WorldItems/VFX_IceCream
   ["vfx_neapolitanicecreammelted"] = { dx = 0.162, dy = 0.162, dz = 0.07058, oz = -0.04436 }, -- WorldItems/VFX_IceCream
+  ["vfx_nectarines"] = { dx = 0.08488, dy = 0.08644, dz = 0.03164, cy = -0.003076 }, -- WorldItems/VFX_Fruit_Nectarines
   ["vfx_nuttygranolabarbox"] = { dx = 0.2609, dy = 0.07236, dz = 0.07628 }, -- WorldItems/VFX_GranolaBarBox
   ["vfx_oatgranolabarbox"] = { dx = 0.2609, dy = 0.07236, dz = 0.07628 }, -- WorldItems/VFX_GranolaBarBox
   ["vfx_oatmealcookiemix"] = { dx = 0.1866, dy = 0.08945, dz = 0.1233 }, -- WorldItems/VFX_BoxMix
@@ -7702,6 +8534,8 @@ local MeshSizes = {
   ["vfx_packstout"] = { dx = 0.2483, dy = 0.3019, dz = 0.1598, cx = -0.004257, cy = 0.002649 }, -- WorldItems/VFX_BeerBottlePack
   ["vfx_packviennalager"] = { dx = 0.2483, dy = 0.3019, dz = 0.1598, cx = -0.004257, cy = 0.002649 }, -- WorldItems/VFX_BeerBottlePack
   ["vfx_panchickenpotpie"] = { dx = 0.2709, dy = 0.2576, dz = 0.02489 }, -- WorldItems/VFX_BakingPanFull
+  ["vfx_papaya"] = { dx = 0.1327, dy = 0.183, dz = 0.0546, cy = -0.005976 }, -- WorldItems/VFX_Fruit_Papaya
+  ["vfx_parmesancheese"] = { dx = 0.1105, dy = 0.1501, dz = 0.03875, cy = 0.02501 }, -- WorldItems/VFX_CheeseWedge
   ["vfx_pastamealalfredo"] = { dx = 0.1913, dy = 0.05474, dz = 0.1149 }, -- WorldItems/VFX_Pouch
   ["vfx_pastamealcheddarbroccoli"] = { dx = 0.1913, dy = 0.05474, dz = 0.1149 }, -- WorldItems/VFX_Pouch
   ["vfx_pastamealcreamychicken"] = { dx = 0.1913, dy = 0.05474, dz = 0.1149 }, -- WorldItems/VFX_Pouch
@@ -7715,18 +8549,29 @@ local MeshSizes = {
   ["vfx_peachfruitcup"] = { dx = 0.1036, dy = 0.1036, dz = 0.0274 }, -- WorldItems/VFX_JelloCup
   ["vfx_peachjellobox"] = { dx = 0.2167, dy = 0.1053, dz = 0.05556 }, -- WorldItems/VFX_JelloBox
   ["vfx_peachjellocup"] = { dx = 0.1036, dy = 0.1036, dz = 0.0274 }, -- WorldItems/VFX_JelloCup
+  ["vfx_peachyogurtpot"] = { dx = 0.1574, dy = 0.1574, dz = 0.06726 }, -- WorldItems/VFX_FrostingTub
   ["vfx_peanutbuttercookiemix"] = { dx = 0.1866, dy = 0.08945, dz = 0.1233 }, -- WorldItems/VFX_BoxMix
   ["vfx_peanutbuttergranolabarbox"] = { dx = 0.2609, dy = 0.07236, dz = 0.07628 }, -- WorldItems/VFX_GranolaBarBox
   ["vfx_pearfruitbox"] = { dx = 0.2167, dy = 0.1053, dz = 0.05556 }, -- WorldItems/VFX_JelloBox
   ["vfx_pearfruitcup"] = { dx = 0.1036, dy = 0.1036, dz = 0.0274 }, -- WorldItems/VFX_JelloCup
+  ["vfx_pecans"] = { dx = 0.1913, dy = 0.05474, dz = 0.1149 }, -- WorldItems/VFX_Pouch
+  ["vfx_penne"] = { dx = 0.1866, dy = 0.08945, dz = 0.1233 }, -- WorldItems/VFX_BoxMix
+  ["vfx_pepperedporktortellini"] = { dx = 0.3521, dy = 0.2527, dz = 0.03286 }, -- WorldItems/VFX_FlatTopPacket
   ["vfx_peppermintteabox"] = { dx = 0.0832, dy = 0.0832, dz = 0.03397 }, -- WorldItems/VFX_TeaBox
   ["vfx_pepperonipizzaroll_box"] = { dx = 0.4885, dy = 0.2745, dz = 0.0299 }, -- WorldItems/VFX_Packaging_Bag
+  ["vfx_picklerelish"] = { dx = 0.1072, dy = 0.1072, dz = 0.06079 }, -- WorldItems/VFX_WM_SmallJar
+  ["vfx_pineapplechunks"] = { dx = 0.1913, dy = 0.05474, dz = 0.1149 }, -- WorldItems/VFX_Pouch
   ["vfx_pineapplefruitbox"] = { dx = 0.2167, dy = 0.1053, dz = 0.05556 }, -- WorldItems/VFX_JelloBox
   ["vfx_pineapplefruitcup"] = { dx = 0.1036, dy = 0.1036, dz = 0.0274 }, -- WorldItems/VFX_JelloCup
   ["vfx_pineapplejellobox"] = { dx = 0.2167, dy = 0.1053, dz = 0.05556 }, -- WorldItems/VFX_JelloBox
   ["vfx_pineapplejellocup"] = { dx = 0.1036, dy = 0.1036, dz = 0.0274 }, -- WorldItems/VFX_JelloCup
+  ["vfx_pinenuts"] = { dx = 0.1424, dy = 0.219, dz = 0.01881, cy = 0.002366 }, -- WorldItems/VFX_SmallPouch
+  ["vfx_pistachioicecream"] = { dx = 0.162, dy = 0.162, dz = 0.07058, oz = -0.04436 }, -- WorldItems/VFX_IceCream
   ["vfx_pistachioicecreammelted"] = { dx = 0.162, dy = 0.162, dz = 0.07058, oz = -0.04436 }, -- WorldItems/VFX_IceCream
   ["vfx_pistachiopuddingmix"] = { dx = 0.1866, dy = 0.08945, dz = 0.1233 }, -- WorldItems/VFX_BoxMix
+  ["vfx_pistachios"] = { dx = 0.1913, dy = 0.05474, dz = 0.1149 }, -- WorldItems/VFX_Pouch
+  ["vfx_pitabread"] = { dx = 0.2613, dy = 0.2659, dz = 0.01071 }, -- WorldItems/VFX_Flatbread
+  ["vfx_pizzadough"] = { dx = 0.1974, dy = 0.1877, dz = 0.02599 }, -- WorldItems/VFX_Dough
   ["vfx_pizzaroll"] = { dx = 0.1663, dy = 0.159, dz = 0.01322 }, -- WorldItems/VFX_PizzaRoll
   ["vfx_plasticpitcher"] = { dx = 0.1453, dy = 0.1947, dz = 0.09897, cy = 0.007473 }, -- WorldItems/VFX_PlasticPitcher
   ["vfx_platebakedziti"] = { dx = 0.2499, dy = 0.2499, dz = 0.02232 }, -- WorldItems/VFX_PlateFullOne
@@ -7750,6 +8595,8 @@ local MeshSizes = {
   ["vfx_plateshepherdspie"] = { dx = 0.2499, dy = 0.2499, dz = 0.02232 }, -- WorldItems/VFX_PlateFullOne
   ["vfx_platestuffedbellpepper"] = { dx = 0.2499, dy = 0.2499, dz = 0.03349 }, -- WorldItems/VFX_PlateBellPepper
   ["vfx_platetunacasserole"] = { dx = 0.2499, dy = 0.2499, dz = 0.02232 }, -- WorldItems/VFX_PlateFullOne
+  ["vfx_plum"] = { dx = 0.08488, dy = 0.08644, dz = 0.03164, cy = -0.003076 }, -- WorldItems/VFX_Fruit_Plum
+  ["vfx_pomegranate"] = { dx = 0.1029, dy = 0.1029, dz = 0.04397 }, -- WorldItems/VFX_Fruit_Pomegranate
   ["vfx_poprocksblueraspberry"] = { dx = 0.1267, dy = 0.1708, dz = 0.006919 }, -- WorldItems/VFX_PopRocks
   ["vfx_poprockscherry"] = { dx = 0.1267, dy = 0.1708, dz = 0.006919 }, -- WorldItems/VFX_PopRocks
   ["vfx_poprockscottoncandy"] = { dx = 0.1267, dy = 0.1708, dz = 0.006919 }, -- WorldItems/VFX_PopRocks
@@ -7762,6 +8609,7 @@ local MeshSizes = {
   ["vfx_porkmeatball"] = { dx = 0.09905, dy = 0.09793, dz = 0.03792, oz = -0.005302 }, -- WorldItems/VFX_Meatball
   ["vfx_porkmeatballsbag"] = { dx = 0.4705, dy = 0.358, dz = 0.03945, oz = -0.004968, cx = -0.03273 }, -- WorldItems/VFX_MeatballBag
   ["vfx_porkribs"] = { dx = 0.2505, dy = 0.1638, dz = 0.01637 }, -- WorldItems/VFX_PorkRibs
+  ["vfx_porksausage"] = { dx = 0.04017, dy = 0.1915, dz = 0.01554 }, -- WorldItems/VFX_Sausage
   ["vfx_porksausagepack"] = { dx = 0.2782, dy = 0.2533, dz = 0.01821 }, -- WorldItems/VFX_SausagePack
   ["vfx_potbutterchicken"] = { dx = 0.3158, dy = 0.3481, dz = 0.1102 }, -- WorldItems/VFX_PotFull
   ["vfx_potchanamasala"] = { dx = 0.3158, dy = 0.3481, dz = 0.1102 }, -- WorldItems/VFX_PotFull
@@ -7769,11 +8617,18 @@ local MeshSizes = {
   ["vfx_potsweetpotatochickpeacurry"] = { dx = 0.3158, dy = 0.3481, dz = 0.1102 }, -- WorldItems/VFX_PotFull
   ["vfx_potthaigreencurry"] = { dx = 0.3158, dy = 0.3481, dz = 0.1102 }, -- WorldItems/VFX_PotFull
   ["vfx_pottofucurry"] = { dx = 0.3158, dy = 0.3481, dz = 0.1102 }, -- WorldItems/VFX_PotFull
+  ["vfx_pretzel"] = { dx = 0.181, dy = 0.1794, dz = 0.009182, cy = 0.01936 }, -- WorldItems/VFX_PretzelDough
   ["vfx_proteinshaker"] = { dx = 0.104, dy = 0.104, dz = 0.09489, oz = -0.01052 }, -- WorldItems/VFX_ProteinShaker
+  ["vfx_pumpernickel"] = { dx = 0.2256, dy = 0.2145, dz = 0.02971 }, -- WorldItems/VFX_Dough
   ["vfx_pumpernickelsandwich"] = { dx = 0.1564, dy = 0.1902, dz = 0.01555, cy = -0.01897 }, -- WorldItems/VFX_Sandwich
+  ["vfx_pumpernickelslice"] = { dx = 0.1518, dy = 0.1844, dz = 0.005845, cy = -0.01842 }, -- WorldItems/VFX_SliceBread
   ["vfx_pumpernickeltoast"] = { dx = 0.1518, dy = 0.1844, dz = 0.005845, cy = -0.01842 }, -- WorldItems/VFX_SliceBread
   ["vfx_pumpkinbreadmix"] = { dx = 0.1866, dy = 0.08945, dz = 0.1233 }, -- WorldItems/VFX_BoxMix
+  ["vfx_pumpkinravioli"] = { dx = 0.3521, dy = 0.2527, dz = 0.03286 }, -- WorldItems/VFX_FlatTopPacket
   ["vfx_pumpkinsoupsachet"] = { dx = 0.0557, dy = 0.2398, dz = 0.01118, cy = -0.003661 }, -- WorldItems/VFX_SoupSachet
+  ["vfx_punnetblackberries"] = { dx = 0.166, dy = 0.1554, dz = 0.02262 }, -- WorldItems/VFX_Fruit_Punnet
+  ["vfx_punnetblueberries"] = { dx = 0.166, dy = 0.1554, dz = 0.02262 }, -- WorldItems/VFX_Fruit_Punnet
+  ["vfx_punnetraspberries"] = { dx = 0.166, dy = 0.1554, dz = 0.02262 }, -- WorldItems/VFX_Fruit_Punnet
   ["vfx_pushpopcherry"] = { dx = 0.0619, dy = 0.05717, dz = 0.07539, cx = 0.002363 }, -- WorldItems/VFX_PushPop
   ["vfx_pushpopcola"] = { dx = 0.0619, dy = 0.05717, dz = 0.07539, cx = 0.002363 }, -- WorldItems/VFX_PushPop
   ["vfx_pushpopfruitfrenzy"] = { dx = 0.0619, dy = 0.05717, dz = 0.07539, cx = 0.002363 }, -- WorldItems/VFX_PushPop
@@ -7786,12 +8641,16 @@ local MeshSizes = {
   ["vfx_rainbowlollipop"] = { dx = 0.3835, dy = 0.1988, dz = 0.01623, cx = -0.01407 }, -- WorldItems/VFX_RainbowLollipop
   ["vfx_ramenbeef"] = { dx = 0.161, dy = 0.1385, dz = 0.01835, cx = 0.004191 }, -- WorldItems/VFX_PacketRamen
   ["vfx_ramenchicken"] = { dx = 0.161, dy = 0.1385, dz = 0.01835, cx = 0.004191 }, -- WorldItems/VFX_PacketRamen
+  ["vfx_ramenflavor"] = { dx = 0.05368, dy = 0.06115, dz = 0.002379 }, -- WorldItems/VFX_RamenFlavor
   ["vfx_ramenhotandspicy"] = { dx = 0.161, dy = 0.1385, dz = 0.01835, cx = 0.004191 }, -- WorldItems/VFX_PacketRamen
   ["vfx_ramenpork"] = { dx = 0.161, dy = 0.1385, dz = 0.01835, cx = 0.004191 }, -- WorldItems/VFX_PacketRamen
   ["vfx_ramenshrimp"] = { dx = 0.161, dy = 0.1385, dz = 0.01835, cx = 0.004191 }, -- WorldItems/VFX_PacketRamen
   ["vfx_ramensoysauce"] = { dx = 0.161, dy = 0.1385, dz = 0.01835, cx = 0.004191 }, -- WorldItems/VFX_PacketRamen
+  ["vfx_raspberries"] = { dx = 0.1913, dy = 0.05474, dz = 0.1149 }, -- WorldItems/VFX_Pouch
   ["vfx_raspberryjellobox"] = { dx = 0.2167, dy = 0.1053, dz = 0.05556 }, -- WorldItems/VFX_JelloBox
   ["vfx_raspberryjellocup"] = { dx = 0.1036, dy = 0.1036, dz = 0.0274 }, -- WorldItems/VFX_JelloCup
+  ["vfx_raspberryyogurtpot"] = { dx = 0.1574, dy = 0.1574, dz = 0.06726 }, -- WorldItems/VFX_FrostingTub
+  ["vfx_redtartcherries"] = { dx = 0.1913, dy = 0.05474, dz = 0.1149 }, -- WorldItems/VFX_Pouch
   ["vfx_redvelvetcakemix"] = { dx = 0.1866, dy = 0.08945, dz = 0.1233 }, -- WorldItems/VFX_BoxMix
   ["vfx_rennet"] = { dx = 0.1106, dy = 0.1106, dz = 0.05754 }, -- WorldItems/VFX_RennetJar
   ["vfx_ricecakesapplecinnamon"] = { dx = 0.121, dy = 0.1513, dz = 0.1386 }, -- WorldItems/VFX_RiceCakeBag
@@ -7810,18 +8669,25 @@ local MeshSizes = {
   ["vfx_ringpopsourcherry"] = { dx = 0.09366, dy = 0.09237, dz = 0.03629 }, -- WorldItems/VFX_RingPop
   ["vfx_ringpoptropical"] = { dx = 0.09366, dy = 0.09237, dz = 0.03629 }, -- WorldItems/VFX_RingPop
   ["vfx_ringpopwatermelon"] = { dx = 0.09366, dy = 0.09237, dz = 0.03629 }, -- WorldItems/VFX_RingPop
+  ["vfx_ritzcrackers"] = { dx = 0.3003, dy = 0.07179, dz = 0.02931 }, -- WorldItems/VFX_LongCylinderBox
+  ["vfx_rockyroadicecream"] = { dx = 0.162, dy = 0.162, dz = 0.07058, oz = -0.04436 }, -- WorldItems/VFX_IceCream
   ["vfx_rockyroadicecreammelted"] = { dx = 0.162, dy = 0.162, dz = 0.07058, oz = -0.04436 }, -- WorldItems/VFX_IceCream
   ["vfx_rolledoats"] = { dx = 0.4096, dy = 0.5807, dz = 0.05454, oz = 0.002672, cy = 0.002218 }, -- WorldItems/VFX_RolledOats
   ["vfx_rootbeercan"] = { dx = 0.09882, dy = 0.09882, dz = 0.05887 }, -- WorldItems/VFX_Can
   ["vfx_rushers"] = { dx = 0.2314, dy = 0.05085, dz = 0.04342 }, -- WorldItems/VFX_CandyBox
+  ["vfx_ryebread"] = { dx = 0.2256, dy = 0.2145, dz = 0.02971 }, -- WorldItems/VFX_Dough
   ["vfx_ryebreadsandwich"] = { dx = 0.1564, dy = 0.1902, dz = 0.01555, cy = -0.01897 }, -- WorldItems/VFX_Sandwich
+  ["vfx_ryebreadslice"] = { dx = 0.1518, dy = 0.1844, dz = 0.005845, cy = -0.01842 }, -- WorldItems/VFX_SliceBread
   ["vfx_ryebreadtoast"] = { dx = 0.1518, dy = 0.1844, dz = 0.005845, cy = -0.01842 }, -- WorldItems/VFX_SliceBread
+  ["vfx_ryesourdough"] = { dx = 0.282, dy = 0.2682, dz = 0.03713 }, -- WorldItems/VFX_Dough
   ["vfx_ryesourdoughsandwich"] = { dx = 0.1861, dy = 0.2508, dz = 0.02265, cx = -0.0125 }, -- WorldItems/VFX_SandwichSourdough
+  ["vfx_ryesourdoughslice"] = { dx = 0.1805, dy = 0.2425, dz = 0.009481, cx = -0.01176 }, -- WorldItems/VFX_SliceSourdough
   ["vfx_ryesourdoughtoast"] = { dx = 0.1805, dy = 0.2425, dz = 0.009481, cx = -0.01176 }, -- WorldItems/VFX_SliceSourdough
   ["vfx_saltinecrackers"] = { dx = 0.3221, dy = 0.06425, dz = 0.02633 }, -- WorldItems/VFX_LongRectangleBox
   ["vfx_saltwatertaffy"] = { dx = 0.2828, dy = 0.2063, dz = 0.02927 }, -- WorldItems/VFX_SmallBag
   ["vfx_sausagedog"] = { dx = 0.1044, dy = 0.2997, dz = 0.03375 }, -- WorldItems/VFX_Hotdog
   ["vfx_scallopedpotatobake"] = { dx = 0.2225, dy = 0.3104, dz = 0.02735 }, -- WorldItems/VFX_RoastingPanFull
+  ["vfx_scone"] = { dx = 0.1014, dy = 0.1014, dz = 0.02697 }, -- WorldItems/VFX_Scone
   ["vfx_scotchegg"] = { dx = 0.2709, dy = 0.1933, dz = 0.02854, cx = -0.003529, cy = 0.0245 }, -- WorldItems/VFX_ScotchEgg
   ["vfx_seasoningmixwingsbbq"] = { dx = 0.2957, dy = 0.2208, dz = 0.002921, oz = -0.003935 }, -- WorldItems/VFX_SeasoningMix
   ["vfx_seasoningmixwingsbuffalo"] = { dx = 0.2957, dy = 0.2208, dz = 0.002921, oz = -0.003935 }, -- WorldItems/VFX_SeasoningMix
@@ -7833,8 +8699,12 @@ local MeshSizes = {
   ["vfx_seasoningmixwingsranch"] = { dx = 0.2957, dy = 0.2208, dz = 0.002921, oz = -0.003935 }, -- WorldItems/VFX_SeasoningMix
   ["vfx_seasoningmixwingsspicycajun"] = { dx = 0.2957, dy = 0.2208, dz = 0.002921, oz = -0.003935 }, -- WorldItems/VFX_SeasoningMix
   ["vfx_secbreakfastsandwich_box"] = { dx = 0.2037, dy = 0.2299, dz = 0.02575 }, -- WorldItems/VFX_RectangleBox
+  ["vfx_sesameseeds"] = { dx = 0.09907, dy = 0.09907, dz = 0.07247 }, -- WorldItems/VFX_SpiceJar
   ["vfx_shelfstablemilk"] = { dx = 0.1139, dy = 0.08008, dz = 0.1057 }, -- WorldItems/VFX_Carton
   ["vfx_shortbreadcookiemix"] = { dx = 0.1866, dy = 0.08945, dz = 0.1233 }, -- WorldItems/VFX_BoxMix
+  ["vfx_slicedbananas"] = { dx = 0.1913, dy = 0.05474, dz = 0.1149 }, -- WorldItems/VFX_Pouch
+  ["vfx_slicedpotato"] = { dx = 0.193, dy = 0.1315, dz = 0.01066, cx = -0.003117, cy = -0.008244 }, -- WorldItems/VFX_Vegetable_SlicedPotato
+  ["vfx_slicedstrawberries"] = { dx = 0.1913, dy = 0.05474, dz = 0.1149 }, -- WorldItems/VFX_Pouch
   ["vfx_slicepieapple"] = { dx = 0.1889, dy = 0.17, dz = 0.03321, cy = 0.08501 }, -- WorldItems/VFX_PieSliceLattice
   ["vfx_slicepieblackberry"] = { dx = 0.1889, dy = 0.17, dz = 0.03321, cy = 0.08501 }, -- WorldItems/VFX_PieSliceDiamond
   ["vfx_slicepieblueberry"] = { dx = 0.1889, dy = 0.17, dz = 0.03321, cy = 0.08501 }, -- WorldItems/VFX_PieSliceLattice
@@ -7849,11 +8719,20 @@ local MeshSizes = {
   ["vfx_slicepiesweetpotato"] = { dx = 0.1889, dy = 0.17, dz = 0.03321, cy = 0.08501 }, -- WorldItems/VFX_PieSlice
   ["vfx_smalljar"] = { dx = 0.1564, dy = 0.1512, dz = 0.04467 }, -- WorldItems/VFX_SmallJar
   ["vfx_smalltincanempty"] = { dx = 0.1021, dy = 0.1686, dz = 0.04524, cy = 0.03344 }, -- WorldItems/VFX_WM_SmallTinCanEmpty
+  ["vfx_smokedsalmon"] = { dx = 0.1556, dy = 0.2116, dz = 0.001641 }, -- WorldItems/VFX_WM_SmokedSalmon
+  ["vfx_smokedsausage"] = { dx = 0.04017, dy = 0.1915, dz = 0.01554 }, -- WorldItems/VFX_Sausage
   ["vfx_smokedsausagepack"] = { dx = 0.2782, dy = 0.2533, dz = 0.01821 }, -- WorldItems/VFX_SausagePack
   ["vfx_snickerdoodlecookiemix"] = { dx = 0.1866, dy = 0.08945, dz = 0.1233 }, -- WorldItems/VFX_BoxMix
+  ["vfx_snowpeas"] = { dx = 0.3521, dy = 0.2254, dz = 0.02826, cx = -0.008916 }, -- WorldItems/VFX_Vegetable_Bag
+  ["vfx_soupdumplings"] = { dx = 0.06978, dy = 0.06988, dz = 0.02402 }, -- WorldItems/VFX_SoupDumpling
+  ["vfx_sourdough"] = { dx = 0.282, dy = 0.2682, dz = 0.03713 }, -- WorldItems/VFX_Dough
+  ["vfx_sourdoughbreadstick"] = { dx = 0.1872, dy = 0.08306, dz = 0.01116 }, -- WorldItems/VFX_Breadstick
   ["vfx_sourdoughhotdog"] = { dx = 0.1044, dy = 0.2997, dz = 0.03375 }, -- WorldItems/VFX_Hotdog
+  ["vfx_sourdoughhotdogbun"] = { dx = 0.2561, dy = 0.06113, dz = 0.02285 }, -- WorldItems/VFX_HotdogDough
+  ["vfx_sourdoughpizzadough"] = { dx = 0.1974, dy = 0.1877, dz = 0.02599 }, -- WorldItems/VFX_Dough
   ["vfx_sourdoughsandwich"] = { dx = 0.1861, dy = 0.2508, dz = 0.02265, cx = -0.0125 }, -- WorldItems/VFX_SandwichSourdough
   ["vfx_sourdoughsausagedog"] = { dx = 0.1044, dy = 0.2997, dz = 0.03375 }, -- WorldItems/VFX_Hotdog
+  ["vfx_sourdoughslice"] = { dx = 0.1805, dy = 0.2425, dz = 0.009481, cx = -0.01176 }, -- WorldItems/VFX_SliceSourdough
   ["vfx_sourdoughtoast"] = { dx = 0.1805, dy = 0.2425, dz = 0.009481, cx = -0.01176 }, -- WorldItems/VFX_SliceSourdough
   ["vfx_sourstraps"] = { dx = 0.2827, dy = 0.05419, dz = 0.007267, cy = 0.003284 }, -- WorldItems/VFX_SourStraps
   ["vfx_sourstraws"] = { dx = 0.3731, dy = 0.1399, dz = 0.02657, oz = 0.004486, cx = 0.02715, cy = 0.02028 }, -- WorldItems/VFX_SourStraws
@@ -7864,8 +8743,13 @@ local MeshSizes = {
   ["vfx_spiceracklargelight"] = { dx = 0.1745, dy = 0.6246, dz = 0.2573, oz = -0.006544, cx = 0.008093 }, -- WorldItems/VFX_SpiceRackLarge
   ["vfx_spiceracksmalldark"] = { dx = 0.1452, dy = 0.4314, dz = 0.1661, oz = -0.006864, cx = 0.00842 }, -- WorldItems/VFX_SpiceRackSmall
   ["vfx_spiceracksmalllight"] = { dx = 0.1452, dy = 0.4314, dz = 0.1661, oz = -0.006864, cx = 0.00842 }, -- WorldItems/VFX_SpiceRackSmall
+  ["vfx_spicybrownmustard"] = { dx = 0.1276, dy = 0.09006, dz = 0.1014, oz = -0.002729, cy = 0.002507 }, -- WorldItems/VFX_Mustard
+  ["vfx_spicysausage"] = { dx = 0.04017, dy = 0.1915, dz = 0.01554 }, -- WorldItems/VFX_Sausage
   ["vfx_spicysausagepack"] = { dx = 0.2782, dy = 0.2533, dz = 0.01821 }, -- WorldItems/VFX_SausagePack
+  ["vfx_spinachricottaravioli"] = { dx = 0.3521, dy = 0.2527, dz = 0.03286 }, -- WorldItems/VFX_FlatTopPacket
+  ["vfx_spinachricottatortellini"] = { dx = 0.3521, dy = 0.2527, dz = 0.03286 }, -- WorldItems/VFX_FlatTopPacket
   ["vfx_sportsdrink"] = { dx = 0.1092, dy = 0.1092, dz = 0.09706 }, -- WorldItems/VFX_WM_SportsDrink
+  ["vfx_sprinkles"] = { dx = 0.09907, dy = 0.09907, dz = 0.07247 }, -- WorldItems/VFX_SpiceJar
   ["vfx_starterboxbasic"] = { dx = 0.1866, dy = 0.08945, dz = 0.1233 }, -- WorldItems/VFX_StarterBox
   ["vfx_starterboxblue"] = { dx = 0.1866, dy = 0.08945, dz = 0.1233 }, -- WorldItems/VFX_StarterBox
   ["vfx_starterboxbuttermilk"] = { dx = 0.1866, dy = 0.08945, dz = 0.1233 }, -- WorldItems/VFX_StarterBox
@@ -7877,7 +8761,10 @@ local MeshSizes = {
   ["vfx_starteryogurtbox"] = { dx = 0.1866, dy = 0.08945, dz = 0.1233 }, -- WorldItems/VFX_StarterBox
   ["vfx_stockpot"] = { dx = 0.3158, dy = 0.3481, dz = 0.1102 }, -- WorldItems/VFX_PotFull
   ["vfx_stockpotforged"] = { dx = 0.4153, dy = 0.4477, dz = 0.1437, cx = 0.0101, cy = -0.003494 }, -- WorldItems/VFX_PotForgedFull
+  ["vfx_strawberrybananablend"] = { dx = 0.1913, dy = 0.05474, dz = 0.1149 }, -- WorldItems/VFX_Pouch
   ["vfx_strawberrycakemix"] = { dx = 0.1866, dy = 0.08945, dz = 0.1233 }, -- WorldItems/VFX_BoxMix
+  ["vfx_strawberryfrostingtub"] = { dx = 0.1574, dy = 0.1574, dz = 0.06726 }, -- WorldItems/VFX_FrostingTub
+  ["vfx_strawberryicecream"] = { dx = 0.162, dy = 0.162, dz = 0.07058, oz = -0.04436 }, -- WorldItems/VFX_IceCream
   ["vfx_strawberryicecreammelted"] = { dx = 0.162, dy = 0.162, dz = 0.07058, oz = -0.04436 }, -- WorldItems/VFX_IceCream
   ["vfx_strawberryjellobox"] = { dx = 0.2167, dy = 0.1053, dz = 0.05556 }, -- WorldItems/VFX_JelloBox
   ["vfx_strawberryjellocup"] = { dx = 0.1036, dy = 0.1036, dz = 0.0274 }, -- WorldItems/VFX_JelloCup
@@ -7885,7 +8772,10 @@ local MeshSizes = {
   ["vfx_strawberrypuddingbox"] = { dx = 0.2167, dy = 0.1053, dz = 0.05556 }, -- WorldItems/VFX_JelloBox
   ["vfx_strawberrypuddingcup"] = { dx = 0.1036, dy = 0.1036, dz = 0.0274 }, -- WorldItems/VFX_JelloCup
   ["vfx_strawberrystrudelsbox"] = { dx = 0.2022, dy = 0.0888, dz = 0.04803 }, -- WorldItems/VFX_SnackBox
+  ["vfx_strawberryyogurtpot"] = { dx = 0.1574, dy = 0.1574, dz = 0.06726 }, -- WorldItems/VFX_FrostingTub
   ["vfx_stuffedbellpepper"] = { dx = 0.1452, dy = 0.09083, dz = 0.03277, cy = -0.002584 }, -- WorldItems/VFX_StuffedBellPepper
+  ["vfx_sugarbeetmolassespot"] = { dx = 0.3158, dy = 0.3481, dz = 0.1102 }, -- WorldItems/VFX_PotFull
+  ["vfx_sugarbeetmolassespotforged"] = { dx = 0.4153, dy = 0.4477, dz = 0.1437, cx = 0.0101, cy = -0.003494 }, -- WorldItems/VFX_PotForgedFull
   ["vfx_sugarbeetpulppot"] = { dx = 0.3158, dy = 0.3481, dz = 0.1102 }, -- WorldItems/VFX_PotFull
   ["vfx_sugarbeetpulppotforged"] = { dx = 0.4153, dy = 0.4477, dz = 0.1437, cx = 0.0101, cy = -0.003494 }, -- WorldItems/VFX_PotForgedFull
   ["vfx_sugarbeetsyruppot"] = { dx = 0.3158, dy = 0.3481, dz = 0.1102 }, -- WorldItems/VFX_PotFull
@@ -7893,11 +8783,17 @@ local MeshSizes = {
   ["vfx_sugarcookiemix"] = { dx = 0.1866, dy = 0.08945, dz = 0.1233 }, -- WorldItems/VFX_BoxMix
   ["vfx_supremepizzaroll_box"] = { dx = 0.4885, dy = 0.2745, dz = 0.0299 }, -- WorldItems/VFX_Packaging_Bag
   ["vfx_sushi"] = { dx = 0.1729, dy = 0.08079, dz = 0.0293 }, -- WorldItems/VFX_Sushi
+  ["vfx_sweetchilisauce"] = { dx = 0.07945, dy = 0.07945, dz = 0.1136 }, -- WorldItems/VFX_GlassBottle
+  ["vfx_sweetonionrelish"] = { dx = 0.1072, dy = 0.1072, dz = 0.06079 }, -- WorldItems/VFX_WM_SmallJar
+  ["vfx_swisscheese"] = { dx = 0.1328, dy = 0.1803, dz = 0.04655, cy = 0.03005 }, -- WorldItems/VFX_CheeseSwiss
   ["vfx_swissroll"] = { dx = 0.1688, dy = 0.06578, dz = 0.0198 }, -- WorldItems/VFX_SnackCake_SwissRoll
   ["vfx_swissrollsbox"] = { dx = 0.2022, dy = 0.0888, dz = 0.04803 }, -- WorldItems/VFX_SnackBox
+  ["vfx_tangerines"] = { dx = 0.07964, dy = 0.07884, dz = 0.02216 }, -- WorldItems/VFX_Fruit_Tangerines
   ["vfx_tecbreakfastsandwich_box"] = { dx = 0.2037, dy = 0.2299, dz = 0.02575 }, -- WorldItems/VFX_RectangleBox
+  ["vfx_threecheeseravioli"] = { dx = 0.3521, dy = 0.2527, dz = 0.03286 }, -- WorldItems/VFX_FlatTopPacket
   ["vfx_toasterstrudel"] = { dx = 0.09949, dy = 0.1388, dz = 0.009074 }, -- WorldItems/VFX_Strudel
   ["vfx_toffeebites"] = { dx = 0.2828, dy = 0.2063, dz = 0.02927 }, -- WorldItems/VFX_SmallBag
+  ["vfx_tomatorelish"] = { dx = 0.1072, dy = 0.1072, dz = 0.06079 }, -- WorldItems/VFX_WM_SmallJar
   ["vfx_tomatosoupsachet"] = { dx = 0.0557, dy = 0.2398, dz = 0.01118, cy = -0.003661 }, -- WorldItems/VFX_SoupSachet
   ["vfx_traybakedziti"] = { dx = 0.2225, dy = 0.3104, dz = 0.02735 }, -- WorldItems/VFX_RoastingPanFull
   ["vfx_traychickendivan"] = { dx = 0.2225, dy = 0.3104, dz = 0.02735 }, -- WorldItems/VFX_RoastingPanFull
@@ -7914,17 +8810,24 @@ local MeshSizes = {
   ["vfx_turkeymeatballsbag"] = { dx = 0.4705, dy = 0.358, dz = 0.03945, oz = -0.004968, cx = -0.03273 }, -- WorldItems/VFX_MeatballBag
   ["vfx_uncrustable"] = { dx = 0.1624, dy = 0.1624, dz = 0.01145 }, -- WorldItems/VFX_Uncrustable
   ["vfx_vanillacolacan"] = { dx = 0.09882, dy = 0.09882, dz = 0.05887 }, -- WorldItems/VFX_Can
+  ["vfx_vanillaextract"] = { dx = 0.06421, dy = 0.06421, dz = 0.06705 }, -- WorldItems/VFX_VanillaExtract
+  ["vfx_vanillafrostingtub"] = { dx = 0.1574, dy = 0.1574, dz = 0.06726 }, -- WorldItems/VFX_FrostingTub
   ["vfx_vanillaicecream"] = { dx = 0.162, dy = 0.162, dz = 0.07058, oz = -0.04436 }, -- WorldItems/VFX_IceCream
   ["vfx_vanillaicecreammelted"] = { dx = 0.162, dy = 0.162, dz = 0.07058, oz = -0.04436 }, -- WorldItems/VFX_IceCream
   ["vfx_vanillaproteinpowder"] = { dx = 0.2655, dy = 0.2655, dz = 0.1383, oz = 0.002118 }, -- WorldItems/VFX_ProteinPowder
   ["vfx_vanillapuddingbox"] = { dx = 0.2167, dy = 0.1053, dz = 0.05556 }, -- WorldItems/VFX_JelloBox
   ["vfx_vanillapuddingcup"] = { dx = 0.1036, dy = 0.1036, dz = 0.0274 }, -- WorldItems/VFX_JelloCup
   ["vfx_vanillapuddingmix"] = { dx = 0.1866, dy = 0.08945, dz = 0.1233 }, -- WorldItems/VFX_BoxMix
+  ["vfx_vanillayogurtpot"] = { dx = 0.1574, dy = 0.1574, dz = 0.06726 }, -- WorldItems/VFX_FrostingTub
   ["vfx_vealcutlet"] = { dx = 0.2293, dy = 0.177, dz = 0.00982, cx = -0.005023 }, -- WorldItems/VFX_VealCutlet
+  ["vfx_vealmeatball"] = { dx = 0.09905, dy = 0.09793, dz = 0.03792, oz = -0.005302 }, -- WorldItems/VFX_Meatball
   ["vfx_vealmeatballsbag"] = { dx = 0.4705, dy = 0.358, dz = 0.03945, oz = -0.004968, cx = -0.03273 }, -- WorldItems/VFX_MeatballBag
+  ["vfx_vinaigrette"] = { dx = 0.07945, dy = 0.07945, dz = 0.1136 }, -- WorldItems/VFX_GlassBottle
   ["vfx_vinegarpot"] = { dx = 0.3158, dy = 0.3481, dz = 0.1102 }, -- WorldItems/VFX_PotFull
   ["vfx_vinegarpotforged"] = { dx = 0.4153, dy = 0.4477, dz = 0.1437, cx = 0.0101, cy = -0.003494 }, -- WorldItems/VFX_PotForgedFull
+  ["vfx_walnuts"] = { dx = 0.1913, dy = 0.05474, dz = 0.1149 }, -- WorldItems/VFX_Pouch
   ["vfx_wedges"] = { dx = 0.2562, dy = 0.2659, dz = 0.01229, oz = 0.002963, cx = -0.03513, cy = -0.006345 }, -- WorldItems/VFX_Wedges
+  ["vfx_wheatthins"] = { dx = 0.1784, dy = 0.0888, dz = 0.09017 }, -- WorldItems/VFX_CrackerBox
   ["vfx_wheelbluecheese"] = { dx = 0.394, dy = 0.394, dz = 0.06655 }, -- WorldItems/VFX_CheeseWheel
   ["vfx_wheelcheddarcheese"] = { dx = 0.394, dy = 0.394, dz = 0.06655 }, -- WorldItems/VFX_CheeseWheel
   ["vfx_wheelparmesancheese"] = { dx = 0.394, dy = 0.394, dz = 0.06655 }, -- WorldItems/VFX_CheeseWheel
@@ -7946,10 +8849,14 @@ local MeshSizes = {
   ["vfx_wholepiemixedberry"] = { dx = 0.3745, dy = 0.3561, dz = 0.03801 }, -- WorldItems/VFX_BakingPanWholePieDiamond
   ["vfx_wholepiepeach"] = { dx = 0.3745, dy = 0.3561, dz = 0.03801 }, -- WorldItems/VFX_BakingPanWholePieLattice
   ["vfx_wholepiepecan"] = { dx = 0.3745, dy = 0.3561, dz = 0.03801 }, -- WorldItems/VFX_BakingPanWholePie
+  ["vfx_wholepiepecannopan"] = { dx = 0.3401, dy = 0.3401, dz = 0.03321 }, -- WorldItems/VFX_WholePie
   ["vfx_wholepiepumpkin"] = { dx = 0.3745, dy = 0.3561, dz = 0.03801 }, -- WorldItems/VFX_BakingPanWholePie
+  ["vfx_wholepiepumpkinnopan"] = { dx = 0.3401, dy = 0.3401, dz = 0.03321 }, -- WorldItems/VFX_WholePie
   ["vfx_wholepieraspberry"] = { dx = 0.3745, dy = 0.3561, dz = 0.03801 }, -- WorldItems/VFX_BakingPanWholePieDiamond
   ["vfx_wholepiestrawberry"] = { dx = 0.3745, dy = 0.3561, dz = 0.03801 }, -- WorldItems/VFX_BakingPanWholePieDiamond
   ["vfx_wholepiesweetpotato"] = { dx = 0.3745, dy = 0.3561, dz = 0.03801 }, -- WorldItems/VFX_BakingPanWholePie
+  ["vfx_wholepiesweetpotatonopan"] = { dx = 0.3401, dy = 0.3401, dz = 0.03321 }, -- WorldItems/VFX_WholePie
+  ["vfx_wholestrawberries"] = { dx = 0.1913, dy = 0.05474, dz = 0.1149 }, -- WorldItems/VFX_Pouch
   ["vfx_woodencheesemold"] = { dx = 0.4314, dy = 0.4213, dz = 0.07577 }, -- WorldItems/VFX_WoodenCheeseMold
   ["vfx_wortpot"] = { dx = 0.3158, dy = 0.3481, dz = 0.1102 }, -- WorldItems/VFX_PotFull
   ["vfx_wortpotforged"] = { dx = 0.4153, dy = 0.4477, dz = 0.1437, cx = 0.0101, cy = -0.003494 }, -- WorldItems/VFX_PotForgedFull

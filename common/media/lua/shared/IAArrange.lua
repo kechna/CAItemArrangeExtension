@@ -1,5 +1,20 @@
 IA = IA or {}
 
+-- MOST OF THIS IS SLAYER'S OWN ITEM ARRANGE MOD, WHICH IS NOT MY WORK.
+-- I (Kechna) AM NOT THE AUTHOR OF THE ORIGINAL MOD, AND I DO NOT CLAIM TO BE. I AM MERELY PROVIDING AN EXTENSION AND SOME PATCHES TO IT.
+-- Original mod: https://steamcommunity.com/sharedfiles/filedetails/?id=3767639280
+-- My extension: https://steamcommunity.com/sharedfiles/filedetails/?id=3813943783
+
+-- This file contains some patches I made:
+--  - validate items before placing to make sure they're still present, to prevent them creating ghost items
+--  - make items arrange according to nearest wall orientation properly
+--  - allow passing x/y offset via mx/my
+--  - allow holding shift+alt to skip non-arrangeable items
+--  - support multiple objects with surfaces per tile, such as shelves above counters
+
+-- I'm waiting for Slayer to have some time to potentially include some of my patches in the core mod.
+-- The mod is not extensible enough for me to do this without overriding most of it.
+
 local CURSOR_ORDER_N = 1
 local CURSOR_ORDER_W = 2
 local CURSOR_ORDER_S = 3
@@ -150,20 +165,29 @@ function IA.getSurfaceInfo(square)
                 squareSurfaceOffset = surfaceOffset
             end
 
-            squareSurfaceOffset = squareSurfaceOffset / 96
+            local surfaceZ = squareSurfaceOffset / 96
 
             local spriteName = sprite:getName()
             if IA.surfaces[spriteName] then
-                surfaces = IA.surfaces[spriteName]
-                for _, surface in ipairs(surfaces) do
-                    if not surface.zmin then
-                        surface.zmin = squareSurfaceOffset
+                -- copy the surfaces so several objects on one square can be merged without changing the shared profiles
+                for _, surface in ipairs(IA.surfaces[spriteName]) do
+                    local copy = {}
+                    for key, value in pairs(surface) do
+                        copy[key] = value
                     end
+                    if not copy.zmin then
+                        copy.zmin = surfaceZ
+                    end
+                    table.insert(surfaces, copy)
                 end
+
                 object:setOverlaySprite("")
-                break
             else
-                ground.zmin = squareSurfaceOffset
+                ground.zmin = surfaceZ
+                -- the game puts items on top of furniture as high as a floor, give them a floor of room above it
+                if surfaceZ >= 1 then
+                    ground.zmax = surfaceZ + 1
+                end
             end
         end
     end
@@ -211,8 +235,9 @@ function IA.getSurfaceInfo(square)
             end
         end
 
-        if surface.zmax > 1 then
-            surface.zmax = 1
+        -- tall furniture (stacked crates) has its top at a full floor, so cap the room at a floor above the surface
+        if surface.zmax > surface.zmin + 1 then
+            surface.zmax = surface.zmin + 1
         end
         if surface.zmax < surface.zmin then
             surface.zmax = surface.zmin
@@ -325,7 +350,7 @@ local function arrangeGroundList(square, groundList, applyOffsets, ignoreQz)
         ymax = surfaceInfo.ymax
         zmin = surfaceInfo.zmin or 0
         zmax = surfaceInfo.zmax or 1
-        if zmax > 1 then zmax = 1 end
+        if zmax > zmin + 1 then zmax = zmin + 1 end
 
         local state = surfaceCursorState[index]
         if state and state.cx ~= nil and state.cy ~= nil then
@@ -357,8 +382,8 @@ local function arrangeGroundList(square, groundList, applyOffsets, ignoreQz)
         local symax = s.ymax
         local szmin = s.zmin or 0
         local szmax = s.zmax or 1
-        if szmax > 1 then
-            szmax = 1
+        if szmax > szmin + 1 then
+            szmax = szmin + 1
         end
 
         local hasFootprintRoom = (sxmin + dx) <= sxmax and (symin + dy) <= symax
@@ -416,11 +441,58 @@ local function arrangeGroundList(square, groundList, applyOffsets, ignoreQz)
         return switchSurfaceByFit(dx, dy, dz, mz, true)
     end
 
+    -- S and E rows grow from the max edge towards the min edge, so their far edge is pos - size
     local function isOutOfBounds(xpos, ypos, dx, dy)
         return (cursorOrder == CURSOR_ORDER_N and ypos + dy > ymax)
             or (cursorOrder == CURSOR_ORDER_W and xpos + dx > xmax)
-            or (cursorOrder == CURSOR_ORDER_S and ypos < ymin)
-            or (cursorOrder == CURSOR_ORDER_E and xpos < xmin)
+            or (cursorOrder == CURSOR_ORDER_S and ypos - dy < ymin)
+            or (cursorOrder == CURSOR_ORDER_E and xpos - dx < xmin)
+    end
+
+    -- Moves an item's centre so all of its real length stays on the surface: long items get a shorter footprint
+    -- than they are, which would otherwise overhang the edge their row starts at. One longer than the whole surface
+    -- is centred on it.
+    local function keepOnSurface(center, length, low, high)
+        if not length then
+            return center
+        end
+        if length >= high - low then
+            return (low + high) / 2
+        end
+        return math.max(low + length / 2, math.min(high - length / 2, center))
+    end
+
+    -- Starts a new row when this item doesn't fit in what's left of the current one, judged by this item's own
+    -- size (not the previous type's), and grows the row depth to fit it. An item wider than the whole surface
+    -- stays at the start of its row.
+    local function fitRow(dx, dy)
+        if cursorOrder == CURSOR_ORDER_W or cursorOrder == CURSOR_ORDER_E then
+            if cy + dy > ymax and cy > ymin then
+                cy = ymin
+                if cursorOrder == CURSOR_ORDER_E then
+                    cx = cx - dymax
+                else
+                    cx = cx + dymax
+                end
+                dymax = 0
+            end
+            if dx > dymax then
+                dymax = dx
+            end
+        else
+            if cx + dx > xmax and cx > xmin then
+                cx = xmin
+                if cursorOrder == CURSOR_ORDER_S then
+                    cy = cy - dxmax
+                else
+                    cy = cy + dxmax
+                end
+                dxmax = 0
+            end
+            if dy > dxmax then
+                dxmax = dy
+            end
+        end
     end
 
     local placedBoundsBySurface = {}
@@ -506,10 +578,15 @@ local function arrangeGroundList(square, groundList, applyOffsets, ignoreQz)
         local mx = arr.mx or 0
         local my = arr.my or 0
 
+        -- real length of items longer than their footprint
+        local lx = arr.lx
+        local ly = arr.ly
+
         -- profiles are defined against the N wall: swap the footprint for side walls and map the
         -- offset so my stays "towards the wall" and mx "along the wall"
         if cursorOrder == CURSOR_ORDER_W or cursorOrder == CURSOR_ORDER_E then
             dx, dy = dy, dx
+            lx, ly = ly, lx
         end
 
         if cursorOrder == CURSOR_ORDER_S then
@@ -532,15 +609,8 @@ local function arrangeGroundList(square, groundList, applyOffsets, ignoreQz)
             return false
         end
 
-        if cursorOrder == CURSOR_ORDER_W or cursorOrder == CURSOR_ORDER_E then
-            if dx > dymax then
-                dymax = dx
-            end
-        else
-            if dy > dxmax then
-                dxmax = dy
-            end
-        end
+        -- the cursor was left where the previous type ended, which may not fit this type
+        fitRow(dx, dy)
 
         local z = 0
         for i, entry in ipairs(witems) do
@@ -618,6 +688,7 @@ local function arrangeGroundList(square, groundList, applyOffsets, ignoreQz)
                     return false
                 end
 
+                fitRow(dx, dy)
                 zpos = zmin + mz + (z * dz)
                 xpos = cx
                 ypos = cy
@@ -702,6 +773,9 @@ local function arrangeGroundList(square, groundList, applyOffsets, ignoreQz)
                 ypos = ypos + (dy / 2) + my
             end
 
+            xpos = keepOnSurface(xpos - mx, lx, xmin, xmax) + mx
+            ypos = keepOnSurface(ypos - my, ly, ymin, ymax) + my
+
             if applyOffsets and entry.witem then
                 entry.witem:setOffset(xpos, ypos, zpos)
 
@@ -721,52 +795,13 @@ local function arrangeGroundList(square, groundList, applyOffsets, ignoreQz)
 
         processedTypes = processedTypes + 1
 
-        -- Move to the next stack slot only if another item type is pending.
+        -- Move to the next stack slot only if another item type is pending. Whether that slot still fits is up to
+        -- the next type (fitRow and the bounds guards), since it depends on that type's size, not this one's.
         if processedTypes < totalTypes then
-            if cursorOrder == CURSOR_ORDER_W then
+            if cursorOrder == CURSOR_ORDER_W or cursorOrder == CURSOR_ORDER_E then
                 cy = cy + dy
-                if cy + dy > ymax then
-                    cy = ymin
-                    cx = cx + dymax
-                    dymax = 0
-                    if cx + dx > xmax then
-                        if not switchSurfaceByFit(dx, dy, dz, mz) then
-                            print ("ItemArranger: ran out of space to arrange items on this surface (2)")
-                            return false
-                        end
-                    end
-                end
-            elseif cursorOrder == CURSOR_ORDER_E then
-                cy = cy + dy
-                if cy + dy > ymax then
-                    cy = ymin
-                    cx = cx - dymax
-                    dymax = 0
-                    if cx < xmin then
-                        if not switchSurfaceByFit(dx, dy, dz, mz) then
-                            print ("ItemArranger: ran out of space to arrange items on this surface (3)")
-                            return false
-                        end
-                    end
-                end
             else
                 cx = cx + dx
-                if cx + dx > xmax then
-                    cx = xmin
-                    if cursorOrder == CURSOR_ORDER_S then
-                        cy = cy - dxmax
-                    else
-                        cy = cy + dxmax
-                    end
-                    dxmax = 0
-
-                    if (cursorOrder == CURSOR_ORDER_N and cy + dy > ymax) or (cursorOrder == CURSOR_ORDER_S and cy < ymin) then
-                        if not switchSurfaceByFit(dx, dy, dz, mz) then
-                            print ("ItemArranger: ran out of space to arrange items on this surface (4)")
-                            return false
-                        end
-                    end
-                end
             end
         end
     end
@@ -796,7 +831,7 @@ function IA.CheckSpace(square, item, skip)
             for _, surfaceInfo in ipairs(surfaces) do
                 local zmin = surfaceInfo.zmin or 0
                 local zmax = surfaceInfo.zmax or 1
-                if zmax > 1 then zmax = 1 end
+                if zmax > zmin + 1 then zmax = zmin + 1 end
 
                 local nextZ = zmin + mz + (currentStackSize * arr.dz)
                 if (nextZ + arr.dz) <= zmax then

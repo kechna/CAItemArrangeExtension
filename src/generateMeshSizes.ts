@@ -5,7 +5,7 @@ import { toMeshSize } from "./meshes/meshSize.ts";
 import { findMediaSources } from "./meshes/sources.ts";
 
 const OUTPUT = fileURLToPath(
-  new URL("../common/media/lua/shared/CAItemArrangerExtension/IAMeshSizes_Generated.lua", import.meta.url),
+  new URL("../common/media/lua/shared/CAItemArrangeExtension/IAMeshSizes_Generated.lua", import.meta.url),
 );
 
 const naturalCompare = (a: string, b: string): number => a.localeCompare(b, "en", { numeric: true });

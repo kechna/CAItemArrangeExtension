@@ -1,19 +1,21 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { extractContainerSurfaces, type Surface } from "./extractSurfaces.ts";
+import { extractContainerSurfaces, type HeightOnlySurface, type Surface } from "./extractSurfaces.ts";
 import { parseTileDefinitions, parseTileGeometry } from "./tileGeometry.ts";
 
 const OUTPUT = fileURLToPath(
-  new URL("../common/media/lua/shared/CAItemArrangerExtension/IASurfaces_Generated.lua", import.meta.url),
+  new URL("../common/media/lua/shared/CAItemArrangeExtension/IASurfaces_Generated.lua", import.meta.url),
 );
 
 const KEYS = ["zmin", "zmax", "xmin", "xmax", "ymin", "ymax"] as const satisfies (keyof Surface)[];
 
 const formatNumber = (value: number): string => value.toFixed(3);
 
-const formatSurface = (surface: Surface, index: number): string => {
-  const fields = KEYS.map((key) => `${key} = ${formatNumber(surface[key])}`).join(", ");
+const formatSurface = (surface: Surface | HeightOnlySurface, index: number): string => {
+  const fields = KEYS.filter((key) => key in surface)
+    .map((key) => `${key} = ${formatNumber((surface as Surface)[key])}`)
+    .join(", ");
 
   return `    [${index + 1}] = { ${fields} },`;
 };

@@ -41,7 +41,14 @@ function IAArrangeAction:isValid()
         return false
     end
 
-    local spaceValid, skipItem = IA.CheckSpace(self.dropSquare, self.item, self.altKey)
+    -- isValid runs every tick, so only check the space again when the items on the square changed
+    local worldItemCount = self.dropSquare:getWorldObjects():size()
+    if self.checkedWorldItemCount ~= worldItemCount then
+        self.checkedWorldItemCount = worldItemCount
+        self.spaceValid, self.spaceSkipItem = IA.CheckSpace(self.dropSquare, self.item, self.altKey)
+    end
+
+    local spaceValid, skipItem = self.spaceValid, self.spaceSkipItem
 
     if not spaceValid then
         return false

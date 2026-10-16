@@ -28,6 +28,8 @@ const EPSILON = 50;
 const LEVEL_TOLERANCE = 1000;
 /** A second rectangle on a level at least this fraction of the largest one makes the tile ambiguous. */
 const AMBIGUOUS_RATIO = 0.25;
+/** A tile `Surface` property (in pixels, 96 per floor) at least this high means the game itself puts items on top. */
+const TALL_SURFACE = 90;
 /** Container types that hold items on open shelves, so ovens and the like keep the game's surface offset. */
 const SHELF_CONTAINERS = new Set([
   "shelves",
@@ -44,6 +46,17 @@ const SHELF_CONTAINERS = new Set([
   "grocerstand",
 ]);
 
+/**
+ * Only a height, for container tiles without geometry boxes: Item Arrange fills in the rest from its default ground
+ * rectangle, which keeps clear of the walls around the square.
+ */
+export type HeightOnlySurface = Pick<Surface, "zmin"> & Partial<Pick<Surface, "zmax">>;
+
+/** Game `Surface` property units (pixels) per floor height. */
+const SURFACE_UNITS = 96;
+/** Extra lift on the game's `Surface` height per container type, the drawn top of some sits above it. */
+const SURFACE_LIFT: Record<string, number> = {};
+
 interface Rect {
   ceiling: number;
   top: number;
@@ -57,12 +70,71 @@ const round = (value: number): number => Math.round(value * 1000) / 1000;
 
 const clamp = (value: number): number => Math.min(1, Math.max(0, value));
 
-const isUnrotated = (box: GeometryBox): boolean => box.rotate.every((value) => value === 0);
+type Vec3 = [number, number, number];
 
-const toWorld = (box: GeometryBox): { min: [number, number, number]; max: [number, number, number] } => ({
-  min: [box.min[0] + box.translate[0], box.min[1] + box.translate[1], box.min[2] + box.translate[2]],
-  max: [box.max[0] + box.translate[0], box.max[1] + box.translate[1], box.max[2] + box.translate[2]],
-});
+type Matrix3 = [Vec3, Vec3, Vec3];
+
+/** `rotate` is in degrees times this. */
+const ROTATE_SCALE = 10000;
+/** Matrix entries this close to -1, 0 or 1 count as exact, rotations are stored like -89.9802°. */
+const AXIS_TOLERANCE = 0.01;
+
+const multiply = (a: Matrix3, b: Matrix3): Matrix3 =>
+  a.map((row) => [0, 1, 2].map((j) => row[0] * b[0][j]! + row[1] * b[1][j]! + row[2] * b[2][j]!)) as Matrix3;
+
+/** The box's rotation like the game builds it, JOML's `rotateXYZ`: Rx · Ry · Rz. */
+const rotationMatrix = (rotate: Vec3): Matrix3 => {
+  const [x, y, z] = rotate.map((value) => ((value / ROTATE_SCALE) * Math.PI) / 180) as Vec3;
+  const rx: Matrix3 = [
+    [1, 0, 0],
+    [0, Math.cos(x), -Math.sin(x)],
+    [0, Math.sin(x), Math.cos(x)],
+  ];
+  const ry: Matrix3 = [
+    [Math.cos(y), 0, Math.sin(y)],
+    [0, 1, 0],
+    [-Math.sin(y), 0, Math.cos(y)],
+  ];
+  const rz: Matrix3 = [
+    [Math.cos(z), -Math.sin(z), 0],
+    [Math.sin(z), Math.cos(z), 0],
+    [0, 0, 1],
+  ];
+
+  return multiply(multiply(rx, ry), rz);
+};
+
+const isAxisAligned = (matrix: Matrix3): boolean =>
+  matrix.every((row) => row.every((value) => [-1, 0, 1].some((axis) => Math.abs(value - axis) <= AXIS_TOLERANCE)));
+
+/**
+ * The box in tile space. Boxes turned by multiples of 90° (e.g. the side-facing variants of a shelf) map to an exact
+ * box, any other rotation would only give a loose bounding box and is skipped.
+ */
+const toWorld = (box: GeometryBox): { min: Vec3; max: Vec3 } | undefined => {
+  const matrix = rotationMatrix(box.rotate);
+
+  if (!isAxisAligned(matrix)) {
+    return undefined;
+  }
+
+  const min: Vec3 = [Infinity, Infinity, Infinity];
+  const max: Vec3 = [-Infinity, -Infinity, -Infinity];
+
+  for (const corner of [0, 1, 2, 3, 4, 5, 6, 7]) {
+    const local = [0, 1, 2].map((axis) => (corner & (1 << axis) ? box.max[axis]! : box.min[axis]!));
+
+    for (const axis of [0, 1, 2]) {
+      const row = matrix[axis]!;
+      const value = Math.round(row[0] * local[0]! + row[1] * local[1]! + row[2] * local[2]!) + box.translate[axis]!;
+
+      min[axis] = Math.min(min[axis]!, value);
+      max[axis] = Math.max(max[axis]!, value);
+    }
+  }
+
+  return { min, max };
+};
 
 const overlaps = (a0: number, a1: number, b0: number, b1: number): boolean => a0 < b1 - EPSILON && b0 < a1 - EPSILON;
 
@@ -121,9 +193,13 @@ export interface TileSurfaces {
   surfaces: Surface[];
 }
 
-/** Finds the shelf surfaces of a tile: the tops of wide boxes, capped by the lowest box above them. */
-export const extractSurfaces = (tile: GeometryTile): TileSurfaces => {
-  const boxes = tile.boxes.filter(isUnrotated).map(toWorld);
+/**
+ * Finds the shelf surfaces of a tile: the tops of wide boxes, capped by the lowest box above them. The next floor caps
+ * them too, so tops at full height (doors, wall cabinets) have no room above them, unless `tall` says the tile is
+ * furniture as high as a floor (stacked crates). Those tops get a floor of room above them.
+ */
+export const extractSurfaces = (tile: GeometryTile, tall = false): TileSurfaces => {
+  const boxes = tile.boxes.map(toWorld).filter((box) => box !== undefined);
   const rects: Rect[] = [];
 
   for (const box of boxes) {
@@ -135,7 +211,7 @@ export const extractSurfaces = (tile: GeometryTile): TileSurfaces => {
       continue;
     }
 
-    let ceiling = Infinity;
+    let ceiling = tall && top >= Y_SCALE - LEVEL_TOLERANCE ? top + Y_SCALE : Y_SCALE;
 
     for (const other of boxes) {
       const bottom = other.min[1];
@@ -184,7 +260,7 @@ export const extractSurfaces = (tile: GeometryTile): TileSurfaces => {
 
   const surfaces = kept.map((rect) => ({
     zmin: round(rect.top / Y_SCALE + Z_OFFSET),
-    zmax: rect.ceiling === Infinity ? 1 : round(Math.min(1, rect.ceiling / Y_SCALE)),
+    zmax: round(rect.ceiling / Y_SCALE),
     xmin: round(clamp((rect.x0 + TILE_SIZE / 2) / TILE_SIZE)),
     xmax: round(clamp((rect.x1 + TILE_SIZE / 2) / TILE_SIZE)),
     ymin: round(clamp((rect.z0 + TILE_SIZE / 2) / TILE_SIZE)),
@@ -197,42 +273,44 @@ export const extractSurfaces = (tile: GeometryTile): TileSurfaces => {
 export interface ContainerSurfaces {
   /** Sprites skipped because they need a hand-picked profile, see {@link TileSurfaces.ambiguous}. */
   ambiguous: string[];
-  surfaces: Map<string, Surface[]>;
+  surfaces: Map<string, (Surface | HeightOnlySurface)[]>;
 }
 
 /**
- * Generates surfaces for every shelf container tile with at least two shelf levels. Single-surface containers (counters,
- * crates) are left to the game's own surface offset.
+ * Generates surfaces for every tile with usable geometry boxes. Container tiles without boxes (most counters) get only
+ * the game's own `Surface` height, see {@link HeightOnlySurface}.
  */
 export const extractContainerSurfaces = (
   geometry: GeometryTile[],
   definitions: TileDefinition[],
 ): ContainerSurfaces => {
-  const byKey = new Map(
-    definitions.map((definition) => [tileKey(definition.tileset, definition.col, definition.row), definition]),
-  );
-  const surfaces = new Map<string, Surface[]>();
+  const byKey = new Map(geometry.map((tile) => [tileKey(tile.tileset, tile.col, tile.row), tile]));
+  const surfaces = new Map<string, (Surface | HeightOnlySurface)[]>();
   const ambiguous: string[] = [];
 
-  for (const tile of geometry) {
-    const definition = byKey.get(tileKey(tile.tileset, tile.col, tile.row));
+  for (const definition of definitions) {
+    const tile = byKey.get(tileKey(definition.tileset, definition.col, definition.row));
+    const container = definition.properties.container;
+    const surfaceHeight = Number(definition.properties.Surface ?? tile?.properties.Surface ?? 0);
 
-    // if (definition?.properties.container) {
-    //   console.log(definition.sprite, definition?.properties.container);
-    // }
+    if (!tile?.boxes.length) {
+      if (container && surfaceHeight > 0) {
+        const zmin = round(surfaceHeight / SURFACE_UNITS + Z_OFFSET + (SURFACE_LIFT[container] ?? 0));
 
-    if (!definition /* || !SHELF_CONTAINERS.has(definition.properties.container ?? "") */) {
+        // tops of furniture as high as a floor (fridges, stacked crates) get a floor of room, like in `extractSurfaces`
+        surfaces.set(definition.sprite, [surfaceHeight >= TALL_SURFACE ? { zmin, zmax: round(zmin + 1) } : { zmin }]);
+      }
+
       continue;
     }
 
-    const result = extractSurfaces(tile);
+    const result = extractSurfaces(tile, surfaceHeight >= TALL_SURFACE);
 
     if (!result.surfaces.length) {
       continue;
     }
 
     if (result.ambiguous) {
-      console.log("Ambiguous:", definition.sprite, definition.properties);
       ambiguous.push(definition.sprite);
     } else {
       surfaces.set(definition.sprite, result.surfaces);

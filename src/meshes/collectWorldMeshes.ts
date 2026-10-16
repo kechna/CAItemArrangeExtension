@@ -102,15 +102,31 @@ const findChildDir = (dir: string, name: string): string | undefined => {
 export const meshFileKey = (mesh: string): string =>
   mesh.split("|")[0]!.replace(/\\/g, "/").replace(MESH_EXTENSIONS, "").replace(/^\/+/, "").toLowerCase();
 
+/** The models an item is drawn with on the ground, see `collectWorldMeshes`. */
+const getItemModels = (properties: Record<string, string>): { name: string; weapon: boolean }[] => {
+  const { worldstaticmodel, staticmodel, weaponsprite, weaponspritesbyindex } = properties;
+  const weapon = !worldstaticmodel?.length && isWeapon(properties);
+  // non-weapons without a WorldStaticModel have no 3D model in game, their StaticModel is the best guess. weapons
+  // patched by several mods can end up with any of these (e.g. `WeaponSpritesByIndex = Hammer;HammerForged`, the
+  // item instance picks one), so all of them are measured and the runtime looks up the one the game uses
+  const names = worldstaticmodel?.length
+    ? [worldstaticmodel]
+    : weapon
+      ? [staticmodel, weaponsprite, ...(weaponspritesbyindex?.split(";") ?? [])].filter((value) => value?.trim())
+      : [staticmodel].filter((value) => value?.length);
+
+  return names.map((name) => ({ name: shortName(name!.trim()), weapon }));
+};
+
 /**
  * Collects the world model of every item across all sources, resolved like `ItemModelRenderer` does: the
- * `WorldStaticModel`, or for weapons without one their `StaticModel` or `WeaponSprite`, laid down by the weapon
- * path. Like the game, later sources override models and mesh files of earlier ones.
+ * `WorldStaticModel`, or for weapons without one their `StaticModel`, `WeaponSprite` and every model in
+ * `WeaponSpritesByIndex`, laid down by the weapon path. Properties are merged across an item's declarations first. Like the game, later sources override models and mesh files of earlier ones.
  */
 export const collectWorldMeshes = (sources: MediaSource[]): CollectedMeshes => {
   const models = new Map<string, ModelDefinition>();
-  /** item full type → world model name and whether it goes through the weapon path */
-  const items = new Map<string, { model: string; weapon: boolean }>();
+  /** item full type → its properties, merged across every declaration */
+  const items = new Map<string, Record<string, string>>();
   const meshFiles = new Map<string, { file: string; source: string }>();
 
   for (const source of sources) {
@@ -131,19 +147,11 @@ export const collectWorldMeshes = (sources: MediaSource[]): CollectedMeshes => {
               source: source.id,
             });
           } else if (block.kind === "item") {
-            const { worldstaticmodel, staticmodel, weaponsprite } = block.properties;
-            const weapon = !worldstaticmodel?.length && isWeapon(block.properties);
-            // non-weapons without a WorldStaticModel have no 3D model in game, their StaticModel is the best guess
-            const model = worldstaticmodel?.length
-              ? worldstaticmodel
-              : [staticmodel, weapon ? weaponsprite : undefined].find((value) => value?.length);
             const fullType = `${module}.${block.name}`;
 
-            if (model) {
-              items.set(fullType, { model: shortName(model), weapon });
-            } else {
-              items.delete(fullType);
-            }
+            // mods re-declare items to patch a few properties (e.g. CarriableItems only sets StaticModel), the game
+            // merges those into the existing item, so the model is resolved once every declaration is read
+            items.set(fullType, { ...items.get(fullType), ...block.properties });
           }
         }
       }
@@ -173,7 +181,9 @@ export const collectWorldMeshes = (sources: MediaSource[]): CollectedMeshes => {
     return parsed.get(file);
   };
 
-  for (const { model: modelName, weapon } of items.values()) {
+  const itemModels = [...items.values()].flatMap(getItemModels);
+
+  for (const { name: modelName, weapon } of itemModels) {
     const key = worldModelKey(modelName, weapon);
     const model = models.get(modelName.toLowerCase());
 

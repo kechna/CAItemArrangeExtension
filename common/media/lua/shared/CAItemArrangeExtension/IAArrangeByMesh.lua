@@ -1,3 +1,4 @@
+require("IAArrange")
 
 --- @class IASurfaceProfile
 --- @field zmin number
@@ -18,6 +19,8 @@
 --- @field fx number?
 --- @field fy number?
 --- @field fz number?
+--- @field lx number? real length along x when it's longer than dx, kept on the surface when placed
+--- @field ly number? real length along y when it's longer than dy, kept on the surface when placed
 --- @field center number[]? measured profiles: centre of the model's box relative to its origin (tiles, tiles, floors)
 
 ---@class CAIAE_MeshBase
@@ -39,6 +42,7 @@
 ---@field flipY? boolean turn the item 90° around y (adds 90 to fy) and swap its dimensions to match
 ---@field flipZ? boolean turn the item 90° around z (adds 90 to fz) and swap its dimensions to match
 ---@field flip? boolean same as `flipZ`
+---@field s? number model scale the entry's dimensions and offsets were measured at, scaled along for other scales
 
 ---@class ItemArrangeMod
 ---@field surfaceProfile table<string, table<integer, IASurfaceProfile>>
@@ -62,14 +66,23 @@ local p = "CAItemArrangeExtension"
 
 --- sizes and offsets measured from the models by src/generateMeshSizes.ts, for meshes no profile covers yet.
 ---@type table<string, { dx: number, dy: number, dz: number, oz?: number, cx?: number, cy?: number }>
-local meshSizes = require("CAItemArrangerExtension/IAMeshSizes_Generated")
+local meshSizes = require("CAItemArrangeExtension/IAMeshSizes_Generated")
 
 --- profile name used for items arranged by their measured mesh size.
 local MEASURED = "measured"
 
+--- profile name used for items arranged by a mesh entry's own dimensions.
+local INLINE = "inline"
+
 --- measured sizes outside this range are broken meshes or things that don't fit on a tile.
 local MIN_MEASURED_SIZE = 0.001
 local MAX_MEASURED_SIZE = 1
+
+--- long items (sledgehammers, shovels) may be up to this long, their footprint is shortened to `MAX_FOOTPRINT`.
+local MAX_MEASURED_LENGTH = 2.5
+
+--- IA only places items whose footprint fits inside a surface, so longer ones overhang it, like IA's own long weapons.
+local MAX_FOOTPRINT = 0.7
 
 --- how much a measured bottom offset may exceed the item's height before it's distrusted, in floors.
 local MAX_BOTTOM_OFFSET_SLACK = 0.05
@@ -315,9 +328,17 @@ end
 ---@return table<table, string>
 local function getProfileNames()
   local names = {}
+  local sorted = {}
 
-  for name, profile in pairs(IA.arrangableProfile) do
-    names[profile] = name
+  for name in pairs(IA.arrangableProfile) do
+    sorted[#sorted + 1] = name
+  end
+
+  -- profiles shared under several names get the first one alphabetically, not whichever comes up last
+  table.sort(sorted)
+
+  for i = #sorted, 1, -1 do
+    names[IA.arrangableProfile[sorted[i]]] = sorted[i]
   end
 
   return names
@@ -335,8 +356,18 @@ local function learnMeshProfiles(sm)
   -- no scales here, writing them would mean parsing every model's script
   local fileWriter = isDebugEnabled() and getFileWriter(p .. "_meshes.txt", true, false) or nil
 
-  for fullType, profile in pairs(IA.arrangables) do
-    local name = profileNames[profile]
+  -- in a fixed order, the first item of each model decides what's learned for it
+  local fullTypes = {}
+
+  for fullType in pairs(IA.arrangables) do
+    fullTypes[#fullTypes + 1] = fullType
+  end
+
+  table.sort(fullTypes)
+
+  for i = 1, #fullTypes do
+    local fullType = fullTypes[i]
+    local name = profileNames[IA.arrangables[fullType]]
     local item = name and sm:getItem(fullType)
     local worldMesh = item and getWorldMesh(sm, item)
 
@@ -404,9 +435,10 @@ local function getScaledProfile(name, ratio)
 end
 
 ---@param value number
+---@param max?  number defaults to MAX_MEASURED_SIZE
 ---@return boolean
-local function isMeasurable(value)
-  return value >= MIN_MEASURED_SIZE and value <= MAX_MEASURED_SIZE
+local function isMeasurable(value, max)
+  return value >= MIN_MEASURED_SIZE and value <= (max or MAX_MEASURED_SIZE)
 end
 
 --- cos and sin of an angle in degrees, exact for quarter turns.
@@ -509,7 +541,9 @@ local function getMeasuredProfile(worldMesh)
   local profile = measuredProfiles[key]
 
   if profile == nil then
-    if isMeasurable(size.dx) and isMeasurable(size.dy) and isMeasurable(size.dz) then
+    if isMeasurable(size.dx, MAX_MEASURED_LENGTH)
+      and isMeasurable(size.dy, MAX_MEASURED_LENGTH)
+      and isMeasurable(size.dz) then
       profile = { dx = size.dx, dy = size.dy, dz = size.dz, qz = 1 }
 
       local center = { size.cx or 0, size.cy or 0, size.dz / 2 - (size.oz or 0) }
@@ -520,6 +554,12 @@ local function getMeasuredProfile(worldMesh)
         center = turnPoint(center, { 0, 0, 90 }, false)
       end
 
+      if profile.dx > MAX_FOOTPRINT then profile.lx = profile.dx end
+      if profile.dy > MAX_FOOTPRINT then profile.ly = profile.dy end
+
+      profile.dx = math.min(profile.dx, MAX_FOOTPRINT)
+      profile.dy = math.min(profile.dy, MAX_FOOTPRINT)
+
       setCenterOffsets(profile, center)
     else
       profile = false
@@ -529,6 +569,38 @@ local function getMeasuredProfile(worldMesh)
   end
 
   return profile or nil
+end
+
+local SCALED_ENTRY_KEYS = { dx = true, dy = true, dz = true, mx = true, my = true, mz = true }
+
+---@param manual    CAIAE_MeshOverride
+---@param worldMesh CAIAE_WorldMesh
+---@return table fields, number ratio
+local function getScaledEntry(manual, worldMesh)
+  local ratio = manual.s and getMeshScale(worldMesh) / manual.s or 1
+  local fields = {}
+
+  for k, v in pairs(manual) do
+    if not MESH_PROFILE_KEYS[k] then
+      fields[k] = SCALED_ENTRY_KEYS[k] and scaleDimension(v, ratio) or v
+    end
+  end
+
+  return fields, ratio
+end
+
+---@param worldMesh CAIAE_WorldMesh
+---@param manual    CAIAE_MeshOverride
+---@return IAArrangableProfile?, string?, number?
+local function getInlineProfile(worldMesh, manual)
+  if not manual.dx or not manual.dy or not manual.dz then
+    return nil, nil, nil
+  end
+
+  local profile, ratio = getScaledEntry(manual, worldMesh)
+
+  ---@cast profile IAArrangableProfile
+  return profile, INLINE, ratio
 end
 
 ---@param learned table<string, CAIAE_LearnedProfile[]>
@@ -552,10 +624,24 @@ local function getCandidates(learned, mesh)
   local entries = learned[mesh]
 
   if entries then
+    local learnedCandidates = {}
+
     for i = 1, #entries do
       local entry = entries[i]
 
-      candidates[#candidates + 1] = { name = entry.name, scale = getMeshScale(entry.worldMesh) }
+      learnedCandidates[#learnedCandidates + 1] = { name = entry.name, scale = getMeshScale(entry.worldMesh) }
+    end
+
+    table.sort(learnedCandidates, function (a, b)
+      if a.name ~= b.name then
+        return a.name < b.name
+      end
+
+      return a.scale < b.scale
+    end)
+
+    for i = 1, #learnedCandidates do
+      candidates[#candidates + 1] = learnedCandidates[i]
     end
   end
 
@@ -587,6 +673,10 @@ local function resolveBaseProfile(learned, worldMesh)
 
     if measured then
       return measured, MEASURED, 1
+    end
+
+    if type(manual) == "table" then
+      return getInlineProfile(worldMesh, manual)
     end
 
     return nil, nil, nil
@@ -755,42 +845,48 @@ local function applyFlips(result, profile, manual)
 
   if dx then
     result.dx, result.dy, result.dz = manual.dx or dx, manual.dy or dy, manual.dz or dz
+
+    if profile.lx or profile.ly then
+      local real = { dx = profile.lx or profile.dx, dy = profile.ly or profile.dy, dz = profile.dz }
+      local lx, ly = getTurnedDimensions(real, from, to)
+
+      result.lx = lx and lx > result.dx and lx or nil
+      result.ly = ly and ly > result.dy and ly or nil
+    end
   end
 end
 
---- copy of the profile with the mesh entry's own fields on top, or the profile itself when the entry has none.
----@param mesh    string
----@param profile IAArrangableProfile
----@param name    string
----@param ratio   number
+---@param worldMesh CAIAE_WorldMesh
+---@param profile   IAArrangableProfile
+---@param name      string
+---@param ratio     number
 ---@return IAArrangableProfile
-local function applyOverrides(mesh, profile, name, ratio)
-  local manual = IA.meshProfiles[mesh]
+local function applyOverrides(worldMesh, profile, name, ratio)
+  local manual = IA.meshProfiles[worldMesh.mesh]
 
-  if type(manual) ~= "table" then
+  -- an inline profile is the entry itself
+  if type(manual) ~= "table" or name == INLINE then
     return profile
   end
 
-  local key = string.format("%s@%s@%.3f", mesh, name, ratio)
+  local own, ownRatio = getScaledEntry(manual, worldMesh)
+  local hasOwn = false
+
+  for _ in pairs(own) do
+    hasOwn = true
+    break
+  end
+
+  if not hasOwn then
+    return profile
+  end
+
+  local key = string.format("%s@%s@%.3f@%.3f", worldMesh.mesh, name, ratio, ownRatio)
   local result = overriddenProfiles[key]
 
   ---@diagnostic disable-next-line: unnecessary-if
   if result then
     return result
-  end
-
-  local hasOverrides = false
-
-  for k in pairs(manual) do
-    ---@diagnostic disable-next-line: unnecessary-if
-    if not MESH_PROFILE_KEYS[k] then
-      hasOverrides = true
-      break
-    end
-  end
-
-  if not hasOverrides then
-    return profile
   end
 
   result = {}
@@ -799,14 +895,11 @@ local function applyOverrides(mesh, profile, name, ratio)
     result[k] = v
   end
 
-  for k, v in pairs(manual) do
-    ---@diagnostic disable-next-line: unnecessary-if
-    if not MESH_PROFILE_KEYS[k] then
-      result[k] = v
-    end
+  for k, v in pairs(own) do
+    result[k] = v
   end
 
-  applyFlips(result, profile, manual)
+  applyFlips(result, profile, own)
 
   overriddenProfiles[key] = result
 
@@ -825,7 +918,7 @@ local function resolveProfile(learned, worldMesh)
 
   ---@cast name string
   ---@cast ratio number
-  return applyOverrides(worldMesh.mesh, profile, name, ratio), name, ratio
+  return applyOverrides(worldMesh, profile, name, ratio), name, ratio
 end
 
 function IA.applyMeshProfiles()
