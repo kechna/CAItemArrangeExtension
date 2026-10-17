@@ -10,6 +10,7 @@ local ISTransferAction = ISTransferAction
 local sendRemoveItemFromContainer = sendRemoveItemFromContainer
 local isAltKeyDown = isAltKeyDown
 local isCtrlKeyDown = isCtrlKeyDown
+local isServer = isServer
 
 -- patches Item Arrange's arrange action:
 --  - skip items that are no longer in their container, so they don't turn into ghost items
@@ -89,14 +90,25 @@ function IAArrangeAction:complete()
     self.dropSquare:AddWorldInventoryItem(item, 0.5, 0.5, 0.0)
   end
 
-  return IA.ArrangeItems(self.dropSquare, false, self.ctrlKey)
+  -- the item is on the square already, so the action succeeded even when it doesn't fit the arrangement
+  IA.ArrangeItems(self.dropSquare, false, self.ctrlKey)
+
+  return true
 end
 
-function IAArrangeAction:new(...)
-  local o = originalNew(self, ...)
+-- in MP the client sends the fields named after `new`'s parameters and the server calls `new` with them, so the
+-- parameters must be named (no `...`) and the held keys are parameters too, read on the client only
+function IAArrangeAction:new(character, item, srcContainer, dropSquare, altKey, ctrlKey)
+  local o = originalNew(self, character, item, srcContainer, dropSquare)
   o.skipItem = false
-  o.altKey = isAltKeyDown()
-  o.ctrlKey = isCtrlKeyDown()
+
+  if altKey == nil and not isServer() then
+    altKey = isAltKeyDown()
+    ctrlKey = isCtrlKeyDown()
+  end
+
+  o.altKey = altKey == true
+  o.ctrlKey = ctrlKey == true
 
   return o
 end
