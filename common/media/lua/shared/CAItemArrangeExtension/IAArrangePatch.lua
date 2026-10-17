@@ -1,19 +1,39 @@
-IA = IA or {}
+require("IAArrange")
+
+local IA = IA or nil
+
+if not IA or not IA.getSurfaceInfo or not IA.CheckSpace or not IA.ArrangeItems then return end
+
+local pairs = pairs
+local ipairs = ipairs
+local print = print
+local tostring = tostring
+local mathAbs = math.abs
+local mathAsin = math.asin
+local mathAtan2 = math.atan2
+local mathCos = math.cos
+local mathDeg = math.deg
+local mathMax = math.max
+local mathMin = math.min
+local mathRad = math.rad
+local mathSin = math.sin
+local tableInsert = table.insert
+local tableSort = table.sort
 
 -- MOST OF THIS IS SLAYER'S OWN ITEM ARRANGE MOD, WHICH IS NOT MY WORK.
 -- I (Kechna) AM NOT THE AUTHOR OF THE ORIGINAL MOD, AND I DO NOT CLAIM TO BE. I AM MERELY PROVIDING AN EXTENSION AND SOME PATCHES TO IT.
 -- Original mod: https://steamcommunity.com/sharedfiles/filedetails/?id=3767639280
 -- My extension: https://steamcommunity.com/sharedfiles/filedetails/?id=3813943783
 
--- This file contains some patches I made:
---  - validate items before placing to make sure they're still present, to prevent them creating ghost items
---  - make items arrange according to nearest wall orientation properly
---  - allow passing x/y offset via mx/my
---  - allow holding shift+alt to skip non-arrangeable items
+-- This file replaces IA.getSurfaceInfo, IA.CheckSpace and IA.ArrangeItems with these patches:
 --  - support multiple objects with surfaces per tile, such as shelves above counters
+--  - allow arranging on top of tall furniture, such as stacked crates
+--  - lift items off rugs and surfaces a little, so they don't clip into them
+--  - keep long items (lx/ly) on the surface and start new rows by each item type's own size
+--  - fix the bounds check for S and E walls
+--  - hold ctrl to not stack items, shift+alt to skip non-arrangeable items
 
 -- I'm waiting for Slayer to have some time to potentially include some of my patches in the core mod.
--- The mod is not extensible enough for me to do this without overriding most of it.
 
 local CURSOR_ORDER_N = 1
 local CURSOR_ORDER_W = 2
@@ -27,17 +47,12 @@ local CURSOR_YAW = {
     [CURSOR_ORDER_E] = 90,
 }
 
--- Lift in floors on top of the game's own 0.00175 (WorldItemModelDrawer.renderMain). Models whose bottom rests exactly
--- on a surface lose to its depth and look sunk into it; well under a pixel at any zoom.
 local SURFACE_CLEARANCE = 0.003
 
--- Extra lift in floors for items on a rug, which is drawn above the floor it lies on.
 local RUG_LIFT = 0.006
 
--- rug tiles of the game (floors_rugs_01_*) and of mods that name them the same way
 local function isRug(spriteName)
     local name = spriteName:lower()
-    -- a whole word only, so drug store tiles (location_shop_drugs_*) don't count
     local padded = "_" .. name .. "_"
     return padded:find("_rugs?_") ~= nil
 end
@@ -54,42 +69,41 @@ local function mat3Mul(a, b)
 end
 
 local function mat3RotX(deg)
-    local r = math.rad(deg)
-    local c, s = math.cos(r), math.sin(r)
+    local r = mathRad(deg)
+    local c, s = mathCos(r), mathSin(r)
     return { 1, 0, 0, 0, c, -s, 0, s, c }
 end
 
 local function mat3RotY(deg)
-    local r = math.rad(deg)
-    local c, s = math.cos(r), math.sin(r)
+    local r = mathRad(deg)
+    local c, s = mathCos(r), mathSin(r)
     return { c, 0, s, 0, 1, 0, -s, 0, c }
 end
 
 local function mat3RotZ(deg)
-    local r = math.rad(deg)
-    local c, s = math.cos(r), math.sin(r)
+    local r = mathRad(deg)
+    local c, s = mathCos(r), mathSin(r)
     return { c, -s, 0, s, c, 0, 0, 0, 1 }
 end
 
--- the game tilts items last, around a fixed direction that doesn't turn with the item. So for example, when a standing bag gets turned to face another wall, its tilt pushes it over instead of standing it up. So we work out the final position first and convert it to the game's numbers.
 local function applyYaw(fx, fy, fz, yaw)
     if yaw == 0 or fx == 0 then
         return fx, fy, (fz + yaw) % 360
     end
 
     local m = mat3Mul(mat3RotY(yaw), mat3Mul(mat3RotX(fx), mat3Mul(mat3RotY(fz), mat3RotZ(fy))))
-    local sinB = math.max(-1, math.min(1, m[3]))
-    local a, b, c = 0.0, math.asin(sinB), 0.0
+    local sinB = mathMax(-1, mathMin(1, m[3]))
+    local a, b, c = 0.0, mathAsin(sinB), 0.0
 
-    if math.abs(sinB) < 0.99999 then
-        a = math.atan2(-m[6], m[9])
-        c = math.atan2(-m[2], m[1])
+    if mathAbs(sinB) < 0.99999 then
+        a = mathAtan2(-m[6], m[9])
+        c = mathAtan2(-m[2], m[1])
     else
-        a = math.atan2(m[8], m[5])
+        a = mathAtan2(m[8], m[5])
         c = 0
     end
 
-    return math.deg(a) % 360, math.deg(c) % 360, math.deg(b) % 360
+    return mathDeg(a) % 360, mathDeg(c) % 360, mathDeg(b) % 360
 end
 
 ---@param square IsoGridSquare
@@ -198,7 +212,7 @@ function IA.getSurfaceInfo(square)
                     if not copy.zmin then
                         copy.zmin = surfaceZ
                     end
-                    table.insert(surfaces, copy)
+                    tableInsert(surfaces, copy)
                 end
 
                 object:setOverlaySprite("")
@@ -218,7 +232,7 @@ function IA.getSurfaceInfo(square)
     end
 
     if #surfaces == 0 then
-        table.insert(surfaces, ground)
+        tableInsert(surfaces, ground)
     end
 
     -- recognized objects with known surfaces
@@ -286,7 +300,7 @@ local function buildGroundList(square, extraItem)
             if not groundList[fType] then
                 groundList[fType] = {}
             end
-            table.insert(groundList[fType], { item = item, witem = witem })
+            tableInsert(groundList[fType], { item = item, witem = witem })
         end
     end
 
@@ -296,7 +310,7 @@ local function buildGroundList(square, extraItem)
             if not groundList[fType] then
                 groundList[fType] = {}
             end
-            table.insert(groundList[fType], { item = extraItem })
+            tableInsert(groundList[fType], { item = extraItem })
         end
     end
 
@@ -314,7 +328,7 @@ local function arrangeGroundList(square, groundList, applyOffsets, ignoreQz)
     for i = 1, #surfaces do
         orderedSurfaceIndexes[i] = i
     end
-    table.sort(orderedSurfaceIndexes, function(a, b)
+    tableSort(orderedSurfaceIndexes, function(a, b)
         local sa = surfaces[a] or {}
         local sb = surfaces[b] or {}
         local da = (sa.zmax or 1) - (sa.zmin or 0)
@@ -484,7 +498,7 @@ local function arrangeGroundList(square, groundList, applyOffsets, ignoreQz)
         if length >= high - low then
             return (low + high) / 2
         end
-        return math.max(low + length / 2, math.min(high - length / 2, center))
+        return mathMax(low + length / 2, mathMin(high - length / 2, center))
     end
 
     -- Starts a new row when this item doesn't fit in what's left of the current one, judged by this item's own
@@ -581,7 +595,7 @@ local function arrangeGroundList(square, groundList, applyOffsets, ignoreQz)
         if not placedBoundsBySurface[surfaceIndex] then
             placedBoundsBySurface[surfaceIndex] = {}
         end
-        table.insert(placedBoundsBySurface[surfaceIndex], getAnchorBounds(xpos, ypos, zpos, dx, dy, dz))
+        tableInsert(placedBoundsBySurface[surfaceIndex], getAnchorBounds(xpos, ypos, zpos, dx, dy, dz))
     end
 
     local totalTypes = 0
