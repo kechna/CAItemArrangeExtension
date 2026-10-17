@@ -3,59 +3,23 @@ local Utils = require("CAItemArrangeExtension/Utils")
 
 IA = IA or nil
 
-if not IA then return end
+if not IA then
+  return
+end
 
 local IA = IA
 
 local extend = Utils.extend
+local modifySurfaces = Utils.modifySurfaces
 
---- sprite -> what `IA.surfaces` held before this file first wrote it (false for nothing). every run puts those back
---- first, so a re-run (hot reload) starts from Item Arrange's own surfaces: changed offsets don't stack, and removed
---- or commented-out lines revert.
----@type table<string, table | false>
-IA.surfaceOriginals = IA.surfaceOriginals or {}
-
-local originals = IA.surfaceOriginals
-local allSurfaces = IA.surfaces
-
-for sprite, original in pairs(originals) do
-  allSurfaces[sprite] = original or nil
-end
-
---- `IA.surfaces`, recording the original of every sprite this file writes.
+--- `IA.surfaces`, writing through `Utils.setSurfaces`.
 local s = setmetatable({}, {
-  __index = allSurfaces,
-  __newindex = function (_, sprite, value)
-    if originals[sprite] == nil then
-      originals[sprite] = allSurfaces[sprite] or false
-    end
-
-    allSurfaces[sprite] = value
+  __index = IA.surfaces,
+  __newindex = function(_, sprite, value)
+    Utils.setSurfaces(sprite, value)
   end,
 })
 local sp = IA.surfaceProfile
-
---- Adds `offsets` to the surface at `index` of a sprite, or to every surface when `index` is nil, see
---- `Utils.modify`. Several calls on one sprite add up: `modifySurfaces("x", { ymin = 0.2, xmax = -0.1 }, 2)`.
----@param sprite  string
----@param offsets table<string, number>
----@param index   integer?
-local function modifySurfaces(sprite, offsets, index)
-  local current = s[sprite]
-
-  if not current then
-    print(string.format("CAItemArrangeExtension: no surfaces to modify for %s", sprite))
-    return
-  end
-
-  ---@type table<integer, IASurfaceProfile>
-  local result = {}
-  for i = 1, #current do
-    result[i] = (index == nil or index == i) and Utils.modify(current[i], offsets) or current[i]
-  end
-
-  s[sprite] = result
-end
 
 -- shelves generated from the game's tile geometry, only where nothing above (or Item Arrange) defined a profile.
 local generatedSurfaces = require("CAItemArrangeExtension/IASurfaces_Generated")
@@ -255,7 +219,6 @@ s["furniture_shelving_01_47"] = sp.bookshelfN
 --s["crafted_04_93"] = sp.craftedBookshelfN
 --s["crafted_04_95"] = sp.craftedBookshelfE
 
-
 sp.bedsideStandS = {
   [1] = { zmin = 0.355, zmax = 1.000, xmin = 0.18, xmax = 0.9, ymin = 0.15, ymax = 0.65 },
 }
@@ -346,13 +309,336 @@ modifySurfaces("furniture_seating_indoor_03_2", { zmin = -0.004 })
 modifySurfaces("furniture_seating_indoor_03_3", { zmin = -0.004 })
 
 -- tiny wooden table with fancy legs
-modifySurfaces("furniture_tables_low_01_2", { zmin = -0.0032, ymin = 0.1, xmin=0.05, ymax = -0.05 })
+modifySurfaces("furniture_tables_low_01_2", { zmin = -0.0032, ymin = 0.1, xmin = 0.05, ymax = -0.05 })
 
 -- tv console
-modifySurfaces("furniture_tables_low_01_12", { zmin = -0.005, ymin = 0.08, xmin=0.05, ymax = -0.02, xmax=-0.02 })
+modifySurfaces("furniture_tables_low_01_12", { zmin = -0.005, ymin = 0.08, xmin = 0.05, ymax = -0.02, xmax = -0.02 })
 
 -- bathroom cabinet with mirror
-modifySurfaces("fixtures_bathroom_01_29", { zmin = -0.022 })
+modifySurfaces("fixtures_bathroom_01_29", { zmin = -0.022, xmax = -0.1, ymax = -0.05 })
 
 -- crate-sized cardboard box
-modifySurfaces("furniture_storage_02_16", { zmin = -0.001 })
+modifySurfaces("furniture_storage_02_16", { zmin = -0.021 })
+
+modifySurfaces(
+  "location_community_medical_01_48",
+  { xmin = 0.082, xmax = -0.006, ymin = 0.154, ymax = -0.016, zmin = -0.003 }
+)
+modifySurfaces(
+  "location_community_medical_01_50",
+  { xmin = 0.082, xmax = -0.006, ymin = 0.154, ymax = -0.016, zmin = -0.003 }
+)
+--modifySurfaces("location_community_medical_01_49", { xmin = 0.12, xmax = 0.11, ymin = 0.1, ymax = 0.08, zmin = 0.023 })
+--modifySurfaces("location_community_medical_01_51", { xmin = 0.12, xmax = 0.11, ymin = 0.1, ymax = 0.08, zmin = 0.023 })
+modifySurfaces(
+  "location_community_medical_01_49",
+  { xmin = 0.21, xmax = 0.01, ymin = 0.13, ymax = 0.03, zmin = -0.003 }
+)
+modifySurfaces(
+  "location_community_medical_01_51",
+  { xmin = 0.21, xmax = 0.01, ymin = 0.13, ymax = 0.03, zmin = -0.003 }
+)
+
+modifySurfaces("furniture_storage_02_28", { xmin = 0.02, xmax = -0.023, ymin = 0.022, ymax = -0.016, zmin = -0.01 })
+modifySurfaces("furniture_storage_02_29", { xmin = 0.001, xmax = -0.037, ymin = 0.028, zmin = -0.006 })
+modifySurfaces("furniture_storage_02_30", { xmin = 0.02, xmax = -0.023, ymin = 0.022, ymax = -0.016, zmin = -0.01 })
+modifySurfaces("furniture_storage_02_31", { xmin = 0.001, xmax = -0.037, ymin = 0.028, zmin = -0.006 })
+
+-- blue comfy chair
+s["furniture_seating_indoor_03_24"] = {
+  { zmin = 0.192, zmax = 1, xmin = 0.401, xmax = 0.828, ymin = 0.183, ymax = 0.707 },
+}
+s["furniture_seating_indoor_03_25"] = {
+  { zmin = 0.192, zmax = 1, xmin = 0.201, xmax = 0.742, ymin = 0.415, ymax = 0.877 },
+}
+s["furniture_seating_indoor_03_27"] = {
+  { zmin = 0.192, zmax = 1, xmin = 0.28, xmax = 0.75, ymin = 0.2, ymax = 0.63 },
+}
+s["furniture_seating_indoor_03_26"] = {
+  { zmin = 0.192, zmax = 1, xmin = 0.2, xmax = 0.715, ymin = 0.28, ymax = 0.75 },
+}
+
+-- wooden toilet hole
+modifySurfaces("fixtures_bathroom_02_24", { xmin = 0.016, xmax = -0.014, ymax = -0.109, zmin = -0.016 })
+-- crappy crafted wooden shelves
+modifySurfaces("carpentry_02_68", { xmin = 0.012, xmax = 0.005, ymin = 0.048, ymax = -0.014, zmin = -0.006 })
+modifySurfaces("carpentry_02_69", { xmin = 0.014, xmax = -0.046, ymin = -0.008, ymax = -0.023, zmin = -0.006 })
+modifySurfaces("carpentry_02_70", { xmin = 0.03, xmax = -0.01, ymin = 0.02, ymax = 0.01, zmin = -0.006 })
+modifySurfaces("carpentry_02_71", { xmin = 0.011, xmax = -0.014, ymin = 0.05, ymax = -0.022, zmin = -0.006 })
+--modifySurfaces("carpentry_02_69", { xmin = 0.012, xmax = 0.005, ymin = 0.048, ymax = -0.014, zmin = -0.006 })
+--modifySurfaces("carpentry_02_70", { xmin = 0.012, xmax = 0.005, ymin = 0.048, ymax = -0.014, zmin = -0.006 })
+--modifySurfaces("carpentry_02_71", { xmin = 0.012, xmax = 0.005, ymin = 0.048, ymax = -0.014, zmin = -0.006 })
+
+-- tall skinny wooden end table
+s["furniture_tables_high_01_4"] = {
+  { zmin = 0.315, zmax = 1, xmin = 0.06, xmax = 1, ymin = 0.36, ymax = 0.74 },
+}
+
+-- bathroom sink nw
+s["fixtures_sinks_01_13"] = {
+  { zmin = 0.35, zmax = 1, xmin = 0.15, xmax = 0.51, ymin = 0.2, ymax = 0.29 },
+  { zmin = 0.35, zmax = 1, xmin = 0.15, xmax = 0.51, ymin = 0.855, ymax = 0.96 },
+}
+
+-- metal sink drinky thing
+s["fixtures_sinks_01_25"] = {
+  { zmin = 0.336, zmax = 1, xmin = 0.174, xmax = 0.3, ymin = 0.309, ymax = 0.754 },
+  { zmin = 0.336, zmax = 1, xmin = 0.174, xmax = 0.59, ymin = 0.749, ymax = 0.794 },
+}
+
+-- tiny plastic table
+s["furniture_tables_low_01_20"] = {
+  { zmin = 0.214, zmax = 1, xmin = 0.109, xmax = 1.01, ymin = 0.207, ymax = 0.872 },
+}
+
+-- glass table nw
+modifySurfaces("furniture_tables_low_01_8", { xmin = 0.24, ymin = 0.16, ymax = 0.013, zmin = -0.009 })
+modifySurfaces("furniture_tables_low_01_9", { xmax = -0.13, ymin = 0.17, ymax = 0.09, zmin = -0.009 })
+
+-- log table sw
+modifySurfaces("crafted_02_88", { xmin = 0.034, xmax = 0.079, ymax = -0.05, zmin = -0.007 })
+modifySurfaces("crafted_02_89", { xmin = 0.092, xmax = 0.129, ymin = 0.175, zmin = -0.007 })
+
+-- doesnt support stacking so just put an extremely tiny surface
+-- shop shelves green side
+modifySurfaces("location_shop_generic_01_0", { xmin = -0.06, xmax = -0.96, ymin = 0.86, ymax = 0.02, zmin = 0.05 })
+modifySurfaces("location_shop_generic_01_1", { xmin = -0.06, xmax = -0.96, ymin = 0.86, ymax = 0.02, zmin = 0.05 })
+
+-- rotated variants of the entries above
+
+-- log table (rotated)
+s["crafted_02_90"] = { -- from crafted_02_88
+  { zmin = 0.364, zmax = 1, xmin = 0.05, xmax = 1, ymin = 0.084, ymax = 1.079 },
+}
+s["crafted_02_91"] = { -- from crafted_02_89
+  { zmin = 0.364, zmax = 1, xmin = 0, xmax = 0.775, ymin = 0.142, ymax = 1.129 },
+}
+
+-- bathroom cabinet with mirror (rotated)
+s["fixtures_bathroom_01_28"] = { -- from fixtures_bathroom_01_29
+  { zmin = 0.872, zmax = 1, xmin = 0.14, xmax = 0.773, ymin = 0.055, ymax = 0.408 },
+}
+s["fixtures_bathroom_01_37"] = { -- from fixtures_bathroom_01_29
+  { zmin = 0.872, zmax = 1, xmin = 0.227, xmax = 0.86, ymin = 0.592, ymax = 0.945 },
+}
+
+-- wooden toilet hole (rotated)
+s["fixtures_bathroom_02_25"] = { -- from fixtures_bathroom_02_24
+  { zmin = 0.229, zmax = 1, xmin = 0.109, xmax = 1, ymin = 0.062, ymax = 0.57 },
+}
+s["fixtures_bathroom_02_26"] = { -- from fixtures_bathroom_02_24
+  { zmin = 0.229, zmax = 1, xmin = 0.43, xmax = 0.938, ymin = 0.109, ymax = 1 },
+}
+s["fixtures_bathroom_02_27"] = { -- from fixtures_bathroom_02_24
+  { zmin = 0.229, zmax = 1, xmin = 0, xmax = 0.891, ymin = 0.43, ymax = 0.938 },
+}
+
+-- bathroom sink (rotated)
+s["fixtures_sinks_01_12"] = { -- from fixtures_sinks_01_13
+  { zmin = 0.35, zmax = 1, xmin = 0.71, xmax = 0.8, ymin = 0.15, ymax = 0.51 },
+  { zmin = 0.35, zmax = 1, xmin = 0.04, xmax = 0.145, ymin = 0.15, ymax = 0.51 },
+}
+
+-- metal sink drinky thing (rotated)
+s["fixtures_sinks_01_24"] = { -- from fixtures_sinks_01_25
+  { zmin = 0.336, zmax = 1, xmin = 0.246, xmax = 0.691, ymin = 0.174, ymax = 0.3 },
+  { zmin = 0.336, zmax = 1, xmin = 0.206, xmax = 0.251, ymin = 0.174, ymax = 0.59 },
+}
+
+-- tall skinny wooden end table (rotated)
+s["furniture_tables_high_01_5"] = { -- from furniture_tables_high_01_4
+  { zmin = 0.315, zmax = 1, xmin = 0.36, xmax = 0.74, ymin = 0, ymax = 0.94 },
+}
+
+-- tiny plastic table (rotated)
+s["furniture_tables_low_01_21"] = { -- from furniture_tables_low_01_20
+  { zmin = 0.214, zmax = 1, xmin = 0.207, xmax = 0.872, ymin = -0.01, ymax = 0.891 },
+}
+
+-- glass table (rotated)
+s["furniture_tables_low_01_10"] = { -- from furniture_tables_low_01_8
+  { zmin = 0.215, zmax = 1, xmin = 0.26, xmax = 0.813, ymin = 0, ymax = 0.41 },
+}
+s["furniture_tables_low_01_11"] = { -- from furniture_tables_low_01_9
+  { zmin = 0.215, zmax = 1, xmin = 0.27, xmax = 0.89, ymin = 0.33, ymax = 1 },
+}
+
+-- wall shelves
+modifySurfaces("furniture_shelving_01_33", { xmin = 0.07, ymin = 0.04, zmin = -0.008 })
+s["furniture_shelving_01_32"] = { -- rotated from furniture_shelving_01_33
+  { zmin = 0.592, zmax = 1, xmin = 0.09, xmax = 0.32, ymin = 0, ymax = 0.93 },
+}
+
+-- cot
+modifySurfaces("furniture_bedding_01_56", { xmin = 0.05, xmax = -0.04, ymax = -0.05, zmin = -0.007 })
+s["furniture_bedding_01_59"] = { -- rotated from furniture_bedding_01_56
+  { zmin = 0.254, zmax = 1, xmin = 0, xmax = 0.943, ymin = 0.076, ymax = 0.895 },
+}
+
+-- bunk bed, both tiles share their heights and y edges
+s["furniture_bedding_01_86"] = {
+  { zmin = 0.27, zmax = 1, xmin = 0.161, xmax = 1, ymin = 0.16, ymax = 0.99 },
+  { zmin = 0.78, zmax = 1, xmin = 0.161, xmax = 1, ymin = 0.16, ymax = 0.99 },
+}
+s["furniture_bedding_01_87"] = {
+  { zmin = 0.27, zmax = 1, xmin = 0, xmax = 0.95, ymin = 0.16, ymax = 0.99 },
+  { zmin = 0.78, zmax = 1, xmin = 0, xmax = 0.95, ymin = 0.16, ymax = 0.99 },
+}
+s["furniture_bedding_01_85"] = { -- rotated from furniture_bedding_01_86
+  { zmin = 0.27, zmax = 1, xmin = 0.01, xmax = 0.84, ymin = 0.161, ymax = 1 },
+  { zmin = 0.78, zmax = 1, xmin = 0.01, xmax = 0.84, ymin = 0.161, ymax = 1 },
+}
+s["furniture_bedding_01_84"] = { -- rotated from furniture_bedding_01_87
+  { zmin = 0.27, zmax = 1, xmin = 0.01, xmax = 0.84, ymin = 0, ymax = 0.95 },
+  { zmin = 0.78, zmax = 1, xmin = 0.01, xmax = 0.84, ymin = 0, ymax = 0.95 },
+}
+
+modifySurfaces(
+  "furniture_seating_indoor_03_64",
+  { xmin = 0.08, xmax = -0.02, ymin = 0.12, ymax = -0.01, zmin = -0.006 }
+)
+s["furniture_seating_indoor_03_65"] = { -- mirrored from furniture_seating_indoor_03_64, the other half of the bench
+  { zmin = 0.186, zmax = 1, xmin = 0.28, xmax = 0.83, ymin = 0.01, ymax = 0.88 },
+}
+s["furniture_seating_indoor_03_66"] = { -- rotated from furniture_seating_indoor_03_64
+  { zmin = 0.186, zmax = 1, xmin = 0.01, xmax = 0.88, ymin = 0.28, ymax = 0.83 },
+}
+s["furniture_seating_indoor_03_67"] = { -- rotated from furniture_seating_indoor_03_65
+  { zmin = 0.186, zmax = 1, xmin = 0.12, xmax = 0.99, ymin = 0.28, ymax = 0.83 },
+}
+
+-- beds, all from the blue single bed (furniture_bedding_01_78/79) rotated to each facing, at their own mattress height.
+-- the tiles of one bed touch at their inner edges. the oak bed has no measured height, it uses the light wood bed's.
+-- Crafted Bed
+s["carpentry_02_72"] = { { zmin = 0.226, zmax = 1, xmin = 0.14, xmax = 1, ymin = 0, ymax = 0.85 } }
+s["carpentry_02_73"] = { { zmin = 0.226, zmax = 1, xmin = 0, xmax = 0.82, ymin = 0, ymax = 0.85 } }
+s["carpentry_02_74"] = { { zmin = 0.226, zmax = 1, xmin = 0.15, xmax = 1, ymin = 0, ymax = 0.82 } }
+s["carpentry_02_75"] = { { zmin = 0.226, zmax = 1, xmin = 0.15, xmax = 1, ymin = 0.14, ymax = 1 } }
+
+-- Single Bed with Black Frame
+s["furniture_bedding_01_0"] = { { zmin = 0.295, zmax = 1, xmin = 0.15, xmax = 1, ymin = 0, ymax = 0.82 } }
+s["furniture_bedding_01_1"] = { { zmin = 0.295, zmax = 1, xmin = 0.15, xmax = 1, ymin = 0.14, ymax = 1 } }
+s["furniture_bedding_01_2"] = { { zmin = 0.295, zmax = 1, xmin = 0.14, xmax = 1, ymin = 0, ymax = 0.85 } }
+s["furniture_bedding_01_3"] = { { zmin = 0.295, zmax = 1, xmin = 0, xmax = 0.82, ymin = 0, ymax = 0.85 } }
+s["furniture_bedding_01_68"] = { { zmin = 0.295, zmax = 1, xmin = 0, xmax = 0.85, ymin = 0, ymax = 0.86 } }
+s["furniture_bedding_01_69"] = { { zmin = 0.295, zmax = 1, xmin = 0, xmax = 0.85, ymin = 0.18, ymax = 1 } }
+s["furniture_bedding_01_70"] = { { zmin = 0.295, zmax = 1, xmin = 0.18, xmax = 1, ymin = 0.15, ymax = 1 } }
+s["furniture_bedding_01_71"] = { { zmin = 0.295, zmax = 1, xmin = 0, xmax = 0.86, ymin = 0.15, ymax = 1 } }
+
+-- Double Bed with Black Frame
+s["furniture_bedding_01_4"] = { { zmin = 0.295, zmax = 1, xmin = 0.15, xmax = 1, ymin = 0, ymax = 0.82 } }
+s["furniture_bedding_01_5"] = { { zmin = 0.295, zmax = 1, xmin = 0.15, xmax = 1, ymin = 0.14, ymax = 1 } }
+s["furniture_bedding_01_6"] = { { zmin = 0.295, zmax = 1, xmin = 0, xmax = 1, ymin = 0, ymax = 0.82 } }
+s["furniture_bedding_01_7"] = { { zmin = 0.295, zmax = 1, xmin = 0, xmax = 1, ymin = 0.14, ymax = 1 } }
+s["furniture_bedding_01_12"] = { { zmin = 0.295, zmax = 1, xmin = 0.14, xmax = 1, ymin = 0, ymax = 0.85 } }
+s["furniture_bedding_01_13"] = { { zmin = 0.295, zmax = 1, xmin = 0, xmax = 0.82, ymin = 0, ymax = 0.85 } }
+s["furniture_bedding_01_14"] = { { zmin = 0.295, zmax = 1, xmin = 0.14, xmax = 1, ymin = 0, ymax = 1 } }
+s["furniture_bedding_01_15"] = { { zmin = 0.295, zmax = 1, xmin = 0, xmax = 0.82, ymin = 0, ymax = 1 } }
+s["furniture_bedding_01_72"] = { { zmin = 0.295, zmax = 1, xmin = 0, xmax = 1, ymin = 0, ymax = 0.86 } }
+s["furniture_bedding_01_73"] = { { zmin = 0.295, zmax = 1, xmin = 0, xmax = 1, ymin = 0.18, ymax = 1 } }
+s["furniture_bedding_01_74"] = { { zmin = 0.295, zmax = 1, xmin = 0, xmax = 0.85, ymin = 0, ymax = 0.86 } }
+s["furniture_bedding_01_75"] = { { zmin = 0.295, zmax = 1, xmin = 0, xmax = 0.85, ymin = 0.18, ymax = 1 } }
+s["furniture_bedding_01_80"] = { { zmin = 0.295, zmax = 1, xmin = 0.18, xmax = 1, ymin = 0, ymax = 1 } }
+s["furniture_bedding_01_81"] = { { zmin = 0.295, zmax = 1, xmin = 0, xmax = 0.86, ymin = 0, ymax = 1 } }
+s["furniture_bedding_01_82"] = { { zmin = 0.295, zmax = 1, xmin = 0.18, xmax = 1, ymin = 0.15, ymax = 1 } }
+s["furniture_bedding_01_83"] = { { zmin = 0.295, zmax = 1, xmin = 0, xmax = 0.86, ymin = 0.15, ymax = 1 } }
+
+-- Blue Single Bed
+s["furniture_bedding_01_8"] = { { zmin = 0.295, zmax = 1, xmin = 0.15, xmax = 1, ymin = 0, ymax = 0.82 } }
+s["furniture_bedding_01_9"] = { { zmin = 0.295, zmax = 1, xmin = 0.15, xmax = 1, ymin = 0.14, ymax = 1 } }
+s["furniture_bedding_01_10"] = { { zmin = 0.295, zmax = 1, xmin = 0.14, xmax = 1, ymin = 0, ymax = 0.85 } }
+s["furniture_bedding_01_11"] = { { zmin = 0.295, zmax = 1, xmin = 0, xmax = 0.82, ymin = 0, ymax = 0.85 } }
+s["furniture_bedding_01_76"] = { { zmin = 0.295, zmax = 1, xmin = 0, xmax = 0.85, ymin = 0, ymax = 0.86 } }
+s["furniture_bedding_01_77"] = { { zmin = 0.295, zmax = 1, xmin = 0, xmax = 0.85, ymin = 0.18, ymax = 1 } }
+s["furniture_bedding_01_78"] = { { zmin = 0.295, zmax = 1, xmin = 0.18, xmax = 1, ymin = 0.15, ymax = 1 } }
+s["furniture_bedding_01_79"] = { { zmin = 0.295, zmax = 1, xmin = 0, xmax = 0.86, ymin = 0.15, ymax = 1 } }
+
+-- Mahogany Double Bed
+s["furniture_bedding_01_16"] = { { zmin = 0.293, zmax = 1, xmin = 0.18, xmax = 1, ymin = 0, ymax = 1 } }
+s["furniture_bedding_01_17"] = { { zmin = 0.293, zmax = 1, xmin = 0, xmax = 0.86, ymin = 0, ymax = 1 } }
+s["furniture_bedding_01_18"] = { { zmin = 0.293, zmax = 1, xmin = 0.18, xmax = 1, ymin = 0.15, ymax = 1 } }
+s["furniture_bedding_01_19"] = { { zmin = 0.293, zmax = 1, xmin = 0, xmax = 0.86, ymin = 0.15, ymax = 1 } }
+s["furniture_bedding_01_20"] = { { zmin = 0.293, zmax = 1, xmin = 0, xmax = 1, ymin = 0, ymax = 0.86 } }
+s["furniture_bedding_01_21"] = { { zmin = 0.293, zmax = 1, xmin = 0, xmax = 1, ymin = 0.18, ymax = 1 } }
+s["furniture_bedding_01_22"] = { { zmin = 0.293, zmax = 1, xmin = 0, xmax = 0.85, ymin = 0, ymax = 0.86 } }
+s["furniture_bedding_01_23"] = { { zmin = 0.293, zmax = 1, xmin = 0, xmax = 0.85, ymin = 0.18, ymax = 1 } }
+s["furniture_bedding_01_24"] = { { zmin = 0.293, zmax = 1, xmin = 0.15, xmax = 1, ymin = 0, ymax = 0.82 } }
+s["furniture_bedding_01_25"] = { { zmin = 0.293, zmax = 1, xmin = 0.15, xmax = 1, ymin = 0.14, ymax = 1 } }
+s["furniture_bedding_01_26"] = { { zmin = 0.293, zmax = 1, xmin = 0, xmax = 1, ymin = 0, ymax = 0.82 } }
+s["furniture_bedding_01_27"] = { { zmin = 0.293, zmax = 1, xmin = 0, xmax = 1, ymin = 0.14, ymax = 1 } }
+s["furniture_bedding_01_28"] = { { zmin = 0.293, zmax = 1, xmin = 0.14, xmax = 1, ymin = 0, ymax = 0.85 } }
+s["furniture_bedding_01_29"] = { { zmin = 0.293, zmax = 1, xmin = 0, xmax = 0.82, ymin = 0, ymax = 0.85 } }
+s["furniture_bedding_01_30"] = { { zmin = 0.293, zmax = 1, xmin = 0.14, xmax = 1, ymin = 0, ymax = 1 } }
+s["furniture_bedding_01_31"] = { { zmin = 0.293, zmax = 1, xmin = 0, xmax = 0.82, ymin = 0, ymax = 1 } }
+
+-- Simple Bed
+s["furniture_bedding_01_32"] = { { zmin = 0.254, zmax = 1, xmin = 0.14, xmax = 1, ymin = 0, ymax = 0.85 } }
+s["furniture_bedding_01_33"] = { { zmin = 0.254, zmax = 1, xmin = 0, xmax = 0.82, ymin = 0, ymax = 0.85 } }
+s["furniture_bedding_01_34"] = { { zmin = 0.254, zmax = 1, xmin = 0.15, xmax = 1, ymin = 0, ymax = 0.82 } }
+s["furniture_bedding_01_35"] = { { zmin = 0.254, zmax = 1, xmin = 0.15, xmax = 1, ymin = 0.14, ymax = 1 } }
+s["furniture_bedding_01_60"] = { { zmin = 0.254, zmax = 1, xmin = 0.18, xmax = 1, ymin = 0.15, ymax = 1 } }
+s["furniture_bedding_01_61"] = { { zmin = 0.254, zmax = 1, xmin = 0, xmax = 0.86, ymin = 0.15, ymax = 1 } }
+s["furniture_bedding_01_62"] = { { zmin = 0.254, zmax = 1, xmin = 0, xmax = 0.85, ymin = 0, ymax = 0.86 } }
+s["furniture_bedding_01_63"] = { { zmin = 0.254, zmax = 1, xmin = 0, xmax = 0.85, ymin = 0.18, ymax = 1 } }
+
+-- Maple Double Bed
+s["furniture_bedding_01_40"] = { { zmin = 0.301, zmax = 1, xmin = 0.14, xmax = 1, ymin = 0, ymax = 0.85 } }
+s["furniture_bedding_01_41"] = { { zmin = 0.301, zmax = 1, xmin = 0, xmax = 0.82, ymin = 0, ymax = 0.85 } }
+s["furniture_bedding_01_42"] = { { zmin = 0.301, zmax = 1, xmin = 0.14, xmax = 1, ymin = 0, ymax = 1 } }
+s["furniture_bedding_01_43"] = { { zmin = 0.301, zmax = 1, xmin = 0, xmax = 0.82, ymin = 0, ymax = 1 } }
+s["furniture_bedding_01_44"] = { { zmin = 0.301, zmax = 1, xmin = 0.15, xmax = 1, ymin = 0, ymax = 0.82 } }
+s["furniture_bedding_01_45"] = { { zmin = 0.301, zmax = 1, xmin = 0.15, xmax = 1, ymin = 0.14, ymax = 1 } }
+s["furniture_bedding_01_46"] = { { zmin = 0.301, zmax = 1, xmin = 0, xmax = 1, ymin = 0, ymax = 0.82 } }
+s["furniture_bedding_01_47"] = { { zmin = 0.301, zmax = 1, xmin = 0, xmax = 1, ymin = 0.14, ymax = 1 } }
+s["furniture_bedding_01_48"] = { { zmin = 0.301, zmax = 1, xmin = 0.18, xmax = 1, ymin = 0, ymax = 1 } }
+s["furniture_bedding_01_49"] = { { zmin = 0.301, zmax = 1, xmin = 0, xmax = 0.86, ymin = 0, ymax = 1 } }
+s["furniture_bedding_01_50"] = { { zmin = 0.301, zmax = 1, xmin = 0.18, xmax = 1, ymin = 0.15, ymax = 1 } }
+s["furniture_bedding_01_51"] = { { zmin = 0.301, zmax = 1, xmin = 0, xmax = 0.86, ymin = 0.15, ymax = 1 } }
+s["furniture_bedding_01_52"] = { { zmin = 0.301, zmax = 1, xmin = 0, xmax = 1, ymin = 0, ymax = 0.86 } }
+s["furniture_bedding_01_53"] = { { zmin = 0.301, zmax = 1, xmin = 0, xmax = 1, ymin = 0.18, ymax = 1 } }
+s["furniture_bedding_01_54"] = { { zmin = 0.301, zmax = 1, xmin = 0, xmax = 0.85, ymin = 0, ymax = 0.86 } }
+s["furniture_bedding_01_55"] = { { zmin = 0.301, zmax = 1, xmin = 0, xmax = 0.85, ymin = 0.18, ymax = 1 } }
+
+-- Single Bed with Green Metal Frame
+s["furniture_bedding_01_64"] = { { zmin = 0.254, zmax = 1, xmin = 0.15, xmax = 1, ymin = 0, ymax = 0.82 } }
+s["furniture_bedding_01_65"] = { { zmin = 0.254, zmax = 1, xmin = 0.15, xmax = 1, ymin = 0.14, ymax = 1 } }
+s["furniture_bedding_01_66"] = { { zmin = 0.254, zmax = 1, xmin = 0.14, xmax = 1, ymin = 0, ymax = 0.85 } }
+s["furniture_bedding_01_67"] = { { zmin = 0.254, zmax = 1, xmin = 0, xmax = 0.82, ymin = 0, ymax = 0.85 } }
+
+-- Light Wood Bed
+s["furniture_bedding_01_88"] = { { zmin = 0.246, zmax = 1, xmin = 0.18, xmax = 1, ymin = 0.15, ymax = 1 } }
+s["furniture_bedding_01_89"] = { { zmin = 0.246, zmax = 1, xmin = 0, xmax = 0.86, ymin = 0.15, ymax = 1 } }
+s["furniture_bedding_01_90"] = { { zmin = 0.246, zmax = 1, xmin = 0, xmax = 0.85, ymin = 0, ymax = 0.86 } }
+s["furniture_bedding_01_91"] = { { zmin = 0.246, zmax = 1, xmin = 0, xmax = 0.85, ymin = 0.18, ymax = 1 } }
+
+-- Oak Bed
+s["furniture_bedding_01_92"] = { { zmin = 0.246, zmax = 1, xmin = 0.18, xmax = 1, ymin = 0.15, ymax = 1 } }
+s["furniture_bedding_01_93"] = { { zmin = 0.246, zmax = 1, xmin = 0, xmax = 0.86, ymin = 0.15, ymax = 1 } }
+s["furniture_bedding_01_94"] = { { zmin = 0.246, zmax = 1, xmin = 0, xmax = 0.85, ymin = 0, ymax = 0.86 } }
+s["furniture_bedding_01_95"] = { { zmin = 0.246, zmax = 1, xmin = 0, xmax = 0.85, ymin = 0.18, ymax = 1 } }
+
+-- Large Medical Bed
+s["location_community_medical_01_16"] = { { zmin = 0.266, zmax = 1, xmin = 0.15, xmax = 1, ymin = 0, ymax = 0.82 } }
+s["location_community_medical_01_17"] = { { zmin = 0.266, zmax = 1, xmin = 0.15, xmax = 1, ymin = 0.14, ymax = 1 } }
+s["location_community_medical_01_18"] = { { zmin = 0.266, zmax = 1, xmin = 0, xmax = 0.85, ymin = 0, ymax = 0.86 } }
+s["location_community_medical_01_19"] = { { zmin = 0.266, zmax = 1, xmin = 0, xmax = 0.85, ymin = 0.18, ymax = 1 } }
+s["location_community_medical_01_20"] = { { zmin = 0.266, zmax = 1, xmin = 0.18, xmax = 1, ymin = 0.15, ymax = 1 } }
+s["location_community_medical_01_21"] = { { zmin = 0.266, zmax = 1, xmin = 0, xmax = 0.86, ymin = 0.15, ymax = 1 } }
+s["location_community_medical_01_22"] = { { zmin = 0.266, zmax = 1, xmin = 0.14, xmax = 1, ymin = 0, ymax = 0.85 } }
+s["location_community_medical_01_23"] = { { zmin = 0.266, zmax = 1, xmin = 0, xmax = 0.82, ymin = 0, ymax = 0.85 } }
+
+-- Single Bed with Green Metal Frame
+s["location_community_medical_01_72"] = { { zmin = 0.317, zmax = 1, xmin = 0.15, xmax = 1, ymin = 0, ymax = 0.82 } }
+s["location_community_medical_01_73"] = { { zmin = 0.317, zmax = 1, xmin = 0.15, xmax = 1, ymin = 0.14, ymax = 1 } }
+s["location_community_medical_01_74"] = { { zmin = 0.317, zmax = 1, xmin = 0.14, xmax = 1, ymin = 0, ymax = 0.85 } }
+s["location_community_medical_01_75"] = { { zmin = 0.317, zmax = 1, xmin = 0, xmax = 0.82, ymin = 0, ymax = 0.85 } }
+
+-- Prisoner Bed
+s["location_community_police_01_24"] = { { zmin = 0.272, zmax = 1, xmin = 0.15, xmax = 1, ymin = 0, ymax = 0.82 } }
+s["location_community_police_01_25"] = { { zmin = 0.272, zmax = 1, xmin = 0.15, xmax = 1, ymin = 0.14, ymax = 1 } }
+s["location_community_police_01_26"] = { { zmin = 0.272, zmax = 1, xmin = 0.18, xmax = 1, ymin = 0.15, ymax = 1 } }
+s["location_community_police_01_27"] = { { zmin = 0.272, zmax = 1, xmin = 0, xmax = 0.86, ymin = 0.15, ymax = 1 } }
+s["location_community_police_01_28"] = { { zmin = 0.272, zmax = 1, xmin = 0.14, xmax = 1, ymin = 0, ymax = 0.85 } }
+s["location_community_police_01_29"] = { { zmin = 0.272, zmax = 1, xmin = 0, xmax = 0.82, ymin = 0, ymax = 0.85 } }
+s["location_community_police_01_30"] = { { zmin = 0.272, zmax = 1, xmin = 0, xmax = 0.85, ymin = 0, ymax = 0.86 } }
+s["location_community_police_01_31"] = { { zmin = 0.272, zmax = 1, xmin = 0, xmax = 0.85, ymin = 0.18, ymax = 1 } }

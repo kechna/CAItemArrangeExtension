@@ -429,8 +429,7 @@ mp["weapons/2handed/MetalBar_Full_Hand"] = { qz = 8 }
 mp["weapons/2handed/SledgeHammer"] = { fz = 270 }
 mp["weapons/2handed/SledgeHammer02"] = { fz = 270 }
 
---mp["WorldItems/HotSauce"] = { dx = 0.075, dy = 0.075 }
---mp["WorldItems/Sportsbottle"]                      = "bottle"
+mp["WorldItems/Parcel4_Text"] = { dx = 0.3, dy = 0.27, dz = 0.065 }
 mp["BleachBottle"] = { dx = 0.1, dy = 0.16, dz = 0.11, fz = 180 }
 mp["CaffinePills"] = { dx = 0.1, dy = 0.1, dz = 0.07, fz = 153, s = 0.13 }
 mp["Jar"] = { dx = 0.12, dy = 0.12, dz = 0.06, qz = 3, fz = 45, s = 0.4 }
@@ -455,7 +454,9 @@ mp["WorldItems/CarJack"] = { dx = 0.8, dy = 0.8, dz = 0.014, qz = 8, s = 0.25 }
 mp["WorldItems/CarParts"] = { dx = 0.8, dy = 0.8, dz = 0.014, qz = 8, s = 0.25 }
 mp["WorldItems/CarSeat"] = { dy = 0.45, s = 0.4 }
 mp["WorldItems/CarTrunkLid"] = { dx = 0.8, dy = 0.8, dz = 0.014, qz = 8, s = 0.25 }
-mp["WorldItems/CarWindshield"] = { dx = 0.75, dy = 0.35, qz = 8, fz = 0, s = 0.25 }
+mp["WorldItems/CarWindshield"] = { dx = 0.84, dy = 0.39, dz = 0.018, mx = -0.135, my = -0.182, qz = 8, fz = 0, s = 0.25 }
+mp["WorldItems/Toothbrush"] = { fz = 180, --[[mx = -0.02]] }
+
 mp["WorldItems/CeramicCast_AnvilBlock"] = { dx = 0.26, qz = 3, s = 0.13 }
 mp["WorldItems/Ceramic_IngotCast"] = { qz = 4 }
 mp["WorldItems/CleaningLiquid"] = { dx = 0.17, dy = 0.08, dz = 0.09, s = 0.5 }
@@ -530,8 +531,6 @@ mp["WorldItems/Sheet_Copper_Small"] = { dz = 0.03 }
 mp["WorldItems/SleepingTablets"] = { dx = 0.115, dy = 0.165, dz = 0.0135, qz = 5, fz = 90, s = 0.52 }
 
 mp["WorldItems/SpiffoPlushie"] = { fz = 180 }
-mp["WorldItems/SpiffoPlushie"] = { fz = 180 }
-mp["WorldItems/SpiffoPlushie"] = { fz = 180 }
 mp["WorldItems/Sponge"] = { qz = 6, flip = true }
 mp["WorldItems/Suspension"] = { dx = 0.28, dy = 0.44, my = -0.05, flip = true, s = 0.4 }
 mp["WorldItems/Tarp"] = { qz = 5 }
@@ -556,12 +555,12 @@ mp["WorldItems/Chunk_Metal"] = { qz = 8 }
 mp["WorldItems/Ingot_Holed"] = { qz = 8 }
 mp["WorldItems/MetalBar_Quarter"] = { qz = 8 }
 mp["WorldItems/MetalBar_Tenth"] = { qz = 8 }
-mp["WorldItems/MetalSheet"] = { flipZ = true, qz = 20, dz = 0.007, mz = 0.004 }
+mp["WorldItems/MetalSheet"] = { flipZ = true, qz = 20, dz = 0.007, mz = 0.001 }
 mp["WorldItems/Rod_Metal_Quarter"] = { flipZ = true, qz = 8 }
 mp["WorldItems/Rod_Metal_Slug"] = { qz = 8 }
-mp["WorldItems/Sheet_Copper"] = { flipZ = true, qz = 20, dz = 0.006, mz = 0.004, dx = 0.65 }
-mp["WorldItems/Sheet_Copper_Small"] = { flipZ = true, qz = 20, dz = 0.005, mz = 0.004 }
-mp["WorldItems/SmallSheetMetal"] = { qz = 20, dz = 0.005, mz = 0.004 }
+mp["WorldItems/Sheet_Copper"] = { flipZ = true, qz = 20, dz = 0.006, mz = 0.001, dx = 0.65 }
+mp["WorldItems/Sheet_Copper_Small"] = { flipZ = true, qz = 20, dz = 0.005, mz = 0.001 }
+mp["WorldItems/SmallSheetMetal"] = { qz = 20, dz = 0.005, mz = 0.001 }
 
 ----
 -- overrides
@@ -607,9 +606,7 @@ mp["WorldItems/VFX_JarOpen"] = { fz = 45 }
 mp["WorldItems/VFX_JelloBox"] = { qz = 3, fz = -90, flipX = true }
 mp["WorldItems/VFX_LemonBottle"] = { dx = 0.1, dy = 0.1, dz = 0.1 }
 mp["WorldItems/VFX_MetalFoodStorageContainer"] = { qz = 5 }
---mp["WorldItems/VFX_Mustard"]                        = "honey"
 mp["WorldItems/VFX_Packaging_Bag"] = { dz = 0.013, qz = 12, s = 0.8 }
---mp["WorldItems/VFX_PacketRamen"]                    = "vfxPacketRamen"
 mp["WorldItems/VFX_PotForgedFull"] = { dz = 0.1 }
 mp["WorldItems/VFX_PotFull"] = { dx = 0.4 }
 mp["WorldItems/VFX_Pouch"] = { dy = 0.07, fz = -90, flipX = true }
@@ -768,22 +765,22 @@ mp["weapons/firearms/Ranged_Weaponry_Misc|Arrow_wood_pack"] = { qz = 5, dz = 0.0
 mp["weapons/firearms/Ranged_Weaponry_Misc|Arrow_wood_part"] = { qz = 5, dz = 0.01 }
 
 --- ggs
-mp["Ammo/792x57Box"] = { qz = 5}
-mp["Ammo/Bullets308Box"] = { qz = 5}
-mp["Ammo/Bullets32Box"] = { qz = 5}
-mp["Ammo/Bullets357Box"] = { qz = 5}
-mp["Ammo/Bullets38Box"] = { qz = 5}
-mp["Ammo/Bullets44Box"] = { qz = 5}
-mp["Ammo/Bullets45Box"] = { qz = 5}
-mp["Ammo/Bullets50Box"] = { dy = 0.15, dx = 0.2, qz = 2, dz = 0.112}
-mp["Ammo/Bullets50MagnumBox"] = { qz = 5}
-mp["Ammo/Bullets545x39Box"] = { qz = 5}
-mp["Ammo/Bullets556Box"] = { qz = 5}
+mp["Ammo/792x57Box"] = { qz = 5 }
+mp["Ammo/Bullets308Box"] = { qz = 5 }
+mp["Ammo/Bullets32Box"] = { qz = 5 }
+mp["Ammo/Bullets357Box"] = { qz = 5 }
+mp["Ammo/Bullets38Box"] = { qz = 5 }
+mp["Ammo/Bullets44Box"] = { qz = 5 }
+mp["Ammo/Bullets45Box"] = { qz = 5 }
+mp["Ammo/Bullets50Box"] = { dy = 0.15, dx = 0.2, qz = 2, dz = 0.112 }
+mp["Ammo/Bullets50MagnumBox"] = { qz = 5 }
+mp["Ammo/Bullets545x39Box"] = { qz = 5 }
+mp["Ammo/Bullets556Box"] = { qz = 5 }
 mp["Ammo/Bullets762x39Box"] = { qz = 2, fz = 12, dx = 0.18, dy = 0.18 }
-mp["Ammo/Bullets762x54rBox"] = { qz = 5}
-mp["Ammo/Bullets9mmBox"] = { qz = 5}
-mp["Ammo/Bullets9x39Box"] = { qz = 5, mz = 0.002, fz = 12 }
-mp["Ammo/GrenadeAmmoBox"] = { qz = 5}
+mp["Ammo/Bullets762x54rBox"] = { qz = 5 }
+mp["Ammo/Bullets9mmBox"] = { qz = 5 }
+mp["Ammo/Bullets9x39Box"] = { qz = 5, fz = 12 }
+mp["Ammo/GrenadeAmmoBox"] = { qz = 5 }
 mp["Ammo/ShotgunShellsBox"] = { fz = 12 }
 mp["Ammo/WorldItems|308Box150"] = { qz = 5 }
 mp["Ammo/WorldItems|50Box100"] = { qz = 5, dy = 0.2 }
@@ -791,7 +788,7 @@ mp["Ammo/WorldItems|556Box150"] = { qz = 5 }
 mp["Ammo/WorldItems|762x54rBox150"] = { qz = 5 }
 mp["Ammo/WorldItems|792x57Box75"] = { qz = 5 }
 mp["Ammo/WorldItems|792x57Box97"] = { qz = 5 }
-mp["Ammo/ammoBox"] = { qz = 5}
+mp["Ammo/ammoBox"] = { qz = 5 }
 mp["Mags/MAGS|308Box150"] = { qz = 5 }
 mp["Mags/MAGS|50Box100"] = { qz = 5 }
 mp["Mags/MAGS|556Box150"] = { qz = 5 }
@@ -799,3 +796,11 @@ mp["Mags/MAGS|762x54rBox150"] = { qz = 5 }
 mp["Mags/MAGS|792x57Box75"] = { qz = 5 }
 mp["Mags/MAGS|792x57Box97"] = { qz = 5 }
 mp["WorldItems/HandGunAmmoBox"] = { qz = 5 }
+
+-- firearms
+mp["ammo/boxes/Ammobox_Shotgun"] = { dx = 0.134, dy = 0.063, dz = 0.056, mx = 0.003, my = 0.008, qz = 3, zmin = 0.003 }
+
+-- bicycle
+mp["Bicycle_RedStreet"] = { dx = 0.401, dy = 1, dz = 0.38, mx = 0.385, my = 0.537, mz = 0.001 }
+mp["Bicycle_Frame2"] = { dx = 0.401, dy = 1, dz = 0.38, mx = 0.385, my = 0.537, mz = 0.001 }
+mp["Bicycle_World"] = { dx = 0.401, dy = 1, dz = 0.38, mx = 0.385, my = 0.537, mz = 0.001 }
