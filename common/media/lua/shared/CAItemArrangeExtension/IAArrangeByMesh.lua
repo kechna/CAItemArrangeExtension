@@ -165,6 +165,14 @@ local function getWorldModel(item)
     return model, isWorldStatic
   end
 
+  -- the game runs OnCreate in its own protected call and logs its errors, so pcall can't catch them. the instance
+  -- reads OnCreate from the script, so it's switched off while the temporary instance is made.
+  local luaCreate = item:getLuaCreate()
+
+  if luaCreate then
+    item:setLuaCreate(nil)
+  end
+
   local ok, result, resultIsWorldStatic = pcall(function ()
     local instance = instanceItem(item)
 
@@ -174,6 +182,10 @@ local function getWorldModel(item)
 
     return getStaticModel(instance)
   end)
+
+  if luaCreate then
+    item:setLuaCreate(luaCreate)
+  end
 
   -- the instance was never added to a container, so dropping the reference is enough for it to be collected
   if not ok then

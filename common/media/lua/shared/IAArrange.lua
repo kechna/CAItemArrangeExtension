@@ -27,6 +27,21 @@ local CURSOR_YAW = {
     [CURSOR_ORDER_E] = 90,
 }
 
+-- Lift in floors on top of the game's own 0.00175 (WorldItemModelDrawer.renderMain). Models whose bottom rests exactly
+-- on a surface lose to its depth and look sunk into it; well under a pixel at any zoom.
+local SURFACE_CLEARANCE = 0.003
+
+-- Extra lift in floors for items on a rug, which is drawn above the floor it lies on.
+local RUG_LIFT = 0.006
+
+-- rug tiles of the game (floors_rugs_01_*) and of mods that name them the same way
+local function isRug(spriteName)
+    local name = spriteName:lower()
+    -- a whole word only, so drug store tiles (location_shop_drugs_*) don't count
+    local padded = "_" .. name .. "_"
+    return padded:find("_rugs?_") ~= nil
+end
+
 local function mat3Mul(a, b)
     local m = {}
     for row = 0, 2 do
@@ -152,6 +167,7 @@ function IA.getSurfaceInfo(square)
     local tileObjects = square:getLuaTileObjectList()
     local squareSurfaceOffset = 0
     local surfaces = {}
+    local onRug = false
     for k, object in pairs(tileObjects) do
         local sprite = object:getSprite()
         if sprite then
@@ -168,6 +184,10 @@ function IA.getSurfaceInfo(square)
             local surfaceZ = squareSurfaceOffset / 96
 
             local spriteName = sprite:getName()
+            if spriteName and isRug(spriteName) then
+                onRug = true
+            end
+
             if IA.surfaces[spriteName] then
                 -- copy the surfaces so several objects on one square can be merged without changing the shared profiles
                 for _, surface in ipairs(IA.surfaces[spriteName]) do
@@ -190,6 +210,11 @@ function IA.getSurfaceInfo(square)
                 end
             end
         end
+    end
+
+    -- only on the floor itself, furniture standing on the rug keeps its own height
+    if onRug and ground.zmin == 0 then
+        ground.zmin = RUG_LIFT
     end
 
     if #surfaces == 0 then
@@ -777,7 +802,7 @@ local function arrangeGroundList(square, groundList, applyOffsets, ignoreQz)
             ypos = keepOnSurface(ypos - my, ly, ymin, ymax) + my
 
             if applyOffsets and entry.witem then
-                entry.witem:setOffset(xpos, ypos, zpos)
+                entry.witem:setOffset(xpos, ypos, zpos + SURFACE_CLEARANCE)
 
                 local item = entry.item
                 local fx, fy, fz = applyYaw(arr.fx or 0, arr.fy or 0, arr.fz or 0, CURSOR_YAW[cursorOrder])

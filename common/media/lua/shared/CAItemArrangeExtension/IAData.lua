@@ -1,7 +1,7 @@
 require("IAArrange")
 local Utils = require("CAItemArrangeExtension/Utils")
 
-local modify=Utils.modify
+local modify = Utils.modify
 
 IA = IA or nil
 
@@ -66,7 +66,6 @@ mp["weapons/ammo/762-556-308-223AmmoBox"] = { qz = 6, fz = -90, flip = true }
 --mp["weapons/1handed/Spoon_Forged_Hand"]              = { p = "cutlery", my = 0.1 }
 --mp["weapons/1handed/Spoon_Wood_Hand"]                = { p = "cutlery", my = 0.1 }
 --mp["WorldItems/Spork"]                               = "cutlery"
-
 
 mp["weapons/1handed/AK47Bayonet"] = { fz = 270 }
 mp["weapons/1handed/AKBayonet"] = { fz = 270 }
@@ -416,10 +415,10 @@ mp["Weapons/1Handed/EntrenchingTool_Blunt"] = { mz = 0.012 }
 mp["Weapons/1Handed/EntrenchingTool_Folded"] = { mz = 0.02 }
 mp["weapons/1handed/BallPeenHammer_Hand"] = { fz = 270 }
 mp["weapons/1handed/ClubHammer"] = { fz = 270 }
-mp["weapons/1handed/HammerClub_Forged_Hand"] = { flipZ = true, fz = 180, dy=0.4, dx=0.13, mz=0.012 }
+mp["weapons/1handed/HammerClub_Forged_Hand"] = { flipZ = true, fz = 180, dy = 0.4, dx = 0.13, mz = 0.012 }
 mp["weapons/1handed/HammerClub_Forged_Hand"] = { fz = 270 }
 mp["weapons/1handed/Hammer_Forged_Hand"] = { flipZ = true, fz = 180 }
-mp["weapons/1handed/Hammer_Forged_Hand"] = { fz = 270, dy=0.4, dx=0.22 }
+mp["weapons/1handed/Hammer_Forged_Hand"] = { fz = 270, dy = 0.4, dx = 0.22 }
 mp["weapons/1handed/Hammer_Smithing_Hand"] = { flipZ = true, fz = 180 }
 mp["weapons/1handed/Hammer_Smithing_Hand"] = { fz = 270 }
 mp["weapons/1handed/MetalBar_Half_Hand"] = { qz = 8 }
@@ -461,7 +460,8 @@ mp["WorldItems/CeramicCast_AnvilBlock"] = { dx = 0.26, qz = 3, s = 0.13 }
 mp["WorldItems/Ceramic_IngotCast"] = { qz = 4 }
 mp["WorldItems/CleaningLiquid"] = { dx = 0.17, dy = 0.08, dz = 0.09, s = 0.5 }
 mp["WorldItems/Clothing/ALICE_Pack_Ground"] = { dy = 0.32, my = 0.08, mz = -0.008, fy = -18, fz = -90 }
-mp["WorldItems/Clothing/BigHikingBag_Ground"] = { dx = 0.32, dy = 0.32, dz = 0.2, my = 0.18, mz = 0.11, fx = -262, fz = 270 }
+mp["WorldItems/Clothing/BigHikingBag_Ground"] =
+  { dx = 0.32, dy = 0.32, dz = 0.2, my = 0.18, mz = 0.11, fx = -262, fz = 270 }
 mp["WorldItems/Clothing/Briefcase"] = { dx = 0.1, dz = 0.11, fz = 180, flipX = true, flipY = true }
 mp["WorldItems/Clothing/DuffelBag_Ground"] = { dx = 0.29, dy = 0.76, dz = 0.1 }
 mp["WorldItems/Clothing/HikingBag_Ground"] = { dx = 0.32, dz = 0.18, my = 0.18, mz = 0.11, fx = 98, fz = -90 }
@@ -478,7 +478,7 @@ mp["WorldItems/FabricRolled"] = { dx = 0.15, dy = 0.65, dz = 0.055, qz = 4, fz =
 mp["WorldItems/Flask"] = { dy = 0.05, fz = 180, flip = true }
 mp["WorldItems/Flier"] = { qz = 20 }
 mp["WorldItems/Flour"] = { dy = 0.33, dz = 0.1, fz = -90 }
-mp["WorldItems/Frog"] = { flipZ = true, fz = 180}
+mp["WorldItems/Frog"] = { flipZ = true, fz = 180 }
 mp["WorldItems/FrozenFoodBag"] = { qz = 4, flip = true }
 mp["WorldItems/GranolaBar"] = { dx = 0.09, qz = 4, flip = true }
 mp["WorldItems/HairDye"] = { dx = 0.12, dy = 0.12, dz = 0.04, fz = -90 }
@@ -559,7 +559,7 @@ mp["WorldItems/MetalBar_Tenth"] = { qz = 8 }
 mp["WorldItems/MetalSheet"] = { flipZ = true, qz = 20, dz = 0.007, mz = 0.004 }
 mp["WorldItems/Rod_Metal_Quarter"] = { flipZ = true, qz = 8 }
 mp["WorldItems/Rod_Metal_Slug"] = { qz = 8 }
-mp["WorldItems/Sheet_Copper"] = { flipZ = true, qz = 20, dz = 0.006, mz = 0.004, dx=0.65 }
+mp["WorldItems/Sheet_Copper"] = { flipZ = true, qz = 20, dz = 0.006, mz = 0.004, dx = 0.65 }
 mp["WorldItems/Sheet_Copper_Small"] = { flipZ = true, qz = 20, dz = 0.005, mz = 0.004 }
 mp["WorldItems/SmallSheetMetal"] = { qz = 20, dz = 0.005, mz = 0.004 }
 
@@ -673,130 +673,129 @@ mp["WorldItems/NCtackleboxlarge_ground"] = { dx = 0.35, dy = 0.43, dz = 0.1, qz 
 mp["WorldItems/NCwaterjug_ground"] = { dy = 0.24, dz = 0.36, flip = true }
 mp["WorldItems/NCcomponentkit_ground"] = { qz = 3, mz = 0.02 }
 mp["WorldItems/NCcdbinder_ground"] = { qz = 3, mz = 0.02 }
-mp["WorldItems/NCcdcase_ground"] = { qz = 3, mz = 0.002 }
+mp["WorldItems/NCcdcase_ground"] = { qz = 3}
 mp["WorldItems/NCroughbox_ground"] = { qz = 2 }
 mp["WorldItems/NCshoebox_ground"] = { qz = 3, flip = true }
 
--- Pomp's items (food)
-
-mp["WorldItems/Food/PINormalCan"] = { qz = 3 } -- 16
---mp["WorldItems/Food/PINormalCanOpen"] = { p = "jar", qz = 1 } -- 16
---mp["WorldItems/Food/PINormalCanHand"] = { p = "jar", qz = 1 }
---mp["WorldItems/Food/PIWingSauceBottle"] = { p = "sauce", s = 0.023 } -- 14
---mp["WorldItems/Food/PIWingSauceBottleHand"] = { p = "sauce", s = 0.023 } -- 14
---mp["WorldItems/Food/PITea"] = "bottle" -- 14
---mp["WorldItems/Food/PITeaHand"] = "bottle" -- 14
---mp["WorldItems/Food/SportsDrank"] = "bottle" -- 12
---mp["WorldItems/Food/SportsDrankHand"] = "bottle" -- 12
-mp["WorldItems/BittersBar"] = { qz = 3 } -- 11
-mp["WorldItems/BittersBarHand"] = { qz = 3 } -- 11
-mp["WorldItems/BittersBarEmpty"] = { qz = 3 } -- 11
---mp["WorldItems/Food/PICan128"] = { p = "can", qz = 1 } -- 11
---mp["WorldItems/Food/PICan128Hand"] = { p = "can", qz = 1 } -- 11
---mp["WorldItems/Food/PICan128Empty"] = { p = "can", qz = 1 } -- 11
-mp["WorldItems/Food/PISnackableSmol"] = "pompSnackable" -- 10
-mp["WorldItems/Food/PIFreezePop"] = { dx = 0.05, qz = 4 } -- 10
-mp["WorldItems/Food/PIFreezePopHand"] = { dx = 0.05, dy = 0.25, dz = 0.006, mz = 0.0034, qz = 4, fz = 90 } -- 10
-mp["WorldItems/Jiang"] = { qz = 3 } -- 9
-mp["WorldItems/JiangHand"] = { qz = 3 } -- 9
-mp["WorldItems/JiangEmpty"] = { qz = 3 } -- 9
-mp["WorldItems/SourGummies"] = { qz = 8 } -- 9
-mp["WorldItems/SourGummiesHand"] = { qz = 8 } -- 9
-mp["WorldItems/SourGummiesEmpty"] = { qz = 8 } -- 9
-mp["WorldItems/PIGummyWorms"] = { qz = 3 } -- 7
-mp["WorldItems/GummyWormsEmpty"] = { qz = 3 } -- 7
-mp["WorldItems/Food/PIFishSnackems"] = { dx = 0.2, dy = 0.07, dz = 0.1 }
-mp["WorldItems/Food/PIFishSnackemsEmpty"] = { dx = 0.2, dy = 0.07, dz = 0.1 }
-mp["WorldItems/Food/PIWingSauceBottleEmpty"] = { dx = 0.17, dy = 0.08, dz = 0.09, s = 0.023 } -- 7
--- mp["WorldItems/Food/PIPopTartBox"] = "" -- 7
--- mp["WorldItems/Food/PITeaEmpty"] = "" -- 7
--- mp["WorldItems/GummyWormsHand"] = "" -- 6
--- mp["WorldItems/Food/SportsDrankEmpty"] = "" -- 6
-mp["WorldItems/Food/PIHotSauce"] = { dx = 0.1, dy = 0.1, dz = 0.04, fz = -90 } -- 6
-mp["WorldItems/Food/PIHotSauceHand"] = { dx = 0.1, dy = 0.1, dz = 0.04, fz = 270 } -- 6
--- mp["WorldItems/Food/PIFruitBarrelHand"] = "" -- 5
-mp["WorldItems/Food/PIRingPop"] = { qz = 5 }
-mp["WorldItems/Food/PIRingPopHand"] = { qz = 5 } -- 5
-mp["WorldItems/Food/PIPopTart"] = { qz = 5 } -- 5
-mp["WorldItems/Food/PIPopTartHand"] = { qz = 5 } -- 5
--- mp["WorldItems/Food/PIKidCuisine"] = "" -- 5
--- mp["WorldItems/Food/PIKidCuisineHand"] = "" -- 5
-mp["WorldItems/WildPegasus_Ground"] = { fz = -90 } -- 4
--- mp["WorldItems/WildPegasusHand"] = "" -- 4
-mp["WorldItems/Dabs"] = { qz = 5 } -- 4
-mp["WorldItems/DabsHand"] = { qz = 5 } -- 4
-mp["WorldItems/DabsEmpty"] = { qz = 5 } -- 4
-mp["WorldItems/Food/PIDonutBag"] = { qz = 5 } -- 4
-mp["WorldItems/Food/PIDonutBagEmpty"] = { qz = 5 } -- 4
-mp["WorldItems/Food/PIPizzaBox"] = { qz = 5 } -- 4
-mp["WorldItems/Food/PIPizzaBoxEmpty"] = { qz = 5 } -- 4
-mp["WorldItems/Food/PIPizza"] = { qz = 5 } -- 4
-mp["WorldItems/Food/PIPizzaFoldedHand"] = { qz = 5 } -- 4
-mp["WorldItems/Food/PIPizzaSlice"] = { qz = 5 } -- 4
-mp["WorldItems/Food/PIPizzaSliceHand"] = { qz = 5 } -- 4
-mp["WorldItems/StallionMilk_Ground"] = { qz = 3, fz = 190 } -- uhhh... ok
-mp["WorldItems/StallionMilkOpen_Ground"] = { fz = 190 }
-mp["WorldItems/Food/PICheesyPoofsSide"] = { qz = 2 } -- 1
-mp["WorldItems/Food/PISnackableSmol"] = { qz = 6 }
-mp["WorldItems/Food/PISnackableSmolEmpty"] = { qz = 6 }
-mp["WorldItems/Food/PISnackableHamCracker"] = { qz = 6 }
-mp["WorldItems/Food/PISnackableHamCrackerHand"] = { qz = 6 }
-mp["WorldItems/Food/PIRitz"] = { qz = 6 }
-mp["WorldItems/Food/PIRitzHand"] = { qz = 6 }
+-- Pomp's items
+mp["WorldItems/BittersBar"] = { qz = 3 }
+mp["WorldItems/BittersBarEmpty"] = { qz = 3 }
+mp["WorldItems/BittersBarHand"] = { qz = 3 }
+mp["WorldItems/Dabs"] = { qz = 5 }
+mp["WorldItems/DabsEmpty"] = { qz = 5 }
+mp["WorldItems/DabsHand"] = { qz = 5 }
+mp["WorldItems/Food/PICan128"] = { qz = 3, dz = 0.055 }
 mp["WorldItems/Food/PICheddar"] = { qz = 6 }
 mp["WorldItems/Food/PICheddarHand"] = { qz = 6 }
+mp["WorldItems/Food/PICheesyPoofsSide"] = { qz = 2 }
+mp["WorldItems/Food/PIDonutBag"] = { qz = 5 }
+mp["WorldItems/Food/PIDonutBagEmpty"] = { qz = 5 }
+mp["WorldItems/Food/PIFishSnackems"] = { dz = 0.009, flipZ = true, qz = 5, fz = 180 }
+mp["WorldItems/Food/PIFishSnackemsEmpty"] = { dz = 0.009, flipZ = true, qz = 5, fz = 180 }
+mp["WorldItems/Food/PIFreezePop"] = { dx = 0.05, qz = 4 }
+mp["WorldItems/Food/PIFreezePopHand"] = { dx = 0.05, dy = 0.25, dz = 0.0064, qz = 4, fz = 90 }
+mp["WorldItems/Food/PIHoneyBun"] = { flipZ = true, qz = 5, fz = 180 }
+mp["WorldItems/Food/PIHotSauce"] = { dx = 0.1, dy = 0.1, dz = 0.04, fz = -90 }
+mp["WorldItems/Food/PIHotSauceHand"] = { dx = 0.1, dy = 0.1, dz = 0.04, fz = 270 }
+mp["WorldItems/Food/PINormalCan"] = { qz = 3 } --
+mp["WorldItems/Food/PIPizza"] = { qz = 5 }
+mp["WorldItems/Food/PIPizzaBox"] = { qz = 5 }
+mp["WorldItems/Food/PIPizzaBoxEmpty"] = { qz = 5 }
+mp["WorldItems/Food/PIPizzaFoldedHand"] = { qz = 5 }
+mp["WorldItems/Food/PIPizzaSlice"] = { qz = 5 }
+mp["WorldItems/Food/PIPizzaSliceHand"] = { qz = 5 }
+mp["WorldItems/Food/PIPompsBig"] = { qz = 4}
+mp["WorldItems/Food/PIPopTart"] = { qz = 5 }
+mp["WorldItems/Food/PIPopTartHand"] = { qz = 5 }
+mp["WorldItems/Food/PIRMOysters"] = { flipZ = true, qz = 5 }
+mp["WorldItems/Food/PIRingPop"] = { qz = 5 }
+mp["WorldItems/Food/PIRingPopHand"] = { qz = 5 }
+mp["WorldItems/Food/PIRitz"] = { qz = 6 }
+mp["WorldItems/Food/PIRitzHand"] = { qz = 6 }
+mp["WorldItems/Food/PISnackableHamCracker"] = { qz = 6 }
+mp["WorldItems/Food/PISnackableHamCrackerHand"] = { qz = 6 }
 mp["WorldItems/Food/PISnackableNachoHand"] = { qz = 6 }
+mp["WorldItems/Food/PISnackableSmol"] = "pompSnackable"
+mp["WorldItems/Food/PISnackableSmol"] = { qz = 6 }
+mp["WorldItems/Food/PISnackableSmolEmpty"] = { qz = 6 }
+mp["WorldItems/Food/PIWingSauceBottleEmpty"] = { dx = 0.17, dy = 0.08, dz = 0.09, s = 0.023 }
 mp["WorldItems/Food/SnackablePizza"] = { qz = 6 }
 mp["WorldItems/Food/SnackablePizzaHand"] = { qz = 6 }
+mp["WorldItems/GummyWormsEmpty"] = { qz = 3 }
+mp["WorldItems/Jiang"] = { qz = 3 }
+mp["WorldItems/JiangEmpty"] = { qz = 3 }
+mp["WorldItems/JiangHand"] = { qz = 3 }
+mp["WorldItems/Misc/PIMagazine"] = { flipX = true, fx = 180, fy = 180, flipY = true, dx = 0.016 }
 mp["WorldItems/Misc/PIRambleyRaccoonPlushie"] = { fz = 180 }
+mp["WorldItems/PIGummyWorms"] = { qz = 3 }
+mp["WorldItems/Pomps"] = { qz = 4}
+mp["WorldItems/SourGummies"] = { qz = 8 }
+mp["WorldItems/SourGummiesEmpty"] = { qz = 8 }
+mp["WorldItems/SourGummiesHand"] = { qz = 8 }
+mp["WorldItems/StallionMilkOpen_Ground"] = { fz = 190 }
+mp["WorldItems/StallionMilk_Ground"] = { qz = 3, fz = 190 } -- uhhh... ok
+mp["WorldItems/WildPegasus_Ground"] = { fz = -90 }
+
+mp["WorldItems/BittersBar"] = { qz = 3 }
+mp["WorldItems/ChocolateCrossBox"] = { qz = 3 }
+mp["WorldItems/Dabs"] = { qz = 3 }
+mp["WorldItems/DinoNugBox"] = { qz = 3 }
+mp["WorldItems/Food/FigBox"] = { qz = 3, flipZ = true, flipX = true, fx = 180 }
+mp["WorldItems/Food/PIBarrelBox"] = { qz = 3 }
+mp["WorldItems/Food/PICheeseStickDipPack"] = { qz = 3 }
+mp["WorldItems/Food/PICheesyPoofs"] = { qz = 3 }
+mp["WorldItems/Food/PIHoneyBunBox"] = { qz = 3 }
+mp["WorldItems/Food/SnackablePizza"] = { qz = 3 }
+mp["WorldItems/Misc/PIMysteryBox"] = { qz = 3 }
+mp["WorldItems/MoxxBox"] = { qz = 3 }
+mp["WorldItems/POreoPackage"] = { qz = 3 }
 
 -- bolts and arrows
-mp["weapons/firearms/Ranged_Weaponry_Misc|Arrow_wood_fly"] = { qz = 5, dz = 0.01 }
-mp["weapons/firearms/Ranged_Weaponry_Misc|Arrow_wood_floor"] = { qz = 5, dz = 0.01 }
-mp["weapons/firearms/Ranged_Weaponry_Misc|Arrow_metal_fly"] = { qz = 5, dz = 0.01 }
-mp["weapons/firearms/Ranged_Weaponry_Misc|Arrow_metal_floor"] = { qz = 5, dz = 0.01 }
-mp["weapons/firearms/Ranged_Weaponry_Misc|Arrow_carbon_fly"] = { qz = 5, dz = 0.01 }
-mp["weapons/firearms/Ranged_Weaponry_Misc|Arrow_carbon_floor"] = { qz = 5, dz = 0.01 }
-mp["weapons/firearms/Ranged_Weaponry_Misc|Arrow_wood_part"] = { qz = 5, dz = 0.01 }
-mp["weapons/firearms/Ranged_Weaponry_Misc|Arrow_metal_part"] = { qz = 5, dz = 0.01 }
-mp["weapons/firearms/Ranged_Weaponry_Misc|Arrow_carbon_part"] = { qz = 5, dz = 0.01 }
-mp["weapons/firearms/Ranged_Weaponry_Misc|Arrow_wood_pack"] = { qz = 5, dz = 0.01 }
-mp["weapons/firearms/Ranged_Weaponry_Misc|Arrow_carbon_pack"] = { qz = 5, dz = 0.01 }
-mp["weapons/firearms/Ranged_Weaponry_Misc|Arrow_metal_pack"] = { qz = 5, dz = 0.01 }
-mp["Crossbow|Bolts_wood_pack"] = { qz = 5, dz = 0.01 }
-mp["Crossbow|Bolts_metal_pack"] = { qz = 5, dz = 0.01 }
 mp["Crossbow|Bolts_carbon_pack"] = { qz = 5, dz = 0.01 }
+mp["Crossbow|Bolts_metal_pack"] = { qz = 5, dz = 0.01 }
+mp["Crossbow|Bolts_wood_pack"] = { qz = 5, dz = 0.01 }
+mp["weapons/firearms/Ranged_Weaponry_Misc|Arrow_carbon_floor"] = { qz = 5, dz = 0.01 }
+mp["weapons/firearms/Ranged_Weaponry_Misc|Arrow_carbon_fly"] = { qz = 5, dz = 0.01 }
+mp["weapons/firearms/Ranged_Weaponry_Misc|Arrow_carbon_pack"] = { qz = 5, dz = 0.01 }
+mp["weapons/firearms/Ranged_Weaponry_Misc|Arrow_carbon_part"] = { qz = 5, dz = 0.01 }
+mp["weapons/firearms/Ranged_Weaponry_Misc|Arrow_metal_floor"] = { qz = 5, dz = 0.01 }
+mp["weapons/firearms/Ranged_Weaponry_Misc|Arrow_metal_fly"] = { qz = 5, dz = 0.01 }
+mp["weapons/firearms/Ranged_Weaponry_Misc|Arrow_metal_pack"] = { qz = 5, dz = 0.01 }
+mp["weapons/firearms/Ranged_Weaponry_Misc|Arrow_metal_part"] = { qz = 5, dz = 0.01 }
+mp["weapons/firearms/Ranged_Weaponry_Misc|Arrow_wood_floor"] = { qz = 5, dz = 0.01 }
+mp["weapons/firearms/Ranged_Weaponry_Misc|Arrow_wood_fly"] = { qz = 5, dz = 0.01 }
+mp["weapons/firearms/Ranged_Weaponry_Misc|Arrow_wood_pack"] = { qz = 5, dz = 0.01 }
+mp["weapons/firearms/Ranged_Weaponry_Misc|Arrow_wood_part"] = { qz = 5, dz = 0.01 }
 
 --- ggs
-mp["Ammo/792x57Box"] = { qz = 5, mz = 0.002 }
-mp["Ammo/Bullets308Box"] = { qz = 5, mz = 0.002 }
-mp["Ammo/Bullets32Box"] = { qz = 5, mz = 0.002 }
-mp["Ammo/Bullets357Box"] = { qz = 5, mz = 0.002 }
-mp["Ammo/Bullets38Box"] = { qz = 5, mz = 0.002 }
-mp["Ammo/Bullets44Box"] = { qz = 5, mz = 0.002 }
-mp["Ammo/Bullets45Box"] = { qz = 5, mz = 0.002 }
-mp["Ammo/Bullets50Box"] = { dy = 0.15, dx = 0.2, qz = 2, dz = 0.112, mz = 0.002 }
-mp["Ammo/Bullets50MagnumBox"] = { qz = 5, mz = 0.002 }
-mp["Ammo/Bullets545x39Box"] = { qz = 5, mz = 0.002 }
-mp["Ammo/Bullets556Box"] = { qz = 5, mz = 0.002 }
+mp["Ammo/792x57Box"] = { qz = 5}
+mp["Ammo/Bullets308Box"] = { qz = 5}
+mp["Ammo/Bullets32Box"] = { qz = 5}
+mp["Ammo/Bullets357Box"] = { qz = 5}
+mp["Ammo/Bullets38Box"] = { qz = 5}
+mp["Ammo/Bullets44Box"] = { qz = 5}
+mp["Ammo/Bullets45Box"] = { qz = 5}
+mp["Ammo/Bullets50Box"] = { dy = 0.15, dx = 0.2, qz = 2, dz = 0.112}
+mp["Ammo/Bullets50MagnumBox"] = { qz = 5}
+mp["Ammo/Bullets545x39Box"] = { qz = 5}
+mp["Ammo/Bullets556Box"] = { qz = 5}
 mp["Ammo/Bullets762x39Box"] = { qz = 2, fz = 12, dx = 0.18, dy = 0.18 }
-mp["Ammo/Bullets762x54rBox"] = { qz = 5, mz = 0.002 }
-mp["Ammo/Bullets9mmBox"] = { qz = 5, mz = 0.002 }
+mp["Ammo/Bullets762x54rBox"] = { qz = 5}
+mp["Ammo/Bullets9mmBox"] = { qz = 5}
 mp["Ammo/Bullets9x39Box"] = { qz = 5, mz = 0.002, fz = 12 }
-mp["Ammo/GrenadeAmmoBox"] = { qz = 5, mz = 0.002 }
+mp["Ammo/GrenadeAmmoBox"] = { qz = 5}
 mp["Ammo/ShotgunShellsBox"] = { fz = 12 }
-mp["Ammo/ammoBox"] = { qz = 5, mz = 0.002 }
-mp["WorldItems/HandGunAmmoBox"] = { qz = 5 }
-
 mp["Ammo/WorldItems|308Box150"] = { qz = 5 }
 mp["Ammo/WorldItems|50Box100"] = { qz = 5, dy = 0.2 }
 mp["Ammo/WorldItems|556Box150"] = { qz = 5 }
 mp["Ammo/WorldItems|762x54rBox150"] = { qz = 5 }
 mp["Ammo/WorldItems|792x57Box75"] = { qz = 5 }
 mp["Ammo/WorldItems|792x57Box97"] = { qz = 5 }
+mp["Ammo/ammoBox"] = { qz = 5}
 mp["Mags/MAGS|308Box150"] = { qz = 5 }
 mp["Mags/MAGS|50Box100"] = { qz = 5 }
 mp["Mags/MAGS|556Box150"] = { qz = 5 }
 mp["Mags/MAGS|762x54rBox150"] = { qz = 5 }
 mp["Mags/MAGS|792x57Box75"] = { qz = 5 }
 mp["Mags/MAGS|792x57Box97"] = { qz = 5 }
+mp["WorldItems/HandGunAmmoBox"] = { qz = 5 }
