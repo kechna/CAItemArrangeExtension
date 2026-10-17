@@ -18,3 +18,13 @@ link1 = Workshop = https://steamcommunity.com/id/chekka-anchroviec/myworkshopfil
 - improve many surfaces
 - make more items stackable
 [ ------ ]
+
+[ v1.16.0 - 10/17/26 ]
+- fix ghost items when arranging
+- make shelves above counters and other stacked furniture on one tile usable
+- stop items sinking into rugs or clipping into surfaces
+- stop mixing small and large items from pushing them off the surface
+- fix alignment with different wall directions
+- hold ctrl to place items side by side instead of stacking them
+- hold shift+alt to skip items that can't be arranged
+[ ------ ]
