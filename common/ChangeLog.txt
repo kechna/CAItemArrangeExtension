@@ -28,3 +28,9 @@ link1 = Workshop = https://steamcommunity.com/id/chekka-anchroviec/myworkshopfil
 - hold ctrl to place items side by side instead of stacking them
 - hold shift+alt to skip items that can't be arranged
 [ ------ ]
+
+[ v1.16.1 - 10/17/26 ]
+- fix arranging failing on the server because the action's parameters weren't sent
+- send the held ctrl and shift+alt keys to the server
+- don't report a failed action when items don't fit the arrangement
+[ ------ ]
