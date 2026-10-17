@@ -13,3 +13,8 @@ link1 = Workshop = https://steamcommunity.com/id/chekka-anchroviec/myworkshopfil
 - HUGE UPDATE: make just about everything arrangable...
 - add way more surfaces, many might still have issues, let me know
 [ ------ ]
+
+[ v1.15.0 - 10/17/26 ]
+- improve many surfaces
+- make more items stackable
+[ ------ ]
