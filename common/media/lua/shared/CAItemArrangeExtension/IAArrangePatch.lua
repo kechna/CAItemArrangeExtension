@@ -18,6 +18,7 @@ local mathMin = math.min
 local mathRad = math.rad
 local mathSin = math.sin
 local tableInsert = table.insert
+local getPlayer = getPlayer
 
 -- MOST OF THIS IS SLAYER'S OWN ITEM ARRANGE MOD, WHICH IS NOT MY WORK.
 -- I (Kechna) AM NOT THE AUTHOR OF THE ORIGINAL MOD, AND I DO NOT CLAIM TO BE. I AM MERELY PROVIDING AN EXTENSION AND SOME PATCHES TO IT.
@@ -29,6 +30,7 @@ local tableInsert = table.insert
 --  - allow arranging on top of tall furniture, such as stacked crates
 --  - lift items off rugs and surfaces a little, so they don't clip into them
 --  - keep long items (lx/ly) on the surface and start new rows by each item type's own size
+--  - optionally orient items by the player instead of by the walls (mod option)
 --  - fix the bounds check for S and E walls
 --  - hold ctrl to not stack items, shift+alt to skip non-arrangeable items
 
@@ -38,6 +40,9 @@ local CURSOR_ORDER_N = 1
 local CURSOR_ORDER_W = 2
 local CURSOR_ORDER_S = 3
 local CURSOR_ORDER_E = 4
+
+-- rows start at the back of a counter, which is the side opposite its facing
+local FACING_CURSOR_ORDER = { N = CURSOR_ORDER_S, E = CURSOR_ORDER_W, S = CURSOR_ORDER_N, W = CURSOR_ORDER_E }
 
 local CURSOR_YAW = {
     [CURSOR_ORDER_N] = 0,
@@ -105,6 +110,54 @@ local function applyYaw(fx, fy, fz, yaw)
     return mathDeg(a) % 360, mathDeg(c) % 360, mathDeg(b) % 360
 end
 
+---@alias IAFacingMode "walls" | "towards" | "away" | "view"
+
+local OPPOSITE = { N = "S", E = "W", S = "N", W = "E" }
+
+---@alias IAFacing "N" | "E" | "S" | "W" | "walls"
+
+--- The side items face when `character` arranges them on `square`, `walls` to orient them by the walls. Modes:
+---  - `towards`/`away`: by where the player stands, because they may only turn towards the square later
+---  - `view`: back at the player, by where they look
+--- On their own square the player's view decides in every mode.
+---@param character IsoGameCharacter | nil
+---@param square    IsoGridSquare
+---@param mode?     IAFacingMode the client's mod option by default
+---@return IAFacing | nil
+local function facingOf(character, square, mode)
+    mode = mode or IA.FacingMode
+    if not mode or mode == "walls" then
+        return "walls"
+    end
+    if not character then
+        return nil
+    end
+
+    local dx, dy, adx, ady = 0, 0, 0, 0
+    if mode ~= "view" then
+        dx = character:getX() - square:getX() - 0.5
+        dy = character:getY() - square:getY() - 0.5
+        adx, ady = dx < 0 and -dx or dx, dy < 0 and -dy or dy
+    end
+
+    if adx < 0.5 and ady < 0.5 then
+        local forward = character:getForwardDirection()
+        dx, dy = -forward:getX(), -forward:getY()
+        adx, ady = dx < 0 and -dx or dx, dy < 0 and -dy or dy
+    end
+
+    local facing
+    if adx > ady then
+        facing = dx > 0 and "E" or "W"
+    else
+        facing = dy > 0 and "S" or "N"
+    end
+
+    return mode == "away" and OPPOSITE[facing] or facing
+end
+
+IA.getFacing = facingOf
+
 ---@param square IsoGridSquare
 function IA.getSurfaceInfo(square)
     local cursorOrder = CURSOR_ORDER_N
@@ -139,28 +192,20 @@ function IA.getSurfaceInfo(square)
 
     if squareS then
         local wallS = squareS:getWall()
-        if wallS then
-            if wallS:isWallN() then
-                ground.ymax = 0.9
-                cursorOrder = CURSOR_ORDER_S
-            end
+        if wallS and wallS:isWallN() then
+            cursorOrder = CURSOR_ORDER_S
         end
-
-        if not squareS:isFree(false) then
+        if (wallS and wallS:isWallN()) or not squareS:isFree(false) then
             ground.ymax = 0.9
         end
     end
 
     if squareE then
         local wallE = squareE:getWall()
-        if wallE then
-            if wallE:isWallW() then
-                ground.xmax = 0.9
-                cursorOrder = CURSOR_ORDER_E
-            end
+        if wallE and wallE:isWallW() then
+            cursorOrder = CURSOR_ORDER_E
         end
-
-        if not squareE:isFree(false) then
+        if (wallE and wallE:isWallW()) or not squareE:isFree(false) then
             ground.xmax = 0.9
         end
     end
@@ -338,10 +383,60 @@ local function buildGroundList(square, extraItem)
     return groundList
 end
 
-local function arrangeGroundList(square, groundList, placements, ignoreQz)
+local ARRANGED_ORDERS = { CURSOR_ORDER_N, CURSOR_ORDER_W, CURSOR_ORDER_S, CURSOR_ORDER_E }
+
+-- kahlua's `%` keeps the sign of negative numbers
+local function sameAngle(a, b)
+    local d = (a - b) % 360
+    if d < 0 then
+        d = d + 360
+    end
+    return d < 0.5 or d > 359.5
+end
+
+-- The cursor order the square was last arranged with, read back from the items' synced rotations: each one is its
+-- profile's rotation turned by that order's yaw. Most votes wins, so loose items with random rotations don't decide.
+local function arrangedCursorOrder(groundList)
+    local arrangables = IA.arrangables
+    local votes = {}
+    local best, bestVotes = nil, 0
+    for fType, entries in pairs(groundList) do
+        local arr = arrangables[fType]
+        local ax, ay, az = arr.fx or 0, arr.fy or 0, arr.fz or 0
+        for i = 1, #entries do
+            local entry = entries[i]
+            if entry.witem then
+                local item = entry.item
+                local rx, ry, rz = item:getWorldXRotation(), item:getWorldYRotation(), item:getWorldZRotation()
+                for j = 1, #ARRANGED_ORDERS do
+                    local order = ARRANGED_ORDERS[j]
+                    local fx, fy, fz = applyYaw(ax, ay, az, CURSOR_YAW[order])
+                    if sameAngle(fx, rx) and sameAngle(fy, ry) and sameAngle(fz, rz) then
+                        local count = (votes[order] or 0) + 1
+                        votes[order] = count
+                        if count > bestVotes then
+                            best, bestVotes = order, count
+                        end
+                        break
+                    end
+                end
+            end
+        end
+    end
+
+    return best
+end
+
+local function arrangeGroundList(square, groundList, placements, ignoreQz, facing)
     local arrangables = IA.arrangables
 
-    local cursorOrder, surfaces = IA.getSurfaceInfo(square)
+    local wallCursorOrder, surfaces = IA.getSurfaceInfo(square)
+    local cursorOrder = FACING_CURSOR_ORDER[facing]
+    if not cursorOrder and facing ~= "walls" then
+        -- without a facing (rearranging after a pickup) the square keeps the orientation it was arranged with
+        cursorOrder = arrangedCursorOrder(groundList) or FACING_CURSOR_ORDER[facingOf(getPlayer(), square)]
+    end
+    cursorOrder = cursorOrder or wallCursorOrder
 
     -- fill surfaces in the order the profile defines them, so the author decides which one is used first (a counter
     -- top before the floor below it). items that don't fit one still move on to the next
@@ -617,8 +712,8 @@ local function arrangeGroundList(square, groundList, placements, ignoreQz)
         local lx = arr.lx
         local ly = arr.ly
 
-        -- profiles are defined against the N wall: swap the footprint for side walls and map the
-        -- offset so my stays "towards the wall" and mx "along the wall"
+        -- profiles are defined with their back to N: swap the footprint for side orders and map the
+        -- offset so my stays "towards the back" and mx "along it"
         if cursorOrder == CURSOR_ORDER_W or cursorOrder == CURSOR_ORDER_E then
             dx, dy = dy, dx
             lx, ly = ly, lx
@@ -851,7 +946,8 @@ local function arrangeGroundList(square, groundList, placements, ignoreQz)
     return true
 end
 
-function IA.CheckSpace(square, item, skip)
+---@param facing? IAFacing side the items face. without one the square keeps its last orientation
+function IA.CheckSpace(square, item, skip, facing)
     if not square or not item then
         return false, false
     end
@@ -883,7 +979,7 @@ function IA.CheckSpace(square, item, skip)
         end
     end
 
-    return arrangeGroundList(square, buildGroundList(square, item), nil), false
+    return arrangeGroundList(square, buildGroundList(square, item), nil, false, facing), false
 end
 
 -- rows fill from their start, which leaves all the spare room at the end: shift each row to the middle of its surface
@@ -924,13 +1020,14 @@ local function applyPlacements(placements)
     end
 end
 
-function IA.ArrangeItems(square, simulate, ctrlKey)
+---@param facing? IAFacing side the items face. without one the square keeps its last orientation
+function IA.ArrangeItems(square, simulate, ctrlKey, facing)
     if simulate then
-        return arrangeGroundList(square, buildGroundList(square), nil, ctrlKey)
+        return arrangeGroundList(square, buildGroundList(square), nil, ctrlKey, facing)
     end
 
     local placements = {}
-    local ok = arrangeGroundList(square, buildGroundList(square), placements, ctrlKey)
+    local ok = arrangeGroundList(square, buildGroundList(square), placements, ctrlKey, facing)
     applyPlacements(placements)
 
     return ok

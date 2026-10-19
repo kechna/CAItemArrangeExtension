@@ -1,10 +1,11 @@
 require("TimedActions/IAArrangeAction")
 require("TimedActions/ISTransferAction")
+require("CAItemArrangeExtension/IAArrangePatch")
 
 local IAArrangeAction = IAArrangeAction or nil
 local IA = IA or nil
 
-if not IAArrangeAction or not IA then return end
+if not IAArrangeAction or not IA or not IA.getFacing then return end
 
 local ISTransferAction = ISTransferAction
 local sendRemoveItemFromContainer = sendRemoveItemFromContainer
@@ -16,6 +17,7 @@ local isServer = isServer
 --  - skip items that are no longer in their container, so they don't turn into ghost items
 --  - hold Shift+Alt to skip items that can't be arranged, hold Ctrl to not stack items
 --  - only check the space again when the items on the square changed
+--  - orient the items by the player's facing mode option, on the server too where there's no mod option
 
 ---@class IAArrangeAction: ISBaseTimedAction
 ---@field character IsoPlayer
@@ -25,6 +27,7 @@ local isServer = isServer
 ---@field skipItem boolean
 ---@field altKey boolean
 ---@field ctrlKey boolean
+---@field facingMode IAFacingMode
 
 IAArrangeAction._originalNew = IAArrangeAction._originalNew or IAArrangeAction.new
 local originalNew = IAArrangeAction._originalNew
@@ -57,7 +60,8 @@ function IAArrangeAction:isValid()
   local worldItemCount = self.dropSquare:getWorldObjects():size()
   if self.checkedWorldItemCount ~= worldItemCount then
     self.checkedWorldItemCount = worldItemCount
-    self.spaceValid, self.spaceSkipItem = IA.CheckSpace(self.dropSquare, self.item, self.altKey)
+    local facing = IA.getFacing(self.character, self.dropSquare, self.facingMode)
+    self.spaceValid, self.spaceSkipItem = IA.CheckSpace(self.dropSquare, self.item, self.altKey, facing)
   end
 
   if not self.spaceValid then
@@ -91,24 +95,27 @@ function IAArrangeAction:complete()
   end
 
   -- the item is on the square already, so the action succeeded even when it doesn't fit the arrangement
-  IA.ArrangeItems(self.dropSquare, false, self.ctrlKey)
+  local facing = IA.getFacing(self.character, self.dropSquare, self.facingMode)
+  IA.ArrangeItems(self.dropSquare, false, self.ctrlKey, facing)
 
   return true
 end
 
 -- in MP the client sends the fields named after `new`'s parameters and the server calls `new` with them, so the
 -- parameters must be named (no `...`) and the held keys are parameters too, read on the client only
-function IAArrangeAction:new(character, item, srcContainer, dropSquare, altKey, ctrlKey)
+function IAArrangeAction:new(character, item, srcContainer, dropSquare, altKey, ctrlKey, facingMode)
   local o = originalNew(self, character, item, srcContainer, dropSquare)
   o.skipItem = false
 
   if altKey == nil and not isServer() then
     altKey = isAltKeyDown()
     ctrlKey = isCtrlKeyDown()
+    facingMode = IA.FacingMode
   end
 
   o.altKey = altKey == true
   o.ctrlKey = ctrlKey == true
+  o.facingMode = facingMode or "walls"
 
   return o
 end
