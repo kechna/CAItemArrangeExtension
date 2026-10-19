@@ -203,13 +203,22 @@ function IA.getSurfaceInfo(square)
             end
 
             if IA.surfaces[spriteName] then
+                -- a profile's own zmin is measured from the object's base, which is raised when it's stacked on
+                -- another object (a crate on a crate)
+                local baseZ = object:getRenderYOffset() / 96
+
                 -- copy the surfaces so several objects on one square can be merged without changing the shared profiles
                 for _, surface in ipairs(IA.surfaces[spriteName]) do
                     local copy = {}
                     for key, value in pairs(surface) do
                         copy[key] = value
                     end
-                    if not copy.zmin then
+                    if copy.zmin then
+                        copy.zmin = copy.zmin + baseZ
+                        if copy.zmax then
+                            copy.zmax = copy.zmax + baseZ
+                        end
+                    else
                         copy.zmin = surfaceZ
                     end
                     tableInsert(surfaces, copy)

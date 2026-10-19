@@ -562,6 +562,14 @@ mp["WorldItems/Sheet_Copper"] = { flipZ = true, qz = 20, dz = 0.006, mz = 0.001,
 mp["WorldItems/Sheet_Copper_Small"] = { flipZ = true, qz = 20, dz = 0.005, mz = 0.001 }
 mp["WorldItems/SmallSheetMetal"] = { qz = 20, dz = 0.005, mz = 0.001 }
 
+mp["Newspaper"] = { flipY = true }
+mp["WorldItems/CircularSawBlade"] = { qz = 20, dz = 0.005 }
+mp["WorldItems/CircularSawBlade_Half"] = { qz = 20, dz = 0.005 }
+mp["WorldItems/Newspaper"] = { flipY = true }
+mp["WorldItems/Tarp_Segment"] = { qz = 10 }
+mp["WorldItems/Whetstone_Crude"] = { qz = 6 }
+mp["WorldItems/Whetstone_Modern"] = { qz = 6 }
+
 ----
 -- overrides
 ----

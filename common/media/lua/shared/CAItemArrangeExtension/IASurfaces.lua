@@ -57,8 +57,8 @@ s["furniture_shelving_01_25"] = sp.metalShelfWEN
 s["furniture_shelving_01_26"] = sp.metalShelfNSW
 s["furniture_shelving_01_27"] = sp.metalShelfNSE
 
--- military crates have a slightly taller appearance
-local boxMilitary = { [1] = extend(sp.box[1], { zmin = 0.36 }) }
+-- military crates have a slightly taller appearance, at the lid height measured from the tile geometry
+local boxMilitary = { [1] = extend(sp.box[1], { zmin = 0.371 }) }
 s["location_military_generic_01_0"] = boxMilitary
 s["location_military_generic_01_1"] = boxMilitary
 s["location_military_generic_01_8"] = boxMilitary
@@ -68,10 +68,8 @@ s["constructedobjects_01_44"] = sp.box
 s["constructedobjects_01_45"] = sp.box
 s["constructedobjects_01_46"] = sp.box
 s["constructedobjects_01_47"] = sp.box
--- fancy crafted metal crates
-s["crafted_05_44"] = sp.box
-s["crafted_05_44"] = sp.box
-s["crafted_05_44"] = sp.box
+-- fancy crafted metal crate. 45 and 46 are two and three of them stacked in one sprite, which keep their generated
+-- heights
 s["crafted_05_44"] = sp.box
 
 -- wood shelves
@@ -317,8 +315,13 @@ modifySurfaces("furniture_tables_low_01_12", { zmin = -0.005, ymin = 0.08, xmin 
 -- bathroom cabinet with mirror
 modifySurfaces("fixtures_bathroom_01_29", { zmin = -0.022, xmax = -0.1, ymax = -0.05 })
 
--- crate-sized cardboard box
-modifySurfaces("furniture_storage_02_16", { zmin = -0.021 })
+-- crate-sized cardboard boxes, at the lid height measured from the tile geometry. the game's own surface offset
+-- is a bit below the lid, so items would clip into it
+local boxCardboard = { [1] = extend(sp.box[1], { zmin = 0.363 }) }
+s["furniture_storage_02_16"] = boxCardboard
+s["furniture_storage_02_17"] = boxCardboard
+s["furniture_storage_02_18"] = boxCardboard
+s["furniture_storage_02_19"] = boxCardboard
 
 modifySurfaces(
   "location_community_medical_01_48",
