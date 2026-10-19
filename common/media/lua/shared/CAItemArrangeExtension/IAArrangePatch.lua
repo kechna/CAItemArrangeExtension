@@ -253,6 +253,11 @@ function IA.getSurfaceInfo(square)
 
                 -- copy the surfaces so several objects on one square can be merged without changing the shared profiles
                 for _, surface in ipairs(IA.surfaces[spriteName]) do
+                    -- a counter's own facing wins over the walls around it
+                    if surface.facing then
+                        cursorOrder = FACING_CURSOR_ORDER[surface.facing] or cursorOrder
+                    end
+
                     local copy = {}
                     for key, value in pairs(surface) do
                         copy[key] = value
@@ -907,7 +912,6 @@ local function arrangeGroundList(square, groundList, placements, ignoreQz, facin
             ypos = keepOnSurface(ypos - my, ly, ymin, ymax) + my
 
             if placements and entry.witem then
-                local alongX = cursorOrder == CURSOR_ORDER_N or cursorOrder == CURSOR_ORDER_S
                 tableInsert(placements, {
                     entry = entry,
                     arr = arr,
@@ -915,14 +919,6 @@ local function arrangeGroundList(square, groundList, placements, ignoreQz, facin
                     x = xpos,
                     y = ypos,
                     z = zpos + SURFACE_CLEARANCE,
-                    alongX = alongX,
-                    row = cs .. ":" .. tostring(alongX and anchorY or anchorX),
-                    low = alongX and anchorX or anchorY,
-                    high = alongX and (anchorX + dx) or (anchorY + dy),
-                    smin = alongX and xmin or ymin,
-                    smax = alongX and xmax or ymax,
-                    m = alongX and mx or my,
-                    l = alongX and lx or ly,
                 })
             end
 
@@ -982,30 +978,9 @@ function IA.CheckSpace(square, item, skip, facing)
     return arrangeGroundList(square, buildGroundList(square, item), nil, false, facing), false
 end
 
--- rows fill from their start, which leaves all the spare room at the end: shift each row to the middle of its surface
 local function applyPlacements(placements)
-    local rows = {}
     for i = 1, #placements do
         local p = placements[i]
-        local row = rows[p.row]
-        if not row then
-            rows[p.row] = { low = p.low, high = p.high }
-        else
-            row.low = mathMin(row.low, p.low)
-            row.high = mathMax(row.high, p.high)
-        end
-    end
-
-    for i = 1, #placements do
-        local p = placements[i]
-        local row = rows[p.row]
-        local shift = ((p.smax - row.high) - (row.low - p.smin)) / 2
-        if p.alongX then
-            p.x = keepOnSurface(p.x + shift - p.m, p.l, p.smin, p.smax) + p.m
-        else
-            p.y = keepOnSurface(p.y + shift - p.m, p.l, p.smin, p.smax) + p.m
-        end
-
         local entry, arr = p.entry, p.arr
         entry.witem:setOffset(p.x, p.y, p.z)
 

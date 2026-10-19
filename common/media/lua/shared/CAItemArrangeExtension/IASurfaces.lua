@@ -697,21 +697,21 @@ modifySurfaces("appliances_refrigeration_01_47", { xmax = 0.01, ymax = -0.02, ym
 
 -- metal counter S
 s["fixtures_counters_01_37"] = {
-  { zmin = 0.375, zmax = 1, xmin = 0, xmax = 1, ymin = 0.12, ymax = 0.7 },
+  { zmin = 0.375, zmax = 1, xmin = 0, xmax = 1, ymin = 0.12, ymax = 0.7, facing = "S" },
   -- floor below
   { zmin = 0.000, zmax = 0.15, xmin = 0, xmax = 1, ymin = 0.12, ymax = 0.61 },
 }
 -- the other angles are the S counter rotated: the top runs 0.12-0.7 from the back, the floor below 0.12-0.61
 s["fixtures_counters_01_33"] = { -- N
-  { zmin = 0.375, zmax = 1,    xmin = 0,    xmax = 1,    ymin = 0.3,  ymax = 0.88 },
+  { zmin = 0.375, zmax = 1,    xmin = 0,    xmax = 1,    ymin = 0.3,  ymax = 0.88, facing = "N" },
   { zmin = 0.000, zmax = 0.15, xmin = 0,    xmax = 1,    ymin = 0.39, ymax = 0.88 },
 }
 s["fixtures_counters_01_35"] = { -- E
-  { zmin = 0.375, zmax = 1,    xmin = 0.12, xmax = 0.7,  ymin = 0,    ymax = 1 },
+  { zmin = 0.375, zmax = 1,    xmin = 0.12, xmax = 0.7,  ymin = 0,    ymax = 1, facing = "E" },
   { zmin = 0.000, zmax = 0.15, xmin = 0.12, xmax = 0.61, ymin = 0,    ymax = 1 },
 }
 s["fixtures_counters_01_39"] = { -- W
-  { zmin = 0.375, zmax = 1,    xmin = 0.3,  xmax = 0.88, ymin = 0,    ymax = 1 },
+  { zmin = 0.375, zmax = 1,    xmin = 0.3,  xmax = 0.88, ymin = 0,    ymax = 1, facing = "W" },
   { zmin = 0.000, zmax = 0.15, xmin = 0.39, xmax = 0.88, ymin = 0,    ymax = 1 },
 }
 
@@ -722,10 +722,10 @@ s["fixtures_counters_01_39"] = { -- W
 ---@return table<string, table<integer, IASurfaceProfile>>
 local function counterTops(zmin)
   return {
-    S = { { zmin = zmin, xmin = 0, xmax = 1, ymin = 0.12, ymax = 0.7 } },
-    N = { { zmin = zmin, xmin = 0, xmax = 1, ymin = 0.3, ymax = 0.88 } },
-    E = { { zmin = zmin, xmin = 0.12, xmax = 0.7, ymin = 0, ymax = 1 } },
-    W = { { zmin = zmin, xmin = 0.3, xmax = 0.88, ymin = 0, ymax = 1 } },
+    S = { { zmin = zmin, xmin = 0, xmax = 1, ymin = 0.12, ymax = 0.7, facing = "S" } },
+    N = { { zmin = zmin, xmin = 0, xmax = 1, ymin = 0.3, ymax = 0.88, facing = "N" } },
+    E = { { zmin = zmin, xmin = 0.12, xmax = 0.7, ymin = 0, ymax = 1, facing = "E" } },
+    W = { { zmin = zmin, xmin = 0.3, xmax = 0.88, ymin = 0, ymax = 1, facing = "W" } },
   }
 end
 
@@ -752,6 +752,7 @@ local function cornerTop(tops, facing)
     first[BACK_EDGE[other]] = second[BACK_EDGE[other]]
     second[BACK_EDGE[facing]] = first[front]
     second[front] = front:sub(2) == "min" and 0 or 1
+    second.facing = facing
     result[#result + 1] = first
     result[#result + 1] = second
   end
@@ -820,10 +821,10 @@ s["location_trailer_02_20"] = counterTop.N
 s["location_trailer_02_21"] = counterTop.W
 
 -- the glass display case is drawn on the front half of its tile
-s["location_shop_generic_01_97"] = { { zmin = 0.375, xmin = 0, xmax = 1, ymin = 0.48, ymax = 0.98 } }
-s["location_shop_generic_01_101"] = { { zmin = 0.375, xmin = 0, xmax = 1, ymin = 0.02, ymax = 0.52 } }
-s["location_shop_generic_01_103"] = { { zmin = 0.375, xmin = 0.48, xmax = 0.98, ymin = 0, ymax = 1 } }
-s["location_shop_generic_01_99"] = { { zmin = 0.375, xmin = 0.02, xmax = 0.52, ymin = 0, ymax = 1 } }
+s["location_shop_generic_01_97"] = { { zmin = 0.375, xmin = 0, xmax = 1, ymin = 0.48, ymax = 0.98, facing = "S" } }
+s["location_shop_generic_01_101"] = { { zmin = 0.375, xmin = 0, xmax = 1, ymin = 0.02, ymax = 0.52, facing = "N" } }
+s["location_shop_generic_01_103"] = { { zmin = 0.375, xmin = 0.48, xmax = 0.98, ymin = 0, ymax = 1, facing = "E" } }
+s["location_shop_generic_01_99"] = { { zmin = 0.375, xmin = 0.02, xmax = 0.52, ymin = 0, ymax = 1, facing = "W" } }
 
 -- bars are taller, each at its own height
 local BAR_SETS = { { 0, 0.478 }, { 16, 0.498 }, { 56, 0.487 } }
@@ -842,15 +843,15 @@ end
 local BANK_Z = 0.404
 local bankTops = {
   -- oak, with panels
-  { 26, 27, 0.05, { ymin = 0.08, ymax = 0.8 } }, -- S
-  { 30, 31, 0.05, { ymin = 0.2, ymax = 0.92 } }, -- N
-  { 25, 24, 0.05, { xmin = 0.08, xmax = 0.8 } }, -- E
-  { 29, 28, 0.05, { xmin = 0.2, xmax = 0.92 } }, -- W
+  { 26, 27, 0.05, { ymin = 0.08, ymax = 0.8, facing = "S" } },
+  { 30, 31, 0.05, { ymin = 0.2, ymax = 0.92, facing = "N" } },
+  { 25, 24, 0.05, { xmin = 0.08, xmax = 0.8, facing = "E" } },
+  { 29, 28, 0.05, { xmin = 0.2, xmax = 0.92, facing = "W" } },
   -- plain
-  { 58, 59, 0.08, { ymin = 0.32, ymax = 1 } }, -- S
-  { 62, 63, 0.08, { ymin = 0, ymax = 0.68 } }, -- N
-  { 57, 56, 0.08, { xmin = 0.32, xmax = 1 } }, -- E
-  { 61, 60, 0.08, { xmin = 0, xmax = 0.68 } }, -- W
+  { 58, 59, 0.08, { ymin = 0.32, ymax = 1, facing = "S" } },
+  { 62, 63, 0.08, { ymin = 0, ymax = 0.68, facing = "N" } },
+  { 57, 56, 0.08, { xmin = 0.32, xmax = 1, facing = "E" } },
+  { 61, 60, 0.08, { xmin = 0, xmax = 0.68, facing = "W" } },
 }
 
 for i = 1, #bankTops do
