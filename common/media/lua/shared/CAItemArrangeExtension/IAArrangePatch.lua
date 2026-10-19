@@ -18,7 +18,6 @@ local mathMin = math.min
 local mathRad = math.rad
 local mathSin = math.sin
 local tableInsert = table.insert
-local tableSort = table.sort
 
 -- MOST OF THIS IS SLAYER'S OWN ITEM ARRANGE MOD, WHICH IS NOT MY WORK.
 -- I (Kechna) AM NOT THE AUTHOR OF THE ORIGINAL MOD, AND I DO NOT CLAIM TO BE. I AM MERELY PROVIDING AN EXTENSION AND SOME PATCHES TO IT.
@@ -297,6 +296,19 @@ function IA.getSurfaceInfo(square)
 
 end
 
+-- Moves an item's centre so all of its real length stays on the surface: long items get a shorter footprint
+-- than they are, which would otherwise overhang the edge their row starts at. One longer than the whole surface
+-- is centred on it.
+local function keepOnSurface(center, length, low, high)
+    if not length then
+        return center
+    end
+    if length >= high - low then
+        return (low + high) / 2
+    end
+    return mathMax(low + length / 2, mathMin(high - length / 2, center))
+end
+
 local function buildGroundList(square, extraItem)
     local arrangables = IA.arrangables
     local groundList = {}
@@ -326,29 +338,17 @@ local function buildGroundList(square, extraItem)
     return groundList
 end
 
-local function arrangeGroundList(square, groundList, applyOffsets, ignoreQz)
+local function arrangeGroundList(square, groundList, placements, ignoreQz)
     local arrangables = IA.arrangables
 
     local cursorOrder, surfaces = IA.getSurfaceInfo(square)
 
-    -- Prefer the smallest fitting vertical band first; this keeps shallow shelves
-    -- for shallow items and leaves tall bands for bulky items.
+    -- fill surfaces in the order the profile defines them, so the author decides which one is used first (a counter
+    -- top before the floor below it). items that don't fit one still move on to the next
     local orderedSurfaceIndexes = {}
     for i = 1, #surfaces do
         orderedSurfaceIndexes[i] = i
     end
-    tableSort(orderedSurfaceIndexes, function(a, b)
-        local sa = surfaces[a] or {}
-        local sb = surfaces[b] or {}
-        local da = (sa.zmax or 1) - (sa.zmin or 0)
-        local db = (sb.zmax or 1) - (sb.zmin or 0)
-        if da ~= db then
-            return da < db
-        end
-
-        -- Tie-break by profile order to keep author-defined shelf preference.
-        return a < b
-    end)
 
     -- surface cursor
     local cs = 1
@@ -495,19 +495,6 @@ local function arrangeGroundList(square, groundList, applyOffsets, ignoreQz)
             or (cursorOrder == CURSOR_ORDER_W and xpos + dx > xmax)
             or (cursorOrder == CURSOR_ORDER_S and ypos - dy < ymin)
             or (cursorOrder == CURSOR_ORDER_E and xpos - dx < xmin)
-    end
-
-    -- Moves an item's centre so all of its real length stays on the surface: long items get a shorter footprint
-    -- than they are, which would otherwise overhang the edge their row starts at. One longer than the whole surface
-    -- is centred on it.
-    local function keepOnSurface(center, length, low, high)
-        if not length then
-            return center
-        end
-        if length >= high - low then
-            return (low + high) / 2
-        end
-        return mathMax(low + length / 2, mathMin(high - length / 2, center))
     end
 
     -- Starts a new row when this item doesn't fit in what's left of the current one, judged by this item's own
@@ -824,17 +811,24 @@ local function arrangeGroundList(square, groundList, applyOffsets, ignoreQz)
             xpos = keepOnSurface(xpos - mx, lx, xmin, xmax) + mx
             ypos = keepOnSurface(ypos - my, ly, ymin, ymax) + my
 
-            if applyOffsets and entry.witem then
-                entry.witem:setOffset(xpos, ypos, zpos + SURFACE_CLEARANCE)
-
-                local item = entry.item
-                local fx, fy, fz = applyYaw(arr.fx or 0, arr.fy or 0, arr.fz or 0, CURSOR_YAW[cursorOrder])
-                item:setWorldXRotation(fx)
-                item:setWorldYRotation(fy)
-                item:setWorldZRotation(fz)
-
-                item:setDoingExtendedPlacement(false)
-                entry.witem:syncExtendedPlacement()
+            if placements and entry.witem then
+                local alongX = cursorOrder == CURSOR_ORDER_N or cursorOrder == CURSOR_ORDER_S
+                tableInsert(placements, {
+                    entry = entry,
+                    arr = arr,
+                    yaw = CURSOR_YAW[cursorOrder],
+                    x = xpos,
+                    y = ypos,
+                    z = zpos + SURFACE_CLEARANCE,
+                    alongX = alongX,
+                    row = cs .. ":" .. tostring(alongX and anchorY or anchorX),
+                    low = alongX and anchorX or anchorY,
+                    high = alongX and (anchorX + dx) or (anchorY + dy),
+                    smin = alongX and xmin or ymin,
+                    smax = alongX and xmax or ymax,
+                    m = alongX and mx or my,
+                    l = alongX and lx or ly,
+                })
             end
 
             registerPlacedBounds(cs, anchorX, anchorY, zpos, dx, dy, dz)
@@ -889,9 +883,55 @@ function IA.CheckSpace(square, item, skip)
         end
     end
 
-    return arrangeGroundList(square, buildGroundList(square, item), false), false
+    return arrangeGroundList(square, buildGroundList(square, item), nil), false
+end
+
+-- rows fill from their start, which leaves all the spare room at the end: shift each row to the middle of its surface
+local function applyPlacements(placements)
+    local rows = {}
+    for i = 1, #placements do
+        local p = placements[i]
+        local row = rows[p.row]
+        if not row then
+            rows[p.row] = { low = p.low, high = p.high }
+        else
+            row.low = mathMin(row.low, p.low)
+            row.high = mathMax(row.high, p.high)
+        end
+    end
+
+    for i = 1, #placements do
+        local p = placements[i]
+        local row = rows[p.row]
+        local shift = ((p.smax - row.high) - (row.low - p.smin)) / 2
+        if p.alongX then
+            p.x = keepOnSurface(p.x + shift - p.m, p.l, p.smin, p.smax) + p.m
+        else
+            p.y = keepOnSurface(p.y + shift - p.m, p.l, p.smin, p.smax) + p.m
+        end
+
+        local entry, arr = p.entry, p.arr
+        entry.witem:setOffset(p.x, p.y, p.z)
+
+        local item = entry.item
+        local fx, fy, fz = applyYaw(arr.fx or 0, arr.fy or 0, arr.fz or 0, p.yaw)
+        item:setWorldXRotation(fx)
+        item:setWorldYRotation(fy)
+        item:setWorldZRotation(fz)
+
+        item:setDoingExtendedPlacement(false)
+        entry.witem:syncExtendedPlacement()
+    end
 end
 
 function IA.ArrangeItems(square, simulate, ctrlKey)
-    return arrangeGroundList(square, buildGroundList(square), not simulate, ctrlKey)
+    if simulate then
+        return arrangeGroundList(square, buildGroundList(square), nil, ctrlKey)
+    end
+
+    local placements = {}
+    local ok = arrangeGroundList(square, buildGroundList(square), placements, ctrlKey)
+    applyPlacements(placements)
+
+    return ok
 end

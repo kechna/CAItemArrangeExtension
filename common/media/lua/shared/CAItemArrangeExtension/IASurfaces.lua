@@ -645,3 +645,246 @@ s["location_community_police_01_28"] = { { zmin = 0.272, zmax = 1, xmin = 0.14, 
 s["location_community_police_01_29"] = { { zmin = 0.272, zmax = 1, xmin = 0, xmax = 0.82, ymin = 0, ymax = 0.85 } }
 s["location_community_police_01_30"] = { { zmin = 0.272, zmax = 1, xmin = 0, xmax = 0.85, ymin = 0, ymax = 0.86 } }
 s["location_community_police_01_31"] = { { zmin = 0.272, zmax = 1, xmin = 0, xmax = 0.85, ymin = 0.18, ymax = 1 } }
+
+-- countertop soda machine
+modifySurfaces("location_shop_accessories_01_9", { xmax = -0.06, ymax = -0.02, zmin = -0.008 })
+
+-- seahorse cafe cooled display fridge, two tiles wide. measured on the left half facing S (the shelf runs 0.16-0.58 from
+-- the back, with a 0.08 rim at the outer end); the other halves and angles are that same shelf rotated
+-- S: 56 left, 57 right
+s["location_restaurant_seahorse_01_56"] = {
+  { zmin = 0.416, zmax = 1, xmin = 0.08, xmax = 1, ymin = 0.16, ymax = 0.58 },
+}
+s["location_restaurant_seahorse_01_57"] = {
+  { zmin = 0.416, zmax = 1, xmin = 0, xmax = 0.92, ymin = 0.16, ymax = 0.58 },
+}
+-- E: 59 north, 58 south
+s["location_restaurant_seahorse_01_59"] = {
+  { zmin = 0.416, zmax = 1, xmin = 0.16, xmax = 0.58, ymin = 0.08, ymax = 1 },
+}
+s["location_restaurant_seahorse_01_58"] = {
+  { zmin = 0.416, zmax = 1, xmin = 0.16, xmax = 0.58, ymin = 0, ymax = 0.92 },
+}
+-- W: 61 north, 60 south
+s["location_restaurant_seahorse_01_61"] = {
+  { zmin = 0.416, zmax = 1, xmin = 0.42, xmax = 0.84, ymin = 0.08, ymax = 1 },
+}
+s["location_restaurant_seahorse_01_60"] = {
+  { zmin = 0.416, zmax = 1, xmin = 0.42, xmax = 0.84, ymin = 0, ymax = 0.92 },
+}
+-- N: 62 west, 63 east
+s["location_restaurant_seahorse_01_62"] = {
+  { zmin = 0.416, zmax = 1, xmin = 0.08, xmax = 1, ymin = 0.42, ymax = 0.84 },
+}
+s["location_restaurant_seahorse_01_63"] = {
+  { zmin = 0.416, zmax = 1, xmin = 0, xmax = 0.92, ymin = 0.42, ymax = 0.84 },
+}
+
+-- big tall shop fridge, two tiles wide. measured on the left half facing S: 0.01 further out at the outer end, 0.02 off
+-- the back, 0.05 off the front and 0.011 lower. the other halves and angles get that same tweak rotated
+-- S: 18 left, 19 right
+modifySurfaces("appliances_refrigeration_01_18", { xmin = -0.01, ymin = 0.02, ymax = -0.05, zmin = -0.011 })
+modifySurfaces("appliances_refrigeration_01_19", { xmax = 0.01, ymin = 0.02, ymax = -0.05, zmin = -0.011 })
+-- E: 17 north, 16 south
+modifySurfaces("appliances_refrigeration_01_17", { ymin = -0.01, xmin = 0.02, xmax = -0.05, zmin = -0.011 })
+modifySurfaces("appliances_refrigeration_01_16", { ymax = 0.01, xmin = 0.02, xmax = -0.05, zmin = -0.011 })
+-- W: 45 north, 44 south
+modifySurfaces("appliances_refrigeration_01_45", { ymin = -0.01, xmax = -0.02, xmin = 0.05, zmin = -0.011 })
+modifySurfaces("appliances_refrigeration_01_44", { ymax = 0.01, xmax = -0.02, xmin = 0.05, zmin = -0.011 })
+-- N: 46 west, 47 east
+modifySurfaces("appliances_refrigeration_01_46", { xmin = -0.01, ymax = -0.02, ymin = 0.05, zmin = -0.011 })
+modifySurfaces("appliances_refrigeration_01_47", { xmax = 0.01, ymax = -0.02, ymin = 0.05, zmin = -0.011 })
+
+-- metal counter S
+s["fixtures_counters_01_37"] = {
+  { zmin = 0.375, zmax = 1, xmin = 0, xmax = 1, ymin = 0.12, ymax = 0.7 },
+  -- floor below
+  { zmin = 0.000, zmax = 0.15, xmin = 0, xmax = 1, ymin = 0.12, ymax = 0.61 },
+}
+-- the other angles are the S counter rotated: the top runs 0.12-0.7 from the back, the floor below 0.12-0.61
+s["fixtures_counters_01_33"] = { -- N
+  { zmin = 0.375, zmax = 1,    xmin = 0,    xmax = 1,    ymin = 0.3,  ymax = 0.88 },
+  { zmin = 0.000, zmax = 0.15, xmin = 0,    xmax = 1,    ymin = 0.39, ymax = 0.88 },
+}
+s["fixtures_counters_01_35"] = { -- E
+  { zmin = 0.375, zmax = 1,    xmin = 0.12, xmax = 0.7,  ymin = 0,    ymax = 1 },
+  { zmin = 0.000, zmax = 0.15, xmin = 0.12, xmax = 0.61, ymin = 0,    ymax = 1 },
+}
+s["fixtures_counters_01_39"] = { -- W
+  { zmin = 0.375, zmax = 1,    xmin = 0.3,  xmax = 0.88, ymin = 0,    ymax = 1 },
+  { zmin = 0.000, zmax = 0.15, xmin = 0.39, xmax = 0.88, ymin = 0,    ymax = 1 },
+}
+
+-- straight counters get the metal counter's top. the counters' fronts overhang their cabinets, so the top runs 0.12-0.7
+-- from the back across the whole tile and neighbouring pieces line up. they're all drawn as high as the metal one,
+-- even the ones whose Surface property is lower
+---@param zmin number
+---@return table<string, table<integer, IASurfaceProfile>>
+local function counterTops(zmin)
+  return {
+    S = { { zmin = zmin, xmin = 0, xmax = 1, ymin = 0.12, ymax = 0.7 } },
+    N = { { zmin = zmin, xmin = 0, xmax = 1, ymin = 0.3, ymax = 0.88 } },
+    E = { { zmin = zmin, xmin = 0.12, xmax = 0.7, ymin = 0, ymax = 1 } },
+    W = { { zmin = zmin, xmin = 0.3, xmax = 0.88, ymin = 0, ymax = 1 } },
+  }
+end
+
+local counterTop = counterTops(0.375)
+
+local NEXT_FACING = { N = "E", E = "S", S = "W", W = "N" }
+local BACK_EDGE = { N = "ymax", E = "xmin", S = "ymin", W = "xmax" }
+local FRONT_EDGE = { N = "ymin", E = "xmax", S = "ymax", W = "xmin" }
+
+-- a corner joins the top of its own facing to the next facing clockwise: the first runs up to the back of the second,
+-- the second fills the rest of the tile in front of the first
+---@param tops   table<string, table<integer, IASurfaceProfile>>
+---@param facing string
+---@return table<integer, IASurfaceProfile>
+local function cornerTop(tops, facing)
+  local other = NEXT_FACING[facing]
+  local front = FRONT_EDGE[facing]
+  local result = {}
+
+  for i = 1, #tops[facing] do
+    local first = extend(tops[facing][i], {})
+    local second = extend(tops[other][i], {})
+
+    first[BACK_EDGE[other]] = second[BACK_EDGE[other]]
+    second[BACK_EDGE[facing]] = first[front]
+    second[front] = front:sub(2) == "min" and 0 or 1
+    result[#result + 1] = first
+    result[#result + 1] = second
+  end
+
+  return result
+end
+
+-- sets of 8 with a corner and a straight piece per facing, the straight one is the odd index. facings in sprite order
+local COUNTER_SETS = {
+  { "fixtures_counters_01", { 0, 8, 40, 48, 56, 64, 72, 192 }, "NESW" },
+  { "carpentry_02", { 16, 24, 32 }, "NESW" },
+  { "crafted_05", { 24 }, "NESW" },
+  { "location_entertainment_theatre_01", { 8 }, "NESW" },
+  { "location_restaurant_diner_01", { 24 }, "NESW" },
+  { "location_restaurant_pie_01", { 40 }, "NESW" },
+  { "location_restaurant_pizzawhirled_01", { 32 }, "NESW" },
+  { "location_restaurant_seahorse_01", { 40 }, "NESW" },
+  { "location_restaurant_spiffos_01", { 56 }, "NESW" },
+  { "location_shop_fossoil_01", { 16 }, "NESW" },
+  { "location_shop_gas2go_01", { 16 }, "NESW" },
+  { "location_shop_generic_01", { 16 }, "NESW" },
+  { "location_shop_zippee_01", { 16 }, "NESW" },
+}
+
+for i = 1, #COUNTER_SETS do
+  local sheet, bases, facings = COUNTER_SETS[i][1], COUNTER_SETS[i][2], COUNTER_SETS[i][3]
+
+  for j = 1, #bases do
+    for k = 1, 4 do
+      local facing = facings:sub(k, k)
+      s[sheet .. "_" .. (bases[j] + k * 2 - 2)] = cornerTop(counterTop, facing)
+      s[sheet .. "_" .. (bases[j] + k * 2 - 1)] = counterTop[facing]
+    end
+  end
+end
+
+local metalCounter = {
+  N = s["fixtures_counters_01_33"],
+  E = s["fixtures_counters_01_35"],
+  S = s["fixtures_counters_01_37"],
+  W = s["fixtures_counters_01_39"],
+}
+
+for k, facing in ipairs({ "N", "E", "S", "W" }) do
+  s["fixtures_counters_01_" .. (30 + k * 2)] = cornerTop(metalCounter, facing)
+end
+
+-- single pieces without corners
+s["location_entertainment_theatre_01_0"] = counterTop.E
+s["location_entertainment_theatre_01_1"] = counterTop.S
+s["location_entertainment_theatre_01_2"] = counterTop.W
+s["location_entertainment_theatre_01_3"] = counterTop.N
+s["location_entertainment_theatre_01_4"] = counterTop.N
+s["location_entertainment_theatre_01_5"] = counterTop.E
+s["location_entertainment_theatre_01_6"] = counterTop.S
+s["location_entertainment_theatre_01_7"] = counterTop.W
+s["location_hospitality_sunstarmotel_02_12"] = counterTop.N
+s["location_hospitality_sunstarmotel_02_13"] = counterTop.E
+s["location_hospitality_sunstarmotel_02_14"] = counterTop.S
+s["location_hospitality_sunstarmotel_02_15"] = counterTop.W
+s["location_trailer_02_16"] = counterTop.S
+s["location_trailer_02_17"] = counterTop.E
+s["location_trailer_02_18"] = counterTop.S
+s["location_trailer_02_19"] = counterTop.E
+s["location_trailer_02_20"] = counterTop.N
+s["location_trailer_02_21"] = counterTop.W
+
+-- the glass display case is drawn on the front half of its tile
+s["location_shop_generic_01_97"] = { { zmin = 0.375, xmin = 0, xmax = 1, ymin = 0.48, ymax = 0.98 } }
+s["location_shop_generic_01_101"] = { { zmin = 0.375, xmin = 0, xmax = 1, ymin = 0.02, ymax = 0.52 } }
+s["location_shop_generic_01_103"] = { { zmin = 0.375, xmin = 0.48, xmax = 0.98, ymin = 0, ymax = 1 } }
+s["location_shop_generic_01_99"] = { { zmin = 0.375, xmin = 0.02, xmax = 0.52, ymin = 0, ymax = 1 } }
+
+-- bars are taller, each at its own height
+local BAR_SETS = { { 0, 0.478 }, { 16, 0.498 }, { 56, 0.487 } }
+
+for i = 1, #BAR_SETS do
+  local tops = counterTops(BAR_SETS[i][2])
+
+  for k, facing in ipairs({ "N", "W", "S", "E" }) do
+    s["location_restaurant_bar_01_" .. (BAR_SETS[i][1] + k * 2 - 2)] = cornerTop(tops, facing)
+    s["location_restaurant_bar_01_" .. (BAR_SETS[i][1] + k * 2 - 1)] = tops[facing]
+  end
+end
+
+-- two-tile bank counters, height from the game's tile geometry. the oak tops run behind the panel standing on them,
+-- the plain tops only cover the front of their tile. pairs are listed west/north piece first
+local BANK_Z = 0.404
+local bankTops = {
+  -- oak, with panels
+  { 26, 27, 0.05, { ymin = 0.08, ymax = 0.8 } }, -- S
+  { 30, 31, 0.05, { ymin = 0.2, ymax = 0.92 } }, -- N
+  { 25, 24, 0.05, { xmin = 0.08, xmax = 0.8 } }, -- E
+  { 29, 28, 0.05, { xmin = 0.2, xmax = 0.92 } }, -- W
+  -- plain
+  { 58, 59, 0.08, { ymin = 0.32, ymax = 1 } }, -- S
+  { 62, 63, 0.08, { ymin = 0, ymax = 0.68 } }, -- N
+  { 57, 56, 0.08, { xmin = 0.32, xmax = 1 } }, -- E
+  { 61, 60, 0.08, { xmin = 0, xmax = 0.68 } }, -- W
+}
+
+for i = 1, #bankTops do
+  local first, second, inset, rect = bankTops[i][1], bankTops[i][2], bankTops[i][3], bankTops[i][4]
+  local alongX = rect.ymin ~= nil
+  local a = extend({ zmin = BANK_Z }, rect)
+  local b = extend({ zmin = BANK_Z }, rect)
+
+  if alongX then
+    a.xmin, a.xmax, b.xmin, b.xmax = inset, 1, 0, 1 - inset
+  else
+    a.ymin, a.ymax, b.ymin, b.ymax = inset, 1, 0, 1 - inset
+  end
+
+  s["location_business_bank_01_" .. first] = { a }
+  s["location_business_bank_01_" .. second] = { b }
+end
+
+-- the other wood finish of each bank counter is drawn the same, 8 sprites away
+for i = 24, 31 do
+  s["location_business_bank_01_" .. (i + 8)] = s["location_business_bank_01_" .. i]
+end
+
+for i = 56, 63 do
+  s["location_business_bank_01_" .. (i - 8)] = s["location_business_bank_01_" .. i]
+end
+
+s["location_shop_generic_01_13"] = {
+  { zmin = 0.333, zmax = 1, xmin = 0.48, xmax = 0.72, ymin = 0, ymax = 1 },
+  { zmin = 0.183, zmax = 0.29, xmin = 0.48, xmax = 0.72, ymin = 0, ymax = 1 },
+  { zmin = 0.043, zmax = 0.14, xmin = 0.48, xmax = 0.72, ymin = 0, ymax = 1 },
+}
+s["location_shop_generic_01_14"] = {
+  { zmin = 0.333, zmax = 1, xmin = 0.48, xmax = 0.72, ymin = 0, ymax = 1 },
+  { zmin = 0.183, zmax = 0.29, xmin = 0.48, xmax = 0.72, ymin = 0, ymax = 1 },
+  { zmin = 0.043, zmax = 0.14, xmin = 0.48, xmax = 0.72, ymin = 0, ymax = 1 },
+}

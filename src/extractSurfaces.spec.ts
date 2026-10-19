@@ -132,6 +132,37 @@ describe("extractSurfaces", () => {
     expect(ambiguous).toEqual(["test_01_8"]);
     expect([...surfaces.keys()]).toEqual(["test_01_9"]);
   });
+
+  it("skips tiles items can't sit on", () => {
+    const tile = (col: number): GeometryTile => ({
+      tileset: "test_01",
+      col,
+      row: 0,
+      otherShapes: 0,
+      properties: {},
+      boxes: [{ translate: [0, 0, 0], rotate: [0, 0, 0], min: [-5000, 0, -5000], max: [5000, 8000, 5000] }],
+    });
+    const definition = (col: number, properties: Record<string, string>) => ({
+      sprite: `test_01_${col}`,
+      tileset: "test_01",
+      col,
+      row: 0,
+      properties,
+    });
+
+    const { surfaces } = extractContainerSurfaces(
+      [tile(0), tile(1), tile(2), tile(3), tile(4)],
+      [
+        definition(0, { CustomName: "Wall Lamp", GenericCraftingSurface: "true" }),
+        definition(1, { Surface: "10", IsTableTop: "" }),
+        definition(2, { Surface: "27", IsTable: "" }),
+        definition(3, { Surface: "10", IsTableTop: "", container: "microwave" }),
+        definition(4, { CustomName: "Counter", ItemHeight: "30" }),
+      ],
+    );
+
+    expect([...surfaces.keys()]).toEqual(["test_01_2", "test_01_3", "test_01_4"]);
+  });
 });
 
 const media = process.env.GAME_FILES_PATH && path.join(process.env.GAME_FILES_PATH, "media");

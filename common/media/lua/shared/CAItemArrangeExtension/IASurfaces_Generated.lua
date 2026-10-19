@@ -8,8 +8,6 @@
 --   appliances_cooking_01_45
 --   appliances_cooking_01_46
 --   appliances_cooking_01_47
---   appliances_cooking_01_60
---   appliances_cooking_01_61
 --   camping_01_8
 --   camping_01_9
 --   camping_01_10
@@ -28,27 +26,11 @@
 --   carpentry_02_18
 --   carpentry_02_20
 --   carpentry_02_22
---   carpentry_03_56
---   carpentry_03_57
---   carpentry_03_58
---   carpentry_03_59
 --   crafted_02_64
 --   crafted_02_66
 --   crafted_02_74
---   crafted_04_70
---   crafted_04_71
---   crafted_04_86
---   crafted_04_87
---   crafted_04_118
---   crafting_ore_112
---   fencing_01_106
 --   fixtures_bathroom_01_53
 --   fixtures_bathroom_01_54
---   fixtures_bathroom_02_4
---   fixtures_bathroom_02_5
---   fixtures_bathroom_02_14
---   fixtures_bathroom_02_15
---   fixtures_fireplaces_01_64
 --   furniture_seating_indoor_01_8
 --   furniture_seating_indoor_01_9
 --   furniture_seating_indoor_01_10
@@ -158,25 +140,11 @@
 --   furniture_shelving_01_14
 --   furniture_shelving_01_15
 --   furniture_tables_high_01_39
---   industry_02_56
---   industry_02_59
---   industry_02_144
---   industry_02_145
---   industry_02_146
---   industry_02_147
---   industry_02_162
---   industry_02_164
---   industry_02_166
---   industry_02_174
 --   industry_02_265
 --   location_community_church_small_01_56
 --   location_community_church_small_01_59
 --   location_community_church_small_01_60
 --   location_community_church_small_01_61
---   location_community_medical_01_116
---   location_community_medical_01_117
---   location_community_medical_01_118
---   location_community_medical_01_119
 --   location_hospitality_sunstarmotel_02_52
 --   location_hospitality_sunstarmotel_02_53
 --   location_hospitality_sunstarmotel_02_54
@@ -203,39 +171,9 @@
 --   location_shop_mall_01_33
 --   location_shop_mall_01_36
 --   location_shop_mall_01_37
---   signs_one-off_09_1
---   trash_01_38
---   trash_01_41
---   trash_01_43
---   vegetation_ornamental_01_2
---   vegetation_ornamental_01_3
---   vegetation_ornamental_01_6
---   vegetation_ornamental_01_7
---   vegetation_ornamental_01_10
---   vegetation_ornamental_01_11
---   vegetation_ornamental_01_12
---   vegetation_ornamental_01_13
 
 ---@type table<string, table[]>
 local Surfaces = {
-  ["advertising_01_0"] = {
-    [1] = { zmin = 0.906, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.050, ymax = 0.500 },
-  },
-  ["advertising_01_7"] = {
-    [1] = { zmin = 0.090, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["advertising_01_8"] = {
-    [1] = { zmin = 0.906, zmax = 1.000, xmin = 0.050, xmax = 0.500, ymin = 0.000, ymax = 1.000 },
-  },
-  ["advertising_01_15"] = {
-    [1] = { zmin = 0.090, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["advertising_02_0"] = {
-    [1] = { zmin = 0.698, zmax = 1.000, xmin = 0.319, xmax = 0.599, ymin = 0.052, ymax = 0.977 },
-  },
-  ["advertising_02_1"] = {
-    [1] = { zmin = 0.698, zmax = 1.000, xmin = 0.037, xmax = 0.984, ymin = 0.338, ymax = 0.584 },
-  },
   ["appliances_com_01_0"] = {
     [1] = { zmin = 0.488, zmax = 1.000, xmin = 0.266, xmax = 0.868, ymin = 0.178, ymax = 0.554 },
   },
@@ -254,27 +192,6 @@ local Surfaces = {
   ["appliances_com_01_11"] = {
     [1] = { zmin = 0.488, zmax = 1.000, xmin = 0.539, xmax = 0.916, ymin = 0.254, ymax = 0.856 },
   },
-  ["appliances_com_01_46"] = {
-    [1] = { zmin = 0.671, zmax = 1.000, xmin = 0.000, xmax = 0.822, ymin = 0.352, ymax = 0.675 },
-  },
-  ["appliances_com_01_47"] = {
-    [1] = { zmin = 0.675, zmax = 1.000, xmin = 0.370, xmax = 0.694, ymin = 0.000, ymax = 0.808 },
-  },
-  ["appliances_com_01_52"] = {
-    [1] = { zmin = 0.326, zmax = 1.000, xmin = 0.027, xmax = 1.000, ymin = 0.099, ymax = 0.873 },
-  },
-  ["appliances_com_01_53"] = {
-    [1] = { zmin = 0.326, zmax = 1.000, xmin = 0.099, xmax = 0.873, ymin = 0.035, ymax = 1.000 },
-  },
-  ["appliances_com_01_54"] = {
-    [1] = { zmin = 0.326, zmax = 1.000, xmin = 0.023, xmax = 1.000, ymin = 0.188, ymax = 0.962 },
-  },
-  ["appliances_com_01_55"] = {
-    [1] = { zmin = 0.326, zmax = 1.000, xmin = 0.188, xmax = 0.962, ymin = 0.027, ymax = 1.000 },
-  },
-  ["appliances_com_01_68"] = {
-    [1] = { zmin = 0.039, zmax = 1.000, xmin = 0.427, xmax = 0.598, ymin = 0.138, ymax = 0.487 },
-  },
   ["appliances_com_01_72"] = {
     [1] = { zmin = 0.401, zmax = 1.000, xmin = 0.395, xmax = 0.946, ymin = 0.789, ymax = 0.996 },
     [2] = { zmin = 0.636, zmax = 1.000, xmin = 0.395, xmax = 0.887, ymin = 0.300, ymax = 0.613 },
@@ -290,21 +207,6 @@ local Surfaces = {
   ["appliances_com_01_75"] = {
     [1] = { zmin = 0.401, zmax = 1.000, xmin = 0.308, xmax = 0.515, ymin = 0.395, ymax = 0.946 },
     [2] = { zmin = 0.636, zmax = 1.000, xmin = 0.588, xmax = 0.901, ymin = 0.395, ymax = 0.887 },
-  },
-  ["appliances_com_01_84"] = {
-    [1] = { zmin = 0.808, zmax = 1.000, xmin = 0.000, xmax = 0.900, ymin = 0.200, ymax = 0.950 },
-  },
-  ["appliances_com_01_85"] = {
-    [1] = { zmin = 0.808, zmax = 1.000, xmin = 0.180, xmax = 1.000, ymin = 0.000, ymax = 0.900 },
-  },
-  ["appliances_com_01_86"] = {
-    [1] = { zmin = 0.808, zmax = 1.000, xmin = 0.100, xmax = 0.750, ymin = 0.100, ymax = 0.900 },
-  },
-  ["appliances_com_01_87"] = {
-    [1] = { zmin = 0.808, zmax = 1.000, xmin = 0.050, xmax = 0.820, ymin = 0.080, ymax = 0.760 },
-  },
-  ["appliances_com_01_96"] = {
-    [1] = { zmin = 0.677, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
   },
   ["appliances_cooking_01_1"] = {
     [1] = { zmin = 0.446, zmax = 1.000, xmin = 0.047, xmax = 0.992, ymin = 0.045, ymax = 0.224 },
@@ -376,12 +278,6 @@ local Surfaces = {
   ["appliances_cooking_01_31"] = {
     [1] = { zmin = 0.556, zmax = 1.000, xmin = 0.293, xmax = 0.932, ymin = 0.565, ymax = 1.000 },
   },
-  ["appliances_cooking_01_32"] = {
-    [1] = { zmin = 0.540, zmax = 1.000, xmin = 0.390, xmax = 0.742, ymin = 0.405, ymax = 0.598 },
-  },
-  ["appliances_cooking_01_33"] = {
-    [1] = { zmin = 0.540, zmax = 1.000, xmin = 0.375, xmax = 0.568, ymin = 0.415, ymax = 0.768 },
-  },
   ["appliances_cooking_01_40"] = {
     [1] = { zmin = 0.604, zmax = 1.000, xmin = 0.161, xmax = 0.720, ymin = 0.000, ymax = 0.787 },
   },
@@ -417,26 +313,6 @@ local Surfaces = {
   },
   ["appliances_cooking_01_55"] = {
     [1] = { zmin = 0.384, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.300, ymax = 0.985 },
-  },
-  ["appliances_cooking_01_56"] = {
-    [1] = { zmin = 0.580, zmax = 1.000, xmin = 0.250, xmax = 0.650, ymin = 0.080, ymax = 0.500 },
-  },
-  ["appliances_cooking_01_57"] = {
-    [1] = { zmin = 0.580, zmax = 1.000, xmin = 0.080, xmax = 0.500, ymin = 0.250, ymax = 0.650 },
-  },
-  ["appliances_cooking_01_58"] = {
-    [1] = { zmin = 0.580, zmax = 1.000, xmin = 0.500, xmax = 0.920, ymin = 0.250, ymax = 0.650 },
-  },
-  ["appliances_cooking_01_59"] = {
-    [1] = { zmin = 0.580, zmax = 1.000, xmin = 0.250, xmax = 0.650, ymin = 0.500, ymax = 0.920 },
-  },
-  ["appliances_cooking_01_62"] = {
-    [1] = { zmin = 0.384, zmax = 0.497, xmin = 0.035, xmax = 0.926, ymin = 0.460, ymax = 0.920 },
-    [2] = { zmin = 0.646, zmax = 1.000, xmin = 0.035, xmax = 0.925, ymin = 0.460, ymax = 0.920 },
-  },
-  ["appliances_cooking_01_63"] = {
-    [1] = { zmin = 0.384, zmax = 0.501, xmin = 0.471, xmax = 0.931, ymin = 0.015, ymax = 0.905 },
-    [2] = { zmin = 0.646, zmax = 1.000, xmin = 0.270, xmax = 0.931, ymin = 0.015, ymax = 0.906 },
   },
   ["appliances_cooking_01_64"] = {
     [1] = { zmin = 0.360, zmax = 0.564, xmin = 0.080, xmax = 0.821, ymin = 0.000, ymax = 0.992 },
@@ -514,78 +390,6 @@ local Surfaces = {
   },
   ["appliances_laundry_01_25"] = {
     [1] = { zmin = 0.334, zmax = 1.000, xmin = 0.239, xmax = 0.846, ymin = 0.031, ymax = 0.944 },
-  },
-  ["appliances_misc_01_0"] = {
-    [1] = { zmin = 0.226, zmax = 1.000, xmin = 0.352, xmax = 0.663, ymin = 0.153, ymax = 0.827 },
-  },
-  ["appliances_misc_01_1"] = {
-    [1] = { zmin = 0.226, zmax = 1.000, xmin = 0.163, xmax = 0.837, ymin = 0.364, ymax = 0.675 },
-  },
-  ["appliances_misc_01_2"] = {
-    [1] = { zmin = 0.226, zmax = 1.000, xmin = 0.364, xmax = 0.675, ymin = 0.163, ymax = 0.837 },
-  },
-  ["appliances_misc_01_3"] = {
-    [1] = { zmin = 0.226, zmax = 1.000, xmin = 0.163, xmax = 0.837, ymin = 0.364, ymax = 0.675 },
-  },
-  ["appliances_misc_01_4"] = {
-    [1] = { zmin = 0.275, zmax = 1.000, xmin = 0.131, xmax = 0.887, ymin = 0.234, ymax = 0.761 },
-  },
-  ["appliances_misc_01_5"] = {
-    [1] = { zmin = 0.275, zmax = 1.000, xmin = 0.239, xmax = 0.766, ymin = 0.131, ymax = 0.887 },
-  },
-  ["appliances_misc_01_6"] = {
-    [1] = { zmin = 0.275, zmax = 1.000, xmin = 0.131, xmax = 0.887, ymin = 0.234, ymax = 0.761 },
-  },
-  ["appliances_misc_01_7"] = {
-    [1] = { zmin = 0.275, zmax = 1.000, xmin = 0.239, xmax = 0.766, ymin = 0.131, ymax = 0.887 },
-  },
-  ["appliances_misc_01_12"] = {
-    [1] = { zmin = 0.170, zmax = 1.000, xmin = 0.222, xmax = 0.758, ymin = 0.338, ymax = 0.662 },
-  },
-  ["appliances_misc_01_13"] = {
-    [1] = { zmin = 0.170, zmax = 1.000, xmin = 0.338, xmax = 0.662, ymin = 0.222, ymax = 0.758 },
-  },
-  ["appliances_misc_01_14"] = {
-    [1] = { zmin = 0.170, zmax = 1.000, xmin = 0.222, xmax = 0.758, ymin = 0.338, ymax = 0.662 },
-  },
-  ["appliances_misc_01_15"] = {
-    [1] = { zmin = 0.170, zmax = 1.000, xmin = 0.338, xmax = 0.662, ymin = 0.222, ymax = 0.758 },
-  },
-  ["appliances_radio_01_8"] = {
-    [1] = { zmin = 0.450, zmax = 1.000, xmin = 0.312, xmax = 0.627, ymin = 0.285, ymax = 0.533 },
-  },
-  ["appliances_radio_01_9"] = {
-    [1] = { zmin = 0.450, zmax = 1.000, xmin = 0.274, xmax = 0.523, ymin = 0.331, ymax = 0.646 },
-  },
-  ["appliances_radio_01_10"] = {
-    [1] = { zmin = 0.450, zmax = 1.000, xmin = 0.310, xmax = 0.625, ymin = 0.535, ymax = 0.783 },
-  },
-  ["appliances_radio_01_11"] = {
-    [1] = { zmin = 0.450, zmax = 1.000, xmin = 0.521, xmax = 0.769, ymin = 0.329, ymax = 0.644 },
-  },
-  ["appliances_radio_01_12"] = {
-    [1] = { zmin = 0.096, zmax = 1.000, xmin = 0.310, xmax = 0.625, ymin = 0.414, ymax = 0.662 },
-  },
-  ["appliances_radio_01_13"] = {
-    [1] = { zmin = 0.096, zmax = 1.000, xmin = 0.441, xmax = 0.690, ymin = 0.320, ymax = 0.635 },
-  },
-  ["appliances_radio_01_14"] = {
-    [1] = { zmin = 0.096, zmax = 1.000, xmin = 0.407, xmax = 0.721, ymin = 0.407, ymax = 0.655 },
-  },
-  ["appliances_radio_01_15"] = {
-    [1] = { zmin = 0.096, zmax = 1.000, xmin = 0.407, xmax = 0.655, ymin = 0.353, ymax = 0.668 },
-  },
-  ["appliances_radio_01_16"] = {
-    [1] = { zmin = 0.498, zmax = 1.000, xmin = 0.401, xmax = 0.874, ymin = 0.371, ymax = 0.619 },
-  },
-  ["appliances_radio_01_17"] = {
-    [1] = { zmin = 0.498, zmax = 1.000, xmin = 0.373, xmax = 0.621, ymin = 0.401, ymax = 0.874 },
-  },
-  ["appliances_radio_01_18"] = {
-    [1] = { zmin = 0.501, zmax = 1.000, xmin = 0.404, xmax = 0.905, ymin = 0.667, ymax = 0.885 },
-  },
-  ["appliances_radio_01_19"] = {
-    [1] = { zmin = 0.498, zmax = 1.000, xmin = 0.650, xmax = 0.861, ymin = 0.419, ymax = 0.929 },
   },
   ["appliances_refrigeration_01_0"] = {
     [1] = { zmin = 0.641, zmax = 1.000, xmin = 0.000, xmax = 0.900, ymin = 0.050, ymax = 0.750 },
@@ -743,30 +547,6 @@ local Surfaces = {
   ["appliances_refrigeration_01_51"] = {
     [1] = { zmin = 0.345, zmax = 1.000, xmin = 0.256, xmax = 0.993, ymin = 0.018, ymax = 1.000 },
   },
-  ["appliances_television_01_0"] = {
-    [1] = { zmin = 0.473, zmax = 1.000, xmin = 0.204, xmax = 0.554, ymin = 0.003, ymax = 0.891 },
-  },
-  ["appliances_television_01_1"] = {
-    [1] = { zmin = 0.473, zmax = 1.000, xmin = 0.041, xmax = 0.928, ymin = 0.224, ymax = 0.573 },
-  },
-  ["appliances_television_01_2"] = {
-    [1] = { zmin = 0.473, zmax = 1.000, xmin = 0.367, xmax = 0.717, ymin = 0.000, ymax = 0.894 },
-  },
-  ["appliances_television_01_3"] = {
-    [1] = { zmin = 0.473, zmax = 1.000, xmin = 0.000, xmax = 0.887, ymin = 0.378, ymax = 0.728 },
-  },
-  ["appliances_television_01_4"] = {
-    [1] = { zmin = 0.425, zmax = 1.000, xmin = 0.090, xmax = 0.823, ymin = 0.220, ymax = 0.610 },
-  },
-  ["appliances_television_01_5"] = {
-    [1] = { zmin = 0.425, zmax = 1.000, xmin = 0.192, xmax = 0.581, ymin = 0.112, ymax = 0.845 },
-  },
-  ["appliances_television_01_6"] = {
-    [1] = { zmin = 0.425, zmax = 1.000, xmin = 0.068, xmax = 0.802, ymin = 0.304, ymax = 0.694 },
-  },
-  ["appliances_television_01_7"] = {
-    [1] = { zmin = 0.425, zmax = 1.000, xmin = 0.316, xmax = 0.706, ymin = 0.088, ymax = 0.822 },
-  },
   ["appliances_television_01_8"] = {
     [1] = { zmin = 0.304, zmax = 1.000, xmin = 0.155, xmax = 0.564, ymin = 0.042, ymax = 0.833 },
   },
@@ -781,9 +561,6 @@ local Surfaces = {
   },
   ["boulders_0"] = {
     [1] = { zmin = 0.171, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["boulders_16"] = {
-    [1] = { zmin = 0.416, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
   },
   ["camping_01_19"] = {
     [1] = { zmin = 0.236, zmax = 1.000, xmin = 0.064, xmax = 0.951, ymin = 0.077, ymax = 0.939 },
@@ -868,62 +645,6 @@ local Surfaces = {
   },
   ["camping_01_61"] = {
     [1] = { zmin = 0.865, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["camping_02_0"] = {
-    [1] = { zmin = 0.099, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["camping_02_1"] = {
-    [1] = { zmin = 0.099, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["camping_02_2"] = {
-    [1] = { zmin = 0.099, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["camping_02_3"] = {
-    [1] = { zmin = 0.099, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["camping_02_32"] = {
-    [1] = { zmin = 0.057, zmax = 1.000, xmin = 1.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-    [2] = { zmin = 0.150, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["camping_02_33"] = {
-    [1] = { zmin = 0.057, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-    [2] = { zmin = 0.150, zmax = 1.000, xmin = 0.000, xmax = 0.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["camping_02_34"] = {
-    [1] = { zmin = 0.076, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 0.000 },
-    [2] = { zmin = 0.150, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["camping_02_35"] = {
-    [1] = { zmin = 0.076, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-    [2] = { zmin = 0.150, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 1.000, ymax = 1.000 },
-  },
-  ["camping_02_36"] = {
-    [1] = { zmin = 0.084, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-    [2] = { zmin = 0.150, zmax = 1.000, xmin = 0.799, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["camping_02_37"] = {
-    [1] = { zmin = 0.084, zmax = 1.000, xmin = 0.000, xmax = 0.000, ymin = 0.000, ymax = 1.000 },
-    [2] = { zmin = 0.150, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["camping_02_38"] = {
-    [1] = { zmin = 0.076, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-    [2] = { zmin = 0.150, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 0.000 },
-  },
-  ["camping_02_39"] = {
-    [1] = { zmin = 0.076, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 1.000, ymax = 1.000 },
-    [2] = { zmin = 0.150, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["camping_02_40"] = {
-    [1] = { zmin = 0.048, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["camping_02_41"] = {
-    [1] = { zmin = 0.048, zmax = 1.000, xmin = 0.000, xmax = 0.988, ymin = 0.000, ymax = 1.000 },
-  },
-  ["camping_02_42"] = {
-    [1] = { zmin = 0.048, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["camping_02_43"] = {
-    [1] = { zmin = 0.048, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.012, ymax = 1.000 },
   },
   ["camping_03_0"] = {
     [1] = { zmin = 0.051, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.037, ymax = 0.774 },
@@ -1090,12 +811,6 @@ local Surfaces = {
   ["carpentry_02_10"] = {
     [1] = { zmin = 0.235, zmax = 1.000, xmin = 0.207, xmax = 0.819, ymin = 0.179, ymax = 0.817 },
   },
-  ["carpentry_02_12"] = {
-    [1] = { zmin = 0.210, zmax = 1.000, xmin = 0.008, xmax = 0.630, ymin = 0.000, ymax = 0.992 },
-  },
-  ["carpentry_02_13"] = {
-    [1] = { zmin = 0.210, zmax = 1.000, xmin = 0.008, xmax = 1.000, ymin = 0.000, ymax = 0.584 },
-  },
   ["carpentry_02_16"] = {
     [1] = { zmin = 0.369, zmax = 1.000, xmin = 0.000, xmax = 0.963, ymin = 0.000, ymax = 0.978 },
   },
@@ -1159,9 +874,6 @@ local Surfaces = {
   ["carpentry_02_39"] = {
     [1] = { zmin = 0.362 },
   },
-  ["carpentry_02_54"] = {
-    [1] = { zmin = 0.262, zmax = 1.000, xmin = 0.149, xmax = 0.849, ymin = 0.131, ymax = 0.825 },
-  },
   ["carpentry_02_64"] = {
     [1] = { zmin = 0.841 },
   },
@@ -1210,35 +922,6 @@ local Surfaces = {
   ["carpentry_02_79"] = {
     [1] = { zmin = 0.085, zmax = 1.000, xmin = 0.077, xmax = 0.928, ymin = 0.115, ymax = 1.000 },
   },
-  ["carpentry_02_88"] = {
-    [1] = { zmin = 0.169, zmax = 1.000, xmin = 0.441, xmax = 0.764, ymin = 0.000, ymax = 0.992 },
-    [2] = { zmin = 0.253, zmax = 1.000, xmin = 0.183, xmax = 0.508, ymin = 0.000, ymax = 0.992 },
-    [3] = { zmin = 0.341, zmax = 1.000, xmin = 0.008, xmax = 0.258, ymin = 0.000, ymax = 0.992 },
-    [4] = { zmin = 0.440, zmax = 1.000, xmin = 0.000, xmax = 0.022, ymin = 0.000, ymax = 0.992 },
-  },
-  ["carpentry_02_89"] = {
-    [1] = { zmin = 0.685, zmax = 1.000, xmin = 0.010, xmax = 0.258, ymin = 0.000, ymax = 0.992 },
-    [2] = { zmin = 0.763, zmax = 1.000, xmin = 0.000, xmax = 0.008, ymin = 0.000, ymax = 0.992 },
-  },
-  ["carpentry_02_90"] = {
-    [1] = { zmin = 0.847, zmax = 1.000, xmin = 0.452, xmax = 0.773, ymin = 0.000, ymax = 1.000 },
-    [2] = { zmin = 0.935, zmax = 1.000, xmin = 0.271, xmax = 0.519, ymin = 0.000, ymax = 1.000 },
-  },
-  ["carpentry_02_96"] = {
-    [1] = { zmin = 0.169, zmax = 1.000, xmin = 0.008, xmax = 1.000, ymin = 0.441, ymax = 0.764 },
-    [2] = { zmin = 0.253, zmax = 1.000, xmin = 0.008, xmax = 1.000, ymin = 0.182, ymax = 0.508 },
-    [3] = { zmin = 0.341, zmax = 1.000, xmin = 0.008, xmax = 1.000, ymin = 0.008, ymax = 0.258 },
-    [4] = { zmin = 0.440, zmax = 1.000, xmin = 0.008, xmax = 1.000, ymin = 0.000, ymax = 0.022 },
-  },
-  ["carpentry_02_97"] = {
-    [1] = { zmin = 0.685, zmax = 1.000, xmin = 0.008, xmax = 1.000, ymin = 0.000, ymax = 0.242 },
-    [2] = { zmin = 0.763, zmax = 1.000, xmin = 0.008, xmax = 1.000, ymin = 0.000, ymax = 0.000 },
-  },
-  ["carpentry_02_98"] = {
-    [1] = { zmin = 0.764, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.685, ymax = 0.998 },
-    [2] = { zmin = 0.845, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.445, ymax = 0.767 },
-    [3] = { zmin = 0.936, zmax = 1.000, xmin = 0.000, xmax = 0.999, ymin = 0.271, ymax = 0.519 },
-  },
   ["carpentry_02_104"] = {
     [1] = { zmin = 0.341 },
   },
@@ -1254,90 +937,6 @@ local Surfaces = {
   ["carpentry_02_117"] = {
     [1] = { zmin = 0.212, zmax = 1.000, xmin = 0.100, xmax = 0.950, ymin = 0.100, ymax = 0.950 },
   },
-  ["carpentry_02_120"] = {
-    [1] = { zmin = 0.267, zmax = 1.000, xmin = 0.167, xmax = 0.841, ymin = 0.128, ymax = 0.839 },
-  },
-  ["carpentry_03_40"] = {
-    [1] = { zmin = 0.069, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 0.180 },
-  },
-  ["carpentry_03_41"] = {
-    [1] = { zmin = 0.069, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.830, ymax = 1.000 },
-  },
-  ["carpentry_03_42"] = {
-    [1] = { zmin = 0.069, zmax = 1.000, xmin = 0.810, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["carpentry_03_43"] = {
-    [1] = { zmin = 0.069, zmax = 1.000, xmin = 0.000, xmax = 0.230, ymin = 0.000, ymax = 1.000 },
-  },
-  ["carpentry_03_52"] = {
-    [1] = { zmin = 0.069, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 0.180 },
-  },
-  ["carpentry_03_53"] = {
-    [1] = { zmin = 0.069, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.830, ymax = 1.000 },
-  },
-  ["carpentry_03_54"] = {
-    [1] = { zmin = 0.069, zmax = 1.000, xmin = 0.810, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["carpentry_03_55"] = {
-    [1] = { zmin = 0.069, zmax = 1.000, xmin = 0.000, xmax = 0.230, ymin = 0.000, ymax = 1.000 },
-  },
-  ["carpentry_03_88"] = {
-    [1] = { zmin = 0.065, zmax = 1.000, xmin = 0.000, xmax = 0.144, ymin = 0.035, ymax = 0.985 },
-  },
-  ["carpentry_03_89"] = {
-    [1] = { zmin = 0.065, zmax = 1.000, xmin = 0.000, xmax = 0.144, ymin = 0.035, ymax = 0.985 },
-  },
-  ["carpentry_03_90"] = {
-    [1] = { zmin = 0.525, zmax = 1.000, xmin = 0.806, xmax = 1.000, ymin = 0.000, ymax = 0.173 },
-  },
-  ["carpentry_03_91"] = {
-    [1] = { zmin = 0.525, zmax = 1.000, xmin = 0.011, xmax = 0.205, ymin = 0.809, ymax = 1.000 },
-  },
-  ["carpentry_03_92"] = {
-    [1] = { zmin = 0.525, zmax = 1.000, xmin = 0.806, xmax = 1.000, ymin = 0.809, ymax = 1.000 },
-  },
-  ["carpentry_03_93"] = {
-    [1] = { zmin = 0.525, zmax = 1.000, xmin = 0.009, xmax = 0.203, ymin = 0.000, ymax = 0.186 },
-  },
-  ["constructedobjects_01_0"] = {
-    [1] = { zmin = 0.026, zmax = 1.000, xmin = 0.364, xmax = 0.618, ymin = 0.297, ymax = 0.617 },
-  },
-  ["constructedobjects_01_1"] = {
-    [1] = { zmin = 0.026, zmax = 1.000, xmin = 0.364, xmax = 0.618, ymin = 0.297, ymax = 0.617 },
-  },
-  ["constructedobjects_01_2"] = {
-    [1] = { zmin = 0.200, zmax = 1.000, xmin = 0.197, xmax = 0.778, ymin = 0.226, ymax = 0.805 },
-  },
-  ["constructedobjects_01_4"] = {
-    [1] = { zmin = 0.173, zmax = 1.000, xmin = 0.309, xmax = 0.724, ymin = 0.105, ymax = 0.965 },
-  },
-  ["constructedobjects_01_5"] = {
-    [1] = { zmin = 0.173, zmax = 1.000, xmin = 0.309, xmax = 0.724, ymin = 0.105, ymax = 0.965 },
-  },
-  ["constructedobjects_01_6"] = {
-    [1] = { zmin = 0.173, zmax = 1.000, xmin = 0.104, xmax = 0.965, ymin = 0.308, ymax = 0.722 },
-  },
-  ["constructedobjects_01_7"] = {
-    [1] = { zmin = 0.173, zmax = 1.000, xmin = 0.104, xmax = 0.965, ymin = 0.310, ymax = 0.725 },
-  },
-  ["constructedobjects_01_8"] = {
-    [1] = { zmin = 0.163, zmax = 1.000, xmin = 0.316, xmax = 0.759, ymin = 0.096, ymax = 0.942 },
-  },
-  ["constructedobjects_01_9"] = {
-    [1] = { zmin = 0.163, zmax = 1.000, xmin = 0.316, xmax = 0.759, ymin = 0.096, ymax = 0.942 },
-  },
-  ["constructedobjects_01_10"] = {
-    [1] = { zmin = 0.163, zmax = 1.000, xmin = 0.092, xmax = 0.937, ymin = 0.294, ymax = 0.767 },
-  },
-  ["constructedobjects_01_11"] = {
-    [1] = { zmin = 0.163, zmax = 1.000, xmin = 0.092, xmax = 0.937, ymin = 0.294, ymax = 0.767 },
-  },
-  ["constructedobjects_01_18"] = {
-    [1] = { zmin = 0.024, zmax = 1.000, xmin = 0.368, xmax = 0.569, ymin = 0.349, ymax = 0.635 },
-  },
-  ["constructedobjects_01_33"] = {
-    [1] = { zmin = 0.244, zmax = 1.000, xmin = 0.363, xmax = 0.659, ymin = 0.455, ymax = 0.755 },
-  },
   ["constructedobjects_01_44"] = {
     [1] = { zmin = 0.341 },
   },
@@ -1350,182 +949,8 @@ local Surfaces = {
   ["constructedobjects_01_47"] = {
     [1] = { zmin = 0.341 },
   },
-  ["constructedobjects_01_88"] = {
-    [1] = { zmin = 0.086, zmax = 1.000, xmin = 0.677, xmax = 1.000, ymin = 0.000, ymax = 0.992 },
-    [2] = { zmin = 0.169, zmax = 1.000, xmin = 0.441, xmax = 0.764, ymin = 0.000, ymax = 0.992 },
-    [3] = { zmin = 0.253, zmax = 1.000, xmin = 0.183, xmax = 0.508, ymin = 0.000, ymax = 0.992 },
-    [4] = { zmin = 0.341, zmax = 1.000, xmin = 0.008, xmax = 0.258, ymin = 0.000, ymax = 0.992 },
-    [5] = { zmin = 0.440, zmax = 1.000, xmin = 0.000, xmax = 0.022, ymin = 0.000, ymax = 0.992 },
-  },
-  ["constructedobjects_01_89"] = {
-    [1] = { zmin = 0.425, zmax = 1.000, xmin = 0.711, xmax = 1.000, ymin = 0.000, ymax = 0.992 },
-    [2] = { zmin = 0.508, zmax = 1.000, xmin = 0.445, xmax = 0.758, ymin = 0.000, ymax = 0.992 },
-    [3] = { zmin = 0.591, zmax = 1.000, xmin = 0.211, xmax = 0.508, ymin = 0.000, ymax = 0.992 },
-    [4] = { zmin = 0.685, zmax = 1.000, xmin = 0.010, xmax = 0.258, ymin = 0.000, ymax = 0.992 },
-    [5] = { zmin = 0.763, zmax = 1.000, xmin = 0.000, xmax = 0.008, ymin = 0.000, ymax = 0.992 },
-  },
-  ["constructedobjects_01_90"] = {
-    [1] = { zmin = 0.766, zmax = 1.000, xmin = 0.735, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-    [2] = { zmin = 0.847, zmax = 1.000, xmin = 0.455, xmax = 0.776, ymin = 0.000, ymax = 1.000 },
-    [3] = { zmin = 0.935, zmax = 1.000, xmin = 0.258, xmax = 0.506, ymin = 0.000, ymax = 1.000 },
-  },
-  ["constructedobjects_01_96"] = {
-    [1] = { zmin = 0.086, zmax = 1.000, xmin = 0.008, xmax = 1.000, ymin = 0.677, ymax = 1.000 },
-    [2] = { zmin = 0.169, zmax = 1.000, xmin = 0.008, xmax = 1.000, ymin = 0.441, ymax = 0.764 },
-    [3] = { zmin = 0.253, zmax = 1.000, xmin = 0.008, xmax = 1.000, ymin = 0.182, ymax = 0.508 },
-    [4] = { zmin = 0.341, zmax = 1.000, xmin = 0.008, xmax = 1.000, ymin = 0.008, ymax = 0.258 },
-    [5] = { zmin = 0.440, zmax = 1.000, xmin = 0.008, xmax = 1.000, ymin = 0.000, ymax = 0.022 },
-  },
-  ["constructedobjects_01_97"] = {
-    [1] = { zmin = 0.425, zmax = 1.000, xmin = 0.008, xmax = 1.000, ymin = 0.711, ymax = 1.000 },
-    [2] = { zmin = 0.508, zmax = 1.000, xmin = 0.008, xmax = 1.000, ymin = 0.445, ymax = 0.758 },
-    [3] = { zmin = 0.591, zmax = 1.000, xmin = 0.008, xmax = 1.000, ymin = 0.211, ymax = 0.508 },
-    [4] = { zmin = 0.685, zmax = 1.000, xmin = 0.008, xmax = 1.000, ymin = 0.010, ymax = 0.258 },
-    [5] = { zmin = 0.763, zmax = 1.000, xmin = 0.008, xmax = 1.000, ymin = 0.000, ymax = 0.008 },
-  },
-  ["constructedobjects_01_98"] = {
-    [1] = { zmin = 0.766, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.735, ymax = 1.000 },
-    [2] = { zmin = 0.847, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.455, ymax = 0.777 },
-    [3] = { zmin = 0.935, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.258, ymax = 0.507 },
-  },
-  ["constructedobjects_signs_01_48"] = {
-    [1] = { zmin = 0.824, zmax = 1.000, xmin = 0.050, xmax = 0.200, ymin = 0.200, ymax = 0.800 },
-  },
-  ["constructedobjects_signs_01_49"] = {
-    [1] = { zmin = 0.824, zmax = 1.000, xmin = 0.200, xmax = 0.800, ymin = 0.050, ymax = 0.200 },
-  },
-  ["constructedobjects_signs_01_96"] = {
-    [1] = { zmin = 0.824, zmax = 1.000, xmin = 0.050, xmax = 0.400, ymin = 0.200, ymax = 0.800 },
-  },
-  ["constructedobjects_signs_01_97"] = {
-    [1] = { zmin = 0.824, zmax = 1.000, xmin = 0.200, xmax = 0.800, ymin = 0.050, ymax = 0.400 },
-  },
-  ["construction_01_1"] = {
-    [1] = { zmin = 0.387, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.048, ymax = 0.205 },
-  },
-  ["construction_01_2"] = {
-    [1] = { zmin = 0.382, zmax = 1.000, xmin = 0.062, xmax = 1.000, ymin = 0.048, ymax = 0.201 },
-  },
-  ["construction_01_3"] = {
-    [1] = { zmin = 0.326, zmax = 1.000, xmin = 0.001, xmax = 0.185, ymin = 0.000, ymax = 0.202 },
-  },
-  ["construction_01_4"] = {
-    [1] = { zmin = 0.277, zmax = 1.000, xmin = 0.270, xmax = 0.910, ymin = 0.270, ymax = 0.900 },
-  },
   ["construction_01_5"] = {
     [1] = { zmin = 0.102, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.050, ymax = 1.000 },
-  },
-  ["construction_01_6"] = {
-    [1] = { zmin = 0.416, zmax = 1.000, xmin = 0.150, xmax = 0.900, ymin = 0.250, ymax = 0.850 },
-  },
-  ["construction_01_7"] = {
-    [1] = { zmin = 0.375, zmax = 1.000, xmin = 0.340, xmax = 0.850, ymin = 0.850, ymax = 1.000 },
-    [2] = { zmin = 0.457, zmax = 1.000, xmin = 0.200, xmax = 0.880, ymin = 0.100, ymax = 0.850 },
-  },
-  ["construction_01_14"] = {
-    [1] = { zmin = 0.490, zmax = 1.000, xmin = 0.100, xmax = 0.800, ymin = 0.250, ymax = 0.850 },
-  },
-  ["construction_01_15"] = {
-    [1] = { zmin = 0.490, zmax = 1.000, xmin = 0.200, xmax = 0.800, ymin = 0.150, ymax = 0.900 },
-  },
-  ["construction_01_22"] = {
-    [1] = { zmin = 0.027, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["construction_01_40"] = {
-    [1] = { zmin = 0.148, zmax = 1.000, xmin = 0.421, xmax = 0.713, ymin = 0.000, ymax = 0.992 },
-  },
-  ["construction_01_41"] = {
-    [1] = { zmin = 0.148, zmax = 1.000, xmin = 0.421, xmax = 0.713, ymin = 0.000, ymax = 1.000 },
-  },
-  ["construction_01_42"] = {
-    [1] = { zmin = 0.140, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.396, ymax = 0.712 },
-  },
-  ["construction_01_43"] = {
-    [1] = { zmin = 0.140, zmax = 1.000, xmin = 0.000, xmax = 0.977, ymin = 0.396, ymax = 0.712 },
-  },
-  ["construction_01_64"] = {
-    [1] = { zmin = 0.199, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["construction_01_65"] = {
-    [1] = { zmin = 0.199, zmax = 1.000, xmin = 0.000, xmax = 0.996, ymin = 0.000, ymax = 1.000 },
-  },
-  ["construction_01_66"] = {
-    [1] = { zmin = 0.199, zmax = 1.000, xmin = 0.000, xmax = 0.996, ymin = 0.020, ymax = 1.000 },
-  },
-  ["construction_01_67"] = {
-    [1] = { zmin = 0.199, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.020, ymax = 1.000 },
-  },
-  ["construction_01_68"] = {
-    [1] = { zmin = 0.124, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["construction_01_69"] = {
-    [1] = { zmin = 0.124, zmax = 1.000, xmin = 0.000, xmax = 0.996, ymin = 0.020, ymax = 1.000 },
-  },
-  ["construction_01_70"] = {
-    [1] = { zmin = 0.124, zmax = 1.000, xmin = 0.000, xmax = 0.996, ymin = 0.000, ymax = 1.000 },
-  },
-  ["construction_01_71"] = {
-    [1] = { zmin = 0.124, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.020, ymax = 1.000 },
-  },
-  ["construction_01_72"] = {
-    [1] = { zmin = 0.057, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["construction_01_73"] = {
-    [1] = { zmin = 0.057, zmax = 1.000, xmin = 0.000, xmax = 0.996, ymin = 0.000, ymax = 1.000 },
-  },
-  ["construction_01_74"] = {
-    [1] = { zmin = 0.057, zmax = 1.000, xmin = 0.000, xmax = 0.996, ymin = 0.020, ymax = 1.000 },
-  },
-  ["construction_01_75"] = {
-    [1] = { zmin = 0.057, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.020, ymax = 1.000 },
-  },
-  ["construction_01_88"] = {
-    [1] = { zmin = 0.113, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 0.195 },
-  },
-  ["construction_01_89"] = {
-    [1] = { zmin = 0.103, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.754, ymax = 1.000 },
-  },
-  ["construction_01_90"] = {
-    [1] = { zmin = 0.103, zmax = 1.000, xmin = 0.237, xmax = 1.000, ymin = 0.754, ymax = 1.000 },
-  },
-  ["construction_01_91"] = {
-    [1] = { zmin = 0.113, zmax = 1.000, xmin = 0.246, xmax = 1.000, ymin = 0.000, ymax = 0.195 },
-  },
-  ["construction_01_92"] = {
-    [1] = { zmin = 0.103, zmax = 1.000, xmin = 0.000, xmax = 0.771, ymin = 0.754, ymax = 1.000 },
-  },
-  ["construction_01_93"] = {
-    [1] = { zmin = 0.113, zmax = 1.000, xmin = 0.010, xmax = 0.764, ymin = 0.000, ymax = 0.195 },
-  },
-  ["construction_01_94"] = {
-    [1] = { zmin = 0.103, zmax = 1.000, xmin = 0.242, xmax = 0.771, ymin = 0.754, ymax = 1.000 },
-  },
-  ["construction_01_95"] = {
-    [1] = { zmin = 0.113, zmax = 1.000, xmin = 0.246, xmax = 0.766, ymin = 0.000, ymax = 0.195 },
-  },
-  ["construction_01_96"] = {
-    [1] = { zmin = 0.106, zmax = 1.000, xmin = 0.794, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["construction_01_97"] = {
-    [1] = { zmin = 0.106, zmax = 1.000, xmin = 0.010, xmax = 0.231, ymin = 0.000, ymax = 1.000 },
-  },
-  ["construction_01_98"] = {
-    [1] = { zmin = 0.106, zmax = 1.000, xmin = 0.010, xmax = 0.231, ymin = 0.243, ymax = 1.000 },
-  },
-  ["construction_01_99"] = {
-    [1] = { zmin = 0.106, zmax = 1.000, xmin = 0.794, xmax = 1.000, ymin = 0.237, ymax = 1.000 },
-  },
-  ["construction_01_100"] = {
-    [1] = { zmin = 0.106, zmax = 1.000, xmin = 0.010, xmax = 0.231, ymin = 0.000, ymax = 0.760 },
-  },
-  ["construction_01_101"] = {
-    [1] = { zmin = 0.106, zmax = 1.000, xmin = 0.794, xmax = 1.000, ymin = 0.000, ymax = 0.755 },
-  },
-  ["construction_01_102"] = {
-    [1] = { zmin = 0.106, zmax = 1.000, xmin = 0.010, xmax = 0.231, ymin = 0.239, ymax = 0.752 },
-  },
-  ["construction_01_103"] = {
-    [1] = { zmin = 0.106, zmax = 1.000, xmin = 0.794, xmax = 1.000, ymin = 0.242, ymax = 0.757 },
   },
   ["crafted_01_16"] = {
     [1] = { zmin = 0.478, zmax = 1.000, xmin = 0.170, xmax = 0.691, ymin = 0.000, ymax = 0.434 },
@@ -1533,34 +958,11 @@ local Surfaces = {
   ["crafted_01_18"] = {
     [1] = { zmin = 0.298, zmax = 1.000, xmin = 0.158, xmax = 0.992, ymin = 0.365, ymax = 0.636 },
   },
-  ["crafted_01_19"] = {
-    [1] = { zmin = 0.220, zmax = 1.000, xmin = 0.340, xmax = 0.684, ymin = 0.372, ymax = 0.620 },
-  },
-  ["crafted_01_20"] = {
-    [1] = { zmin = 0.164, zmax = 1.000, xmin = 0.000, xmax = 0.823, ymin = 0.000, ymax = 0.805 },
-  },
-  ["crafted_01_21"] = {
-    [1] = { zmin = 0.164, zmax = 1.000, xmin = 0.000, xmax = 0.823, ymin = 0.000, ymax = 0.805 },
-  },
   ["crafted_01_33"] = {
     [1] = { zmin = 0.478, zmax = 1.000, xmin = 0.000, xmax = 0.434, ymin = 0.181, ymax = 0.702 },
   },
   ["crafted_01_35"] = {
     [1] = { zmin = 0.294, zmax = 1.000, xmin = 0.435, xmax = 0.678, ymin = 0.074, ymax = 0.948 },
-  },
-  ["crafted_01_36"] = {
-    [1] = { zmin = 0.373, zmax = 1.000, xmin = 0.000, xmax = 0.437, ymin = 0.119, ymax = 0.609 },
-  },
-  ["crafted_01_42"] = {
-    [1] = { zmin = 0.377, zmax = 1.000, xmin = 0.006, xmax = 0.954, ymin = 0.060, ymax = 0.928 },
-  },
-  ["crafted_01_57"] = {
-    [1] = { zmin = 0.063, zmax = 0.118, xmin = 0.095, xmax = 0.891, ymin = 0.000, ymax = 0.978 },
-    [2] = { zmin = 0.496, zmax = 1.000, xmin = 0.068, xmax = 0.981, ymin = 0.000, ymax = 0.890 },
-  },
-  ["crafted_01_58"] = {
-    [1] = { zmin = 0.063, zmax = 0.118, xmin = 0.095, xmax = 0.891, ymin = 0.305, ymax = 1.000 },
-    [2] = { zmin = 0.496, zmax = 1.000, xmin = 0.068, xmax = 0.981, ymin = 0.408, ymax = 1.000 },
   },
   ["crafted_01_64"] = {
     [1] = { zmin = 0.375, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
@@ -1589,9 +991,6 @@ local Surfaces = {
   ["crafted_01_71"] = {
     [1] = { zmin = 0.084, zmax = 0.268, xmin = 0.000, xmax = 0.809, ymin = 0.095, ymax = 0.883 },
     [2] = { zmin = 0.341, zmax = 1.000, xmin = 0.000, xmax = 0.892, ymin = 0.016, ymax = 0.962 },
-  },
-  ["crafted_01_72"] = {
-    [1] = { zmin = 0.600, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
   },
   ["crafted_01_88"] = {
     [1] = { zmin = 0.220, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.250, ymax = 0.750 },
@@ -1624,12 +1023,6 @@ local Surfaces = {
   ["crafted_01_116"] = {
     [1] = { zmin = 0.220, zmax = 1.000, xmin = 0.380, xmax = 0.629, ymin = 0.340, ymax = 0.684 },
   },
-  ["crafted_01_120"] = {
-    [1] = { zmin = 0.294, zmax = 1.000, xmin = 0.200, xmax = 0.900, ymin = 0.000, ymax = 1.000 },
-  },
-  ["crafted_01_121"] = {
-    [1] = { zmin = 0.294, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.200, ymax = 0.900 },
-  },
   ["crafted_02_0"] = {
     [1] = { zmin = 0.103, zmax = 0.151, xmin = 0.300, xmax = 1.000, ymin = 0.175, ymax = 0.924 },
     [2] = { zmin = 0.325, zmax = 1.000, xmin = 0.168, xmax = 0.540, ymin = 0.833, ymax = 0.999 },
@@ -1648,15 +1041,6 @@ local Surfaces = {
     [1] = { zmin = 0.068, zmax = 0.151, xmin = 0.088, xmax = 0.839, ymin = 0.213, ymax = 1.000 },
     [2] = { zmin = 0.325, zmax = 1.000, xmin = 0.833, xmax = 0.999, ymin = 1.000, ymax = 1.000 },
     [3] = { zmin = 0.419, zmax = 1.000, xmin = 0.197, xmax = 0.402, ymin = 1.000, ymax = 1.000 },
-  },
-  ["crafted_02_16"] = {
-    [1] = { zmin = 0.212, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["crafted_02_32"] = {
-    [1] = { zmin = 0.396, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["crafted_02_33"] = {
-    [1] = { zmin = 0.396, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
   },
   ["crafted_02_34"] = {
     [1] = { zmin = 0.359, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
@@ -1702,16 +1086,9 @@ local Surfaces = {
   ["crafted_02_59"] = {
     [1] = { zmin = 0.171, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.100, ymax = 0.900 },
   },
-  ["crafted_02_65"] = {
-    [1] = { zmin = 0.395, zmax = 0.453, xmin = 0.051, xmax = 0.993, ymin = 1.000, ymax = 1.000 },
-  },
   ["crafted_02_67"] = {
     [1] = { zmin = 0.297, zmax = 0.360, xmin = 1.000, xmax = 1.000, ymin = 0.399, ymax = 0.745 },
     [2] = { zmin = 0.387, zmax = 1.000, xmin = 1.000, xmax = 1.000, ymin = 0.029, ymax = 0.971 },
-  },
-  ["crafted_02_68"] = {
-    [1] = { zmin = 0.297, zmax = 0.360, xmin = 1.000, xmax = 1.000, ymin = 0.399, ymax = 0.745 },
-    [2] = { zmin = 0.387, zmax = 1.000, xmin = 0.971, xmax = 1.000, ymin = 0.029, ymax = 0.971 },
   },
   ["crafted_02_69"] = {
     [1] = { zmin = 0.297, zmax = 0.360, xmin = 0.174, xmax = 0.328, ymin = 0.399, ymax = 0.745 },
@@ -1720,26 +1097,13 @@ local Surfaces = {
   ["crafted_02_72"] = {
     [1] = { zmin = 0.395, zmax = 0.453, xmin = 0.051, xmax = 0.993, ymin = 0.022, ymax = 0.957 },
   },
-  ["crafted_02_73"] = {
-    [1] = { zmin = 0.395, zmax = 0.453, xmin = 0.051, xmax = 0.993, ymin = 1.000, ymax = 1.000 },
-  },
   ["crafted_02_75"] = {
     [1] = { zmin = 0.297, zmax = 0.360, xmin = 1.000, xmax = 1.000, ymin = 0.399, ymax = 0.745 },
     [2] = { zmin = 0.387, zmax = 1.000, xmin = 1.000, xmax = 1.000, ymin = 0.029, ymax = 0.971 },
   },
-  ["crafted_02_76"] = {
-    [1] = { zmin = 0.297, zmax = 0.360, xmin = 1.000, xmax = 1.000, ymin = 0.399, ymax = 0.745 },
-    [2] = { zmin = 0.387, zmax = 1.000, xmin = 0.971, xmax = 1.000, ymin = 0.029, ymax = 0.971 },
-  },
   ["crafted_02_77"] = {
     [1] = { zmin = 0.297, zmax = 0.360, xmin = 0.174, xmax = 0.328, ymin = 0.399, ymax = 0.745 },
     [2] = { zmin = 0.387, zmax = 1.000, xmin = 0.000, xmax = 0.927, ymin = 0.029, ymax = 0.971 },
-  },
-  ["crafted_02_80"] = {
-    [1] = { zmin = 0.218, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["crafted_02_83"] = {
-    [1] = { zmin = 0.218, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
   },
   ["crafted_02_88"] = {
     [1] = { zmin = 0.371, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
@@ -1761,66 +1125,6 @@ local Surfaces = {
   },
   ["crafted_02_94"] = {
     [1] = { zmin = 0.220, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.200, ymax = 0.800 },
-  },
-  ["crafted_02_96"] = {
-    [1] = { zmin = 0.086, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.733, ymax = 1.000 },
-    [2] = { zmin = 0.154, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.358, ymax = 0.743 },
-    [3] = { zmin = 0.339, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 0.262 },
-    [4] = { zmin = 0.419, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 0.049 },
-    [5] = { zmin = 0.508, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 0.000 },
-    [6] = { zmin = 0.604, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 0.000 },
-    [7] = { zmin = 0.687, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 0.000 },
-    [8] = { zmin = 0.851, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 0.000 },
-  },
-  ["crafted_02_97"] = {
-    [1] = { zmin = 0.086, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 1.000, ymax = 1.000 },
-    [2] = { zmin = 0.154, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 1.000, ymax = 1.000 },
-    [3] = { zmin = 0.339, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.889, ymax = 1.000 },
-    [4] = { zmin = 0.419, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.637, ymax = 1.000 },
-    [5] = { zmin = 0.508, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.406, ymax = 0.805 },
-    [6] = { zmin = 0.604, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.122, ymax = 0.597 },
-    [7] = { zmin = 0.687, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 0.319 },
-    [8] = { zmin = 0.851, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 0.000 },
-  },
-  ["crafted_02_98"] = {
-    [1] = { zmin = 0.086, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 1.000, ymax = 1.000 },
-    [2] = { zmin = 0.154, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 1.000, ymax = 1.000 },
-    [3] = { zmin = 0.339, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 1.000, ymax = 1.000 },
-    [4] = { zmin = 0.419, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 1.000, ymax = 1.000 },
-    [5] = { zmin = 0.508, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 1.000, ymax = 1.000 },
-    [6] = { zmin = 0.604, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 1.000, ymax = 1.000 },
-    [7] = { zmin = 0.687, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.903, ymax = 1.000 },
-    [8] = { zmin = 0.851, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.385, ymax = 0.767 },
-  },
-  ["crafted_02_104"] = {
-    [1] = { zmin = 0.086, zmax = 1.000, xmin = 1.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-    [2] = { zmin = 0.154, zmax = 1.000, xmin = 1.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-    [3] = { zmin = 0.339, zmax = 1.000, xmin = 1.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-    [4] = { zmin = 0.419, zmax = 1.000, xmin = 1.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-    [5] = { zmin = 0.508, zmax = 1.000, xmin = 1.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-    [6] = { zmin = 0.604, zmax = 1.000, xmin = 1.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-    [7] = { zmin = 0.687, zmax = 1.000, xmin = 0.903, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-    [8] = { zmin = 0.851, zmax = 1.000, xmin = 0.384, xmax = 0.767, ymin = 0.000, ymax = 1.000 },
-  },
-  ["crafted_02_105"] = {
-    [1] = { zmin = 0.086, zmax = 1.000, xmin = 1.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-    [2] = { zmin = 0.154, zmax = 1.000, xmin = 1.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-    [3] = { zmin = 0.339, zmax = 1.000, xmin = 0.889, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-    [4] = { zmin = 0.419, zmax = 1.000, xmin = 0.637, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-    [5] = { zmin = 0.508, zmax = 1.000, xmin = 0.406, xmax = 0.805, ymin = 0.000, ymax = 1.000 },
-    [6] = { zmin = 0.604, zmax = 1.000, xmin = 0.121, xmax = 0.597, ymin = 0.000, ymax = 1.000 },
-    [7] = { zmin = 0.687, zmax = 1.000, xmin = 0.000, xmax = 0.319, ymin = 0.000, ymax = 1.000 },
-    [8] = { zmin = 0.851, zmax = 1.000, xmin = 0.000, xmax = 0.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["crafted_02_106"] = {
-    [1] = { zmin = 0.086, zmax = 1.000, xmin = 0.733, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-    [2] = { zmin = 0.154, zmax = 1.000, xmin = 0.358, xmax = 0.744, ymin = 0.000, ymax = 1.000 },
-    [3] = { zmin = 0.339, zmax = 1.000, xmin = 0.000, xmax = 0.262, ymin = 0.000, ymax = 1.000 },
-    [4] = { zmin = 0.419, zmax = 1.000, xmin = 0.000, xmax = 0.049, ymin = 0.000, ymax = 1.000 },
-    [5] = { zmin = 0.508, zmax = 1.000, xmin = 0.000, xmax = 0.000, ymin = 0.000, ymax = 1.000 },
-    [6] = { zmin = 0.604, zmax = 1.000, xmin = 0.000, xmax = 0.000, ymin = 0.000, ymax = 1.000 },
-    [7] = { zmin = 0.687, zmax = 1.000, xmin = 0.000, xmax = 0.000, ymin = 0.000, ymax = 1.000 },
-    [8] = { zmin = 0.851, zmax = 1.000, xmin = 0.000, xmax = 0.000, ymin = 0.000, ymax = 1.000 },
   },
   ["crafted_03_36"] = {
     [1] = { zmin = 0.386, zmax = 1.000, xmin = 0.097, xmax = 0.934, ymin = 0.054, ymax = 0.957 },
@@ -1858,18 +1162,6 @@ local Surfaces = {
   ["crafted_03_87"] = {
     [1] = { zmin = 0.226, zmax = 1.000, xmin = 0.387, xmax = 0.610, ymin = 0.324, ymax = 0.674 },
   },
-  ["crafted_04_36"] = {
-    [1] = { zmin = 0.641, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.100, ymax = 0.950 },
-  },
-  ["crafted_04_37"] = {
-    [1] = { zmin = 0.641, zmax = 1.000, xmin = 0.300, xmax = 1.000, ymin = 0.050, ymax = 1.000 },
-  },
-  ["crafted_04_38"] = {
-    [1] = { zmin = 0.641, zmax = 1.000, xmin = 0.050, xmax = 0.850, ymin = 0.050, ymax = 1.000 },
-  },
-  ["crafted_04_39"] = {
-    [1] = { zmin = 0.641, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.100, ymax = 0.700 },
-  },
   ["crafted_04_40"] = {
     [1] = { zmin = 0.359, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.100, ymax = 0.550 },
   },
@@ -1885,23 +1177,11 @@ local Surfaces = {
   ["crafted_04_44"] = {
     [1] = { zmin = 0.090, zmax = 1.000, xmin = 0.100, xmax = 1.000, ymin = 0.050, ymax = 0.850 },
   },
-  ["crafted_04_45"] = {
-    [1] = { zmin = 0.090, zmax = 1.000, xmin = 0.000, xmax = 0.950, ymin = 0.050, ymax = 0.850 },
-  },
-  ["crafted_04_46"] = {
-    [1] = { zmin = 0.090, zmax = 1.000, xmin = 0.150, xmax = 0.900, ymin = 0.000, ymax = 0.900 },
-  },
   ["crafted_04_47"] = {
     [1] = { zmin = 0.090, zmax = 1.000, xmin = 0.150, xmax = 0.900, ymin = 0.100, ymax = 1.000 },
   },
   ["crafted_04_48"] = {
     [1] = { zmin = 0.090, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.000, ymax = 0.900 },
-  },
-  ["crafted_04_49"] = {
-    [1] = { zmin = 0.090, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.100, ymax = 1.000 },
-  },
-  ["crafted_04_50"] = {
-    [1] = { zmin = 0.090, zmax = 1.000, xmin = 0.100, xmax = 1.000, ymin = 0.150, ymax = 0.800 },
   },
   ["crafted_04_51"] = {
     [1] = { zmin = 0.090, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.150, ymax = 0.800 },
@@ -1917,18 +1197,6 @@ local Surfaces = {
   },
   ["crafted_04_55"] = {
     [1] = { zmin = 0.702, zmax = 1.000, xmin = 0.250, xmax = 0.700, ymin = 0.400, ymax = 1.000 },
-  },
-  ["crafted_04_80"] = {
-    [1] = { zmin = 0.722, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.000, ymax = 0.850 },
-  },
-  ["crafted_04_81"] = {
-    [1] = { zmin = 0.722, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.300, ymax = 1.000 },
-  },
-  ["crafted_04_83"] = {
-    [1] = { zmin = 0.722, zmax = 1.000, xmin = 0.300, xmax = 1.000, ymin = 0.050, ymax = 1.000 },
-  },
-  ["crafted_04_84"] = {
-    [1] = { zmin = 0.722, zmax = 1.000, xmin = 0.000, xmax = 0.750, ymin = 0.050, ymax = 1.000 },
   },
   ["crafted_04_88"] = {
     [1] = { zmin = 0.024, zmax = 0.141, xmin = 0.100, xmax = 0.800, ymin = 0.150, ymax = 0.450 },
@@ -2013,30 +1281,6 @@ local Surfaces = {
   },
   ["crafted_04_113"] = {
     [1] = { zmin = 0.185, zmax = 1.000, xmin = 0.080, xmax = 0.897, ymin = 0.122, ymax = 0.813 },
-  },
-  ["crafted_04_114"] = {
-    [1] = { zmin = 0.591, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 0.181 },
-  },
-  ["crafted_04_115"] = {
-    [1] = { zmin = 0.535, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 0.181 },
-  },
-  ["crafted_04_116"] = {
-    [1] = { zmin = 0.563, zmax = 1.000, xmin = 0.000, xmax = 0.170, ymin = 0.047, ymax = 1.000 },
-  },
-  ["crafted_04_117"] = {
-    [1] = { zmin = 0.607, zmax = 1.000, xmin = 0.000, xmax = 0.170, ymin = 0.047, ymax = 1.000 },
-  },
-  ["crafted_05_0"] = {
-    [1] = { zmin = 0.927, zmax = 1.000, xmin = 0.200, xmax = 1.000, ymin = 0.050, ymax = 0.900 },
-  },
-  ["crafted_05_1"] = {
-    [1] = { zmin = 0.927, zmax = 1.000, xmin = 0.000, xmax = 0.950, ymin = 0.050, ymax = 0.900 },
-  },
-  ["crafted_05_2"] = {
-    [1] = { zmin = 0.927, zmax = 1.000, xmin = 0.100, xmax = 1.000, ymin = 0.000, ymax = 0.800 },
-  },
-  ["crafted_05_3"] = {
-    [1] = { zmin = 0.927, zmax = 1.000, xmin = 0.100, xmax = 1.000, ymin = 0.100, ymax = 1.000 },
   },
   ["crafted_05_4"] = {
     [1] = { zmin = 0.763, zmax = 1.000, xmin = 0.300, xmax = 0.600, ymin = 0.500, ymax = 1.000 },
@@ -2169,54 +1413,6 @@ local Surfaces = {
   ["crafted_05_53"] = {
     [1] = { zmin = 0.352 },
   },
-  ["crafted_05_74"] = {
-    [1] = { zmin = 0.343, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.050, ymax = 0.820 },
-  },
-  ["crafted_05_75"] = {
-    [1] = { zmin = 0.343, zmax = 1.000, xmin = 0.050, xmax = 0.900, ymin = 0.050, ymax = 1.000 },
-  },
-  ["crafted_05_76"] = {
-    [1] = { zmin = 0.032, zmax = 1.000, xmin = 0.304, xmax = 0.629, ymin = 0.070, ymax = 0.924 },
-  },
-  ["crafted_05_77"] = {
-    [1] = { zmin = 0.032, zmax = 1.000, xmin = 0.070, xmax = 0.924, ymin = 0.325, ymax = 0.650 },
-  },
-  ["crafted_05_80"] = {
-    [1] = { zmin = 0.686, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.000, ymax = 0.850 },
-  },
-  ["crafted_05_81"] = {
-    [1] = { zmin = 0.686, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.150, ymax = 1.000 },
-  },
-  ["crafted_05_82"] = {
-    [1] = { zmin = 0.686, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 0.850 },
-  },
-  ["crafted_05_83"] = {
-    [1] = { zmin = 0.686, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.150, ymax = 1.000 },
-  },
-  ["crafted_05_84"] = {
-    [1] = { zmin = 0.686, zmax = 1.000, xmin = 0.150, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["crafted_05_85"] = {
-    [1] = { zmin = 0.686, zmax = 1.000, xmin = 0.000, xmax = 0.850, ymin = 0.000, ymax = 1.000 },
-  },
-  ["crafted_05_86"] = {
-    [1] = { zmin = 0.686, zmax = 1.000, xmin = 0.150, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["crafted_05_87"] = {
-    [1] = { zmin = 0.686, zmax = 1.000, xmin = 0.000, xmax = 0.850, ymin = 0.050, ymax = 1.000 },
-  },
-  ["crafted_05_108"] = {
-    [1] = { zmin = 0.559, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.050, ymax = 1.000 },
-  },
-  ["crafted_05_109"] = {
-    [1] = { zmin = 0.559, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.050, ymax = 1.000 },
-  },
-  ["crafted_05_110"] = {
-    [1] = { zmin = 0.559, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["crafted_05_111"] = {
-    [1] = { zmin = 0.559, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.050, ymax = 1.000 },
-  },
   ["crafted_05_136"] = {
     [1] = { zmin = 0.352 },
   },
@@ -2235,281 +1431,8 @@ local Surfaces = {
   ["crafted_05_141"] = {
     [1] = { zmin = 0.352 },
   },
-  ["crafting_ore_0"] = {
-    [1] = { zmin = 0.049, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["crafting_ore_3"] = {
-    [1] = { zmin = 0.090, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["crafting_ore_6"] = {
-    [1] = { zmin = 0.130, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["crafting_ore_9"] = {
-    [1] = { zmin = 0.028, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["crafting_ore_32"] = {
-    [1] = { zmin = 0.110, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["crafting_ore_113"] = {
-    [1] = { zmin = 0.059, zmax = 1.000, xmin = 0.000, xmax = 0.650, ymin = 0.000, ymax = 0.605 },
-  },
-  ["crafting_ore_114"] = {
-    [1] = { zmin = 0.040, zmax = 1.000, xmin = 0.513, xmax = 0.850, ymin = 0.307, ymax = 0.922 },
-  },
-  ["crafting_ore_115"] = {
-    [1] = { zmin = 0.032, zmax = 1.000, xmin = 0.145, xmax = 0.888, ymin = 0.377, ymax = 0.875 },
-  },
-  ["crafting_ore_116"] = {
-    [1] = { zmin = 0.023, zmax = 1.000, xmin = 0.142, xmax = 0.912, ymin = 0.073, ymax = 0.793 },
-  },
-  ["crafting_ore_117"] = {
-    [1] = { zmin = 0.069, zmax = 1.000, xmin = 0.496, xmax = 0.933, ymin = 0.000, ymax = 0.605 },
-  },
-  ["crafting_ore_118"] = {
-    [1] = { zmin = 0.046, zmax = 1.000, xmin = 0.149, xmax = 0.664, ymin = 0.104, ymax = 0.810 },
-  },
-  ["crafting_ore_119"] = {
-    [1] = { zmin = 0.049, zmax = 1.000, xmin = 0.067, xmax = 0.897, ymin = 0.120, ymax = 0.823 },
-  },
-  ["crafting_ore_120"] = {
-    [1] = { zmin = 0.090, zmax = 1.000, xmin = 0.160, xmax = 0.837, ymin = 0.159, ymax = 0.888 },
-  },
-  ["crafting_ore_121"] = {
-    [1] = { zmin = 0.042, zmax = 1.000, xmin = 0.160, xmax = 0.694, ymin = 0.571, ymax = 0.922 },
-  },
-  ["crafting_ore_122"] = {
-    [1] = { zmin = 0.034, zmax = 1.000, xmin = 0.233, xmax = 0.829, ymin = 0.090, ymax = 0.691 },
-  },
-  ["crafting_ore_123"] = {
-    [1] = { zmin = 0.027, zmax = 1.000, xmin = 0.106, xmax = 0.907, ymin = 0.224, ymax = 0.830 },
-  },
-  ["crafting_ore_124"] = {
-    [1] = { zmin = 0.032, zmax = 1.000, xmin = 0.477, xmax = 0.956, ymin = 0.677, ymax = 0.923 },
-  },
-  ["crafting_ore_125"] = {
-    [1] = { zmin = 0.026, zmax = 1.000, xmin = 0.052, xmax = 0.490, ymin = 0.512, ymax = 0.821 },
-  },
-  ["crafting_ore_126"] = {
-    [1] = { zmin = 0.023, zmax = 1.000, xmin = 0.081, xmax = 0.930, ymin = 0.124, ymax = 0.459 },
-  },
-  ["crafting_ore_127"] = {
-    [1] = { zmin = 0.029, zmax = 1.000, xmin = 0.221, xmax = 0.416, ymin = 0.546, ymax = 0.728 },
-  },
-  ["d_trash_1_0"] = {
-    [1] = { zmin = 0.059, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["d_trash_1_6"] = {
-    [1] = { zmin = 0.068, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["d_trash_1_12"] = {
-    [1] = { zmin = 0.104, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["d_trash_1_16"] = {
-    [1] = { zmin = 0.082, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["d_trash_1_21"] = {
-    [1] = { zmin = 0.184, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["damaged_objects_01_8"] = {
-    [1] = { zmin = 0.539, zmax = 1.000, xmin = 0.050, xmax = 0.900, ymin = 0.050, ymax = 0.650 },
-  },
-  ["damaged_objects_01_9"] = {
-    [1] = { zmin = 0.539, zmax = 1.000, xmin = 0.000, xmax = 0.650, ymin = 0.050, ymax = 0.900 },
-  },
-  ["damaged_objects_01_10"] = {
-    [1] = { zmin = 0.539, zmax = 1.000, xmin = 0.000, xmax = 0.900, ymin = 0.300, ymax = 0.900 },
-  },
-  ["damaged_objects_01_11"] = {
-    [1] = { zmin = 0.539, zmax = 1.000, xmin = 0.250, xmax = 0.950, ymin = 0.150, ymax = 0.900 },
-  },
-  ["damaged_objects_01_12"] = {
-    [1] = { zmin = 0.171, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["damaged_objects_01_14"] = {
-    [1] = { zmin = 0.130, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 0.857 },
-  },
-  ["damaged_objects_01_18"] = {
-    [1] = { zmin = 0.116, zmax = 1.000, xmin = 0.460, xmax = 0.967, ymin = 0.000, ymax = 0.260 },
-  },
-  ["damaged_objects_01_19"] = {
-    [1] = { zmin = 0.116, zmax = 1.000, xmin = 0.003, xmax = 0.306, ymin = 0.495, ymax = 1.000 },
-  },
-  ["damaged_objects_01_20"] = {
-    [1] = { zmin = 0.116, zmax = 1.000, xmin = 0.220, xmax = 0.727, ymin = 0.658, ymax = 0.918 },
-  },
-  ["damaged_objects_01_21"] = {
-    [1] = { zmin = 0.116, zmax = 1.000, xmin = 0.712, xmax = 1.000, ymin = 0.247, ymax = 0.754 },
-  },
-  ["damaged_objects_01_26"] = {
-    [1] = { zmin = 0.024, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["desks_01_0"] = {
-    [1] = { zmin = 0.355, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["desks_01_1"] = {
-    [1] = { zmin = 0.416, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["fencing_01_0"] = {
-    [1] = { zmin = 0.620, zmax = 1.000, xmin = 0.000, xmax = 0.200, ymin = 0.000, ymax = 0.200 },
-  },
-  ["fencing_01_1"] = {
-    [1] = { zmin = 0.416, zmax = 1.000, xmin = 0.000, xmax = 0.150, ymin = 0.000, ymax = 0.150 },
-  },
-  ["fencing_01_2"] = {
-    [1] = { zmin = 0.416, zmax = 1.000, xmin = 0.000, xmax = 0.150, ymin = 0.000, ymax = 0.150 },
-  },
-  ["fencing_01_3"] = {
-    [1] = { zmin = 0.620, zmax = 1.000, xmin = 0.000, xmax = 0.200, ymin = 0.000, ymax = 0.200 },
-  },
-  ["fencing_01_16"] = {
-    [1] = { zmin = 0.416, zmax = 1.000, xmin = 0.000, xmax = 0.150, ymin = 0.050, ymax = 0.200 },
-  },
-  ["fencing_01_17"] = {
-    [1] = { zmin = 0.416, zmax = 1.000, xmin = 0.050, xmax = 0.200, ymin = 0.000, ymax = 0.150 },
-  },
-  ["fencing_01_18"] = {
-    [1] = { zmin = 0.416, zmax = 1.000, xmin = 0.050, xmax = 0.200, ymin = 0.000, ymax = 0.150 },
-  },
-  ["fencing_01_19"] = {
-    [1] = { zmin = 0.416, zmax = 1.000, xmin = 0.050, xmax = 0.200, ymin = 0.000, ymax = 0.150 },
-  },
-  ["fencing_01_29"] = {
-    [1] = { zmin = 0.539, zmax = 1.000, xmin = 0.000, xmax = 0.150, ymin = 0.000, ymax = 0.150 },
-  },
-  ["fencing_01_90"] = {
-    [1] = { zmin = 0.058, zmax = 1.000, xmin = 0.040, xmax = 0.242, ymin = 0.866, ymax = 1.000 },
-  },
-  ["fencing_01_91"] = {
-    [1] = { zmin = 0.058, zmax = 1.000, xmin = 0.040, xmax = 0.242, ymin = 0.025, ymax = 0.182 },
-  },
-  ["fencing_01_96"] = {
-    [1] = { zmin = 0.375, zmax = 1.000, xmin = 0.050, xmax = 0.950, ymin = 0.050, ymax = 0.950 },
-  },
-  ["fencing_01_97"] = {
-    [1] = { zmin = 0.702, zmax = 1.000, xmin = 0.050, xmax = 0.950, ymin = 0.050, ymax = 0.950 },
-  },
-  ["fencing_01_104"] = {
-    [1] = { zmin = 0.382, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 0.245 },
-  },
-  ["fencing_01_105"] = {
-    [1] = { zmin = 0.382, zmax = 1.000, xmin = 0.002, xmax = 0.247, ymin = 0.000, ymax = 1.000 },
-  },
-  ["fencing_01_107"] = {
-    [1] = { zmin = 0.382, zmax = 1.000, xmin = 0.002, xmax = 0.247, ymin = 0.000, ymax = 0.243 },
-  },
-  ["fencing_01_108"] = {
-    [1] = { zmin = 0.253, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.050, ymax = 1.000 },
-  },
-  ["fencing_01_109"] = {
-    [1] = { zmin = 0.253, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.050, ymax = 1.000 },
-  },
-  ["fencing_01_110"] = {
-    [1] = { zmin = 0.110, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.050, ymax = 1.000 },
-  },
-  ["fencing_01_111"] = {
-    [1] = { zmin = 0.110, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.050, ymax = 1.000 },
-  },
-  ["fencing_damaged_01_124"] = {
-    [1] = { zmin = 0.028, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["fencing_damaged_01_176"] = {
-    [1] = { zmin = 0.314, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.050, ymax = 1.000 },
-  },
-  ["fencing_damaged_02_112"] = {
-    [1] = { zmin = 0.034, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["fencing_damaged_02_115"] = {
-    [1] = { zmin = 0.029, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["fencing_damaged_02_116"] = {
-    [1] = { zmin = 0.029, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["fencing_damaged_02_117"] = {
-    [1] = { zmin = 0.038, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["fencing_damaged_02_121"] = {
-    [1] = { zmin = 0.039, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["fencing_damaged_02_124"] = {
-    [1] = { zmin = 0.025, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["fencing_damaged_02_128"] = {
-    [1] = { zmin = 0.020, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["fencing_damaged_02_132"] = {
-    [1] = { zmin = 0.032, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["fencing_damaged_02_138"] = {
-    [1] = { zmin = 0.038, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["fencing_damaged_02_139"] = {
-    [1] = { zmin = 0.024, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["fencing_damaged_02_140"] = {
-    [1] = { zmin = 0.024, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["fencing_damaged_02_141"] = {
-    [1] = { zmin = 0.038, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["fencing_damaged_02_144"] = {
-    [1] = { zmin = 0.027, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["fencing_damaged_03_14"] = {
-    [1] = { zmin = 0.960, zmax = 1.000, xmin = 0.000, xmax = 0.150, ymin = 0.000, ymax = 0.164 },
-  },
-  ["fencing_damaged_03_15"] = {
-    [1] = { zmin = 0.960, zmax = 1.000, xmin = 0.000, xmax = 0.150, ymin = 0.000, ymax = 0.164 },
-  },
-  ["fencing_damaged_03_30"] = {
-    [1] = { zmin = 0.527, zmax = 1.000, xmin = 0.000, xmax = 0.150, ymin = 0.000, ymax = 0.164 },
-  },
-  ["fencing_damaged_03_31"] = {
-    [1] = { zmin = 0.527, zmax = 1.000, xmin = 0.000, xmax = 0.150, ymin = 0.000, ymax = 0.164 },
-  },
-  ["fencing_damaged_03_46"] = {
-    [1] = { zmin = 0.960, zmax = 1.000, xmin = 0.000, xmax = 0.150, ymin = 0.000, ymax = 0.164 },
-  },
-  ["fencing_damaged_03_47"] = {
-    [1] = { zmin = 0.960, zmax = 1.000, xmin = 0.000, xmax = 0.150, ymin = 0.000, ymax = 0.164 },
-  },
   ["fixtures_bathroom_01_0"] = {
     [1] = { zmin = 0.401, zmax = 1.000, xmin = 0.166, xmax = 0.846, ymin = 0.114, ymax = 0.393 },
-  },
-  ["fixtures_bathroom_01_1"] = {
-    [1] = { zmin = 0.209, zmax = 1.000, xmin = 0.008, xmax = 0.912, ymin = 0.184, ymax = 0.789 },
-    [2] = { zmin = 0.374, zmax = 1.000, xmin = 0.047, xmax = 0.307, ymin = 0.027, ymax = 0.688 },
-  },
-  ["fixtures_bathroom_01_2"] = {
-    [1] = { zmin = 0.209, zmax = 1.000, xmin = 0.008, xmax = 0.912, ymin = 0.000, ymax = 0.795 },
-    [2] = { zmin = 0.374, zmax = 1.000, xmin = 0.710, xmax = 1.000, ymin = 0.000, ymax = 0.791 },
-  },
-  ["fixtures_bathroom_01_3"] = {
-    [1] = { zmin = 0.401, zmax = 1.000, xmin = 0.174, xmax = 0.752, ymin = 0.785, ymax = 0.989 },
-  },
-  ["fixtures_bathroom_01_4"] = {
-    [1] = { zmin = 0.346, zmax = 1.000, xmin = 0.346, xmax = 0.561, ymin = 0.008, ymax = 0.233 },
-  },
-  ["fixtures_bathroom_01_5"] = {
-    [1] = { zmin = 0.209, zmax = 1.000, xmin = 0.008, xmax = 0.912, ymin = 0.184, ymax = 0.789 },
-    [2] = { zmin = 0.357, zmax = 1.000, xmin = 0.008, xmax = 0.307, ymin = 0.000, ymax = 0.654 },
-  },
-  ["fixtures_bathroom_01_6"] = {
-    [1] = { zmin = 0.342, zmax = 1.000, xmin = 0.798, xmax = 0.992, ymin = 0.359, ymax = 0.567 },
-  },
-  ["fixtures_bathroom_01_7"] = {
-    [1] = { zmin = 0.342, zmax = 1.000, xmin = 0.410, xmax = 0.619, ymin = 0.739, ymax = 0.934 },
-  },
-  ["fixtures_bathroom_01_14"] = {
-    [1] = { zmin = 0.784, zmax = 1.000, xmin = 0.300, xmax = 0.800, ymin = 0.700, ymax = 1.000 },
-  },
-  ["fixtures_bathroom_01_15"] = {
-    [1] = { zmin = 0.784, zmax = 1.000, xmin = 0.700, xmax = 1.000, ymin = 0.300, ymax = 0.800 },
-  },
-  ["fixtures_bathroom_01_16"] = {
-    [1] = { zmin = 0.784, zmax = 1.000, xmin = 0.300, xmax = 0.800, ymin = 0.050, ymax = 0.400 },
-  },
-  ["fixtures_bathroom_01_17"] = {
-    [1] = { zmin = 0.784, zmax = 1.000, xmin = 0.000, xmax = 0.400, ymin = 0.300, ymax = 0.700 },
   },
   ["fixtures_bathroom_01_24"] = {
     [1] = { zmin = 0.233, zmax = 1.000, xmin = 0.100, xmax = 0.300, ymin = 0.000, ymax = 1.000 },
@@ -2537,20 +1460,11 @@ local Surfaces = {
   ["fixtures_bathroom_01_38"] = {
     [1] = { zmin = 0.956, zmax = 1.000, xmin = 0.555, xmax = 1.000, ymin = 0.139, ymax = 0.859 },
   },
-  ["fixtures_bathroom_01_42"] = {
-    [1] = { zmin = 0.906, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.000, ymax = 0.200 },
-  },
-  ["fixtures_bathroom_01_46"] = {
-    [1] = { zmin = 0.906, zmax = 1.000, xmin = 0.000, xmax = 0.200, ymin = 0.050, ymax = 1.000 },
-  },
   ["fixtures_bathroom_01_52"] = {
     [1] = { zmin = 0.355, zmax = 0.776, xmin = 0.250, xmax = 0.900, ymin = 0.800, ymax = 1.000 },
   },
   ["fixtures_bathroom_01_55"] = {
     [1] = { zmin = 0.355, zmax = 0.776, xmin = 0.800, xmax = 1.000, ymin = 0.250, ymax = 0.900 },
-  },
-  ["fixtures_bathroom_02_6"] = {
-    [1] = { zmin = 0.110, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
   },
   ["fixtures_bathroom_02_24"] = {
     [1] = { zmin = 0.245, zmax = 1.000, xmin = 0.046, xmax = 0.584, ymin = 0.000, ymax = 1.000 },
@@ -2780,92 +1694,11 @@ local Surfaces = {
   ["fixtures_counters_01_199"] = {
     [1] = { zmin = 0.373 },
   },
-  ["fixtures_doors_fences_01_114"] = {
-    [1] = { zmin = 0.355, zmax = 1.000, xmin = 0.220, xmax = 1.000, ymin = 0.000, ymax = 0.150 },
-  },
-  ["fixtures_doors_fences_01_115"] = {
-    [1] = { zmin = 0.355, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 0.150 },
-  },
-  ["fixtures_doors_fences_01_116"] = {
-    [1] = { zmin = 0.355, zmax = 1.000, xmin = 0.220, xmax = 1.000, ymin = 0.050, ymax = 0.200 },
-  },
-  ["fixtures_doors_fences_01_117"] = {
-    [1] = { zmin = 0.355, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.050, ymax = 0.200 },
-  },
-  ["fixtures_doors_fences_01_122"] = {
-    [1] = { zmin = 0.355, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.000, ymax = 0.150 },
-  },
-  ["fixtures_doors_fences_01_123"] = {
-    [1] = { zmin = 0.355, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 0.150 },
-  },
-  ["fixtures_escalators_01_0"] = {
-    [1] = { zmin = 0.348, zmax = 1.000, xmin = 0.000, xmax = 0.260, ymin = 0.000, ymax = 0.994 },
-  },
-  ["fixtures_escalators_01_1"] = {
-    [1] = { zmin = 0.597, zmax = 1.000, xmin = 0.186, xmax = 0.513, ymin = 0.000, ymax = 0.994 },
-    [2] = { zmin = 0.680, zmax = 1.000, xmin = 0.000, xmax = 0.260, ymin = 0.000, ymax = 0.994 },
-  },
-  ["fixtures_escalators_01_2"] = {
-    [1] = { zmin = 0.931, zmax = 1.000, xmin = 0.186, xmax = 0.513, ymin = 0.000, ymax = 0.994 },
-  },
-  ["fixtures_escalators_01_8"] = {
-    [1] = { zmin = 0.096, zmax = 1.000, xmin = 0.000, xmax = 0.961, ymin = 0.633, ymax = 0.946 },
-    [2] = { zmin = 0.340, zmax = 1.000, xmin = 0.008, xmax = 1.000, ymin = 0.000, ymax = 0.244 },
-  },
-  ["fixtures_escalators_01_9"] = {
-    [1] = { zmin = 0.675, zmax = 1.000, xmin = 0.008, xmax = 1.000, ymin = 0.000, ymax = 0.244 },
-  },
-  ["fixtures_escalators_01_10"] = {
-    [1] = { zmin = 0.906, zmax = 1.000, xmin = 0.000, xmax = 0.962, ymin = 0.132, ymax = 0.447 },
-  },
-  ["fixtures_escalators_01_52"] = {
-    [1] = { zmin = 0.440, zmax = 1.000, xmin = 0.099, xmax = 0.294, ymin = 0.140, ymax = 0.917 },
-  },
-  ["fixtures_escalators_01_53"] = {
-    [1] = { zmin = 0.440, zmax = 1.000, xmin = 0.135, xmax = 0.912, ymin = 0.098, ymax = 0.294 },
-  },
-  ["fixtures_fireplaces_01_14"] = {
-    [1] = { zmin = 0.559, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.050, ymax = 0.350 },
-  },
-  ["fixtures_fireplaces_01_23"] = {
-    [1] = { zmin = 0.559, zmax = 1.000, xmin = 0.050, xmax = 0.350, ymin = 0.000, ymax = 1.000 },
-  },
-  ["fixtures_fireplaces_01_48"] = {
-    [1] = { zmin = 0.559, zmax = 1.000, xmin = 0.050, xmax = 0.300, ymin = 0.000, ymax = 1.000 },
-  },
-  ["fixtures_fireplaces_01_51"] = {
-    [1] = { zmin = 0.539, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.050, ymax = 0.300 },
-  },
-  ["fixtures_fireplaces_01_72"] = {
-    [1] = { zmin = 0.916, zmax = 1.000, xmin = 0.161, xmax = 0.865, ymin = 0.187, ymax = 0.863 },
-  },
-  ["fixtures_fireplaces_01_73"] = {
-    [1] = { zmin = 0.916, zmax = 1.000, xmin = 0.170, xmax = 0.846, ymin = 0.180, ymax = 0.884 },
-  },
-  ["fixtures_railings_01_79"] = {
-    [1] = { zmin = 0.157, zmax = 1.000, xmin = 0.249, xmax = 0.420, ymin = 0.249, ymax = 0.422 },
-  },
-  ["fixtures_railings_01_85"] = {
-    [1] = { zmin = 0.508, zmax = 1.000, xmin = 0.022, xmax = 0.209, ymin = 0.002, ymax = 1.000 },
-  },
-  ["fixtures_sinks_01_4"] = {
-    [1] = { zmin = 0.396, zmax = 1.000, xmin = 0.250, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["fixtures_sinks_01_5"] = {
-    [1] = { zmin = 0.396, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.250, ymax = 1.000 },
-  },
   ["fixtures_sinks_01_14"] = {
     [1] = { zmin = 0.386, zmax = 1.000, xmin = 0.126, xmax = 0.899, ymin = 0.000, ymax = 0.462 },
   },
   ["fixtures_sinks_01_15"] = {
     [1] = { zmin = 0.386, zmax = 1.000, xmin = 0.000, xmax = 0.641, ymin = 0.125, ymax = 0.898 },
-  },
-  ["fixtures_sinks_01_24"] = {
-    [1] = { zmin = 0.241, zmax = 0.334, xmin = 0.524, xmax = 0.799, ymin = 0.000, ymax = 0.124 },
-    [2] = { zmin = 0.555, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["fixtures_sinks_01_25"] = {
-    [1] = { zmin = 0.343, zmax = 1.000, xmin = 0.091, xmax = 0.732, ymin = 0.204, ymax = 0.757 },
   },
   ["fixtures_sinks_01_28"] = {
     [1] = { zmin = 0.335, zmax = 1.000, xmin = 0.150, xmax = 0.950, ymin = 0.450, ymax = 1.000 },
@@ -2879,62 +1712,8 @@ local Surfaces = {
   ["fixtures_sinks_01_31"] = {
     [1] = { zmin = 0.335, zmax = 1.000, xmin = 0.450, xmax = 1.000, ymin = 0.150, ymax = 0.950 },
   },
-  ["fixtures_stairs_01_0"] = {
-    [1] = { zmin = 0.430, zmax = 1.000, xmin = 0.000, xmax = 0.019, ymin = 0.000, ymax = 1.000 },
-  },
-  ["fixtures_stairs_01_1"] = {
-    [1] = { zmin = 0.763, zmax = 1.000, xmin = 0.000, xmax = 0.019, ymin = 0.000, ymax = 1.000 },
-  },
-  ["fixtures_stairs_01_3"] = {
-    [1] = { zmin = 0.285, zmax = 0.325, xmin = 0.275, xmax = 0.597, ymin = 0.000, ymax = 0.992 },
-    [2] = { zmin = 0.368, zmax = 0.403, xmin = 0.008, xmax = 0.352, ymin = 0.000, ymax = 0.992 },
-  },
-  ["fixtures_stairs_01_4"] = {
-    [1] = { zmin = 0.458, zmax = 1.000, xmin = 0.787, xmax = 1.000, ymin = 0.000, ymax = 0.992 },
-    [2] = { zmin = 0.691, zmax = 1.000, xmin = 0.000, xmax = 0.334, ymin = 0.000, ymax = 0.944 },
-  },
-  ["fixtures_stairs_01_5"] = {
-    [1] = { zmin = 0.953, zmax = 0.992, xmin = 0.275, xmax = 0.597, ymin = 0.000, ymax = 0.992 },
-  },
   ["fixtures_stairs_01_8"] = {
     [1] = { zmin = 0.430, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 0.000 },
-  },
-  ["fixtures_stairs_01_9"] = {
-    [1] = { zmin = 0.762, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 0.000 },
-  },
-  ["fixtures_stairs_01_11"] = {
-    [1] = { zmin = 0.356, zmax = 1.000, xmin = 0.000, xmax = 0.994, ymin = 0.000, ymax = 0.318 },
-  },
-  ["fixtures_stairs_01_12"] = {
-    [1] = { zmin = 0.691, zmax = 1.000, xmin = 0.000, xmax = 0.994, ymin = 0.000, ymax = 0.318 },
-  },
-  ["fixtures_stairs_01_13"] = {
-    [1] = { zmin = 0.791, zmax = 1.000, xmin = 0.008, xmax = 1.000, ymin = 0.788, ymax = 1.000 },
-    [2] = { zmin = 0.943, zmax = 0.981, xmin = 0.008, xmax = 1.000, ymin = 0.239, ymax = 0.561 },
-  },
-  ["fixtures_stairs_01_16"] = {
-    [1] = { zmin = 0.425, zmax = 1.000, xmin = 0.000, xmax = 0.022, ymin = 0.000, ymax = 1.000 },
-  },
-  ["fixtures_stairs_01_17"] = {
-    [1] = { zmin = 0.758, zmax = 1.000, xmin = 0.000, xmax = 0.016, ymin = 0.000, ymax = 0.992 },
-  },
-  ["fixtures_stairs_01_24"] = {
-    [1] = { zmin = 0.425, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 0.000 },
-  },
-  ["fixtures_stairs_01_25"] = {
-    [1] = { zmin = 0.758, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 0.000 },
-  },
-  ["fixtures_stairs_01_56"] = {
-    [1] = { zmin = 0.425, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 0.000 },
-  },
-  ["fixtures_stairs_01_57"] = {
-    [1] = { zmin = 0.758, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 0.000 },
-  },
-  ["floors_burnt_01_1"] = {
-    [1] = { zmin = 0.069, zmax = 1.000, xmin = 0.058, xmax = 1.000, ymin = 0.042, ymax = 0.992 },
-  },
-  ["floors_rugs_02_0"] = {
-    [1] = { zmin = 0.028, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
   },
   ["furniture_bedding_01_0"] = {
     [1] = { zmin = 0.302, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.000, ymax = 0.870 },
@@ -4519,72 +3298,6 @@ local Surfaces = {
   ["furniture_tables_low_01_21"] = {
     [1] = { zmin = 0.218, zmax = 1.000, xmin = 0.157, xmax = 0.851, ymin = 0.035, ymax = 0.941 },
   },
-  ["industry_01_4"] = {
-    [1] = { zmin = 0.804, zmax = 1.000, xmin = 0.250, xmax = 0.750, ymin = 0.050, ymax = 0.420 },
-  },
-  ["industry_01_5"] = {
-    [1] = { zmin = 0.804, zmax = 1.000, xmin = 0.050, xmax = 0.420, ymin = 0.250, ymax = 0.750 },
-  },
-  ["industry_01_14"] = {
-    [1] = { zmin = 0.784, zmax = 1.000, xmin = 0.180, xmax = 0.700, ymin = 0.720, ymax = 1.000 },
-  },
-  ["industry_01_15"] = {
-    [1] = { zmin = 0.784, zmax = 1.000, xmin = 0.700, xmax = 1.000, ymin = 0.200, ymax = 0.720 },
-  },
-  ["industry_01_40"] = {
-    [1] = { zmin = 0.110, zmax = 1.000, xmin = 0.300, xmax = 0.700, ymin = 0.000, ymax = 0.700 },
-  },
-  ["industry_01_41"] = {
-    [1] = { zmin = 0.110, zmax = 1.000, xmin = 0.300, xmax = 0.700, ymin = 0.000, ymax = 1.000 },
-  },
-  ["industry_01_42"] = {
-    [1] = { zmin = 0.110, zmax = 1.000, xmin = 0.300, xmax = 0.700, ymin = 0.100, ymax = 1.000 },
-  },
-  ["industry_01_43"] = {
-    [1] = { zmin = 0.110, zmax = 1.000, xmin = 0.200, xmax = 1.000, ymin = 0.300, ymax = 0.700 },
-  },
-  ["industry_01_44"] = {
-    [1] = { zmin = 0.110, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.300, ymax = 0.700 },
-  },
-  ["industry_01_45"] = {
-    [1] = { zmin = 0.110, zmax = 1.000, xmin = 0.000, xmax = 0.800, ymin = 0.300, ymax = 0.700 },
-  },
-  ["industry_01_50"] = {
-    [1] = { zmin = 0.375, zmax = 1.000, xmin = 0.320, xmax = 1.000, ymin = 0.000, ymax = 0.900 },
-  },
-  ["industry_01_51"] = {
-    [1] = { zmin = 0.375, zmax = 1.000, xmin = 0.320, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["industry_01_52"] = {
-    [1] = { zmin = 0.375, zmax = 1.000, xmin = 0.320, xmax = 1.000, ymin = 0.250, ymax = 1.000 },
-  },
-  ["industry_01_53"] = {
-    [1] = { zmin = 0.375, zmax = 1.000, xmin = 0.250, xmax = 1.000, ymin = 0.320, ymax = 1.000 },
-  },
-  ["industry_01_54"] = {
-    [1] = { zmin = 0.375, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.320, ymax = 1.000 },
-  },
-  ["industry_01_55"] = {
-    [1] = { zmin = 0.375, zmax = 1.000, xmin = 0.000, xmax = 0.900, ymin = 0.320, ymax = 1.000 },
-  },
-  ["industry_02_8"] = {
-    [1] = { zmin = 0.906, zmax = 1.000, xmin = 0.050, xmax = 0.500, ymin = 0.200, ymax = 0.800 },
-  },
-  ["industry_02_9"] = {
-    [1] = { zmin = 0.906, zmax = 1.000, xmin = 0.200, xmax = 0.800, ymin = 0.050, ymax = 0.550 },
-  },
-  ["industry_02_10"] = {
-    [1] = { zmin = 0.906, zmax = 1.000, xmin = 0.500, xmax = 1.000, ymin = 0.200, ymax = 0.800 },
-  },
-  ["industry_02_11"] = {
-    [1] = { zmin = 0.906, zmax = 1.000, xmin = 0.200, xmax = 0.800, ymin = 0.500, ymax = 1.000 },
-  },
-  ["industry_02_20"] = {
-    [1] = { zmin = 0.069, zmax = 1.000, xmin = 0.150, xmax = 0.350, ymin = 0.000, ymax = 1.000 },
-  },
-  ["industry_02_21"] = {
-    [1] = { zmin = 0.069, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.150, ymax = 0.380 },
-  },
   ["industry_02_40"] = {
     [1] = { zmin = 0.352, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.118, ymax = 0.873 },
   },
@@ -4623,35 +3336,17 @@ local Surfaces = {
   ["industry_02_51"] = {
     [1] = { zmin = 0.853, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
   },
-  ["industry_02_52"] = {
-    [1] = { zmin = 0.559, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.050, ymax = 1.000 },
-  },
-  ["industry_02_53"] = {
-    [1] = { zmin = 0.559, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
   ["industry_02_54"] = {
     [1] = { zmin = 0.853, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
   },
   ["industry_02_55"] = {
     [1] = { zmin = 0.853, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
   },
-  ["industry_02_57"] = {
-    [1] = { zmin = 0.669, zmax = 1.000, xmin = 0.220, xmax = 0.780, ymin = 0.150, ymax = 0.900 },
-  },
-  ["industry_02_58"] = {
-    [1] = { zmin = 0.669, zmax = 1.000, xmin = 0.150, xmax = 0.900, ymin = 0.220, ymax = 0.780 },
-  },
   ["industry_02_62"] = {
     [1] = { zmin = 0.824, zmax = 1.000, xmin = 0.050, xmax = 0.850, ymin = 0.000, ymax = 0.500 },
   },
   ["industry_02_63"] = {
     [1] = { zmin = 0.824, zmax = 1.000, xmin = 0.000, xmax = 0.500, ymin = 0.050, ymax = 0.850 },
-  },
-  ["industry_02_72"] = {
-    [1] = { zmin = 0.212, zmax = 1.000, xmin = 0.400, xmax = 0.600, ymin = 0.500, ymax = 0.800 },
-  },
-  ["industry_02_75"] = {
-    [1] = { zmin = 0.212, zmax = 1.000, xmin = 0.500, xmax = 0.800, ymin = 0.400, ymax = 0.600 },
   },
   ["industry_02_136"] = {
     [1] = { zmin = 0.352, zmax = 1.000, xmin = 0.000, xmax = 0.882, ymin = 0.000, ymax = 0.873 },
@@ -4665,80 +3360,11 @@ local Surfaces = {
   ["industry_02_139"] = {
     [1] = { zmin = 0.352, zmax = 1.000, xmin = 0.000, xmax = 0.999, ymin = 0.000, ymax = 0.999 },
   },
-  ["industry_02_140"] = {
-    [1] = { zmin = 0.151, zmax = 1.000, xmin = 0.222, xmax = 0.677, ymin = 0.000, ymax = 1.000 },
-  },
-  ["industry_02_141"] = {
-    [1] = { zmin = 0.151, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.212, ymax = 0.667 },
-  },
-  ["industry_02_150"] = {
-    [1] = { zmin = 0.175, zmax = 1.000, xmin = 0.000, xmax = 0.992, ymin = 0.000, ymax = 0.985 },
-  },
   ["industry_02_152"] = {
     [1] = { zmin = 0.355, zmax = 1.000, xmin = 0.100, xmax = 0.900, ymin = 0.000, ymax = 1.000 },
   },
   ["industry_02_153"] = {
     [1] = { zmin = 0.355, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.100, ymax = 0.900 },
-  },
-  ["industry_02_156"] = {
-    [1] = { zmin = 0.824, zmax = 1.000, xmin = 0.300, xmax = 0.850, ymin = 0.150, ymax = 0.700 },
-  },
-  ["industry_02_157"] = {
-    [1] = { zmin = 0.824, zmax = 1.000, xmin = 0.000, xmax = 0.850, ymin = 0.300, ymax = 0.700 },
-  },
-  ["industry_02_158"] = {
-    [1] = { zmin = 0.824, zmax = 1.000, xmin = 0.300, xmax = 0.700, ymin = 0.000, ymax = 1.000 },
-  },
-  ["industry_02_159"] = {
-    [1] = { zmin = 0.824, zmax = 1.000, xmin = 0.150, xmax = 0.700, ymin = 0.300, ymax = 0.850 },
-  },
-  ["industry_02_160"] = {
-    [1] = { zmin = 0.877, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["industry_02_161"] = {
-    [1] = { zmin = 0.874, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["industry_02_163"] = {
-    [1] = { zmin = 0.874, zmax = 1.000, xmin = 0.000, xmax = 0.563, ymin = 0.000, ymax = 1.000 },
-  },
-  ["industry_02_165"] = {
-    [1] = { zmin = 0.881, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.057, ymax = 0.563 },
-  },
-  ["industry_02_167"] = {
-    [1] = { zmin = 0.874, zmax = 1.000, xmin = 0.000, xmax = 0.938, ymin = 0.000, ymax = 1.000 },
-  },
-  ["industry_02_168"] = {
-    [1] = { zmin = 0.881, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.057, ymax = 0.563 },
-  },
-  ["industry_02_169"] = {
-    [1] = { zmin = 0.881, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.057, ymax = 0.563 },
-  },
-  ["industry_02_170"] = {
-    [1] = { zmin = 0.881, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.057, ymax = 0.563 },
-  },
-  ["industry_02_171"] = {
-    [1] = { zmin = 0.874, zmax = 1.000, xmin = 0.000, xmax = 0.563, ymin = 0.000, ymax = 1.000 },
-  },
-  ["industry_02_172"] = {
-    [1] = { zmin = 0.874, zmax = 1.000, xmin = 0.000, xmax = 0.563, ymin = 0.000, ymax = 1.000 },
-  },
-  ["industry_02_173"] = {
-    [1] = { zmin = 0.874, zmax = 1.000, xmin = 0.000, xmax = 0.563, ymin = 0.000, ymax = 1.000 },
-  },
-  ["industry_02_175"] = {
-    [1] = { zmin = 0.874, zmax = 1.000, xmin = 0.000, xmax = 0.563, ymin = 0.000, ymax = 0.551 },
-  },
-  ["industry_02_248"] = {
-    [1] = { zmin = 0.165, zmax = 1.000, xmin = 0.047, xmax = 0.247, ymin = 0.000, ymax = 0.472 },
-  },
-  ["industry_02_249"] = {
-    [1] = { zmin = 0.165, zmax = 1.000, xmin = 0.047, xmax = 0.342, ymin = 0.047, ymax = 0.246 },
-  },
-  ["industry_02_252"] = {
-    [1] = { zmin = 0.165, zmax = 1.000, xmin = 0.083, xmax = 0.282, ymin = 0.000, ymax = 0.295 },
-  },
-  ["industry_02_253"] = {
-    [1] = { zmin = 0.176, zmax = 1.000, xmin = 0.113, xmax = 0.487, ymin = 0.048, ymax = 0.247 },
   },
   ["industry_02_264"] = {
     [1] = { zmin = 0.705, zmax = 1.000, xmin = 0.787, xmax = 0.990, ymin = 0.334, ymax = 0.507 },
@@ -4769,97 +3395,6 @@ local Surfaces = {
     [1] = { zmin = 0.028, zmax = 0.351, xmin = 0.183, xmax = 0.826, ymin = 0.188, ymax = 0.812 },
     [2] = { zmin = 0.379, zmax = 0.529, xmin = 0.223, xmax = 0.730, ymin = 0.293, ymax = 0.709 },
     [3] = { zmin = 0.699, zmax = 1.000, xmin = 0.159, xmax = 0.747, ymin = 0.326, ymax = 0.675 },
-  },
-  ["industry_03_24"] = {
-    [1] = { zmin = 0.028, zmax = 1.000, xmin = 0.200, xmax = 0.500, ymin = 0.200, ymax = 0.800 },
-    [2] = { zmin = 0.355, zmax = 1.000, xmin = 0.050, xmax = 0.200, ymin = 0.200, ymax = 0.800 },
-  },
-  ["industry_03_25"] = {
-    [1] = { zmin = 0.028, zmax = 1.000, xmin = 0.200, xmax = 0.800, ymin = 0.200, ymax = 0.500 },
-    [2] = { zmin = 0.355, zmax = 1.000, xmin = 0.200, xmax = 0.900, ymin = 0.050, ymax = 0.200 },
-  },
-  ["industry_03_26"] = {
-    [1] = { zmin = 0.028, zmax = 1.000, xmin = 0.200, xmax = 0.800, ymin = 0.500, ymax = 0.850 },
-    [2] = { zmin = 0.355, zmax = 1.000, xmin = 0.100, xmax = 0.800, ymin = 0.850, ymax = 1.000 },
-  },
-  ["industry_03_27"] = {
-    [1] = { zmin = 0.028, zmax = 1.000, xmin = 0.500, xmax = 1.000, ymin = 0.200, ymax = 0.800 },
-    [2] = { zmin = 0.355, zmax = 1.000, xmin = 0.850, xmax = 1.000, ymin = 0.200, ymax = 0.800 },
-  },
-  ["industry_03_32"] = {
-    [1] = { zmin = 0.743, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["industry_03_48"] = {
-    [1] = { zmin = 0.722, zmax = 1.000, xmin = 0.150, xmax = 1.000, ymin = 0.050, ymax = 1.000 },
-  },
-  ["industry_03_49"] = {
-    [1] = { zmin = 0.722, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.150, ymax = 1.000 },
-  },
-  ["industry_03_50"] = {
-    [1] = { zmin = 0.763, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.050, ymax = 1.000 },
-  },
-  ["industry_03_51"] = {
-    [1] = { zmin = 0.763, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.050, ymax = 0.850 },
-  },
-  ["industry_03_64"] = {
-    [1] = { zmin = 0.028, zmax = 1.000, xmin = 0.200, xmax = 0.500, ymin = 0.200, ymax = 0.800 },
-    [2] = { zmin = 0.355, zmax = 1.000, xmin = 0.050, xmax = 0.200, ymin = 0.200, ymax = 0.800 },
-  },
-  ["industry_03_65"] = {
-    [1] = { zmin = 0.028, zmax = 1.000, xmin = 0.200, xmax = 0.800, ymin = 0.200, ymax = 0.500 },
-    [2] = { zmin = 0.355, zmax = 1.000, xmin = 0.200, xmax = 0.800, ymin = 0.050, ymax = 0.200 },
-  },
-  ["industry_03_66"] = {
-    [1] = { zmin = 0.028, zmax = 1.000, xmin = 0.200, xmax = 0.800, ymin = 0.500, ymax = 0.850 },
-    [2] = { zmin = 0.355, zmax = 1.000, xmin = 0.200, xmax = 0.800, ymin = 0.850, ymax = 1.000 },
-  },
-  ["industry_03_67"] = {
-    [1] = { zmin = 0.028, zmax = 1.000, xmin = 0.500, xmax = 1.000, ymin = 0.200, ymax = 0.800 },
-    [2] = { zmin = 0.355, zmax = 1.000, xmin = 0.850, xmax = 1.000, ymin = 0.200, ymax = 0.800 },
-  },
-  ["industry_03_68"] = {
-    [1] = { zmin = 0.028, zmax = 1.000, xmin = 0.200, xmax = 0.500, ymin = 0.200, ymax = 0.800 },
-    [2] = { zmin = 0.355, zmax = 1.000, xmin = 0.050, xmax = 0.200, ymin = 0.200, ymax = 0.800 },
-  },
-  ["industry_03_69"] = {
-    [1] = { zmin = 0.028, zmax = 1.000, xmin = 0.200, xmax = 0.800, ymin = 0.200, ymax = 0.500 },
-    [2] = { zmin = 0.355, zmax = 1.000, xmin = 0.200, xmax = 0.800, ymin = 0.050, ymax = 0.200 },
-  },
-  ["industry_03_70"] = {
-    [1] = { zmin = 0.028, zmax = 1.000, xmin = 0.200, xmax = 0.800, ymin = 0.500, ymax = 0.850 },
-    [2] = { zmin = 0.355, zmax = 1.000, xmin = 0.200, xmax = 0.800, ymin = 0.850, ymax = 1.000 },
-  },
-  ["industry_03_71"] = {
-    [1] = { zmin = 0.028, zmax = 1.000, xmin = 0.500, xmax = 1.000, ymin = 0.200, ymax = 0.800 },
-    [2] = { zmin = 0.355, zmax = 1.000, xmin = 0.850, xmax = 1.000, ymin = 0.200, ymax = 0.800 },
-  },
-  ["industry_03_72"] = {
-    [1] = { zmin = 0.028, zmax = 1.000, xmin = 0.200, xmax = 0.500, ymin = 0.200, ymax = 0.800 },
-    [2] = { zmin = 0.355, zmax = 1.000, xmin = 0.050, xmax = 0.200, ymin = 0.200, ymax = 0.800 },
-  },
-  ["industry_03_73"] = {
-    [1] = { zmin = 0.028, zmax = 1.000, xmin = 0.200, xmax = 0.800, ymin = 0.200, ymax = 0.500 },
-    [2] = { zmin = 0.355, zmax = 1.000, xmin = 0.200, xmax = 0.800, ymin = 0.050, ymax = 0.200 },
-  },
-  ["industry_03_74"] = {
-    [1] = { zmin = 0.028, zmax = 1.000, xmin = 0.200, xmax = 0.800, ymin = 0.500, ymax = 0.850 },
-    [2] = { zmin = 0.355, zmax = 1.000, xmin = 0.200, xmax = 0.800, ymin = 0.850, ymax = 1.000 },
-  },
-  ["industry_03_75"] = {
-    [1] = { zmin = 0.028, zmax = 1.000, xmin = 0.500, xmax = 1.000, ymin = 0.200, ymax = 0.800 },
-    [2] = { zmin = 0.355, zmax = 1.000, xmin = 0.850, xmax = 1.000, ymin = 0.200, ymax = 0.800 },
-  },
-  ["industry_03_76"] = {
-    [1] = { zmin = 0.457, zmax = 1.000, xmin = 0.500, xmax = 1.000, ymin = 0.200, ymax = 0.600 },
-  },
-  ["industry_03_77"] = {
-    [1] = { zmin = 0.477, zmax = 1.000, xmin = 0.000, xmax = 0.400, ymin = 0.200, ymax = 0.700 },
-  },
-  ["industry_03_78"] = {
-    [1] = { zmin = 0.457, zmax = 1.000, xmin = 0.200, xmax = 0.650, ymin = 0.500, ymax = 1.000 },
-  },
-  ["industry_03_79"] = {
-    [1] = { zmin = 0.457, zmax = 1.000, xmin = 0.200, xmax = 0.700, ymin = 0.000, ymax = 0.400 },
   },
   ["industry_03_80"] = {
     [1] = { zmin = 0.347, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.000, ymax = 0.950 },
@@ -4897,132 +3432,11 @@ local Surfaces = {
   ["industry_03_91"] = {
     [1] = { zmin = 0.347, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.050, ymax = 1.000 },
   },
-  ["industry_04_0"] = {
-    [1] = { zmin = 0.343, zmax = 1.000, xmin = 0.050, xmax = 0.950, ymin = 0.000, ymax = 1.000 },
-  },
-  ["industry_04_16"] = {
-    [1] = { zmin = 0.559, zmax = 1.000, xmin = 0.250, xmax = 0.700, ymin = 0.400, ymax = 1.000 },
-  },
-  ["industry_04_17"] = {
-    [1] = { zmin = 0.559, zmax = 1.000, xmin = 0.400, xmax = 1.000, ymin = 0.250, ymax = 0.700 },
-  },
-  ["industry_04_18"] = {
-    [1] = { zmin = 0.559, zmax = 1.000, xmin = 0.300, xmax = 0.750, ymin = 0.400, ymax = 1.000 },
-  },
-  ["industry_04_19"] = {
-    [1] = { zmin = 0.559, zmax = 1.000, xmin = 0.400, xmax = 1.000, ymin = 0.300, ymax = 0.750 },
-  },
-  ["industry_04_20"] = {
-    [1] = { zmin = 0.518, zmax = 1.000, xmin = 0.100, xmax = 0.650, ymin = 0.550, ymax = 0.950 },
-  },
-  ["industry_04_21"] = {
-    [1] = { zmin = 0.518, zmax = 1.000, xmin = 0.600, xmax = 0.950, ymin = 0.100, ymax = 0.750 },
-  },
-  ["industry_04_22"] = {
-    [1] = { zmin = 0.518, zmax = 1.000, xmin = 0.300, xmax = 0.750, ymin = 0.050, ymax = 0.650 },
-  },
-  ["industry_04_23"] = {
-    [1] = { zmin = 0.518, zmax = 1.000, xmin = 0.050, xmax = 0.650, ymin = 0.200, ymax = 0.700 },
-  },
-  ["industry_railroad_01_0"] = {
-    [1] = { zmin = 0.032, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["industry_railroad_05_0"] = {
-    [1] = { zmin = 0.037, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["industry_railroad_05_48"] = {
-    [1] = { zmin = 0.054, zmax = 0.628, xmin = 0.418, xmax = 0.616, ymin = 0.375, ymax = 0.710 },
-  },
-  ["industry_railroad_05_49"] = {
-    [1] = { zmin = 0.054, zmax = 0.628, xmin = 0.363, xmax = 0.697, ymin = 0.401, ymax = 0.599 },
-  },
-  ["industry_railroad_05_50"] = {
-    [1] = { zmin = 0.054, zmax = 1.000, xmin = 0.415, xmax = 0.612, ymin = 0.378, ymax = 0.712 },
-    [2] = { zmin = 0.636, zmax = 0.671, xmin = 0.222, xmax = 0.412, ymin = 0.222, ymax = 0.614 },
-  },
-  ["industry_railroad_05_51"] = {
-    [1] = { zmin = 0.054, zmax = 0.554, xmin = 0.363, xmax = 0.697, ymin = 0.401, ymax = 0.599 },
-  },
-  ["lighting_indoor_02_60"] = {
-    [1] = { zmin = 0.865, zmax = 1.000, xmin = 0.050, xmax = 0.550, ymin = 0.200, ymax = 0.800 },
-  },
-  ["lighting_indoor_02_61"] = {
-    [1] = { zmin = 0.865, zmax = 1.000, xmin = 0.200, xmax = 0.800, ymin = 0.050, ymax = 0.550 },
-  },
-  ["lighting_indoor_02_62"] = {
-    [1] = { zmin = 0.886, zmax = 1.000, xmin = 0.300, xmax = 1.000, ymin = 0.200, ymax = 0.700 },
-  },
-  ["lighting_indoor_02_63"] = {
-    [1] = { zmin = 0.886, zmax = 1.000, xmin = 0.200, xmax = 0.750, ymin = 0.300, ymax = 1.000 },
-  },
-  ["lighting_indoor_02_72"] = {
-    [1] = { zmin = 0.947, zmax = 1.000, xmin = 0.050, xmax = 0.200, ymin = 0.200, ymax = 0.800 },
-  },
-  ["lighting_indoor_02_73"] = {
-    [1] = { zmin = 0.947, zmax = 1.000, xmin = 0.200, xmax = 0.800, ymin = 0.050, ymax = 0.200 },
-  },
-  ["lighting_indoor_02_74"] = {
-    [1] = { zmin = 0.947, zmax = 1.000, xmin = 0.200, xmax = 0.800, ymin = 0.850, ymax = 1.000 },
-  },
-  ["lighting_indoor_02_75"] = {
-    [1] = { zmin = 0.947, zmax = 1.000, xmin = 0.850, xmax = 1.000, ymin = 0.200, ymax = 0.800 },
-  },
-  ["lighting_indoor_03_5"] = {
-    [1] = { zmin = 0.722, zmax = 1.000, xmin = 0.200, xmax = 0.800, ymin = 0.200, ymax = 0.800 },
-  },
-  ["lighting_indoor_03_8"] = {
-    [1] = { zmin = 0.906, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["lighting_indoor_03_11"] = {
-    [1] = { zmin = 0.947, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.430, ymax = 0.750 },
-  },
-  ["lighting_outdoor_01_12"] = {
-    [1] = { zmin = 0.906, zmax = 1.000, xmin = 0.000, xmax = 0.500, ymin = 0.400, ymax = 0.600 },
-  },
-  ["lighting_outdoor_01_13"] = {
-    [1] = { zmin = 0.906, zmax = 1.000, xmin = 0.400, xmax = 0.600, ymin = 0.500, ymax = 1.000 },
-  },
-  ["lighting_outdoor_01_14"] = {
-    [1] = { zmin = 0.906, zmax = 1.000, xmin = 0.500, xmax = 1.000, ymin = 0.400, ymax = 0.600 },
-  },
-  ["lighting_outdoor_01_15"] = {
-    [1] = { zmin = 0.906, zmax = 1.000, xmin = 0.400, xmax = 0.600, ymin = 0.000, ymax = 0.500 },
-  },
-  ["lighting_outdoor_01_53"] = {
-    [1] = { zmin = 0.906, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.300, ymax = 0.700 },
-  },
-  ["lighting_outdoor_01_54"] = {
-    [1] = { zmin = 0.906, zmax = 1.000, xmin = 0.300, xmax = 0.700, ymin = 0.000, ymax = 1.000 },
-  },
-  ["lighting_outdoor_01_63"] = {
-    [1] = { zmin = 0.824, zmax = 1.000, xmin = 0.000, xmax = 0.500, ymin = 0.400, ymax = 0.620 },
-  },
-  ["lighting_outdoor_01_64"] = {
-    [1] = { zmin = 0.927, zmax = 1.000, xmin = 0.400, xmax = 0.600, ymin = 0.000, ymax = 0.500 },
-  },
-  ["lighting_outdoor_01_72"] = {
-    [1] = { zmin = 0.682, zmax = 1.000, xmin = 0.500, xmax = 1.000, ymin = 0.400, ymax = 0.600 },
-  },
-  ["lighting_outdoor_01_87"] = {
-    [1] = { zmin = 0.661, zmax = 1.000, xmin = 0.400, xmax = 0.600, ymin = 0.500, ymax = 1.000 },
-  },
   ["location_business_bank_01_28"] = {
     [1] = { zmin = 0.588, zmax = 1.000, xmin = 0.300, xmax = 0.500, ymin = 0.400, ymax = 1.000 },
   },
   ["location_business_bank_01_31"] = {
     [1] = { zmin = 0.588, zmax = 1.000, xmin = 0.400, xmax = 1.000, ymin = 0.300, ymax = 0.500 },
-  },
-  ["location_business_bank_01_42"] = {
-    [1] = { zmin = 0.865, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.050, ymax = 0.550 },
-  },
-  ["location_business_bank_01_43"] = {
-    [1] = { zmin = 0.865, zmax = 1.000, xmin = 0.050, xmax = 0.550, ymin = 0.050, ymax = 1.000 },
-  },
-  ["location_business_bank_01_44"] = {
-    [1] = { zmin = 0.865, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.500, ymax = 1.000 },
-  },
-  ["location_business_bank_01_45"] = {
-    [1] = { zmin = 0.865, zmax = 1.000, xmin = 0.500, xmax = 1.000, ymin = 0.050, ymax = 1.000 },
   },
   ["location_business_bank_01_48"] = {
     [1] = { zmin = 0.404, zmax = 1.000, xmin = 0.100, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
@@ -5048,12 +3462,6 @@ local Surfaces = {
   ["location_business_bank_01_55"] = {
     [1] = { zmin = 0.404, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.100, ymax = 1.000 },
   },
-  ["location_business_bank_01_64"] = {
-    [1] = { zmin = 0.824, zmax = 1.000, xmin = 0.050, xmax = 0.650, ymin = 0.100, ymax = 0.900 },
-  },
-  ["location_business_bank_01_65"] = {
-    [1] = { zmin = 0.824, zmax = 1.000, xmin = 0.100, xmax = 0.900, ymin = 0.050, ymax = 0.650 },
-  },
   ["location_business_bank_01_68"] = {
     [1] = { zmin = 0.457, zmax = 1.000, xmin = 0.100, xmax = 0.650, ymin = 0.050, ymax = 0.900 },
   },
@@ -5068,27 +3476,6 @@ local Surfaces = {
   },
   ["location_business_distillery_01_0"] = {
     [1] = { zmin = 0.759, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.050, ymax = 1.000 },
-  },
-  ["location_business_distillery_01_13"] = {
-    [1] = { zmin = 0.539, zmax = 1.000, xmin = 0.100, xmax = 0.700, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_business_distillery_01_28"] = {
-    [1] = { zmin = 0.845, zmax = 1.000, xmin = 0.500, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_business_machinery_01_0"] = {
-    [1] = { zmin = 0.034, zmax = 1.000, xmin = 0.079, xmax = 0.626, ymin = 0.000, ymax = 0.734 },
-  },
-  ["location_business_machinery_01_2"] = {
-    [1] = { zmin = 0.032, zmax = 0.933, xmin = 0.256, xmax = 0.640, ymin = 0.217, ymax = 0.507 },
-  },
-  ["location_business_machinery_01_3"] = {
-    [1] = { zmin = 0.020, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_business_machinery_01_11"] = {
-    [1] = { zmin = 0.039, zmax = 0.929, xmin = 0.202, xmax = 0.513, ymin = 0.290, ymax = 0.776 },
-  },
-  ["location_business_machinery_01_13"] = {
-    [1] = { zmin = 0.029, zmax = 1.000, xmin = 0.114, xmax = 0.810, ymin = 0.140, ymax = 0.688 },
   },
   ["location_business_machinery_01_16"] = {
     [1] = { zmin = 0.294, zmax = 1.000, xmin = 0.150, xmax = 1.000, ymin = 0.000, ymax = 0.850 },
@@ -5125,18 +3512,6 @@ local Surfaces = {
   },
   ["location_business_machinery_01_35"] = {
     [1] = { zmin = 0.362, zmax = 1.000, xmin = 0.202, xmax = 0.805, ymin = 0.056, ymax = 0.952 },
-  },
-  ["location_business_machinery_01_40"] = {
-    [1] = { zmin = 0.212, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.050, ymax = 1.000 },
-  },
-  ["location_business_machinery_01_42"] = {
-    [1] = { zmin = 0.314, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.050, ymax = 1.000 },
-  },
-  ["location_business_machinery_01_44"] = {
-    [1] = { zmin = 0.416, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.050, ymax = 1.000 },
-  },
-  ["location_business_machinery_01_48"] = {
-    [1] = { zmin = 0.110, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.050, ymax = 1.000 },
   },
   ["location_business_office_generic_01_0"] = {
     [1] = { zmin = 0.347, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.000, ymax = 0.950 },
@@ -5191,18 +3566,6 @@ local Surfaces = {
   },
   ["location_business_office_generic_01_47"] = {
     [1] = { zmin = 0.352 },
-  },
-  ["location_business_office_generic_01_48"] = {
-    [1] = { zmin = 0.620, zmax = 1.000, xmin = 0.050, xmax = 0.550, ymin = 0.300, ymax = 0.750 },
-  },
-  ["location_business_office_generic_01_49"] = {
-    [1] = { zmin = 0.620, zmax = 1.000, xmin = 0.300, xmax = 0.750, ymin = 0.050, ymax = 0.550 },
-  },
-  ["location_business_office_generic_01_56"] = {
-    [1] = { zmin = 0.620, zmax = 1.000, xmin = 0.450, xmax = 0.950, ymin = 0.300, ymax = 0.750 },
-  },
-  ["location_business_office_generic_01_57"] = {
-    [1] = { zmin = 0.620, zmax = 1.000, xmin = 0.300, xmax = 0.750, ymin = 0.450, ymax = 0.950 },
   },
   ["location_business_office_generic_01_72"] = {
     [1] = { zmin = 0.352 },
@@ -5300,63 +3663,6 @@ local Surfaces = {
   ["location_business_office_generic_01_229"] = {
     [1] = { zmin = 0.352 },
   },
-  ["location_business_office_generic_02_0"] = {
-    [1] = { zmin = 0.416, zmax = 1.000, xmin = 0.050, xmax = 0.650, ymin = 0.190, ymax = 0.940 },
-  },
-  ["location_business_office_generic_02_1"] = {
-    [1] = { zmin = 0.416, zmax = 1.000, xmin = 0.194, xmax = 0.844, ymin = 0.048, ymax = 0.648 },
-  },
-  ["location_business_office_generic_02_2"] = {
-    [1] = { zmin = 0.416, zmax = 1.000, xmin = 0.396, xmax = 0.996, ymin = 0.196, ymax = 0.846 },
-  },
-  ["location_business_office_generic_02_3"] = {
-    [1] = { zmin = 0.416, zmax = 1.000, xmin = 0.216, xmax = 0.866, ymin = 0.398, ymax = 0.998 },
-  },
-  ["location_business_office_generic_02_16"] = {
-    [1] = { zmin = 0.375, zmax = 1.000, xmin = 0.300, xmax = 0.900, ymin = 0.100, ymax = 1.000 },
-  },
-  ["location_business_office_generic_02_17"] = {
-    [1] = { zmin = 0.375, zmax = 1.000, xmin = 0.000, xmax = 0.900, ymin = 0.250, ymax = 0.850 },
-  },
-  ["location_business_office_generic_02_18"] = {
-    [1] = { zmin = 0.375, zmax = 1.000, xmin = 0.300, xmax = 0.900, ymin = 0.000, ymax = 0.900 },
-  },
-  ["location_business_office_generic_02_19"] = {
-    [1] = { zmin = 0.375, zmax = 1.000, xmin = 0.100, xmax = 1.000, ymin = 0.300, ymax = 0.900 },
-  },
-  ["location_community_cemetary_01_0"] = {
-    [1] = { zmin = 0.358, zmax = 1.000, xmin = 0.257, xmax = 0.797, ymin = 0.593, ymax = 0.804 },
-  },
-  ["location_community_cemetary_01_1"] = {
-    [1] = { zmin = 0.358, zmax = 1.000, xmin = 0.593, xmax = 0.804, ymin = 0.258, ymax = 0.798 },
-  },
-  ["location_community_cemetary_01_2"] = {
-    [1] = { zmin = 0.358, zmax = 1.000, xmin = 0.254, xmax = 0.795, ymin = 0.622, ymax = 0.833 },
-  },
-  ["location_community_cemetary_01_3"] = {
-    [1] = { zmin = 0.358, zmax = 1.000, xmin = 0.622, xmax = 0.833, ymin = 0.258, ymax = 0.798 },
-  },
-  ["location_community_cemetary_01_4"] = {
-    [1] = { zmin = 0.358, zmax = 1.000, xmin = 0.246, xmax = 0.787, ymin = 0.679, ymax = 0.890 },
-  },
-  ["location_community_cemetary_01_5"] = {
-    [1] = { zmin = 0.358, zmax = 1.000, xmin = 0.676, xmax = 0.887, ymin = 0.214, ymax = 0.754 },
-  },
-  ["location_community_cemetary_01_8"] = {
-    [1] = { zmin = 0.294, zmax = 1.000, xmin = 0.244, xmax = 0.831, ymin = 0.500, ymax = 0.791 },
-  },
-  ["location_community_cemetary_01_9"] = {
-    [1] = { zmin = 0.294, zmax = 1.000, xmin = 0.500, xmax = 0.791, ymin = 0.244, ymax = 0.831 },
-  },
-  ["location_community_cemetary_01_30"] = {
-    [1] = { zmin = 0.212, zmax = 1.000, xmin = 0.100, xmax = 0.900, ymin = 0.100, ymax = 0.900 },
-  },
-  ["location_community_church_small_01_44"] = {
-    [1] = { zmin = 0.045, zmax = 1.000, xmin = 0.206, xmax = 0.741, ymin = 0.288, ymax = 0.572 },
-  },
-  ["location_community_church_small_01_45"] = {
-    [1] = { zmin = 0.045, zmax = 1.000, xmin = 0.288, xmax = 0.572, ymin = 0.211, ymax = 0.746 },
-  },
   ["location_community_church_small_01_48"] = {
     [1] = { zmin = 0.224, zmax = 1.000, xmin = 0.000, xmax = 0.758, ymin = 0.000, ymax = 0.835 },
   },
@@ -5380,9 +3686,6 @@ local Surfaces = {
   },
   ["location_community_church_small_01_58"] = {
     [1] = { zmin = 0.404, zmax = 1.000, xmin = 0.768, xmax = 0.997, ymin = 0.306, ymax = 0.798 },
-  },
-  ["location_community_church_small_01_87"] = {
-    [1] = { zmin = 0.268, zmax = 1.000, xmin = 0.243, xmax = 0.805, ymin = 0.273, ymax = 0.826 },
   },
   ["location_community_church_small_01_91"] = {
     [1] = { zmin = 0.208, zmax = 1.000, xmin = 0.054, xmax = 0.947, ymin = 0.192, ymax = 0.641 },
@@ -5432,12 +3735,6 @@ local Surfaces = {
   ["location_community_medical_01_7"] = {
     [1] = { zmin = 0.314, zmax = 1.000, xmin = 0.001, xmax = 0.761, ymin = 0.185, ymax = 0.887 },
   },
-  ["location_community_medical_01_8"] = {
-    [1] = { zmin = 0.049, zmax = 1.000, xmin = 0.186, xmax = 0.574, ymin = 0.179, ymax = 0.640 },
-  },
-  ["location_community_medical_01_9"] = {
-    [1] = { zmin = 0.049, zmax = 1.000, xmin = 0.262, xmax = 0.723, ymin = 0.202, ymax = 0.590 },
-  },
   ["location_community_medical_01_16"] = {
     [1] = { zmin = 0.262, zmax = 1.000, xmin = 0.000, xmax = 0.882, ymin = 0.000, ymax = 0.916 },
   },
@@ -5461,18 +3758,6 @@ local Surfaces = {
   },
   ["location_community_medical_01_23"] = {
     [1] = { zmin = 0.273, zmax = 1.000, xmin = 0.000, xmax = 0.932, ymin = 0.028, ymax = 0.949 },
-  },
-  ["location_community_medical_01_24"] = {
-    [1] = { zmin = 0.058, zmax = 0.415, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_community_medical_01_25"] = {
-    [1] = { zmin = 0.058, zmax = 0.440, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_community_medical_01_26"] = {
-    [1] = { zmin = 0.058, zmax = 0.423, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_community_medical_01_27"] = {
-    [1] = { zmin = 0.058, zmax = 0.440, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
   },
   ["location_community_medical_01_32"] = {
     [1] = { zmin = 0.303, zmax = 1.000, xmin = 0.062, xmax = 0.776, ymin = 0.000, ymax = 0.867 },
@@ -5516,43 +3801,6 @@ local Surfaces = {
   ["location_community_medical_01_53"] = {
     [1] = { zmin = 0.137, zmax = 1.000, xmin = 0.051, xmax = 0.864, ymin = 0.104, ymax = 0.692 },
   },
-  ["location_community_medical_01_54"] = {
-    [1] = { zmin = 0.792, zmax = 1.000, xmin = 0.050, xmax = 0.200, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_community_medical_01_55"] = {
-    [1] = { zmin = 0.784, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.050, ymax = 0.200 },
-  },
-  ["location_community_medical_01_56"] = {
-    [1] = { zmin = 0.158, zmax = 1.000, xmin = 0.171, xmax = 0.599, ymin = 0.044, ymax = 0.567 },
-  },
-  ["location_community_medical_01_57"] = {
-    [1] = { zmin = 0.158, zmax = 1.000, xmin = 0.171, xmax = 0.599, ymin = 0.336, ymax = 0.859 },
-  },
-  ["location_community_medical_01_58"] = {
-    [1] = { zmin = 0.158, zmax = 1.000, xmin = 0.253, xmax = 0.776, ymin = 0.171, ymax = 0.599 },
-    [2] = { zmin = 0.363, zmax = 1.000, xmin = 0.212, xmax = 0.734, ymin = 0.000, ymax = 0.131 },
-  },
-  ["location_community_medical_01_59"] = {
-    [1] = { zmin = 0.158, zmax = 1.000, xmin = 0.002, xmax = 0.524, ymin = 0.210, ymax = 0.638 },
-    [2] = { zmin = 0.363, zmax = 1.000, xmin = 0.003, xmax = 0.525, ymin = 0.037, ymax = 0.187 },
-  },
-  ["location_community_medical_01_60"] = {
-    [1] = { zmin = 0.158, zmax = 1.000, xmin = 0.039, xmax = 0.467, ymin = 0.025, ymax = 0.548 },
-    [2] = { zmin = 0.363, zmax = 1.000, xmin = 0.472, xmax = 0.622, ymin = 0.003, ymax = 0.525 },
-  },
-  ["location_community_medical_01_61"] = {
-    [1] = { zmin = 0.158, zmax = 1.000, xmin = 0.040, xmax = 0.467, ymin = 0.215, ymax = 0.738 },
-    [2] = { zmin = 0.363, zmax = 1.000, xmin = 0.472, xmax = 0.622, ymin = 0.218, ymax = 0.740 },
-  },
-  ["location_community_medical_01_62"] = {
-    [1] = { zmin = 0.158, zmax = 1.000, xmin = 0.186, xmax = 0.709, ymin = 0.060, ymax = 0.488 },
-    [2] = { zmin = 0.363, zmax = 1.000, xmin = 0.187, xmax = 0.709, ymin = 0.472, ymax = 0.622 },
-  },
-  ["location_community_medical_01_63"] = {
-    [1] = { zmin = 0.158, zmax = 1.000, xmin = 0.000, xmax = 0.519, ymin = 0.040, ymax = 0.579 },
-    [2] = { zmin = 0.232, zmax = 1.000, xmin = 0.000, xmax = 0.000, ymin = 0.000, ymax = 0.492 },
-    [3] = { zmin = 0.326, zmax = 1.000, xmin = 0.000, xmax = 0.442, ymin = 0.469, ymax = 0.619 },
-  },
   ["location_community_medical_01_64"] = {
     [1] = { zmin = 0.340, zmax = 1.000, xmin = 0.037, xmax = 0.958, ymin = 0.241, ymax = 0.798 },
   },
@@ -5582,12 +3830,6 @@ local Surfaces = {
   },
   ["location_community_medical_01_79"] = {
     [1] = { zmin = 0.313, zmax = 1.000, xmin = 0.000, xmax = 0.898, ymin = 0.070, ymax = 1.000 },
-  },
-  ["location_community_medical_01_80"] = {
-    [1] = { zmin = 0.522, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.050, ymax = 0.200 },
-  },
-  ["location_community_medical_01_82"] = {
-    [1] = { zmin = 0.531, zmax = 1.000, xmin = 0.050, xmax = 0.200, ymin = 0.000, ymax = 1.000 },
   },
   ["location_community_medical_01_88"] = {
     [1] = { zmin = 0.702, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.050, ymax = 0.200 },
@@ -5649,138 +3891,6 @@ local Surfaces = {
   ["location_community_medical_01_111"] = {
     [1] = { zmin = 0.854, zmax = 1.000, xmin = 0.271, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
   },
-  ["location_community_medical_01_112"] = {
-    [1] = { zmin = 0.300, zmax = 1.000, xmin = 0.188, xmax = 0.660, ymin = 0.000, ymax = 0.843 },
-  },
-  ["location_community_medical_01_113"] = {
-    [1] = { zmin = 0.339, zmax = 1.000, xmin = 0.154, xmax = 0.627, ymin = 0.475, ymax = 0.916 },
-    [2] = { zmin = 0.421, zmax = 1.000, xmin = 0.163, xmax = 0.636, ymin = 0.021, ymax = 0.340 },
-  },
-  ["location_community_medical_01_114"] = {
-    [1] = { zmin = 0.339, zmax = 1.000, xmin = 0.475, xmax = 0.916, ymin = 0.194, ymax = 0.666 },
-    [2] = { zmin = 0.421, zmax = 1.000, xmin = 0.164, xmax = 0.484, ymin = 0.194, ymax = 0.667 },
-  },
-  ["location_community_medical_01_115"] = {
-    [1] = { zmin = 0.258, zmax = 1.000, xmin = 0.404, xmax = 0.828, ymin = 0.072, ymax = 0.666 },
-    [2] = { zmin = 0.300, zmax = 1.000, xmin = 0.000, xmax = 0.407, ymin = 0.194, ymax = 0.667 },
-  },
-  ["location_community_medical_01_120"] = {
-    [1] = { zmin = 0.049, zmax = 1.000, xmin = 0.426, xmax = 0.814, ymin = 0.310, ymax = 0.771 },
-  },
-  ["location_community_medical_01_121"] = {
-    [1] = { zmin = 0.049, zmax = 1.000, xmin = 0.310, xmax = 0.771, ymin = 0.426, ymax = 0.814 },
-  },
-  ["location_community_medical_01_128"] = {
-    [1] = { zmin = 0.335, zmax = 1.000, xmin = 0.100, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_community_medical_01_129"] = {
-    [1] = { zmin = 0.335, zmax = 1.000, xmin = 0.100, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_community_medical_01_136"] = {
-    [1] = { zmin = 0.620, zmax = 1.000, xmin = 0.350, xmax = 0.750, ymin = 0.250, ymax = 0.800 },
-  },
-  ["location_community_medical_01_137"] = {
-    [1] = { zmin = 0.620, zmax = 1.000, xmin = 0.250, xmax = 0.850, ymin = 0.300, ymax = 0.750 },
-  },
-  ["location_community_medical_01_138"] = {
-    [1] = { zmin = 0.620, zmax = 1.000, xmin = 0.300, xmax = 0.900, ymin = 0.400, ymax = 0.800 },
-  },
-  ["location_community_medical_01_139"] = {
-    [1] = { zmin = 0.620, zmax = 1.000, xmin = 0.450, xmax = 0.830, ymin = 0.400, ymax = 0.950 },
-  },
-  ["location_community_medical_01_182"] = {
-    [1] = { zmin = 0.743, zmax = 1.000, xmin = 0.850, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_community_medical_01_183"] = {
-    [1] = { zmin = 0.743, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.850, ymax = 1.000 },
-  },
-  ["location_community_medical_01_197"] = {
-    [1] = { zmin = 0.335, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.050, ymax = 1.000 },
-  },
-  ["location_community_medical_01_198"] = {
-    [1] = { zmin = 0.335, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.050, ymax = 1.000 },
-  },
-  ["location_community_park_01_2"] = {
-    [1] = { zmin = 0.230, zmax = 0.328, xmin = 0.146, xmax = 0.629, ymin = 0.823, ymax = 1.000 },
-  },
-  ["location_community_park_01_3"] = {
-    [1] = { zmin = 0.233, zmax = 1.000, xmin = 0.287, xmax = 0.770, ymin = 0.823, ymax = 1.000 },
-  },
-  ["location_community_park_01_11"] = {
-    [1] = { zmin = 0.237, zmax = 1.000, xmin = 0.823, xmax = 1.000, ymin = 0.289, ymax = 0.772 },
-  },
-  ["location_community_park_01_12"] = {
-    [1] = { zmin = 0.240, zmax = 1.000, xmin = 0.823, xmax = 1.000, ymin = 0.086, ymax = 0.569 },
-  },
-  ["location_community_park_01_16"] = {
-    [1] = { zmin = 0.620, zmax = 1.000, xmin = 0.100, xmax = 0.800, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_community_park_01_17"] = {
-    [1] = { zmin = 0.620, zmax = 1.000, xmin = 0.100, xmax = 0.800, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_community_park_01_18"] = {
-    [1] = { zmin = 0.620, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.100, ymax = 0.800 },
-  },
-  ["location_community_park_01_19"] = {
-    [1] = { zmin = 0.620, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.100, ymax = 0.800 },
-  },
-  ["location_community_park_01_24"] = {
-    [1] = { zmin = 0.037, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_community_park_01_25"] = {
-    [1] = { zmin = 0.037, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_community_park_01_26"] = {
-    [1] = { zmin = 0.037, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 0.820 },
-  },
-  ["location_community_park_01_27"] = {
-    [1] = { zmin = 0.037, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_community_park_01_28"] = {
-    [1] = { zmin = 0.037, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_community_park_01_29"] = {
-    [1] = { zmin = 0.037, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_community_park_01_30"] = {
-    [1] = { zmin = 0.620, zmax = 1.000, xmin = 0.150, xmax = 0.850, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_community_park_01_31"] = {
-    [1] = { zmin = 0.620, zmax = 1.000, xmin = 0.150, xmax = 0.850, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_community_park_01_38"] = {
-    [1] = { zmin = 0.620, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.150, ymax = 0.850 },
-  },
-  ["location_community_park_01_39"] = {
-    [1] = { zmin = 0.620, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.150, ymax = 0.850 },
-  },
-  ["location_community_park_01_41"] = {
-    [1] = { zmin = 0.177, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_community_park_01_43"] = {
-    [1] = { zmin = 0.177, zmax = 1.000, xmin = 0.000, xmax = 0.806, ymin = 0.000, ymax = 0.794 },
-  },
-  ["location_community_park_01_44"] = {
-    [1] = { zmin = 0.177, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_community_park_01_45"] = {
-    [1] = { zmin = 0.177, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_community_park_01_46"] = {
-    [1] = { zmin = 0.177, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_community_park_01_47"] = {
-    [1] = { zmin = 0.177, zmax = 1.000, xmin = 0.000, xmax = 0.806, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_community_park_01_48"] = {
-    [1] = { zmin = 0.506, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_community_park_01_49"] = {
-    [1] = { zmin = 0.112, zmax = 1.000, xmin = 0.554, xmax = 0.962, ymin = 0.305, ymax = 1.000 },
-  },
-  ["location_community_park_01_50"] = {
-    [1] = { zmin = 0.112, zmax = 1.000, xmin = 0.000, xmax = 0.408, ymin = 0.304, ymax = 1.000 },
-  },
   ["location_community_police_01_24"] = {
     [1] = { zmin = 0.279, zmax = 1.000, xmin = 0.098, xmax = 0.978, ymin = 0.000, ymax = 0.943 },
   },
@@ -5816,9 +3926,6 @@ local Surfaces = {
   },
   ["location_community_police_01_35"] = {
     [1] = { zmin = 0.375, zmax = 1.000, xmin = 0.388, xmax = 0.998, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_community_police_01_48"] = {
-    [1] = { zmin = 0.702, zmax = 1.000, xmin = 0.050, xmax = 0.200, ymin = 0.000, ymax = 1.000 },
   },
   ["location_community_school_01_4"] = {
     [1] = { zmin = 0.351, zmax = 1.000, xmin = 0.100, xmax = 0.850, ymin = 0.050, ymax = 1.000 },
@@ -5856,12 +3963,6 @@ local Surfaces = {
   ["location_community_school_01_39"] = {
     [1] = { zmin = 0.558, zmax = 1.000, xmin = 0.624, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
   },
-  ["location_entertainment_gallery_02_55"] = {
-    [1] = { zmin = 0.416, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.050, ymax = 1.000 },
-  },
-  ["location_entertainment_gallery_02_56"] = {
-    [1] = { zmin = 0.743, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.050, ymax = 1.000 },
-  },
   ["location_entertainment_gallery_02_57"] = {
     [1] = { zmin = 0.661, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
   },
@@ -5873,27 +3974,6 @@ local Surfaces = {
   },
   ["location_entertainment_gallery_02_60"] = {
     [1] = { zmin = 0.661, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.050, ymax = 1.000 },
-  },
-  ["location_entertainment_gallery_02_61"] = {
-    [1] = { zmin = 0.343, zmax = 1.000, xmin = 0.700, xmax = 1.000, ymin = 0.150, ymax = 0.800 },
-    [2] = { zmin = 0.522, zmax = 1.000, xmin = 0.050, xmax = 0.700, ymin = 0.150, ymax = 0.800 },
-  },
-  ["location_entertainment_gallery_02_62"] = {
-    [1] = { zmin = 0.179, zmax = 1.000, xmin = 0.300, xmax = 1.000, ymin = 0.150, ymax = 0.800 },
-    [2] = { zmin = 0.343, zmax = 1.000, xmin = 0.000, xmax = 0.300, ymin = 0.150, ymax = 0.800 },
-  },
-  ["location_entertainment_theatre_01_0"] = {
-    [1] = { zmin = 0.437, zmax = 1.000, xmin = 0.050, xmax = 0.300, ymin = 0.050, ymax = 1.000 },
-  },
-  ["location_entertainment_theatre_01_1"] = {
-    [1] = { zmin = 0.437, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.050, ymax = 0.320 },
-  },
-  ["location_entertainment_theatre_01_2"] = {
-    [1] = { zmin = 0.192, zmax = 1.000, xmin = 0.250, xmax = 0.750, ymin = 0.830, ymax = 1.000 },
-    [2] = { zmin = 0.437, zmax = 1.000, xmin = 0.750, xmax = 1.000, ymin = 0.050, ymax = 1.000 },
-  },
-  ["location_entertainment_theatre_01_3"] = {
-    [1] = { zmin = 0.437, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.760, ymax = 1.000 },
   },
   ["location_entertainment_theatre_01_4"] = {
     [1] = { zmin = 0.356, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.399, ymax = 1.000 },
@@ -5936,54 +4016,6 @@ local Surfaces = {
   },
   ["location_entertainment_theatre_01_17"] = {
     [1] = { zmin = 0.807, zmax = 1.000, xmin = 0.008, xmax = 0.900, ymin = 0.000, ymax = 0.921 },
-  },
-  ["location_entertainment_theatre_01_28"] = {
-    [1] = { zmin = 0.702, zmax = 1.000, xmin = 0.745, xmax = 0.989, ymin = 0.023, ymax = 0.913 },
-  },
-  ["location_entertainment_theatre_01_29"] = {
-    [1] = { zmin = 0.702, zmax = 1.000, xmin = 0.000, xmax = 0.882, ymin = 0.745, ymax = 0.989 },
-  },
-  ["location_entertainment_theatre_01_40"] = {
-    [1] = { zmin = 0.549, zmax = 1.000, xmin = 0.052, xmax = 0.268, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_entertainment_theatre_01_41"] = {
-    [1] = { zmin = 0.549, zmax = 1.000, xmin = 0.052, xmax = 0.268, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_entertainment_theatre_01_42"] = {
-    [1] = { zmin = 0.549, zmax = 1.000, xmin = 0.052, xmax = 0.268, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_entertainment_theatre_01_43"] = {
-    [1] = { zmin = 0.534, zmax = 1.000, xmin = 0.052, xmax = 0.268, ymin = 0.002, ymax = 1.000 },
-  },
-  ["location_entertainment_theatre_01_44"] = {
-    [1] = { zmin = 0.528, zmax = 1.000, xmin = 0.052, xmax = 0.268, ymin = 0.016, ymax = 1.000 },
-  },
-  ["location_entertainment_theatre_01_45"] = {
-    [1] = { zmin = 0.549, zmax = 1.000, xmin = 0.052, xmax = 0.268, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_entertainment_theatre_01_46"] = {
-    [1] = { zmin = 0.549, zmax = 1.000, xmin = 0.052, xmax = 0.268, ymin = 0.005, ymax = 1.000 },
-  },
-  ["location_entertainment_theatre_01_47"] = {
-    [1] = { zmin = 0.549, zmax = 1.000, xmin = 0.052, xmax = 0.268, ymin = 0.012, ymax = 1.000 },
-  },
-  ["location_entertainment_theatre_01_49"] = {
-    [1] = { zmin = 0.549, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.052, ymax = 0.268 },
-  },
-  ["location_entertainment_theatre_01_50"] = {
-    [1] = { zmin = 0.549, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.052, ymax = 0.268 },
-  },
-  ["location_entertainment_theatre_01_51"] = {
-    [1] = { zmin = 0.549, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.052, ymax = 0.268 },
-  },
-  ["location_entertainment_theatre_01_52"] = {
-    [1] = { zmin = 0.549, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.052, ymax = 0.268 },
-  },
-  ["location_entertainment_theatre_01_53"] = {
-    [1] = { zmin = 0.549, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.052, ymax = 0.268 },
-  },
-  ["location_entertainment_theatre_01_54"] = {
-    [1] = { zmin = 0.549, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.052, ymax = 0.268 },
   },
   ["location_entertainment_theatre_01_120"] = {
     [1] = { zmin = 0.110, zmax = 0.253, xmin = 0.100, xmax = 1.000, ymin = 0.100, ymax = 0.500 },
@@ -6056,32 +4088,17 @@ local Surfaces = {
   ["location_farm_accesories_01_4"] = {
     [1] = { zmin = 0.129, zmax = 1.000, xmin = 0.304, xmax = 0.766, ymin = 0.000, ymax = 0.927 },
   },
-  ["location_farm_accesories_01_5"] = {
-    [1] = { zmin = 0.129, zmax = 1.000, xmin = 0.304, xmax = 0.766, ymin = 0.121, ymax = 1.000 },
-  },
-  ["location_farm_accesories_01_6"] = {
-    [1] = { zmin = 0.129, zmax = 1.000, xmin = 0.084, xmax = 1.000, ymin = 0.349, ymax = 0.812 },
-  },
   ["location_farm_accesories_01_7"] = {
     [1] = { zmin = 0.129, zmax = 1.000, xmin = 0.000, xmax = 0.890, ymin = 0.349, ymax = 0.812 },
   },
   ["location_farm_accesories_01_8"] = {
     [1] = { zmin = 0.416, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.050, ymax = 1.000 },
   },
-  ["location_farm_accesories_01_12"] = {
-    [1] = { zmin = 0.151, zmax = 1.000, xmin = 0.320, xmax = 0.680, ymin = 0.320, ymax = 0.680 },
-  },
   ["location_farm_accesories_01_14"] = {
     [1] = { zmin = 0.129, zmax = 1.000, xmin = 0.278, xmax = 0.740, ymin = 0.030, ymax = 0.993 },
   },
   ["location_farm_accesories_01_15"] = {
     [1] = { zmin = 0.129, zmax = 1.000, xmin = 0.005, xmax = 0.991, ymin = 0.239, ymax = 0.701 },
-  },
-  ["location_farm_accesories_01_18"] = {
-    [1] = { zmin = 0.020, zmax = 0.122, xmin = 0.000, xmax = 1.000, ymin = 0.400, ymax = 1.000 },
-  },
-  ["location_farm_accesories_01_21"] = {
-    [1] = { zmin = 0.020, zmax = 0.143, xmin = 0.400, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
   },
   ["location_farm_accesories_01_24"] = {
     [1] = { zmin = 0.298, zmax = 1.000, xmin = 0.150, xmax = 1.000, ymin = 0.050, ymax = 0.900 },
@@ -6101,56 +4118,11 @@ local Surfaces = {
   ["location_farm_accesories_01_29"] = {
     [1] = { zmin = 0.306, zmax = 1.000, xmin = 0.050, xmax = 0.880, ymin = 0.200, ymax = 1.000 },
   },
-  ["location_farm_accesories_01_32"] = {
-    [1] = { zmin = 0.326, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.100, ymax = 0.950 },
-  },
   ["location_farm_accesories_01_33"] = {
     [1] = { zmin = 0.326, zmax = 1.000, xmin = 0.000, xmax = 0.900, ymin = 0.100, ymax = 0.950 },
   },
   ["location_farm_accesories_01_34"] = {
     [1] = { zmin = 0.326, zmax = 1.000, xmin = 0.100, xmax = 0.950, ymin = 0.000, ymax = 0.950 },
-  },
-  ["location_farm_accesories_01_35"] = {
-    [1] = { zmin = 0.326, zmax = 1.000, xmin = 0.100, xmax = 0.950, ymin = 0.100, ymax = 1.000 },
-  },
-  ["location_farm_accesories_01_41"] = {
-    [1] = { zmin = 0.886, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.050, ymax = 1.000 },
-  },
-  ["location_farm_accesories_01_42"] = {
-    [1] = { zmin = 0.886, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_farm_accesories_01_43"] = {
-    [1] = { zmin = 0.886, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.050, ymax = 1.000 },
-  },
-  ["location_farm_accesories_01_48"] = {
-    [1] = { zmin = 0.886, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_farm_accesories_01_72"] = {
-    [1] = { zmin = 0.824, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_farm_accesories_01_73"] = {
-    [1] = { zmin = 0.824, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_farm_accesories_01_74"] = {
-    [1] = { zmin = 0.824, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.050, ymax = 1.000 },
-  },
-  ["location_hospitality_sunstarmotel_02_2"] = {
-    [1] = { zmin = 0.786, zmax = 1.000, xmin = 0.319, xmax = 1.000, ymin = 0.302, ymax = 0.500 },
-  },
-  ["location_hospitality_sunstarmotel_02_3"] = {
-    [1] = { zmin = 0.786, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.302, ymax = 0.500 },
-  },
-  ["location_hospitality_sunstarmotel_02_4"] = {
-    [1] = { zmin = 0.786, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.302, ymax = 0.500 },
-  },
-  ["location_hospitality_sunstarmotel_02_5"] = {
-    [1] = { zmin = 0.786, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.302, ymax = 0.500 },
-  },
-  ["location_hospitality_sunstarmotel_02_6"] = {
-    [1] = { zmin = 0.602, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.382, ymax = 0.564 },
-  },
-  ["location_hospitality_sunstarmotel_02_7"] = {
-    [1] = { zmin = 0.602, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.382, ymax = 0.564 },
   },
   ["location_hospitality_sunstarmotel_02_12"] = {
     [1] = { zmin = 0.362 },
@@ -6254,42 +4226,6 @@ local Surfaces = {
   ["location_military_knox_01_16"] = {
     [1] = { zmin = 0.682, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
   },
-  ["location_military_tent_01_16"] = {
-    [1] = { zmin = 0.179, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_military_tent_01_17"] = {
-    [1] = { zmin = 0.351, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_military_tent_01_18"] = {
-    [1] = { zmin = 0.514, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_military_tent_01_19"] = {
-    [1] = { zmin = 0.522, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_military_tent_01_20"] = {
-    [1] = { zmin = 0.351, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_military_tent_01_21"] = {
-    [1] = { zmin = 0.179, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_military_tent_01_24"] = {
-    [1] = { zmin = 0.179, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_military_tent_01_25"] = {
-    [1] = { zmin = 0.351, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_military_tent_01_26"] = {
-    [1] = { zmin = 0.522, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_military_tent_01_27"] = {
-    [1] = { zmin = 0.514, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_military_tent_01_28"] = {
-    [1] = { zmin = 0.351, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_military_tent_01_29"] = {
-    [1] = { zmin = 0.179, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
   ["location_restaurant_bar_01_0"] = {
     [1] = { zmin = 0.490, zmax = 1.000, xmin = 0.000, xmax = 0.962, ymin = 0.000, ymax = 0.992 },
   },
@@ -6366,12 +4302,6 @@ local Surfaces = {
   },
   ["location_restaurant_bar_01_31"] = {
     [1] = { zmin = 0.678, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.150, ymax = 0.550 },
-  },
-  ["location_restaurant_bar_01_34"] = {
-    [1] = { zmin = 0.743, zmax = 1.000, xmin = 0.650, xmax = 0.950, ymin = 0.400, ymax = 1.000 },
-  },
-  ["location_restaurant_bar_01_35"] = {
-    [1] = { zmin = 0.743, zmax = 1.000, xmin = 0.400, xmax = 1.000, ymin = 0.700, ymax = 0.950 },
   },
   ["location_restaurant_bar_01_37"] = {
     [1] = { zmin = 0.678, zmax = 1.000, xmin = 0.150, xmax = 0.550, ymin = 0.000, ymax = 1.000 },
@@ -6461,14 +4391,6 @@ local Surfaces = {
     [1] = { zmin = 0.221, zmax = 1.000, xmin = 0.154, xmax = 0.867, ymin = 0.000, ymax = 1.000 },
     [2] = { zmin = 0.525, zmax = 1.000, xmin = 0.813, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
   },
-  ["location_restaurant_diner_01_48"] = {
-    [1] = { zmin = 0.212, zmax = 1.000, xmin = 0.050, xmax = 0.400, ymin = 0.000, ymax = 1.000 },
-    [2] = { zmin = 0.416, zmax = 1.000, xmin = 0.400, xmax = 0.600, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_restaurant_diner_01_52"] = {
-    [1] = { zmin = 0.212, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.050, ymax = 0.400 },
-    [2] = { zmin = 0.375, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.400, ymax = 0.650 },
-  },
   ["location_restaurant_generic_01_16"] = {
     [1] = { zmin = 0.644, zmax = 1.000, xmin = 0.857, xmax = 1.000, ymin = 0.000, ymax = 0.795 },
   },
@@ -6550,18 +4472,6 @@ local Surfaces = {
   ["location_restaurant_pie_01_47"] = {
     [1] = { zmin = 0.362 },
   },
-  ["location_restaurant_pileocrepe_01_6"] = {
-    [1] = { zmin = 0.967, zmax = 1.000, xmin = 0.000, xmax = 0.992, ymin = 0.000, ymax = 0.693 },
-  },
-  ["location_restaurant_pileocrepe_01_12"] = {
-    [1] = { zmin = 0.031, zmax = 1.000, xmin = 0.073, xmax = 0.226, ymin = 0.403, ymax = 0.609 },
-  },
-  ["location_restaurant_pileocrepe_01_13"] = {
-    [1] = { zmin = 0.031, zmax = 1.000, xmin = 0.391, xmax = 0.597, ymin = 0.084, ymax = 0.237 },
-  },
-  ["location_restaurant_pileocrepe_01_16"] = {
-    [1] = { zmin = 0.824, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.050, ymax = 0.250 },
-  },
   ["location_restaurant_pileocrepe_01_24"] = {
     [1] = { zmin = 0.190, zmax = 0.258, xmin = 0.184, xmax = 0.778, ymin = 0.000, ymax = 0.842 },
   },
@@ -6598,17 +4508,11 @@ local Surfaces = {
   ["location_restaurant_pileocrepe_01_37"] = {
     [1] = { zmin = 0.347, zmax = 1.000, xmin = 0.008, xmax = 0.954, ymin = 0.000, ymax = 0.992 },
   },
-  ["location_restaurant_pileocrepe_01_43"] = {
-    [1] = { zmin = 0.190, zmax = 1.000, xmin = 0.245, xmax = 0.743, ymin = 0.262, ymax = 0.780 },
-  },
   ["location_restaurant_pizzawhirled_01_17"] = {
     [1] = { zmin = 0.518, zmax = 1.000, xmin = 0.150, xmax = 0.950, ymin = 0.050, ymax = 0.950 },
   },
   ["location_restaurant_pizzawhirled_01_18"] = {
     [1] = { zmin = 0.518, zmax = 1.000, xmin = 0.050, xmax = 0.950, ymin = 0.150, ymax = 0.950 },
-  },
-  ["location_restaurant_pizzawhirled_01_19"] = {
-    [1] = { zmin = 0.824, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.050, ymax = 0.500 },
   },
   ["location_restaurant_pizzawhirled_01_40"] = {
     [1] = { zmin = 0.518, zmax = 1.000, xmin = 0.078, xmax = 0.296, ymin = 0.000, ymax = 0.827 },
@@ -6778,51 +4682,6 @@ local Surfaces = {
   ["location_restaurant_spiffos_02_39"] = {
     [1] = { zmin = 0.382, zmax = 1.000, xmin = 0.000, xmax = 0.995, ymin = 0.000, ymax = 0.992 },
   },
-  ["location_restaurant_spiffos_02_56"] = {
-    [1] = { zmin = 0.477, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.400, ymax = 0.550 },
-  },
-  ["location_restaurant_spiffos_02_57"] = {
-    [1] = { zmin = 0.477, zmax = 1.000, xmin = 0.400, xmax = 0.550, ymin = 0.050, ymax = 1.000 },
-  },
-  ["location_services_beauty_01_8"] = {
-    [1] = { zmin = 0.784, zmax = 1.000, xmin = 0.050, xmax = 0.500, ymin = 0.500, ymax = 1.000 },
-  },
-  ["location_services_beauty_01_9"] = {
-    [1] = { zmin = 0.702, zmax = 1.000, xmin = 0.500, xmax = 1.000, ymin = 0.050, ymax = 0.500 },
-  },
-  ["location_services_beauty_01_10"] = {
-    [1] = { zmin = 0.784, zmax = 1.000, xmin = 0.500, xmax = 1.000, ymin = 0.050, ymax = 0.500 },
-  },
-  ["location_services_beauty_01_11"] = {
-    [1] = { zmin = 0.702, zmax = 1.000, xmin = 0.050, xmax = 0.500, ymin = 0.500, ymax = 1.000 },
-  },
-  ["location_sewer_01_24"] = {
-    [1] = { zmin = 0.678, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_sewer_01_25"] = {
-    [1] = { zmin = 0.678, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.050, ymax = 1.000 },
-  },
-  ["location_sewer_01_26"] = {
-    [1] = { zmin = 0.678, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_sewer_01_30"] = {
-    [1] = { zmin = 0.702, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.600, ymax = 1.000 },
-  },
-  ["location_sewer_01_31"] = {
-    [1] = { zmin = 0.702, zmax = 1.000, xmin = 0.600, xmax = 1.000, ymin = 0.050, ymax = 1.000 },
-  },
-  ["location_sewer_01_34"] = {
-    [1] = { zmin = 0.557, zmax = 1.000, xmin = 0.151, xmax = 0.315, ymin = 0.226, ymax = 0.433 },
-  },
-  ["location_sewer_01_37"] = {
-    [1] = { zmin = 0.557, zmax = 1.000, xmin = 0.202, xmax = 0.410, ymin = 0.162, ymax = 0.326 },
-  },
-  ["location_sewer_01_38"] = {
-    [1] = { zmin = 0.580, zmax = 1.000, xmin = 0.050, xmax = 0.950, ymin = 0.050, ymax = 0.500 },
-  },
-  ["location_sewer_01_39"] = {
-    [1] = { zmin = 0.580, zmax = 1.000, xmin = 0.050, xmax = 0.500, ymin = 0.050, ymax = 0.950 },
-  },
   ["location_shop_accessories_01_0"] = {
     [1] = { zmin = 0.559, zmax = 1.000, xmin = 0.100, xmax = 0.650, ymin = 0.200, ymax = 0.850 },
   },
@@ -6840,12 +4699,6 @@ local Surfaces = {
   },
   ["location_shop_accessories_01_9"] = {
     [1] = { zmin = 0.697, zmax = 1.000, xmin = 0.048, xmax = 0.548, ymin = 0.157, ymax = 0.912 },
-  },
-  ["location_shop_accessories_01_10"] = {
-    [1] = { zmin = 0.679, zmax = 1.000, xmin = 0.495, xmax = 1.000, ymin = 0.578, ymax = 0.779 },
-  },
-  ["location_shop_accessories_01_11"] = {
-    [1] = { zmin = 0.656, zmax = 1.000, xmin = 0.440, xmax = 0.631, ymin = 0.417, ymax = 1.000 },
   },
   ["location_shop_accessories_01_12"] = {
     [1] = { zmin = 0.697, zmax = 1.000, xmin = 0.194, xmax = 0.949, ymin = 0.440, ymax = 1.000 },
@@ -6888,14 +4741,6 @@ local Surfaces = {
   },
   ["location_shop_accessories_01_31"] = {
     [1] = { zmin = 0.674, zmax = 1.000, xmin = 0.000, xmax = 0.910, ymin = 0.231, ymax = 0.945 },
-  },
-  ["location_shop_bargNclothes_01_38"] = {
-    [1] = { zmin = 0.122, zmax = 1.000, xmin = 0.287, xmax = 1.000, ymin = 0.367, ymax = 0.528 },
-    [2] = { zmin = 0.606, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.367, ymax = 0.528 },
-  },
-  ["location_shop_bargNclothes_01_39"] = {
-    [1] = { zmin = 0.122, zmax = 1.000, xmin = 0.000, xmax = 0.671, ymin = 0.367, ymax = 0.528 },
-    [2] = { zmin = 0.606, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.367, ymax = 0.528 },
   },
   ["location_shop_fossoil_01_10"] = {
     [1] = { zmin = 0.620, zmax = 1.000, xmin = 0.200, xmax = 0.980, ymin = 0.150, ymax = 0.600 },
@@ -7075,12 +4920,6 @@ local Surfaces = {
   ["location_shop_generic_01_69"] = {
     [1] = { zmin = 0.796, zmax = 1.000, xmin = 0.100, xmax = 0.750, ymin = 0.050, ymax = 1.000 },
   },
-  ["location_shop_generic_01_70"] = {
-    [1] = { zmin = 0.620, zmax = 1.000, xmin = 0.250, xmax = 0.450, ymin = 0.200, ymax = 0.800 },
-  },
-  ["location_shop_generic_01_71"] = {
-    [1] = { zmin = 0.620, zmax = 1.000, xmin = 0.200, xmax = 0.800, ymin = 0.250, ymax = 0.450 },
-  },
   ["location_shop_generic_01_72"] = {
     [1] = { zmin = 0.081, zmax = 0.257, xmin = 0.100, xmax = 1.000, ymin = 0.100, ymax = 0.650 },
     [2] = { zmin = 0.306, zmax = 0.392, xmin = 0.100, xmax = 1.000, ymin = 0.100, ymax = 0.650 },
@@ -7232,29 +5071,11 @@ local Surfaces = {
   ["location_shop_generic_01_123"] = {
     [1] = { zmin = 0.641, zmax = 1.000, xmin = 0.500, xmax = 0.950, ymin = 0.150, ymax = 0.950 },
   },
-  ["location_shop_greenes_01_4"] = {
-    [1] = { zmin = 0.031, zmax = 1.000, xmin = 0.073, xmax = 0.226, ymin = 0.403, ymax = 0.609 },
-  },
-  ["location_shop_greenes_01_5"] = {
-    [1] = { zmin = 0.031, zmax = 1.000, xmin = 0.391, xmax = 0.597, ymin = 0.084, ymax = 0.237 },
-  },
-  ["location_shop_greenes_01_6"] = {
-    [1] = { zmin = 0.031, zmax = 1.000, xmin = 0.073, xmax = 0.226, ymin = 0.403, ymax = 0.609 },
-  },
-  ["location_shop_greenes_01_7"] = {
-    [1] = { zmin = 0.031, zmax = 1.000, xmin = 0.391, xmax = 0.597, ymin = 0.084, ymax = 0.237 },
-  },
   ["location_shop_greenes_01_35"] = {
     [1] = { zmin = 0.233, zmax = 1.000, xmin = 0.050, xmax = 0.950, ymin = 0.050, ymax = 0.950 },
   },
   ["location_shop_greenes_01_36"] = {
     [1] = { zmin = 0.457, zmax = 1.000, xmin = 0.050, xmax = 0.950, ymin = 0.050, ymax = 0.950 },
-  },
-  ["location_shop_greenes_01_45"] = {
-    [1] = { zmin = 0.633, zmax = 1.000, xmin = 0.250, xmax = 0.500, ymin = 0.300, ymax = 0.920 },
-  },
-  ["location_shop_greenes_01_46"] = {
-    [1] = { zmin = 0.629, zmax = 1.000, xmin = 0.300, xmax = 0.890, ymin = 0.250, ymax = 0.500 },
   },
   ["location_shop_mall_01_29"] = {
     [1] = { zmin = 0.287, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 0.992 },
@@ -7271,27 +5092,6 @@ local Surfaces = {
   ["location_shop_mall_01_39"] = {
     [1] = { zmin = 0.199, zmax = 1.000, xmin = 0.000, xmax = 0.984, ymin = 0.318, ymax = 0.984 },
   },
-  ["location_shop_mall_01_40"] = {
-    [1] = { zmin = 0.395, zmax = 1.000, xmin = 0.337, xmax = 0.679, ymin = 0.238, ymax = 0.393 },
-  },
-  ["location_shop_mall_01_41"] = {
-    [1] = { zmin = 0.395, zmax = 1.000, xmin = 0.198, xmax = 0.353, ymin = 0.301, ymax = 0.762 },
-  },
-  ["location_shop_mall_01_42"] = {
-    [1] = { zmin = 0.395, zmax = 1.000, xmin = 0.264, xmax = 0.726, ymin = 0.664, ymax = 0.819 },
-  },
-  ["location_shop_mall_01_43"] = {
-    [1] = { zmin = 0.395, zmax = 1.000, xmin = 0.638, xmax = 0.793, ymin = 0.270, ymax = 0.704 },
-  },
-  ["location_shop_mall_01_45"] = {
-    [1] = { zmin = 0.694, zmax = 1.000, xmin = 0.296, xmax = 0.550, ymin = 0.027, ymax = 0.966 },
-  },
-  ["location_shop_mall_01_46"] = {
-    [1] = { zmin = 0.694, zmax = 1.000, xmin = 0.000, xmax = 0.934, ymin = 0.317, ymax = 0.571 },
-  },
-  ["location_shop_mall_01_47"] = {
-    [1] = { zmin = 0.319, zmax = 1.000, xmin = 0.008, xmax = 0.939, ymin = 0.000, ymax = 0.921 },
-  },
   ["location_shop_mall_01_48"] = {
     [1] = { zmin = 0.391, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
   },
@@ -7303,12 +5103,6 @@ local Surfaces = {
   },
   ["location_shop_mall_01_51"] = {
     [1] = { zmin = 0.391, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["location_shop_mall_01_56"] = {
-    [1] = { zmin = 0.289, zmax = 1.000, xmin = 0.008, xmax = 1.000, ymin = 0.361, ymax = 0.576 },
-  },
-  ["location_shop_mall_01_57"] = {
-    [1] = { zmin = 0.283, zmax = 1.000, xmin = 0.350, xmax = 0.565, ymin = 0.000, ymax = 0.992 },
   },
   ["location_shop_mall_01_64"] = {
     [1] = { zmin = 0.195, zmax = 1.000, xmin = 0.008, xmax = 1.000, ymin = 0.000, ymax = 0.992 },
@@ -7354,9 +5148,6 @@ local Surfaces = {
   },
   ["location_shop_zippee_01_61"] = {
     [1] = { zmin = 0.718, zmax = 1.000, xmin = 0.450, xmax = 1.000, ymin = 0.150, ymax = 0.950 },
-  },
-  ["location_trailer_01_56"] = {
-    [1] = { zmin = 0.090, zmax = 1.000, xmin = 0.000, xmax = 0.045, ymin = 0.000, ymax = 0.045 },
   },
   ["location_trailer_02_0"] = {
     [1] = { zmin = 0.230, zmax = 1.000, xmin = 0.168, xmax = 0.638, ymin = 0.000, ymax = 0.699 },
@@ -7482,18 +5273,6 @@ local Surfaces = {
   ["recreational_01_15"] = {
     [1] = { zmin = 0.237, zmax = 1.000, xmin = 0.300, xmax = 0.750, ymin = 0.650, ymax = 1.000 },
   },
-  ["recreational_01_16"] = {
-    [1] = { zmin = 0.784, zmax = 1.000, xmin = 0.050, xmax = 0.950, ymin = 0.050, ymax = 0.600 },
-  },
-  ["recreational_01_17"] = {
-    [1] = { zmin = 0.784, zmax = 1.000, xmin = 0.050, xmax = 0.600, ymin = 0.050, ymax = 0.950 },
-  },
-  ["recreational_01_18"] = {
-    [1] = { zmin = 0.784, zmax = 1.000, xmin = 0.300, xmax = 0.980, ymin = 0.050, ymax = 0.950 },
-  },
-  ["recreational_01_19"] = {
-    [1] = { zmin = 0.784, zmax = 1.000, xmin = 0.050, xmax = 0.950, ymin = 0.300, ymax = 0.980 },
-  },
   ["recreational_01_24"] = {
     [1] = { zmin = 0.356, zmax = 0.391, xmin = 0.106, xmax = 0.869, ymin = 0.000, ymax = 0.477 },
     [2] = { zmin = 0.636, zmax = 1.000, xmin = 0.077, xmax = 0.928, ymin = 0.000, ymax = 0.000 },
@@ -7522,18 +5301,6 @@ local Surfaces = {
   ["recreational_01_31"] = {
     [1] = { zmin = 0.490, zmax = 1.000, xmin = 0.280, xmax = 1.000, ymin = 0.050, ymax = 1.000 },
   },
-  ["recreational_01_72"] = {
-    [1] = { zmin = 0.185, zmax = 1.000, xmin = 0.227, xmax = 0.802, ymin = 0.406, ymax = 0.693 },
-  },
-  ["recreational_01_73"] = {
-    [1] = { zmin = 0.185, zmax = 1.000, xmin = 0.385, xmax = 0.673, ymin = 0.233, ymax = 0.808 },
-  },
-  ["recreational_01_74"] = {
-    [1] = { zmin = 0.185, zmax = 1.000, xmin = 0.450, xmax = 0.738, ymin = 0.252, ymax = 0.827 },
-  },
-  ["recreational_01_75"] = {
-    [1] = { zmin = 0.185, zmax = 1.000, xmin = 0.252, xmax = 0.827, ymin = 0.386, ymax = 0.673 },
-  },
   ["recreational_01_76"] = {
     [1] = { zmin = 0.370, zmax = 1.000, xmin = 0.307, xmax = 0.792, ymin = 0.361, ymax = 0.653 },
   },
@@ -7558,70 +5325,11 @@ local Surfaces = {
   ["recreational_01_83"] = {
     [1] = { zmin = 0.312, zmax = 1.000, xmin = 0.369, xmax = 0.661, ymin = 0.317, ymax = 0.792 },
   },
-  ["recreational_sports_01_0"] = {
-    [1] = { zmin = 0.040, zmax = 1.000, xmin = 0.227, xmax = 0.764, ymin = 0.255, ymax = 0.785 },
-  },
-  ["recreational_sports_01_1"] = {
-    [1] = { zmin = 0.040, zmax = 1.000, xmin = 0.240, xmax = 0.827, ymin = 0.237, ymax = 0.756 },
-  },
-  ["recreational_sports_01_2"] = {
-    [1] = { zmin = 0.044, zmax = 1.000, xmin = 0.239, xmax = 0.768, ymin = 0.254, ymax = 0.835 },
-  },
-  ["recreational_sports_01_3"] = {
-    [1] = { zmin = 0.040, zmax = 1.000, xmin = 0.235, xmax = 0.778, ymin = 0.195, ymax = 0.753 },
-  },
-  ["recreational_sports_01_4"] = {
-    [1] = { zmin = 0.039, zmax = 1.000, xmin = 0.225, xmax = 0.790, ymin = 0.260, ymax = 0.793 },
-  },
-  ["recreational_sports_01_5"] = {
-    [1] = { zmin = 0.036, zmax = 1.000, xmin = 0.217, xmax = 0.811, ymin = 0.412, ymax = 0.625 },
-  },
-  ["recreational_sports_01_6"] = {
-    [1] = { zmin = 0.036, zmax = 1.000, xmin = 0.490, xmax = 0.703, ymin = 0.261, ymax = 0.856 },
-  },
-  ["recreational_sports_01_26"] = {
-    [1] = { zmin = 0.343, zmax = 1.000, xmin = 0.050, xmax = 0.950, ymin = 0.280, ymax = 0.480 },
-  },
-  ["recreational_sports_01_27"] = {
-    [1] = { zmin = 0.343, zmax = 1.000, xmin = 0.280, xmax = 0.480, ymin = 0.050, ymax = 0.950 },
-  },
-  ["recreational_sports_01_28"] = {
-    [1] = { zmin = 0.076, zmax = 0.393, xmin = 0.121, xmax = 1.000, ymin = 0.110, ymax = 0.896 },
-    [2] = { zmin = 0.518, zmax = 1.000, xmin = 1.000, xmax = 1.000, ymin = 0.095, ymax = 0.901 },
-  },
-  ["recreational_sports_01_29"] = {
-    [1] = { zmin = 0.076, zmax = 0.393, xmin = 0.000, xmax = 0.794, ymin = 0.110, ymax = 0.896 },
-    [2] = { zmin = 0.518, zmax = 1.000, xmin = 0.507, xmax = 0.694, ymin = 0.095, ymax = 0.901 },
-  },
-  ["recreational_sports_01_30"] = {
-    [1] = { zmin = 0.084, zmax = 0.472, xmin = 0.108, xmax = 0.894, ymin = 0.000, ymax = 0.825 },
-    [2] = { zmin = 0.585, zmax = 1.000, xmin = 0.083, xmax = 0.889, ymin = 0.661, ymax = 0.848 },
-  },
-  ["recreational_sports_01_31"] = {
-    [1] = { zmin = 0.084, zmax = 0.472, xmin = 0.108, xmax = 0.894, ymin = 0.153, ymax = 1.000 },
-    [2] = { zmin = 0.585, zmax = 1.000, xmin = 0.083, xmax = 0.889, ymin = 1.000, ymax = 1.000 },
-  },
   ["recreational_sports_01_34"] = {
     [1] = { zmin = 0.034, zmax = 1.000, xmin = 0.008, xmax = 1.000, ymin = 0.000, ymax = 0.992 },
   },
   ["recreational_sports_01_35"] = {
     [1] = { zmin = 0.034, zmax = 1.000, xmin = 0.008, xmax = 1.000, ymin = 0.038, ymax = 1.000 },
-  },
-  ["recreational_sports_01_36"] = {
-    [1] = { zmin = 0.077, zmax = 0.472, xmin = 0.045, xmax = 1.000, ymin = 0.108, ymax = 0.893 },
-    [2] = { zmin = 0.585, zmax = 1.000, xmin = 0.306, xmax = 0.493, ymin = 0.085, ymax = 0.891 },
-  },
-  ["recreational_sports_01_37"] = {
-    [1] = { zmin = 0.077, zmax = 0.472, xmin = 0.000, xmax = 0.718, ymin = 0.108, ymax = 0.893 },
-    [2] = { zmin = 0.585, zmax = 1.000, xmin = 0.000, xmax = 0.000, ymin = 0.085, ymax = 0.891 },
-  },
-  ["recreational_sports_01_38"] = {
-    [1] = { zmin = 0.077, zmax = 0.472, xmin = 0.070, xmax = 0.856, ymin = 0.000, ymax = 0.712 },
-    [2] = { zmin = 0.585, zmax = 1.000, xmin = 0.051, xmax = 0.857, ymin = 0.000, ymax = 0.000 },
-  },
-  ["recreational_sports_01_39"] = {
-    [1] = { zmin = 0.077, zmax = 0.472, xmin = 0.070, xmax = 0.856, ymin = 0.040, ymax = 1.000 },
-    [2] = { zmin = 0.585, zmax = 1.000, xmin = 0.051, xmax = 0.857, ymin = 0.306, ymax = 0.493 },
   },
   ["recreational_sports_01_40"] = {
     [1] = { zmin = 0.171, zmax = 1.000, xmin = 0.150, xmax = 0.700, ymin = 0.000, ymax = 0.700 },
@@ -7647,711 +5355,14 @@ local Surfaces = {
   ["recreational_sports_01_47"] = {
     [1] = { zmin = 0.171, zmax = 1.000, xmin = 0.000, xmax = 0.700, ymin = 0.150, ymax = 0.700 },
   },
-  ["recreational_sports_01_56"] = {
-    [1] = { zmin = 0.024, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["recreational_sports_01_61"] = {
-    [1] = { zmin = 0.171, zmax = 1.000, xmin = 0.000, xmax = 0.400, ymin = 0.000, ymax = 1.000 },
-  },
-  ["recreational_sports_01_62"] = {
-    [1] = { zmin = 0.171, zmax = 1.000, xmin = 0.000, xmax = 0.400, ymin = 0.800, ymax = 1.000 },
-    [2] = { zmin = 0.375, zmax = 1.000, xmin = 0.000, xmax = 0.400, ymin = 0.050, ymax = 0.800 },
-  },
-  ["recreational_sports_01_72"] = {
-    [1] = { zmin = 0.539, zmax = 1.000, xmin = 0.050, xmax = 0.550, ymin = 0.050, ymax = 1.000 },
-  },
-  ["recreational_sports_01_73"] = {
-    [1] = { zmin = 0.539, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.050, ymax = 0.550 },
-  },
-  ["recreational_sports_01_96"] = {
-    [1] = { zmin = 0.743, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.050, ymax = 0.250 },
-  },
-  ["recreational_sports_01_99"] = {
-    [1] = { zmin = 0.743, zmax = 1.000, xmin = 0.000, xmax = 0.900, ymin = 0.050, ymax = 0.250 },
-  },
-  ["recreational_sports_01_100"] = {
-    [1] = { zmin = 0.743, zmax = 1.000, xmin = 0.050, xmax = 0.250, ymin = 0.000, ymax = 0.900 },
-  },
-  ["recreational_sports_01_101"] = {
-    [1] = { zmin = 0.743, zmax = 1.000, xmin = 0.050, xmax = 0.250, ymin = 0.000, ymax = 1.000 },
-  },
-  ["recreational_sports_01_155"] = {
-    [1] = { zmin = 0.620, zmax = 1.000, xmin = 0.100, xmax = 0.950, ymin = 0.100, ymax = 0.950 },
-  },
-  ["roofs_30_01_41"] = {
-    [1] = { zmin = 0.845, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["roofs_30_01_42"] = {
-    [1] = { zmin = 0.682, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["roofs_30_01_43"] = {
-    [1] = { zmin = 0.518, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["roofs_30_01_44"] = {
-    [1] = { zmin = 0.355, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["roofs_30_01_45"] = {
-    [1] = { zmin = 0.192, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["roofs_shallow_01_0"] = {
-    [1] = { zmin = 0.294, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["roofs_shallow_01_1"] = {
-    [1] = { zmin = 0.416, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
   ["rooftop_furniture_1"] = {
     [1] = { zmin = 0.539, zmax = 1.000, xmin = 0.000, xmax = 0.985, ymin = 0.000, ymax = 0.985 },
-  },
-  ["rooftop_furniture_22"] = {
-    [1] = { zmin = 0.090, zmax = 1.000, xmin = 0.140, xmax = 0.990, ymin = 0.140, ymax = 0.985 },
-  },
-  ["rooftop_furniture_24"] = {
-    [1] = { zmin = 0.335, zmax = 1.000, xmin = 0.120, xmax = 0.880, ymin = 0.120, ymax = 0.880 },
-  },
-  ["rooftop_furniture_46"] = {
-    [1] = { zmin = 0.338, zmax = 1.000, xmin = 0.075, xmax = 0.230, ymin = 0.109, ymax = 0.901 },
-  },
-  ["rooftop_furniture_47"] = {
-    [1] = { zmin = 0.338, zmax = 1.000, xmin = 0.093, xmax = 0.885, ymin = 0.049, ymax = 0.203 },
-  },
-  ["rugs_animals_0"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_2"] = {
-    [1] = { zmin = 0.023, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_3"] = {
-    [1] = { zmin = 0.021, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_4"] = {
-    [1] = { zmin = 0.023, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_5"] = {
-    [1] = { zmin = 0.023, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_6"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_7"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_8"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_9"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_10"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_11"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_12"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_13"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_14"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_15"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_16"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_17"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_18"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_19"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_20"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_21"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_22"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_23"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_24"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_25"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_26"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_27"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_28"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_29"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_30"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_31"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_32"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_33"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_34"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_35"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_36"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_37"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_38"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_39"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_40"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_41"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_42"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_43"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_44"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_45"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_46"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_47"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_48"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_49"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_50"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_51"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_52"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_53"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_54"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_55"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_56"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_57"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_58"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_59"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_60"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_61"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_62"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_65"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_66"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_67"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_68"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_69"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_70"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_71"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_72"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_73"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_74"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_75"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_76"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_77"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_78"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_79"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_80"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_81"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_82"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_83"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_84"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_85"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_86"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_87"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_88"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_89"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_90"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_91"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_92"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_93"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_94"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_95"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_96"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_97"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_98"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_99"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_100"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_101"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_102"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["rugs_animals_103"] = {
-    [1] = { zmin = 0.022, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["security_01_0"] = {
-    [1] = { zmin = 0.384, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.060, ymax = 0.680 },
-  },
-  ["security_01_1"] = {
-    [1] = { zmin = 0.384, zmax = 1.000, xmin = 0.060, xmax = 0.680, ymin = 0.050, ymax = 1.000 },
-  },
-  ["security_01_2"] = {
-    [1] = { zmin = 0.396, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.390, ymax = 0.980 },
-  },
-  ["security_01_3"] = {
-    [1] = { zmin = 0.396, zmax = 1.000, xmin = 0.390, xmax = 0.970, ymin = 0.050, ymax = 1.000 },
-  },
-  ["signs_church_0"] = {
-    [1] = { zmin = 0.613, zmax = 1.000, xmin = 0.046, xmax = 1.000, ymin = 0.339, ymax = 0.643 },
-  },
-  ["signs_church_1"] = {
-    [1] = { zmin = 0.613, zmax = 1.000, xmin = 0.000, xmax = 0.999, ymin = 0.339, ymax = 0.643 },
-  },
-  ["signs_church_2"] = {
-    [1] = { zmin = 0.596, zmax = 1.000, xmin = 0.046, xmax = 0.452, ymin = 0.000, ymax = 0.999 },
-  },
-  ["signs_church_3"] = {
-    [1] = { zmin = 0.596, zmax = 1.000, xmin = 0.046, xmax = 0.452, ymin = 0.047, ymax = 1.000 },
-  },
-  ["signs_church_4"] = {
-    [1] = { zmin = 0.613, zmax = 1.000, xmin = 0.046, xmax = 1.000, ymin = 0.320, ymax = 0.624 },
-  },
-  ["signs_church_5"] = {
-    [1] = { zmin = 0.613, zmax = 1.000, xmin = 0.000, xmax = 0.999, ymin = 0.320, ymax = 0.624 },
-  },
-  ["signs_church_6"] = {
-    [1] = { zmin = 0.657, zmax = 1.000, xmin = 0.421, xmax = 0.827, ymin = 0.000, ymax = 0.999 },
-  },
-  ["signs_church_7"] = {
-    [1] = { zmin = 0.657, zmax = 1.000, xmin = 0.421, xmax = 0.827, ymin = 0.047, ymax = 1.000 },
-  },
-  ["signs_church_8"] = {
-    [1] = { zmin = 0.613, zmax = 1.000, xmin = 0.046, xmax = 1.000, ymin = 0.397, ymax = 0.701 },
-  },
-  ["signs_church_9"] = {
-    [1] = { zmin = 0.613, zmax = 1.000, xmin = 0.000, xmax = 0.999, ymin = 0.397, ymax = 0.701 },
-  },
-  ["signs_church_10"] = {
-    [1] = { zmin = 0.640, zmax = 1.000, xmin = 0.436, xmax = 0.842, ymin = 0.000, ymax = 0.999 },
-  },
-  ["signs_church_11"] = {
-    [1] = { zmin = 0.640, zmax = 1.000, xmin = 0.436, xmax = 0.842, ymin = 0.047, ymax = 1.000 },
-  },
-  ["signs_church_12"] = {
-    [1] = { zmin = 0.604, zmax = 1.000, xmin = 0.046, xmax = 1.000, ymin = 0.306, ymax = 0.610 },
-  },
-  ["signs_church_13"] = {
-    [1] = { zmin = 0.604, zmax = 1.000, xmin = 0.000, xmax = 0.999, ymin = 0.306, ymax = 0.610 },
-  },
-  ["signs_church_14"] = {
-    [1] = { zmin = 0.638, zmax = 1.000, xmin = 0.371, xmax = 0.777, ymin = 0.000, ymax = 0.999 },
-  },
-  ["signs_church_15"] = {
-    [1] = { zmin = 0.638, zmax = 1.000, xmin = 0.371, xmax = 0.777, ymin = 0.047, ymax = 1.000 },
-  },
-  ["signs_church_16"] = {
-    [1] = { zmin = 0.638, zmax = 1.000, xmin = 0.046, xmax = 1.000, ymin = 0.427, ymax = 0.731 },
-  },
-  ["signs_church_17"] = {
-    [1] = { zmin = 0.638, zmax = 1.000, xmin = 0.000, xmax = 0.999, ymin = 0.427, ymax = 0.731 },
-  },
-  ["signs_church_18"] = {
-    [1] = { zmin = 0.627, zmax = 1.000, xmin = 0.343, xmax = 0.749, ymin = 0.000, ymax = 0.999 },
-  },
-  ["signs_church_19"] = {
-    [1] = { zmin = 0.627, zmax = 1.000, xmin = 0.343, xmax = 0.749, ymin = 0.047, ymax = 1.000 },
-  },
-  ["signs_church_20"] = {
-    [1] = { zmin = 0.658, zmax = 1.000, xmin = 0.046, xmax = 1.000, ymin = 0.553, ymax = 0.857 },
-  },
-  ["signs_church_21"] = {
-    [1] = { zmin = 0.658, zmax = 1.000, xmin = 0.000, xmax = 0.999, ymin = 0.553, ymax = 0.857 },
-  },
-  ["signs_church_22"] = {
-    [1] = { zmin = 0.626, zmax = 1.000, xmin = 0.343, xmax = 0.749, ymin = 0.000, ymax = 0.999 },
-  },
-  ["signs_church_23"] = {
-    [1] = { zmin = 0.626, zmax = 1.000, xmin = 0.343, xmax = 0.749, ymin = 0.047, ymax = 1.000 },
-  },
-  ["signs_church_24"] = {
-    [1] = { zmin = 0.638, zmax = 1.000, xmin = 0.046, xmax = 1.000, ymin = 0.397, ymax = 0.701 },
-  },
-  ["signs_church_25"] = {
-    [1] = { zmin = 0.638, zmax = 1.000, xmin = 0.000, xmax = 0.999, ymin = 0.397, ymax = 0.701 },
-  },
-  ["signs_church_26"] = {
-    [1] = { zmin = 0.629, zmax = 1.000, xmin = 0.296, xmax = 0.702, ymin = 0.000, ymax = 0.999 },
-  },
-  ["signs_church_27"] = {
-    [1] = { zmin = 0.629, zmax = 1.000, xmin = 0.296, xmax = 0.702, ymin = 0.047, ymax = 1.000 },
-  },
-  ["signs_church_28"] = {
-    [1] = { zmin = 0.634, zmax = 1.000, xmin = 0.046, xmax = 1.000, ymin = 0.428, ymax = 0.732 },
-  },
-  ["signs_church_29"] = {
-    [1] = { zmin = 0.634, zmax = 1.000, xmin = 0.000, xmax = 0.999, ymin = 0.428, ymax = 0.732 },
-  },
-  ["signs_church_30"] = {
-    [1] = { zmin = 0.626, zmax = 1.000, xmin = 0.310, xmax = 0.716, ymin = 0.000, ymax = 0.999 },
-  },
-  ["signs_church_31"] = {
-    [1] = { zmin = 0.626, zmax = 1.000, xmin = 0.310, xmax = 0.716, ymin = 0.047, ymax = 1.000 },
-  },
-  ["signs_one-off_01_37"] = {
-    [1] = { zmin = 0.457, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.350, ymax = 0.550 },
-  },
-  ["signs_one-off_01_52"] = {
-    [1] = { zmin = 0.743, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.400, ymax = 0.550 },
-  },
-  ["signs_one-off_01_67"] = {
-    [1] = { zmin = 0.743, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.050, ymax = 0.200 },
-  },
-  ["signs_one-off_01_104"] = {
-    [1] = { zmin = 0.657, zmax = 1.000, xmin = 0.046, xmax = 1.000, ymin = 0.382, ymax = 0.686 },
-  },
-  ["signs_one-off_01_105"] = {
-    [1] = { zmin = 0.657, zmax = 1.000, xmin = 0.000, xmax = 0.999, ymin = 0.382, ymax = 0.686 },
-  },
-  ["signs_one-off_01_106"] = {
-    [1] = { zmin = 0.865, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.450, ymax = 0.750 },
-  },
-  ["signs_one-off_01_107"] = {
-    [1] = { zmin = 0.865, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.450, ymax = 0.750 },
-  },
-  ["signs_one-off_01_108"] = {
-    [1] = { zmin = 0.865, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.450, ymax = 0.750 },
-  },
-  ["signs_one-off_01_112"] = {
-    [1] = { zmin = 0.457, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.200, ymax = 0.400 },
-  },
-  ["signs_one-off_01_116"] = {
-    [1] = { zmin = 0.763, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.300, ymax = 0.450 },
-  },
-  ["signs_one-off_02_152"] = {
-    [1] = { zmin = 0.498, zmax = 1.000, xmin = 0.000, xmax = 0.300, ymin = 0.000, ymax = 1.000 },
-  },
-  ["signs_one-off_03_147"] = {
-    [1] = { zmin = 0.906, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.050, ymax = 0.200 },
-  },
-  ["signs_one-off_03_252"] = {
-    [1] = { zmin = 0.498, zmax = 1.000, xmin = 0.000, xmax = 0.250, ymin = 0.000, ymax = 1.000 },
-  },
-  ["signs_one-off_03_253"] = {
-    [1] = { zmin = 0.498, zmax = 1.000, xmin = 0.000, xmax = 0.250, ymin = 0.000, ymax = 1.000 },
-  },
-  ["signs_one-off_03_254"] = {
-    [1] = { zmin = 0.498, zmax = 1.000, xmin = 0.000, xmax = 0.250, ymin = 0.000, ymax = 1.000 },
-  },
-  ["signs_one-off_03_424"] = {
-    [1] = { zmin = 0.335, zmax = 1.000, xmin = 0.050, xmax = 0.200, ymin = 0.000, ymax = 1.000 },
-  },
-  ["signs_one-off_04_96"] = {
-    [1] = { zmin = 0.498, zmax = 1.000, xmin = 0.500, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["signs_one-off_04_128"] = {
-    [1] = { zmin = 0.518, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.050, ymax = 0.200 },
-  },
-  ["signs_one-off_04_152"] = {
-    [1] = { zmin = 0.559, zmax = 1.000, xmin = 0.050, xmax = 0.400, ymin = 0.000, ymax = 1.000 },
-  },
-  ["signs_one-off_04_184"] = {
-    [1] = { zmin = 0.722, zmax = 1.000, xmin = 0.100, xmax = 0.900, ymin = 0.000, ymax = 1.000 },
-  },
-  ["signs_one-off_04_253"] = {
-    [1] = { zmin = 0.722, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.050, ymax = 0.200 },
-  },
-  ["signs_one-off_05_224"] = {
-    [1] = { zmin = 0.457, zmax = 1.000, xmin = 0.600, xmax = 0.800, ymin = 0.000, ymax = 1.000 },
-  },
-  ["signs_one-off_05_248"] = {
-    [1] = { zmin = 0.506, zmax = 1.000, xmin = 0.480, xmax = 0.880, ymin = 0.000, ymax = 0.380 },
-  },
-  ["signs_one-off_06_21"] = {
-    [1] = { zmin = 0.294, zmax = 1.000, xmin = 0.250, xmax = 0.800, ymin = 0.000, ymax = 1.000 },
-  },
-  ["signs_one-off_06_88"] = {
-    [1] = { zmin = 0.416, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.700, ymax = 0.900 },
-  },
-  ["signs_one-off_06_118"] = {
-    [1] = { zmin = 0.428, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.050, ymax = 0.200 },
-  },
-  ["signs_one-off_06_121"] = {
-    [1] = { zmin = 0.743, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.300, ymax = 0.500 },
-  },
-  ["signs_one-off_06_294"] = {
-    [1] = { zmin = 0.457, zmax = 1.000, xmin = 0.000, xmax = 0.820, ymin = 0.050, ymax = 0.400 },
-  },
-  ["signs_one-off_07_32"] = {
-    [1] = { zmin = 0.416, zmax = 1.000, xmin = 0.000, xmax = 0.200, ymin = 0.000, ymax = 1.000 },
-  },
-  ["signs_one-off_07_41"] = {
-    [1] = { zmin = 0.531, zmax = 1.000, xmin = 0.500, xmax = 0.700, ymin = 0.500, ymax = 0.720 },
-  },
-  ["signs_one-off_07_45"] = {
-    [1] = { zmin = 0.531, zmax = 1.000, xmin = 0.500, xmax = 0.700, ymin = 0.450, ymax = 0.650 },
-  },
-  ["signs_one-off_07_48"] = {
-    [1] = { zmin = 0.457, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.050, ymax = 0.200 },
-  },
-  ["signs_one-off_07_56"] = {
-    [1] = { zmin = 0.580, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.500, ymax = 0.700 },
   },
   ["signs_one-off_07_85"] = {
     [1] = { zmin = 0.416, zmax = 1.000, xmin = 0.100, xmax = 0.900, ymin = 0.100, ymax = 0.900 },
   },
   ["signs_one-off_07_86"] = {
     [1] = { zmin = 0.416, zmax = 1.000, xmin = 0.100, xmax = 0.900, ymin = 0.100, ymax = 0.900 },
-  },
-  ["signs_one-off_07_120"] = {
-    [1] = { zmin = 0.498, zmax = 1.000, xmin = 0.000, xmax = 0.200, ymin = 0.000, ymax = 1.000 },
-  },
-  ["signs_one-off_07_276"] = {
-    [1] = { zmin = 0.751, zmax = 1.000, xmin = 0.400, xmax = 0.550, ymin = 0.000, ymax = 1.000 },
-  },
-  ["signs_one-off_08_108"] = {
-    [1] = { zmin = 0.620, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.400, ymax = 0.550 },
-  },
-  ["signs_one-off_08_144"] = {
-    [1] = { zmin = 0.498, zmax = 1.000, xmin = 0.700, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["signs_one-off_08_145"] = {
-    [1] = { zmin = 0.498, zmax = 1.000, xmin = 0.700, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["signs_one-off_08_160"] = {
-    [1] = { zmin = 0.449, zmax = 1.000, xmin = 0.150, xmax = 0.300, ymin = 0.000, ymax = 1.000 },
-  },
-  ["signs_one-off_08_204"] = {
-    [1] = { zmin = 0.416, zmax = 1.000, xmin = 0.100, xmax = 0.250, ymin = 0.000, ymax = 1.000 },
-  },
-  ["signs_one-off_08_213"] = {
-    [1] = { zmin = 0.620, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.600, ymax = 0.800 },
-  },
-  ["signs_one-off_09_0"] = {
-    [1] = { zmin = 0.437, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.800, ymax = 1.000 },
-  },
-  ["signs_one-off_09_2"] = {
-    [1] = { zmin = 0.437, zmax = 1.000, xmin = 0.800, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["signs_one-off_09_3"] = {
-    [1] = { zmin = 0.743, zmax = 1.000, xmin = 0.800, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["signs_one-off_09_4"] = {
-    [1] = { zmin = 0.437, zmax = 1.000, xmin = 0.800, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["signs_one-off_09_5"] = {
-    [1] = { zmin = 0.743, zmax = 1.000, xmin = 0.460, xmax = 0.900, ymin = 0.000, ymax = 0.200 },
-  },
-  ["signs_one-off_09_6"] = {
-    [1] = { zmin = 0.437, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.000, ymax = 0.300 },
-  },
-  ["signs_one-off_09_7"] = {
-    [1] = { zmin = 0.416, zmax = 1.000, xmin = 0.100, xmax = 0.900, ymin = 0.100, ymax = 0.800 },
-  },
-  ["signs_one-off_09_65"] = {
-    [1] = { zmin = 0.947, zmax = 1.000, xmin = 0.140, xmax = 1.000, ymin = 0.080, ymax = 0.250 },
-  },
-  ["signs_one-off_09_72"] = {
-    [1] = { zmin = 0.098, zmax = 1.000, xmin = 0.050, xmax = 0.300, ymin = 0.050, ymax = 0.300 },
-  },
-  ["signs_one-off_09_78"] = {
-    [1] = { zmin = 0.865, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.050, ymax = 0.250 },
-  },
-  ["signs_one-off_09_88"] = {
-    [1] = { zmin = 0.392, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.100, ymax = 0.900 },
-  },
-  ["signs_one-off_09_89"] = {
-    [1] = { zmin = 0.927, zmax = 1.000, xmin = 0.200, xmax = 1.000, ymin = 0.800, ymax = 0.950 },
-  },
-  ["signs_one-off_09_90"] = {
-    [1] = { zmin = 0.927, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.800, ymax = 0.950 },
-  },
-  ["signs_one-off_09_95"] = {
-    [1] = { zmin = 0.927, zmax = 1.000, xmin = 0.000, xmax = 0.800, ymin = 0.800, ymax = 0.950 },
-  },
-  ["signs_one-off_09_132"] = {
-    [1] = { zmin = 0.588, zmax = 1.000, xmin = 0.100, xmax = 1.000, ymin = 0.000, ymax = 0.900 },
-  },
-  ["signs_one-off_09_133"] = {
-    [1] = { zmin = 0.927, zmax = 1.000, xmin = 0.200, xmax = 0.800, ymin = 0.000, ymax = 1.000 },
-  },
-  ["signs_one-off_09_134"] = {
-    [1] = { zmin = 0.927, zmax = 1.000, xmin = 0.200, xmax = 0.800, ymin = 0.000, ymax = 1.000 },
-  },
-  ["signs_one-off_09_135"] = {
-    [1] = { zmin = 0.588, zmax = 1.000, xmin = 0.100, xmax = 1.000, ymin = 0.050, ymax = 0.950 },
-  },
-  ["signs_one-off_09_138"] = {
-    [1] = { zmin = 0.539, zmax = 1.000, xmin = 0.300, xmax = 0.650, ymin = 0.000, ymax = 1.000 },
-  },
-  ["signs_one-off_09_151"] = {
-    [1] = { zmin = 0.702, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.800, ymax = 1.000 },
-  },
-  ["signs_one-off_09_152"] = {
-    [1] = { zmin = 0.906, zmax = 1.000, xmin = 0.600, xmax = 0.800, ymin = 0.000, ymax = 0.750 },
-  },
-  ["signs_one-off_09_153"] = {
-    [1] = { zmin = 0.906, zmax = 1.000, xmin = 0.600, xmax = 0.800, ymin = 0.000, ymax = 1.000 },
-  },
-  ["signs_one-off_09_154"] = {
-    [1] = { zmin = 0.906, zmax = 1.000, xmin = 0.600, xmax = 0.800, ymin = 0.300, ymax = 1.000 },
-  },
-  ["signs_one-off_09_155"] = {
-    [1] = { zmin = 0.702, zmax = 1.000, xmin = 0.400, xmax = 0.700, ymin = 0.000, ymax = 0.350 },
-  },
-  ["signs_one-off_09_156"] = {
-    [1] = { zmin = 0.702, zmax = 1.000, xmin = 0.400, xmax = 0.700, ymin = 0.000, ymax = 1.000 },
-  },
-  ["signs_one-off_09_157"] = {
-    [1] = { zmin = 0.702, zmax = 1.000, xmin = 0.400, xmax = 0.700, ymin = 0.000, ymax = 1.000 },
-  },
-  ["signs_one-off_09_158"] = {
-    [1] = { zmin = 0.702, zmax = 1.000, xmin = 0.400, xmax = 0.700, ymin = 0.000, ymax = 1.000 },
-  },
-  ["signs_one-off_09_159"] = {
-    [1] = { zmin = 0.702, zmax = 1.000, xmin = 0.400, xmax = 0.700, ymin = 0.700, ymax = 1.000 },
-  },
-  ["street_curbs_01_9"] = {
-    [1] = { zmin = 0.051, zmax = 1.000, xmin = 0.008, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["street_decoration_01_4"] = {
-    [1] = { zmin = 0.559, zmax = 1.000, xmin = 0.400, xmax = 0.600, ymin = 0.200, ymax = 0.350 },
-  },
-  ["street_decoration_01_5"] = {
-    [1] = { zmin = 0.559, zmax = 1.000, xmin = 0.200, xmax = 0.350, ymin = 0.400, ymax = 0.600 },
-  },
-  ["street_decoration_01_6"] = {
-    [1] = { zmin = 0.559, zmax = 1.000, xmin = 0.400, xmax = 0.600, ymin = 0.750, ymax = 0.900 },
-  },
-  ["street_decoration_01_7"] = {
-    [1] = { zmin = 0.559, zmax = 1.000, xmin = 0.750, xmax = 0.900, ymin = 0.400, ymax = 0.600 },
   },
   ["street_decoration_01_8"] = {
     [1] = { zmin = 0.575, zmax = 1.000, xmin = 0.309, xmax = 0.934, ymin = 0.234, ymax = 0.714 },
@@ -8365,9 +5376,6 @@ local Surfaces = {
   ["street_decoration_01_11"] = {
     [1] = { zmin = 0.575, zmax = 1.000, xmin = 0.520, xmax = 1.000, ymin = 0.295, ymax = 0.919 },
   },
-  ["street_decoration_01_16"] = {
-    [1] = { zmin = 0.416, zmax = 1.000, xmin = 0.550, xmax = 0.850, ymin = 0.450, ymax = 0.850 },
-  },
   ["street_decoration_01_18"] = {
     [1] = { zmin = 0.416, zmax = 1.000, xmin = 0.220, xmax = 0.650, ymin = 0.300, ymax = 0.530 },
   },
@@ -8380,129 +5388,11 @@ local Surfaces = {
   ["street_decoration_01_21"] = {
     [1] = { zmin = 0.416, zmax = 1.000, xmin = 0.200, xmax = 0.500, ymin = 0.250, ymax = 0.700 },
   },
-  ["street_decoration_01_26"] = {
-    [1] = { zmin = 0.037, zmax = 1.000, xmin = 0.300, xmax = 0.700, ymin = 0.300, ymax = 0.700 },
-  },
-  ["street_decoration_01_27"] = {
-    [1] = { zmin = 0.023, zmax = 1.000, xmin = 0.008, xmax = 0.715, ymin = 0.000, ymax = 0.739 },
-  },
-  ["street_decoration_01_32"] = {
-    [1] = { zmin = 0.071, zmax = 1.000, xmin = 0.008, xmax = 1.000, ymin = 0.253, ymax = 0.435 },
-  },
-  ["street_decoration_01_34"] = {
-    [1] = { zmin = 0.071, zmax = 1.000, xmin = 0.000, xmax = 0.830, ymin = 0.259, ymax = 0.441 },
-  },
-  ["street_decoration_01_35"] = {
-    [1] = { zmin = 0.071, zmax = 1.000, xmin = 0.213, xmax = 0.422, ymin = 0.000, ymax = 0.829 },
-  },
-  ["street_decoration_01_36"] = {
-    [1] = { zmin = 0.071, zmax = 1.000, xmin = 0.211, xmax = 0.419, ymin = 0.000, ymax = 0.992 },
-  },
-  ["street_decoration_01_38"] = {
-    [1] = { zmin = 0.759, zmax = 1.000, xmin = 0.047, xmax = 0.393, ymin = 0.000, ymax = 1.000 },
-  },
-  ["street_decoration_01_39"] = {
-    [1] = { zmin = 0.759, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.047, ymax = 0.393 },
-  },
-  ["street_decoration_01_40"] = {
-    [1] = { zmin = 0.071, zmax = 1.000, xmin = 0.008, xmax = 1.000, ymin = 0.681, ymax = 0.877 },
-  },
-  ["street_decoration_01_42"] = {
-    [1] = { zmin = 0.071, zmax = 1.000, xmin = 0.000, xmax = 0.820, ymin = 0.674, ymax = 0.870 },
-  },
-  ["street_decoration_01_43"] = {
-    [1] = { zmin = 0.071, zmax = 1.000, xmin = 0.678, xmax = 0.874, ymin = 0.000, ymax = 0.812 },
-  },
-  ["street_decoration_01_44"] = {
-    [1] = { zmin = 0.071, zmax = 1.000, xmin = 0.676, xmax = 0.873, ymin = 0.000, ymax = 0.992 },
-  },
-  ["street_decoration_01_46"] = {
-    [1] = { zmin = 0.682, zmax = 1.000, xmin = 0.650, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["street_decoration_01_47"] = {
-    [1] = { zmin = 0.682, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.650, ymax = 1.000 },
-  },
-  ["street_decoration_01_56"] = {
-    [1] = { zmin = 0.506, zmax = 1.000, xmin = 0.300, xmax = 0.700, ymin = 0.350, ymax = 0.700 },
-  },
-  ["street_decoration_01_63"] = {
-    [1] = { zmin = 0.506, zmax = 1.000, xmin = 0.300, xmax = 0.700, ymin = 0.300, ymax = 0.700 },
-  },
-  ["street_decoration_01_64"] = {
-    [1] = { zmin = 0.506, zmax = 1.000, xmin = 0.300, xmax = 0.700, ymin = 0.300, ymax = 0.700 },
-  },
-  ["street_decoration_01_71"] = {
-    [1] = { zmin = 0.506, zmax = 1.000, xmin = 0.300, xmax = 0.700, ymin = 0.300, ymax = 0.700 },
-  },
   ["street_decoration_01_80"] = {
     [1] = { zmin = 0.620, zmax = 1.000, xmin = 0.050, xmax = 0.900, ymin = 0.050, ymax = 0.900 },
   },
   ["street_decoration_01_84"] = {
     [1] = { zmin = 0.620, zmax = 1.000, xmin = 0.100, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["trash_01_5"] = {
-    [1] = { zmin = 0.027, zmax = 1.000, xmin = 0.515, xmax = 0.729, ymin = 0.264, ymax = 0.492 },
-  },
-  ["trash_01_12"] = {
-    [1] = { zmin = 0.029, zmax = 1.000, xmin = 0.525, xmax = 0.956, ymin = 0.000, ymax = 0.226 },
-  },
-  ["trash_01_32"] = {
-    [1] = { zmin = 0.046, zmax = 1.000, xmin = 0.087, xmax = 0.468, ymin = 0.007, ymax = 0.398 },
-  },
-  ["trash_01_33"] = {
-    [1] = { zmin = 0.046, zmax = 1.000, xmin = 0.252, xmax = 0.633, ymin = 0.447, ymax = 0.839 },
-  },
-  ["trash_01_34"] = {
-    [1] = { zmin = 0.038, zmax = 1.000, xmin = 0.433, xmax = 0.740, ymin = 0.052, ymax = 0.313 },
-  },
-  ["trash_01_35"] = {
-    [1] = { zmin = 0.055, zmax = 1.000, xmin = 0.518, xmax = 0.920, ymin = 0.005, ymax = 0.940 },
-  },
-  ["trash_01_36"] = {
-    [1] = { zmin = 0.055, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["trash_01_37"] = {
-    [1] = { zmin = 0.055, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["trash_01_39"] = {
-    [1] = { zmin = 0.048, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["trash_01_42"] = {
-    [1] = { zmin = 0.050, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["trash_01_44"] = {
-    [1] = { zmin = 0.039, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-    [2] = { zmin = 0.090, zmax = 1.000, xmin = 0.000, xmax = 0.509, ymin = 0.000, ymax = 0.683 },
-  },
-  ["trash_01_45"] = {
-    [1] = { zmin = 0.061, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["trash_01_46"] = {
-    [1] = { zmin = 0.042, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["trash_01_47"] = {
-    [1] = { zmin = 0.045, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["trash_01_48"] = {
-    [1] = { zmin = 0.074, zmax = 1.000, xmin = 0.379, xmax = 1.000, ymin = 0.390, ymax = 0.915 },
-    [2] = { zmin = 0.123, zmax = 1.000, xmin = 0.000, xmax = 0.344, ymin = 0.000, ymax = 0.347 },
-    [3] = { zmin = 0.171, zmax = 1.000, xmin = 0.000, xmax = 0.401, ymin = 0.470, ymax = 1.000 },
-  },
-  ["trash_01_49"] = {
-    [1] = { zmin = 0.042, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["trash_01_50"] = {
-    [1] = { zmin = 0.029, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["trash_01_51"] = {
-    [1] = { zmin = 0.032, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["trash_01_52"] = {
-    [1] = { zmin = 0.035, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-    [2] = { zmin = 0.077, zmax = 1.000, xmin = 0.421, xmax = 0.622, ymin = 0.000, ymax = 0.200 },
-  },
-  ["trash_01_53"] = {
-    [1] = { zmin = 0.042, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
   },
   ["trashcontainers_01_0"] = {
     [1] = { zmin = 0.375, zmax = 1.000, xmin = 0.150, xmax = 0.800, ymin = 0.050, ymax = 0.850 },
@@ -8555,66 +5445,6 @@ local Surfaces = {
   ["trashcontainers_01_27"] = {
     [1] = { zmin = 0.210, zmax = 1.000, xmin = 0.000, xmax = 0.749, ymin = 0.011, ymax = 0.737 },
   },
-  ["vegetation_drying_01_16"] = {
-    [1] = { zmin = 0.845, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.000, ymax = 0.850 },
-  },
-  ["vegetation_drying_01_17"] = {
-    [1] = { zmin = 0.845, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.050, ymax = 1.000 },
-  },
-  ["vegetation_drying_01_18"] = {
-    [1] = { zmin = 0.845, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 0.850 },
-  },
-  ["vegetation_drying_01_19"] = {
-    [1] = { zmin = 0.845, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.050, ymax = 1.000 },
-  },
-  ["vegetation_drying_01_20"] = {
-    [1] = { zmin = 0.845, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_drying_01_21"] = {
-    [1] = { zmin = 0.845, zmax = 1.000, xmin = 0.000, xmax = 0.850, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_drying_01_22"] = {
-    [1] = { zmin = 0.845, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_drying_01_23"] = {
-    [1] = { zmin = 0.845, zmax = 1.000, xmin = 0.000, xmax = 0.850, ymin = 0.050, ymax = 1.000 },
-  },
-  ["vegetation_drying_01_216"] = {
-    [1] = { zmin = 0.927, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_drying_01_217"] = {
-    [1] = { zmin = 0.927, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.050, ymax = 1.000 },
-  },
-  ["vegetation_drying_01_224"] = {
-    [1] = { zmin = 0.927, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.050, ymax = 1.000 },
-  },
-  ["vegetation_drying_01_225"] = {
-    [1] = { zmin = 0.927, zmax = 1.000, xmin = 0.000, xmax = 0.950, ymin = 0.050, ymax = 1.000 },
-  },
-  ["vegetation_drying_01_232"] = {
-    [1] = { zmin = 0.927, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.000, ymax = 0.950 },
-  },
-  ["vegetation_drying_01_233"] = {
-    [1] = { zmin = 0.927, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.050, ymax = 1.000 },
-  },
-  ["vegetation_drying_01_234"] = {
-    [1] = { zmin = 0.927, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 0.950 },
-  },
-  ["vegetation_drying_01_235"] = {
-    [1] = { zmin = 0.927, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.050, ymax = 1.000 },
-  },
-  ["vegetation_drying_01_236"] = {
-    [1] = { zmin = 0.927, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_drying_01_237"] = {
-    [1] = { zmin = 0.927, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_drying_01_238"] = {
-    [1] = { zmin = 0.927, zmax = 1.000, xmin = 0.050, xmax = 1.000, ymin = 0.050, ymax = 1.000 },
-  },
-  ["vegetation_drying_01_239"] = {
-    [1] = { zmin = 0.927, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.050, ymax = 1.000 },
-  },
   ["vegetation_farm_01_8"] = {
     [1] = { zmin = 0.198, zmax = 1.000, xmin = 0.000, xmax = 0.920, ymin = 0.000, ymax = 1.000 },
   },
@@ -8626,192 +5456,6 @@ local Surfaces = {
   },
   ["vegetation_farm_01_18"] = {
     [1] = { zmin = 0.362, zmax = 1.000, xmin = 0.000, xmax = 0.999, ymin = 0.000, ymax = 0.921 },
-  },
-  ["vegetation_farming_01_0"] = {
-    [1] = { zmin = 0.029, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_farming_01_1"] = {
-    [1] = { zmin = 0.029, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_farming_01_4"] = {
-    [1] = { zmin = 0.029, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_farming_01_5"] = {
-    [1] = { zmin = 0.029, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_farming_01_8"] = {
-    [1] = { zmin = 0.029, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_farming_01_9"] = {
-    [1] = { zmin = 0.029, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_farming_01_10"] = {
-    [1] = { zmin = 0.029, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_farming_01_11"] = {
-    [1] = { zmin = 0.029, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_farming_01_12"] = {
-    [1] = { zmin = 0.029, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_farming_01_13"] = {
-    [1] = { zmin = 0.029, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_farming_01_16"] = {
-    [1] = { zmin = 0.029, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_farming_01_17"] = {
-    [1] = { zmin = 0.029, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_farming_01_18"] = {
-    [1] = { zmin = 0.029, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_farming_01_19"] = {
-    [1] = { zmin = 0.029, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_farming_01_20"] = {
-    [1] = { zmin = 0.029, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_farming_01_21"] = {
-    [1] = { zmin = 0.029, zmax = 1.000, xmin = 0.015, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_farming_01_22"] = {
-    [1] = { zmin = 0.029, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_farming_01_23"] = {
-    [1] = { zmin = 0.029, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_farming_01_76"] = {
-    [1] = { zmin = 0.028, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_farming_01b_0"] = {
-    [1] = { zmin = 0.029, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_farming_02_0"] = {
-    [1] = { zmin = 0.029, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_farming_dead_01_0"] = {
-    [1] = { zmin = 0.029, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_farming_dead_01b_0"] = {
-    [1] = { zmin = 0.029, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_farming_dead_02_0"] = {
-    [1] = { zmin = 0.029, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_farming_dying_01_0"] = {
-    [1] = { zmin = 0.029, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_farming_dying_01b_0"] = {
-    [1] = { zmin = 0.029, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_farming_dying_02_0"] = {
-    [1] = { zmin = 0.029, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_farming_trampled_01_0"] = {
-    [1] = { zmin = 0.029, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_farming_trampled_01b_0"] = {
-    [1] = { zmin = 0.029, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_farming_trampled_02_0"] = {
-    [1] = { zmin = 0.029, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_farming_unhealthy_01_0"] = {
-    [1] = { zmin = 0.029, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_farming_unhealthy_01b_0"] = {
-    [1] = { zmin = 0.029, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_farming_unhealthy_02_0"] = {
-    [1] = { zmin = 0.029, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_gardening_01_0"] = {
-    [1] = { zmin = 0.029, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_gardening_dead_01_0"] = {
-    [1] = { zmin = 0.029, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_gardening_dying_01_0"] = {
-    [1] = { zmin = 0.029, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_gardening_trampled_01_0"] = {
-    [1] = { zmin = 0.029, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_gardening_unhealthy_01_0"] = {
-    [1] = { zmin = 0.029, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_indoor_01_4"] = {
-    [1] = { zmin = 0.479, zmax = 1.000, xmin = 0.144, xmax = 0.450, ymin = 0.219, ymax = 0.851 },
-  },
-  ["vegetation_indoor_01_5"] = {
-    [1] = { zmin = 0.479, zmax = 1.000, xmin = 0.241, xmax = 0.817, ymin = 0.134, ymax = 0.443 },
-  },
-  ["vegetation_indoor_01_8"] = {
-    [1] = { zmin = 0.278, zmax = 1.000, xmin = 0.051, xmax = 0.940, ymin = 0.039, ymax = 0.912 },
-  },
-  ["vegetation_indoor_01_16"] = {
-    [1] = { zmin = 0.278, zmax = 1.000, xmin = 0.051, xmax = 0.940, ymin = 0.039, ymax = 0.912 },
-  },
-  ["vegetation_indoor_01_24"] = {
-    [1] = { zmin = 0.278, zmax = 1.000, xmin = 0.051, xmax = 0.940, ymin = 0.039, ymax = 0.912 },
-  },
-  ["vegetation_indoor_01_32"] = {
-    [1] = { zmin = 0.278, zmax = 1.000, xmin = 0.051, xmax = 0.940, ymin = 0.039, ymax = 0.912 },
-  },
-  ["vegetation_ornamental_01_0"] = {
-    [1] = { zmin = 0.669, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.202, ymax = 0.798 },
-  },
-  ["vegetation_ornamental_01_1"] = {
-    [1] = { zmin = 0.669, zmax = 1.000, xmin = 0.199, xmax = 0.801, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_ornamental_01_4"] = {
-    [1] = { zmin = 0.405, zmax = 1.000, xmin = 0.000, xmax = 1.000, ymin = 0.200, ymax = 0.801 },
-  },
-  ["vegetation_ornamental_01_5"] = {
-    [1] = { zmin = 0.409, zmax = 1.000, xmin = 0.199, xmax = 0.800, ymin = 0.000, ymax = 1.000 },
-  },
-  ["vegetation_ornamental_01_19"] = {
-    [1] = { zmin = 0.050, zmax = 1.000, xmin = 0.008, xmax = 1.000, ymin = 0.000, ymax = 0.992 },
-  },
-  ["walls_detailing_02_4"] = {
-    [1] = { zmin = 0.042, zmax = 0.986, xmin = 0.568, xmax = 1.000, ymin = 0.568, ymax = 1.000 },
-  },
-  ["walls_detailing_02_5"] = {
-    [1] = { zmin = 0.042, zmax = 0.986, xmin = 0.040, xmax = 0.472, ymin = 0.024, ymax = 0.456 },
-  },
-  ["walls_detailing_02_6"] = {
-    [1] = { zmin = 0.042, zmax = 0.986, xmin = 0.568, xmax = 1.000, ymin = 0.000, ymax = 0.428 },
-  },
-  ["walls_detailing_02_7"] = {
-    [1] = { zmin = 0.042, zmax = 0.986, xmin = 0.012, xmax = 0.444, ymin = 0.568, ymax = 1.000 },
-  },
-  ["walls_logs_8"] = {
-    [1] = { zmin = 0.772, zmax = 1.000, xmin = 0.000, xmax = 0.000, ymin = 0.000, ymax = 0.206 },
-  },
-  ["walls_logs_9"] = {
-    [1] = { zmin = 0.771, zmax = 1.000, xmin = 0.000, xmax = 0.200, ymin = 0.000, ymax = 0.000 },
-  },
-  ["walls_logs_20"] = {
-    [1] = { zmin = 0.571, zmax = 1.000, xmin = 0.000, xmax = 0.200, ymin = 0.050, ymax = 0.250 },
-  },
-  ["walls_logs_21"] = {
-    [1] = { zmin = 0.224, zmax = 1.000, xmin = 0.000, xmax = 0.200, ymin = 0.050, ymax = 0.220 },
-  },
-  ["walls_logs_29"] = {
-    [1] = { zmin = 0.122, zmax = 1.000, xmin = 0.400, xmax = 0.650, ymin = 0.050, ymax = 0.200 },
-  },
-  ["walls_logs_42"] = {
-    [1] = { zmin = 0.825, zmax = 1.000, xmin = 0.000, xmax = 0.783, ymin = 0.047, ymax = 0.231 },
-  },
-  ["walls_logs_43"] = {
-    [1] = { zmin = 0.825, zmax = 1.000, xmin = 0.047, xmax = 0.243, ymin = 0.000, ymax = 0.781 },
-  },
-  ["walls_logs_48"] = {
-    [1] = { zmin = 0.383, zmax = 0.761, xmin = 0.000, xmax = 0.048, ymin = 0.000, ymax = 1.000 },
-  },
-  ["walls_logs_49"] = {
-    [1] = { zmin = 0.366, zmax = 0.765, xmin = 0.000, xmax = 1.000, ymin = 0.000, ymax = 0.048 },
   },
 }
 

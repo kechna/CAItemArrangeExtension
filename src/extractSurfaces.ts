@@ -277,8 +277,19 @@ export interface ContainerSurfaces {
 }
 
 /**
- * Generates surfaces for every tile with usable geometry boxes. Container tiles without boxes (most counters) get only
- * the game's own `Surface` height, see {@link HeightOnlySurface}.
+ * Whether the game lets items sit on a tile: containers hold them on their own shelves, and dropped items rest at a
+ * tile's `Surface` or `ItemHeight` (seats, beds, tool carts). Small appliances standing on a table (radios, toasters)
+ * have a `Surface` too, but aren't somewhere to stack things. Everything else (wall lamps, signs) is decoration.
+ */
+const canHoldItems = (properties: Record<string, string>, surfaceHeight: number): boolean =>
+  Boolean(properties.container) ||
+  (surfaceHeight > 0 && !("IsTableTop" in properties)) ||
+  Number(properties.ItemHeight ?? 0) > 0;
+
+/**
+ * Generates surfaces for every tile with usable geometry boxes that can hold items, see {@link canHoldItems}, so
+ * decoration like wall lamps above a counter doesn't become a floating surface. Container tiles without boxes (most
+ * counters) get only the game's own `Surface` height, see {@link HeightOnlySurface}.
  */
 export const extractContainerSurfaces = (
   geometry: GeometryTile[],
@@ -292,6 +303,10 @@ export const extractContainerSurfaces = (
     const tile = byKey.get(tileKey(definition.tileset, definition.col, definition.row));
     const container = definition.properties.container;
     const surfaceHeight = Number(definition.properties.Surface ?? tile?.properties.Surface ?? 0);
+
+    if (!canHoldItems({ ...tile?.properties, ...definition.properties }, surfaceHeight)) {
+      continue;
+    }
 
     if (!tile?.boxes.length) {
       if (container && surfaceHeight > 0) {
