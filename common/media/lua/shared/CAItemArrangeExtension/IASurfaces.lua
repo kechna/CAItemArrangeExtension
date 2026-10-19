@@ -32,24 +32,24 @@ end
 
 -- make metal shelves stack just a little bit tighter
 sp.metalShelfWEN = {
-  [1] = { zmin = 0.041, zmax = 0.35, xmin = 0.25, xmax = 0.90, ymin = 0.35, ymax = 1.00 },
-  [2] = { zmin = 0.368, zmax = 0.65, xmin = 0.25, xmax = 0.90, ymin = 0.35, ymax = 1.00 },
-  [3] = { zmin = 0.675, zmax = 1.00, xmin = 0.25, xmax = 0.90, ymin = 0.35, ymax = 1.00 },
+  [1] = { zmin = 0.041, zmax = 0.35, xmin = 0.25, xmax = 0.90, ymin = 0.35, ymax = 1 },
+  [2] = { zmin = 0.368, zmax = 0.65, xmin = 0.25, xmax = 0.90, ymin = 0.35, ymax = 1 },
+  [3] = { zmin = 0.675, zmax = 1, xmin = 0.25, xmax = 0.90, ymin = 0.35, ymax = 1 },
 }
 sp.metalShelfWES = {
-  [1] = { zmin = 0.041, zmax = 0.35, xmin = 0.25, xmax = 0.90, ymin = 0.00, ymax = 0.95 },
-  [2] = { zmin = 0.368, zmax = 0.65, xmin = 0.25, xmax = 0.90, ymin = 0.00, ymax = 0.95 },
-  [3] = { zmin = 0.675, zmax = 1.00, xmin = 0.25, xmax = 0.90, ymin = 0.00, ymax = 0.95 },
+  [1] = { zmin = 0.041, zmax = 0.35, xmin = 0.25, xmax = 0.90, ymin = 0, ymax = 0.95 },
+  [2] = { zmin = 0.368, zmax = 0.65, xmin = 0.25, xmax = 0.90, ymin = 0, ymax = 0.95 },
+  [3] = { zmin = 0.675, zmax = 1, xmin = 0.25, xmax = 0.90, ymin = 0, ymax = 0.95 },
 }
 sp.metalShelfNSW = {
-  [1] = { zmin = 0.041, zmax = 0.35, xmin = 0.10, xmax = 1.00, ymin = 0.25, ymax = 0.85 },
-  [2] = { zmin = 0.368, zmax = 0.65, xmin = 0.10, xmax = 1.00, ymin = 0.25, ymax = 0.85 },
-  [3] = { zmin = 0.675, zmax = 1.00, xmin = 0.10, xmax = 1.00, ymin = 0.25, ymax = 0.85 },
+  [1] = { zmin = 0.041, zmax = 0.35, xmin = 0.10, xmax = 1, ymin = 0.25, ymax = 0.85 },
+  [2] = { zmin = 0.368, zmax = 0.65, xmin = 0.10, xmax = 1, ymin = 0.25, ymax = 0.85 },
+  [3] = { zmin = 0.675, zmax = 1, xmin = 0.10, xmax = 1, ymin = 0.25, ymax = 0.85 },
 }
 sp.metalShelfNSE = {
-  [1] = { zmin = 0.041, zmax = 0.35, xmin = 0.00, xmax = 0.90, ymin = 0.25, ymax = 0.85 },
-  [2] = { zmin = 0.368, zmax = 0.65, xmin = 0.00, xmax = 0.90, ymin = 0.25, ymax = 0.85 },
-  [3] = { zmin = 0.675, zmax = 1.00, xmin = 0.00, xmax = 0.90, ymin = 0.25, ymax = 0.85 },
+  [1] = { zmin = 0.041, zmax = 0.35, xmin = 0, xmax = 0.90, ymin = 0.25, ymax = 0.85 },
+  [2] = { zmin = 0.368, zmax = 0.65, xmin = 0, xmax = 0.90, ymin = 0.25, ymax = 0.85 },
+  [3] = { zmin = 0.675, zmax = 1, xmin = 0, xmax = 0.90, ymin = 0.25, ymax = 0.85 },
 }
 
 s["furniture_shelving_01_24"] = sp.metalShelfWES
@@ -74,20 +74,20 @@ s["crafted_05_44"] = sp.box
 
 -- wood shelves
 sp.woodShelvesE = {
-  [1] = { zmin = 0.64, zmax = 1.00, xmin = 0.07, xmax = 0.43, ymin = 0.10, ymax = 1.00 },
-  [2] = { zmin = 0.35, zmax = 0.58, xmin = 0.07, xmax = 0.43, ymin = 0.10, ymax = 1.00 },
+  [1] = { zmin = 0.64, zmax = 1, xmin = 0.07, xmax = 0.43, ymin = 0.10, ymax = 1 },
+  [2] = { zmin = 0.35, zmax = 0.58, xmin = 0.07, xmax = 0.43, ymin = 0.10, ymax = 1 },
 }
 sp.woodShelvesW = {
-  [1] = { zmin = 0.64, zmax = 1.00, xmin = 0.74, xmax = 0.99, ymin = 0.10, ymax = 1.00 },
-  [2] = { zmin = 0.35, zmax = 0.58, xmin = 0.74, xmax = 0.99, ymin = 0.10, ymax = 1.00 },
+  [1] = { zmin = 0.64, zmax = 1, xmin = 0.74, xmax = 0.99, ymin = 0.10, ymax = 1 },
+  [2] = { zmin = 0.35, zmax = 0.58, xmin = 0.74, xmax = 0.99, ymin = 0.10, ymax = 1 },
 }
 sp.woodShelvesS = {
-  [1] = { zmin = 0.64, zmax = 1.00, xmin = 0.10, xmax = 1.00, ymin = 0.13, ymax = 0.49 },
-  [2] = { zmin = 0.35, zmax = 0.58, xmin = 0.10, xmax = 1.00, ymin = 0.13, ymax = 0.49 },
+  [1] = { zmin = 0.64, zmax = 1, xmin = 0.10, xmax = 1, ymin = 0.13, ymax = 0.49 },
+  [2] = { zmin = 0.35, zmax = 0.58, xmin = 0.10, xmax = 1, ymin = 0.13, ymax = 0.49 },
 }
 sp.woodShelvesN = {
-  [1] = { zmin = 0.64, zmax = 1.00, xmin = 0.10, xmax = 1.00, ymin = 0.63, ymax = 0.99 },
-  [2] = { zmin = 0.35, zmax = 0.58, xmin = 0.10, xmax = 1.00, ymin = 0.63, ymax = 0.99 },
+  [1] = { zmin = 0.64, zmax = 1, xmin = 0.10, xmax = 1, ymin = 0.63, ymax = 0.99 },
+  [2] = { zmin = 0.35, zmax = 0.58, xmin = 0.10, xmax = 1, ymin = 0.63, ymax = 0.99 },
 }
 
 s["furniture_shelving_01_1"] = sp.woodShelvesS
@@ -107,14 +107,14 @@ sp.largeWallShelvesE = {
   [3] = { zmin = 0.68, zmax = 0.95, xmin = 0.19, xmax = 0.45, ymin = 0.15, ymax = 1 },
 }
 sp.largeWallShelvesW = {
-  [1] = { zmin = 0.068, zmax = 0.34, xmin = 0.55, xmax = 0.81, ymin = 0.00, ymax = 0.85 },
-  [2] = { zmin = 0.382, zmax = 0.60, xmin = 0.55, xmax = 0.81, ymin = 0.00, ymax = 0.85 },
-  [3] = { zmin = 0.68, zmax = 0.95, xmin = 0.55, xmax = 0.81, ymin = 0.00, ymax = 0.85 },
+  [1] = { zmin = 0.068, zmax = 0.34, xmin = 0.55, xmax = 0.81, ymin = 0, ymax = 0.85 },
+  [2] = { zmin = 0.382, zmax = 0.60, xmin = 0.55, xmax = 0.81, ymin = 0, ymax = 0.85 },
+  [3] = { zmin = 0.68, zmax = 0.95, xmin = 0.55, xmax = 0.81, ymin = 0, ymax = 0.85 },
 }
 sp.largeWallShelvesN = {
-  [1] = { zmin = 0.068, zmax = 0.34, xmin = 0.00, xmax = 1.00, ymin = 0.55, ymax = 0.85 },
-  [2] = { zmin = 0.379, zmax = 0.60, xmin = 0.00, xmax = 1.00, ymin = 0.55, ymax = 0.845 },
-  [3] = { zmin = 0.68, zmax = 0.95, xmin = 0.00, xmax = 1.00, ymin = 0.55, ymax = 0.83 },
+  [1] = { zmin = 0.068, zmax = 0.34, xmin = 0, xmax = 1, ymin = 0.55, ymax = 0.85 },
+  [2] = { zmin = 0.379, zmax = 0.60, xmin = 0, xmax = 1, ymin = 0.55, ymax = 0.845 },
+  [3] = { zmin = 0.68, zmax = 0.95, xmin = 0, xmax = 1, ymin = 0.55, ymax = 0.83 },
 }
 
 s["furniture_shelving_01_9"] = sp.largeWallShelvesS
@@ -154,25 +154,25 @@ sp.bookshelfE = {
   [1] = { zmin = 0.05, zmax = 0.22, xmin = 0.18, xmax = 0.50, ymin = 0.19, ymax = 0.95 },
   [2] = { zmin = 0.344, zmax = 0.50, xmin = 0.25, xmax = 0.50, ymin = 0.19, ymax = 0.95 },
   [3] = { zmin = 0.618, zmax = 0.77, xmin = 0.25, xmax = 0.50, ymin = 0.19, ymax = 0.95 },
-  [4] = { zmin = 0.845, zmax = 1.00, xmin = 0.15, xmax = 0.50, ymin = 0.15, ymax = 0.95 },
+  [4] = { zmin = 0.845, zmax = 1, xmin = 0.15, xmax = 0.50, ymin = 0.15, ymax = 0.95 },
 }
 sp.bookshelfW = {
   [1] = { zmin = 0.05, zmax = 0.22, xmin = 0.60, xmax = 0.95, ymin = 0.19, ymax = 0.95 },
   [2] = { zmin = 0.32, zmax = 0.49, xmin = 0.60, xmax = 0.95, ymin = 0.19, ymax = 0.95 },
   [3] = { zmin = 0.59, zmax = 0.76, xmin = 0.60, xmax = 0.95, ymin = 0.19, ymax = 0.95 },
-  [4] = { zmin = 0.845, zmax = 1.00, xmin = 0.60, xmax = 0.95, ymin = 0.19, ymax = 0.95 },
+  [4] = { zmin = 0.845, zmax = 1, xmin = 0.60, xmax = 0.95, ymin = 0.19, ymax = 0.95 },
 }
 sp.bookshelfS = {
   [1] = { zmin = 0.055, zmax = 0.22, xmin = 0.096, xmax = 0.95, ymin = 0.18, ymax = 0.55 },
   [2] = { zmin = 0.333, zmax = 0.50, xmin = 0.12, xmax = 0.95, ymin = 0.25, ymax = 0.55 },
   [3] = { zmin = 0.61, zmax = 0.77, xmin = 0.13, xmax = 0.95, ymin = 0.25, ymax = 0.55 },
-  [4] = { zmin = 0.845, zmax = 1.00, xmin = 0.13, xmax = 0.95, ymin = 0.18, ymax = 0.55 },
+  [4] = { zmin = 0.845, zmax = 1, xmin = 0.13, xmax = 0.95, ymin = 0.18, ymax = 0.55 },
 }
 sp.bookshelfN = {
   [1] = { zmin = 0.05, zmax = 0.22, xmin = 0.11, xmax = 0.95, ymin = 0.62, ymax = 0.95 },
   [2] = { zmin = 0.32, zmax = 0.49, xmin = 0.11, xmax = 0.95, ymin = 0.62, ymax = 0.95 },
   [3] = { zmin = 0.59, zmax = 0.76, xmin = 0.11, xmax = 0.95, ymin = 0.62, ymax = 0.95 },
-  [4] = { zmin = 0.845, zmax = 1.00, xmin = 0.11, xmax = 0.95, ymin = 0.62, ymax = 0.95 },
+  [4] = { zmin = 0.845, zmax = 1, xmin = 0.11, xmax = 0.95, ymin = 0.62, ymax = 0.95 },
 }
 
 s["furniture_shelving_01_40"] = sp.bookshelfS
@@ -191,25 +191,25 @@ s["furniture_shelving_01_47"] = sp.bookshelfN
 --  [1] = { zmin = 0.09, zmax = 0.26, xmin = 0.15, xmax = 0.85, ymin = 0.2, ymax = 0.45 },
 --  [2] = { zmin = 0.36, zmax = 0.55, xmin = 0.15, xmax = 0.85, ymin = 0.2, ymax = 0.45 },
 --  [3] = { zmin = 0.62, zmax = 0.79, xmin = 0.15, xmax = 0.85, ymin = 0.2, ymax = 0.45 },
---  [4] = { zmin = 0.83, zmax = 1.00, xmin = 0.18, xmax = 0.85, ymin = 0.13, ymax = 0.45 },
+--  [4] = { zmin = 0.83, zmax = 1, xmin = 0.18, xmax = 0.85, ymin = 0.13, ymax = 0.45 },
 --}
 --sp.craftedBookshelfW = {
 --  [1] = { zmin = 0.09, zmax = 0.26, xmin = 0.55, xmax = 0.80, ymin = 0.15, ymax = 0.85 },
 --  [2] = { zmin = 0.36, zmax = 0.55, xmin = 0.55, xmax = 0.80, ymin = 0.15, ymax = 0.85 },
 --  [3] = { zmin = 0.62, zmax = 0.79, xmin = 0.55, xmax = 0.80, ymin = 0.15, ymax = 0.85 },
---  [4] = { zmin = 0.83, zmax = 1.00, xmin = 0.55, xmax = 0.87, ymin = 0.18, ymax = 0.85 },
+--  [4] = { zmin = 0.83, zmax = 1, xmin = 0.55, xmax = 0.87, ymin = 0.18, ymax = 0.85 },
 --}
 --sp.craftedBookshelfN = {
 --  [1] = { zmin = 0.09, zmax = 0.26, xmin = 0.15, xmax = 0.85, ymin = 0.55, ymax = 0.80 },
 --  [2] = { zmin = 0.36, zmax = 0.55, xmin = 0.15, xmax = 0.85, ymin = 0.55, ymax = 0.80 },
 --  [3] = { zmin = 0.62, zmax = 0.79, xmin = 0.15, xmax = 0.85, ymin = 0.55, ymax = 0.80 },
---  [4] = { zmin = 0.83, zmax = 1.00, xmin = 0.15, xmax = 0.82, ymin = 0.55, ymax = 0.87 },
+--  [4] = { zmin = 0.83, zmax = 1, xmin = 0.15, xmax = 0.82, ymin = 0.55, ymax = 0.87 },
 --}
 --sp.craftedBookshelfE = {
 --  [1] = { zmin = 0.09, zmax = 0.26, xmin = 0.20, xmax = 0.45, ymin = 0.15, ymax = 0.85 },
 --  [2] = { zmin = 0.36, zmax = 0.55, xmin = 0.20, xmax = 0.45, ymin = 0.15, ymax = 0.85 },
 --  [3] = { zmin = 0.62, zmax = 0.79, xmin = 0.20, xmax = 0.45, ymin = 0.15, ymax = 0.85 },
---  [4] = { zmin = 0.83, zmax = 1.00, xmin = 0.13, xmax = 0.45, ymin = 0.15, ymax = 0.82 },
+--  [4] = { zmin = 0.83, zmax = 1, xmin = 0.13, xmax = 0.45, ymin = 0.15, ymax = 0.82 },
 --}
 --
 --s["crafted_04_92"] = sp.craftedBookshelfS
@@ -218,16 +218,16 @@ s["furniture_shelving_01_47"] = sp.bookshelfN
 --s["crafted_04_95"] = sp.craftedBookshelfE
 
 sp.bedsideStandS = {
-  [1] = { zmin = 0.355, zmax = 1.000, xmin = 0.18, xmax = 0.9, ymin = 0.15, ymax = 0.65 },
+  [1] = { zmin = 0.355, zmax = 10, xmin = 0.18, xmax = 0.9, ymin = 0.15, ymax = 0.65 },
 }
 sp.bedsideStandE = {
-  [1] = { zmin = 0.355, zmax = 1.000, xmin = 0.15, xmax = 0.65, ymin = 0.18, ymax = 0.9 },
+  [1] = { zmin = 0.355, zmax = 10, xmin = 0.15, xmax = 0.65, ymin = 0.18, ymax = 0.9 },
 }
 sp.bedsideStandW = {
-  [1] = { zmin = 0.355, zmax = 1.000, xmin = 0.4, xmax = 0.9, ymin = 0.18, ymax = 0.9 },
+  [1] = { zmin = 0.355, zmax = 10, xmin = 0.4, xmax = 0.9, ymin = 0.18, ymax = 0.9 },
 }
 sp.bedsideStandN = {
-  [1] = { zmin = 0.355, zmax = 1.000, xmin = 0.18, xmax = 0.9, ymin = 0.4, ymax = 0.9 },
+  [1] = { zmin = 0.355, zmax = 10, xmin = 0.18, xmax = 0.9, ymin = 0.4, ymax = 0.9 },
 }
 
 -- bedside stand
@@ -237,7 +237,7 @@ s["furniture_storage_01_50"] = sp.bedsideStandW
 s["furniture_storage_01_51"] = sp.bedsideStandN
 
 sp.roundTable = {
-  [1] = { zmin = 0.281, zmax = 1.000, xmin = 0.2, xmax = 0.87, ymin = 0.2, ymax = 0.9 },
+  [1] = { zmin = 0.281, zmax = 10, xmin = 0.2, xmax = 0.87, ymin = 0.2, ymax = 0.9 },
 }
 
 s["furniture_tables_high_01_6"] = sp.roundTable
@@ -247,70 +247,70 @@ s["furniture_tables_high_01_23"] = sp.roundTable
 
 -- toilet
 s["fixtures_bathroom_01_0"] = {
-  [1] = { zmin = 0.401, zmax = 1.000, xmin = 0.166, xmax = 0.846, ymin = 0.114, ymax = 0.393 },
+  [1] = { zmin = 0.401, zmax = 10, xmin = 0.166, xmax = 0.846, ymin = 0.114, ymax = 0.393 },
 }
 
 s["fixtures_bathroom_01_1"] = {
-  [1] = { zmin = 0.368, zmax = 1.000, xmin = 0.06, xmax = 0.33, ymin = 0.2, ymax = 0.7 },
+  [1] = { zmin = 0.368, zmax = 10, xmin = 0.06, xmax = 0.33, ymin = 0.2, ymax = 0.7 },
 }
 
 -- bathtub
 -- the other orientations mirror (x) or transpose (x <-> y) the 1_26/1_27 pair
 -- 25 (faucet end, north) + 24 (end, south): transposed 26/27
 s["fixtures_bathroom_01_24"] = {
-  [1] = { zmin = 0.205, zmax = 1.000, xmin = 0.100, xmax = 0.22, ymin = 0, ymax = 0.95 },
-  [2] = { zmin = 0.205, zmax = 1.000, xmin = 0.23, xmax = 0.87, ymin = 0.87, ymax = 1 },
-  [3] = { zmin = 0.205, zmax = 1.000, xmin = 0.88, xmax = 1, ymin = 0, ymax = 0.95 },
+  [1] = { zmin = 0.205, zmax = 10, xmin = 0.100, xmax = 0.22, ymin = 0, ymax = 0.95 },
+  [2] = { zmin = 0.205, zmax = 10, xmin = 0.23, xmax = 0.87, ymin = 0.87, ymax = 1 },
+  [3] = { zmin = 0.205, zmax = 10, xmin = 0.88, xmax = 1, ymin = 0, ymax = 0.95 },
 }
 s["fixtures_bathroom_01_25"] = {
-  [1] = { zmin = 0.205, zmax = 1.000, xmin = 0.100, xmax = 0.22, ymin = 0.1, ymax = 1 },
-  [2] = { zmin = 0.205, zmax = 1.000, xmin = 0.85, xmax = 1, ymin = 0.25, ymax = 1 },
+  [1] = { zmin = 0.205, zmax = 10, xmin = 0.100, xmax = 0.22, ymin = 0.1, ymax = 1 },
+  [2] = { zmin = 0.205, zmax = 10, xmin = 0.85, xmax = 1, ymin = 0.25, ymax = 1 },
 }
 -- side with water fixtures on the NE wall
 s["fixtures_bathroom_01_26"] = {
-  [1] = { zmin = 0.205, zmax = 1.000, xmin = 0.1, xmax = 1, ymin = 0.100, ymax = 0.22 },
-  [2] = { zmin = 0.205, zmax = 1.000, xmin = 0.25, xmax = 1, ymin = 0.85, ymax = 1 },
+  [1] = { zmin = 0.205, zmax = 10, xmin = 0.1, xmax = 1, ymin = 0.100, ymax = 0.22 },
+  [2] = { zmin = 0.205, zmax = 10, xmin = 0.25, xmax = 1, ymin = 0.85, ymax = 1 },
 }
 -- end side on the SW wall (opposite 1_26)
 s["fixtures_bathroom_01_27"] = {
-  [1] = { zmin = 0.205, zmax = 1.000, xmin = 0, xmax = 0.95, ymin = 0.100, ymax = 0.22 },
-  [2] = { zmin = 0.205, zmax = 1.000, xmin = 0.87, xmax = 1, ymin = 0.23, ymax = 0.87 },
-  [3] = { zmin = 0.205, zmax = 1.000, xmin = 0, xmax = 0.95, ymin = 0.88, ymax = 1 },
+  [1] = { zmin = 0.205, zmax = 10, xmin = 0, xmax = 0.95, ymin = 0.100, ymax = 0.22 },
+  [2] = { zmin = 0.205, zmax = 10, xmin = 0.87, xmax = 1, ymin = 0.23, ymax = 0.87 },
+  [3] = { zmin = 0.205, zmax = 10, xmin = 0, xmax = 0.95, ymin = 0.88, ymax = 1 },
 }
 
 -- 52 (faucet end, south) + 53 (end, north): transposed 55/54
 s["fixtures_bathroom_01_52"] = {
-  [1] = { zmin = 0.205, zmax = 1.000, xmin = 0.100, xmax = 0.22, ymin = 0, ymax = 0.9 },
-  [2] = { zmin = 0.205, zmax = 1.000, xmin = 0.85, xmax = 1, ymin = 0, ymax = 0.75 },
+  [1] = { zmin = 0.205, zmax = 10, xmin = 0.100, xmax = 0.22, ymin = 0, ymax = 0.9 },
+  [2] = { zmin = 0.205, zmax = 10, xmin = 0.85, xmax = 1, ymin = 0, ymax = 0.75 },
 }
 s["fixtures_bathroom_01_53"] = {
-  [1] = { zmin = 0.205, zmax = 1.000, xmin = 0.100, xmax = 0.22, ymin = 0.05, ymax = 1 },
-  [2] = { zmin = 0.205, zmax = 1.000, xmin = 0.23, xmax = 0.87, ymin = 0, ymax = 0.13 },
-  [3] = { zmin = 0.205, zmax = 1.000, xmin = 0.88, xmax = 1, ymin = 0.05, ymax = 1 },
+  [1] = { zmin = 0.205, zmax = 10, xmin = 0.100, xmax = 0.22, ymin = 0.05, ymax = 1 },
+  [2] = { zmin = 0.205, zmax = 10, xmin = 0.23, xmax = 0.87, ymin = 0, ymax = 0.13 },
+  [3] = { zmin = 0.205, zmax = 10, xmin = 0.88, xmax = 1, ymin = 0.05, ymax = 1 },
 }
 
 -- 55 (faucet end, east) + 54 (end, west): 26/27 mirrored in x
 s["fixtures_bathroom_01_54"] = {
-  [1] = { zmin = 0.205, zmax = 1.000, xmin = 0.05, xmax = 1, ymin = 0.100, ymax = 0.22 },
-  [2] = { zmin = 0.205, zmax = 1.000, xmin = 0, xmax = 0.13, ymin = 0.23, ymax = 0.87 },
-  [3] = { zmin = 0.205, zmax = 1.000, xmin = 0.05, xmax = 1, ymin = 0.88, ymax = 1 },
+  [1] = { zmin = 0.205, zmax = 10, xmin = 0.05, xmax = 1, ymin = 0.100, ymax = 0.22 },
+  [2] = { zmin = 0.205, zmax = 10, xmin = 0, xmax = 0.13, ymin = 0.23, ymax = 0.87 },
+  [3] = { zmin = 0.205, zmax = 10, xmin = 0.05, xmax = 1, ymin = 0.88, ymax = 1 },
 }
 s["fixtures_bathroom_01_55"] = {
-  [1] = { zmin = 0.205, zmax = 1.000, xmin = 0, xmax = 0.9, ymin = 0.100, ymax = 0.22 },
-  [2] = { zmin = 0.205, zmax = 1.000, xmin = 0, xmax = 0.75, ymin = 0.85, ymax = 1 },
+  [1] = { zmin = 0.205, zmax = 10, xmin = 0, xmax = 0.9, ymin = 0.100, ymax = 0.22 },
+  [2] = { zmin = 0.205, zmax = 10, xmin = 0, xmax = 0.75, ymin = 0.85, ymax = 1 },
 }
 
 -- gym bench
-modifySurfaces("furniture_seating_indoor_03_0", { zmin = -0.004 })
-modifySurfaces("furniture_seating_indoor_03_1", { zmin = -0.004 })
-modifySurfaces("furniture_seating_indoor_03_2", { zmin = -0.004 })
-modifySurfaces("furniture_seating_indoor_03_3", { zmin = -0.004 })
+modifySurfaces("furniture_seating_indoor_03_0", { zmin = -04 })
+modifySurfaces("furniture_seating_indoor_03_1", { zmin = -04 })
+modifySurfaces("furniture_seating_indoor_03_2", { zmin = -04 })
+modifySurfaces("furniture_seating_indoor_03_3", { zmin = -04 })
 
 -- tiny wooden table with fancy legs
-modifySurfaces("furniture_tables_low_01_2", { zmin = -0.0032, ymin = 0.1, xmin = 0.05, ymax = -0.05 })
+modifySurfaces("furniture_tables_low_01_2", { zmin = -032, ymin = 0.1, xmin = 0.05, ymax = -0.05 })
 
 -- tv console
-modifySurfaces("furniture_tables_low_01_12", { zmin = -0.005, ymin = 0.08, xmin = 0.05, ymax = -0.02, xmax = -0.02 })
+modifySurfaces("furniture_tables_low_01_12", { zmin = -05, ymin = 0.08, xmin = 0.05, ymax = -0.02, xmax = -0.02 })
 
 -- bathroom cabinet with mirror
 modifySurfaces("fixtures_bathroom_01_29", { zmin = -0.022, xmax = -0.1, ymax = -0.05 })
@@ -325,27 +325,27 @@ s["furniture_storage_02_19"] = boxCardboard
 
 modifySurfaces(
   "location_community_medical_01_48",
-  { xmin = 0.082, xmax = -0.006, ymin = 0.154, ymax = -0.016, zmin = -0.003 }
+  { xmin = 0.082, xmax = -06, ymin = 0.154, ymax = -0.016, zmin = -03 }
 )
 modifySurfaces(
   "location_community_medical_01_50",
-  { xmin = 0.082, xmax = -0.006, ymin = 0.154, ymax = -0.016, zmin = -0.003 }
+  { xmin = 0.082, xmax = -06, ymin = 0.154, ymax = -0.016, zmin = -03 }
 )
 --modifySurfaces("location_community_medical_01_49", { xmin = 0.12, xmax = 0.11, ymin = 0.1, ymax = 0.08, zmin = 0.023 })
 --modifySurfaces("location_community_medical_01_51", { xmin = 0.12, xmax = 0.11, ymin = 0.1, ymax = 0.08, zmin = 0.023 })
 modifySurfaces(
   "location_community_medical_01_49",
-  { xmin = 0.21, xmax = 0.01, ymin = 0.13, ymax = 0.03, zmin = -0.003 }
+  { xmin = 0.21, xmax = 0.01, ymin = 0.13, ymax = 0.03, zmin = -03 }
 )
 modifySurfaces(
   "location_community_medical_01_51",
-  { xmin = 0.21, xmax = 0.01, ymin = 0.13, ymax = 0.03, zmin = -0.003 }
+  { xmin = 0.21, xmax = 0.01, ymin = 0.13, ymax = 0.03, zmin = -03 }
 )
 
 modifySurfaces("furniture_storage_02_28", { xmin = 0.02, xmax = -0.023, ymin = 0.022, ymax = -0.016, zmin = -0.01 })
-modifySurfaces("furniture_storage_02_29", { xmin = 0.001, xmax = -0.037, ymin = 0.028, zmin = -0.006 })
+modifySurfaces("furniture_storage_02_29", { xmin = 01, xmax = -0.037, ymin = 0.028, zmin = -06 })
 modifySurfaces("furniture_storage_02_30", { xmin = 0.02, xmax = -0.023, ymin = 0.022, ymax = -0.016, zmin = -0.01 })
-modifySurfaces("furniture_storage_02_31", { xmin = 0.001, xmax = -0.037, ymin = 0.028, zmin = -0.006 })
+modifySurfaces("furniture_storage_02_31", { xmin = 01, xmax = -0.037, ymin = 0.028, zmin = -06 })
 
 -- blue comfy chair
 s["furniture_seating_indoor_03_24"] = {
@@ -364,13 +364,13 @@ s["furniture_seating_indoor_03_26"] = {
 -- wooden toilet hole
 modifySurfaces("fixtures_bathroom_02_24", { xmin = 0.016, xmax = -0.014, ymax = -0.109, zmin = -0.016 })
 -- crappy crafted wooden shelves
-modifySurfaces("carpentry_02_68", { xmin = 0.012, xmax = 0.005, ymin = 0.048, ymax = -0.014, zmin = -0.006 })
-modifySurfaces("carpentry_02_69", { xmin = 0.014, xmax = -0.046, ymin = -0.008, ymax = -0.023, zmin = -0.006 })
-modifySurfaces("carpentry_02_70", { xmin = 0.03, xmax = -0.01, ymin = 0.02, ymax = 0.01, zmin = -0.006 })
-modifySurfaces("carpentry_02_71", { xmin = 0.011, xmax = -0.014, ymin = 0.05, ymax = -0.022, zmin = -0.006 })
---modifySurfaces("carpentry_02_69", { xmin = 0.012, xmax = 0.005, ymin = 0.048, ymax = -0.014, zmin = -0.006 })
---modifySurfaces("carpentry_02_70", { xmin = 0.012, xmax = 0.005, ymin = 0.048, ymax = -0.014, zmin = -0.006 })
---modifySurfaces("carpentry_02_71", { xmin = 0.012, xmax = 0.005, ymin = 0.048, ymax = -0.014, zmin = -0.006 })
+modifySurfaces("carpentry_02_68", { xmin = 0.012, xmax = 05, ymin = 0.048, ymax = -0.014, zmin = -06 })
+modifySurfaces("carpentry_02_69", { xmin = 0.014, xmax = -0.046, ymin = -08, ymax = -0.023, zmin = -06 })
+modifySurfaces("carpentry_02_70", { xmin = 0.03, xmax = -0.01, ymin = 0.02, ymax = 0.01, zmin = -06 })
+modifySurfaces("carpentry_02_71", { xmin = 0.011, xmax = -0.014, ymin = 0.05, ymax = -0.022, zmin = -06 })
+--modifySurfaces("carpentry_02_69", { xmin = 0.012, xmax = 05, ymin = 0.048, ymax = -0.014, zmin = -06 })
+--modifySurfaces("carpentry_02_70", { xmin = 0.012, xmax = 05, ymin = 0.048, ymax = -0.014, zmin = -06 })
+--modifySurfaces("carpentry_02_71", { xmin = 0.012, xmax = 05, ymin = 0.048, ymax = -0.014, zmin = -06 })
 
 -- tall skinny wooden end table
 s["furniture_tables_high_01_4"] = {
@@ -395,12 +395,12 @@ s["furniture_tables_low_01_20"] = {
 }
 
 -- glass table nw
-modifySurfaces("furniture_tables_low_01_8", { xmin = 0.24, ymin = 0.16, ymax = 0.013, zmin = -0.009 })
-modifySurfaces("furniture_tables_low_01_9", { xmax = -0.13, ymin = 0.17, ymax = 0.09, zmin = -0.009 })
+modifySurfaces("furniture_tables_low_01_8", { xmin = 0.24, ymin = 0.16, ymax = 0.013, zmin = -09 })
+modifySurfaces("furniture_tables_low_01_9", { xmax = -0.13, ymin = 0.17, ymax = 0.09, zmin = -09 })
 
 -- log table sw
-modifySurfaces("crafted_02_88", { xmin = 0.034, xmax = 0.079, ymax = -0.05, zmin = -0.007 })
-modifySurfaces("crafted_02_89", { xmin = 0.092, xmax = 0.129, ymin = 0.175, zmin = -0.007 })
+modifySurfaces("crafted_02_88", { xmin = 0.034, xmax = 0.079, ymax = -0.05, zmin = -07 })
+modifySurfaces("crafted_02_89", { xmin = 0.092, xmax = 0.129, ymin = 0.175, zmin = -07 })
 
 -- doesnt support stacking so just put an extremely tiny surface
 -- shop shelves green side
@@ -467,13 +467,13 @@ s["furniture_tables_low_01_11"] = { -- from furniture_tables_low_01_9
 }
 
 -- wall shelves
-modifySurfaces("furniture_shelving_01_33", { xmin = 0.07, ymin = 0.04, zmin = -0.008 })
+modifySurfaces("furniture_shelving_01_33", { xmin = 0.07, ymin = 0.04, zmin = -08 })
 s["furniture_shelving_01_32"] = { -- rotated from furniture_shelving_01_33
   { zmin = 0.592, zmax = 1, xmin = 0.09, xmax = 0.32, ymin = 0, ymax = 0.93 },
 }
 
 -- cot
-modifySurfaces("furniture_bedding_01_56", { xmin = 0.05, xmax = -0.04, ymax = -0.05, zmin = -0.007 })
+modifySurfaces("furniture_bedding_01_56", { xmin = 0.05, xmax = -0.04, ymax = -0.05, zmin = -07 })
 s["furniture_bedding_01_59"] = { -- rotated from furniture_bedding_01_56
   { zmin = 0.254, zmax = 1, xmin = 0, xmax = 0.943, ymin = 0.076, ymax = 0.895 },
 }
@@ -498,7 +498,7 @@ s["furniture_bedding_01_84"] = { -- rotated from furniture_bedding_01_87
 
 modifySurfaces(
   "furniture_seating_indoor_03_64",
-  { xmin = 0.08, xmax = -0.02, ymin = 0.12, ymax = -0.01, zmin = -0.006 }
+  { xmin = 0.08, xmax = -0.02, ymin = 0.12, ymax = -0.01, zmin = -06 }
 )
 s["furniture_seating_indoor_03_65"] = { -- mirrored from furniture_seating_indoor_03_64, the other half of the bench
   { zmin = 0.186, zmax = 1, xmin = 0.28, xmax = 0.83, ymin = 0.01, ymax = 0.88 },
@@ -647,7 +647,7 @@ s["location_community_police_01_30"] = { { zmin = 0.272, zmax = 1, xmin = 0, xma
 s["location_community_police_01_31"] = { { zmin = 0.272, zmax = 1, xmin = 0, xmax = 0.85, ymin = 0.18, ymax = 1 } }
 
 -- countertop soda machine
-modifySurfaces("location_shop_accessories_01_9", { xmax = -0.06, ymax = -0.02, zmin = -0.008 })
+modifySurfaces("location_shop_accessories_01_9", { xmax = -0.06, ymax = -0.02, zmin = -08 })
 
 -- seahorse cafe cooled display fridge, two tiles wide. measured on the left half facing S (the shelf runs 0.16-0.58 from
 -- the back, with a 0.08 rim at the outer end); the other halves and angles are that same shelf rotated
@@ -695,41 +695,36 @@ modifySurfaces("appliances_refrigeration_01_44", { ymax = 0.01, xmax = -0.02, xm
 modifySurfaces("appliances_refrigeration_01_46", { xmin = -0.01, ymax = -0.02, ymin = 0.05, zmin = -0.011 })
 modifySurfaces("appliances_refrigeration_01_47", { xmax = 0.01, ymax = -0.02, ymin = 0.05, zmin = -0.011 })
 
--- metal counter S
-s["fixtures_counters_01_37"] = {
-  { zmin = 0.375, zmax = 1, xmin = 0, xmax = 1, ymin = 0.12, ymax = 0.7, facing = "S" },
-  -- floor below
-  { zmin = 0.000, zmax = 0.15, xmin = 0, xmax = 1, ymin = 0.12, ymax = 0.61 },
-}
--- the other angles are the S counter rotated: the top runs 0.12-0.7 from the back, the floor below 0.12-0.61
-s["fixtures_counters_01_33"] = { -- N
-  { zmin = 0.375, zmax = 1,    xmin = 0,    xmax = 1,    ymin = 0.3,  ymax = 0.88, facing = "N" },
-  { zmin = 0.000, zmax = 0.15, xmin = 0,    xmax = 1,    ymin = 0.39, ymax = 0.88 },
-}
-s["fixtures_counters_01_35"] = { -- E
-  { zmin = 0.375, zmax = 1,    xmin = 0.12, xmax = 0.7,  ymin = 0,    ymax = 1, facing = "E" },
-  { zmin = 0.000, zmax = 0.15, xmin = 0.12, xmax = 0.61, ymin = 0,    ymax = 1 },
-}
-s["fixtures_counters_01_39"] = { -- W
-  { zmin = 0.375, zmax = 1,    xmin = 0.3,  xmax = 0.88, ymin = 0,    ymax = 1, facing = "W" },
-  { zmin = 0.000, zmax = 0.15, xmin = 0.39, xmax = 0.88, ymin = 0,    ymax = 1 },
-}
-
--- straight counters get the metal counter's top. the counters' fronts overhang their cabinets, so the top runs 0.12-0.7
--- from the back across the whole tile and neighbouring pieces line up. they're all drawn as high as the metal one,
--- even the ones whose Surface property is lower
----@param zmin number
+-- every straight counter gets the metal counter's top, as high as the metal one even where the Surface property is
+-- lower. measured on the S counter: 0.12-0.7 from the back, and 0.07 in from its west end, where items would hang
+-- over the edge. the other facings are that S top rotated
+---@param zmin  number
+---@param inset number?
 ---@return table<string, table<integer, IASurfaceProfile>>
-local function counterTops(zmin)
+local function counterTops(zmin, inset)
+  inset = inset or 0.07
+
   return {
-    S = { { zmin = zmin, xmin = 0, xmax = 1, ymin = 0.12, ymax = 0.7, facing = "S" } },
-    N = { { zmin = zmin, xmin = 0, xmax = 1, ymin = 0.3, ymax = 0.88, facing = "N" } },
-    E = { { zmin = zmin, xmin = 0.12, xmax = 0.7, ymin = 0, ymax = 1, facing = "E" } },
-    W = { { zmin = zmin, xmin = 0.3, xmax = 0.88, ymin = 0, ymax = 1, facing = "W" } },
+    S = { { zmin = zmin, xmin = inset, xmax = 1,         ymin = 0.12,  ymax = 0.7,       facing = "S" } },
+    N = { { zmin = zmin, xmin = 0,     xmax = 1 - inset, ymin = 0.3,   ymax = 0.88,      facing = "N" } },
+    E = { { zmin = zmin, xmin = 0.12,  xmax = 0.7,       ymin = 0,     ymax = 1 - inset, facing = "E" } },
+    W = { { zmin = zmin, xmin = 0.3,   xmax = 0.88,      ymin = inset, ymax = 1,         facing = "W" } },
   }
 end
 
 local counterTop = counterTops(0.375)
+
+-- the metal counter is open below, with a floor 0.12-0.61 from the back
+local metalFloor = {
+  S = { zmin = 0, zmax = 0.15, xmin = 0,    xmax = 1,    ymin = 0.12, ymax = 0.61 },
+  N = { zmin = 0, zmax = 0.15, xmin = 0,    xmax = 1,    ymin = 0.39, ymax = 0.88 },
+  E = { zmin = 0, zmax = 0.15, xmin = 0.12, xmax = 0.61, ymin = 0,    ymax = 1 },
+  W = { zmin = 0, zmax = 0.15, xmin = 0.39, xmax = 0.88, ymin = 0,    ymax = 1 },
+}
+s["fixtures_counters_01_33"] = { counterTop.N[1], metalFloor.N }
+s["fixtures_counters_01_35"] = { counterTop.E[1], metalFloor.E }
+s["fixtures_counters_01_37"] = { counterTop.S[1], metalFloor.S }
+s["fixtures_counters_01_39"] = { counterTop.W[1], metalFloor.W }
 
 local NEXT_FACING = { N = "E", E = "S", S = "W", W = "N" }
 local BACK_EDGE = { N = "ymax", E = "xmin", S = "ymin", W = "xmax" }
@@ -826,11 +821,11 @@ s["location_shop_generic_01_101"] = { { zmin = 0.375, xmin = 0, xmax = 1, ymin =
 s["location_shop_generic_01_103"] = { { zmin = 0.375, xmin = 0.48, xmax = 0.98, ymin = 0, ymax = 1, facing = "E" } }
 s["location_shop_generic_01_99"] = { { zmin = 0.375, xmin = 0.02, xmax = 0.52, ymin = 0, ymax = 1, facing = "W" } }
 
--- bars are taller, each at its own height
+-- bars are taller, each at its own height, and items don't hang over their ends
 local BAR_SETS = { { 0, 0.478 }, { 16, 0.498 }, { 56, 0.487 } }
 
 for i = 1, #BAR_SETS do
-  local tops = counterTops(BAR_SETS[i][2])
+  local tops = counterTops(BAR_SETS[i][2], 0)
 
   for k, facing in ipairs({ "N", "W", "S", "E" }) do
     s["location_restaurant_bar_01_" .. (BAR_SETS[i][1] + k * 2 - 2)] = cornerTop(tops, facing)
