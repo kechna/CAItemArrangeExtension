@@ -7,6 +7,7 @@ require("IAArrange")
 --- @field xmax number
 --- @field ymin number
 --- @field ymax number
+--- @field facing? "N" | "E" | "S" | "W" side the counter faces, its rows start at the opposite side
 
 --- @class IAArrangableProfile
 --- @field dx number
@@ -866,6 +867,37 @@ local function applyFlips(result, profile, manual)
       result.ly = ly and ly > result.dy and ly or nil
     end
   end
+end
+
+--- a copy of the profile turned to other quarter-turn angles, the way flip keys turn it. the profile itself when either
+--- rotation isn't quarter turns.
+---@param profile IAArrangableProfile
+---@param to      number[] fx, fy, fz
+---@return IAArrangableProfile
+function IA.turnProfile(profile, to)
+  local from = { profile.fx or 0, profile.fy or 0, profile.fz or 0 }
+  local dx, dy, dz = getTurnedDimensions(profile, from, to)
+
+  if not dx then
+    return profile
+  end
+
+  local result = {}
+
+  for k, v in pairs(profile) do
+    result[k] = v
+  end
+
+  result.fx, result.fy, result.fz = to[1], to[2], to[3]
+  result.dx, result.dy, result.dz = dx, dy, dz
+
+  if profile.center then
+    setCenterOffsets(result, turnPoint(turnPoint(profile.center, from, true), to, false), dz)
+  elseif dz ~= profile.dz then
+    result.mz = nil
+  end
+
+  return result
 end
 
 ---@param worldMesh CAIAE_WorldMesh
