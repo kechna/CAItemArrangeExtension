@@ -34,3 +34,26 @@ link1 = Workshop = https://steamcommunity.com/id/chekka-anchroviec/myworkshopfil
 - send the held ctrl and shift+alt keys to the server
 - don't report a failed action when items don't fit the arrangement
 [ ------ ]
+
+[ v1.17.0 - 10/19/26 ]
+- make tarp pieces stackable
+- make sawblades and half sawblades stackable
+- make whetstones stackable
+- flip newspapers on their side
+- add a visible highlight on tiles when holding shift while dropping items
+- fix the tile that's being pointed at not being the tile that items will be arranged on when using Project Viewpoint
+- improve many surfaces, mostly counters
+- add a mod option to have arranged items face away from the walls (default), towards you, away from you or back at where you look
+- keep a tile's orientation when you take an item from it, read back from the items' rotations
+- fix some ammo cartons having a different size
+- fix the item orientation option, Ctrl and Shift+Alt being ignored with the latest Item Arrange
+- add a "Where I look" item orientation
+- explain the item orientation options in the description
+- counters, bank counters and display cases arrange items from their back, whichever wall is near
+- rows start at the edge of the surface again instead of being centered
+- improve the arrangement of many items, such as metal sheets, saw blades, whetstones, lead pipes and food from VFX and other mods
+- Beds, bunk beds, cots, benches and shelves now have surfaces that line up in all four directions
+- The halves of double beds and bunk beds meet without gaps
+- Items that get their size from this mod stack one high unless set otherwise
+- Fix the size of opened cans
+[ ------ ]
