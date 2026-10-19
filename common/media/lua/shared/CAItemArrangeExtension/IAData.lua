@@ -594,6 +594,7 @@ mp["WorldItems/WoodenMold_IngotCast"] = { qz = 4 }
 mp["WorldItems/WorldItem-SubstitutionDoll"] = { fz = 180 }
 mp["WorldItems/WorldItem_FlamingoPlushie"] = { fz = 180 }
 mp["WorldItems/WorldItem_SpiffoSanta"] = { fz = 180 }
+mp["CanOpen"] = { dx = 0.102, dy = 0.162, dz = 0.073 }
 
 ----
 -- mods

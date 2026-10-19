@@ -612,6 +612,9 @@ local function getInlineProfile(worldMesh, manual)
 
   local profile, ratio = getScaledEntry(manual, worldMesh)
 
+  -- like measured profiles, unlike Item Arrange's default of 3
+  profile.qz = profile.qz or 1
+
   ---@cast profile IAArrangableProfile
   return profile, INLINE, ratio
 end
