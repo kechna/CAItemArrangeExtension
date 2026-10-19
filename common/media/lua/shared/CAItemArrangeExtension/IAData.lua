@@ -14,6 +14,26 @@ local IA = IA
 local ap = IA.arrangableProfile
 local mp = IA.meshProfiles
 
+----
+-- overrides
+----
+IA.arrangables["Base.SheetMetal"] = nil
+IA.arrangables["Base.CopperSheet"] = nil
+IA.arrangables["Base.SmallSheetMetal"] = nil
+IA.arrangables["Base.SmallCopperSheet"] = nil
+
+IA.arrangables["Base.IronBar"].mx = -0.24
+ap.champagneBottle.fz = -270
+ap.cocoaPowder.fz = 0
+ap.ammoCarton.dz = 0.065
+
+IA.arrangables["Base.JamFruit"] = { dx = 0.12, dy = 0.12, dz = 0.06, fz = 90 }
+IA.arrangables["Base.JamMarmalade"] = { dx = 0.12, dy = 0.12, dz = 0.06, fz = 90 }
+IA.arrangables["Base.MayonnaiseEmpty"] = { dx = 0.12, dy = 0.12, dz = 0.06, fz = -30 }
+IA.arrangables["Base.MayonnaiseFull"] = { dx = 0.12, dy = 0.12, dz = 0.06, fz = -30 }
+IA.arrangables["Base.RemouladeEmpty"] = { dx = 0.12, dy = 0.12, dz = 0.06, fz = 0 }
+IA.arrangables["Base.RemouladeFull"] = { dx = 0.12, dy = 0.12, dz = 0.06, fz = 0 }
+
 --
 -- Mesh profiles
 --
@@ -429,7 +449,17 @@ mp["weapons/2handed/MetalBar_Full_Hand"] = { qz = 8 }
 mp["weapons/2handed/SledgeHammer"] = { fz = 270 }
 mp["weapons/2handed/SledgeHammer02"] = { fz = 270 }
 
-mp["WorldItems/Parcel4_Text"] = { dx = 0.3, dy = 0.27, dz = 0.065 }
+--Base.545x39Carton | static: nil | world: WorldItems/Parcel4_Text
+--Base.556Carton | static: WorldItems/Parcel4_Text | world: WorldItems/Parcel4_Text
+--Base.762x39BulletsCarton | static: WorldItems/Parcel4_Text | world: WorldItems/Parcel4_Text
+--Base.762x39Carton | static: nil | world: WorldItems/Parcel4_Text
+--Base.762x54rCarton | static: nil | world: WorldItems/Parcel4_Text
+--Base.792x57Carton | static: nil | world: WorldItems/Parcel4_Text
+--Base.Bullets50CalCarton | static: nil | world: WorldItems/Parcel4_Text
+--Base.Bullets50MagnumCarton | static: nil | world: WorldItems/Parcel4_Text
+--Base.Bullets9x39Carton | static: nil | world: WorldItems/Parcel4_Text
+
+mp["WorldItems/Parcel4_Text"] = ap.ammoCarton
 mp["BleachBottle"] = { dx = 0.1, dy = 0.16, dz = 0.11, fz = 180 }
 mp["CaffinePills"] = { dx = 0.1, dy = 0.1, dz = 0.07, fz = 153, s = 0.13 }
 mp["Jar"] = { dx = 0.12, dy = 0.12, dz = 0.06, qz = 3, fz = 45, s = 0.4 }
@@ -454,8 +484,11 @@ mp["WorldItems/CarJack"] = { dx = 0.8, dy = 0.8, dz = 0.014, qz = 8, s = 0.25 }
 mp["WorldItems/CarParts"] = { dx = 0.8, dy = 0.8, dz = 0.014, qz = 8, s = 0.25 }
 mp["WorldItems/CarSeat"] = { dy = 0.45, s = 0.4 }
 mp["WorldItems/CarTrunkLid"] = { dx = 0.8, dy = 0.8, dz = 0.014, qz = 8, s = 0.25 }
-mp["WorldItems/CarWindshield"] = { dx = 0.84, dy = 0.39, dz = 0.018, mx = -0.135, my = -0.182, qz = 8, fz = 0, s = 0.25 }
-mp["WorldItems/Toothbrush"] = { fz = 180, --[[mx = -0.02]] }
+mp["WorldItems/CarWindshield"] =
+  { dx = 0.84, dy = 0.39, dz = 0.018, mx = -0.135, my = -0.182, qz = 8, fz = 0, s = 0.25 }
+mp["WorldItems/Toothbrush"] = {
+  fz = 180, --[[mx = -0.02]]
+}
 
 mp["WorldItems/CeramicCast_AnvilBlock"] = { dx = 0.26, qz = 3, s = 0.13 }
 mp["WorldItems/Ceramic_IngotCast"] = { qz = 4 }
@@ -571,25 +604,6 @@ mp["WorldItems/Whetstone_Crude"] = { qz = 6 }
 mp["WorldItems/Whetstone_Modern"] = { qz = 6 }
 
 ----
--- overrides
-----
-IA.arrangables["Base.SheetMetal"] = nil
-IA.arrangables["Base.CopperSheet"] = nil
-IA.arrangables["Base.SmallSheetMetal"] = nil
-IA.arrangables["Base.SmallCopperSheet"] = nil
-
-IA.arrangables["Base.IronBar"].mx = -0.24
-ap.champagneBottle.fz = -270
-ap.cocoaPowder.fz = 0
-
-IA.arrangables["Base.JamFruit"] = { dx = 0.12, dy = 0.12, dz = 0.06, fz = 90 }
-IA.arrangables["Base.JamMarmalade"] = { dx = 0.12, dy = 0.12, dz = 0.06, fz = 90 }
-IA.arrangables["Base.MayonnaiseEmpty"] = { dx = 0.12, dy = 0.12, dz = 0.06, fz = -30 }
-IA.arrangables["Base.MayonnaiseFull"] = { dx = 0.12, dy = 0.12, dz = 0.06, fz = -30 }
-IA.arrangables["Base.RemouladeEmpty"] = { dx = 0.12, dy = 0.12, dz = 0.06, fz = 0 }
-IA.arrangables["Base.RemouladeFull"] = { dx = 0.12, dy = 0.12, dz = 0.06, fz = 0 }
-
-----
 -- mods
 ----
 
@@ -678,7 +692,7 @@ mp["WorldItems/NCtackleboxlarge_ground"] = { dx = 0.35, dy = 0.43, dz = 0.1, qz 
 mp["WorldItems/NCwaterjug_ground"] = { dy = 0.24, dz = 0.36, flip = true }
 mp["WorldItems/NCcomponentkit_ground"] = { qz = 3, mz = 0.02 }
 mp["WorldItems/NCcdbinder_ground"] = { qz = 3, mz = 0.02 }
-mp["WorldItems/NCcdcase_ground"] = { qz = 3}
+mp["WorldItems/NCcdcase_ground"] = { qz = 3 }
 mp["WorldItems/NCroughbox_ground"] = { qz = 2 }
 mp["WorldItems/NCshoebox_ground"] = { qz = 3, flip = true }
 
@@ -709,7 +723,7 @@ mp["WorldItems/Food/PIPizzaBoxEmpty"] = { qz = 5 }
 mp["WorldItems/Food/PIPizzaFoldedHand"] = { qz = 5 }
 mp["WorldItems/Food/PIPizzaSlice"] = { qz = 5 }
 mp["WorldItems/Food/PIPizzaSliceHand"] = { qz = 5 }
-mp["WorldItems/Food/PIPompsBig"] = { qz = 4}
+mp["WorldItems/Food/PIPompsBig"] = { qz = 4 }
 mp["WorldItems/Food/PIPopTart"] = { qz = 5 }
 mp["WorldItems/Food/PIPopTartHand"] = { qz = 5 }
 mp["WorldItems/Food/PIRMOysters"] = { flipZ = true, qz = 5 }
@@ -733,7 +747,7 @@ mp["WorldItems/JiangHand"] = { qz = 3 }
 mp["WorldItems/Misc/PIMagazine"] = { flipX = true, fx = 180, fy = 180, flipY = true, dx = 0.016 }
 mp["WorldItems/Misc/PIRambleyRaccoonPlushie"] = { fz = 180 }
 mp["WorldItems/PIGummyWorms"] = { qz = 3 }
-mp["WorldItems/Pomps"] = { qz = 4}
+mp["WorldItems/Pomps"] = { qz = 4 }
 mp["WorldItems/SourGummies"] = { qz = 8 }
 mp["WorldItems/SourGummiesEmpty"] = { qz = 8 }
 mp["WorldItems/SourGummiesHand"] = { qz = 8 }
