@@ -110,7 +110,7 @@ local function applyYaw(fx, fy, fz, yaw)
     return mathDeg(a) % 360, mathDeg(c) % 360, mathDeg(b) % 360
 end
 
----@alias IAFacingMode "walls" | "towards" | "away" | "view"
+---@alias IAFacingMode "walls" | "towards" | "away" | "view" | "look"
 
 local OPPOSITE = { N = "S", E = "W", S = "N", W = "E" }
 
@@ -118,7 +118,7 @@ local OPPOSITE = { N = "S", E = "W", S = "N", W = "E" }
 
 --- The side items face when `character` arranges them on `square`, `walls` to orient them by the walls. Modes:
 ---  - `towards`/`away`: by where the player stands, because they may only turn towards the square later
----  - `view`: back at the player, by where they look
+---  - `view`/`look`: back at the player or the way they look, by where they look
 --- On their own square the player's view decides in every mode.
 ---@param character IsoGameCharacter | nil
 ---@param square    IsoGridSquare
@@ -134,7 +134,7 @@ local function facingOf(character, square, mode)
     end
 
     local dx, dy, adx, ady = 0, 0, 0, 0
-    if mode ~= "view" then
+    if mode ~= "view" and mode ~= "look" then
         dx = character:getX() - square:getX() - 0.5
         dy = character:getY() - square:getY() - 0.5
         adx, ady = dx < 0 and -dx or dx, dy < 0 and -dy or dy
@@ -153,7 +153,7 @@ local function facingOf(character, square, mode)
         facing = dy > 0 and "S" or "N"
     end
 
-    return mode == "away" and OPPOSITE[facing] or facing
+    return (mode == "away" or mode == "look") and OPPOSITE[facing] or facing
 end
 
 IA.getFacing = facingOf

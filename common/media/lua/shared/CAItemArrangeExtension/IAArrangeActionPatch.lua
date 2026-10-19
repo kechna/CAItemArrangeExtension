@@ -102,12 +102,13 @@ function IAArrangeAction:complete()
 end
 
 -- in MP the client sends the fields named after `new`'s parameters and the server calls `new` with them, so the
--- parameters must be named (no `...`) and the held keys are parameters too, read on the client only
+-- parameters must be named (no `...`) and the held keys are parameters too, read on the client only. Item Arrange
+-- passes its own fifth argument (ctrl key or time), so the client always reads them itself
 function IAArrangeAction:new(character, item, srcContainer, dropSquare, altKey, ctrlKey, facingMode)
   local o = originalNew(self, character, item, srcContainer, dropSquare)
   o.skipItem = false
 
-  if altKey == nil and not isServer() then
+  if not isServer() then
     altKey = isAltKeyDown()
     ctrlKey = isCtrlKeyDown()
     facingMode = IA.FacingMode

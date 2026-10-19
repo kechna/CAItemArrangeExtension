@@ -11,7 +11,8 @@ local MOD_OPTIONS_ID = "CAItemArrangeExtension"
 local FACING_OPTION = "facingMode"
 local TEXT_PREFIX = "IGUI_CAIAE_Options_"
 
-local FACING_MODES = { "walls", "towards", "away", "view" }
+-- new modes go at the end, the option is saved as an index
+local FACING_MODES = { "walls", "towards", "away", "view", "look" }
 
 local function applyOptions(options)
   local option = options:getOption(FACING_OPTION)
