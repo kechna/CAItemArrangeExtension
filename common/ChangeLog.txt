@@ -57,3 +57,17 @@ link1 = Workshop = https://steamcommunity.com/id/chekka-anchroviec/myworkshopfil
 - Items that get their size from this mod stack one high unless set otherwise
 - Fix the size of opened cans
 [ ------ ]
+
+[ v1.18.0 - 10/24/26 ]
+- make rice lay flat and stackable
+- make more molds stackable
+- make large smooth flat stone stackable
+- make long sticks stackable
+- make that damn library's item stackable
+- make ammo maker brass sheets stackable
+- skip items that don't fit the surface when dropping in bulk and continue with the next one, instead of stopping and staying in the placing animation
+- add surface profiles for the north and west big wall corner shelves
+- arrange items with variant models, like hot drinks and notes, the same way every time
+- keep items' arrange profile after reloading
+- fix item sizes for mods whose model scripts use nested block comments
+[ ------ ]
