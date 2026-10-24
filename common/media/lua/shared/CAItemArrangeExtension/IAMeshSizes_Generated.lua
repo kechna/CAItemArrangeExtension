@@ -225,6 +225,7 @@ local MeshSizes = {
   ["bowlingpin@weapon"] = { dx = 0.1312, dy = 0.1312, dz = 0.1653, oz = -0.1214, cx = 0.006155 }, -- weapons/1handed/BowlingPin_Hand
   ["bowlpasta_ground"] = { dx = 0.1893, dy = 0.1801, dz = 0.04089 }, -- WorldItems/BowlRamen
   ["bowlramen_ground"] = { dx = 0.1893, dy = 0.1801, dz = 0.04089 }, -- WorldItems/BowlRamen
+  ["bowlrice_ground"] = { dx = 0.1893, dy = 0.1801, dz = 0.04089 }, -- WorldItems/BowlRamen
   ["bowlsalad_ground"] = { dx = 0.1893, dy = 0.1801, dz = 0.04089 }, -- WorldItems/BowlRamen
   ["bowlsoup_ground"] = { dx = 0.1893, dy = 0.1801, dz = 0.03973 }, -- WorldItems/BowlSoup
   ["bowtie_ground"] = { dx = 0.1825, dy = 0.1859, dz = 0.008988 }, -- WorldItems/Clothing/BowTie_Ground
@@ -840,6 +841,7 @@ local MeshSizes = {
   ["electricwirenew"] = { dx = 0.174, dy = 0.2163, dz = 0.03508 }, -- WorldItems/WireBundle
   ["electronicsscrap"] = { dx = 0.2126, dy = 0.1682, dz = 0.05684 }, -- WorldItems/ElectronicsScrap
   ["emerald"] = { dx = 0.02709, dy = 0.04293, dz = 0.004933, cy = 0.007312 }, -- WorldItems/Emerald
+  ["emergencyvehiclesmagazinewi"] = { dx = 0.2683, dy = 0.3726, dz = 0.006075 }, -- WorldItems/Magazine
   ["emptynotebook"] = { dx = 0.259, dy = 0.3802, dz = 0.006247 }, -- WorldItems/EmptyNotebook
   ["emptypopbottle"] = { dx = 0.1271, dy = 0.1271, dz = 0.1482 }, -- WorldItems/EmptyPopBottle
   ["engineermagazine2"] = { dx = 0.2683, dy = 0.3726, dz = 0.006075 }, -- WorldItems/Magazine
@@ -1285,6 +1287,7 @@ local MeshSizes = {
   ["jawbonebovide_club@weapon"] = { dx = 0.6031, dy = 0.2999, dz = 0.02381, oz = 0.00395, cx = 0.05045, cy = 0.1113 }, -- weapons/1handed/JawBone_Handle_Hand
   ["jawbonebovide_morningstar@weapon"] = { dx = 1.061, dy = 0.3617, dz = 0.05554, oz = 0.01814, cx = 0.4397, cy = 0.01621 }, -- weapons/2handed/JawBone_Axe_2Handed_Hand
   ["jawbonebovide@weapon"] = { dx = 0.4329, dy = 0.2936, dz = 0.02088, oz = 0.00372, cx = 0.002341, cy = 0.07451 }, -- weapons/1handed/JawBone_Hand
+  ["jdmvehiclesmagazinewi"] = { dx = 0.2683, dy = 0.3726, dz = 0.006075 }, -- WorldItems/Magazine
   ["jellybeans"] = { dx = 0.1278, dy = 0.1312, dz = 0.006597, cx = 0.002703 }, -- WorldItems/JellyBeans
   ["jellyroll"] = { dx = 0.08811, dy = 0.1429, dz = 0.02771 }, -- WorldItems/JellyRoll
   ["jerrycan"] = { dx = 0.161, dy = 0.3073, dz = 0.21, cy = -0.00356 }, -- JerryCan
@@ -1622,6 +1625,7 @@ local MeshSizes = {
   ["metalworkingpunch@weapon"] = { dx = 0.4659, dy = 0.04756, dz = 0.01942, cx = 0.1739, cy = -0.004861 }, -- weapons/1handed/Tapered_Punch_Hand
   ["meteorite"] = { dx = 0.3374, dy = 0.3364, dz = 0.08276 }, -- WorldItems/Meteorite
   ["microphone"] = { dx = 0.3193, dy = 0.09583, dz = 0.04066 }, -- WorldItems/Microphone
+  ["militaryvehiclesmagazinewi"] = { dx = 0.2683, dy = 0.3726, dz = 0.006075 }, -- WorldItems/Magazine
   ["milk_ground"] = { dx = 0.07861, dy = 0.1161, dz = 0.08226, cy = -0.01505 }, -- WorldItems/Milk
   ["milk_personalsized"] = { dx = 0.0847, dy = 0.07623, dz = 0.04909 }, -- WorldItems/MilkPersonalsized
   ["milkbottle"] = { dx = 0.07741, dy = 0.07656, dz = 0.09111 }, -- WorldItems/Milk_Bottle
@@ -1669,6 +1673,7 @@ local MeshSizes = {
   ["mugspiffo"] = { dx = 0.1255, dy = 0.1616, dz = 0.04787, cx = -0.003181, cy = -0.02167 }, -- WorldItems/Mug
   ["mugwhite"] = { dx = 0.1255, dy = 0.1616, dz = 0.04787, cx = -0.003181, cy = -0.02167 }, -- WorldItems/Mug
   ["multitool_closed"] = { dx = 0.1853, dy = 0.05413, dz = 0.004536, cx = -0.04123, cy = 0.009287 }, -- WorldItems/MultiTool_Closed_Hand
+  ["musclevehiclesmagazinewi"] = { dx = 0.2683, dy = 0.3726, dz = 0.006075 }, -- WorldItems/Magazine
   ["mushroomgeneric1"] = { dx = 0.1093, dy = 0.1405, dz = 0.03706 }, -- WorldItems/MushroomGeneric_1_2
   ["mushroomgeneric2"] = { dx = 0.1458, dy = 0.1874, dz = 0.04941 }, -- WorldItems/MushroomGeneric_1_2
   ["mushroomgeneric3"] = { dx = 0.1814, dy = 0.1778, dz = 0.06818 }, -- WorldItems/MushroomGeneric3
@@ -1796,6 +1801,9 @@ local MeshSizes = {
   ["parcel5"] = { dx = 0.225, dy = 0.2538, dz = 0.05456 }, -- WorldItems/Parcel_Present_5
   ["parkingticket"] = { dx = 0.09541, dy = 0.2008, dz = 0.0007747, oz = -0.002385 }, -- WorldItems/ParkingTicket
   ["parsleyseedbag_ground"] = { dx = 0.1722, dy = 0.1032, dz = 0.004575 }, -- WorldItems/SeedPacket
+  ["passengerclassicvehiclesmagazinewi"] = { dx = 0.2683, dy = 0.3726, dz = 0.006075 }, -- WorldItems/Magazine
+  ["passengermidvehiclesmagazinewi"] = { dx = 0.2683, dy = 0.3726, dz = 0.006075 }, -- WorldItems/Magazine
+  ["passengermodernvehiclesmagazinewi"] = { dx = 0.2683, dy = 0.3726, dz = 0.006075 }, -- WorldItems/Magazine
   ["passport"] = { dx = 0.1181, dy = 0.1751, dz = 0.003822 }, -- WorldItems/PassPort
   ["peach_ground"] = { dx = 0.1081, dy = 0.1081, dz = 0.03738 }, -- WorldItems/Peach
   ["peanutbutter"] = { dx = 0.1199, dy = 0.1142, dz = 0.08172 }, -- WorldItems/PeanutButter
@@ -1817,6 +1825,7 @@ local MeshSizes = {
   ["peppermint_ground"] = { dx = 0.1195, dy = 0.05451, dz = 0.008416 }, -- WorldItems/Peppermint
   ["pepperoni_ground"] = { dx = 0.1353, dy = 0.1699, dz = 0.003184 }, -- WorldItems/Pepperoni
   ["percedwood"] = { dx = 0.6335, dy = 0.1523, dz = 0.01248 }, -- WorldItems/PercedWood
+  ["performancevehiclesmagazinewi"] = { dx = 0.2683, dy = 0.3726, dz = 0.006075 }, -- WorldItems/Magazine
   ["perfume"] = { dx = 0.1827, dy = 0.1435, dz = 0.09416 }, -- WorldItems/Perfume
   ["perogies_ground"] = { dx = 0.2173, dy = 0.181, dz = 0.01479, cx = 0.004571, cy = -0.01105 }, -- WorldItems/Perogies
   ["pfrmag1world"] = { dx = 0.2683, dy = 0.3726, dz = 0.006075 }, -- WorldItems/Magazine
@@ -2309,6 +2318,7 @@ local MeshSizes = {
   ["spoonforged@weapon"] = { dx = 0.3097, dy = 0.08182, dz = 0.01105, cx = 0.114 }, -- weapons/1handed/Spoon_Forged_Hand
   ["spork"] = { dx = 0.04937, dy = 0.2185, dz = 0.0069 }, -- WorldItems/Spork
   ["sportsbottle"] = { dx = 0.09629, dy = 0.09777, dz = 0.1123 }, -- WorldItems/Sportsbottle
+  ["sportutilityvehiclesmagazinewi"] = { dx = 0.2683, dy = 0.3726, dz = 0.006075 }, -- WorldItems/Magazine
   ["spottedbass_ground"] = { dx = 0.4007, dy = 1.084, dz = 0.04137 }, -- WorldItems/Fish_Bass_Spotted_Stripped
   ["spraypaint"] = { dx = 0.08248, dy = 0.08248, dz = 0.09407 }, -- WorldItems/HairSpray
   ["springroll_ground"] = { dx = 0.1575, dy = 0.1654, dz = 0.01354, cx = -0.01602, cy = 0.005896 }, -- WorldItems/Springroll
@@ -2553,6 +2563,7 @@ local MeshSizes = {
   ["underpantsredspots_ground"] = { dx = 0.3582, dy = 0.1081, dz = 2.928e-7, cx = -0.002231, cy = -0.03794 }, -- WorldItems/Clothing/Female_Underpants
   ["unusablemetal"] = { dx = 0.2289, dy = 0.5831, dz = 0.03425 }, -- WorldItems/UnusableMetal
   ["unusablewood"] = { dx = 0.5561, dy = 0.4189, dz = 0.0479, cx = 0.02004, cy = 0.05851 }, -- WorldItems/UnusableWood
+  ["utilityvehiclesmagazinewi"] = { dx = 0.2683, dy = 0.3726, dz = 0.006075 }, -- WorldItems/Magazine
   ["vambrace_ground"] = { dx = 0.2174, dy = 0.1339, dz = 0.0205 }, -- WorldItems/Clothing/Vambrace_Ground
   ["vambrace_leather_left"] = { dx = 0.2076, dy = 0.1383, dz = 0.01988 }, -- WorldItems/Clothing/Vambrace_Leather_Ground_L
   ["vambrace_leather_right"] = { dx = 0.2076, dy = 0.1383, dz = 0.01988 }, -- WorldItems/Clothing/Vambrace_Leather_Ground_R
@@ -4051,14 +4062,19 @@ local MeshSizes = {
   ["92jeepyjtire2wi"] = { dx = 0.7102, dy = 0.6996, dz = 0.08207, oz = -0.0059 }, -- WorldItems/damnCommonTires_worldItems|wrangler_wheelWI
   ["93chevyk3500doubletireswi"] = { dx = 0.7529, dy = 0.7643, dz = 0.2141 }, -- WorldItems/Vehicles_93chevyK3500_Objects|sil93_tiresWI
   ["93chevyk3500tirewi"] = { dx = 0.7767, dy = 0.7652, dz = 0.1441 }, -- WorldItems/Vehicles_93chevyK3500_Objects|sil93_tireWI
+  ["acetonecanwi"] = { dx = 0.1861, dy = 0.1449, dz = 0.1288 }, -- WorldItems/damnCraft_plasticAddon_worldItems|acetoneCanWI
+  ["acetonejugwi"] = { dx = 0.2077, dy = 0.2077, dz = 0.174 }, -- WorldItems/damnCraft_plasticAddon_worldItems|acetonJugWI
   ["cam69wheelwi"] = { dx = 0.6134, dy = 0.6134, dz = 0.1026 }, -- WorldItems/damnCommonTires_worldItems|69camaro_tire_nWI
   ["cudawheelwi"] = { dx = 0.6134, dy = 0.6134, dz = 0.1026 }, -- WorldItems/damnCommonTires_worldItems|cuda_tireWI
+  ["damncrafthandleclassicwi"] = { dx = 0.1454, dy = 0.1086, dz = 0.02261 }, -- WorldItems/damnCraft_worldItems|handle_classicWI
+  ["damncrafthandlemodernwi"] = { dx = 0.1752, dy = 0.1134, dz = 0.01655 }, -- WorldItems/damnCraft_worldItems|handle_modernWI
   ["damncrafthingelargewi"] = { dx = 0.3776, dy = 0.2103, dz = 0.007274, cy = -0.005226 }, -- WorldItems/damnCraft_worldItems|hinge_largeWI
   ["damncrafthingesmallwi"] = { dx = 0.1642, dy = 0.1642, dz = 0.03975 }, -- WorldItems/damnCraft_worldItems|hinge_smallWI
   ["damncraftleafsuspensionwi"] = { dx = 0.2678, dy = 1.125, dz = 0.02315, cx = -0.006872 }, -- WorldItems/damnCraft_worldItems|leaf_susWI
   ["damncraftplasticweldinggunwi"] = { dx = 0.308, dy = 0.2274, dz = 0.02051, cy = 0.01006 }, -- WorldItems/damnCraft_worldItems|plastic_welder_gunWI
   ["damncraftplasticweldingkitwi"] = { dx = 0.4424, dy = 0.2963, dz = 0.02289 }, -- WorldItems/damnCraft_worldItems|plastic_welder_kitWI
   ["damncraftplasticweldingstapleswi"] = { dx = 0.1301, dy = 0.1007, dz = 0.009944 }, -- WorldItems/damnCraft_worldItems|plastic_welder_staplesWI
+  ["damncraftrubberstripwi"] = { dx = 0.5788, dy = 0.5287, dz = 0.01727 }, -- WorldItems/damnCraft_worldItems|rubber_stripWI
   ["damncraftseatfabricwi"] = { dx = 0.4456, dy = 0.3381, dz = 0.02044 }, -- WorldItems/damnCraft_worldItems|seat_fabricWI
   ["damncraftseatfoamwi"] = { dx = 0.4555, dy = 0.3326, dz = 0.03429 }, -- WorldItems/damnCraft_worldItems|seat_foamWI
   ["damncraftseatframelargewi"] = { dx = 0.4678, dy = 0.543, dz = 0.2487, cy = 0.06298 }, -- WorldItems/damnCraft_worldItems|seat_frame_LargeWI
@@ -4066,22 +4082,43 @@ local MeshSizes = {
   ["damncraftsteelrimlargewi"] = { dx = 0.67, dy = 0.6699, dz = 0.1024 }, -- WorldItems/damnCraft_worldItems|rim_LargeWI
   ["damncraftsteelrimmediumwi"] = { dx = 0.5553, dy = 0.5553, dz = 0.09785 }, -- WorldItems/damnCraft_worldItems|rim_MediumWI
   ["damncraftsteelrimsmallwi"] = { dx = 0.4894, dy = 0.4894, dz = 0.08539 }, -- WorldItems/damnCraft_worldItems|rim_SmallWI
+  ["damncrafttirerepairkitwi"] = { dx = 0.4424, dy = 0.2963, dz = 0.01167 }, -- WorldItems/damnCraft_worldItems|tire_repair_kitWI
+  ["damncrafttirerepairrubbersolutionwi"] = { dx = 0.13, dy = 0.04913, dz = 0.008952 }, -- WorldItems/damnCraft_worldItems|tire_repair_glueWI
+  ["damncrafttirerepairstripswi"] = { dx = 0.1554, dy = 0.08801, dz = 0.003362 }, -- WorldItems/damnCraft_worldItems|tire_repair_stripsWI
+  ["damncrafttirerepairtoolswi"] = { dx = 0.2932, dy = 0.1666, dz = 0.007155 }, -- WorldItems/damnCraft_worldItems|tire_repair_toolsWI
+  ["damncrafttirerubberdestroyedlargewi"] = { dx = 1.145, dy = 1.147, dz = 0.1372, cx = -0.01762, cy = -0.007552 }, -- WorldItems/damnCraft_worldItems|tire_Destroyed_LargeWI
+  ["damncrafttirerubberdestroyedsmallwi"] = { dx = 0.7588, dy = 0.7259, dz = 0.07837 }, -- WorldItems/damnCraft_worldItems|tire_Destroyed_SmallWI
   ["damncrafttirerubbermountedlargewi"] = { dx = 1.18, dy = 0.466, dz = 0.4745 }, -- WorldItems/damnCraft_worldItems|tire_mounted_LargeWI
   ["damncrafttirerubbermountedsmallwi"] = { dx = 0.7744, dy = 0.3117, dz = 0.3099 }, -- WorldItems/damnCraft_worldItems|tire_mounted_SmallWI
   ["damncrafttirerubbermountlargewi"] = { dx = 1.007, dy = 0.466, dz = 0.1804, cx = 0.00208 }, -- WorldItems/damnCraft_worldItems|tire_mount_LargeWI
   ["damncrafttirerubbermountsmallwi"] = { dx = 0.7744, dy = 0.3117, dz = 0.1394 }, -- WorldItems/damnCraft_worldItems|tire_mount_SmallWI
+  ["damncrafttirerubbernewlargewi"] = { dx = 1.18, dy = 1.162, dz = 0.1357 }, -- WorldItems/damnCraft_worldItems|tire_Good_LargeWI
+  ["damncrafttirerubbernewsmallwi"] = { dx = 0.7588, dy = 0.7588, dz = 0.09251 }, -- WorldItems/damnCraft_worldItems|tire_Good_SmallWI
+  ["damncrafttirerubberusedlargewi"] = { dx = 1.18, dy = 1.162, dz = 0.1357 }, -- WorldItems/damnCraft_worldItems|tire_Good_LargeWI
+  ["damncrafttirerubberusedsmallwi"] = { dx = 0.7588, dy = 0.7588, dz = 0.09251 }, -- WorldItems/damnCraft_worldItems|tire_Good_SmallWI
+  ["damncraftunismalltire1wi"] = { dx = 0.6386, dy = 0.6386, dz = 0.08566 }, -- WorldItems/damnCommonTires_worldItems|damn_stock_tire0WI
+  ["damncraftunismalltire2wi"] = { dx = 0.6386, dy = 0.6386, dz = 0.08566 }, -- WorldItems/damnCommonTires_worldItems|damn_stock_tire0WI
   ["damnlargepickuproofrackwi"] = { dx = 1.794, dy = 3.181, dz = 0.4361 }, -- WorldItems/damnCommonRoofracks_worldItems|pickup_roofrackWI
   ["damnmodernlargeroofrackwi"] = { dx = 1.113, dy = 1.495, dz = 0.1291 }, -- WorldItems/damnCommonRoofracks_worldItems|modern_roofracklWI
   ["damnmodernsmallroofrackwi"] = { dx = 1.115, dy = 1.014, dz = 0.1291 }, -- WorldItems/damnCommonRoofracks_worldItems|modern_roofrackWI
   ["damnoldsmallroofrackwi"] = { dx = 1.343, dy = 0.9011, dz = 0.1378 }, -- WorldItems/damnCommonRoofracks_worldItems|small_roofrackWI
   ["damnsignemptywi"] = { dx = 0.7588, dy = 0.7588, dz = 0.6557, oz = 0.005785 }, -- WorldItems/damnCraft_signs_worldItems|tire_sign_metal1WI
   ["damnsignfwwi"] = { dx = 0.7588, dy = 0.7588, dz = 0.6557, oz = 0.005785 }, -- WorldItems/damnCraft_signs_worldItems|tire_sign_metal1WI
+  ["damnsigngunwwi"] = { dx = 0.7588, dy = 0.7588, dz = 0.6557, oz = 0.005785 }, -- WorldItems/damnCraft_signs_worldItems|tire_sign_metal1WI
+  ["damnsignhomewwi"] = { dx = 0.7588, dy = 0.7588, dz = 0.6557, oz = 0.005785 }, -- WorldItems/damnCraft_signs_worldItems|tire_sign_metal1WI
   ["damnsignlwwi"] = { dx = 0.7588, dy = 0.7588, dz = 0.6557, oz = 0.005785 }, -- WorldItems/damnCraft_signs_worldItems|tire_sign_metal1WI
+  ["damnsignmechwwi"] = { dx = 0.7588, dy = 0.7588, dz = 0.6557, oz = 0.005785 }, -- WorldItems/damnCraft_signs_worldItems|tire_sign_metal1WI
+  ["damnsignmedwwi"] = { dx = 0.7588, dy = 0.7588, dz = 0.6557, oz = 0.005785 }, -- WorldItems/damnCraft_signs_worldItems|tire_sign_metal1WI
   ["damnsignrwwi"] = { dx = 0.7588, dy = 0.7588, dz = 0.6557, oz = 0.005785 }, -- WorldItems/damnCraft_signs_worldItems|tire_sign_metal1WI
   ["damnsignxwwi"] = { dx = 0.7588, dy = 0.7588, dz = 0.6557, oz = 0.005785 }, -- WorldItems/damnCraft_signs_worldItems|tire_sign_metal1WI
+  ["damnsteeltirewi"] = { dx = 0.6562, dy = 0.6598, dz = 0.08702 }, -- WorldItems/Objects_STEEL_Wheels|vic91_tireWI
   ["damntripodsignemptywi"] = { dx = 0.6865, dy = 0.6501, dz = 0.4039, cy = -0.05866 }, -- WorldItems/damnCraft_signs_worldItems|tire_sign_metal2WI
   ["damntripodsignfwwi"] = { dx = 0.6865, dy = 0.6501, dz = 0.4039, cy = -0.05866 }, -- WorldItems/damnCraft_signs_worldItems|tire_sign_metal2WI
+  ["damntripodsigngunwwi"] = { dx = 0.6865, dy = 0.6501, dz = 0.4039, cy = -0.05866 }, -- WorldItems/damnCraft_signs_worldItems|tire_sign_metal2WI
+  ["damntripodsignhomewwi"] = { dx = 0.6865, dy = 0.6501, dz = 0.4039, cy = -0.05866 }, -- WorldItems/damnCraft_signs_worldItems|tire_sign_metal2WI
   ["damntripodsignlwwi"] = { dx = 0.6865, dy = 0.6501, dz = 0.4039, cy = -0.05866 }, -- WorldItems/damnCraft_signs_worldItems|tire_sign_metal2WI
+  ["damntripodsignmechwwi"] = { dx = 0.6865, dy = 0.6501, dz = 0.4039, cy = -0.05866 }, -- WorldItems/damnCraft_signs_worldItems|tire_sign_metal2WI
+  ["damntripodsignmedwwi"] = { dx = 0.6865, dy = 0.6501, dz = 0.4039, cy = -0.05866 }, -- WorldItems/damnCraft_signs_worldItems|tire_sign_metal2WI
   ["damntripodsignrwwi"] = { dx = 0.6865, dy = 0.6501, dz = 0.4039, cy = -0.05866 }, -- WorldItems/damnCraft_signs_worldItems|tire_sign_metal2WI
   ["damntripodsignxwwi"] = { dx = 0.6865, dy = 0.6501, dz = 0.4039, cy = -0.05866 }, -- WorldItems/damnCraft_signs_worldItems|tire_sign_metal2WI
   ["dg70wheelwi"] = { dx = 0.6134, dy = 0.6134, dz = 0.1165, oz = 0.0138 }, -- WorldItems/damnCommonTires_worldItems|challenger_tire_nWI
@@ -4092,11 +4129,16 @@ local MeshSizes = {
   ["fordcvpitirewi"] = { dx = 0.6956, dy = 0.6956, dz = 0.09895 }, -- WorldItems/damnCommonTires_worldItems|vic92_tireWI
   ["fordcvpiwindshieldarmorwi"] = { dx = 1.504, dy = 0.7995, dz = 0.04421 }, -- WorldItems/Objects_fordCVPI_WorldItems|vic92_windshield_aWI
   ["fordcvpiwindshieldreararmorwi"] = { dx = 1.489, dy = 0.7507, dz = 0.04895 }, -- WorldItems/Objects_fordCVPI_WorldItems|vic92_windshield_rear_aWI
+  ["hubcapapocwi"] = { dx = 0.5797, dy = 0.5958, dz = 0.05457 }, -- WorldItems/Objects_damnHubcaps_Wheels|damn_hubcap_apocWI
   ["ki5trailerstarpwi"] = { dx = 1.211, dy = 1.851, dz = 0.01005, oz = -0.004539 }, -- WorldItems/KI5trailers_common_worldItems|damnTrailer_utility_medium_tarpWI
   ["landroverdakartirewi"] = { dx = 0.7422, dy = 0.7535, dz = 0.1146 }, -- WorldItems/Objects_landRover_Wheels_WorldItems|defender_wheel1WI
   ["landrovermilitarytirewi"] = { dx = 0.7505, dy = 0.7507, dz = 0.1079 }, -- WorldItems/Objects_landRover_Wheels_WorldItems|defender_wheel2WI
   ["landrovertirewi"] = { dx = 0.7535, dy = 0.7422, dz = 0.1146 }, -- WorldItems/Objects_landRover_Wheels_WorldItems|defender_wheelWI
   ["m101_trunkdoorwi"] = { dx = 1.526, dy = 0.5157, dz = 0.01679, oz = -0.005647 }, -- WorldItems/KI5trailers_common_worldItems|M101_trunkdoorWI
+  ["moldboxplasterwi"] = { dx = 1.045, dy = 0.4196, dz = 0.1077 }, -- WorldItems/damnCraft_plasticAddon_worldItems|woodBox_plasterWI
+  ["moldboxwi"] = { dx = 1.045, dy = 0.4196, dz = 0.1077 }, -- WorldItems/damnCraft_plasticAddon_worldItems|woodBox_emptyWI
+  ["moldplasterpastewi"] = { dx = 0.9607, dy = 0.3863, dz = 0.09211 }, -- WorldItems/damnCraft_plasticAddon_worldItems|plasterMold_pasteWI
+  ["moldplasterwi"] = { dx = 0.9895, dy = 0.4623, dz = 0.09058 }, -- WorldItems/damnCraft_plasticAddon_worldItems|plasterMold_emptyWI
   ["moparmagnum500tatirewi"] = { dx = 0.6117, dy = 0.6117, dz = 0.09991 }, -- WorldItems/Vehicles_Mopar_Wheels_WorldItems|mopar_magnum500_tireWI
   ["moparrally667tatirewi"] = { dx = 0.6134, dy = 0.6134, dz = 0.109 }, -- WorldItems/Vehicles_Mopar_Wheels_WorldItems|mopar_667_tireWI
   ["moparrally667tirewi"] = { dx = 0.6134, dy = 0.6134, dz = 0.109 }, -- WorldItems/Vehicles_Mopar_Wheels_WorldItems|mopar_667_tireWI
@@ -4114,6 +4156,8 @@ local MeshSizes = {
   ["runflatmoderntirewi"] = { dx = 1.12, dy = 1.103, dz = 0.1432 }, -- WorldItems/runFlat_worldItems|runFlat_ModernWI
   ["runflatsmall4axlewi"] = { dx = 1.51, dy = 0.8538, dz = 0.3539 }, -- WorldItems/runFlat_worldItems|runFlat_Small_4AxleWI
   ["runflatsmalltirewi"] = { dx = 0.871, dy = 0.8844, dz = 0.1244 }, -- WorldItems/runFlat_worldItems|runFlat_SmallWI
+  ["styrofoamscrapswi"] = { dx = 0.3263, dy = 0.3334, dz = 0.02663 }, -- WorldItems/damnCraft_plasticAddon_worldItems|styrofoamPiecesWI
+  ["styrofoamsheetwi"] = { dx = 0.8914, dy = 0.6108, dz = 0.01006 }, -- WorldItems/damnCraft_plasticAddon_worldItems|styrofoamSheetWI
   ["usmilcrate1milwi"] = { dx = 0.3717, dy = 0.9611, dz = 0.09332 }, -- WorldItems/USMIL_worldItems|USMIL_crate1WI
   ["usmilcrate1wi"] = { dx = 0.3717, dy = 0.9611, dz = 0.09332 }, -- WorldItems/USMIL_worldItems|USMIL_crate1WI
   ["usmilgascan0wi"] = { dx = 0.1262, dy = 0.2966, dz = 0.1596 }, -- WorldItems/USMIL_worldItems|USMIL_gascan0WI
@@ -5210,11 +5254,13 @@ local MeshSizes = {
   ["10scope"] = { dx = 0.4527, dy = 0.06892, dz = 0.02858, oz = -0.01095, cx = 0.01877 }, -- weapons/parts/10Scope
   ["10scopesilver"] = { dx = 0.4527, dy = 0.06892, dz = 0.02858, oz = -0.01095, cx = 0.01877 }, -- weapons/parts/10Scope
   ["10uzimag"] = { dx = 0.03745, dy = 0.155, dz = 0.009065, oz = -0.008151, cx = 0.01921, cy = -0.01417 }, -- weapons/parts/10UziMag
+  ["15mp5mag"] = { dx = 0.06322, dy = 0.1394, dz = 0.008563, oz = -0.008513, cx = -0.03074, cy = -0.002609 }, -- weapons/parts/15MP5Mag
   ["20m16mag"] = { dx = 0.06247, dy = 0.1239, dz = 0.009121, oz = -0.008129, cx = 0.01659, cy = -0.02485 }, -- weapons/parts/20M16Mag
-  ["20mp5mag"] = { dx = 0.07294, dy = 0.166, dz = 0.01047, oz = -0.007599, cx = -0.04882, cy = 0.01641 }, -- weapons/parts/20MP5Mag
+  ["20tommymag"] = { dx = 0.05012, dy = 0.1764, dz = 0.01237, oz = -0.006555, cx = -0.006055, cy = 0.00919 }, -- weapons/parts/ThompsonMag20
   ["22brassworld"] = { dx = 0.009366, dy = 0.0382, dz = 0.003823 }, -- WorldItems/22BrassWorld
   ["22roundsworld"] = { dx = 0.007806, dy = 0.03793, dz = 0.003186, cy = -0.002569 }, -- WorldItems/22RoundsWorld
   ["22silencercan"] = { dx = 0.1798, dy = 0.03264, dz = 0.01321, oz = -0.01432, cx = 0.0694 }, -- weapons/parts/22SilencerCan
+  ["25hk93mag"] = { dx = 0.08499, dy = 0.1559, dz = 0.008872, oz = -0.0084, cx = -0.04935, cy = -0.002394 }, -- weapons/parts/25HK93Mag
   ["25rug1022mag"] = { dx = 0.119, dy = 0.1731, dz = 0.009575, oz = -0.008096, cx = -0.07077, cy = 0.01198 }, -- weapons/parts/25Rug1022Mag
   ["25uzimag"] = { dx = 0.03745, dy = 0.1859, dz = 0.009065, oz = -0.008151, cx = 0.01924 }, -- weapons/parts/25UziMag
   ["30m1carmag"] = { dx = 0.07291, dy = 0.1903, dz = 0.006923, oz = -0.009324, cx = -0.02642, cy = 0.0238 }, -- weapons/parts/30M1CarMag
@@ -5223,7 +5269,9 @@ local MeshSizes = {
   ["30mini14mag"] = { dx = 0.09993, dy = 0.1993, dz = 0.007102, oz = -0.009319, cx = -0.06439, cy = 0.007915 }, -- weapons/parts/30Mini14Mag
   ["30mini14magss"] = { dx = 0.09993, dy = 0.1993, dz = 0.007102, oz = -0.009319, cx = -0.06434, cy = 0.007906 }, -- weapons/parts/30Mini14MagSS
   ["30riflecan"] = { dx = 0.2975, dy = 0.05282, dz = 0.02137, oz = -0.009834, cx = 0.01083 }, -- weapons/parts/30RifleCan
+  ["30tommymag"] = { dx = 0.05012, dy = 0.2391, dz = 0.01237, oz = -0.006555, cx = -0.006055, cy = 0.04055 }, -- weapons/parts/ThompsonMag30
   ["40ar180mag"] = { dx = 0.1074, dy = 0.2464, dz = 0.009221, oz = -0.008129, cx = -0.005885, cy = 0.03641 }, -- weapons/parts/40AR180Mag
+  ["40hk93mag"] = { dx = 0.1184, dy = 0.2497, dz = 0.008946, oz = -0.0084, cx = -0.06606, cy = 0.04452 }, -- weapons/parts/40HK93Mag
   ["40mini14mag"] = { dx = 0.1098, dy = 0.231, dz = 0.007124, oz = -0.009319, cx = -0.06925, cy = 0.02375 }, -- weapons/parts/40Mini14Mag
   ["40mini14magss"] = { dx = 0.1098, dy = 0.231, dz = 0.007124, oz = -0.009319, cx = -0.06925, cy = 0.02375 }, -- weapons/parts/40Mini14MagSS
   ["40uzimag"] = { dx = 0.03745, dy = 0.2573, dz = 0.009065, oz = -0.008151, cx = 0.01921, cy = 0.03717 }, -- weapons/parts/40UziMag
@@ -5402,7 +5450,7 @@ local MeshSizes = {
   ["benellim3@weapon"] = { dx = 1.089, dy = 0.2316, dz = 0.02351, oz = 0.01535, cx = 0.2626, cy = -0.0282 }, -- weapons/firearm/BenelliM3
   ["beretta682@weapon"] = { dx = 1.14, dy = 0.1836, dz = 0.01412, oz = 0.00706, cx = 0.2704, cy = -0.02489 }, -- weapons/Firearm/Beretta682
   ["betacmag"] = { dx = 0.2228, dy = 0.1035, dz = 0.02966, oz = -0.05119, cy = 0.004633 }, -- weapons/parts/BetaCMag
-  ["bhpblue@weapon"] = { dx = 0.2339, dy = 0.1388, dz = 0.01237, oz = -0.01451, cx = 0.1122, cy = 0.02365 }, -- weapons/firearm/BHPRing
+  ["bhpblue@weapon"] = { dx = 0.2339, dy = 0.1388, dz = 0.01237, oz = 0.00659, cx = 0.1122, cy = 0.02365 }, -- weapons/firearm/BHPRing
   ["bhpgripscocoworld"] = { dx = 0.1752, dy = 0.1151, dz = 0.002841, oz = -0.05949, cx = 0.2219, cy = 0.04509 }, -- WorldItems/BHPSlimGrip2World
   ["bhpgripselkworld"] = { dx = 0.1752, dy = 0.1151, dz = 0.002841, oz = -0.05949, cx = 0.2219, cy = 0.04509 }, -- WorldItems/BHPSlimGrip3World
   ["bhpgripslightworld"] = { dx = 0.175, dy = 0.1151, dz = 0.002842, oz = -0.05978, cx = 0.2218, cy = 0.04509 }, -- WorldItems/BHPPanelGrips2World
@@ -5458,18 +5506,19 @@ local MeshSizes = {
   ["coltstaggrip"] = { dx = 0.08543, dy = 0.08628, dz = 0.01361, oz = -0.04862, cx = 0.2658, cy = 0.02463 }, -- weapons/parts/ColtGrip
   ["colttrooper@weapon"] = { dx = 0.3459, dy = 0.1413, dz = 0.02196, oz = 0.01107, cx = 0.1597, cy = -0.003376 }, -- weapons/firearm/ColtTrooper
   ["coltwalnutgrip"] = { dx = 0.08543, dy = 0.08628, dz = 0.01361, oz = -0.04862, cx = 0.2658, cy = 0.02463 }, -- weapons/parts/ColtGrip2
-  ["com1911blue@weapon"] = { dx = 0.2428, dy = 0.1565, dz = 0.01031, oz = -0.01595, cx = 0.1014, cy = 0.02904 }, -- weapons/firearm/1911Command
+  ["com1911blue@weapon"] = { dx = 0.2428, dy = 0.1565, dz = 0.01031, oz = 0.005154, cx = 0.1014, cy = 0.02904 }, -- weapons/firearm/1911Command
   ["compiiiloader"] = { dx = 0.116, dy = 0.05724, dz = 0.02337, oz = -0.007123, cx = -0.03547 }, -- WorldItems/CompIIILoader
   ["compiiloader"] = { dx = 0.05724, dy = 0.05724, dz = 0.0165, oz = -0.007066 }, -- WorldItems/CompIILoader
+  ["cuttscomp"] = { dx = 0.05428, dy = 0.02977, dz = 0.01216, cx = -0.1594 }, -- weapons/parts/ThompsonPartCutts
   ["cz75b@weapon"] = { dx = 0.2457, dy = 0.1637, dz = 0.01479, oz = 0.007421, cx = 0.1074, cy = 0.02163 }, -- weapons/firearm/CZ75B
-  ["de44@weapon"] = { dx = 0.3237, dy = 0.173, dz = 0.01846, oz = -0.01187, cx = 0.1274, cy = 0.02626 }, -- weapons/firearm/DE44
+  ["de44@weapon"] = { dx = 0.3237, dy = 0.173, dz = 0.01846, oz = 0.009229, cx = 0.1274, cy = 0.02626 }, -- weapons/firearm/DE44
   ["de44mag"] = { dx = 0.09247, dy = 0.1733, dz = 0.01214, oz = -0.00642, cx = -0.00282 }, -- weapons/parts/DE44Mag
   ["de44pearlgrips"] = { dx = 0.1006, dy = 0.1259, dz = 0.01706, oz = -0.04684, cx = 0.2535, cy = 0.05142 }, -- weapons/parts/DE44Grips3
   ["de44rubbergrips"] = { dx = 0.1006, dy = 0.1259, dz = 0.01706, oz = -0.04684, cx = 0.2535, cy = 0.05142 }, -- weapons/parts/DE44Grips
   ["de44woodgrips"] = { dx = 0.1006, dy = 0.1259, dz = 0.01706, oz = -0.04684, cx = 0.2535, cy = 0.05142 }, -- weapons/parts/DE44Grips2
   ["de44wrapgrips"] = { dx = 0.1099, dy = 0.1259, dz = 0.01706, oz = -0.04684, cx = 0.2582, cy = 0.05142 }, -- weapons/parts/DE44WrapGrips
   ["dframecompactgrip"] = { dx = 0.09831, dy = 0.1119, dz = 0.01339, oz = -0.04868, cx = 0.259, cy = 0.0254 }, -- weapons/parts/DFrameCompactGrip
-  ["dframetargetgrip"] = { dx = 0.09816, dy = 0.1139, dz = 0.01333, oz = -0.04871, cx = 0.2576, cy = 0.02511 }, -- weapons/parts/DFrameTargetGrip
+  ["dframetargetgrip"] = { dx = 0.112, dy = 0.1394, dz = 0.01481, oz = -0.04797, cx = 0.2557, cy = 0.0286 }, -- weapons/parts/IFrameRubberGrip
   ["diamondback@weapon"] = { dx = 0.2701, dy = 0.1256, dz = 0.01967, oz = 0.009913, cx = 0.1253 }, -- weapons/firearm/Diamondback
   ["dissy@weapon"] = { dx = 0.6469, dy = 0.1574, dz = 0.02678, oz = -0.009096, cx = 0.3248, cy = -0.04481 }, -- weapons/firearm/Dissy
   ["diy12gasilencer"] = { dx = 0.2731, dy = 0.07315, dz = 0.02969, oz = -0.005704, cx = 0.02314 }, -- weapons/parts/12gaSilencer
@@ -5483,19 +5532,19 @@ local MeshSizes = {
   ["falmag"] = { dx = 0.08255, dy = 0.1537, dz = 0.01077, oz = -0.007389, cx = -0.02166, cy = 0.02193 }, -- weapons/parts/FALMag
   ["fegsportstock"] = { dx = 0.3165, dy = 0.1428, dz = 0.01601, cx = -0.05393, cy = 0.0267 }, -- weapons/parts/FEGSportStock
   ["fncflashhider"] = { dx = 0.09114, dy = 0.01986, dz = 0.008111, oz = -0.05132, cx = 0.2676 }, -- weapons/parts/fncPartFlashHider
-  ["glock@weapon"] = { dx = 0.2421, dy = 0.1515, dz = 0.01113, oz = -0.01554, cx = 0.1031, cy = 0.02575 }, -- weapons/firearm/Glock
-  ["glockcompact@weapon"] = { dx = 0.2142, dy = 0.1344, dz = 0.01113, oz = -0.01554, cx = 0.09607, cy = 0.01723 }, -- weapons/firearm/GlockCompact
+  ["glock@weapon"] = { dx = 0.2421, dy = 0.1515, dz = 0.01113, oz = 0.005567, cx = 0.1031, cy = 0.02575 }, -- weapons/firearm/Glock
+  ["glockcompact@weapon"] = { dx = 0.2142, dy = 0.1344, dz = 0.01113, oz = 0.005567, cx = 0.09607, cy = 0.01723 }, -- weapons/firearm/GlockCompact
   ["glocklaser"] = { dx = 0.1161, dy = 0.06104, dz = 0.01415, oz = -0.005957, cx = 0.1808, cy = -0.007515 }, -- weapons/parts/GlockLaser
-  ["glocklong@weapon"] = { dx = 0.2879, dy = 0.1515, dz = 0.01113, oz = -0.01554, cx = 0.126, cy = 0.02575 }, -- weapons/firearm/GlockLong
+  ["glocklong@weapon"] = { dx = 0.2879, dy = 0.1515, dz = 0.01113, oz = 0.005567, cx = 0.126, cy = 0.02575 }, -- weapons/firearm/GlockLong
   ["glockmag"] = { dx = 0.08471, dy = 0.1542, dz = 0.0124, oz = -0.006271, cx = -0.01032 }, -- weapons/parts/GlockMag
   ["glockmagext"] = { dx = 0.08827, dy = 0.175, dz = 0.01241, oz = -0.006263, cx = -0.01202, cy = 0.01177 }, -- weapons/parts/GlockMagExt
   ["glockmagshort"] = { dx = 0.07796, dy = 0.1359, dz = 0.01239, oz = -0.006286, cx = -0.007022, cy = -0.007746 }, -- weapons/parts/GlockMagShort
   ["glockmagshortext"] = { dx = 0.08013, dy = 0.1574, dz = 0.01239, oz = -0.006281, cx = -0.008023, cy = 0.003003 }, -- weapons/parts/GlockMagShortExt
   ["glockstickmag"] = { dx = 0.1203, dy = 0.2813, dz = 0.01248, oz = -0.006193, cx = -0.0276, cy = 0.06492 }, -- weapons/parts/GlockStickMag
   ["glockwml"] = { dx = 0.1766, dy = 0.05989, dz = 0.01891, oz = -0.04592, cx = 0.4493, cy = 0.008351 }, -- weapons/parts/GlockWML
-  ["gov1911blue@weapon"] = { dx = 0.2657, dy = 0.1565, dz = 0.01031, oz = -0.01595, cx = 0.1129, cy = 0.02904 }, -- weapons/firearm/1911
-  ["gov1911park@weapon"] = { dx = 0.2657, dy = 0.1565, dz = 0.01031, oz = -0.01595, cx = 0.1129, cy = 0.02904 }, -- weapons/firearm/1911
-  ["gov1911ss@weapon"] = { dx = 0.2657, dy = 0.1565, dz = 0.01031, oz = -0.01595, cx = 0.1129, cy = 0.02904 }, -- weapons/firearm/1911
+  ["gov1911blue@weapon"] = { dx = 0.2657, dy = 0.1565, dz = 0.01031, oz = 0.005154, cx = 0.1129, cy = 0.02904 }, -- weapons/firearm/1911
+  ["gov1911park@weapon"] = { dx = 0.2657, dy = 0.1565, dz = 0.01031, oz = 0.005154, cx = 0.1129, cy = 0.02904 }, -- weapons/firearm/1911
+  ["gov1911ss@weapon"] = { dx = 0.2657, dy = 0.1565, dz = 0.01031, oz = 0.005154, cx = 0.1129, cy = 0.02904 }, -- weapons/firearm/1911
   ["gp100@weapon"] = { dx = 0.268, dy = 0.142, dz = 0.02243, oz = 0.002191, cx = 0.01882 }, -- weapons/firearm/GP100
   ["gp100compgripblack"] = { dx = 0.09018, dy = 0.1237, dz = 0.01615, oz = -0.04731, cx = 0.2601, cy = 0.0286 }, -- weapons/parts/GP100CompGrip
   ["gp100compgripwood"] = { dx = 0.09018, dy = 0.1237, dz = 0.01615, oz = -0.04731, cx = 0.2601, cy = 0.0286 }, -- weapons/parts/GP100CompGrip
@@ -5521,11 +5570,35 @@ local MeshSizes = {
   ["handgunbox5"] = { dx = 0.07916, dy = 0.1379, dz = 0.01662 }, -- WorldItems/RifleHandgunBox4
   ["hbar@weapon"] = { dx = 0.7381, dy = 0.1574, dz = 0.02678, oz = -0.009373, cx = 0.3704, cy = -0.04481 }, -- weapons/firearm/HBAR
   ["hicksgrip"] = { dx = 0.1668, dy = 0.1624, dz = 0.01265, cx = -0.2121, cy = 0.02479 }, -- weapons/parts/HicksGrip
-  ["hk91@weapon"] = { dx = 0.7992, dy = 0.2182, dz = 0.01903, oz = 0.009514, cx = 0.3719, cy = 0.003787 }, -- weapons/firearm/HK91
-  ["hk91fixstock"] = { dx = 0.2846, dy = 0.1265, dz = 0.01311, cx = -0.00232, cy = -0.007018 }, -- weapons/parts/HK91FixStock
-  ["hk91mag"] = { dx = 0.09274, dy = 0.1639, dz = 0.01016, oz = -0.007743, cx = -0.04294 }, -- weapons/parts/HK91Mag
-  ["hk91retractstock"] = { dx = 0.268, dy = 0.09931, dz = 0.01475 }, -- weapons/parts/HK91RetractStock
-  ["hkclawworld"] = { dx = 0.0698, dy = 0.1516, dz = 0.02018, cy = -0.008938 }, -- WorldItems/HKClawWorld
+  ["hk91@weapon"] = { dx = 0.7494, dy = 0.1267, dz = 0.0174, oz = 0.009038, cx = 0.347, cy = -0.04197 }, -- weapons/firearm/HK91
+  ["hk91blackhandguard"] = { dx = 0.3579, dy = 0.0496, dz = 0.02294, oz = 0.01147, cx = -0.4323, cy = -0.03897 }, -- weapons/parts/HK91Handguard
+  ["hk91blackround"] = { dx = 0.3021, dy = 0.03858, dz = 0.01665, oz = 0.008443, cx = -0.4607, cy = -0.04192 }, -- weapons/parts/HK91RoundHandguard
+  ["hk91blackstock"] = { dx = 0.3162, dy = 0.1436, dz = 0.01745, cx = 0.009744, cy = -0.008046 }, -- weapons/parts/HK91Stock
+  ["hk91flashhider"] = { dx = 0.05824, dy = 0.02196, dz = 0.009775, oz = 0.004888, cx = -0.02861 }, -- weapons/parts/HK91FlashHider
+  ["hk91greenhandguard"] = { dx = 0.3579, dy = 0.0496, dz = 0.02294, oz = 0.01147, cx = -0.4323, cy = -0.03897 }, -- weapons/parts/HK91Handguard
+  ["hk91greenlower"] = { dx = 0.2025, dy = 0.1595, dz = 0.01327, oz = 0.006633, cx = -0.07326, cy = 0.03427 }, -- weapons/parts/HK91Lower
+  ["hk91greenround"] = { dx = 0.3021, dy = 0.03858, dz = 0.01665, oz = 0.008443, cx = -0.4607, cy = -0.04192 }, -- weapons/parts/HK91RoundHandguard
+  ["hk91greenstock"] = { dx = 0.3162, dy = 0.1436, dz = 0.01745, cx = 0.009744, cy = -0.008046 }, -- weapons/parts/HK91Stock
+  ["hk91lower"] = { dx = 0.2025, dy = 0.1595, dz = 0.01327, oz = 0.006633, cx = -0.07326, cy = 0.03427 }, -- weapons/parts/HK91Lower
+  ["hk91mag"] = { dx = 0.09273, dy = 0.1639, dz = 0.009722, oz = -0.007961, cx = -0.04294 }, -- weapons/parts/HK91Mag
+  ["hk91railpart"] = { dx = 0.05141, dy = 0.06336, dz = 0.0619, oz = -0.01028, cy = -0.07791 }, -- weapons/parts/HK91RailPart
+  ["hk91stockout"] = { dx = 0.2948, dy = 0.1026, dz = 0.01898, cy = -0.02783 }, -- weapons/parts/HK91StockOut
+  ["hk91wood"] = { dx = 0.3021, dy = 0.03858, dz = 0.01665, oz = 0.008443, cx = -0.4607, cy = -0.04192 }, -- weapons/parts/HK91Wood
+  ["hk91woodstock"] = { dx = 0.3162, dy = 0.1436, dz = 0.01745, oz = 0.008831, cx = 0.142, cy = -0.008046 }, -- weapons/parts/HK91Stock
+  ["hk93@weapon"] = { dx = 0.7006, dy = 0.1267, dz = 0.0174, oz = 0.009038, cx = 0.3381, cy = -0.04197 }, -- weapons/firearm/HK93
+  ["hk93handguard"] = { dx = 0.3165, dy = 0.0496, dz = 0.02294, oz = 0.01147, cx = -0.4, cy = -0.03897 }, -- weapons/parts/HK93Handguard
+  ["hk93mag"] = { dx = 0.09264, dy = 0.1836, dz = 0.008889, oz = -0.0084, cx = -0.05318, cy = 0.01146 }, -- weapons/parts/HK93Mag
+  ["hk93round"] = { dx = 0.2535, dy = 0.03858, dz = 0.01665, oz = 0.008443, cx = -0.4318, cy = -0.04192 }, -- weapons/parts/HK93Round
+  ["hk93stock"] = { dx = 1.004, dy = 0.3327, dz = 0.02695, oz = 0.003966, cx = -0.3256, cy = 0.04459 }, -- weapons/parts/MP5Stock
+  ["hk93stockout"] = { dx = 0.2856, dy = 0.1026, dz = 0.01893, cx = -0.006777, cy = -0.02783 }, -- weapons/parts/HK93StockOut
+  ["hk94@weapon"] = { dx = 0.6873, dy = 0.1267, dz = 0.02257, oz = 0.01421, cx = 0.3317, cy = -0.04197 }, -- weapons/firearm/HK94
+  ["hk94barrelshroud"] = { dx = 0.2654, dy = 0.1626, dz = 0.01984, oz = 0.01004, cx = -0.5475, cy = 0.02223 }, -- weapons/parts/HK94BarrelShroud
+  ["hk915mag"] = { dx = 0.08563, dy = 0.07934, dz = 0.009706, oz = -0.007961, cx = -0.03938, cy = -0.04066 }, -- weapons/parts/HK915Mag
+  ["hk9110mag"] = { dx = 0.08703, dy = 0.09924, dz = 0.009709, oz = -0.007961, cx = -0.04009, cy = -0.03071 }, -- weapons/parts/HK9110Mag
+  ["hkbipod"] = { dx = 0.2988, dy = 0.02302, dz = 0.04195, oz = 0.02097, cx = -0.4617, cy = -0.0279 }, -- weapons/parts/HKBipod
+  ["hkcarryhandle"] = { dx = 0.04227, dy = 0.03103, dz = 0.04047, oz = -0.0735, cx = 0.007347, cy = -0.05918 }, -- weapons/parts/HKCarryHandle
+  ["hkcheekrest"] = { dx = 0.02396, dy = 0.02894, dz = 0.05158, oz = 0.09646, cy = -0.05157 }, -- weapons/parts/HKCheekRest
+  ["hkscopelight"] = { dx = 0.1481, dy = 0.1297, dz = 0.02823, oz = 0.01411, cx = -0.102, cy = -0.1162 }, -- weapons/parts/HKScopeLight
   ["hksloader"] = { dx = 0.04957, dy = 0.04957, dz = 0.01656, oz = -0.007087 }, -- WorldItems/HKSLoader
   ["iframedarkpresgrip"] = { dx = 0.1091, dy = 0.1362, dz = 0.01481, oz = -0.04797, cx = 0.2572, cy = 0.0302 }, -- weapons/parts/IFramePresGrip
   ["iframefingergrip"] = { dx = 0.1072, dy = 0.1353, dz = 0.01481, oz = -0.04797, cx = 0.2593, cy = 0.02731 }, -- weapons/parts/IFrameFingerGrip
@@ -5592,7 +5665,7 @@ local MeshSizes = {
   ["leatherammocarrierworld"] = { dx = 0.1363, dy = 0.1533, dz = 0.01043, cx = 0.006505, cy = 0.003919 }, -- WorldItems/LeatherAmmoCarrierWorld
   ["leathercheekpadworld"] = { dx = 0.1547, dy = 0.1305, dz = 0.01348, oz = -0.004615, cx = 0.005847, cy = 0.01908 }, -- WorldItems/LeatherCheekPadWorld
   ["linkbox"] = { dx = 0.09943, dy = 0.163, dz = 0.03904 }, -- WorldItems/LinkBox
-  ["longslide@weapon"] = { dx = 0.3148, dy = 0.1565, dz = 0.01031, oz = -0.01595, cx = 0.1374, cy = 0.02904 }, -- weapons/firearm/Longslide
+  ["longslide@weapon"] = { dx = 0.3148, dy = 0.1565, dz = 0.01031, oz = 0.005154, cx = 0.1374, cy = 0.02904 }, -- weapons/firearm/Longslide
   ["ls45laser"] = { dx = 0.03887, dy = 0.07027, dz = 0.07445, oz = 0.04467, cy = -0.004219 }, -- weapons/parts/LS45Laser
   ["m1abush@weapon"] = { dx = 0.6688, dy = 0.07929, dz = 0.02605, oz = -0.01166, cx = 0.4068, cy = -0.03664 }, -- weapons/firearm/M1ABush
   ["m1carbine@weapon"] = { dx = 0.9454, dy = 0.179, dz = 0.02372, oz = 0.007735, cx = 0.2263, cy = 0.02983 }, -- weapons/firearm/M1Carbine
@@ -5610,7 +5683,7 @@ local MeshSizes = {
   ["m6bayonet@weapon"] = { dx = 0.3261, dy = 0.1102, dz = 0.01145, oz = -0.006075, cx = 0.04542, cy = 0.01103 }, -- weapons/1handed/M6Bayonet
   ["m7bayonet"] = { dx = 0.03585, dy = 0.1215, dz = 0.139, oz = 0.05382, cx = 0.0289, cy = -0.01557 }, -- weapons/1handed/M7Bayonet
   ["m7bayonet@weapon"] = { dx = 0.3405, dy = 0.1215, dz = 0.01464, oz = -0.004481, cx = 0.03843, cy = 0.01557 }, -- weapons/1handed/M7Bayonet
-  ["m9@weapon"] = { dx = 0.2565, dy = 0.1513, dz = 0.01715, oz = -0.01253, cx = 0.1242, cy = 0.02414 }, -- weapons/firearm/M9
+  ["m9@weapon"] = { dx = 0.2565, dy = 0.1513, dz = 0.01715, oz = 0.008571, cx = 0.1242, cy = 0.02414 }, -- weapons/firearm/M9
   ["m9pearlgripsworld"] = { dx = 0.008324, dy = 0.1363, dz = 0.07447, oz = -0.01845, cx = 0.2358, cy = 0.006786 }, -- WorldItems/92Grips2World
   ["m9rubbergripsworld"] = { dx = 0.008324, dy = 0.1363, dz = 0.07447, oz = -0.01845, cx = 0.2358, cy = 0.006786 }, -- WorldItems/92Grips1World
   ["m9samedgegripsworld"] = { dx = 0.008324, dy = 0.1363, dz = 0.07447, oz = -0.01845, cx = 0.2358, cy = 0.006786 }, -- WorldItems/92Grips3World
@@ -5683,7 +5756,7 @@ local MeshSizes = {
   ["mauserbayonet"] = { dx = 0.02019, dy = 0.08654, dz = 0.1414, oz = 0.04191, cx = 0.0289, cy = -0.008465 }, -- weapons/1handed/MauserBayonet
   ["mauserbayonet@weapon"] = { dx = 0.3462, dy = 0.08654, dz = 0.008245, oz = -0.007678, cx = 0.07045, cy = 0.008465 }, -- weapons/1handed/MauserBayonet
   ["mauserclip"] = { dx = 0.07077, dy = 0.01454, dz = 0.002531, oz = -0.007014, cx = 0.002244 }, -- WorldItems/MauserClip
-  ["microuzi@weapon"] = { dx = 0.2911, dy = 0.1822, dz = 0.01733, oz = -0.01181, cx = 0.0908, cy = 0.006039 }, -- weapons/firearm/MicroUzi
+  ["microuzi@weapon"] = { dx = 0.2911, dy = 0.1822, dz = 0.01733, oz = 0.009296, cx = 0.0908, cy = 0.006039 }, -- weapons/firearm/MicroUzi
   ["microuzistockin"] = { dx = 0.2561, dy = 0.1648, dz = 0.01875, oz = -0.05538, cx = 0.2744, cy = 0.02166 }, -- weapons/parts/MicroUziStockIn
   ["microuzistockout"] = { dx = 0.2573, dy = 0.1648, dz = 0.01713, oz = -0.04767, cx = 0.03801, cy = 0.02166 }, -- weapons/parts/MicroUziStockOut
   ["mini14@weapon"] = { dx = 0.6442, dy = 0.0732, dz = 0.02316, oz = -0.01316, cx = 0.4214, cy = -0.04626 }, -- weapons/firearm/Mini14
@@ -5711,8 +5784,8 @@ local MeshSizes = {
   ["mini14triggerss"] = { dx = 0.08336, dy = 0.1087, dz = 0.01336, oz = -0.009519, cx = 0.04866, cy = -0.2461 }, -- weapons/parts/Mini14Trigger
   ["mini14walnutstock"] = { dx = 0.1525, dy = 0.7494, dz = 0.01589, oz = -0.008254, cx = 0.08256, cy = -0.2501 }, -- weapons/parts/Mini14Stock
   ["mini14walnutuphandguard"] = { dx = 0.0239, dy = 0.2425, dz = 0.01589, oz = -0.008254, cx = -0.005618, cy = 0.003511 }, -- weapons/parts/Mini14UpHandguard
-  ["miniuzi@weapon"] = { dx = 0.3658, dy = 0.1913, dz = 0.01733, oz = -0.01181, cx = 0.1143 }, -- weapons/firearm/MiniUzi
-  ["miniuzicar@weapon"] = { dx = 0.6194, dy = 0.1913, dz = 0.01733, oz = -0.01181, cx = 0.2411 }, -- weapons/firearm/MiniUziCarbine
+  ["miniuzi@weapon"] = { dx = 0.3658, dy = 0.1913, dz = 0.01733, oz = 0.009296, cx = 0.1143 }, -- weapons/firearm/MiniUzi
+  ["miniuzicar@weapon"] = { dx = 0.6194, dy = 0.1913, dz = 0.01733, oz = 0.009296, cx = 0.2411 }, -- weapons/firearm/MiniUziCarbine
   ["miniuzihandguard"] = { dx = 0.08597, dy = 0.04314, dz = 0.02279, oz = -0.04398, cx = 0.4025, cy = -0.02817 }, -- weapons/parts/MiniUziHandguard
   ["miniuzistockin"] = { dx = 0.2865, dy = 0.1755, dz = 0.01875, oz = -0.05538, cx = 0.2757, cy = 0.02701 }, -- weapons/parts/MiniUziStockIn
   ["miniuzistockout"] = { dx = 0.2877, dy = 0.1755, dz = 0.01713, oz = -0.04767, cx = 0.008865, cy = 0.02701 }, -- weapons/parts/MiniUziStockOut
@@ -5721,9 +5794,18 @@ local MeshSizes = {
   ["moss500blue@weapon"] = { dx = 0.9307, dy = 0.09517, dz = 0.01252, oz = -0.01458, cx = 0.5353, cy = -0.01715 }, -- weapons/firearm/Moss500
   ["moss590blue@weapon"] = { dx = 0.681, dy = 0.09517, dz = 0.01252, oz = -0.01458, cx = 0.4104, cy = -0.01715 }, -- weapons/firearm/Moss590
   ["motoroil"] = { dx = 0.06542, dy = 0.1057, dz = 0.1002 }, -- WorldItems/MotorOil
-  ["mp5fixstock"] = { dx = 0.2641, dy = 0.1469, dz = 0.01508, cy = 0.002063 }, -- weapons/parts/MP5FixStock
-  ["mp5mag"] = { dx = 0.09565, dy = 0.2187, dz = 0.01052, oz = -0.007599, cx = -0.06017, cy = 0.04277 }, -- weapons/parts/MP5Mag
-  ["mp5retractstock"] = { dx = 0.2583, dy = 0.1383, dz = 0.01838, cx = 0.002134, cy = -0.002318 }, -- weapons/parts/MP5RetractStock
+  ["mp5flashhider"] = { dx = 0.03025, dy = 0.02775, dz = 0.0271, oz = -0.1582, cy = -0.03773 }, -- weapons/parts/MP5FlashHider
+  ["mp5forendlight"] = { dx = 0.07706, dy = 0.256, dz = 0.02294, oz = -0.00473, cx = 0.02576, cy = -0.04411 }, -- weapons/parts/MP5ForendLight
+  ["mp5handguard"] = { dx = 0.1944, dy = 0.0496, dz = 0.02294, oz = 0.01147, cx = -0.3074, cy = -0.03897 }, -- weapons/parts/MP5Handguard
+  ["mp5mag"] = { dx = 0.09562, dy = 0.2187, dz = 0.008647, oz = -0.008507, cx = -0.04694, cy = 0.03705 }, -- weapons/parts/MP5Mag
+  ["mp5mag10mm"] = { dx = 0.1021, dy = 0.2548, dz = 0.01149, oz = -0.007069, cx = -0.03989, cy = 0.04389 }, -- weapons/parts/MP5Mag10mm
+  ["mp5navylower"] = { dx = 0.1905, dy = 0.177, dz = 0.0146, oz = 0.007325, cx = -0.07926, cy = 0.04302 }, -- weapons/parts/MP5NavyLower
+  ["mp5round"] = { dx = 0.1632, dy = 0.03858, dz = 0.01665, oz = 0.008443, cx = -0.3319, cy = -0.04192 }, -- weapons/parts/MP5Round
+  ["mp5sdsilencer"] = { dx = 0.2446, dy = 0.04015, dz = 0.01623, oz = -0.02857, cx = -0.1945 }, -- weapons/parts/MP5SDSilencer
+  ["mp5seflower"] = { dx = 0.1905, dy = 0.177, dz = 0.0146, oz = 0.007325, cx = -0.07926, cy = 0.04302 }, -- weapons/parts/MP5NavyLower
+  ["mp5stock"] = { dx = 1.004, dy = 0.3327, dz = 0.02695, oz = 0.003966, cx = -0.3256, cy = 0.04459 }, -- weapons/parts/MP5Stock
+  ["mp5stockout"] = { dx = 0.2734, dy = 0.1239, dz = 0.01893, cx = -0.01166, cy = -0.01716 }, -- weapons/parts/MP5StockOut
+  ["mp5straightmag"] = { dx = 0.05037, dy = 0.2217, dz = 0.008547, oz = -0.008507, cx = -0.02429, cy = 0.03856 }, -- weapons/parts/MP5StraightMag
   ["muzzelitemz14"] = { dx = 0.264, dy = 0.6295, dz = 0.02475, oz = -0.003823, cx = 0.03681, cy = -0.04391 }, -- weapons/parts/MuzzeliteMz14
   ["nframedarkfingergrip"] = { dx = 0.1285, dy = 0.1598, dz = 0.01713, oz = -0.04678, cx = 0.2832, cy = 0.05014 }, -- weapons/parts/NFrameFingerGrip
   ["nframedarktargetgrip"] = { dx = 0.1324, dy = 0.1616, dz = 0.01713, oz = -0.04679, cx = 0.2794, cy = 0.05265 }, -- weapons/parts/NFrameTargetGrip
@@ -5736,7 +5818,7 @@ local MeshSizes = {
   ["nyloncheekpadworld"] = { dx = 0.1547, dy = 0.1305, dz = 0.01348, oz = -0.004615, cx = 0.005847, cy = 0.01908 }, -- WorldItems/NylonCheekPadWorld
   ["odammocarrierworld"] = { dx = 0.1363, dy = 0.1533, dz = 0.01043, cx = 0.006505, cy = 0.003919 }, -- WorldItems/ODAmmoCarrierWorld
   ["odcheekpadworld"] = { dx = 0.1547, dy = 0.1305, dz = 0.01348, oz = -0.004615, cx = 0.005847, cy = 0.01908 }, -- WorldItems/ODCheekPadWorld
-  ["officer1911blue@weapon"] = { dx = 0.2199, dy = 0.1452, dz = 0.01031, oz = -0.01595, cx = 0.08994, cy = 0.02343 }, -- weapons/firearm/1911Officer
+  ["officer1911blue@weapon"] = { dx = 0.2199, dy = 0.1452, dz = 0.01031, oz = 0.005154, cx = 0.08994, cy = 0.02343 }, -- weapons/firearm/1911Officer
   ["oilfilter"] = { dx = 0.09911, dy = 0.09068, dz = 0.03696, cx = 0.1103 }, -- WorldItems/OilFilter
   ["oilfilter2"] = { dx = 0.09911, dy = 0.09068, dz = 0.03696, cx = 0.1103 }, -- WorldItems/OilFilter
   ["oilfilter2silencer"] = { dx = 0.1099, dy = 0.09074, dz = 0.03698, cx = 0.1048 }, -- weapons/parts/OilFilterSilencer
@@ -5768,6 +5850,7 @@ local MeshSizes = {
   ["rem1100forendwooddark"] = { dx = 0.05937, dy = 0.3165, dz = 0.02014, oz = -0.006127, cx = 0.03236, cy = 0.0379 }, -- weapons/parts/Rem1100Forend
   ["rem1100forendwoodlight"] = { dx = 0.05937, dy = 0.3165, dz = 0.02014, oz = -0.006127, cx = 0.03236, cy = 0.0379 }, -- weapons/parts/Rem1100Forend
   ["rem1187pblue@weapon"] = { dx = 0.9123, dy = 0.1097, dz = 0.01887, oz = -0.01458, cx = 0.2914, cy = -0.008459 }, -- weapons/firearm/Rem1187P
+  ["rem7400@weapon"] = { dx = 1.115, dy = 0.1925, dz = 0.01884, oz = 0.00806, cx = 0.2841, cy = 0.02987 }, -- weapons/firearm/Rem7400
   ["revolverbrassworld"] = { dx = 0.04175, dy = 0.08481, dz = 0.009564, cy = 0.009522 }, -- WorldItems/RevolverBrassWorld
   ["revolverdarkservicegripworld"] = { dx = 0.1426, dy = 0.1157, dz = 0.003168, oz = -0.05806, cx = 0.3251, cy = 0.03526 }, -- WorldItems/RevolverServiceGripWorld
   ["revolverivoryservicegripworld"] = { dx = 0.1426, dy = 0.1157, dz = 0.003168, oz = -0.05806, cx = 0.3251, cy = 0.03526 }, -- WorldItems/RevolverServiceGripWorld
@@ -5793,6 +5876,7 @@ local MeshSizes = {
   ["s6rubbergrips"] = { dx = 0.1056, dy = 0.1378, dz = 0.01481, oz = -0.04797, cx = 0.2556, cy = 0.03559 }, -- weapons/parts/S6RubberGrips
   ["s6servicegripsworld"] = { dx = 0.1426, dy = 0.1157, dz = 0.003168, oz = -0.05806, cx = 0.3251, cy = 0.03526 }, -- WorldItems/RevolverServiceGripWorld
   ["s6targetgrips"] = { dx = 0.1089, dy = 0.1326, dz = 0.01432, oz = -0.04808, cx = 0.254, cy = 0.03242 }, -- weapons/parts/S6TargetGrips
+  ["sar8stock"] = { dx = 0.466, dy = 0.1929, dz = 0.01474, cx = -0.07374, cy = 0.01661 }, -- weapons/parts/SAR8Stock
   ["savagefox@weapon"] = { dx = 0.8991, dy = 0.09679, dz = 0.01901, oz = -0.01139, cx = 0.5364, cy = -0.007976 }, -- weapons/Firearm/SavageFox
   ["savagefoxcapstock"] = { dx = 0.3989, dy = 0.1829, dz = 0.01429, cx = -0.1142, cy = 0.0417 }, -- weapons/parts/SavageFoxCapStock
   ["savagefoxcapstockdark"] = { dx = 0.3989, dy = 0.1829, dz = 0.01429, cx = -0.1142, cy = 0.0417 }, -- weapons/parts/SavageFoxCapStock
@@ -5879,6 +5963,10 @@ local MeshSizes = {
   ["spas12stockin"] = { dx = 0.4386, dy = 0.08966, dz = 0.01874, cx = -0.3319, cy = -0.06626 }, -- weapons/parts/SPAS12StockIn
   ["spas12stockout"] = { dx = 0.338, dy = 0.15, dz = 0.01794, cx = -0.03137, cy = 0.0165 }, -- weapons/parts/SPAS12StockOut
   ["speedstrips"] = { dx = 0.02141, dy = 0.1602, dz = 0.00597, oz = -0.00701, cy = -0.01223 }, -- WorldItems/SpeedStrips
+  ["sr9bakhandguard"] = { dx = 0.3783, dy = 0.0496, dz = 0.0183, oz = 0.00915, cx = -0.446, cy = -0.03897 }, -- weapons/parts/SR9Handguard
+  ["sr9bakstock"] = { dx = 0.466, dy = 0.1982, dz = 0.01474, cx = -0.07374, cy = 0.01927 }, -- weapons/parts/SR9Stock
+  ["sr9handguard"] = { dx = 0.3783, dy = 0.0496, dz = 0.0183, oz = 0.00915, cx = -0.446, cy = -0.03897 }, -- weapons/parts/SR9Handguard
+  ["sr9stock"] = { dx = 0.466, dy = 0.1982, dz = 0.01474, cx = -0.07374, cy = 0.01927 }, -- weapons/parts/SR9Stock
   ["stoegeruplander@weapon"] = { dx = 0.8991, dy = 0.09724, dz = 0.01901, oz = -0.01139, cx = 0.5364, cy = -0.008204 }, -- weapons/Firearm/StoegerUplander
   ["sw10@weapon"] = { dx = 0.2686, dy = 0.1474, dz = 0.01768, cx = 0.04671, cy = 0.01051 }, -- weapons/firearm/SW10
   ["sw17@weapon"] = { dx = 0.3288, dy = 0.1469, dz = 0.01768, cx = 0.0768, cy = 0.01085 }, -- weapons/firearm/SW17
@@ -5899,7 +5987,17 @@ local MeshSizes = {
   ["therarmag"] = { dx = 0.08464, dy = 0.1899, dz = 0.009769, oz = -0.007828, cx = 0.006508, cy = 0.008166 }, -- weapons/parts/TherARMag
   ["thermini14mag"] = { dx = 0.09811, dy = 0.2024, dz = 0.009799, oz = -0.007969, cx = -0.06372, cy = 0.009736 }, -- weapons/parts/TherMini14Mag
   ["threadadapter"] = { dx = 0.03183, dy = 0.03183, dz = 0.00734 }, -- WorldItems/ThreadAdapterWorld
+  ["tommydrum"] = { dx = 0.1796, dy = 0.1796, dz = 0.01796, cy = 0.002404 }, -- weapons/parts/ThompsonMag50
+  ["tommyhandguard"] = { dx = 0.2437, dy = 0.04695, dz = 0.01318, cx = -0.5186, cy = -0.0219 }, -- weapons/parts/ThompsonPartGrip
+  ["tommylsight"] = { dx = 0.07529, dy = 0.0228, dz = 0.01003, oz = -0.002931, cx = -0.0806, cy = -0.07044 }, -- weapons/parts/ThompsonPartSightL
+  ["tommylymansight"] = { dx = 0.06908, dy = 0.02179, dz = 0.0116, oz = -0.002145, cx = -0.07731, cy = -0.0691 }, -- weapons/parts/ThompsonPartSightLyman
+  ["tommym1a1@weapon"] = { dx = 0.6482, dy = 0.1958, dz = 0.02393, oz = 0.00807, cx = 0.2204, cy = 0.0233 }, -- weapons/firearm/ThompsonM1A1
+  ["tommym1a1sight"] = { dx = 0.06443, dy = 0.0262, dz = 0.01003, oz = -0.002931, cx = -0.08596, cy = -0.07206 }, -- weapons/parts/ThompsonPartSightM1A1
+  ["tommym1928nofins@weapon"] = { dx = 0.6501, dy = 0.2004, dz = 0.01619, oz = 0.008094, cx = 0.2204, cy = 0.0215 }, -- weapons/firearm/ThompsonM1928_nofin
+  ["tommystock"] = { dx = 0.3226, dy = 0.1755, dz = 0.01412, cx = 0.04138, cy = 0.07369 }, -- weapons/parts/ThompsonPartStock
+  ["tommyvertgrip"] = { dx = 0.1469, dy = 0.1367, dz = 0.01038, oz = -0.002757, cx = -0.469, cy = 0.02919 }, -- weapons/parts/ThompsonPartGripVert
   ["triggerbox"] = { dx = 0.06035, dy = 0.08047, dz = 0.01232 }, -- WorldItems/SightBoxCombat
+  ["trilug"] = { dx = 0.04438, dy = 0.08635, dz = 0.01812, cy = -0.004287 }, -- WorldItems/CanBooster
   ["uplandercutstock"] = { dx = 0.1864, dy = 0.1282, dz = 0.01429, cx = -0.2273, cy = 0.01253 }, -- weapons/parts/UplanderCutStock
   ["uplandercutstockcheck"] = { dx = 0.1864, dy = 0.1282, dz = 0.01429, cx = -0.2273, cy = 0.01253 }, -- weapons/parts/UplanderCutStock
   ["uplandercutstockdark"] = { dx = 0.1864, dy = 0.1282, dz = 0.01429, cx = -0.2273, cy = 0.01253 }, -- weapons/parts/UplanderCutStock
@@ -5918,8 +6016,8 @@ local MeshSizes = {
   ["uplanderstraightstockdark"] = { dx = 0.4058, dy = 0.1847, dz = 0.01429, cx = -0.1176, cy = 0.04078 }, -- weapons/parts/UplanderStraightStock
   ["usgicleankit"] = { dx = 0.3647, dy = 0.33, dz = 0.01311, oz = 0.002668, cx = 0.007545 }, -- WorldItems/USGICleanKit
   ["usp@weapon"] = { dx = 0.2251, dy = 0.1592, dz = 0.01117, oz = 0.005584, cx = 0.103, cy = 0.02306 }, -- weapons/firearm/USP
-  ["uzi@weapon"] = { dx = 0.4647, dy = 0.1913, dz = 0.01948, oz = -0.00966, cx = 0.1267 }, -- weapons/firearm/Uzi
-  ["uzicarbine@weapon"] = { dx = 0.6192, dy = 0.1913, dz = 0.01948, oz = -0.00966, cx = 0.204 }, -- weapons/firearm/UziCarbine
+  ["uzi@weapon"] = { dx = 0.4647, dy = 0.1913, dz = 0.01948, oz = 0.01144, cx = 0.1267 }, -- weapons/firearm/Uzi
+  ["uzicarbine@weapon"] = { dx = 0.6192, dy = 0.1913, dz = 0.01948, oz = 0.01144, cx = 0.204 }, -- weapons/firearm/UziCarbine
   ["uzigreengrips"] = { dx = 0.06744, dy = 0.0994, dz = 0.01642, oz = -0.04717, cx = 0.2631, cy = 0.04841 }, -- weapons/parts/UziGrips
   ["uzigreenhandguard"] = { dx = 0.1347, dy = 0.04314, dz = 0.02279, oz = -0.04398, cx = 0.4231, cy = -0.02817 }, -- weapons/parts/UziHandguard
   ["uzigreenstock"] = { dx = 0.3331, dy = 0.1568, dz = 0.0151, oz = -0.04613, cx = 0.06144, cy = 0.03618 }, -- weapons/parts/UziStock
@@ -5939,6 +6037,7 @@ local MeshSizes = {
   ["valmet@weapon"] = { dx = 0.6718, dy = 0.2007, dz = 0.0247, oz = -0.01203, cx = 0.3235, cy = -0.007025 }, -- weapons/firearm/Valmet
   ["valmetmag"] = { dx = 0.1077, dy = 0.2014, dz = 0.008784, oz = -0.008376, cx = -0.02623, cy = 0.02889 }, -- weapons/parts/ValmetMag
   ["valmetstockin"] = { dx = 0.282, dy = 0.1143, dz = 0.01415, oz = -0.01169, cx = -0.2613, cy = -0.02915 }, -- weapons/parts/ValmetStockIn
+  ["vframeservicegrip"] = { dx = 0.08695, dy = 0.1147, dz = 0.01138, oz = -0.04977, cx = 0.2507, cy = 0.0173 }, -- weapons/parts/VFrameServiceGrip
   ["vframetargetgrip"] = { dx = 0.112, dy = 0.1394, dz = 0.01481, oz = -0.04797, cx = 0.2557, cy = 0.0286 }, -- weapons/parts/IFrameRubberGrip
   ["win37@weapon"] = { dx = 1.115, dy = 0.1678, dz = 0.01251, oz = 0.006255, cx = 0.3679, cy = -0.03317 }, -- weapons/Firearm/Win37
   ["win61@weapon"] = { dx = 1.089, dy = 0.1921, dz = 0.01223, oz = 0.006114, cx = 0.2962, cy = 0.04679 }, -- weapons/firearm/Win61
@@ -5948,7 +6047,6 @@ local MeshSizes = {
   ["win1200def@weapon"] = { dx = 0.9926, dy = 0.1872, dz = 0.01889, oz = 0.009517, cx = 0.2511, cy = -0.03344 }, -- weapons/firearm/Win1200Def
   ["win1400@weapon"] = { dx = 1.288, dy = 0.188, dz = 0.02225, oz = 0.01395, cx = 0.3739, cy = -0.03312 }, -- weapons/firearm/Win1400
   ["win1912@weapon"] = { dx = 1.248, dy = 0.1862, dz = 0.01429, oz = 0.007147, cx = 0.3539, cy = -0.02856 }, -- weapons/firearm/Win1912
-  ["win7400@weapon"] = { dx = 1.115, dy = 0.1925, dz = 0.01884, oz = 0.00806, cx = 0.2841, cy = 0.02987 }, -- weapons/firearm/Win7400
   ["winm70@weapon"] = { dx = 0.8819, dy = 0.1104, dz = 0.03175, oz = -0.01406, cx = 0.4884, cy = -0.00912 }, -- weapons/firearm/WinM70
   ["winm70tanstocktex"] = { dx = 0.1469, dy = 0.8688, dz = 0.02388, oz = -0.004156, cx = 0.08028, cy = -0.2343 }, -- weapons/parts/WinM70Stock
   -- GurneyTransport

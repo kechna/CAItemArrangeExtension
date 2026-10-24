@@ -43,6 +43,19 @@ module Base
     ]);
   });
 
+  it("strips block comments like the game, where `/*/` closes itself and comments nest", () => {
+    const text = `
+    model A { mesh = A, }
+    /*/
+    model B { mesh = B, }
+    /*/
+    model C { mesh = C, }
+    /* outer /* inner */ model D { mesh = D, } */
+    model E { mesh = E, }`;
+
+    expect(parseScriptBlocks(text, ["model"]).map((block) => block.name)).toEqual(["A", "B", "C", "E"]);
+  });
+
   it("strips modules from references", () => {
     expect(shortName("Base.Bowl")).toBe("Bowl");
     expect(shortName("Bowl")).toBe("Bowl");

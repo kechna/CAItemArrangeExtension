@@ -53,7 +53,7 @@ require("IAArrange")
 ---@field meshProfiles table<string, string | CAIAE_MeshProfile | CAIAE_MeshOverride>
 ---@field meshProfilesApplied boolean
 ---@field meshCache table<string, CAIAE_WorldMesh | false>
----@field meshProfilesAdded table<string, IAArrangableProfile>
+---@field baseArrangables table<string, IAArrangableProfile>
 ---@field devRestackContextMenu? fun(playerNum: integer, context: ISContextMenu, worldObjects: IsoObject[], test: boolean)
 ---@field applyMeshProfiles fun(): void
 IA = IA or {}
@@ -156,14 +156,45 @@ local function getStaticModel(source)
   return model, false
 end
 
---- some items (e.g. weapons) only resolve their model on the instance, so fall back to a temporary one.
+--- the models an item picks one of at random when it's created (`WorldStaticModelsByIndex`, e.g. mugs in colors), in
+--- script order.
 ---@param item Item
----@return string | nil, boolean | nil model, and whether it's the world static model
-local function getWorldModel(item)
+---@return string[] | nil, boolean | nil models, and whether they're world static models
+local function getModelVariants(item)
+  local list, isWorldStatic = item:getWorldStaticModelsByIndex(), true
+
+  if not list or list:isEmpty() then
+    list, isWorldStatic = item:getStaticModelsByIndex(), false
+  end
+
+  if not list or list:isEmpty() then
+    return nil, nil
+  end
+
+  local models = {}
+
+  for i = 0, list:size() - 1 do
+    models[#models + 1] = list:get(i)
+  end
+
+  return models, isWorldStatic
+end
+
+--- some items (e.g. weapons) only resolve their model on the instance, so fall back to a temporary one. items with
+--- variants return all of them: a temporary instance would pick one at random.
+---@param item Item
+---@return string[] | nil, boolean | nil models, and whether they're world static models
+local function getWorldModels(item)
   local model, isWorldStatic = getStaticModel(item)
 
   if model then
-    return model, isWorldStatic
+    return { model }, isWorldStatic
+  end
+
+  local variants, variantsWorldStatic = getModelVariants(item)
+
+  if variants then
+    return variants, variantsWorldStatic
   end
 
   -- the game runs OnCreate in its own protected call and logs its errors, so pcall can't catch them. the instance
@@ -189,11 +220,11 @@ local function getWorldModel(item)
   end
 
   -- the instance was never added to a container, so dropping the reference is enough for it to be collected
-  if not ok then
+  if not ok or not result then
     return nil, nil
   end
 
-  return result, resultIsWorldStatic
+  return { result }, resultIsWorldStatic
 end
 
 --- keys of the model in the generated sizes: the game lays models down when it draws them through the weapon path
@@ -298,16 +329,11 @@ end
 
 --- The mesh of the item's world model and the scale the model script renders it at. different model scripts often
 --- point at the same mesh, so this matches more items than the model name would.
----@param sm   ScriptManager
----@param item Item
+---@param sm            ScriptManager
+---@param model         string
+---@param isWorldStatic boolean | nil
 ---@return CAIAE_WorldMesh | nil
-local function getWorldMesh(sm, item)
-  local model, isWorldStatic = getWorldModel(item)
-
-  if not model then
-    return nil
-  end
-
+local function getModelMesh(sm, model, isWorldStatic)
   local cacheKey = isWorldStatic and model or model .. "@weapon"
   local worldMesh = IA.meshCache[cacheKey]
 
@@ -325,6 +351,25 @@ local function getWorldMesh(sm, item)
   end
 
   return worldMesh or nil
+end
+
+--- one mesh per model the item can have, see `getWorldModels`.
+---@param sm   ScriptManager
+---@param item Item
+---@return CAIAE_WorldMesh[]
+local function getWorldMeshes(sm, item)
+  local models, isWorldStatic = getWorldModels(item)
+  local meshes = {}
+
+  for i = 1, models and #models or 0 do
+    local worldMesh = getModelMesh(sm, models[i], isWorldStatic)
+
+    if worldMesh then
+      meshes[#meshes + 1] = worldMesh
+    end
+  end
+
+  return meshes
 end
 
 --- parsing the script text is slow, so this only runs for meshes that have a sized profile.
@@ -359,9 +404,10 @@ end
 
 --- get mesh -> profile mappings from items already registered with IA, one per model. scales are resolved later,
 --- only for the meshes that are actually needed.
----@param sm ScriptManager
+---@param sm          ScriptManager
+---@param arrangables table<string, IAArrangableProfile>
 ---@return table<string, CAIAE_LearnedProfile[]>
-local function learnMeshProfiles(sm)
+local function learnMeshProfiles(sm, arrangables)
   local profileNames = getProfileNames()
   local learned = {}
   local seen = {}
@@ -372,7 +418,7 @@ local function learnMeshProfiles(sm)
   -- in a fixed order, the first item of each model decides what's learned for it
   local fullTypes = {}
 
-  for fullType in pairs(IA.arrangables) do
+  for fullType in pairs(arrangables) do
     fullTypes[#fullTypes + 1] = fullType
   end
 
@@ -380,26 +426,30 @@ local function learnMeshProfiles(sm)
 
   for i = 1, #fullTypes do
     local fullType = fullTypes[i]
-    local name = profileNames[IA.arrangables[fullType]]
+    local name = profileNames[arrangables[fullType]]
     local item = name and sm:getItem(fullType)
-    local worldMesh = item and getWorldMesh(sm, item)
+    local worldMeshes = item and getWorldMeshes(sm, item) or {}
 
-    if worldMesh and not seen[worldMesh] then
-      seen[worldMesh] = true
+    for j = 1, #worldMeshes do
+      local worldMesh = worldMeshes[j]
 
-      local entries = learned[worldMesh.mesh]
+      if not seen[worldMesh] then
+        seen[worldMesh] = true
 
-      if not entries then
-        entries = {}
-        learned[worldMesh.mesh] = entries
-      end
+        local entries = learned[worldMesh.mesh]
 
-      entries[#entries + 1] = { name = name, worldMesh = worldMesh }
+        if not entries then
+          entries = {}
+          learned[worldMesh.mesh] = entries
+        end
 
-      if fileWriter then
-        fileWriter:writeln(
-          string.format('IA.meshProfiles["%-50s = "%s" -- %s', worldMesh.mesh .. '"]', name, fullType)
-        )
+        entries[#entries + 1] = { name = name, worldMesh = worldMesh }
+
+        if fileWriter then
+          fileWriter:writeln(
+            string.format('IA.meshProfiles["%-50s = "%s" -- %s', worldMesh.mesh .. '"]', name, fullType)
+          )
+        end
       end
     end
   end
@@ -983,28 +1033,40 @@ function IA.applyMeshProfiles()
   local sm = getScriptManager()
   local fileWriter = isDebugEnabled() and getFileWriter(p .. "_added.txt", true, false) or nil
 
-  local learned = learnMeshProfiles(sm)
+  -- the table Item Arrange and the mods before this one filled. the result replaces IA.arrangables, so a rerun after a
+  -- hot reload has to start from this one again, not from what the last run made
+  IA.baseArrangables = IA.baseArrangables or IA.arrangables
 
-  local arrangables = IA.arrangables
+  local arrangables = IA.baseArrangables
+  local learned = learnMeshProfiles(sm, arrangables)
   local items = sm:getAllItems()
 
   local added = 0
   local addedByMod = {}
+  local newArrangables = {}
 
   for i = 0, items:size() - 1 do
     local item = items:get(i)
     local fullType = item:getFullName()
 
-    if not arrangables[fullType] then
-      local worldMesh = getWorldMesh(sm, item)
-      local profile, profileName, ratio
+    if arrangables[fullType] then
+      newArrangables[fullType] = arrangables[fullType]
+    else
+      local worldMeshes = getWorldMeshes(sm, item)
+      local worldMesh, profile, profileName, ratio
 
-      if worldMesh then
-        profile, profileName, ratio = resolveProfile(learned, worldMesh)
+      -- one profile per item type, so items with model variants take the first variant that has one
+      for j = 1, #worldMeshes do
+        profile, profileName, ratio = resolveProfile(learned, worldMeshes[j])
+
+        if profile then
+          worldMesh = worldMeshes[j]
+          break
+        end
       end
 
       if profile then
-        arrangables[fullType] = profile
+        newArrangables[fullType] = profile
         added = added + 1
         local modID = item:getModID()
 
@@ -1027,6 +1089,8 @@ function IA.applyMeshProfiles()
   if fileWriter then
     fileWriter:close()
   end
+
+  IA.arrangables = newArrangables
 
   for modID, count in pairs(addedByMod) do
     print(string.format("%s: [%s] Made %d extra items arrangeable.", p, modID, count))

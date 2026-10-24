@@ -15,6 +15,7 @@ local isServer = isServer
 
 -- patches Item Arrange's arrange action:
 --  - skip items that are no longer in their container, so they don't turn into ghost items
+--  - skip items that don't fit instead of cancelling the rest of the queue
 --  - hold Shift+Alt to skip items that can't be arranged, hold Ctrl to not stack items
 --  - only check the space again when the items on the square changed
 --  - orient the items by the player's facing mode option, on the server too where there's no mod option
@@ -64,13 +65,72 @@ function IAArrangeAction:isValid()
     self.spaceValid, self.spaceSkipItem = IA.CheckSpace(self.dropSquare, self.item, self.altKey, facing)
   end
 
-  if not self.spaceValid then
-    return false
-  elseif self.spaceSkipItem then
+  -- an invalid action clears the whole queue, so items after this one would never be dropped
+  if not self.spaceValid or self.spaceSkipItem then
     self.skipItem = true
   end
 
   return true
+end
+
+IAArrangeAction._originalUpdate = IAArrangeAction._originalUpdate or IAArrangeAction.update
+local originalUpdate = IAArrangeAction._originalUpdate
+
+-- each skipped action still takes a few frames, so with hundreds of items that don't fit the character would keep
+-- "placing" for a long time. the square doesn't change while skipping, so drop the queued items that won't fit either
+local function dropQueuedMisfits(action)
+  local ISTimedActionQueue = ISTimedActionQueue
+  if not ISTimedActionQueue or not ISTimedActionQueue.getTimedActionQueue then return end
+
+  local queue = ISTimedActionQueue.getTimedActionQueue(action.character)
+  local list = queue and queue.queue
+  if not list or list[1] ~= action then return end
+
+  local square = action.dropSquare
+  local facing = IA.getFacing(action.character, square, action.facingMode)
+  local fitsByType = {}
+  local kept = { action }
+
+  for i = 2, #list do
+    local queued = list[i]
+    local keep = true
+
+    if queued.Type == "IAArrangeAction" and queued.dropSquare == square and queued.item and not queued.altKey then
+      local fullType = queued.item:getFullType()
+      local fits = fitsByType[fullType]
+
+      if fits == nil then
+        fits = IA.CheckSpace(square, queued.item, false, facing) and true or false
+        fitsByType[fullType] = fits
+      end
+
+      keep = fits
+    end
+
+    if keep then
+      kept[#kept + 1] = queued
+    else
+      queued:forceCancel()
+    end
+  end
+
+  for i = #list, 1, -1 do
+    list[i] = kept[i]
+  end
+end
+
+-- the duration is fixed once the action started, so finish skipped items right away instead of playing the animation
+function IAArrangeAction:update()
+  if self.skipItem and self.action then
+    if not self.spaceValid then
+      dropQueuedMisfits(self)
+    end
+
+    self:forceComplete()
+    return
+  end
+
+  originalUpdate(self)
 end
 
 function IAArrangeAction:complete()

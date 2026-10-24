@@ -7,8 +7,48 @@ export interface ScriptBlock {
   children: ScriptBlock[];
 }
 
-const stripComments = (text: string): string =>
-  text.replace(/\/\*[\s\S]*?\*\//g, "").replace(/(^|[^:])\/\/.*$/gm, "$1");
+/** Java's `lastIndexOf`, which finds nothing for a negative start unlike JavaScript's. */
+const lastIndexOf = (text: string, search: string, from: number): number =>
+  from < 0 ? -1 : text.lastIndexOf(search, from);
+
+/**
+ * Block comments the way `ScriptParser.stripComments` removes them: from the last `*\/` back to its `/*`, nested ones
+ * included. Mods rely on that, e.g. damnlib separates models with `/*\/` lines, which the game reads as one comment each.
+ */
+const stripBlockComments = (text: string): string => {
+  let end = text.lastIndexOf("*/");
+
+  while (end !== -1) {
+    let start = lastIndexOf(text, "/*", end - 1);
+
+    if (start === -1) {
+      break;
+    }
+
+    let inner = lastIndexOf(text, "*/", end - 1);
+
+    while (inner > start) {
+      start = lastIndexOf(text, "/*", start - 2);
+
+      if (start === -1) {
+        break;
+      }
+
+      inner = lastIndexOf(text, "*/", inner - 2);
+    }
+
+    if (start === -1) {
+      break;
+    }
+
+    text = text.slice(0, start) + text.slice(end + 2);
+    end = lastIndexOf(text, "*/", start);
+  }
+
+  return text;
+};
+
+const stripComments = (text: string): string => stripBlockComments(text).replace(/(^|[^:])\/\/.*$/gm, "$1");
 
 /** Index just past the `}` that closes the `{` at `open`, or the text length when it never closes. */
 const findClose = (text: string, open: number): number => {

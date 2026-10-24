@@ -96,51 +96,39 @@ s["furniture_shelving_01_3"] = sp.woodShelvesW
 s["furniture_shelving_01_4"] = sp.woodShelvesN
 
 --
-sp.largeWallShelvesS = {
-  [1] = { zmin = 0.068, zmax = 0.34, xmin = 0.12, xmax = 1, ymin = 0.15, ymax = 0.45 },
-  [2] = { zmin = 0.379, zmax = 0.60, xmin = 0.12, xmax = 1, ymin = 0.155, ymax = 0.45 },
-  [3] = { zmin = 0.68, zmax = 0.95, xmin = 0.12, xmax = 1, ymin = 0.17, ymax = 0.45 },
-}
-sp.largeWallShelvesE = {
-  [1] = { zmin = 0.068, zmax = 0.34, xmin = 0.19, xmax = 0.45, ymin = 0.15, ymax = 1 },
-  [2] = { zmin = 0.382, zmax = 0.60, xmin = 0.19, xmax = 0.45, ymin = 0.15, ymax = 1 },
-  [3] = { zmin = 0.68, zmax = 0.95, xmin = 0.19, xmax = 0.45, ymin = 0.15, ymax = 1 },
-}
-sp.largeWallShelvesW = {
-  [1] = { zmin = 0.068, zmax = 0.34, xmin = 0.55, xmax = 0.81, ymin = 0, ymax = 0.85 },
-  [2] = { zmin = 0.382, zmax = 0.60, xmin = 0.55, xmax = 0.81, ymin = 0, ymax = 0.85 },
-  [3] = { zmin = 0.68, zmax = 0.95, xmin = 0.55, xmax = 0.81, ymin = 0, ymax = 0.85 },
-}
-sp.largeWallShelvesN = {
-  [1] = { zmin = 0.068, zmax = 0.34, xmin = 0, xmax = 1, ymin = 0.55, ymax = 0.85 },
-  [2] = { zmin = 0.379, zmax = 0.60, xmin = 0, xmax = 1, ymin = 0.55, ymax = 0.845 },
-  [3] = { zmin = 0.68, zmax = 0.95, xmin = 0, xmax = 1, ymin = 0.55, ymax = 0.83 },
-}
-
-s["furniture_shelving_01_9"] = sp.largeWallShelvesS
-s["furniture_shelving_01_10"] = sp.largeWallShelvesE
-s["furniture_shelving_01_11"] = sp.largeWallShelvesN
-s["furniture_shelving_01_12"] = sp.largeWallShelvesW
-
 sp.bigWallCornerShelvesS = {
-  [1] = { zmin = 0.068, zmax = 0.34, xmin = 0.16, xmax = 0.45, ymin = 0.25, ymax = 1 },
-  [2] = { zmin = 0.379, zmax = 0.6, xmin = 0.16, xmax = 0.45, ymin = 0.25, ymax = 1 },
-  [3] = { zmin = 0.68, zmax = 0.95, xmin = 0.16, xmax = 0.45, ymin = 0.25, ymax = 1 },
+  { zmin = 0.068, zmax = 0.34, xmin = 0.16, xmax = 0.5, ymin = 0.18, ymax = 1 },
+  { zmin = 0.379, zmax = 0.6, xmin = 0.16, xmax = 0.5, ymin = 0.18, ymax = 1 },
+  { zmin = 0.68, zmax = 0.95, xmin = 0.16, xmax = 0.5, ymin = 0.18, ymax = 1 },
+  { zmin = 0.068, zmax = 0.34, xmin = 0.51, xmax = 1, ymin = 0.18, ymax = 0.52 },
+  { zmin = 0.379, zmax = 0.6,  xmin = 0.51, xmax = 1, ymin = 0.18, ymax = 0.52 },
+  { zmin = 0.68, zmax = 0.95, xmin = 0.51, xmax = 1, ymin = 0.18, ymax = 0.52 },
 }
+-- N and W mirror E and S left to right (x -> 1 - x)
 sp.bigWallCornerShelvesN = {
-  [1] = { zmin = 0.068, zmax = 0.34, xmin = 0, xmax = 0.95, ymin = 0.62, ymax = 0.95 },
-  [2] = { zmin = 0.379, zmax = 0.6, xmin = 0, xmax = 0.95, ymin = 0.62, ymax = 0.95 },
-  [3] = { zmin = 0.68, zmax = 0.95, xmin = 0, xmax = 0.95, ymin = 0.62, ymax = 0.95 },
+  { zmin = 0.059, zmax = 0.34, xmin = 0, xmax = 0.85, ymin = 0.68, ymax = 0.97 },
+  { zmin = 0.379, zmax = 0.6, xmin = -0.09, xmax = 0.85, ymin = 0.7, ymax = 1 },
+  { zmin = 0.68, zmax = 0.95, xmin = -0.14, xmax = 0.85, ymin = 0.76, ymax = 1 },
+  { zmin = 0.059, zmax = 0.34, xmin = 0.53, xmax = 0.85, ymin = 0.14, ymax = 0.74 },
+  { zmin = 0.379, zmax = 0.6, xmin = 0.5, xmax = 0.85, ymin = 0.14, ymax = 0.74 },
+  { zmin = 0.68, zmax = 0.95, xmin = 0.46, xmax = 0.85, ymin = 0.14, ymax = 0.74 },
 }
 sp.bigWallCornerShelvesW = {
-  [1] = { zmin = 0.05, zmax = 0.34, xmin = 0.68, xmax = 0.95, ymin = 0.15, ymax = 1 },
-  [2] = { zmin = 0.35, zmax = 0.6, xmin = 0.65, xmax = 0.95, ymin = 0.15, ymax = 1 },
-  [3] = { zmin = 0.64, zmax = 1, xmin = 0.65, xmax = 0.95, ymin = 0.15, ymax = 1 },
+  { zmin = 0.068, zmax = 0.34, xmin = 0.5, xmax = 0.84, ymin = 0.18, ymax = 1 },
+  { zmin = 0.379, zmax = 0.6, xmin = 0.5, xmax = 0.84, ymin = 0.18, ymax = 1 },
+  { zmin = 0.68, zmax = 0.95, xmin = 0.5, xmax = 0.84, ymin = 0.18, ymax = 1 },
+  { zmin = 0.068, zmax = 0.34, xmin = 0, xmax = 0.49, ymin = 0.18, ymax = 0.52 },
+  { zmin = 0.379, zmax = 0.6, xmin = 0, xmax = 0.49, ymin = 0.18, ymax = 0.52 },
+  { zmin = 0.68, zmax = 0.95, xmin = 0, xmax = 0.49, ymin = 0.18, ymax = 0.52 },
 }
+
 sp.bigWallCornerShelvesE = {
-  [1] = { zmin = 0.059, zmax = 0.34, xmin = 0.15, xmax = 1, ymin = 0.68, ymax = 0.96 },
-  [2] = { zmin = 0.379, zmax = 0.6, xmin = 0.15, xmax = 1, ymin = 0.68, ymax = 0.96 },
-  [3] = { zmin = 0.68, zmax = 0.95, xmin = 0.15, xmax = 1, ymin = 0.68, ymax = 0.96 },
+  { zmin = 0.059, zmax = 0.34, xmin = 0.15, xmax = 1, ymin = 0.68, ymax = 0.97 },
+  { zmin = 0.379, zmax = 0.6, xmin = 0.15, xmax = 1.09, ymin = 0.7, ymax = 1 },
+  { zmin = 0.68, zmax = 0.95, xmin = 0.15, xmax = 1.14, ymin = 0.76, ymax = 1 },
+  { zmin = 0.059, zmax = 0.34, xmin = 0.15, xmax = 0.47, ymin = 0.14, ymax = 0.74 },
+  { zmin = 0.379, zmax = 0.6, xmin = 0.15, xmax = 0.5, ymin = 0.14, ymax = 0.74 },
+  { zmin = 0.68, zmax = 0.95, xmin = 0.15, xmax = 0.54, ymin = 0.14, ymax = 0.74 },
 }
 
 -- corners
