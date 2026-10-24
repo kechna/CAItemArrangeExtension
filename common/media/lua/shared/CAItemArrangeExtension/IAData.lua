@@ -14,26 +14,6 @@ local IA = IA
 local ap = IA.arrangableProfile
 local mp = IA.meshProfiles
 
-----
--- overrides
-----
-IA.arrangables["Base.SheetMetal"] = nil
-IA.arrangables["Base.CopperSheet"] = nil
-IA.arrangables["Base.SmallSheetMetal"] = nil
-IA.arrangables["Base.SmallCopperSheet"] = nil
-
-IA.arrangables["Base.IronBar"].mx = -0.24
-ap.champagneBottle.fz = -270
-ap.cocoaPowder.fz = 0
-ap.ammoCarton.dz = 0.065
-
-IA.arrangables["Base.JamFruit"] = { dx = 0.12, dy = 0.12, dz = 0.06, fz = 90 }
-IA.arrangables["Base.JamMarmalade"] = { dx = 0.12, dy = 0.12, dz = 0.06, fz = 90 }
-IA.arrangables["Base.MayonnaiseEmpty"] = { dx = 0.12, dy = 0.12, dz = 0.06, fz = -30 }
-IA.arrangables["Base.MayonnaiseFull"] = { dx = 0.12, dy = 0.12, dz = 0.06, fz = -30 }
-IA.arrangables["Base.RemouladeEmpty"] = { dx = 0.12, dy = 0.12, dz = 0.06, fz = 0 }
-IA.arrangables["Base.RemouladeFull"] = { dx = 0.12, dy = 0.12, dz = 0.06, fz = 0 }
-
 --
 -- Mesh profiles
 --
@@ -461,6 +441,7 @@ mp["weapons/2handed/SledgeHammer02"] = { fz = 270 }
 
 mp["BleachBottle"] = { dx = 0.1, dy = 0.16, dz = 0.11, fz = 180 }
 mp["CaffinePills"] = { dx = 0.1, dy = 0.1, dz = 0.07, fz = 153, s = 0.13 }
+mp["CanOpen"] = { dx = 0.102, dy = 0.162, dz = 0.073 }
 mp["Jar"] = { dx = 0.12, dy = 0.12, dz = 0.06, qz = 3, fz = 45, s = 0.4 }
 mp["Newspaper"] = { flipY = true }
 mp["PillBottle"] = { dx = 0.12, dy = 0.12, dz = 0.06, qz = 3, fz = 45, s = 1.56 }
@@ -486,8 +467,13 @@ mp["WorldItems/CarParts"] = { dx = 0.8, dy = 0.8, dz = 0.014, qz = 8, s = 0.25 }
 mp["WorldItems/CarSeat"] = { dy = 0.45, s = 0.4 }
 mp["WorldItems/CarTrunkLid"] = { dx = 0.8, dy = 0.8, dz = 0.014, qz = 8, s = 0.25 }
 mp["WorldItems/CarWindshield"] = { dx = 0.84, dy = 0.39, dz = 0.018, mx = -0.135, my = -0.182, qz = 8, fz = 0, s = 0.25 }
+mp["WorldItems/Cast_Bar_Metal"] = { qz = 10 }
+mp["WorldItems/Cast_Ingot_Metal"] = { qz = 10 }
 mp["WorldItems/Cast_Ingot_Metal"] = { qz = 4 }
-mp["WorldItems/CeramicCast_AnvilBlock"] = { dx = 0.26, qz = 3, s = 0.13 }
+--mp["WorldItems/CeramicCast_AnvilBlock"] = { dx = 0.26, qz = 3, s = 0.13 }
+mp["WorldItems/CeramicCast_AnvilBlock"] = { qz = 10,  }
+mp["WorldItems/CeramicMold_AnvilJeweller"] = { qz = 10 }
+mp["WorldItems/Ceramic_IngotCast"] = { qz = 10 }
 mp["WorldItems/Ceramic_IngotCast"] = { qz = 4 }
 mp["WorldItems/Chunk_Metal"] = { qz = 8 }
 mp["WorldItems/CircularSawBlade"] = { qz = 20, dz = 0.005 }
@@ -506,7 +492,7 @@ mp["WorldItems/DipJar"] = { dx = 0.12, dy = 0.12, dz = 0.039, qz = 3, fz = -180,
 mp["WorldItems/DirtBag"] = { dz = 0.04, qz = 3, flip = true }
 mp["WorldItems/Disinfectant"] = { dy = 0.12, dz = 0.04, fz = 270 }
 mp["WorldItems/Doll"] = { fz = 180 }
-mp["WorldItems/EmptyPopBottle"] = { dz = 0.04, fz = 270 }
+mp["WorldItems/EmptyPopBottle"] = { fz = 270 }
 mp["WorldItems/FabricRolled"] = { dx = 0.15, dy = 0.65, dz = 0.055, qz = 4, fz = 90, s = 0.14 }
 mp["WorldItems/Flask"] = { dy = 0.05, fz = 180, flip = true }
 mp["WorldItems/Flier"] = { qz = 20 }
@@ -527,14 +513,19 @@ mp["WorldItems/Ketchup"] = { dx = 0.17, dy = 0.08, dz = 0.09 }
 mp["WorldItems/Leather_Rolled"] = { qz = 4, s = 0.4 }
 mp["WorldItems/LightBulb"] = { dx = 0.11, dy = 0.12, dz = 0.02, flip = true }
 mp["WorldItems/Lightbar"] = { dx = 0.8, dy = 0.8, dz = 0.014, qz = 8, s = 0.25 }
+mp["WorldItems/LongMetalBar_Cast"] = { qz = 10 }
 mp["WorldItems/MacAndCheese"] = { qz = 2 }
 mp["WorldItems/MapleSyrup"] = { dx = 0.17, dy = 0.08, dz = 0.09 }
-mp["WorldItems/Margerine"] = { dx = 0.1, dy = 0.15, dz = 0.015, qz = 3, fz = 270, s = 0.28 }
+mp["WorldItems/Margerine"] = { qz = 3, flipZ = true, s = 0.5 }
 mp["WorldItems/Marinara"] = { dx = 0.12, dy = 0.12, dz = 0.05, qz = 3 }
 mp["WorldItems/MetalBar_Quarter"] = { qz = 8 }
 mp["WorldItems/MetalBar_Tenth"] = { qz = 8 }
-mp["WorldItems/MetalSheet"] = { flipZ = true, qz = 20, dz = 0.007, mz = 0.001 }
+mp["WorldItems/MetalSheet"] = { flipZ = true, qz = 30, dz = 0.006, mz = 0.001 }
 mp["WorldItems/Milk"] = { dx = 0.1, dy = 0.1, dz = 0.015, fz = 180 }
+mp["WorldItems/MoldGlass"] = { qz = 10 }
+mp["WorldItems/Mold_Brick"] = { qz = 10 }
+mp["WorldItems/Mold_Shingle"] = { qz = 10 }
+mp["WorldItems/Mold_Tile"] = { qz = 10 }
 mp["WorldItems/Muffler"] = { dx = 0.24, dy = 0.5, dz = 0.042, qz = 4, fz = 90, s = 0.4 }
 mp["WorldItems/Newspaper"] = { flipY = true }
 mp["WorldItems/NormalGasTank1"] = { dx = 0.63, dz = 0.085, my = -0.07, qz = 2, s = 0.4 }
@@ -556,6 +547,7 @@ mp["WorldItems/PlushieRabbit"] = { fz = 180 }
 mp["WorldItems/PlushieSquirrel"] = { fz = 180 }
 mp["WorldItems/Plushie_EyeOfCthulhu"] = { fz = 180 }
 mp["WorldItems/Plushie_Pancho"] = { fz = 180 }
+mp["WorldItems/Rice"] = { dx = 0.28, dy = 0.319, dz = 0.022, my = 0.07, mz = 0, qz = 8, fz = 270, s = 0.4 }
 mp["WorldItems/RiceVinegar"] = { dx = 0.12, dy = 0.12, dz = 0.04, fz = 270 }
 mp["WorldItems/Rod_Metal_Quarter"] = { flipZ = true, qz = 8 }
 mp["WorldItems/Rod_Metal_Slug"] = { qz = 8 }
@@ -566,12 +558,11 @@ mp["WorldItems/SaucePan_Copper"] = { qz = 3 }
 mp["WorldItems/SaucePan_Copper_Rice"] = { dx = 0.22, dy = 0.4, dz = 0.045, s = 0.075 }
 mp["WorldItems/SaucePan_Copper_Water"] = { dx = 0.22, dy = 0.4, dz = 0.045, s = 0.075 }
 mp["WorldItems/SaucePan_FoodFluid"] = { fz = 180, flip = true }
-mp["WorldItems/Sheet_Copper"] = { dz = 0.03 }
-mp["WorldItems/Sheet_Copper"] = { flipZ = true, qz = 20, dz = 0.006, mz = 0.001, dx = 0.65 }
-mp["WorldItems/Sheet_Copper_Small"] = { dz = 0.03 }
-mp["WorldItems/Sheet_Copper_Small"] = { flipZ = true, qz = 20, dz = 0.005, mz = 0.001 }
+mp["WorldItems/Sheet"] = { qz = 20 }
+mp["WorldItems/Sheet_Copper"] = { flipZ = true, qz = 30, dz = 0.004, mz = 0.001, dx = 0.65 }
+mp["WorldItems/Sheet_Copper_Small"] = { flipZ = true, qz = 30, dz = 0.004, mz = 0.001 }
 mp["WorldItems/SleepingTablets"] = { dx = 0.115, dy = 0.165, dz = 0.0135, qz = 5, fz = 90, s = 0.52 }
-mp["WorldItems/SmallSheetMetal"] = { qz = 20, dz = 0.005, mz = 0.001 }
+mp["WorldItems/SmallSheetMetal"] = { qz = 30, dz = 0.003, mz = 0.001 }
 mp["WorldItems/SpiffoPlushie"] = { fz = 180 }
 mp["WorldItems/Sponge"] = { qz = 6, flip = true }
 mp["WorldItems/Suspension"] = { dx = 0.28, dy = 0.44, my = -0.05, flip = true, s = 0.4 }
@@ -579,22 +570,28 @@ mp["WorldItems/Tarp"] = { qz = 5 }
 mp["WorldItems/Tarp_Segment"] = { qz = 10 }
 mp["WorldItems/TeddyBear_Crafted"] = { fz = 180 }
 mp["WorldItems/TeddyBear_Crafted2"] = { fz = 180 }
+mp["WorldItems/TileClay"] = { qz = 10 }
 mp["WorldItems/ToiletPaper"] = { qz = 3 }
 mp["WorldItems/TomatoPaste"] = { dx = 0.1, dy = 0.24, dz = 0.02, qz = 3, s = 0.4 }
-mp["WorldItems/Toothbrush"] = {fz = 180}
+mp["WorldItems/Toothbrush"] = { fz = 180 }
 mp["WorldItems/Toothpaste"] = { dx = 0.1, qz = 3, s = 0.6 }
 mp["WorldItems/Umbrella_Open"] = { dx = 0.13, dy = 0.7, dz = 0.16, mz = 0.016, fz = 270 }
 mp["WorldItems/WeldingRods"] = { fz = 270 }
 mp["WorldItems/Whetstone_Crude"] = { qz = 6 }
 mp["WorldItems/Whetstone_Modern"] = { qz = 6 }
 mp["WorldItems/WineBox"] = { dx = 0.15, qz = 2 }
-mp["WorldItems/WoodenMold_AnvilJeweller_Cast"] = { dx = 0.325, dy = 0.5, dz = 0.075, qz = 3, s = 0.1 }
-mp["WorldItems/WoodenMold_CeramicCast_AnvilBlock"] = { dx = 0.26, dy = 0.36, dz = 0.075, qz = 3, s = 0.13 }
+mp["WorldItems/WoodenMold_AnvilJeweller_Cast"] = { qz = 8, s = 0.1 }
+mp["WorldItems/WoodenMold_CeramicCast_AnvilBlock"] = { qz = 3, s = 0.13 }
+mp["WorldItems/WoodenMold_IngotCast"] = { qz = 10 }
 mp["WorldItems/WoodenMold_IngotCast"] = { qz = 4 }
+mp["WorldItems/WoodenMold_LongMetalBar_Cast"] = { qz = 10 }
 mp["WorldItems/WorldItem-SubstitutionDoll"] = { fz = 180 }
 mp["WorldItems/WorldItem_FlamingoPlushie"] = { fz = 180 }
 mp["WorldItems/WorldItem_SpiffoSanta"] = { fz = 180 }
-mp["CanOpen"] = { dx = 0.102, dy = 0.162, dz = 0.073 }
+mp["weapons/2handed/Shaft_Hand"] = { dx = 0.028, dy = 1, dz = 0.011, qz = 5, fz = 270 }
+mp["WorldItems/Stone_Flat"] = { qz = 8 }
+mp["WhiskeyBottle"] = { flipZ = true, fz = 180 }
+mp["WorldItems/Bottle_Generic"] = { fz = 150 }
 
 ----
 -- mods
@@ -638,16 +635,16 @@ mp["WorldItems/VFX_SmallJar"] = { qz = 3, fz = 45 }
 mp["WorldItems/VFX_SnackBox"] = { flipX = true, dx = 0.12, dz = 0.046, qz = 3, fz = 0, flipZ = true }
 mp["WorldItems/VFX_StarterBox"] = { fz = 270, flipX = true, flipY=true }
 mp["WorldItems/VFX_TeaBox"] = { qz = 4 }
+mp["WorldItems/VFX_SeasoningMix"] = { dx = 0.012,  flipY = true, fx=180, fz=180, mx = 0 }
 
 -- Sapph
 mp["WorldItems/CookingPot_Liquid"] = { dz = 0.1 }
-mp["Worlditems/AlcoholBottle"] = { dx = 0.173, dy = 0.096, fz = 0, flipZ = true }
 mp["Worlditems/Bigcanmodel"] = { qz = 3, fz = 45 }
 mp["Worlditems/Box_CannedFood"] = { dx = 0.6, dy = 0.5, s = 0.0045 }
 mp["Worlditems/Box_CannedFood_Closed"] = { qz = 4 }
 mp["Worlditems/BreadSliceToast"] = { dy = 0.27, dz = 0.01, qz = 6, fz = -10, s = 0.0035 }
 mp["Worlditems/DevJarFood"] = { qz = 3, fz = 45 }
-mp["Worlditems/EmptyBottle"] = { dz = 0.04, fz = 270 }
+mp["Worlditems/EmptyBottle"] = { fz = 180 }
 mp["Worlditems/GenericCan"] = { qz = 3, fz = 45 }
 mp["Worlditems/WhippedCan_Ground"] = { dx = 0.12, dz = 0.04, fz = 270 }
 
@@ -658,6 +655,7 @@ mp["WorldItems/WorldItem_AuthenticPillBottle"] = { dy = 0.08, dz = 0.056, fz = 1
 mp["WorldItems/WorldItem_GroguAZ"] = { flipZ = true }
 mp["WorldItems/WorldItem_PlushieOtisPugAZ"] = { flipZ = true }
 mp["WorldItems/WorldItem_SpiffoBackpack"] = { dx = 0.33, dy = 0.32, dz = 0.18, my = 0.18, mz = 0, fz = 180 }
+mp["WorldItems/WorldItem_GlowstickPack"] = { qz = 5 }
 
 -- Fool's new containers
 mp["WorldItems/NCammocan30_ground"] = { dy = 0.28 }
@@ -823,3 +821,11 @@ mp["ammo/boxes/Ammobox_Shotgun"] = { dx = 0.134, dy = 0.063, dz = 0.056, mx = 0.
 mp["Bicycle_RedStreet"] = { dx = 0.401, dy = 1, dz = 0.38, mx = 0.385, my = 0.537, mz = 0.001 }
 mp["Bicycle_Frame2"] = { dx = 0.401, dy = 1, dz = 0.38, mx = 0.385, my = 0.537, mz = 0.001 }
 mp["Bicycle_World"] = { dx = 0.401, dy = 1, dz = 0.38, mx = 0.385, my = 0.537, mz = 0.001 }
+
+-- ammo maker
+mp["WorldItems/ammomaker_BrassSheet"] = { qz = 30, dz = 0.003 }
+
+-- that damn library (ki5 vehicles)
+mp["WorldItems/damnCraft_plasticAddon_worldItems|plasterMold_emptyWI"] = { qz = 10 }
+mp["WorldItems/damnCraft_plasticAddon_worldItems|woodBox_emptyWI"] = { qz = 10 }
+mp["WorldItems/damnCraft_plasticAddon_worldItems|styrofoamSheetWI"] = { qz = 20 }
