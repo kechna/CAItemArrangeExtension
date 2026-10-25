@@ -1,7 +1,4 @@
 require("IAArrange")
-local Utils = require("CAItemArrangeExtension/Utils")
-
-local modify = Utils.modify
 
 IA = IA or nil
 
@@ -446,11 +443,13 @@ mp["Jar"] = { dx = 0.12, dy = 0.12, dz = 0.06, qz = 3, fz = 45, s = 0.4 }
 mp["Newspaper"] = { flipY = true }
 mp["PillBottle"] = { dx = 0.12, dy = 0.12, dz = 0.06, qz = 3, fz = 45, s = 1.56 }
 mp["SpiffoPlushieFull"] = { fz = 180 }
+mp["WhiskeyBottle"] = { flipZ = true, fz = 180 }
 mp["WorldItems/BBQ_Sauce"] = { dx = 0.15, dy = 0.08, dz = 0.09, fz = 270 }
 mp["WorldItems/BagofConcretePowder"] = { dy = 0.18, s = 0.2 }
 mp["WorldItems/BalsamicVinegar"] = { dx = 0.12, dy = 0.12, dz = 0.04, fz = 270 }
 mp["WorldItems/Billet_Metal"] = { qz = 8 }
 mp["WorldItems/Bottle"] = { dx = 0.12, dy = 0.12, dz = 0.04, fz = 270 }
+mp["WorldItems/Bottle_Generic"] = { fz = 150 }
 mp["WorldItems/Bowl"] = { dx = 0.19, dy = 0.19, dz = 0.025, qz = 6 }
 mp["WorldItems/BowlFood"] = { dz = 0.04 }
 mp["WorldItems/Bowl_Kiln"] = { dx = 0.19, dy = 0.19, dz = 0.025, qz = 6 }
@@ -470,7 +469,6 @@ mp["WorldItems/CarWindshield"] = { dx = 0.84, dy = 0.39, dz = 0.018, mx = -0.135
 mp["WorldItems/Cast_Bar_Metal"] = { qz = 10 }
 mp["WorldItems/Cast_Ingot_Metal"] = { qz = 10 }
 mp["WorldItems/Cast_Ingot_Metal"] = { qz = 4 }
---mp["WorldItems/CeramicCast_AnvilBlock"] = { dx = 0.26, qz = 3, s = 0.13 }
 mp["WorldItems/CeramicCast_AnvilBlock"] = { qz = 10,  }
 mp["WorldItems/CeramicMold_AnvilJeweller"] = { qz = 10 }
 mp["WorldItems/Ceramic_IngotCast"] = { qz = 10 }
@@ -536,24 +534,22 @@ mp["WorldItems/Pizza"] = { qz = 5 }
 mp["WorldItems/PizzaSlice"] = { qz = 5 }
 mp["WorldItems/Plumpabug_Plushie"] = { fz = 180 }
 mp["WorldItems/PlushieBadger"] = { fz = 180 }
-mp["WorldItems/PlushieBadger"] = { fz = 180 }
 mp["WorldItems/PlushieBeaver"] = { fz = 180 }
 mp["WorldItems/PlushieFox"] = { fz = 180 }
 mp["WorldItems/PlushieHedgehog"] = { fz = 180 }
-mp["WorldItems/PlushieHedgehog"] = { fz = 180 }
-mp["WorldItems/PlushieMole"] = { fz = 180 }
 mp["WorldItems/PlushieMole"] = { fz = 180 }
 mp["WorldItems/PlushieRabbit"] = { fz = 180 }
 mp["WorldItems/PlushieSquirrel"] = { fz = 180 }
 mp["WorldItems/Plushie_EyeOfCthulhu"] = { fz = 180 }
 mp["WorldItems/Plushie_Pancho"] = { fz = 180 }
-mp["WorldItems/Rice"] = { dx = 0.28, dy = 0.319, dz = 0.022, my = 0.07, mz = 0, qz = 8, fz = 270, s = 0.4 }
+mp["WorldItems/Rice"] =
+  { dx = 0.28, dy = 0.319, dz = 0.022, my = 0.07, mz = 0, qz = 8, fz = 270, s = 0.4, flipX = true }
 mp["WorldItems/RiceVinegar"] = { dx = 0.12, dy = 0.12, dz = 0.04, fz = 270 }
 mp["WorldItems/Rod_Metal_Quarter"] = { flipZ = true, qz = 8 }
 mp["WorldItems/Rod_Metal_Slug"] = { qz = 8 }
 mp["WorldItems/Rubberducky"] = { fz = 180 }
-mp["WorldItems/SandBag"] = { dz = 0.04, qz = 3, flip = true }
-mp["WorldItems/SaucePan"] = { qz = 3, fz = 180, flip = true }
+mp["WorldItems/SandBag"] = { dz = 0.04, qz = 4 }
+mp["WorldItems/SaucePan"] = { qz = 3, fz = 180 }
 mp["WorldItems/SaucePan_Copper"] = { qz = 3 }
 mp["WorldItems/SaucePan_Copper_Rice"] = { dx = 0.22, dy = 0.4, dz = 0.045, s = 0.075 }
 mp["WorldItems/SaucePan_Copper_Water"] = { dx = 0.22, dy = 0.4, dz = 0.045, s = 0.075 }
@@ -565,6 +561,7 @@ mp["WorldItems/SleepingTablets"] = { dx = 0.115, dy = 0.165, dz = 0.0135, qz = 5
 mp["WorldItems/SmallSheetMetal"] = { qz = 30, dz = 0.003, mz = 0.001 }
 mp["WorldItems/SpiffoPlushie"] = { fz = 180 }
 mp["WorldItems/Sponge"] = { qz = 6, flip = true }
+mp["WorldItems/Stone_Flat"] = { qz = 8 }
 mp["WorldItems/Suspension"] = { dx = 0.28, dy = 0.44, my = -0.05, flip = true, s = 0.4 }
 mp["WorldItems/Tarp"] = { qz = 5 }
 mp["WorldItems/Tarp_Segment"] = { qz = 10 }
@@ -582,16 +579,12 @@ mp["WorldItems/Whetstone_Modern"] = { qz = 6 }
 mp["WorldItems/WineBox"] = { dx = 0.15, qz = 2 }
 mp["WorldItems/WoodenMold_AnvilJeweller_Cast"] = { qz = 8, s = 0.1 }
 mp["WorldItems/WoodenMold_CeramicCast_AnvilBlock"] = { qz = 3, s = 0.13 }
-mp["WorldItems/WoodenMold_IngotCast"] = { qz = 10 }
 mp["WorldItems/WoodenMold_IngotCast"] = { qz = 4 }
 mp["WorldItems/WoodenMold_LongMetalBar_Cast"] = { qz = 10 }
 mp["WorldItems/WorldItem-SubstitutionDoll"] = { fz = 180 }
 mp["WorldItems/WorldItem_FlamingoPlushie"] = { fz = 180 }
 mp["WorldItems/WorldItem_SpiffoSanta"] = { fz = 180 }
 mp["weapons/2handed/Shaft_Hand"] = { dx = 0.028, dy = 1, dz = 0.011, qz = 5, fz = 270 }
-mp["WorldItems/Stone_Flat"] = { qz = 8 }
-mp["WhiskeyBottle"] = { flipZ = true, fz = 180 }
-mp["WorldItems/Bottle_Generic"] = { fz = 150 }
 
 ----
 -- mods

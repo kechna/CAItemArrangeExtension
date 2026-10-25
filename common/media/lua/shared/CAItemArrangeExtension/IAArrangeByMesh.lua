@@ -1049,39 +1049,40 @@ function IA.applyMeshProfiles()
     local item = items:get(i)
     local fullType = item:getFullName()
 
-    if arrangables[fullType] then
-      newArrangables[fullType] = arrangables[fullType]
-    else
-      local worldMeshes = getWorldMeshes(sm, item)
-      local worldMesh, profile, profileName, ratio
+    local worldMeshes = getWorldMeshes(sm, item)
+    local worldMesh, profile, profileName, ratio
 
-      -- one profile per item type, so items with model variants take the first variant that has one
-      for j = 1, #worldMeshes do
-        profile, profileName, ratio = resolveProfile(learned, worldMeshes[j])
-
-        if profile then
-          worldMesh = worldMeshes[j]
-          break
-        end
-      end
+    -- one profile per item type, so items with model variants take the first variant that has one
+    for j = 1, #worldMeshes do
+      profile, profileName, ratio = resolveProfile(learned, worldMeshes[j])
 
       if profile then
-        newArrangables[fullType] = profile
-        added = added + 1
-        local modID = item:getModID()
+        worldMesh = worldMeshes[j]
+        break
+      end
+    end
 
-        addedByMod[modID] = addedByMod[modID] and addedByMod[modID] + 1 or 1
+    if profile then
+      newArrangables[fullType] = profile
+      added = added + 1
+      local modID = item:getModID()
 
-        if fileWriter then
-          local scaleNote = ratio ~= 1 and string.format(", x%.2f", ratio) or ""
+      addedByMod[modID] = addedByMod[modID] and addedByMod[modID] + 1 or 1
 
-          fileWriter:writeln(
-            string.format(
-              'IA.arrangables["%-40s = IA.arrangableProfile.%-12s -- %s (%s @%s%s)', fullType .. '"]', profileName, modID,
-              worldMesh and worldMesh.mesh or "N/A", tostring(worldMesh and worldMesh.scale or "N/A"), scaleNote
-            )
+      if fileWriter then
+        local scaleNote = ratio ~= 1 and string.format(", x%.2f", ratio) or ""
+
+        fileWriter:writeln(
+          string.format(
+            'IA.arrangables["%-40s = IA.arrangableProfile.%-12s -- %s (%s @%s%s)',
+            fullType .. '"]',
+            profileName,
+            modID,
+            worldMesh and worldMesh.mesh or "N/A",
+            tostring(worldMesh and worldMesh.scale or "N/A"),
+            scaleNote
           )
-        end
+        )
       end
     end
   end
