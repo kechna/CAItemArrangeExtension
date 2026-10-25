@@ -79,3 +79,7 @@ link1 = Workshop = https://steamcommunity.com/id/chekka-anchroviec/myworkshopfil
 [ v1.19.0 - 10/25/26 ]
 - fix more surfaces
 [ ------ ]
+
+[ v1.19.1 - 10/25/26 ]
+- fix rice stacking
+[ ------ ]
