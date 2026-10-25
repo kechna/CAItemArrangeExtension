@@ -71,3 +71,7 @@ link1 = Workshop = https://steamcommunity.com/id/chekka-anchroviec/myworkshopfil
 - keep items' arrange profile after reloading
 - fix item sizes for mods whose model scripts use nested block comments
 [ ------ ]
+
+[ v1.18.1 - 10/25/26 ]
+- fit items on the blue steel workshop tables around their clamps
+[ ------ ]
