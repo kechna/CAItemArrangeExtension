@@ -872,3 +872,51 @@ s["location_shop_generic_01_14"] = {
   { zmin = 0.183, zmax = 0.29, xmin = 0.48, xmax = 0.72, ymin = 0, ymax = 1 },
   { zmin = 0.043, zmax = 0.14, xmin = 0.48, xmax = 0.72, ymin = 0, ymax = 1 },
 }
+
+
+-- blue steel industrial tables, two tiles each: 80+81, 84+85 and 88+89 run north-south, 82+83, 86+87 and 90+91
+-- west-east. the top is drawn off-center, so the ends differ in length.
+s["industry_03_88"] = {
+  { zmin = 0.347, zmax = 1, xmin = 0.08, xmax = 1.04, ymin = 0, ymax = 0.92 },
+}
+s["industry_03_80"] = s["industry_03_88"]
+s["industry_03_89"] = {
+  { zmin = 0.347, zmax = 1, xmin = 0.08, xmax = 1.04, ymin = 0.32, ymax = 1 },
+}
+s["industry_03_90"] = {
+  { zmin = 0.347, zmax = 1, xmin = 0.32, xmax = 1, ymin = 0.08, ymax = 1.04 },
+}
+s["industry_03_82"] = s["industry_03_90"]
+s["industry_03_91"] = {
+  { zmin = 0.347, zmax = 1, xmin = 0, xmax = 0.92, ymin = 0.08, ymax = 1.04 },
+}
+
+-- the ends with a clamp get smaller surfaces around it to maximize items
+s["industry_03_85"] = {
+  { zmin = 0.347, zmax = 1, xmin = 0.12, xmax = 0.67, ymin = 0.32, ymax = 1 },
+  { zmin = 0.347, zmax = 1, xmin = 0.67, xmax = 1.04, ymin = 0.85, ymax = 1 },
+  { zmin = 0.347, zmax = 1, xmin = 0.67, xmax = 1.04, ymin = 0.31, ymax = 0.41 },
+}
+s["industry_03_81"] = {
+  { zmin = 0.347, zmax = 1, xmin = 0.45, xmax = 1.04, ymin = 0.32, ymax = 1 },
+  { zmin = 0.347, zmax = 1, xmin = 0.08, xmax = 0.45, ymin = 0.85, ymax = 1 },
+  { zmin = 0.347, zmax = 1, xmin = 0.08, xmax = 0.45, ymin = 0.32, ymax = 0.41 },
+}
+s["industry_03_84"] = {
+  { zmin = 0.347, zmax = 1, xmin = 0.45, xmax = 1.04, ymin = 0, ymax = 0.92 },
+  { zmin = 0.347, zmax = 1, xmin = 0.08, xmax = 0.45, ymin = 0, ymax = 0.39 },
+  { zmin = 0.347, zmax = 1, xmin = 0.08, xmax = 0.45, ymin = 0.83, ymax = 0.92 },
+}
+s["industry_03_83"] = {
+  { zmin = 0.347, zmax = 1, xmin = 0, xmax = 0.92, ymin = 0.45, ymax = 1.04 },
+  { zmin = 0.347, zmax = 1, xmin = 0, xmax = 0.5, ymin = 0.08, ymax = 0.45 },
+}
+s["industry_03_86"] = {
+  { zmin = 0.347, zmax = 1, xmin = 0.32, xmax = 1, ymin = 0.45, ymax = 1.04 },
+  { zmin = 0.347, zmax = 1, xmin = 0.32, xmax = 0.53, ymin = 0.08, ymax = 0.45 },
+}
+s["industry_03_87"] = {
+  { zmin = 0.347, zmax = 1, xmin = 0, xmax = 0.92, ymin = 0.08, ymax = 0.69 },
+  { zmin = 0.347, zmax = 1, xmin = 0, xmax = 0.27, ymin = 0.69, ymax = 1.04 },
+  { zmin = 0.347, zmax = 1, xmin = 0.71, xmax = 0.92, ymin = 0.69, ymax = 1.04 },
+}
