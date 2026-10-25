@@ -224,6 +224,12 @@ s["furniture_storage_01_49"] = sp.bedsideStandE
 s["furniture_storage_01_50"] = sp.bedsideStandW
 s["furniture_storage_01_51"] = sp.bedsideStandN
 
+-- white fancy drawers, measured on N, the rest mirrored
+s["furniture_storage_01_8"] = { { zmin = 0.342, zmax = 1, xmin = 0.03, xmax = 0.57, ymin = 0.04, ymax = 0.93 } }
+s["furniture_storage_01_9"] = { { zmin = 0.342, zmax = 1, xmin = 0.07, xmax = 0.96, ymin = 0.03, ymax = 0.57 } }
+s["furniture_storage_01_10"] = { { zmin = 0.342, zmax = 1, xmin = 0.43, xmax = 0.97, ymin = 0.07, ymax = 0.96 } }
+s["furniture_storage_01_11"] = { { zmin = 0.352, zmax = 1, xmin = 0.04, xmax = 0.93, ymin = 0.43, ymax = 0.97 } }
+
 sp.roundTable = {
   [1] = { zmin = 0.281, zmax = 10, xmin = 0.2, xmax = 0.87, ymin = 0.2, ymax = 0.9 },
 }
