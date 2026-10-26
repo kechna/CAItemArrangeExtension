@@ -55,6 +55,21 @@ local SURFACE_CLEARANCE = 0.003
 
 local RUG_LIFT = 0.006
 
+-- footprints at least this square count as symmetric
+local SYMMETRIC_RATIO = 0.8
+
+-- items with a round or square footprint (bottles, cans, jars) fit the same either way, so they keep their profile's
+-- rotation instead of turning with the surface. a profile's `yaw` decides when it's set
+local function turnsWithSurface(arr)
+    if arr.yaw ~= nil then
+        return arr.yaw
+    end
+
+    local dx, dy = arr.lx or arr.dx, arr.ly or arr.dy
+
+    return mathMin(dx, dy) < mathMax(dx, dy) * SYMMETRIC_RATIO
+end
+
 local function isRug(spriteName)
     local name = spriteName:lower()
     local padded = "_" .. name .. "_"
@@ -408,7 +423,8 @@ local function arrangedCursorOrder(groundList)
     for fType, entries in pairs(groundList) do
         local arr = arrangables[fType]
         local ax, ay, az = arr.fx or 0, arr.fy or 0, arr.fz or 0
-        for i = 1, #entries do
+        -- items that don't turn match every order, so they can't tell which one was used
+        for i = 1, turnsWithSurface(arr) and #entries or 0 do
             local entry = entries[i]
             if entry.witem then
                 local item = entry.item
@@ -915,7 +931,7 @@ local function arrangeGroundList(square, groundList, placements, ignoreQz, facin
                 tableInsert(placements, {
                     entry = entry,
                     arr = arr,
-                    yaw = CURSOR_YAW[cursorOrder],
+                    yaw = turnsWithSurface(arr) and CURSOR_YAW[cursorOrder] or 0,
                     x = xpos,
                     y = ypos,
                     z = zpos + SURFACE_CLEARANCE,

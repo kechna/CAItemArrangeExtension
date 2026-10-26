@@ -23,6 +23,7 @@ require("IAArrange")
 --- @field lx number? real length along x when it's longer than dx, kept on the surface when placed
 --- @field ly number? real length along y when it's longer than dy, kept on the surface when placed
 --- @field center number[]? measured profiles: centre of the model's box relative to its origin (tiles, tiles, floors)
+--- @field yaw boolean? whether it turns with the surface's facing, by default only when its footprint isn't square
 
 ---@class CAIAE_MeshBase
 ---@field dx? number x distance
@@ -33,6 +34,7 @@ require("IAArrange")
 ---@field fx? number
 ---@field fy? number
 ---@field fz? number
+---@field yaw? boolean
 
 ---@class CAIAE_MeshProfile: CAIAE_MeshBase
 ---@field p   string arrangableProfile key
@@ -123,6 +125,10 @@ local measuredProfiles = {}
 --- mesh@profile@ratio -> profile with the mesh's overrides applied.
 ---@type table<string, IAArrangableProfile>
 local overriddenProfiles = {}
+
+--- mesh@profile@ratio -> profile with the mesh's measured height.
+---@type table<string, IAArrangableProfile>
+local heightProfiles = {}
 
 --- keys of a `CAIAE_MeshProfile` that aren't profile fields.
 local MESH_PROFILE_KEYS = { p = true, s = true }
@@ -1003,6 +1009,60 @@ local function applyOverrides(worldMesh, profile, name, ratio)
   return result
 end
 
+--- a copy of a learned profile that doesn't stack with the model's measured height as its dz. Item Arrange's own
+--- profiles often guess the height of items that don't stack (bottles at 0.04), which lets them fit under shelves
+--- they don't fit under. stacking profiles keep theirs, it's the step between stacked items.
+---@param worldMesh CAIAE_WorldMesh
+---@param profile   IAArrangableProfile
+---@param name      string
+---@param ratio     number
+---@return IAArrangableProfile
+local function withMeasuredHeight(worldMesh, profile, name, ratio)
+  if name == MEASURED or name == INLINE or profile.qz ~= 1 then
+    return profile
+  end
+
+  -- a profile turned onto its side stands on another axis of the model
+  if (profile.fx or 0) % 180 ~= 0 or (profile.fy or 0) % 180 ~= 0 then
+    return profile
+  end
+
+  local manual = IA.meshProfiles[worldMesh.mesh]
+
+  if type(manual) == "table" and manual.dz then
+    return profile
+  end
+
+  local size, key = getMeshSize(worldMesh)
+
+  -- weapon models are measured lying another way than they're placed
+  if not size or key:find("@weapon", 1, true) or not isMeasurable(size.dz) then
+    return profile
+  end
+
+  local dz = scaleDimension(size.dz, 1)
+
+  if dz == profile.dz then
+    return profile
+  end
+
+  local cacheKey = string.format("%s@%s@%.3f", worldMesh.mesh, name, ratio)
+  local result = heightProfiles[cacheKey]
+
+  if not result then
+    result = {}
+
+    for k, v in pairs(profile) do
+      result[k] = v
+    end
+
+    result.dz = dz
+    heightProfiles[cacheKey] = result
+  end
+
+  return result
+end
+
 ---@param learned   table<string, CAIAE_LearnedProfile[]>
 ---@param worldMesh CAIAE_WorldMesh
 ---@return IAArrangableProfile?, string?, number?
@@ -1015,6 +1075,8 @@ local function resolveProfile(learned, worldMesh)
 
   ---@cast name string
   ---@cast ratio number
+  profile = withMeasuredHeight(worldMesh, profile, name, ratio)
+
   return applyOverrides(worldMesh, profile, name, ratio), name, ratio
 end
 
