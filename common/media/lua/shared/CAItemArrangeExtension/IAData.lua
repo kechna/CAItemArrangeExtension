@@ -449,7 +449,7 @@ mp["WorldItems/BagofConcretePowder"] = { dy = 0.18, s = 0.2 }
 mp["WorldItems/BalsamicVinegar"] = { dx = 0.12, dy = 0.12, dz = 0.04, fz = 270 }
 mp["WorldItems/Billet_Metal"] = { qz = 8 }
 mp["WorldItems/Bottle"] = { dx = 0.12, dy = 0.12, dz = 0.04, fz = 270 }
-mp["WorldItems/Bottle_Generic"] = { fz = 150 }
+mp["WorldItems/Bottle_Generic"] = { fz = 240 }
 mp["WorldItems/Bowl"] = { dx = 0.19, dy = 0.19, dz = 0.025, qz = 6 }
 mp["WorldItems/BowlFood"] = { dz = 0.04 }
 mp["WorldItems/Bowl_Kiln"] = { dx = 0.19, dy = 0.19, dz = 0.025, qz = 6 }
