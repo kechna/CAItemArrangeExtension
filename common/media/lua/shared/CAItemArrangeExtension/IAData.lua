@@ -622,6 +622,7 @@ mp["WorldItems/VFX_SM_FoodStorageContainer"] = { dx = 0.32, dy = 0.32, dz = 0.06
 mp["WorldItems/VFX_SM_MetalFoodStorageContainer"] = { dx = 0.25, dy = 0.35, dz = 0.046, qz = 5, s = 1.2 }
 mp["WorldItems/VFX_Sandwich"] = { dx = 0.13, qz = 4, fz = -12 }
 mp["WorldItems/VFX_SandwichFocaccia"] = { qz = 5, dz = 0.008, flipZ = true }
+mp["WorldItems/VFX_SeasoningMix"] = { dx = 0.012,  flipY = true, fx=180, fz=180, mx = 0 }
 mp["WorldItems/VFX_SliceBread"] = { dx = 0.127, dz = 0.003, qz = 10, fz = -10, s = 0.3 }
 mp["WorldItems/VFX_SliceFocaccia"] = { qz = 5, flipZ = true }
 mp["WorldItems/VFX_SmallJar"] = { qz = 3, fz = 45 }
