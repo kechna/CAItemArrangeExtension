@@ -83,3 +83,11 @@ link1 = Workshop = https://steamcommunity.com/id/chekka-anchroviec/myworkshopfil
 [ v1.19.1 - 10/25/26 ]
 - fix rice stacking
 [ ------ ]
+
+[ v1.20.0 - 10/27/26 ]
+- rotate vfx beer pack to match the rest
+- fix generic bottle rotation
+- fix rotation of more items
+- tweak parcel/box dimensions
+- fix sizes and rotations of more items
+[ ------ ]
