@@ -389,6 +389,24 @@ local function getMeshScale(worldMesh)
   return worldMesh.scale
 end
 
+--- the scale the item's model renders `mesh` at, which a mesh entry's `s` is compared against.
+---@param fullType string
+---@param mesh     string
+---@return number | nil
+function IA.getMeshScale(fullType, mesh)
+  local sm = getScriptManager()
+  local item = sm:getItem(fullType)
+  local worldMeshes = item and getWorldMeshes(sm, item) or {}
+
+  for i = 1, #worldMeshes do
+    if worldMeshes[i].mesh == mesh then
+      return getMeshScale(worldMeshes[i])
+    end
+  end
+
+  return nil
+end
+
 ---@return table<table, string>
 local function getProfileNames()
   local names = {}
@@ -1090,14 +1108,11 @@ function IA.applyMeshProfiles()
     return
   end
 
+  IA.baseArrangables = IA.baseArrangables or IA.arrangables
   IA.meshProfilesApplied = true
 
   local sm = getScriptManager()
   local fileWriter = isDebugEnabled() and getFileWriter(p .. "_added.txt", true, false) or nil
-
-  -- the table Item Arrange and the mods before this one filled. the result replaces IA.arrangables, so a rerun after a
-  -- hot reload has to start from this one again, not from what the last run made
-  IA.baseArrangables = IA.baseArrangables or IA.arrangables
 
   local arrangables = IA.baseArrangables
   local learned = learnMeshProfiles(sm, arrangables)
