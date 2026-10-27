@@ -514,7 +514,11 @@ mp["WorldItems/Muffler"] = { dx = 0.24, dy = 0.5, dz = 0.042, qz = 4, fz = 90, s
 mp["WorldItems/Newspaper"] = { flipY = true }
 mp["WorldItems/NormalGasTank1"] = { dx = 0.63, dz = 0.085, my = -0.07, qz = 2, s = 0.4 }
 mp["WorldItems/PainKillers"] = { dx = 0.25, dy = 0.24, dz = 0.006, qz = 5, fz = 90, s = 1.12 }
-mp["WorldItems/Parcel4_Text"] = ap.ammoCarton
+mp["WorldItems/Parcel2_Text"] = { dx = 0.316, dy = 0.31, dz = 0.116, s = 0.2 }
+mp["WorldItems/Parcel4_Text"] = { dx = 0.298, dy = 0.272, dz = 0.064, qz = 8, s = 0.15 }
+mp["WorldItems/Parcel_Present_1"] = { dz = 0.118, s = 0.2 }
+mp["WorldItems/Parcel_Present_3"] = { dx = 0.205, dz = 0.028, s = 0.1 }
+mp["WorldItems/Parcel_Present_5"] = { dx = 0.245, dy = 0.22, dz = 0.052, s = 0.15 }
 mp["WorldItems/PeanutButter"] = { dx = 0.15, dy = 0.15, dz = 0.078, qz = 2 }
 mp["WorldItems/Pizza"] = { qz = 5 }
 mp["WorldItems/PizzaSlice"] = { qz = 5 }
