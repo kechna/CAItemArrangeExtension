@@ -91,3 +91,11 @@ link1 = Workshop = https://steamcommunity.com/id/chekka-anchroviec/myworkshopfil
 - tweak parcel/box dimensions
 - fix sizes and rotations of more items
 [ ------ ]
+
+[ v1.20.1 - 11/04/26 ]
+- restore weapon model rotations that the last release dropped
+- keep planks and pipes on their tile instead of hanging halfway off it
+- keep squares that were never arranged as they are when picking up an item from them
+- keep the orientation of an already arranged square when arranging onto it
+- remember which way items that don't turn with the surface were arranged
+[ ------ ]
