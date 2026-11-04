@@ -131,6 +131,9 @@ local OPPOSITE = { N = "S", E = "W", S = "N", W = "E" }
 
 ---@alias IAFacing "N" | "E" | "S" | "W" | "walls"
 
+--- `auto` keeps the square's arranged orientation and arranges a square that isn't arranged by the player's facing
+---@alias IAArrangeFacing IAFacing | "auto"
+
 --- The side items face when `character` arranges them on `square`, `walls` to orient them by the walls. Modes:
 ---  - `towards`/`away`: by where the player stands, because they may only turn towards the square later
 ---  - `view`/`look`: back at the player or the way they look, by where they look
@@ -405,34 +408,64 @@ end
 
 local ARRANGED_ORDERS = { CURSOR_ORDER_N, CURSOR_ORDER_W, CURSOR_ORDER_S, CURSOR_ORDER_E }
 
+local CURSOR_FACING = { [CURSOR_ORDER_S] = "N", [CURSOR_ORDER_W] = "E", [CURSOR_ORDER_N] = "S", [CURSOR_ORDER_E] = "W" }
+
+-- items that don't turn with the surface look the same in every order, so a fraction of a degree of extra z rotation
+-- records the order they were arranged in
+local ORDER_MARK = {
+    [CURSOR_ORDER_N] = 0,
+    [CURSOR_ORDER_W] = 0.2,
+    [CURSOR_ORDER_S] = 0.4,
+    [CURSOR_ORDER_E] = 0.6,
+}
+
 -- kahlua's `%` keeps the sign of negative numbers
-local function sameAngle(a, b)
+local function sameAngle(a, b, tolerance)
     local d = (a - b) % 360
     if d < 0 then
         d = d + 360
     end
-    return d < 0.5 or d > 359.5
+    return d < tolerance or d > 360 - tolerance
 end
 
--- The cursor order the square was last arranged with, read back from the items' synced rotations: each one is its
--- profile's rotation turned by that order's yaw. Most votes wins, so loose items with random rotations don't decide.
+local function placedRotation(arr, order)
+    if turnsWithSurface(arr) then
+        return applyYaw(arr.fx or 0, arr.fy or 0, arr.fz or 0, CURSOR_YAW[order])
+    end
+
+    return arr.fx or 0, arr.fy or 0, ((arr.fz or 0) + ORDER_MARK[order]) % 360
+end
+
+-- The cursor order the square was last arranged with, read back from the items' synced rotations, or nil when it
+-- isn't arranged. Dropped items get a random rotation, so at least half of the items must match one order.
 local function arrangedCursorOrder(groundList)
     local arrangables = IA.arrangables
     local votes = {}
     local best, bestVotes = nil, 0
+    local total = 0
     for fType, entries in pairs(groundList) do
         local arr = arrangables[fType]
-        local ax, ay, az = arr.fx or 0, arr.fy or 0, arr.fz or 0
-        -- items that don't turn match every order, so they can't tell which one was used
-        for i = 1, turnsWithSurface(arr) and #entries or 0 do
+        local tolerance = turnsWithSurface(arr) and 0.5 or 0.05
+        local expected = nil
+        for i = 1, #entries do
             local entry = entries[i]
             if entry.witem then
+                total = total + 1
+                if not expected then
+                    expected = {}
+                    for j = 1, #ARRANGED_ORDERS do
+                        local fx, fy, fz = placedRotation(arr, ARRANGED_ORDERS[j])
+                        expected[j] = { fx, fy, fz }
+                    end
+                end
+
                 local item = entry.item
                 local rx, ry, rz = item:getWorldXRotation(), item:getWorldYRotation(), item:getWorldZRotation()
                 for j = 1, #ARRANGED_ORDERS do
-                    local order = ARRANGED_ORDERS[j]
-                    local fx, fy, fz = applyYaw(ax, ay, az, CURSOR_YAW[order])
-                    if sameAngle(fx, rx) and sameAngle(fy, ry) and sameAngle(fz, rz) then
+                    local e = expected[j]
+                    if sameAngle(e[1], rx, tolerance) and sameAngle(e[2], ry, tolerance)
+                        and sameAngle(e[3], rz, tolerance) then
+                        local order = ARRANGED_ORDERS[j]
                         local count = (votes[order] or 0) + 1
                         votes[order] = count
                         if count > bestVotes then
@@ -445,17 +478,38 @@ local function arrangedCursorOrder(groundList)
         end
     end
 
+    if bestVotes * 2 < total then
+        return nil
+    end
+
     return best
+end
+
+--- The side the items on `square` face, or nil when they aren't arranged.
+---@param square IsoGridSquare
+---@return IAFacing | nil
+function IA.getArrangedFacing(square)
+    local order = arrangedCursorOrder(buildGroundList(square))
+
+    return order and CURSOR_FACING[order]
 end
 
 local function arrangeGroundList(square, groundList, placements, ignoreQz, facing)
     local arrangables = IA.arrangables
 
     local wallCursorOrder, surfaces = IA.getSurfaceInfo(square)
+    ---@type integer | nil
     local cursorOrder = FACING_CURSOR_ORDER[facing]
     if not cursorOrder and facing ~= "walls" then
-        -- without a facing (rearranging after a pickup) the square keeps the orientation it was arranged with
-        cursorOrder = arrangedCursorOrder(groundList) or FACING_CURSOR_ORDER[facingOf(getPlayer(), square)]
+        -- without a facing (rearranging after a pickup) the square keeps the orientation it was arranged with, and
+        -- a square that isn't arranged stays as it is
+        cursorOrder = arrangedCursorOrder(groundList)
+        if not cursorOrder then
+            if facing ~= "auto" then
+                return true
+            end
+            cursorOrder = FACING_CURSOR_ORDER[facingOf(getPlayer(), square)]
+        end
     end
     cursorOrder = cursorOrder or wallCursorOrder
 
@@ -931,7 +985,7 @@ local function arrangeGroundList(square, groundList, placements, ignoreQz, facin
                 tableInsert(placements, {
                     entry = entry,
                     arr = arr,
-                    yaw = turnsWithSurface(arr) and CURSOR_YAW[cursorOrder] or 0,
+                    order = cursorOrder,
                     x = xpos,
                     y = ypos,
                     z = zpos + SURFACE_CLEARANCE,
@@ -958,7 +1012,8 @@ local function arrangeGroundList(square, groundList, placements, ignoreQz, facin
     return true
 end
 
----@param facing? IAFacing side the items face. without one the square keeps its last orientation
+---@param facing? IAArrangeFacing side the items face. without one an arranged square keeps its orientation and any
+---other square is left alone
 function IA.CheckSpace(square, item, skip, facing)
     if not square or not item then
         return false, false
@@ -1001,7 +1056,7 @@ local function applyPlacements(placements)
         entry.witem:setOffset(p.x, p.y, p.z)
 
         local item = entry.item
-        local fx, fy, fz = applyYaw(arr.fx or 0, arr.fy or 0, arr.fz or 0, p.yaw)
+        local fx, fy, fz = placedRotation(arr, p.order)
         item:setWorldXRotation(fx)
         item:setWorldYRotation(fy)
         item:setWorldZRotation(fz)
@@ -1011,7 +1066,8 @@ local function applyPlacements(placements)
     end
 end
 
----@param facing? IAFacing side the items face. without one the square keeps its last orientation
+---@param facing? IAArrangeFacing side the items face. without one an arranged square keeps its orientation and any
+---other square is left alone
 function IA.ArrangeItems(square, simulate, ctrlKey, facing)
     if simulate then
         return arrangeGroundList(square, buildGroundList(square), nil, ctrlKey, facing)

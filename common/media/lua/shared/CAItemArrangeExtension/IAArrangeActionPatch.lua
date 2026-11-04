@@ -5,7 +5,7 @@ require("CAItemArrangeExtension/IAArrangePatch")
 local IAArrangeAction = IAArrangeAction or nil
 local IA = IA or nil
 
-if not IAArrangeAction or not IA or not IA.getFacing then return end
+if not IAArrangeAction or not IA or not IA.getFacing or not IA.getArrangedFacing then return end
 
 local ISTransferAction = ISTransferAction
 local sendRemoveItemFromContainer = sendRemoveItemFromContainer
@@ -18,7 +18,8 @@ local isServer = isServer
 --  - skip items that don't fit instead of cancelling the rest of the queue
 --  - hold Shift+Alt to skip items that can't be arranged, hold Ctrl to not stack items
 --  - only check the space again when the items on the square changed
---  - orient the items by the player's facing mode option, on the server too where there's no mod option
+--  - orient the items by the player's facing mode option, on the server too where there's no mod option. a square
+--    that is arranged already keeps its orientation
 
 ---@class IAArrangeAction: ISBaseTimedAction
 ---@field character IsoPlayer
@@ -32,6 +33,13 @@ local isServer = isServer
 
 IAArrangeAction._originalNew = IAArrangeAction._originalNew or IAArrangeAction.new
 local originalNew = IAArrangeAction._originalNew
+
+-- read before the item lands on the square, so its own leftover rotation doesn't count
+local function facingOf(action)
+  local square = action.dropSquare
+
+  return IA.getArrangedFacing(square) or IA.getFacing(action.character, square, action.facingMode)
+end
 
 local function isStale(action)
   local item = action.item
@@ -61,7 +69,7 @@ function IAArrangeAction:isValid()
   local worldItemCount = self.dropSquare:getWorldObjects():size()
   if self.checkedWorldItemCount ~= worldItemCount then
     self.checkedWorldItemCount = worldItemCount
-    local facing = IA.getFacing(self.character, self.dropSquare, self.facingMode)
+    local facing = facingOf(self)
     self.spaceValid, self.spaceSkipItem = IA.CheckSpace(self.dropSquare, self.item, self.altKey, facing)
   end
 
@@ -87,7 +95,7 @@ local function dropQueuedMisfits(action)
   if not list or list[1] ~= action then return end
 
   local square = action.dropSquare
-  local facing = IA.getFacing(action.character, square, action.facingMode)
+  local facing = facingOf(action)
   local fitsByType = {}
   local kept = { action }
 
@@ -137,6 +145,7 @@ function IAArrangeAction:complete()
   if self.skipItem or isStale(self) then return true end
 
   local item = self.item
+  local facing = facingOf(self)
 
   self.srcContainer:DoRemoveItem(item)
   sendRemoveItemFromContainer(self.srcContainer, item)
@@ -155,7 +164,6 @@ function IAArrangeAction:complete()
   end
 
   -- the item is on the square already, so the action succeeded even when it doesn't fit the arrangement
-  local facing = IA.getFacing(self.character, self.dropSquare, self.facingMode)
   IA.ArrangeItems(self.dropSquare, false, self.ctrlKey, facing)
 
   return true
