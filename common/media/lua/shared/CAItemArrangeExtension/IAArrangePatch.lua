@@ -13,11 +13,13 @@ local mathAsin = math.asin
 local mathAtan2 = math.atan2
 local mathCos = math.cos
 local mathDeg = math.deg
+local mathFloor = math.floor
 local mathMax = math.max
 local mathMin = math.min
 local mathRad = math.rad
 local mathSin = math.sin
 local tableInsert = table.insert
+local tableRemove = table.remove
 local getPlayer = getPlayer
 
 -- MOST OF THIS IS SLAYER'S OWN ITEM ARRANGE MOD, WHICH IS NOT MY WORK.
@@ -364,6 +366,192 @@ function IA.getSurfaceInfo(square)
 
 end
 
+-- surfaces of two tiles of one piece of furniture merge when they're at the same height and both end within this
+-- distance of the edge between the tiles
+local MERGE_Z_TOLERANCE = 0.02
+local MERGE_SEAM_TOLERANCE = 0.1
+
+-- an item placed at exactly 0 or 1 lands on the neighboring square
+local OFFSET_MIN = 0.001
+local OFFSET_MAX = 0.999
+
+---@class IAGroupMember
+---@field square IsoGridSquare
+---@field gx     integer position in the furniture's sprite grid
+---@field gy     integer
+
+---@class IAGroup
+---@field square  IsoGridSquare the square that was asked for
+---@field members IAGroupMember[]
+
+local function hasSpriteNamed(square, name)
+    local objects = square:getObjects()
+    for i = 0, objects:size() - 1 do
+        local sprite = objects:get(i):getSprite()
+        if sprite and sprite:getName() == name then
+            return true
+        end
+    end
+
+    return false
+end
+
+--- The squares of the multi-tile furniture with surfaces on `square` (both halves of a metal shelf), with `square` as
+--- the only member when there's none. Squares can be missing from a grid when the furniture is broken up.
+---@param square IsoGridSquare
+---@return IAGroup
+function IA.getArrangeGroup(square)
+    local surfaceProfiles = IA.surfaces
+    local objects = square:getObjects()
+    for i = 0, objects:size() - 1 do
+        local sprite = objects:get(i):getSprite()
+        local grid = sprite and sprite:getSpriteGrid()
+        if grid and surfaceProfiles[sprite:getName()] then
+            local cell = square:getCell()
+            local z = square:getZ()
+            local ax = square:getX() - grid:getSpriteGridPosX(sprite)
+            local ay = square:getY() - grid:getSpriteGridPosY(sprite)
+            local members = {}
+            for gx = 0, grid:getWidth() - 1 do
+                for gy = 0, grid:getHeight() - 1 do
+                    local part = grid:getSprite(gx, gy)
+                    local partSquare = part and cell:getGridSquare(ax + gx, ay + gy, z)
+                    if partSquare and hasSpriteNamed(partSquare, part:getName()) then
+                        tableInsert(members, { square = partSquare, gx = gx, gy = gy })
+                    end
+                end
+            end
+
+            if #members > 1 then
+                return { square = square, members = members }
+            end
+        end
+    end
+
+    return { square = square, members = { { square = square, gx = 0, gy = 0 } } }
+end
+
+local function nearSeam(a, b)
+    local seam = mathFloor(b + 0.5)
+    return seam >= 1 and mathAbs(a - seam) <= MERGE_SEAM_TOLERANCE and mathAbs(b - seam) <= MERGE_SEAM_TOLERANCE
+end
+
+local function overlaps(amin, amax, bmin, bmax)
+    return mathMax(amin, bmin) < mathMin(amax, bmax)
+end
+
+local function mergedSurface(a, b)
+    if mathAbs(a.zmin - b.zmin) > MERGE_Z_TOLERANCE then
+        return nil
+    end
+
+    local alongX = (nearSeam(a.xmax, b.xmin) or nearSeam(b.xmax, a.xmin)) and overlaps(a.ymin, a.ymax, b.ymin, b.ymax)
+    local alongY = (nearSeam(a.ymax, b.ymin) or nearSeam(b.ymax, a.ymin)) and overlaps(a.xmin, a.xmax, b.xmin, b.xmax)
+    if not alongX and not alongY then
+        return nil
+    end
+
+    local merged = {
+        zmin = mathMax(a.zmin, b.zmin),
+        zmax = mathMin(a.zmax, b.zmax),
+        rank = mathMin(a.rank, b.rank),
+    }
+    if alongX then
+        merged.xmin, merged.xmax = mathMin(a.xmin, b.xmin), mathMax(a.xmax, b.xmax)
+        merged.ymin, merged.ymax = mathMax(a.ymin, b.ymin), mathMin(a.ymax, b.ymax)
+    else
+        merged.xmin, merged.xmax = mathMax(a.xmin, b.xmin), mathMin(a.xmax, b.xmax)
+        merged.ymin, merged.ymax = mathMin(a.ymin, b.ymin), mathMax(a.ymax, b.ymax)
+    end
+    if merged.zmax < merged.zmin then
+        merged.zmax = merged.zmin
+    end
+
+    return merged
+end
+
+local function findMergePair(surfaces)
+    for i = 1, #surfaces do
+        for j = i + 1, #surfaces do
+            local merged = mergedSurface(surfaces[i], surfaces[j])
+            if merged then
+                return i, j, merged
+            end
+        end
+    end
+
+    return nil
+end
+
+--- The cursor order and surfaces of a group, in the group's coordinates (the first member's square is 0..1). Touching
+--- surfaces of different members are merged into one.
+---@param group IAGroup
+function IA.getGroupSurfaceInfo(group)
+    local members = group.members
+    if #members == 1 then
+        return IA.getSurfaceInfo(members[1].square)
+    end
+
+    local cursorOrder
+    local surfaces = {}
+    for m = 1, #members do
+        local member = members[m]
+        local order, memberSurfaces = IA.getSurfaceInfo(member.square)
+        if member.square == group.square or not cursorOrder then
+            cursorOrder = order
+        end
+
+        for i = 1, #memberSurfaces do
+            local s = memberSurfaces[i]
+            tableInsert(surfaces, {
+                xmin = s.xmin + member.gx,
+                xmax = s.xmax + member.gx,
+                ymin = s.ymin + member.gy,
+                ymax = s.ymax + member.gy,
+                zmin = s.zmin,
+                zmax = s.zmax,
+                rank = i,
+            })
+        end
+    end
+
+    local i, j, merged = findMergePair(surfaces)
+    while i do
+        surfaces[i] = merged
+        tableRemove(surfaces, j)
+        i, j, merged = findMergePair(surfaces)
+    end
+
+    -- keep the profile's order (insertion sort: a handful of surfaces, and table.sort overflows in Kahlua)
+    for a = 2, #surfaces do
+        local s = surfaces[a]
+        local b = a - 1
+        while b >= 1 and surfaces[b].rank > s.rank do
+            surfaces[b + 1] = surfaces[b]
+            b = b - 1
+        end
+        surfaces[b + 1] = s
+    end
+
+    return cursorOrder, surfaces
+end
+
+-- the member square under group coordinates `x, y`, and the offsets on it
+local function locateInGroup(group, x, y)
+    local gx, gy = mathFloor(x), mathFloor(y)
+    local members = group.members
+    for i = 1, #members do
+        local member = members[i]
+        if member.gx == gx and member.gy == gy then
+            local ox = mathMax(OFFSET_MIN, mathMin(OFFSET_MAX, x - gx))
+            local oy = mathMax(OFFSET_MIN, mathMin(OFFSET_MAX, y - gy))
+            return member.square, ox, oy
+        end
+    end
+
+    return nil
+end
+
 -- Moves an item's centre so all of its real length stays on the surface: long items get a shorter footprint
 -- than they are, which would otherwise overhang the edge their row starts at. One longer than the whole surface
 -- is centred on it.
@@ -377,19 +565,23 @@ local function keepOnSurface(center, length, low, high)
     return mathMax(low + length / 2, mathMin(high - length / 2, center))
 end
 
-local function buildGroundList(square, extraItem)
+---@param group IAGroup
+local function buildGroundList(group, extraItem)
     local arrangables = IA.arrangables
     local groundList = {}
-    local wobs = square:getWorldObjects()
-    for i = 0, wobs:size() - 1 do
-        local witem = wobs:get(i)
-        local item = witem:getItem()
-        local fType = item:getFullType()
-        if arrangables[fType] then
-            if not groundList[fType] then
-                groundList[fType] = {}
+    local members = group.members
+    for m = 1, #members do
+        local wobs = members[m].square:getWorldObjects()
+        for i = 0, wobs:size() - 1 do
+            local witem = wobs:get(i)
+            local item = witem:getItem()
+            local fType = item:getFullType()
+            if arrangables[fType] then
+                if not groundList[fType] then
+                    groundList[fType] = {}
+                end
+                tableInsert(groundList[fType], { item = item, witem = witem })
             end
-            tableInsert(groundList[fType], { item = item, witem = witem })
         end
     end
 
@@ -489,15 +681,17 @@ end
 ---@param square IsoGridSquare
 ---@return IAFacing | nil
 function IA.getArrangedFacing(square)
-    local order = arrangedCursorOrder(buildGroundList(square))
+    local order = arrangedCursorOrder(buildGroundList(IA.getArrangeGroup(square)))
 
     return order and CURSOR_FACING[order]
 end
 
-local function arrangeGroundList(square, groundList, placements, ignoreQz, facing)
+---@param group IAGroup
+local function arrangeGroundList(group, groundList, placements, ignoreQz, facing)
     local arrangables = IA.arrangables
+    local square = group.square
 
-    local wallCursorOrder, surfaces = IA.getSurfaceInfo(square)
+    local wallCursorOrder, surfaces = IA.getGroupSurfaceInfo(group)
     ---@type integer | nil
     local cursorOrder = FACING_CURSOR_ORDER[facing]
     if not cursorOrder and facing ~= "walls" then
@@ -1025,13 +1219,14 @@ function IA.CheckSpace(square, item, skip, facing)
         return true, skip
     end
 
-    local groundList = buildGroundList(square)
+    local group = IA.getArrangeGroup(square)
+    local groundList = buildGroundList(group)
     local sameTypeItems = groundList[fType]
     if sameTypeItems and #sameTypeItems > 0 then
         local qz = arr.qz or 3
         local currentStackSize = #sameTypeItems % qz
         if currentStackSize ~= 0 then
-            local _, surfaces = IA.getSurfaceInfo(square)
+            local _, surfaces = IA.getGroupSurfaceInfo(group)
             local mz = arr.mz or 0
             for _, surfaceInfo in ipairs(surfaces) do
                 local zmin = surfaceInfo.zmin or 0
@@ -1046,36 +1241,74 @@ function IA.CheckSpace(square, item, skip, facing)
         end
     end
 
-    return arrangeGroundList(square, buildGroundList(square, item), nil, false, facing), false
+    return arrangeGroundList(group, buildGroundList(group, item), nil, false, facing), false
 end
 
-local function applyPlacements(placements)
+local function isSameSquare(a, b)
+    return a and a:getX() == b:getX() and a:getY() == b:getY() and a:getZ() == b:getZ()
+end
+
+-- the item becomes a new world object on `target`, keeping its rotation
+local function moveWorldItem(witem, item, target, x, y, z)
+    local source = witem:getSquare()
+    if source then
+        source:transmitRemoveItemFromSquare(witem)
+    end
+    witem:removeFromWorld()
+    witem:removeFromSquare()
+    witem:setSquare(nil)
+    item:setWorldItem(nil)
+
+    target:AddWorldInventoryItem(item, x, y, z)
+
+    return item:getWorldItem()
+end
+
+---@param group IAGroup
+local function applyPlacements(placements, group)
+    local single = #group.members == 1
     for i = 1, #placements do
         local p = placements[i]
         local entry, arr = p.entry, p.arr
-        entry.witem:setOffset(p.x, p.y, p.z)
-
         local item = entry.item
+        local witem = entry.witem
+
         local fx, fy, fz = placedRotation(arr, p.order)
         item:setWorldXRotation(fx)
         item:setWorldYRotation(fy)
         item:setWorldZRotation(fz)
 
+        local target, ox, oy
+        if not single then
+            target, ox, oy = locateInGroup(group, p.x, p.y)
+        end
+
+        if not target then
+            witem:setOffset(p.x, p.y, p.z)
+        elseif isSameSquare(witem:getSquare(), target) then
+            witem:setOffset(ox, oy, p.z)
+        else
+            witem = moveWorldItem(witem, item, target, ox, oy, p.z)
+        end
+
         item:setDoingExtendedPlacement(false)
-        entry.witem:syncExtendedPlacement()
+        if witem then
+            witem:syncExtendedPlacement()
+        end
     end
 end
 
 ---@param facing? IAArrangeFacing side the items face. without one an arranged square keeps its orientation and any
 ---other square is left alone
 function IA.ArrangeItems(square, simulate, ctrlKey, facing)
+    local group = IA.getArrangeGroup(square)
     if simulate then
-        return arrangeGroundList(square, buildGroundList(square), nil, ctrlKey, facing)
+        return arrangeGroundList(group, buildGroundList(group), nil, ctrlKey, facing)
     end
 
     local placements = {}
-    local ok = arrangeGroundList(square, buildGroundList(square), placements, ctrlKey, facing)
-    applyPlacements(placements)
+    local ok = arrangeGroundList(group, buildGroundList(group), placements, ctrlKey, facing)
+    applyPlacements(placements, group)
 
     return ok
 end

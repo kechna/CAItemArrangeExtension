@@ -5,7 +5,7 @@ require("CAItemArrangeExtension/IAArrangePatch")
 local IAArrangeAction = IAArrangeAction or nil
 local IA = IA or nil
 
-if not IAArrangeAction or not IA or not IA.getFacing or not IA.getArrangedFacing then return end
+if not IAArrangeAction or not IA or not IA.getFacing or not IA.getArrangedFacing or not IA.getArrangeGroup then return end
 
 local ISTransferAction = ISTransferAction
 local sendRemoveItemFromContainer = sendRemoveItemFromContainer
@@ -66,7 +66,11 @@ function IAArrangeAction:isValid()
   end
 
   -- isValid runs every tick, so only check the space again when the items on the square changed
-  local worldItemCount = self.dropSquare:getWorldObjects():size()
+  local worldItemCount = 0
+  local members = IA.getArrangeGroup(self.dropSquare).members
+  for i = 1, #members do
+    worldItemCount = worldItemCount + members[i].square:getWorldObjects():size()
+  end
   if self.checkedWorldItemCount ~= worldItemCount then
     self.checkedWorldItemCount = worldItemCount
     local facing = facingOf(self)
