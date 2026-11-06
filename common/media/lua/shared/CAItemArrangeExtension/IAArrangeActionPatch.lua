@@ -30,6 +30,7 @@ local isServer = isServer
 ---@field altKey boolean
 ---@field ctrlKey boolean
 ---@field facingMode IAFacingMode
+---@field wallSprite string | nil wall board on `dropSquare` the item goes on
 
 IAArrangeAction._originalNew = IAArrangeAction._originalNew or IAArrangeAction.new
 local originalNew = IAArrangeAction._originalNew
@@ -74,7 +75,7 @@ function IAArrangeAction:isValid()
   if self.checkedWorldItemCount ~= worldItemCount then
     self.checkedWorldItemCount = worldItemCount
     local facing = facingOf(self)
-    self.spaceValid, self.spaceSkipItem = IA.CheckSpace(self.dropSquare, self.item, self.altKey, facing)
+    self.spaceValid, self.spaceSkipItem = IA.CheckSpace(self.dropSquare, self.item, self.altKey, facing, self.wallSprite)
   end
 
   -- an invalid action clears the whole queue, so items after this one would never be dropped
@@ -107,12 +108,13 @@ local function dropQueuedMisfits(action)
     local queued = list[i]
     local keep = true
 
-    if queued.Type == "IAArrangeAction" and queued.dropSquare == square and queued.item and not queued.altKey then
+    if queued.Type == "IAArrangeAction" and queued.dropSquare == square and queued.item and not queued.altKey
+      and queued.wallSprite == action.wallSprite then
       local fullType = queued.item:getFullType()
       local fits = fitsByType[fullType]
 
       if fits == nil then
-        fits = IA.CheckSpace(square, queued.item, false, facing) and true or false
+        fits = IA.CheckSpace(square, queued.item, false, facing, action.wallSprite) and true or false
         fitsByType[fullType] = fits
       end
 
@@ -168,7 +170,7 @@ function IAArrangeAction:complete()
   end
 
   -- the item is on the square already, so the action succeeded even when it doesn't fit the arrangement
-  IA.ArrangeItems(self.dropSquare, false, self.ctrlKey, facing)
+  IA.ArrangeItems(self.dropSquare, false, self.ctrlKey, facing, self.wallSprite, item)
 
   return true
 end
@@ -176,7 +178,7 @@ end
 -- in MP the client sends the fields named after `new`'s parameters and the server calls `new` with them, so the
 -- parameters must be named (no `...`) and the held keys are parameters too, read on the client only. Item Arrange
 -- passes its own fifth argument (ctrl key or time), so the client always reads them itself
-function IAArrangeAction:new(character, item, srcContainer, dropSquare, altKey, ctrlKey, facingMode)
+function IAArrangeAction:new(character, item, srcContainer, dropSquare, altKey, ctrlKey, facingMode, wallSprite)
   local o = originalNew(self, character, item, srcContainer, dropSquare)
   o.skipItem = false
 
@@ -184,11 +186,14 @@ function IAArrangeAction:new(character, item, srcContainer, dropSquare, altKey, 
     altKey = isAltKeyDown()
     ctrlKey = isCtrlKeyDown()
     facingMode = IA.FacingMode
+    local board = CAIAE_DropTarget and CAIAE_DropTarget.board
+    wallSprite = board and board.square == dropSquare and board.sprite or nil
   end
 
   o.altKey = altKey == true
   o.ctrlKey = ctrlKey == true
   o.facingMode = facingMode or "walls"
+  o.wallSprite = wallSprite
 
   return o
 end

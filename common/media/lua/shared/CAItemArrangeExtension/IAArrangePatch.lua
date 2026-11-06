@@ -111,12 +111,12 @@ local function mat3RotZ(deg)
     return { c, -s, 0, s, c, 0, 0, 0, 1 }
 end
 
-local function applyYaw(fx, fy, fz, yaw)
-    if yaw == 0 or fx == 0 then
-        return fx, fy, (fz + yaw) % 360
-    end
+-- an item's world rotation as a matrix (model space has y up, so fz turns it around the vertical)
+local function mat3Item(fx, fy, fz)
+    return mat3Mul(mat3RotX(fx), mat3Mul(mat3RotY(fz), mat3RotZ(fy)))
+end
 
-    local m = mat3Mul(mat3RotY(yaw), mat3Mul(mat3RotX(fx), mat3Mul(mat3RotY(fz), mat3RotZ(fy))))
+local function itemRotationOf(m)
     local sinB = mathMax(-1, mathMin(1, m[3]))
     local a, b, c = 0.0, mathAsin(sinB), 0.0
 
@@ -129,6 +129,14 @@ local function applyYaw(fx, fy, fz, yaw)
     end
 
     return mathDeg(a) % 360, mathDeg(c) % 360, mathDeg(b) % 360
+end
+
+local function applyYaw(fx, fy, fz, yaw)
+    if yaw == 0 or fx == 0 then
+        return fx, fy, (fz + yaw) % 360
+    end
+
+    return itemRotationOf(mat3Mul(mat3RotY(yaw), mat3Item(fx, fy, fz)))
 end
 
 ---@alias IAFacingMode "walls" | "towards" | "away" | "view" | "look"
@@ -569,18 +577,152 @@ local function keepOnSurface(center, length, low, high)
     return mathMax(low + length / 2, mathMin(high - length / 2, center))
 end
 
----@param group IAGroup
-local function buildGroundList(group, extraItem)
+-- wall boards (cork boards, pegboards): items hang flat against the board in rows from its top, copies shingled a bit
+-- further out and lower. they're packed by `arrangeGroundList` on a virtual surface (x along the board, y down from
+-- its top, z out of it) and turned onto the wall afterwards.
+
+local EMPTY = {}
+
+-- items count as flat when their height is at most this part of their longest side
+local FLAT_RATIO = 0.3
+local WALL_MAX_STACK = 3
+-- how far each copy in a stack hangs lower than the one under it, as a part of its height on the board
+local SHINGLE_DROP = 0.2
+local WALL_EPSILON = 0.02
+local WALL_ANGLE_TOLERANCE = 1
+-- a z level is this many tile widths tall: heights (`dz`, `mz`, offsets) are in levels, the board's x and y in tiles
+local FLOOR_HEIGHT = 2.449
+
+-- the item lies flat against the board with its top facing out and its front (south on the floor) down
+local WALL_PITCH = -90
+local WALL_YAW = { N = 0, W = 90 }
+
+---@param arr IAArrangableProfile | nil
+---@return boolean
+local function canHang(arr)
+    if not arr then
+        return false
+    end
+    if arr.w ~= nil then
+        return arr.w
+    end
+
+    local long = arr.dx > arr.dy and arr.dx or arr.dy
+
+    return arr.dz <= long * FLAT_RATIO
+end
+
+-- turned so the long side runs along the board
+local function rollsOnWall(arr)
+    return arr.dy > arr.dx
+end
+
+local function wallRotation(arr, wall)
+    local m = mat3Item(arr.fx or 0, arr.fy or 0, arr.fz or 0)
+    if rollsOnWall(arr) then
+        m = mat3Mul(mat3RotY(90), m)
+    end
+    m = mat3Mul(mat3RotY(WALL_YAW[wall] or 0), mat3Mul(mat3RotX(WALL_PITCH), m))
+
+    return itemRotationOf(m)
+end
+
+-- kahlua's `%` keeps the sign of negative numbers
+local function sameAngle(a, b, tolerance)
+    local d = (a - b) % 360
+    if d < 0 then
+        d = d + 360
+    end
+    return d < tolerance or d > 360 - tolerance
+end
+
+local function wallSurfaces()
+    return IA.wallSurfaces or EMPTY
+end
+
+---@param square IsoGridSquare
+---@return string[] | nil sprite names of the square's wall boards
+local function getWallSprites(square)
+    local profiles = wallSurfaces()
+    local result
+    local objects = square:getObjects()
+    for i = 0, objects:size() - 1 do
+        local sprite = objects:get(i):getSprite()
+        local name = sprite and sprite:getName()
+        if name and profiles[name] then
+            result = result or {}
+            result[#result + 1] = name
+        end
+    end
+
+    return result
+end
+
+-- matched by position and rotation instead of modData, so items dropped below a board never count. hung items sit
+-- `plane` further along and `plane / 3` higher than the spot they cover (see `toWallPlacement`), hence the margins
+---@param sprites string[] the boards on the item's square
+local function isOnWall(witem, arr, sprites, profiles)
+    local ox, oy, oz = witem:getOffX(), witem:getOffY(), witem:getOffZ()
+    for i = 1, #sprites do
+        local s = profiles[sprites[i]]
+        local along, out = ox, oy
+        if s.wall == "W" then
+            along, out = oy, ox
+        end
+
+        local height = oz - s.plane / 3
+        if along >= s.min - WALL_EPSILON and along <= s.max + s.plane + WALL_EPSILON
+            and out >= s.plane - WALL_EPSILON and out <= s.plane + s.depth + WALL_EPSILON
+            and height >= s.zmin - WALL_EPSILON and height <= s.zmax + WALL_EPSILON then
+            local item = witem:getItem()
+            local fx, fy, fz = wallRotation(arr, s.wall)
+            if sameAngle(item:getWorldXRotation(), fx, WALL_ANGLE_TOLERANCE)
+                and sameAngle(item:getWorldYRotation(), fy, WALL_ANGLE_TOLERANCE)
+                and sameAngle(item:getWorldZRotation(), fz, WALL_ANGLE_TOLERANCE) then
+                return true
+            end
+        end
+    end
+
+    return false
+end
+
+--- The items of a group by type, without the ones hanging on wall boards. For a `wallGroup` only the ones hanging on
+--- its board, plus `newItem`.
+---@param group      IAGroup
+---@param extraItem? InventoryItem an item that isn't on the square yet
+---@param wallGroup? boolean
+---@param newItem?   InventoryItem just dropped on the square to go on the board
+local function buildGroundList(group, extraItem, wallGroup, newItem)
     local arrangables = IA.arrangables
+    local profiles = wallSurfaces()
     local groundList = {}
     local members = group.members
     for m = 1, #members do
-        local wobs = members[m].square:getWorldObjects()
-        for i = 0, wobs:size() - 1 do
+        local member = members[m]
+        local square = member.square
+        local wobs = square:getWorldObjects()
+        local wobCount = wobs:size()
+        local sprites
+        if wallGroup then
+            sprites = { member.sprite }
+        elseif wobCount > 0 then
+            sprites = getWallSprites(square)
+        end
+
+        for i = 0, wobCount - 1 do
             local witem = wobs:get(i)
             local item = witem:getItem()
             local fType = item:getFullType()
-            if arrangables[fType] then
+            local arr = arrangables[fType]
+            local include = arr ~= nil
+            if include and wallGroup then
+                include = item == newItem or isOnWall(witem, arr, sprites, profiles)
+            elseif include and sprites then
+                include = not isOnWall(witem, arr, sprites, profiles)
+            end
+
+            if include then
                 if not groundList[fType] then
                     groundList[fType] = {}
                 end
@@ -614,15 +756,6 @@ local ORDER_MARK = {
     [CURSOR_ORDER_S] = 0.4,
     [CURSOR_ORDER_E] = 0.6,
 }
-
--- kahlua's `%` keeps the sign of negative numbers
-local function sameAngle(a, b, tolerance)
-    local d = (a - b) % 360
-    if d < 0 then
-        d = d + 360
-    end
-    return d < tolerance or d > 360 - tolerance
-end
 
 local function placedRotation(arr, order)
     if turnsWithSurface(arr) then
@@ -721,15 +854,28 @@ local function sortTypesForPacking(groundList, arrangables)
     return types
 end
 
----@param group IAGroup
-local function arrangeGroundList(group, groundList, placements, ignoreQz, facing)
-    local arrangables = IA.arrangables
+---@class IAArrangeLayout
+---@field order       integer cursor order
+---@field surfaces    table[]
+---@field arrangables table<string, IAArrangableProfile>
+
+---@param group   IAGroup
+---@param layout? IAArrangeLayout packs on these surfaces with these profiles instead of the group's
+local function arrangeGroundList(group, groundList, placements, ignoreQz, facing, layout)
+    local arrangables = layout and layout.arrangables or IA.arrangables
     local square = group.square
 
-    local wallCursorOrder, surfaces = IA.getGroupSurfaceInfo(group)
+    local wallCursorOrder, surfaces
+    if layout then
+        wallCursorOrder, surfaces = layout.order, layout.surfaces
+    else
+        wallCursorOrder, surfaces = IA.getGroupSurfaceInfo(group)
+    end
     ---@type integer | nil
     local cursorOrder = FACING_CURSOR_ORDER[facing]
-    if not cursorOrder and facing ~= "walls" then
+    if layout then
+        cursorOrder = layout.order
+    elseif not cursorOrder and facing ~= "walls" then
         -- without a facing (rearranging after a pickup) the square keeps the orientation it was arranged with, and
         -- a square that isn't arranged stays as it is
         cursorOrder = arrangedCursorOrder(groundList)
@@ -1218,6 +1364,7 @@ local function arrangeGroundList(group, groundList, placements, ignoreQz, facing
                     x = xpos,
                     y = ypos,
                     z = zpos + SURFACE_CLEARANCE,
+                    layer = z,
                 })
             end
 
@@ -1241,9 +1388,13 @@ local function arrangeGroundList(group, groundList, placements, ignoreQz, facing
     return true
 end
 
----@param facing? IAArrangeFacing side the items face. without one an arranged square keeps its orientation and any
+-- defined further down, after the placements they apply
+local arrangeWall
+
+---@param facing?     IAArrangeFacing side the items face. without one an arranged square keeps its orientation and any
 ---other square is left alone
-function IA.CheckSpace(square, item, skip, facing)
+---@param wallSprite? string check the wall board on the square instead, for items that can hang
+function IA.CheckSpace(square, item, skip, facing, wallSprite)
     if not square or not item then
         return false, false
     end
@@ -1252,6 +1403,11 @@ function IA.CheckSpace(square, item, skip, facing)
     local arr = IA.arrangables[fType]
     if not arr then
         return true, skip
+    end
+
+    -- items that can't hang are skipped like misfits, not dropped on the floor under the board
+    if wallSprite then
+        return canHang(arr) and arrangeWall(square, wallSprite, true, false, item) or false, false
     end
 
     local group = IA.getArrangeGroup(square)
@@ -1388,7 +1544,12 @@ local function applyPlacements(placements, group)
         local item = entry.item
         local witem = entry.witem
 
-        local fx, fy, fz = placedRotation(arr, p.order)
+        local fx, fy, fz
+        if p.rotation then
+            fx, fy, fz = p.rotation[1], p.rotation[2], p.rotation[3]
+        else
+            fx, fy, fz = placedRotation(arr, p.order)
+        end
         local changed = not (sameAngle(item:getWorldXRotation(), fx, ANGLE_EPSILON)
             and sameAngle(item:getWorldYRotation(), fy, ANGLE_EPSILON)
             and sameAngle(item:getWorldZRotation(), fz, ANGLE_EPSILON))
@@ -1406,6 +1567,9 @@ local function applyPlacements(placements, group)
             end
         else
             witem = moveWorldItem(witem, item, target, p.ox, p.oy, p.z)
+            -- a new world object resets the item's x and y rotation
+            item:setWorldXRotation(fx)
+            item:setWorldYRotation(fy)
             changed = true
         end
 
@@ -1417,9 +1581,217 @@ local function applyPlacements(placements, group)
     end
 end
 
----@param facing? IAArrangeFacing side the items face. without one an arranged square keeps its orientation and any
+---@class IAWallGroupMember: IAGroupMember
+---@field sprite string
+
+--- The squares of the wall board `spriteName` on `square` (both halves of a pegboard), or nil when it isn't there.
+---@param square     IsoGridSquare
+---@param spriteName string
+---@return IAGroup | nil
+local function getWallGroup(square, spriteName)
+    local profiles = wallSurfaces()
+    if not profiles[spriteName] then
+        return nil
+    end
+
+    local objects = square:getObjects()
+    for i = 0, objects:size() - 1 do
+        local sprite = objects:get(i):getSprite()
+        if sprite and sprite:getName() == spriteName then
+            local grid = sprite:getSpriteGrid()
+            local members = {}
+            if grid then
+                local cell = square:getCell()
+                local z = square:getZ()
+                local ax = square:getX() - grid:getSpriteGridPosX(sprite)
+                local ay = square:getY() - grid:getSpriteGridPosY(sprite)
+                for gx = 0, grid:getWidth() - 1 do
+                    for gy = 0, grid:getHeight() - 1 do
+                        local part = grid:getSprite(gx, gy)
+                        local partName = part and part:getName()
+                        local partSquare = partName and profiles[partName] and cell:getGridSquare(ax + gx, ay + gy, z)
+                        if partSquare and hasSpriteNamed(partSquare, partName) then
+                            tableInsert(members, { square = partSquare, gx = gx, gy = gy, sprite = partName })
+                        end
+                    end
+                end
+            end
+
+            if #members < 2 then
+                members = { { square = square, gx = 0, gy = 0, sprite = spriteName } }
+            end
+
+            return { square = square, members = members }
+        end
+    end
+
+    return nil
+end
+
+-- the board of a wall group in group coordinates, its tiles joined along the wall
+local function getWallSurface(group)
+    local profiles = wallSurfaces()
+    local result
+    local members = group.members
+    for m = 1, #members do
+        local member = members[m]
+        local s = profiles[member.sprite]
+        local along, across = member.gx, member.gy
+        if s.wall == "W" then
+            along, across = member.gy, member.gx
+        end
+
+        if not result then
+            result = {
+                wall = s.wall,
+                plane = s.plane + across,
+                shift = s.plane,
+                min = s.min + along,
+                max = s.max + along,
+                zmin = s.zmin,
+                zmax = s.zmax,
+                depth = s.depth,
+            }
+        else
+            result.min = mathMin(result.min, s.min + along)
+            result.max = mathMax(result.max, s.max + along)
+            result.zmin = mathMax(result.zmin, s.zmin)
+            result.zmax = mathMin(result.zmax, s.zmax)
+            result.depth = mathMin(result.depth, s.depth)
+        end
+    end
+
+    return result
+end
+
+-- the profiles items are packed with on a board's virtual surface: x along the board (their long side), y down from
+-- its top (their short side, plus the shingle of a stack), z out of the board, all in tile widths
+local function getWallProfiles(groundList, ignoreQz)
+    local arrangables = IA.arrangables
+    local result = {}
+    for fType in pairs(groundList) do
+        local arr = arrangables[fType]
+        local roll = rollsOnWall(arr)
+        local along = roll and arr.dy or arr.dx
+        local down = roll and arr.dx or arr.dy
+        local qz = ignoreQz and 1 or mathMin(arr.qz or 3, WALL_MAX_STACK)
+        local drop = down * SHINGLE_DROP
+        result[fType] = {
+            dx = along,
+            dy = down + (qz - 1) * drop,
+            dz = arr.dz * FLOOR_HEIGHT,
+            qz = qz,
+            lx = roll and arr.ly or arr.lx,
+            item = arr,
+            down = down,
+            drop = drop,
+        }
+    end
+
+    return result
+end
+
+-- turns a placement on a board's virtual surface into one on the board. items render where their position projects, so
+-- one hanging `p` in front of the wall moves +p along it and +p/3 up to cover the same spot on the drawn board
+local function toWallPlacement(p, surface)
+    local virtual = p.arr
+    local arr = virtual.item
+    local top = p.y - virtual.dy / 2
+    local along = p.x
+    local height = surface.zmax - (top + virtual.down / 2 + p.layer * virtual.drop) / FLOOR_HEIGHT
+    local out = surface.plane + p.z + (arr.mz or 0) * FLOOR_HEIGHT
+
+    local mx, my = arr.mx or 0, arr.my or 0
+    if rollsOnWall(arr) then
+        mx, my = my, -mx
+    end
+    along = along + mx + surface.shift
+    height = height - my / FLOOR_HEIGHT + surface.shift / 3
+
+    if surface.wall == "W" then
+        p.x, p.y = out, along
+    else
+        p.x, p.y = along, out
+    end
+    p.z = height
+    p.arr = arr
+    p.rotation = { wallRotation(arr, surface.wall) }
+end
+
+-- arranges the items on the wall board `spriteName` on `square`. `extraItem` is checked as if it were dropped there
+-- too, `newItem` was just dropped on the square to go on the board
+function arrangeWall(square, spriteName, simulate, ignoreQz, extraItem, newItem)
+    local group = getWallGroup(square, spriteName)
+    if not group then
+        return false
+    end
+
+    local surface = getWallSurface(group)
+    local groundList = buildGroundList(group, extraItem, true, newItem)
+    local arrangables = IA.arrangables
+    for fType in pairs(groundList) do
+        if not canHang(arrangables[fType]) then
+            groundList[fType] = nil
+        end
+    end
+
+    local layout = {
+        order = CURSOR_ORDER_N,
+        surfaces = {
+            {
+                xmin = surface.min,
+                xmax = surface.max,
+                ymin = 0,
+                ymax = (surface.zmax - surface.zmin) * FLOOR_HEIGHT,
+                zmin = 0,
+                zmax = surface.depth,
+            },
+        },
+        arrangables = getWallProfiles(groundList, ignoreQz),
+    }
+
+    local placements = not simulate and {} or nil
+    local ok = arrangeGroundList(group, groundList, placements, ignoreQz, nil, layout)
+    if placements then
+        for i = 1, #placements do
+            toWallPlacement(placements[i], surface)
+        end
+        applyPlacements(placements, group)
+    end
+
+    return ok
+end
+
+-- rearranges every wall board on the squares of `group`, once per board
+local function arrangeWalls(group)
+    local done = {}
+    local members = group.members
+    for m = 1, #members do
+        local square = members[m].square
+        local sprites = getWallSprites(square)
+        if sprites then
+            for i = 1, #sprites do
+                local wallGroup = getWallGroup(square, sprites[i])
+                local first = wallGroup and wallGroup.members[1]
+                local key = first and (first.square:getX() .. "," .. first.square:getY() .. "," .. first.sprite)
+                if key and not done[key] then
+                    done[key] = true
+                    arrangeWall(square, sprites[i], false, false)
+                end
+            end
+        end
+    end
+end
+
+---@param facing?     IAArrangeFacing side the items face. without one an arranged square keeps its orientation and any
 ---other square is left alone
-function IA.ArrangeItems(square, simulate, ctrlKey, facing)
+---@param wallSprite? string arrange the items on this wall board on the square instead
+---@param newItem?    InventoryItem the item just dropped on the square, which goes on the wall board when it can hang
+function IA.ArrangeItems(square, simulate, ctrlKey, facing, wallSprite, newItem)
+    if wallSprite and (not newItem or canHang(IA.arrangables[newItem:getFullType()])) then
+        return arrangeWall(square, wallSprite, simulate, ctrlKey, nil, newItem)
+    end
+
     local group = IA.getArrangeGroup(square)
     if simulate then
         return arrangeGroundList(group, buildGroundList(group), nil, ctrlKey, facing)
@@ -1428,6 +1800,11 @@ function IA.ArrangeItems(square, simulate, ctrlKey, facing)
     local placements = {}
     local ok = arrangeGroundList(group, buildGroundList(group), placements, ctrlKey, facing)
     applyPlacements(placements, group)
+
+    -- after a pickup the boards close their gaps too
+    if not wallSprite then
+        arrangeWalls(group)
+    end
 
     return ok
 end

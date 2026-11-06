@@ -24,6 +24,7 @@ require("IAArrange")
 --- @field ly number? real length along y when it's longer than dy, kept on the surface when placed
 --- @field center number[]? measured profiles: centre of the model's box relative to its origin (tiles, tiles, floors)
 --- @field yaw boolean? whether it turns with the surface's facing, by default only when its footprint isn't square
+--- @field w boolean? whether it can hang on a wall board, by default only when it lies flat
 
 ---@class CAIAE_MeshBase
 ---@field dx? number x distance
@@ -35,6 +36,7 @@ require("IAArrange")
 ---@field fy? number
 ---@field fz? number
 ---@field yaw? boolean
+---@field w? boolean
 
 ---@class CAIAE_MeshProfile: CAIAE_MeshBase
 ---@field p   string arrangableProfile key
