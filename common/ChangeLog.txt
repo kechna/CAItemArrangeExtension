@@ -99,3 +99,18 @@ link1 = Workshop = https://steamcommunity.com/id/chekka-anchroviec/myworkshopfil
 - keep the orientation of an already arranged square when arranging onto it
 - remember which way items that don't turn with the surface were arranged
 [ ------ ]
+
+[ v1.21.0 - 11/06/26 ]
+- arrange items across both halves of multi-tile furniture such as metal shelves
+- add a very experimental way to hang flat items like magazines, guns and tools on cork boards and pegboards: hold shift and drop them on the board (this barely works yet)
+- add an option to stack different items with the same model together, like canned food
+- arrange and stack flatpack furniture parts
+- stop items on metal shelves from clipping into the shelf above
+- tweak propane tank size
+- reduce multiplayer traffic when arranging: only items that move are sent, instead of every item on the surface
+- stop identical items from swapping places on every rearrange
+- fix items not fitting on full shelves after dropping one more
+- highlight the furniture you shift+drop onto instead of the floor under it
+- stop the loot window's container highlight from covering the shift+drop highlight
+- fix the size of the ice axe, pickaxe, pipe wrench, sledgehammer, snow shovel, nailed plank, stone hammer and scrap hunting knife
+[ ------ ]
