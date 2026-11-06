@@ -527,8 +527,8 @@ mp["WorldItems/PlushieRabbit"] = { fz = 180 }
 mp["WorldItems/PlushieSquirrel"] = { fz = 180 }
 mp["WorldItems/Plushie_EyeOfCthulhu"] = { fz = 180 }
 mp["WorldItems/Plushie_Pancho"] = { fz = 180 }
-mp["WorldItems/Rice"] =
-  { dx = 0.28, dy = 0.319, dz = 0.022, my = 0.07, mz = 0, qz = 8, fz = 270, s = 0.4, flipX = true }
+mp["WorldItems/PropaneTank"] = { dx = 0.225, dy = 0.225, s = 0.25 }
+mp["WorldItems/Rice"] = { dx = 0.28, dy = 0.319, dz = 0.022, my = 0.07, mz = 0, qz = 8, fz = 270, s = 0.4, flipX = true }
 mp["WorldItems/RiceVinegar"] = { dx = 0.12, dy = 0.12, dz = 0.128, fz = 270 }
 mp["WorldItems/Rod_Metal_Quarter"] = { flipZ = true, qz = 8 }
 mp["WorldItems/Rod_Metal_Slug"] = { qz = 8 }
