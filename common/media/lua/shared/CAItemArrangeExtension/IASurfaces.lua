@@ -31,25 +31,26 @@ for spriteName, surfaces in pairs(generatedSurfaces) do
 end
 
 -- make metal shelves stack just a little bit tighter
+
 sp.metalShelfWEN = {
-  [1] = { zmin = 0.041, zmax = 0.35, xmin = 0.25, xmax = 0.90, ymin = 0.35, ymax = 1 },
-  [2] = { zmin = 0.368, zmax = 0.65, xmin = 0.25, xmax = 0.90, ymin = 0.35, ymax = 1 },
-  [3] = { zmin = 0.675, zmax = 1, xmin = 0.25, xmax = 0.90, ymin = 0.35, ymax = 1 },
+  [1] = { zmin = 0.041, zmax = 0.315, xmin = 0.25, xmax = 0.90, ymin = 0.35, ymax = 1 },
+  [2] = { zmin = 0.368, zmax = 0.650, xmin = 0.25, xmax = 0.90, ymin = 0.35, ymax = 1 },
+  [3] = { zmin = 0.675, zmax = 1.000, xmin = 0.25, xmax = 0.90, ymin = 0.35, ymax = 1 },
 }
 sp.metalShelfWES = {
-  [1] = { zmin = 0.041, zmax = 0.35, xmin = 0.25, xmax = 0.90, ymin = 0, ymax = 0.95 },
-  [2] = { zmin = 0.368, zmax = 0.65, xmin = 0.25, xmax = 0.90, ymin = 0, ymax = 0.95 },
-  [3] = { zmin = 0.675, zmax = 1, xmin = 0.25, xmax = 0.90, ymin = 0, ymax = 0.95 },
+  [1] = { zmin = 0.041, zmax = 0.315, xmin = 0.25, xmax = 0.90, ymin = 0, ymax = 0.95 },
+  [2] = { zmin = 0.368, zmax = 0.650, xmin = 0.25, xmax = 0.90, ymin = 0, ymax = 0.95 },
+  [3] = { zmin = 0.675, zmax = 1.000, xmin = 0.25, xmax = 0.90, ymin = 0, ymax = 0.95 },
 }
 sp.metalShelfNSW = {
-  [1] = { zmin = 0.041, zmax = 0.35, xmin = 0.10, xmax = 1, ymin = 0.25, ymax = 0.85 },
-  [2] = { zmin = 0.368, zmax = 0.65, xmin = 0.10, xmax = 1, ymin = 0.25, ymax = 0.85 },
-  [3] = { zmin = 0.675, zmax = 1, xmin = 0.10, xmax = 1, ymin = 0.25, ymax = 0.85 },
+  { zmin = 0.041, zmax = 0.315, xmin = 0.1, xmax = 1, ymin = 0.25, ymax = 0.85 },
+  { zmin = 0.368, zmax = 0.650, xmin = 0.1, xmax = 1, ymin = 0.25, ymax = 0.88 },
+  { zmin = 0.675, zmax = 1.000, xmin = 0.1, xmax = 1, ymin = 0.25, ymax = 0.85 },
 }
 sp.metalShelfNSE = {
-  [1] = { zmin = 0.041, zmax = 0.35, xmin = 0, xmax = 0.90, ymin = 0.25, ymax = 0.85 },
-  [2] = { zmin = 0.368, zmax = 0.65, xmin = 0, xmax = 0.90, ymin = 0.25, ymax = 0.85 },
-  [3] = { zmin = 0.675, zmax = 1, xmin = 0, xmax = 0.90, ymin = 0.25, ymax = 0.85 },
+  [1] = { zmin = 0.041, zmax = 0.315, xmin = 0, xmax = 0.92, ymin = 0.25, ymax = 0.85 },
+  [2] = { zmin = 0.368, zmax = 0.650, xmin = 0, xmax = 0.92, ymin = 0.25, ymax = 0.85 },
+  [3] = { zmin = 0.675, zmax = 1.000, xmin = 0, xmax = 0.92, ymin = 0.25, ymax = 0.85 },
 }
 
 s["furniture_shelving_01_24"] = sp.metalShelfWES
