@@ -55,6 +55,10 @@ local CURSOR_YAW = {
 
 local SURFACE_CLEARANCE = 0.003
 
+-- placements closer than this to the current ones aren't synced again
+local OFFSET_EPSILON = 0.0005
+local ANGLE_EPSILON = 0.05
+
 local RUG_LIFT = 0.006
 
 -- footprints at least this square count as symmetric
@@ -687,6 +691,21 @@ function IA.getArrangedFacing(square)
 end
 
 ---@param group IAGroup
+-- insertion sort: there are only a few types, and kahlua's table.sort overflows on sorted input
+local function sortedKeys(map)
+    local keys = {}
+    for key in pairs(map) do
+        local i = #keys
+        while i > 0 and keys[i] > key do
+            keys[i + 1] = keys[i]
+            i = i - 1
+        end
+        keys[i + 1] = key
+    end
+
+    return keys
+end
+
 local function arrangeGroundList(group, groundList, placements, ignoreQz, facing)
     local arrangables = IA.arrangables
     local square = group.square
@@ -958,13 +977,15 @@ local function arrangeGroundList(group, groundList, placements, ignoreQz, facing
         tableInsert(placedBoundsBySurface[surfaceIndex], getAnchorBounds(xpos, ypos, zpos, dx, dy, dz))
     end
 
-    local totalTypes = 0
-    for _ in pairs(groundList) do
-        totalTypes = totalTypes + 1
-    end
+    -- pairs order follows the order the types were added in, which changes when items move between the squares of a
+    -- group, so a rearrange would lay out a different arrangement every time
+    local types = sortedKeys(groundList)
+    local totalTypes = #types
 
     local processedTypes = 0
-    for fType, witems in pairs(groundList) do
+    for t = 1, totalTypes do
+        local fType = types[t]
+        local witems = groundList[fType]
         local arr = arrangables[fType]
 
         -- item dimensions
@@ -1264,9 +1285,89 @@ local function moveWorldItem(witem, item, target, x, y, z)
     return item:getWorldItem()
 end
 
+local function isNear(a, b)
+    local d = a - b
+    return d < OFFSET_EPSILON and d > -OFFSET_EPSILON
+end
+
+-- whether the entry's world item already sits where the placement puts it
+local function isInPlace(entry, p)
+    local target = p.target
+    return (not target or entry.sq == target) and isNear(entry.ox, p.ox) and isNear(entry.oy, p.oy)
+        and isNear(entry.oz, p.z)
+end
+
+-- Items of one type are interchangeable, but the arrangement hands their slots out in world-object order, which
+-- changes whenever an item moves between the squares of a group. Giving each slot back to the item that already
+-- fills it keeps a rearrange from shuffling (and resyncing) identical items.
+---@param group IAGroup
+local function resolvePlacements(placements, group)
+    local single = #group.members == 1
+    local byType = {}
+    local types = {}
+    for i = 1, #placements do
+        local p = placements[i]
+        if not single then
+            p.target, p.ox, p.oy = locateInGroup(group, p.x, p.y)
+        end
+        if not p.target then
+            p.ox, p.oy = p.x, p.y
+        end
+
+        local entry = p.entry
+        local witem = entry.witem
+        entry.sq = witem:getSquare()
+        entry.ox, entry.oy, entry.oz = witem:getOffX(), witem:getOffY(), witem:getOffZ()
+
+        local fType = entry.item:getFullType()
+        local bucket = byType[fType]
+        if not bucket then
+            bucket = {}
+            byType[fType] = bucket
+            types[#types + 1] = fType
+        end
+        bucket[#bucket + 1] = p
+    end
+
+    for t = 1, #types do
+        local bucket = byType[types[t]]
+        local count = #bucket
+        if count > 1 then
+            local entries, claimed, assigned = {}, {}, {}
+            for i = 1, count do
+                entries[i] = bucket[i].entry
+            end
+
+            for i = 1, count do
+                local p = bucket[i]
+                for j = 1, count do
+                    if not claimed[j] and isInPlace(entries[j], p) then
+                        claimed[j] = true
+                        assigned[i] = entries[j]
+                        break
+                    end
+                end
+            end
+
+            local free = 1
+            for i = 1, count do
+                if not assigned[i] then
+                    while claimed[free] do
+                        free = free + 1
+                    end
+                    claimed[free] = true
+                    assigned[i] = entries[free]
+                end
+                bucket[i].entry = assigned[i]
+            end
+        end
+    end
+end
+
 ---@param group IAGroup
 local function applyPlacements(placements, group)
-    local single = #group.members == 1
+    resolvePlacements(placements, group)
+
     for i = 1, #placements do
         local p = placements[i]
         local entry, arr = p.entry, p.arr
@@ -1274,25 +1375,29 @@ local function applyPlacements(placements, group)
         local witem = entry.witem
 
         local fx, fy, fz = placedRotation(arr, p.order)
-        item:setWorldXRotation(fx)
-        item:setWorldYRotation(fy)
-        item:setWorldZRotation(fz)
-
-        local target, ox, oy
-        if not single then
-            target, ox, oy = locateInGroup(group, p.x, p.y)
+        local changed = not (sameAngle(item:getWorldXRotation(), fx, ANGLE_EPSILON)
+            and sameAngle(item:getWorldYRotation(), fy, ANGLE_EPSILON)
+            and sameAngle(item:getWorldZRotation(), fz, ANGLE_EPSILON))
+        if changed then
+            item:setWorldXRotation(fx)
+            item:setWorldYRotation(fy)
+            item:setWorldZRotation(fz)
         end
 
-        if not target then
-            witem:setOffset(p.x, p.y, p.z)
-        elseif isSameSquare(witem:getSquare(), target) then
-            witem:setOffset(ox, oy, p.z)
+        local target = p.target
+        if not target or isSameSquare(entry.sq, target) then
+            if not isInPlace(entry, p) then
+                witem:setOffset(p.ox, p.oy, p.z)
+                changed = true
+            end
         else
-            witem = moveWorldItem(witem, item, target, ox, oy, p.z)
+            witem = moveWorldItem(witem, item, target, p.ox, p.oy, p.z)
+            changed = true
         end
 
         item:setDoingExtendedPlacement(false)
-        if witem then
+        -- each sync is one reliable packet per nearby player, so unchanged items are skipped
+        if witem and changed then
             witem:syncExtendedPlacement()
         end
     end
