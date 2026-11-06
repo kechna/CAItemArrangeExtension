@@ -23,47 +23,6 @@ mp["weapons/ammo/762-556-308-223AmmoBox"] = { qz = 6, fz = 270, flip = true }
 
 -- By me
 
--- cutlery
---mp["weapons/1handed/BreadKnife"]                     = "cutlery"
---mp["weapons/1handed/ButterflyKnife"]                 = "cutlery"
---mp["weapons/1handed/ButterflyKnife2"]                = "cutlery"
---mp["weapons/1handed/ButterKnife"]                    = { p = "cutlery", my = -0.02 }
---mp["weapons/1handed/Chisel_Forged_Hand"]             = "cutlery"
---mp["weapons/1handed/Chisel_Hot_Hand"]                = "cutlery"
---mp["weapons/1handed/Fork"]                           = { p = "cutlery", my = 0.1 }
---mp["weapons/1handed/Fork_Bone_Hand"]                 = { p = "cutlery", my = 0.1 }
---mp["weapons/1handed/Fork_Forged_Hand"]               = { p = "cutlery", my = 0.1 }
---mp["weapons/1handed/Fork_Wood_Hand"]                 = { p = "cutlery", my = 0.1, fz = 90 }
---mp["weapons/1handed/KitchenKnife_Forged_Hand"]       = "cutlery"
---mp["weapons/1handed/Knife"]                          = { p = "cutlery", my = -0.02 }
---mp["weapons/1handed/Knife_Bone_Hand"]                = { p = "cutlery", my = -0.02 }
---mp["weapons/1handed/Knife_Fillet_Hand"]              = "cutlery"
---mp["weapons/1handed/KnifeHunting_Forged_Basic_Hand"] = "cutlery"
---mp["weapons/1handed/KnifeHunting_Forged_Hand"]       = "cutlery"
---mp["weapons/1handed/KnifeKitchen_Forged_Hand"]       = "cutlery"
---mp["weapons/1handed/KnifeParing_Hand"]               = "cutlery"
---mp["weapons/1handed/Pen"]                            = "cutlery"
---mp["weapons/1handed/Pencil"]                         = "cutlery"
---mp["weapons/1handed/PenKnife"]                       = "cutlery"
---mp["weapons/1handed/PenKnife2"]                      = "cutlery"
---mp["weapons/1handed/Plastic_Fork_Hand"]              = { p = "cutlery", my = 0.1, fz = 90 }
---mp["weapons/1handed/Plastic_Knife_Hand"]             = { p = "cutlery", my = 0.1 }
---mp["weapons/1handed/Plastic_Spoon_Hand"]             = { p = "cutlery", my = 0.1, fz = 90 }
---mp["weapons/1handed/Scalpel"]                        = "cutlery"
---mp["weapons/1handed/Screwdriver"]                    = "cutlery"
---mp["weapons/1handed/ShankGlass_Hand"]                = "cutlery"
---mp["weapons/1handed/Shiv"]                           = "cutlery"
---mp["weapons/1handed/Shiv2"]                          = "cutlery"
---mp["weapons/1handed/Shiv_Spear_Crude_Hand"]          = "cutlery"
---mp["weapons/1handed/Shiv_SpearCrude_Longer_Hand"]    = "cutlery"
---mp["weapons/1handed/Shiv_SpearStone_High_Hand"]      = "cutlery"
---mp["weapons/1handed/Shiv_SpearStoneBasic_Head_Hand"] = "cutlery"
---mp["weapons/1handed/Spoon"]                          = { p = "cutlery", my = 0.1 }
---mp["weapons/1handed/Spoon_Bone_Hand"]                = { p = "cutlery", my = 0.1 }
---mp["weapons/1handed/Spoon_Forged_Hand"]              = { p = "cutlery", my = 0.1 }
---mp["weapons/1handed/Spoon_Wood_Hand"]                = { p = "cutlery", my = 0.1 }
---mp["WorldItems/Spork"]                               = "cutlery"
-
 mp["Weapons/1Handed/EntrenchingTool_Blade"] = { mz = 0.012 }
 mp["Weapons/1Handed/EntrenchingTool_Blunt"] = { mz = 0.012 }
 mp["Weapons/1Handed/EntrenchingTool_Folded"] = { mz = 0.02 }
@@ -132,7 +91,7 @@ mp["weapons/1handed/Guitar_Acoustic_Broken"] = { fz = 270 }
 mp["weapons/1handed/Guitar_ElectricBass_Broken"] = { fz = 270 }
 mp["weapons/1handed/Guitar_Electric_Broken"] = { fz = 270 }
 mp["weapons/1handed/HammerClub_Forged_Hand"] = { flipZ = true, fz = 180, dy = 0.4, dx = 0.13, mz = 0.012 }
-mp["weapons/1handed/Hammer_Forged_Hand"] = { flipZ = true, fz = 180 }
+mp["weapons/1handed/Hammer_Forged_Hand"] = { flipZ = true, fz = 180, dy = 0.4, dx = 0.22 }
 mp["weapons/1handed/Hammer_Forged_Hand"] = { fz = 270, dy = 0.4, dx = 0.22 }
 mp["weapons/1handed/Hammer_Smithing_Hand"] = { flipZ = true, fz = 180 }
 mp["weapons/1handed/HandAxe"] = { fz = 270 }
@@ -147,8 +106,8 @@ mp["weapons/1handed/HockeyStick_Broken_Hand"] = { fz = 270, dx = 0.23 }
 mp["weapons/1handed/HockeyStick_Broken_Nails_Hand"] = { fz = 270, dx = 0.23 }
 mp["weapons/1handed/Hook_Forged_Hand"] = { fz = 270 }
 mp["weapons/1handed/HuntingKnife"] = { fz = 270 }
-mp["weapons/1handed/HuntingKnife_ScrapMetal_Hand"] = { fz = 270 }
-mp["weapons/1handed/IceAxe"] = { fz = 270 }
+mp["weapons/1handed/HuntingKnife_ScrapMetal_Hand"] = { dz = 0.005, qz = 10, fz = 270 }
+mp["weapons/1handed/IceAxe"] = { dx = 0.238, dz = 0.015, mx = 0.05, mz = 0, fz = 270, s = 1, qz = 3 }
 mp["weapons/1handed/IcePick"] = { fz = 270 }
 mp["weapons/1handed/JawBone_Axe_Hand"] = { fz = 270 }
 mp["weapons/1handed/JawBone_Hand"] = { fz = 270 }
@@ -205,7 +164,7 @@ mp["weapons/1handed/PenMulticolor_Hand"] = { fz = 270 }
 mp["weapons/1handed/PenSpiffo_Hand"] = { fz = 270 }
 mp["weapons/1handed/Pencil"] = { fz = 270 }
 mp["weapons/1handed/PencilSpiffo_Hand"] = { fz = 270 }
-mp["weapons/1handed/PipeWrench"] = { fz = 270 }
+mp["weapons/1handed/PipeWrench"] = { dz = 0.022, mx = 0, my = 0, mz = 0, fz = 270, s = 1 }
 mp["weapons/1handed/Plank_Broken_Hand"] = { fz = 270 }
 mp["weapons/1handed/Plank_Broken_Nails_Hand"] = { fz = 270 }
 mp["weapons/1handed/Plastic_Fork_Hand"] = { fz = 270 }
@@ -245,7 +204,7 @@ mp["weapons/1handed/Spoon_Forged_Hand"] = { fz = 270 }
 mp["weapons/1handed/Stake"] = { fz = 270 }
 mp["weapons/1handed/Steel_Rod_Half_Hand"] = { flipZ = true, qz = 8 }
 mp["weapons/1handed/Steel_Rod_Hand"] = { flipZ = true, qz = 8 }
-mp["weapons/1handed/StoneHammer_Hand"] = { fz = 270 }
+mp["weapons/1handed/StoneHammer_Hand"] = { dx = 0.19, dy = 0.495, my = 0.074, fz = 270, s = 1 }
 mp["weapons/1handed/Sword_Basic_Broken_Bot_Hand"] = { fz = 270 }
 mp["weapons/1handed/Sword_Broken_Bot_Hand"] = { fz = 270 }
 mp["weapons/1handed/Sword_ScrapMetal_Bot_NOTANG_Hand"] = { fz = 270 }
@@ -356,8 +315,8 @@ mp["weapons/2handed/MetalBar_Full_Hand"] = { fz = 270 }
 mp["weapons/2handed/MetalBar_Full_Hand"] = { qz = 8 }
 mp["weapons/2handed/Mop"] = { fz = 270 }
 mp["weapons/2handed/Mop_Hand"] = { fz = 270 }
-mp["weapons/2handed/NailedPlank"] = { fz = 270 }
-mp["weapons/2handed/PickAxe_Hand"] = { fz = 270 }
+mp["weapons/2handed/NailedPlank"] = { dx = 0.115, dy = 0.95, dz = 0.129, my = 0.062, mz = 0.005 }
+mp["weapons/2handed/PickAxe_Hand"] = { dx = 0.57, dy = 0.803, dz = 0.018, mx = 0.055, my = 0.02, fz = -90, qz=3 }
 mp["weapons/2handed/Plank"] = { fz = 270, dx = 0.12, dy = 0.86 }
 mp["weapons/2handed/Plank_BrakeDisk_Hand"] = { fz = 270 }
 mp["weapons/2handed/Plank_CircularSaw_Hand"] = { fz = 270 }
@@ -379,8 +338,8 @@ mp["weapons/2handed/Shaft_Spear_Hand"] = { fz = 270 }
 mp["weapons/2handed/Shovel"] = { fz = 270 }
 mp["weapons/2handed/Shovel02"] = { fz = 270 }
 mp["weapons/2handed/SledgeHammer"] = { fz = 270 }
-mp["weapons/2handed/SledgeHammer02"] = { fz = 270 }
-mp["weapons/2handed/SnowShovel"] = { fz = 270 }
+mp["weapons/2handed/SledgeHammer02"] = { dx = 0.223, dy = 0.99, dz = 0.041, my = 0, fz=270 }
+mp["weapons/2handed/SnowShovel"] = { dx = 0.378, dy = 0.99, dz = 0.021, my = 0.181, qz = 4, fz = 270 }
 mp["weapons/2handed/Spade_Forged_Hand"] = { fz = 270 }
 mp["weapons/2handed/Spade_Wood_Hand"] = { fz = 270 }
 mp["weapons/2handed/SpearCrafted"] = { fz = 270 }
