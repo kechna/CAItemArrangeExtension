@@ -8,6 +8,8 @@ local pairs = pairs
 local ipairs = ipairs
 local print = print
 local tostring = tostring
+local stringFormat = string.format
+local isServer = isServer
 local mathAbs = math.abs
 local mathAsin = math.asin
 local mathAtan2 = math.atan2
@@ -33,6 +35,7 @@ local getPlayer = getPlayer
 --  - lift items off rugs and surfaces a little, so they don't clip into them
 --  - keep long items (lx/ly) on the surface and start new rows by each item type's own size
 --  - optionally orient items by the player instead of by the walls (mod option)
+--  - optionally stack different items that share a mesh and profile together (mod option)
 --  - fix the bounds check for S and E walls
 --  - hold ctrl to not stack items, shift+alt to skip non-arrangeable items
 
@@ -687,7 +690,71 @@ local function isOnWall(witem, arr, sprites, profiles)
     return false
 end
 
---- The items of a group by type, without the ones hanging on wall boards. For a `wallGroup` only the ones hanging on
+-- whether the arrangement running now lets items that share a mesh and profile share stacks
+local mixing = false
+
+local stackKeyCache = {}
+local stackProfiles = {}
+
+local function num(v)
+    return v and stringFormat("%.3f", v) or "-"
+end
+
+-- full types, or with mixing on the mesh plus every profile field that affects packing and rendering, so only items of
+-- the same size and rotation share a stack
+local function stackKeyOf(fType, arr)
+    if not mixing then
+        return fType
+    end
+
+    local cached = stackKeyCache[fType]
+    if cached and cached.arr == arr then
+        return cached.key
+    end
+
+    local meshOf = IA.meshOf
+    local mesh = meshOf and meshOf[fType]
+    local key = fType
+    if mesh then
+        key = stringFormat("%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s", mesh, num(arr.dx), num(arr.dy), num(arr.dz),
+            num(arr.mx), num(arr.my), num(arr.mz), num(arr.fx), num(arr.fy), num(arr.fz), num(arr.qz), num(arr.lx),
+            num(arr.ly), tostring(arr.w), tostring(arr.yaw))
+        stackProfiles[key] = arr
+    end
+
+    stackKeyCache[fType] = { arr = arr, key = key }
+
+    return key
+end
+
+-- the profile of a ground list key
+local function profileOf(key)
+    return IA.arrangables[key] or stackProfiles[key]
+end
+
+---@param mixed? boolean the player's mod option by default, off on a server
+local function setMixing(mixed)
+    if mixed == nil then
+        mixed = not isServer() and IA.MixedStacks == true
+    end
+    mixing = mixed == true
+end
+
+-- equal items next to each other in a mixed stack. insertion sort, kahlua's table.sort overflows on sorted input
+local function sortByType(entries)
+    for i = 2, #entries do
+        local entry = entries[i]
+        local fType = entry.fType
+        local j = i - 1
+        while j > 0 and entries[j].fType > fType do
+            entries[j + 1] = entries[j]
+            j = j - 1
+        end
+        entries[j + 1] = entry
+    end
+end
+
+--- The items of a group by stack key (see `stackKeyOf`), without the ones hanging on wall boards. For a `wallGroup` only the ones hanging on
 --- its board, plus `newItem`.
 ---@param group      IAGroup
 ---@param extraItem? InventoryItem an item that isn't on the square yet
@@ -723,21 +790,32 @@ local function buildGroundList(group, extraItem, wallGroup, newItem)
             end
 
             if include then
-                if not groundList[fType] then
-                    groundList[fType] = {}
+                local key = stackKeyOf(fType, arr)
+                if not groundList[key] then
+                    groundList[key] = {}
                 end
-                tableInsert(groundList[fType], { item = item, witem = witem })
+                tableInsert(groundList[key], { item = item, witem = witem, fType = fType })
             end
         end
     end
 
     if extraItem then
         local fType = extraItem:getFullType()
-        if arrangables[fType] then
-            if not groundList[fType] then
-                groundList[fType] = {}
+        local arr = arrangables[fType]
+        if arr then
+            local key = stackKeyOf(fType, arr)
+            if not groundList[key] then
+                groundList[key] = {}
             end
-            tableInsert(groundList[fType], { item = extraItem })
+            tableInsert(groundList[key], { item = extraItem, fType = fType })
+        end
+    end
+
+    if mixing then
+        for key, entries in pairs(groundList) do
+            if key ~= entries[1].fType then
+                sortByType(entries)
+            end
         end
     end
 
@@ -768,12 +846,11 @@ end
 -- The cursor order the square was last arranged with, read back from the items' synced rotations, or nil when it
 -- isn't arranged. Dropped items get a random rotation, so at least half of the items must match one order.
 local function arrangedCursorOrder(groundList)
-    local arrangables = IA.arrangables
     local votes = {}
     local best, bestVotes = nil, 0
     local total = 0
-    for fType, entries in pairs(groundList) do
-        local arr = arrangables[fType]
+    for key, entries in pairs(groundList) do
+        local arr = profileOf(key)
         local tolerance = turnsWithSurface(arr) and 0.5 or 0.05
         local expected = nil
         for i = 1, #entries do
@@ -862,7 +939,13 @@ end
 ---@param group   IAGroup
 ---@param layout? IAArrangeLayout packs on these surfaces with these profiles instead of the group's
 local function arrangeGroundList(group, groundList, placements, ignoreQz, facing, layout)
-    local arrangables = layout and layout.arrangables or IA.arrangables
+    local arrangables = layout and layout.arrangables
+    if not arrangables then
+        arrangables = {}
+        for key in pairs(groundList) do
+            arrangables[key] = profileOf(key)
+        end
+    end
     local square = group.square
 
     local wallCursorOrder, surfaces
@@ -1394,7 +1477,8 @@ local arrangeWall
 ---@param facing?     IAArrangeFacing side the items face. without one an arranged square keeps its orientation and any
 ---other square is left alone
 ---@param wallSprite? string check the wall board on the square instead, for items that can hang
-function IA.CheckSpace(square, item, skip, facing, wallSprite)
+---@param mixed?      boolean see `IA.ArrangeItems`
+function IA.CheckSpace(square, item, skip, facing, wallSprite, mixed)
     if not square or not item then
         return false, false
     end
@@ -1405,6 +1489,8 @@ function IA.CheckSpace(square, item, skip, facing, wallSprite)
         return true, skip
     end
 
+    setMixing(mixed)
+
     -- items that can't hang are skipped like misfits, not dropped on the floor under the board
     if wallSprite then
         return canHang(arr) and arrangeWall(square, wallSprite, true, false, item) or false, false
@@ -1412,7 +1498,7 @@ function IA.CheckSpace(square, item, skip, facing, wallSprite)
 
     local group = IA.getArrangeGroup(square)
     local groundList = buildGroundList(group)
-    local sameTypeItems = groundList[fType]
+    local sameTypeItems = groundList[stackKeyOf(fType, arr)]
     if sameTypeItems and #sameTypeItems > 0 then
         local qz = arr.qz or 3
         local currentStackSize = #sameTypeItems % qz
@@ -1667,10 +1753,9 @@ end
 -- the profiles items are packed with on a board's virtual surface: x along the board (their long side), y down from
 -- its top (their short side, plus the shingle of a stack), z out of the board, all in tile widths
 local function getWallProfiles(groundList, ignoreQz)
-    local arrangables = IA.arrangables
     local result = {}
     for fType in pairs(groundList) do
-        local arr = arrangables[fType]
+        local arr = profileOf(fType)
         local roll = rollsOnWall(arr)
         local along = roll and arr.dy or arr.dx
         local down = roll and arr.dx or arr.dy
@@ -1728,9 +1813,8 @@ function arrangeWall(square, spriteName, simulate, ignoreQz, extraItem, newItem)
 
     local surface = getWallSurface(group)
     local groundList = buildGroundList(group, extraItem, true, newItem)
-    local arrangables = IA.arrangables
     for fType in pairs(groundList) do
-        if not canHang(arrangables[fType]) then
+        if not canHang(profileOf(fType)) then
             groundList[fType] = nil
         end
     end
@@ -1787,7 +1871,9 @@ end
 ---other square is left alone
 ---@param wallSprite? string arrange the items on this wall board on the square instead
 ---@param newItem?    InventoryItem the item just dropped on the square, which goes on the wall board when it can hang
-function IA.ArrangeItems(square, simulate, ctrlKey, facing, wallSprite, newItem)
+---@param mixed?      boolean stack items that share a mesh and profile together, the player's mod option by default
+function IA.ArrangeItems(square, simulate, ctrlKey, facing, wallSprite, newItem, mixed)
+    setMixing(mixed)
     if wallSprite and (not newItem or canHang(IA.arrangables[newItem:getFullType()])) then
         return arrangeWall(square, wallSprite, simulate, ctrlKey, nil, newItem)
     end

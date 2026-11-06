@@ -1123,6 +1123,7 @@ function IA.applyMeshProfiles()
   local added = 0
   local addedByMod = {}
   local newArrangables = {}
+  local meshOf = {}
 
   for i = 0, items:size() - 1 do
     local item = items:get(i)
@@ -1143,6 +1144,7 @@ function IA.applyMeshProfiles()
 
     if profile then
       newArrangables[fullType] = profile
+      meshOf[fullType] = worldMesh.mesh
       added = added + 1
       local modID = item:getModID()
 
@@ -1171,6 +1173,7 @@ function IA.applyMeshProfiles()
   end
 
   IA.arrangables = newArrangables
+  IA.meshOf = meshOf
 
   for modID, count in pairs(addedByMod) do
     print(string.format("%s: [%s] Made %d extra items arrangeable.", p, modID, count))
