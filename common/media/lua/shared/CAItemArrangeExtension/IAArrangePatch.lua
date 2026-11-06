@@ -58,6 +58,22 @@ local CURSOR_YAW = {
 
 local SURFACE_CLEARANCE = 0.003
 
+-- every piece of multi-tile furniture is a `Base.Moveable` that the game draws with the `Flatpack` model when it sets
+-- this modData flag; single-tile moveables share the type but have no model, so they can't be arranged
+local FLATPACK_TYPE = "Base.Moveable@Flatpack"
+
+---@param item InventoryItem
+---@return string type the arrange profile is looked up by
+function IA.getArrangeType(item)
+    if item:getModData().Flatpack == "true" then
+        return FLATPACK_TYPE
+    end
+
+    return item:getFullType()
+end
+
+local getArrangeType = IA.getArrangeType
+
 -- placements closer than this to the current ones aren't synced again
 local OFFSET_EPSILON = 0.0005
 local ANGLE_EPSILON = 0.05
@@ -780,7 +796,7 @@ local function buildGroundList(group, extraItem, wallGroup, newItem)
         for i = 0, wobCount - 1 do
             local witem = wobs:get(i)
             local item = witem:getItem()
-            local fType = item:getFullType()
+            local fType = getArrangeType(item)
             local arr = arrangables[fType]
             local include = arr ~= nil
             if include and wallGroup then
@@ -800,7 +816,7 @@ local function buildGroundList(group, extraItem, wallGroup, newItem)
     end
 
     if extraItem then
-        local fType = extraItem:getFullType()
+        local fType = getArrangeType(extraItem)
         local arr = arrangables[fType]
         if arr then
             local key = stackKeyOf(fType, arr)
@@ -1483,7 +1499,7 @@ function IA.CheckSpace(square, item, skip, facing, wallSprite, mixed)
         return false, false
     end
 
-    local fType = item:getFullType()
+    local fType = getArrangeType(item)
     local arr = IA.arrangables[fType]
     if not arr then
         return true, skip
@@ -1575,7 +1591,7 @@ local function resolvePlacements(placements, group)
         entry.sq = witem:getSquare()
         entry.ox, entry.oy, entry.oz = witem:getOffX(), witem:getOffY(), witem:getOffZ()
 
-        local fType = entry.item:getFullType()
+        local fType = getArrangeType(entry.item)
         local bucket = byType[fType]
         if not bucket then
             bucket = {}
@@ -1874,7 +1890,7 @@ end
 ---@param mixed?      boolean stack items that share a mesh and profile together, the player's mod option by default
 function IA.ArrangeItems(square, simulate, ctrlKey, facing, wallSprite, newItem, mixed)
     setMixing(mixed)
-    if wallSprite and (not newItem or canHang(IA.arrangables[newItem:getFullType()])) then
+    if wallSprite and (not newItem or canHang(IA.arrangables[getArrangeType(newItem)])) then
         return arrangeWall(square, wallSprite, simulate, ctrlKey, nil, newItem)
     end
 

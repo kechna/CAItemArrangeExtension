@@ -112,7 +112,7 @@ local function dropQueuedMisfits(action)
 
     if queued.Type == "IAArrangeAction" and queued.dropSquare == square and queued.item and not queued.altKey
       and queued.wallSprite == action.wallSprite then
-      local fullType = queued.item:getFullType()
+      local fullType = IA.getArrangeType(queued.item)
       local fits = fitsByType[fullType]
 
       if fits == nil then

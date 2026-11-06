@@ -95,6 +95,10 @@ local MAX_BOTTOM_OFFSET_SLACK = 0.05
 --- measured items at least this many times longer along x than along y get rotated to lie along y.
 local SKINNY_RATIO = 2
 
+local JAVA_MODELS = {
+  ["Base.Moveable@Flatpack"] = "Flatpack",
+}
+
 --- tiles per floor, IA measures dz in floors and dx/dy in tiles.
 local FLOOR_HEIGHT = 2.449
 
@@ -1170,6 +1174,16 @@ function IA.applyMeshProfiles()
 
   if fileWriter then
     fileWriter:close()
+  end
+
+  -- types `IA.getArrangeType` makes up for items whose model the game picks in Java, not from their script
+  for fullType, model in pairs(JAVA_MODELS) do
+    local worldMesh = getModelMesh(sm, model, true)
+    local profile = worldMesh and resolveProfile(learned, worldMesh)
+
+    if profile then
+      newArrangables[fullType] = profile
+    end
   end
 
   IA.arrangables = newArrangables

@@ -378,6 +378,9 @@ mp["CanOpen"] = { dx = 0.102, dy = 0.162, dz = 0.073 }
 mp["Jar"] = { dx = 0.12, dy = 0.12, dz = 0.06, qz = 3, fz = 45, s = 0.4 }
 mp["Newspaper"] = { flipY = true }
 mp["PillBottle"] = { dx = 0.12, dy = 0.12, dz = 0.06, qz = 3, fz = 45, s = 1.56 }
+
+-- furniture parts, no item script uses this model so the generator doesn't measure it
+mp["WorldItems/Flatpack"] = { dx = 0.223, dy = 0.884, dz = 0.025, fz = 90, qz = 10, s = 0.175 }
 mp["SpiffoPlushieFull"] = { fz = 180 }
 mp["WhiskeyBottle"] = { flipZ = true }
 mp["WorldItems/BBQ_Sauce"] = { dx = 0.15, dy = 0.08, dz = 0.09, fz = 270 }
