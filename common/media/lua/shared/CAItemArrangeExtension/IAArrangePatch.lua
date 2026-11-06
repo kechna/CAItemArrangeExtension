@@ -690,22 +690,38 @@ function IA.getArrangedFacing(square)
     return order and CURSOR_FACING[order]
 end
 
----@param group IAGroup
--- insertion sort: there are only a few types, and kahlua's table.sort overflows on sorted input
-local function sortedKeys(map)
-    local keys = {}
-    for key in pairs(map) do
-        local i = #keys
-        while i > 0 and keys[i] > key do
-            keys[i + 1] = keys[i]
-            i = i - 1
-        end
-        keys[i + 1] = key
+local function placesBefore(a, b, arrangables)
+    local pa, pb = arrangables[a], arrangables[b]
+    local areaA, areaB = pa.dx * pa.dy, pb.dx * pb.dy
+    if areaA ~= areaB then
+        return areaA > areaB
     end
 
-    return keys
+    if pa.dz ~= pb.dz then
+        return pa.dz > pb.dz
+    end
+
+    return a < b
 end
 
+-- largest footprint first packs fuller surfaces than the order types were added in, which also changes when items
+-- move between the squares of a group. insertion sort: there are only a few types, and kahlua's table.sort overflows
+-- on sorted input
+local function sortTypesForPacking(groundList, arrangables)
+    local types = {}
+    for fType in pairs(groundList) do
+        local i = #types
+        while i > 0 and placesBefore(fType, types[i], arrangables) do
+            types[i + 1] = types[i]
+            i = i - 1
+        end
+        types[i + 1] = fType
+    end
+
+    return types
+end
+
+---@param group IAGroup
 local function arrangeGroundList(group, groundList, placements, ignoreQz, facing)
     local arrangables = IA.arrangables
     local square = group.square
@@ -977,9 +993,7 @@ local function arrangeGroundList(group, groundList, placements, ignoreQz, facing
         tableInsert(placedBoundsBySurface[surfaceIndex], getAnchorBounds(xpos, ypos, zpos, dx, dy, dz))
     end
 
-    -- pairs order follows the order the types were added in, which changes when items move between the squares of a
-    -- group, so a rearrange would lay out a different arrangement every time
-    local types = sortedKeys(groundList)
+    local types = sortTypesForPacking(groundList, arrangables)
     local totalTypes = #types
 
     local processedTypes = 0
