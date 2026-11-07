@@ -114,3 +114,10 @@ link1 = Workshop = https://steamcommunity.com/id/chekka-anchroviec/myworkshopfil
 - stop the loot window's container highlight from covering the shift+drop highlight
 - fix the size of the ice axe, pickaxe, pipe wrench, sledgehammer, snow shovel, nailed plank, stone hammer and scrap hunting knife
 [ ------ ]
+
+[ v1.22.0 - 11/07/26 ]
+- add "link multi-tile furniture" option, hold Alt while shift+dropping to do the opposite
+- skip items that can't be arranged without holding Shift+Alt
+- fix items in multiplayer getting the name and contents of another item, like a brake turning into grape soda
+- fix items getting stuck or clipping into each other in multiplayer after picking items up
+[ ------ ]
