@@ -10,6 +10,12 @@ local print = print
 local tostring = tostring
 local stringFormat = string.format
 local isServer = isServer
+local isClient = isClient
+local getCell = getCell
+local getTimestampMs = getTimestampMs
+local sendClientCommand = sendClientCommand
+local Events = Events
+local type = type
 local mathAbs = math.abs
 local mathAsin = math.asin
 local mathAtan2 = math.atan2
@@ -76,6 +82,8 @@ local getArrangeType = IA.getArrangeType
 
 -- placements closer than this to the current ones aren't synced again
 local OFFSET_EPSILON = 0.0005
+-- FBORenderChunk.DIRTY_REDRAW, what `setOffset` invalidates
+local RENDER_DIRTY = 256
 local ANGLE_EPSILON = 0.05
 
 local RUG_LIFT = 0.006
@@ -430,8 +438,16 @@ end
 --- The squares of the multi-tile furniture with surfaces on `square` (both halves of a metal shelf), with `square` as
 --- the only member when there's none. Squares can be missing from a grid when the furniture is broken up.
 ---@param square IsoGridSquare
+---@param merge? boolean false arranges the square on its own, the player's mod option by default (on for a server)
 ---@return IAGroup
-function IA.getArrangeGroup(square)
+function IA.getArrangeGroup(square, merge)
+    if merge == nil then
+        merge = IA.MergeSurfaces ~= false
+    end
+    if not merge then
+        return { square = square, members = { { square = square, gx = 0, gy = 0 } } }
+    end
+
     local surfaceProfiles = IA.surfaces
     local objects = square:getObjects()
     for i = 0, objects:size() - 1 do
@@ -909,9 +925,10 @@ end
 
 --- The side the items on `square` face, or nil when they aren't arranged.
 ---@param square IsoGridSquare
+---@param merge? boolean
 ---@return IAFacing | nil
-function IA.getArrangedFacing(square)
-    local order = arrangedCursorOrder(buildGroundList(IA.getArrangeGroup(square)))
+function IA.getArrangedFacing(square, merge)
+    local order = arrangedCursorOrder(buildGroundList(IA.getArrangeGroup(square, merge)))
 
     return order and CURSOR_FACING[order]
 end
@@ -1494,7 +1511,7 @@ local arrangeWall
 ---other square is left alone
 ---@param wallSprite? string check the wall board on the square instead, for items that can hang
 ---@param mixed?      boolean see `IA.ArrangeItems`
-function IA.CheckSpace(square, item, skip, facing, wallSprite, mixed)
+function IA.CheckSpace(square, item, skip, facing, wallSprite, mixed, merge)
     if not square or not item then
         return false, false
     end
@@ -1512,7 +1529,7 @@ function IA.CheckSpace(square, item, skip, facing, wallSprite, mixed)
         return canHang(arr) and arrangeWall(square, wallSprite, true, false, item) or false, false
     end
 
-    local group = IA.getArrangeGroup(square)
+    local group = IA.getArrangeGroup(square, merge)
     local groundList = buildGroundList(group)
     local sameTypeItems = groundList[stackKeyOf(fType, arr)]
     if sameTypeItems and #sameTypeItems > 0 then
@@ -1541,10 +1558,11 @@ local function isSameSquare(a, b)
     return a and a:getX() == b:getX() and a:getY() == b:getY() and a:getZ() == b:getZ()
 end
 
--- the item becomes a new world object on `target`, keeping its rotation
-local function moveWorldItem(witem, item, target, x, y, z)
+-- the item becomes a new world object on `target`. clients get it once, complete with its placement: a sync sent
+-- after the add is unordered and can arrive before the object. `unsent` items never reached the clients
+local function moveWorldItem(witem, item, target, x, y, z, fx, fy, unsent)
     local source = witem:getSquare()
-    if source then
+    if source and not unsent then
         source:transmitRemoveItemFromSquare(witem)
     end
     witem:removeFromWorld()
@@ -1552,9 +1570,28 @@ local function moveWorldItem(witem, item, target, x, y, z)
     witem:setSquare(nil)
     item:setWorldItem(nil)
 
-    target:AddWorldInventoryItem(item, x, y, z)
+    target:AddWorldInventoryItem(item, x, y, z, false)
+    -- a new world object resets the item's x and y rotation
+    item:setWorldXRotation(fx)
+    item:setWorldYRotation(fy)
 
-    return item:getWorldItem()
+    local moved = item:getWorldItem()
+    if moved and not unsent and isServer() then
+        moved:transmitCompleteItemToClients()
+    end
+
+    return moved
+end
+
+-- `setOffset` would send a SyncIsoObject, which finds the object by its index on the square and carries the fluid
+-- container, so on a client whose list differs it lands on another item
+local function setOffsets(witem, x, y, z)
+    witem:setOffX(x)
+    witem:setOffY(y)
+    witem:setOffZ(z)
+    if not isServer() then
+        witem:invalidateRenderChunkLevel(RENDER_DIRTY)
+    end
 end
 
 local function isNear(a, b)
@@ -1637,7 +1674,8 @@ local function resolvePlacements(placements, group)
 end
 
 ---@param group IAGroup
-local function applyPlacements(placements, group)
+---@param unsent? InventoryItem dropped item the clients don't have yet, sent by the caller afterwards
+local function applyPlacements(placements, group, unsent)
     resolvePlacements(placements, group)
 
     for i = 1, #placements do
@@ -1661,23 +1699,22 @@ local function applyPlacements(placements, group)
             item:setWorldZRotation(fz)
         end
 
+        local isUnsent = item == unsent
         local target = p.target
+        local moved = false
         if not target or isSameSquare(entry.sq, target) then
             if not isInPlace(entry, p) then
-                witem:setOffset(p.ox, p.oy, p.z)
+                setOffsets(witem, p.ox, p.oy, p.z)
                 changed = true
             end
         else
-            witem = moveWorldItem(witem, item, target, p.ox, p.oy, p.z)
-            -- a new world object resets the item's x and y rotation
-            item:setWorldXRotation(fx)
-            item:setWorldYRotation(fy)
-            changed = true
+            witem = moveWorldItem(witem, item, target, p.ox, p.oy, p.z, fx, fy, isUnsent)
+            moved = true
         end
 
         item:setDoingExtendedPlacement(false)
         -- each sync is one reliable packet per nearby player, so unchanged items are skipped
-        if witem and changed then
+        if witem and changed and not moved and not isUnsent then
             witem:syncExtendedPlacement()
         end
     end
@@ -1821,7 +1858,7 @@ end
 
 -- arranges the items on the wall board `spriteName` on `square`. `extraItem` is checked as if it were dropped there
 -- too, `newItem` was just dropped on the square to go on the board
-function arrangeWall(square, spriteName, simulate, ignoreQz, extraItem, newItem)
+function arrangeWall(square, spriteName, simulate, ignoreQz, extraItem, newItem, unsent)
     local group = getWallGroup(square, spriteName)
     if not group then
         return false
@@ -1856,7 +1893,7 @@ function arrangeWall(square, spriteName, simulate, ignoreQz, extraItem, newItem)
         for i = 1, #placements do
             toWallPlacement(placements[i], surface)
         end
-        applyPlacements(placements, group)
+        applyPlacements(placements, group, unsent and newItem or nil)
     end
 
     return ok
@@ -1883,25 +1920,111 @@ local function arrangeWalls(group)
     end
 end
 
+CAIAE_State = CAIAE_State or { hooks = {}, pending = {}, pendingCount = 0 }
+local State = CAIAE_State
+
+local COMMAND_MODULE = "CAIAE"
+local REQUEST_DELAY_MS = 250
+local MAX_REQUEST_DISTANCE = 12
+local VALID_FACING = { N = true, E = true, S = true, W = true, auto = true }
+
+local function registerHook(event, hook)
+    if State.hooks[event] then
+        Events[event].Remove(State.hooks[event])
+    end
+    Events[event].Add(hook)
+    State.hooks[event] = hook
+end
+
+-- a client never moves world items itself: they'd only move in its own object list, which then disagrees with the
+-- server's for good, so later pickups by index take the wrong items. pickups re-sort a square several times in a
+-- row, so the requests wait a moment and only the last one per square is sent
+local function requestArrange(square, ctrlKey, facing, wallSprite, mixed, merge)
+    local x, y, z = square:getX(), square:getY(), square:getZ()
+    local key = x .. "," .. y .. "," .. z .. "," .. tostring(wallSprite)
+    if not State.pending[key] then
+        State.pendingCount = State.pendingCount + 1
+    end
+    State.pending[key] = {
+        due = getTimestampMs() + REQUEST_DELAY_MS,
+        args = { x = x, y = y, z = z, ctrl = ctrlKey == true, facing = facing, wall = wallSprite, mixed = mixed,
+            merge = merge },
+    }
+end
+
+local function sendPendingRequests()
+    if State.pendingCount == 0 then return end
+
+    local now = getTimestampMs()
+    for key, request in pairs(State.pending) do
+        if request.due <= now then
+            State.pending[key] = nil
+            State.pendingCount = State.pendingCount - 1
+            sendClientCommand(COMMAND_MODULE, "Arrange", request.args)
+        end
+    end
+end
+
+local function onClientCommand(module, command, player, args)
+    if module ~= COMMAND_MODULE or command ~= "Arrange" or type(args) ~= "table" or not player then return end
+
+    local x, y, z = args.x, args.y, args.z
+    if type(x) ~= "number" or type(y) ~= "number" or type(z) ~= "number" then return end
+    if mathAbs(player:getX() - x) > MAX_REQUEST_DISTANCE or mathAbs(player:getY() - y) > MAX_REQUEST_DISTANCE
+        or mathAbs(player:getZ() - z) > 2 then
+        return
+    end
+
+    local facing = args.facing
+    if facing ~= nil and not VALID_FACING[facing] then return end
+    local wall = args.wall
+    if wall ~= nil and type(wall) ~= "string" then return end
+
+    local square = getCell():getGridSquare(x, y, z)
+    if not square then return end
+
+    IA.ArrangeItems(square, false, args.ctrl == true, facing, wall, nil, args.mixed == true, nil, args.merge ~= false)
+end
+
+if isServer() then
+    registerHook("OnClientCommand", onClientCommand)
+elseif isClient() then
+    registerHook("OnTick", sendPendingRequests)
+end
+
 ---@param facing?     IAArrangeFacing side the items face. without one an arranged square keeps its orientation and any
 ---other square is left alone
 ---@param wallSprite? string arrange the items on this wall board on the square instead
 ---@param newItem?    InventoryItem the item just dropped on the square, which goes on the wall board when it can hang
 ---@param mixed?      boolean stack items that share a mesh and profile together, the player's mod option by default
-function IA.ArrangeItems(square, simulate, ctrlKey, facing, wallSprite, newItem, mixed)
-    setMixing(mixed)
-    if wallSprite and (not newItem or canHang(IA.arrangables[getArrangeType(newItem)])) then
-        return arrangeWall(square, wallSprite, simulate, ctrlKey, nil, newItem)
+---@param unsent?     boolean `newItem` isn't on the clients yet: the caller sends it once it's placed
+---@param merge?      boolean arrange multi-tile furniture as one surface, the player's mod option by default
+function IA.ArrangeItems(square, simulate, ctrlKey, facing, wallSprite, newItem, mixed, unsent, merge)
+    if not simulate and isClient() then
+        if mixed == nil then
+            mixed = IA.MixedStacks
+        end
+        if merge == nil then
+            merge = IA.MergeSurfaces ~= false
+        end
+        requestArrange(square, ctrlKey, facing, wallSprite, mixed, merge)
+
+        return true
     end
 
-    local group = IA.getArrangeGroup(square)
+    setMixing(mixed)
+    if wallSprite and (not newItem or canHang(IA.arrangables[getArrangeType(newItem)])) then
+        return arrangeWall(square, wallSprite, simulate, ctrlKey, nil, newItem, unsent)
+    end
+
+    local group = IA.getArrangeGroup(square, merge)
     if simulate then
         return arrangeGroundList(group, buildGroundList(group), nil, ctrlKey, facing)
     end
 
     local placements = {}
     local ok = arrangeGroundList(group, buildGroundList(group), placements, ctrlKey, facing)
-    applyPlacements(placements, group)
+    applyPlacements(placements, group, unsent and newItem or nil)
 
     -- after a pickup the boards close their gaps too
     if not wallSprite then

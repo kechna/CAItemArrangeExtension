@@ -10,6 +10,7 @@ local Events = Events
 local MOD_OPTIONS_ID = "CAItemArrangeExtension"
 local FACING_OPTION = "facingMode"
 local MIXED_OPTION = "mixedStacks"
+local MERGE_OPTION = "mergeSurfaces"
 local TEXT_PREFIX = "IGUI_CAIAE_Options_"
 
 -- new modes go at the end, the option is saved as an index
@@ -22,6 +23,9 @@ local function applyOptions(options)
 
   local mixed = options:getOption(MIXED_OPTION)
   IA.MixedStacks = mixed and mixed:getValue() == true or false
+
+  local merge = options:getOption(MERGE_OPTION)
+  IA.MergeSurfaces = not merge or merge:getValue() == true
 end
 
 local function initialize()
@@ -40,6 +44,7 @@ local function initialize()
     end
 
     options:addTickBox(MIXED_OPTION, TEXT_PREFIX .. "MixedStacks", false, TEXT_PREFIX .. "MixedStacks_tooltip")
+    options:addTickBox(MERGE_OPTION, TEXT_PREFIX .. "MergeSurfaces", true, TEXT_PREFIX .. "MergeSurfaces_tooltip")
 
     -- vanilla only reads ModOptions.ini once the options screen is opened
     api:load()

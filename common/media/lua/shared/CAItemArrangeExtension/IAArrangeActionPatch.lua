@@ -12,11 +12,15 @@ local sendRemoveItemFromContainer = sendRemoveItemFromContainer
 local isAltKeyDown = isAltKeyDown
 local isCtrlKeyDown = isCtrlKeyDown
 local isServer = isServer
+local instanceof = instanceof
+local pcall = pcall
+local error = error
 
 -- patches Item Arrange's arrange action:
 --  - skip items that are no longer in their container, so they don't turn into ghost items
 --  - skip items that don't fit instead of cancelling the rest of the queue
---  - hold Shift+Alt to skip items that can't be arranged, hold Ctrl to not stack items
+--  - skip items that can't be arranged, hold Ctrl to not stack items
+--  - hold Alt to arrange multi-tile furniture the other way (linked or per tile) than the mod option
 --  - only check the space again when the items on the square changed
 --  - orient the items by the player's facing mode option, on the server too where there's no mod option. a square
 --    that is arranged already keeps its orientation
@@ -27,7 +31,7 @@ local isServer = isServer
 ---@field srcContainer ItemContainer
 ---@field dropSquare IsoGridSquare
 ---@field skipItem boolean
----@field altKey boolean
+---@field mergeSurfaces boolean
 ---@field ctrlKey boolean
 ---@field facingMode IAFacingMode
 ---@field mixedStacks boolean
@@ -40,7 +44,8 @@ local originalNew = IAArrangeAction._originalNew
 local function facingOf(action)
   local square = action.dropSquare
 
-  return IA.getArrangedFacing(square) or IA.getFacing(action.character, square, action.facingMode)
+  return IA.getArrangedFacing(square, action.mergeSurfaces)
+    or IA.getFacing(action.character, square, action.facingMode)
 end
 
 local function isStale(action)
@@ -69,15 +74,15 @@ function IAArrangeAction:isValid()
 
   -- isValid runs every tick, so only check the space again when the items on the square changed
   local worldItemCount = 0
-  local members = IA.getArrangeGroup(self.dropSquare).members
+  local members = IA.getArrangeGroup(self.dropSquare, self.mergeSurfaces).members
   for i = 1, #members do
     worldItemCount = worldItemCount + members[i].square:getWorldObjects():size()
   end
   if self.checkedWorldItemCount ~= worldItemCount then
     self.checkedWorldItemCount = worldItemCount
     local facing = facingOf(self)
-    self.spaceValid, self.spaceSkipItem = IA.CheckSpace(self.dropSquare, self.item, self.altKey, facing, self.wallSprite,
-      self.mixedStacks)
+    self.spaceValid, self.spaceSkipItem = IA.CheckSpace(self.dropSquare, self.item, true, facing, self.wallSprite,
+      self.mixedStacks, self.mergeSurfaces)
   end
 
   -- an invalid action clears the whole queue, so items after this one would never be dropped
@@ -110,13 +115,14 @@ local function dropQueuedMisfits(action)
     local queued = list[i]
     local keep = true
 
-    if queued.Type == "IAArrangeAction" and queued.dropSquare == square and queued.item and not queued.altKey
-      and queued.wallSprite == action.wallSprite then
+    if queued.Type == "IAArrangeAction" and queued.dropSquare == square and queued.item
+      and queued.wallSprite == action.wallSprite and queued.mergeSurfaces == action.mergeSurfaces then
       local fullType = IA.getArrangeType(queued.item)
       local fits = fitsByType[fullType]
 
       if fits == nil then
-        fits = IA.CheckSpace(square, queued.item, false, facing, action.wallSprite, action.mixedStacks)
+        fits = IA.CheckSpace(square, queued.item, false, facing, action.wallSprite, action.mixedStacks,
+          action.mergeSurfaces)
           and true or false
         fitsByType[fullType] = fits
       end
@@ -168,12 +174,26 @@ function IAArrangeAction:complete()
     ItemPicker.updateOverlaySprite(parent)
   end
 
+  -- the clients get the item once it's placed: a placement sync right after the add can arrive before the item
+  -- (animals only reach them through the add)
+  local deferred = false
   if ISTransferAction:removeItemOnCharacter(self.character, item) then
-    self.dropSquare:AddWorldInventoryItem(item, 0.5, 0.5, 0.0)
+    deferred = not instanceof(item, "AnimalInventoryItem")
+    self.dropSquare:AddWorldInventoryItem(item, 0.5, 0.5, 0.0, not deferred)
   end
 
   -- the item is on the square already, so the action succeeded even when it doesn't fit the arrangement
-  IA.ArrangeItems(self.dropSquare, false, self.ctrlKey, facing, self.wallSprite, item, self.mixedStacks)
+  local ok, err = pcall(IA.ArrangeItems, self.dropSquare, false, self.ctrlKey, facing, self.wallSprite, item,
+    self.mixedStacks, deferred, self.mergeSurfaces)
+
+  local worldItem = deferred and item:getWorldItem()
+  if worldItem and isServer() then
+    worldItem:transmitCompleteItemToClients()
+  end
+
+  if not ok then
+    error(err)
+  end
 
   return true
 end
@@ -181,13 +201,13 @@ end
 -- in MP the client sends the fields named after `new`'s parameters and the server calls `new` with them, so the
 -- parameters must be named (no `...`) and the held keys are parameters too, read on the client only. Item Arrange
 -- passes its own fifth argument (ctrl key or time), so the client always reads them itself
-function IAArrangeAction:new(character, item, srcContainer, dropSquare, altKey, ctrlKey, facingMode, wallSprite,
+function IAArrangeAction:new(character, item, srcContainer, dropSquare, mergeSurfaces, ctrlKey, facingMode, wallSprite,
                              mixedStacks)
   local o = originalNew(self, character, item, srcContainer, dropSquare)
   o.skipItem = false
 
   if not isServer() then
-    altKey = isAltKeyDown()
+    mergeSurfaces = (IA.MergeSurfaces ~= false) ~= isAltKeyDown()
     ctrlKey = isCtrlKeyDown()
     facingMode = IA.FacingMode
     mixedStacks = IA.MixedStacks
@@ -195,7 +215,7 @@ function IAArrangeAction:new(character, item, srcContainer, dropSquare, altKey, 
     wallSprite = board and board.square == dropSquare and board.sprite or nil
   end
 
-  o.altKey = altKey == true
+  o.mergeSurfaces = mergeSurfaces ~= false
   o.ctrlKey = ctrlKey == true
   o.facingMode = facingMode or "walls"
   o.wallSprite = wallSprite
