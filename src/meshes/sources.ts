@@ -1,14 +1,16 @@
-import { existsSync, readdirSync, statSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import path from "node:path";
 
 /** Project Zomboid's Steam app id, the workshop content folder is named after it. */
 const APP_ID = "108600";
 
 export interface MediaSource {
-  /** `vanilla`, or the mod id */
+  /** `vanilla`, or the mod id from its `mod.info`, as `getActivatedMods()` lists it */
   id: string;
   /** media folders in load order, later ones override earlier ones */
   mediaDirs: string[];
+  /** ids of mods its mod.info says can't be active with it */
+  incompatible: string[];
 }
 
 const isDirectory = (dir: string): boolean => existsSync(dir) && statSync(dir).isDirectory();
@@ -31,16 +33,41 @@ const compareVersions = (a: string, b: string): number => {
   return 0;
 };
 
+const getLatestVersion = (modDir: string): string | undefined =>
+  listDirs(modDir)
+    .filter((name) => /^\d+(\.\d+)*$/.test(name))
+    .sort(compareVersions)
+    .pop();
+
+/** The mod.info the game reads, whose `id` can differ from the folder name. */
+const readModInfo = (modDir: string, fallbackId: string): { id: string; incompatible: string[] } => {
+  const latest = getLatestVersion(modDir);
+  let text = "";
+
+  try {
+    text = readFileSync(path.join(latest ? path.join(modDir, latest) : modDir, "mod.info"), "utf8");
+  } catch {
+    // no mod.info, the folder name is all there is
+  }
+
+  const get = (key: string): string | undefined => new RegExp(`^\\s*${key}\\s*=\\s*(.+?)\\s*$`, "m").exec(text)?.[1];
+
+  return {
+    id: get("id") ?? fallbackId,
+    incompatible: (get("incompatible") ?? "")
+      .split(",")
+      .map((id) => id.trim().replace(/^\\/, ""))
+      .filter(Boolean),
+  };
+};
+
 /**
  * Media folders of one mod as Build 42 loads them: `common/media`, then the highest version folder. The installed game
  * is assumed to be recent enough for every folder, since its version can't be read from the install. Mods without
  * version folders are Build 41 style and use `media` directly.
  */
 const getModMediaDirs = (modDir: string): string[] => {
-  const versions = listDirs(modDir)
-    .filter((name) => /^\d+(\.\d+)*$/.test(name))
-    .sort(compareVersions);
-  const latest = versions[versions.length - 1];
+  const latest = getLatestVersion(modDir);
 
   if (!latest) {
     return [path.join(modDir, "media")].filter(isDirectory);
@@ -70,7 +97,9 @@ export interface SourceOptions {
 
 /** Vanilla first, then every installed workshop mod and every local mod, sorted by id. */
 export const findMediaSources = (options: SourceOptions): MediaSource[] => {
-  const sources: MediaSource[] = [{ id: "vanilla", mediaDirs: [path.join(options.gameFilesPath, "media")] }];
+  const sources: MediaSource[] = [
+    { id: "vanilla", mediaDirs: [path.join(options.gameFilesPath, "media")], incompatible: [] },
+  ];
   const mods = new Map<string, string>();
   const workshop = options.workshopContentPath ?? getWorkshopContentPath(options.gameFilesPath);
 
@@ -87,11 +116,11 @@ export const findMediaSources = (options: SourceOptions): MediaSource[] => {
     mods.set(name, path.join(options.localModsPath!, name));
   }
 
-  for (const [id, dir] of [...mods].sort(([a], [b]) => a.localeCompare(b))) {
+  for (const [name, dir] of [...mods].sort(([a], [b]) => a.localeCompare(b))) {
     const mediaDirs = getModMediaDirs(dir);
 
     if (mediaDirs.length) {
-      sources.push({ id, mediaDirs });
+      sources.push({ ...readModInfo(dir, name), mediaDirs });
     }
   }
 

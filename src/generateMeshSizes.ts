@@ -1,6 +1,6 @@
 import { writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
-import { collectWorldMeshes } from "./meshes/collectWorldMeshes.ts";
+import { collectWorldMeshes, type WorldModel } from "./meshes/collectWorldMeshes.ts";
 import { toMeshSize } from "./meshes/meshSize.ts";
 import { findMediaSources } from "./meshes/sources.ts";
 
@@ -30,8 +30,9 @@ const bySource = new Map<string, string[]>();
 let lifted = 0;
 let lowered = 0;
 let shifted = 0;
+let contested = 0;
 
-for (const model of models) {
+const toFields = (model: WorldModel): string[] => {
   const size = toMeshSize(model.extents, model.transform);
   const fields = [`dx = ${size.dx}`, `dy = ${size.dy}`, `dz = ${size.dz}`];
 
@@ -39,6 +40,33 @@ for (const model of models) {
     if (Math.abs(size[key]) >= MIN_OFFSET) {
       fields.push(`${key} = ${size[key]}`);
     }
+  }
+
+  return fields;
+};
+
+for (const versions of models) {
+  const sizes = versions.map((version) => toFields(version).join(", "));
+  const model = versions[versions.length - 1]!;
+  const size = toMeshSize(model.extents, model.transform);
+  const key = `[${JSON.stringify(model.key)}]`;
+  let line: string;
+
+  if (new Set(sizes).size === 1) {
+    line = `  ${key} = { ${sizes[0]} }, -- ${model.mesh}`;
+  } else {
+    contested++;
+    line = [
+      `  ${key} = { -- ${model.mesh}`,
+      ...versions.map((version, i) => {
+        const mods = version.mods.length
+          ? `mods = { ${version.mods.map((id) => JSON.stringify(id)).join(", ")} }, `
+          : "";
+
+        return `    { ${mods}${sizes[i]} },`;
+      }),
+      "  },",
+    ].join("\n");
   }
 
   if (Math.abs(size.oz) >= MIN_OFFSET) {
@@ -53,8 +81,6 @@ for (const model of models) {
     shifted++;
   }
 
-  const line = `  [${JSON.stringify(model.key)}] = { ${fields.join(", ")} }, -- ${model.mesh}`;
-
   bySource.set(model.source, [...(bySource.get(model.source) ?? []), line]);
 }
 
@@ -66,8 +92,12 @@ const lines = [
   "-- model on the ground at its script's scale, before Item Arrange turns it: dx/dy in tiles, dz in floors. oz is how",
   "-- far it reaches below its origin in floors (negative: it floats above it), cx/cy where its footprint's centre is",
   "-- relative to its origin in tiles. offsets are left out when negligible",
+  "--",
+  "-- models that installed mods define differently list every version: the last one whose `mods` are all active is",
+  "-- the one the game draws",
   "",
-  "---@type table<string, { dx: number, dy: number, dz: number, oz?: number, cx?: number, cy?: number }>",
+  "---@alias CAIAE_MeshSize { dx: number, dy: number, dz: number, oz?: number, cx?: number, cy?: number, mods?: string[] }",
+  "---@type table<string, CAIAE_MeshSize | CAIAE_MeshSize[]>",
   "local MeshSizes = {",
 ];
 
@@ -88,3 +118,4 @@ console.log(
 );
 console.log(`Bottom offsets: ${lifted} models reach below their origin, ${lowered} float above it`);
 console.log(`Footprint offsets: ${shifted} models aren't centred on their origin`);
+console.log(`Contested: ${contested} models differ between the installed mods that define them`);

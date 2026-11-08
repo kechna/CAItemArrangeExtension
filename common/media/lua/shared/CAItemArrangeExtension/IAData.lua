@@ -91,9 +91,8 @@ mp["weapons/1handed/Guitar_Acoustic_Broken"] = { fz = 270 }
 mp["weapons/1handed/Guitar_ElectricBass_Broken"] = { fz = 270 }
 mp["weapons/1handed/Guitar_Electric_Broken"] = { fz = 270 }
 mp["weapons/1handed/HammerClub_Forged_Hand"] = { flipZ = true, fz = 180, dy = 0.4, dx = 0.13, mz = 0.012 }
-mp["weapons/1handed/Hammer_Forged_Hand"] = { flipZ = true, fz = 180, dy = 0.4, dx = 0.22 }
 mp["weapons/1handed/Hammer_Forged_Hand"] = { fz = 270, dy = 0.4, dx = 0.22 }
-mp["weapons/1handed/Hammer_Smithing_Hand"] = { flipZ = true, fz = 180 }
+mp["weapons/1handed/Hammer_Smithing_Hand"] = { dx = 0.152, dy = 0.4, my = 0.035, fz = 270, s = 1 }
 mp["weapons/1handed/HandAxe"] = { fz = 270 }
 mp["weapons/1handed/HandAxe_Forged_Hand"] = { fz = 270 }
 mp["weapons/1handed/HandFork"] = { fz = 270 }
@@ -337,7 +336,7 @@ mp["weapons/2handed/Shaft_Broken_Hand"] = { fz = 270 }
 mp["weapons/2handed/Shaft_Spear_Hand"] = { fz = 270 }
 mp["weapons/2handed/Shovel"] = { fz = 270 }
 mp["weapons/2handed/Shovel02"] = { fz = 270 }
-mp["weapons/2handed/SledgeHammer"] = { fz = 270 }
+mp["weapons/2handed/SledgeHammer"] = { dx = 0.192, dy = 0.999, fz = 270, s = 1 }
 mp["weapons/2handed/SledgeHammer02"] = { dx = 0.223, dy = 0.99, dz = 0.041, my = 0, fz=270 }
 mp["weapons/2handed/SnowShovel"] = { dx = 0.378, dy = 0.99, dz = 0.021, my = 0.181, qz = 4, fz = 270 }
 mp["weapons/2handed/Spade_Forged_Hand"] = { fz = 270 }
@@ -394,6 +393,7 @@ mp["WorldItems/Bowl"] = { dx = 0.19, dy = 0.19, dz = 0.025, qz = 6 }
 mp["WorldItems/BowlFood"] = { dz = 0.04 }
 mp["WorldItems/Bowl_Kiln"] = { dx = 0.19, dy = 0.19, dz = 0.025, qz = 6 }
 mp["WorldItems/Bowl_Kiln_Full"] = { dx = 0.19, dy = 0.19, dz = 0.04 }
+mp["WorldItems/BoxOfShotGunShells"] = { dx = 0.14, dy = 0.12, dz = 0.055, qz = 1, s = 0.6 }
 mp["WorldItems/BrakeDisk"] = { qz = 4 }
 mp["WorldItems/BreadSlices"] = { qz = 6, fz = -10, dz = 0.007, s = 0.3 }
 mp["WorldItems/Brochure"] = { dz = 0.03, fy = 180, flipX = true, flipY = true, s = 0.125 }
@@ -774,3 +774,8 @@ mp["WorldItems/USMIL_worldItems|USMIL_crate1WI"] = { dx = 0.372, dz = 0.093, qz 
 mp["WorldItems/damnCraft_plasticAddon_worldItems|plasterMold_emptyWI"] = { qz = 10 }
 mp["WorldItems/damnCraft_plasticAddon_worldItems|styrofoamSheetWI"] = { qz = 20 }
 mp["WorldItems/damnCraft_plasticAddon_worldItems|woodBox_emptyWI"] = { qz = 10 }
+
+-- gunz of marz
+mp["Worlditems/Ammunition/Ammo_Crate"] = { dx = 0.525, dy = 0.316, dz = 0.08, mx = 0.04, my = 0.05, qz = 4, s = 1.2 }
+mp["Worlditems/Others/repair_pack"] = { dx = 0.138, dy = 0.312, qz = 6, s = 1 }
+mp["Worlditems/Ammunition/40mm_Box"] = { dz = 0.05, s = 1 }

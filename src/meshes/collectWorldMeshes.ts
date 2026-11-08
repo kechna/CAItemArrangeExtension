@@ -24,12 +24,18 @@ export interface WorldModel {
   mesh: string;
   /** id of the source the mesh file came from */
   source: string;
+  /** mods this version of the model comes from, it's only used when they're all active */
+  mods: string[];
   extents: MeshExtents;
   transform: ModelTransform;
 }
 
 export interface CollectedMeshes {
-  models: WorldModel[];
+  /**
+   * every version of each model the installed sources define, in the order the game would let them win: the last one
+   * whose `mods` are all active is the one in game
+   */
+  models: WorldModel[][];
   /** meshes used by items whose file wasn't found or couldn't be read */
   skipped: string[];
 }
@@ -118,16 +124,23 @@ const getItemModels = (properties: Record<string, string>): { name: string; weap
   return names.map((name) => ({ name: shortName(name!.trim()), weapon }));
 };
 
+/** Adds a source's definition, replacing the one that source already had. */
+const addVersion = <T extends { source: string }>(map: Map<string, T[]>, key: string, value: T): void => {
+  map.set(key, [...(map.get(key) ?? []).filter((other) => other.source !== value.source), value]);
+};
+
 /**
  * Collects the world model of every item across all sources, resolved like `ItemModelRenderer` does: the
  * `WorldStaticModel`, or for weapons without one their `StaticModel`, `WeaponSprite` and every model in
- * `WeaponSpritesByIndex`, laid down by the weapon path. Properties are merged across an item's declarations first. Like the game, later sources override models and mesh files of earlier ones.
+ * `WeaponSpritesByIndex`, laid down by the weapon path. Properties are merged across an item's declarations first.
+ * Later sources override models and mesh files of earlier ones, but only while they're active, and installed mods
+ * aren't all active (or even compatible, like two versions of one mod), so every version is measured.
  */
 export const collectWorldMeshes = (sources: MediaSource[]): CollectedMeshes => {
-  const models = new Map<string, ModelDefinition>();
+  const models = new Map<string, ModelDefinition[]>();
   /** item full type → its properties, merged across every declaration */
   const items = new Map<string, Record<string, string>>();
-  const meshFiles = new Map<string, { file: string; source: string }>();
+  const meshFiles = new Map<string, { file: string; source: string }[]>();
 
   for (const source of sources) {
     for (const media of source.mediaDirs) {
@@ -139,7 +152,7 @@ export const collectWorldMeshes = (sources: MediaSource[]): CollectedMeshes => {
 
         for (const block of parseScriptBlocks(text, ["item", "model"], ["attachment"])) {
           if (block.kind === "model" && block.properties.mesh) {
-            models.set(block.name.toLowerCase(), {
+            addVersion(models, block.name.toLowerCase(), {
               name: block.name,
               mesh: block.properties.mesh,
               properties: block.properties,
@@ -159,12 +172,12 @@ export const collectWorldMeshes = (sources: MediaSource[]): CollectedMeshes => {
       const modelsDir = findChildDir(media, "models_X");
 
       for (const file of modelsDir ? walk(modelsDir, MESH_EXTENSIONS) : []) {
-        meshFiles.set(meshFileKey(path.relative(modelsDir, file)), { file, source: source.id });
+        addVersion(meshFiles, meshFileKey(path.relative(modelsDir, file)), { file, source: source.id });
       }
     }
   }
 
-  const result = new Map<string, WorldModel>();
+  const result = new Map<string, WorldModel[]>();
   const skipped = new Set<string>();
   /** parsed files, many models use different parts of the same file */
   const parsed = new Map<string, MeshFile | undefined>();
@@ -181,29 +194,49 @@ export const collectWorldMeshes = (sources: MediaSource[]): CollectedMeshes => {
     return parsed.get(file);
   };
 
+  const incompatible = new Set(
+    sources.flatMap((source) => source.incompatible.flatMap((id) => [`${source.id}|${id}`, `${id}|${source.id}`])),
+  );
   const itemModels = [...items.values()].flatMap(getItemModels);
 
   for (const { name: modelName, weapon } of itemModels) {
     const key = worldModelKey(modelName, weapon);
-    const model = models.get(modelName.toLowerCase());
 
-    if (!model || result.has(key) || skipped.has(model.mesh)) {
+    if (result.has(key)) {
       continue;
     }
 
-    const meshFile = meshFiles.get(meshFileKey(model.mesh));
-    const parsedFile = meshFile && parse(meshFile.file);
+    const versions: WorldModel[] = [];
 
-    if (meshFile && parsedFile) {
-      result.set(key, {
-        key,
-        mesh: model.mesh,
-        source: meshFile.source,
-        extents: getMeshExtents(parsedFile, model.mesh.split("|")[1]),
-        transform: { scale: getModelScale(model.properties), weapon, attachment: model.attachment },
-      });
-    } else {
-      skipped.add(model.mesh);
+    // ordered by model definition, then mesh file, so the last version whose mods are active is the game's
+    for (const model of models.get(modelName.toLowerCase()) ?? []) {
+      for (const meshFile of meshFiles.get(meshFileKey(model.mesh)) ?? []) {
+        if (incompatible.has(`${model.source}|${meshFile.source}`)) {
+          continue;
+        }
+
+        const parsedFile = parse(meshFile.file);
+        const extents = parsedFile && getMeshExtents(parsedFile, model.mesh.split("|")[1]);
+
+        if (extents) {
+          versions.push({
+            key,
+            mesh: model.mesh,
+            source: meshFile.source,
+            mods: [...new Set([model.source, meshFile.source])].filter((id) => id !== "vanilla"),
+            extents,
+            transform: { scale: getModelScale(model.properties), weapon, attachment: model.attachment },
+          });
+        }
+      }
+
+      if (!versions.some((version) => version.mesh === model.mesh)) {
+        skipped.add(model.mesh);
+      }
+    }
+
+    if (versions.length) {
+      result.set(key, versions);
     }
   }
 

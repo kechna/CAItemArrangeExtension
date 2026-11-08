@@ -136,10 +136,44 @@ Connections:  {
   });
 
   it("stands z-up FBX meshes up through their node rotation", () => {
-    const extents = getMeshExtents(readMeshFile("box.fbx", Buffer.from(fbxFile("-90,0,0")))!);
+    const extents = getMeshExtents(readMeshFile("box.fbx", Buffer.from(fbxFile("-90,0,0")))!)!;
 
     expect(rounded(extents.min)).toEqual([0, 0, -4]);
     expect(rounded(extents.max)).toEqual([2, 6, 0]);
+  });
+
+  const partsFile = `; FBX 7.4.0 project file
+Objects:  {
+	Geometry: 1, "Geometry::Mag", "Mesh" {
+		Vertices: *6 {
+			a: 0,0,0,1,1,1
+		}
+	}
+	Model: 2, "Model::Mag10.001", "Mesh" {
+	}
+	Geometry: 3, "Geometry::Drum", "Mesh" {
+		Vertices: *6 {
+			a: 5,0,0,9,1,1
+		}
+	}
+	Model: 4, "Model::Drum", "Mesh" {
+	}
+}
+Connections:  {
+	C: "OO",1,2
+	C: "OO",3,4
+}`;
+
+  it("finds parts by name, also with Blender's copy suffix", () => {
+    const meshFile = readMeshFile("mags.fbx", Buffer.from(partsFile))!;
+
+    expect(getMeshExtents(meshFile, "Drum")?.min).toEqual([5, 0, 0]);
+    expect(getMeshExtents(meshFile, "Mag10")?.max).toEqual([1, 1, 1]);
+  });
+
+  it("doesn't measure a missing part by a file of other parts", () => {
+    expect(getMeshExtents(readMeshFile("mags.fbx", Buffer.from(partsFile))!, "Mag20")).toBeUndefined();
+    expect(getMeshExtents(readMeshFile("box.fbx", Buffer.from(fbxFile("0,0,0")))!, "Other")?.max).toEqual([2, 4, 6]);
   });
 });
 
@@ -200,7 +234,7 @@ const HAND_MADE: [mesh: string, scale: number, dx: number, dy: number, dz: numbe
 describe.runIf(gameFiles && existsSync(path.join(gameFiles, "media", "models_X")))("game meshes", () => {
   it.each(HAND_MADE)("%s matches the hand-made footprint", (mesh, scale, dx, dy) => {
     const file = path.join(gameFiles!, "media", "models_X", mesh);
-    const size = toMeshSize(getMeshExtents(readMeshFile(file, readFileSync(file))!), { scale: 1, weapon: false });
+    const size = toMeshSize(getMeshExtents(readMeshFile(file, readFileSync(file))!)!, { scale: 1, weapon: false });
 
     // within 20%: hand-made profiles are rounded and sometimes a bit loose
     expect(size.dx * scale).toBeGreaterThan(dx * 0.8);

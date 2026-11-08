@@ -398,11 +398,21 @@ export const readMeshFile = (file: string, buffer: Buffer): MeshFile | undefined
 
 /**
  * Extents of a mesh, or of one part of it: `subMesh` is the part after `|` in a model script's `mesh = file|part`.
- * Falls back to the whole file when no part has that name.
+ * Without that part only a file holding a single mesh is used whole: the bounds of a file full of other parts (a mod's
+ * magazines in one FBX) would be far too big and off-centre.
  */
-export const getMeshExtents = (meshFile: MeshFile, subMesh?: string): MeshExtents => {
-  const part = subMesh ? meshFile.parts.get(partName(subMesh)) : undefined;
-  const bounds = part && !part.isEmpty ? part : meshFile.all;
+export const getMeshExtents = (meshFile: MeshFile, subMesh?: string): MeshExtents | undefined => {
+  const name = subMesh && partName(subMesh);
+  // Blender names copies `Part.001`, which is the only part of that name in some mod files
+  const part = name
+    ? (meshFile.parts.get(name) ?? [...meshFile.parts].find(([key]) => key.replace(/\.\d{3}$/, "") === name)?.[1])
+    : undefined;
+  const parts = [...meshFile.parts.values()].filter((bounds) => !bounds.isEmpty).length;
+  const bounds = part && !part.isEmpty ? part : parts <= 1 || !subMesh ? meshFile.all : undefined;
+
+  if (!bounds) {
+    return undefined;
+  }
 
   return {
     format: meshFile.format,

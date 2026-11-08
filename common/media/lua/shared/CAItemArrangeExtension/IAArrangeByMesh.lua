@@ -70,8 +70,9 @@ IA.meshProfilesApplied = false
 local p = "CAItemArrangeExtension"
 
 --- sizes and offsets measured from the models by src/generateMeshSizes.ts, for meshes no profile covers yet.
----@type table<string, { dx: number, dy: number, dz: number, oz?: number, cx?: number, cy?: number }>
 local meshSizes = require("CAItemArrangeExtension/IAMeshSizes_Generated")
+
+local getActivatedMods = getActivatedMods
 
 --- profile name used for items arranged by their measured mesh size.
 local MEASURED = "measured"
@@ -606,14 +607,68 @@ local function setCenterOffsets(profile, center, height)
   end
 end
 
+--- size key -> the size of the model version the active mods give it, false when none of them are active.
+---@type table<string, CAIAE_MeshSize | false>
+local resolvedSizes = {}
+
+---@type ArrayList | nil
+local activatedMods
+
+---@param id string
+---@return boolean
+local function isModActive(id)
+  activatedMods = activatedMods or getActivatedMods()
+
+  return activatedMods:contains(id) or activatedMods:contains("\\" .. id)
+end
+
+--- installed mods can define a model differently (two versions of one mod), the game draws the last active one.
+---@param key string
+---@return CAIAE_MeshSize | nil
+local function resolveMeshSize(key)
+  local resolved = resolvedSizes[key]
+
+  if resolved == nil then
+    local entry = meshSizes[key]
+
+    resolved = false
+
+    if entry and entry.dx then
+      resolved = entry
+    elseif entry then
+      for i = #entry, 1, -1 do
+        local mods = entry[i].mods
+        local active = true
+
+        for j = 1, mods and #mods or 0 do
+          if not isModActive(mods[j]) then
+            active = false
+            break
+          end
+        end
+
+        if active then
+          resolved = entry[i]
+          break
+        end
+      end
+    end
+
+    resolvedSizes[key] = resolved
+  end
+
+  return resolved or nil
+end
+
 ---@param worldMesh CAIAE_WorldMesh
----@return table | nil, string | nil
+---@return CAIAE_MeshSize | nil, string | nil
 local function getMeshSize(worldMesh)
   for i = 1, #worldMesh.sizeKeys do
     local key = worldMesh.sizeKeys[i]
+    local size = resolveMeshSize(key)
 
-    if meshSizes[key] then
-      return meshSizes[key], key
+    if size then
+      return size, key
     end
   end
 
