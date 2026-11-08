@@ -121,3 +121,7 @@ link1 = Workshop = https://steamcommunity.com/id/chekka-anchroviec/myworkshopfil
 - fix items in multiplayer getting the name and contents of another item, like a brake turning into grape soda
 - fix items getting stuck or clipping into each other in multiplayer after picking items up
 [ ------ ]
+
+[ v1.23.0 - 11/08/26 ]
+- add Guns of Marz support
+[ ------ ]
